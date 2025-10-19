@@ -30,7 +30,7 @@ const LoanSigningAgent = () => {
     { icon: Award, title: "NNA Certified", desc: "National Notary Association certified signing agent" },
     { icon: Shield, title: "$100K E&O Insurance", desc: "Comprehensive errors and omissions coverage" },
     { icon: FileText, title: "MISMO Standards", desc: "Compliant with mortgage industry standards" },
-    { icon: Clock, title: "24/7 Availability", desc: "Flexible scheduling including evenings and weekends" }
+    { icon: Clock, title: "Flexible Scheduling", desc: "Available by appointment including evenings and weekends" }
   ];
 
   const schema = {

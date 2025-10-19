@@ -18,7 +18,7 @@ const StatewideOnline = () => {
   };
 
   const benefits = [
-    "Available 24/7 - even on weekends and holidays",
+    "Available by appointment - including evenings, weekends, and holidays",
     "Complete notarization in as little as 5 minutes",
     "No travel required - work from home, office, or anywhere",
     "Legally valid in all 50 states",
@@ -82,13 +82,13 @@ const StatewideOnline = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-[hsl(var(--action-cyan))] text-white border-0">
-              Available 24/7 Statewide
+              Available Statewide by Appointment
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Remote Online Notary Service Anywhere in Pennsylvania
             </h1>
             <p className="text-xl mb-8 text-white/90">
-              Get documents notarized from anywhere in PA via secure video call. No travel, no waiting rooms, no hassle. Available 24/7 including weekends and holidays.
+              Get documents notarized from anywhere in PA via secure video call. No travel, no waiting rooms, no hassle. Available by appointment including evenings, weekends, and holidays.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -133,9 +133,9 @@ const StatewideOnline = () => {
               </Card>
               <Card className="p-6 text-center">
                 <Globe className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="font-bold mb-2">24/7 Availability</h3>
+                <h3 className="font-bold mb-2">Flexible Scheduling</h3>
                 <p className="text-sm text-muted-foreground">
-                  Evenings, weekends, holidays - whenever you need us
+                  Evenings, weekends, holidays - by appointment
                 </p>
               </Card>
               <Card className="p-6 text-center">
@@ -309,7 +309,8 @@ const StatewideOnline = () => {
             <h2 className="text-3xl font-bold mb-8">Simple, Transparent Pricing</h2>
             <Card className="p-8">
               <div className="text-5xl font-bold text-primary mb-4">$60</div>
-              <div className="text-xl text-muted-foreground mb-6">per notarization session</div>
+              <div className="text-xl text-muted-foreground mb-2">per notarization session</div>
+              <div className="text-sm text-muted-foreground mb-6">$15 notary fee + $45 platform/technology fee</div>
               <ul className="space-y-3 text-left max-w-md mx-auto mb-8">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -325,9 +326,12 @@ const StatewideOnline = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span>Same price 24/7 - no weekend surcharge</span>
+                  <span>Same price for all appointments - no weekend surcharge</span>
                 </li>
               </ul>
+              <p className="text-xs text-muted-foreground mb-6">
+                Pennsylvania law limits notary fees to $15 per signature. Additional fees shown are for technology platform, secure storage, and administrative services.
+              </p>
               <Button size="lg" onClick={scrollToBooking}>
                 Book Online Session Now
               </Button>
@@ -341,7 +345,7 @@ const StatewideOnline = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Get Notarized Online?</h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Join thousands of Pennsylvania residents who've discovered the convenience of Remote Online Notary. Available 24/7 statewide.
+            Join thousands of Pennsylvania residents who've discovered the convenience of Remote Online Notary. Available by appointment statewide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 

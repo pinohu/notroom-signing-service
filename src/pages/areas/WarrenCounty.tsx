@@ -24,10 +24,10 @@ const WarrenCounty = () => {
   ];
 
   const services = [
-    { title: "Remote Online Notary (RON)", price: "$60", highlight: "Best for Warren County", desc: "No travel needed - available 24/7 from your home" },
-    { title: "Mobile Notary Service", price: "$125 + mileage", desc: "We travel to Warren County locations" },
-    { title: "Loan Signing Agent", price: "$150", desc: "Mortgage and real estate closings" },
-    { title: "Apostille Services", price: "$175", desc: "International document authentication" }
+    { title: "Remote Online Notary (RON)", price: "$60", highlight: "Best for Warren County", desc: "No travel needed - available by appointment from your home ($15 notary + $45 platform)" },
+    { title: "Mobile Notary Service", price: "$125 + mileage", desc: "We travel to Warren County locations (in-person service)" },
+    { title: "Loan Signing Agent", price: "$150", desc: "Mortgage and real estate closings ($15 notary + $135 agent fee)" },
+    { title: "Apostille Assistance", price: "$175", desc: "Notarization + application help for international documents" }
   ];
 
   const schema = {
