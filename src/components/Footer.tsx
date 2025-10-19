@@ -29,27 +29,27 @@ const Footer = () => {
             <h4 className="font-bold mb-4 text-lg">Services</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/services/remote-online-notary" className="text-white/70 hover:text-white transition-colors text-sm">
                   Remote Online Notary
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/services/mobile-notary" className="text-white/70 hover:text-white transition-colors text-sm">
                   Mobile Notary Erie PA
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/services/loan-signing-agent" className="text-white/70 hover:text-white transition-colors text-sm">
                   Loan Signing Agent
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/services/business-retainer" className="text-white/70 hover:text-white transition-colors text-sm">
                   Business Retainer Plans
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/services/apostille" className="text-white/70 hover:text-white transition-colors text-sm">
                   Apostille Services
                 </a>
               </li>
@@ -88,33 +88,18 @@ const Footer = () => {
             <h4 className="font-bold mb-4 text-lg">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/resources/how-ron-works" className="text-white/70 hover:text-white transition-colors text-sm">
                   How RON Works
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
-                  PA Notary Laws
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Document Checklist
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/#faq" className="text-white/70 hover:text-white transition-colors text-sm">
                   FAQ
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Reviews
+                <a href="/pricing" className="text-white/70 hover:text-white transition-colors text-sm">
+                  Pricing
                 </a>
               </li>
             </ul>
@@ -164,14 +149,8 @@ const Footer = () => {
 
             {/* Legal Links */}
             <div className="flex gap-6">
-              <a href="#" className="text-white/60 hover:text-white text-sm transition-colors">
+              <a href="/privacy-policy" className="text-white/60 hover:text-white text-sm transition-colors">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-white/60 hover:text-white text-sm transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-white/60 hover:text-white text-sm transition-colors">
-                Accessibility
               </a>
             </div>
 
