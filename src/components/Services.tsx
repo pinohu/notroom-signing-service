@@ -1,79 +1,142 @@
-import { Clock, MapPin, FileCheck } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Monitor, Car, Home, Check } from "lucide-react";
 
 const Services = () => {
   const services = [
     {
-      icon: Clock,
-      title: "Remote Online Notary",
+      icon: Monitor,
+      badge: "Most Popular",
+      title: "Remote Online Notary (RON)",
       price: "$60",
-      description: "Available 24/7",
-      features: ["Video verification", "E-signature", "Instant completion", "Secure & legal"]
+      priceDetail: "per document",
+      description: "Notarize from anywhere via secure video call. Perfect for powers of attorney, affidavits, contracts, and most legal documents.",
+      features: [
+        "Available 24/7, even weekends",
+        "5-minute average wait time",
+        "Legally valid in all 50 states",
+        "Instant digital delivery"
+      ],
+      ctaText: "Start Online Notarization",
+      featured: true
     },
     {
-      icon: MapPin,
-      title: "Mobile Notary Erie County",
+      icon: Car,
+      badge: "Same-Day",
+      title: "Mobile Notary Service",
       price: "$125",
-      description: "Same-day available",
-      features: ["We come to you", "Flexible scheduling", "All documents", "Professional service"]
+      priceDetail: "flat rate",
+      description: "We come to you anywhere in Erie County. Home, office, hospital, or care facility. Perfect for those who prefer in-person service.",
+      features: [
+        "2-hour response time available",
+        "Evening & weekend appointments",
+        "Serves Erie, Crawford, Warren counties",
+        "Multiple signers included"
+      ],
+      ctaText: "Schedule Mobile Visit",
+      featured: false
     },
     {
-      icon: FileCheck,
+      icon: Home,
+      badge: "Certified",
       title: "Loan Signing Agent",
       price: "$200",
-      description: "Certified & Bonded",
-      features: ["Real estate closings", "Refinancing", "Title documents", "Error-free"]
+      priceDetail: "per closing",
+      description: "Certified signing agent for real estate transactions. Work with title companies, lenders, and real estate professionals.",
+      features: [
+        "NNA certified & background-checked",
+        "Experienced with all loan types",
+        "Error-free signing guarantee",
+        "Scan-back service included"
+      ],
+      ctaText: "Request Signing Agent",
+      featured: false
     }
   ];
 
+  const scrollToBooking = () => {
+    document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-full">
+            <span className="text-primary font-semibold text-sm">Three Ways We Serve You</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Our Services
+            Professional Notary Services in Erie & Surrounding Counties
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Professional notary services tailored to your needs
-          </p>
         </div>
-        
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="hover:shadow-lg transition-all duration-300 border-2 hover:border-primary"
-            >
-              <CardContent className="p-8">
-                <div className="flex justify-center mb-6">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                    <service.icon className="w-8 h-8 text-primary" />
+
+        {/* Service Cards Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <Card 
+                key={index} 
+                className={`relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 ${
+                  service.featured ? 'border-[hsl(var(--urgency-amber))] border-4' : ''
+                }`}
+              >
+                {/* Badge */}
+                {service.badge && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+                    <Badge className="bg-[hsl(var(--urgency-amber))] text-white px-4 py-1 text-sm font-semibold shadow-lg">
+                      {service.badge}
+                    </Badge>
                   </div>
-                </div>
-                
-                <h3 className="text-2xl font-bold text-center mb-2 text-foreground">
-                  {service.title}
-                </h3>
-                
-                <div className="text-center mb-4">
-                  <span className="text-4xl font-bold text-primary">{service.price}</span>
-                </div>
-                
-                <p className="text-center text-muted-foreground mb-6 font-medium">
-                  {service.description}
-                </p>
-                
-                <ul className="space-y-3">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-foreground">
-                      <span className="text-primary mr-2">✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          ))}
+                )}
+
+                <CardContent className="p-8">
+                  {/* Icon */}
+                  <div className="flex justify-center mb-6">
+                    <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
+                      <Icon className="w-10 h-10 text-primary" />
+                    </div>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-2xl font-bold text-center mb-3 text-foreground">
+                    {service.title}
+                  </h3>
+
+                  {/* Price */}
+                  <div className="text-center mb-6">
+                    <div className="text-4xl font-bold text-primary">{service.price}</div>
+                    <div className="text-sm text-muted-foreground">{service.priceDetail}</div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-center text-muted-foreground mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  {/* Features */}
+                  <ul className="space-y-3 mb-8">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-[hsl(var(--success-green))] flex-shrink-0 mt-0.5" />
+                        <span className="text-sm text-foreground">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* CTA Button */}
+                  <Button 
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 shadow-md hover:shadow-lg transition-all"
+                    onClick={scrollToBooking}
+                  >
+                    {service.ctaText} →
+                  </Button>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>

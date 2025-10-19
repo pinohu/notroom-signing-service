@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Notroom Brand Design System
+   Primary: Trust Blue (#1e40af)
+   Secondary: Action Cyan (#0891b2)
+   Accent: Urgency Amber (#f59e0b)
+   All colors in HSL for theme compatibility
 */
 
 @layer base {
@@ -17,6 +22,7 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 217 33% 17%;
 
+    /* Trust Blue - Primary brand color */
     --primary: 221 83% 53%;
     --primary-foreground: 0 0% 100%;
 
@@ -26,7 +32,8 @@ All colors MUST be HSL.
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 217 91% 60%;
+    /* Action Cyan - Secondary brand color */
+    --accent: 186 100% 42%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -38,11 +45,17 @@ All colors MUST be HSL.
 
     --radius: 0.5rem;
 
-    --hero-gradient-start: 217 91% 60%;
-    --hero-gradient-end: 221 83% 53%;
+    /* Brand-specific colors */
+    --trust-blue: 221 83% 53%;
+    --action-cyan: 186 100% 42%;
+    --urgency-amber: 38 92% 50%;
+    --success-green: 152 69% 39%;
+    --neutral-dark: 217 19% 27%;
+    --neutral-light: 214 32% 91%;
     
-    --trust-blue: 217 33% 17%;
-    --speed-accent: 221 83% 53%;
+    /* Gradient for hero sections */
+    --hero-gradient-from: 221 83% 30%;
+    --hero-gradient-to: 186 100% 35%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -73,7 +86,7 @@ All colors MUST be HSL.
     --muted: 217 19% 27%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 217 91% 60%;
+    --accent: 186 100% 42%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 63% 31%;
@@ -83,11 +96,15 @@ All colors MUST be HSL.
     --input: 217 19% 27%;
     --ring: 221 83% 53%;
     
-    --hero-gradient-start: 217 91% 60%;
-    --hero-gradient-end: 221 83% 53%;
+    --trust-blue: 221 83% 60%;
+    --action-cyan: 186 100% 50%;
+    --urgency-amber: 38 92% 55%;
+    --success-green: 152 69% 45%;
+    --neutral-dark: 217 19% 17%;
+    --neutral-light: 214 32% 91%;
     
-    --trust-blue: 217 91% 60%;
-    --speed-accent: 221 83% 53%;
+    --hero-gradient-from: 221 83% 35%;
+    --hero-gradient-to: 186 100% 40%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -106,6 +123,12 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
   }
 }

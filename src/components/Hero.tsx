@@ -7,53 +7,97 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-hero-gradient-start to-hero-gradient-end overflow-hidden">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30" />
+    <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] overflow-hidden">
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20" />
+      
+      {/* Floating "Online Now" Badge */}
+      <div className="absolute top-8 right-8 hidden lg:block z-10">
+        <div className="bg-[hsl(var(--success-green))] text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg animate-pulse">
+          <span className="w-3 h-3 bg-white rounded-full"></span>
+          <span className="font-semibold">Online Now</span>
+        </div>
+      </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-6 px-4 py-2 bg-background/10 backdrop-blur-sm rounded-full border border-background/20">
-            <span className="text-primary-foreground font-medium">Erie's Most Trusted Notary Service</span>
+        <div className="max-w-5xl mx-auto text-center">
+          {/* Eyebrow */}
+          <div className="inline-block mb-6 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+            <span className="text-white font-semibold">⭐ Erie's #1 Rated Notary Service</span>
           </div>
           
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
-            Erie's Fastest Notary Service
+          {/* Main Heading */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Online or Mobile Notary in Erie, PA
+            <span className="block text-[hsl(var(--action-cyan))] mt-2 text-5xl md:text-6xl lg:text-7xl">
+              Available 24/7
+            </span>
           </h1>
           
-          <p className="text-2xl md:text-3xl text-primary-foreground/90 mb-8 font-light">
-            Online in 5 Minutes, Mobile in 2 Hours
+          {/* Subheading */}
+          <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed max-w-4xl mx-auto">
+            Get documents notarized in 5 minutes online or same-day mobile 
+            service to your location. Licensed, bonded, and background-checked 
+            Pennsylvania notaries you can trust.
           </p>
           
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button 
               size="lg" 
-              variant="hero"
-              className="text-lg px-8 py-6 h-auto"
+              variant="amber"
+              className="text-lg px-8 py-7 h-auto shadow-2xl"
               onClick={scrollToBooking}
             >
-              Book RON Now - $60
+              <div className="flex flex-col items-start">
+                <span className="text-xl">📱 Book Online Notary - $60</span>
+                <span className="text-sm font-normal opacity-90">Available Now</span>
+              </div>
             </Button>
             <Button 
               size="lg" 
-              variant="heroOutline"
-              className="text-lg px-8 py-6 h-auto"
+              variant="amberOutline"
+              className="text-lg px-8 py-7 h-auto"
               onClick={scrollToBooking}
             >
-              Request Mobile - $125
+              <div className="flex flex-col items-start">
+                <span className="text-xl">🚗 Request Mobile Notary - $125</span>
+                <span className="text-sm font-normal opacity-90">Same-Day Available</span>
+              </div>
             </Button>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-primary-foreground/90">
+          {/* Trust Bar */}
+          <div className="flex flex-wrap justify-center gap-6 text-white/90 text-base">
+            <div className="flex items-center gap-2">
+              <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
+              <span className="font-medium">500+ Documents Notarized</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
+              <span className="font-medium">4.9★ Google Rating</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
+              <span className="font-medium">PA State Approved</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
+              <span className="font-medium">Same-Day Service</span>
+            </div>
+          </div>
+          
+          {/* Contact Info */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-white/80 mt-8">
             <a 
               href="mailto:support@notroom.com" 
-              className="flex items-center gap-2 hover:text-primary-foreground transition-colors"
+              className="flex items-center gap-2 hover:text-white transition-colors"
             >
               <Mail className="w-5 h-5" />
               <span>support@notroom.com</span>
             </a>
             <a 
               href="tel:814-480-0989" 
-              className="flex items-center gap-2 hover:text-primary-foreground transition-colors"
+              className="flex items-center gap-2 hover:text-white transition-colors"
             >
               <Phone className="w-5 h-5" />
               <span>(814) 480-0989</span>
