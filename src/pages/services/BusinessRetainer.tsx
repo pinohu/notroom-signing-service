@@ -141,11 +141,11 @@ const BusinessRetainer = () => {
             <div className="grid md:grid-cols-3 gap-8">
               <Card className="p-6">
                 <h3 className="text-2xl font-bold mb-2">Starter</h3>
-                <div className="text-3xl font-bold mb-4">$500<span className="text-lg text-muted-foreground">/mo</span></div>
+                <div className="text-3xl font-bold mb-4">$399<span className="text-lg text-muted-foreground">/mo</span></div>
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">10 notarizations per month</span>
+                    <span className="text-sm">15 notarizations per month</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -168,11 +168,11 @@ const BusinessRetainer = () => {
                   Most Popular
                 </Badge>
                 <h3 className="text-2xl font-bold mb-2">Professional</h3>
-                <div className="text-3xl font-bold mb-4">$1,200<span className="text-lg text-muted-foreground">/mo</span></div>
+                <div className="text-3xl font-bold mb-4">$899<span className="text-lg text-muted-foreground">/mo</span></div>
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">30 notarizations per month</span>
+                    <span className="text-sm">40 notarizations per month</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />

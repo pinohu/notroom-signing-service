@@ -13,6 +13,10 @@ import Apostille from "./pages/services/Apostille";
 import HowRonWorks from "./pages/resources/HowRonWorks";
 import Pricing from "./pages/Pricing";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ErieCounty from "./pages/areas/ErieCounty";
+import CrawfordCounty from "./pages/areas/CrawfordCounty";
+import WarrenCounty from "./pages/areas/WarrenCounty";
+import StatewideOnline from "./pages/areas/StatewideOnline";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +38,12 @@ const App = () => (
           
           {/* Resource Pages */}
           <Route path="/resources/how-ron-works" element={<HowRonWorks />} />
+          
+          {/* Service Area Pages */}
+          <Route path="/areas/erie-county" element={<ErieCounty />} />
+          <Route path="/areas/crawford-county" element={<CrawfordCounty />} />
+          <Route path="/areas/warren-county" element={<WarrenCounty />} />
+          <Route path="/areas/statewide-online" element={<StatewideOnline />} />
           
           {/* Other Pages */}
           <Route path="/pricing" element={<Pricing />} />

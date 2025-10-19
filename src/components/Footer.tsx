@@ -61,22 +61,22 @@ const Footer = () => {
             <h4 className="font-bold mb-4 text-lg">Service Areas</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/areas/erie-county" className="text-white/70 hover:text-white transition-colors text-sm">
                   Erie County
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/areas/crawford-county" className="text-white/70 hover:text-white transition-colors text-sm">
                   Crawford County
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/areas/warren-county" className="text-white/70 hover:text-white transition-colors text-sm">
                   Warren County
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="/areas/statewide-online" className="text-white/70 hover:text-white transition-colors text-sm">
                   Statewide Online
                 </a>
               </li>
