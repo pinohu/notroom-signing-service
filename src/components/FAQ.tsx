@@ -9,7 +9,7 @@ const FAQ = () => {
   const faqs = [
     {
       question: "How much does online notarization cost?",
-      answer: "Remote online notarization (RON) is $60 for the first document and $20 for each additional document in the same session. This includes the notary fee, platform fee, and digital certificate. No hidden charges."
+      answer: "$60 per document ($15 notary fee + $45 platform/technology fee). Additional documents in the same session: $20 each ($15 notary + $5 admin fee). Includes digital certificate and secure storage. No hidden charges."
     },
     {
       question: "Is online notarization legal in Pennsylvania?",

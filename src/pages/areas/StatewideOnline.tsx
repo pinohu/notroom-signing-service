@@ -59,7 +59,7 @@ const StatewideOnline = () => {
       "@type": "State",
       "name": "Pennsylvania"
     },
-    "description": "Statewide remote online notary service (RON) available 24/7 anywhere in Pennsylvania. Secure video notarization from home. No travel required.",
+    "description": "Statewide remote online notary service (RON) available by appointment anywhere in Pennsylvania. Secure video notarization from home. No travel required.",
     "offers": {
       "@type": "Offer",
       "price": "60",
@@ -71,7 +71,7 @@ const StatewideOnline = () => {
     <Layout>
       <SEO
         title="Remote Online Notary Pennsylvania Statewide - RON Service PA"
-        description="Remote online notary (RON) available 24/7 anywhere in Pennsylvania. Get documents notarized via secure video call from home. Fast, convenient, legally valid. $60. Book now!"
+        description="Remote online notary (RON) available by appointment anywhere in Pennsylvania. Get documents notarized via secure video call from home. Fast, convenient, legally valid. $60. Book now!"
         keywords="remote online notary pennsylvania, RON service PA, online notarization pennsylvania, statewide notary PA, virtual notary pennsylvania"
         canonical="https://notroom.com/areas/statewide-online"
         schema={schema}
@@ -135,7 +135,7 @@ const StatewideOnline = () => {
                 <Globe className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h3 className="font-bold mb-2">Flexible Scheduling</h3>
                 <p className="text-sm text-muted-foreground">
-                  Evenings, weekends, holidays - by appointment
+                  By appointment - including evenings, weekends, and holidays
                 </p>
               </Card>
               <Card className="p-6 text-center">

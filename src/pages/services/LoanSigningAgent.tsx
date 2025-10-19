@@ -59,7 +59,7 @@ const LoanSigningAgent = () => {
     <Layout>
       <SEO
         title="Loan Signing Agent in Erie, PA - NNA Certified"
-        description="Professional loan signing agent in Erie, PA. NNA certified with $100K E&O insurance. Specializing in mortgage closings, refinances, and real estate transactions. Available 24/7."
+        description="Professional loan signing agent in Erie, PA. NNA certified with $100K E&O insurance. Specializing in mortgage closings, refinances, and real estate transactions. Available by appointment."
         keywords="loan signing agent erie pa, notary signing agent pennsylvania, mortgage closing notary, real estate notary erie, certified signing agent"
         canonical="https://notroom.com/services/loan-signing-agent"
         schema={schema}

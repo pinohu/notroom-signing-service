@@ -103,7 +103,7 @@ const HowRonWorks = () => {
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold mb-3">Schedule Your Session</h3>
                     <p className="text-muted-foreground mb-4">
-                      Book an appointment online at your convenience. We offer 24/7 availability, including evenings and weekends. Sessions typically last 10-15 minutes.
+                      Book an appointment online at your convenience. We offer flexible scheduling, including evenings and weekends. Sessions typically last 10-15 minutes.
                     </p>
                     <div className="bg-muted/30 p-4 rounded-lg">
                       <p className="text-sm font-semibold mb-2">Pro Tip:</p>

@@ -176,6 +176,9 @@ const TermsOfService = () => {
                   <li>Pennsylvania Department of State notary regulations</li>
                   <li>National Notary Association standards and best practices</li>
                 </ul>
+                <p className="mt-4">
+                  <strong>Notary Commission Information:</strong> Pennsylvania Notary Public Commission #[COMMISSION_NUMBER]
+                </p>
               </div>
             </Card>
 

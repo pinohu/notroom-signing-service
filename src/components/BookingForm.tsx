@@ -219,9 +219,9 @@ const BookingForm = () => {
                       <SelectValue placeholder="Choose your service" />
                     </SelectTrigger>
                     <SelectContent className="bg-popover z-50">
-                      <SelectItem value="ron">Remote Online Notary ($60)</SelectItem>
-                      <SelectItem value="mobile">Mobile Notary Erie County ($125)</SelectItem>
-                      <SelectItem value="loan">Loan Signing Agent ($200)</SelectItem>
+                      <SelectItem value="ron">Remote Online Notary ($60: $15 notary + $45 platform)</SelectItem>
+                      <SelectItem value="mobile">Mobile Notary Erie County ($125+: $5-15 notary + travel)</SelectItem>
+                      <SelectItem value="loan">Loan Signing Agent ($150: $15 notary + $135 agent fee)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

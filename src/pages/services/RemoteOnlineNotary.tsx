@@ -60,7 +60,7 @@ const RemoteOnlineNotary = () => {
       "@type": "State",
       "name": "Pennsylvania"
     },
-    "description": "Remote online notarization service available 24/7 in Pennsylvania. Get documents notarized via secure video call.",
+    "description": "Remote online notarization service available by appointment in Pennsylvania. Get documents notarized via secure video call.",
     "offers": {
       "@type": "Offer",
       "price": "60",
@@ -73,8 +73,8 @@ const RemoteOnlineNotary = () => {
     <Layout>
       <SEO
         title="Remote Online Notary (RON) Service in PA"
-        description="Get documents notarized online in 5 minutes with Notroom's RON service in Pennsylvania. Available 24/7, legally valid nationwide. $60 per session. Book now!"
-        keywords="remote online notary pennsylvania, RON service PA, online notarization erie pa, 24/7 notary service, virtual notary pennsylvania"
+        description="Get documents notarized online in 5 minutes with Notroom's RON service in Pennsylvania. Available by appointment including evenings and weekends, legally valid nationwide. $60 per session. Book now!"
+        keywords="remote online notary pennsylvania, RON service PA, online notarization erie pa, notary by appointment, virtual notary pennsylvania"
         canonical="https://notroom.com/services/remote-online-notary"
         schema={schema}
       />
@@ -90,7 +90,7 @@ const RemoteOnlineNotary = () => {
               Remote Online Notary (RON) Service
             </h1>
             <p className="text-xl mb-8 text-white/90">
-              Get your documents notarized from anywhere in Pennsylvania. Secure, fast, and legally binding video notarization available 24/7.
+              Get your documents notarized from anywhere in Pennsylvania. Secure, fast, and legally binding video notarization available by appointment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -288,7 +288,7 @@ const RemoteOnlineNotary = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Book your remote online notary session now. Available 24/7 with instant confirmation.
+            Book your remote online notary session now. Available by appointment with instant confirmation.
           </p>
           <Button 
             size="lg" 

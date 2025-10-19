@@ -29,7 +29,7 @@ const WhyNotroom = () => {
   const stats = [
     { number: "5min", label: "Average Online Wait Time" },
     { number: "2hr", label: "Mobile Response Time" },
-    { number: "24/7", label: "Online Availability" },
+    { number: "Same-Day", label: "Appointment Scheduling" },
     { number: "100%", label: "Secure & Encrypted" }
   ];
 

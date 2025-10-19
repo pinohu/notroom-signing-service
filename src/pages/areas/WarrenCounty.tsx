@@ -25,7 +25,7 @@ const WarrenCounty = () => {
 
   const services = [
     { title: "Remote Online Notary (RON)", price: "$60", highlight: "Best for Warren County", desc: "No travel needed - available by appointment from your home ($15 notary + $45 platform)" },
-    { title: "Mobile Notary Service", price: "$125 + mileage", desc: "We travel to Warren County locations (in-person service)" },
+    { title: "Mobile Notary Service", price: "$125+ ($5-15 notary + travel)", desc: "We travel to Warren County locations (in-person service)" },
     { title: "Loan Signing Agent", price: "$150", desc: "Mortgage and real estate closings ($15 notary + $135 agent fee)" },
     { title: "Apostille Assistance", price: "$175", desc: "Notarization + application help for international documents" }
   ];
@@ -109,7 +109,7 @@ const WarrenCounty = () => {
                 <div>
                   <h2 className="text-2xl font-bold mb-3">Remote Online Notary - Perfect for Warren County</h2>
                   <p className="text-muted-foreground mb-4">
-                    Warren County is beautiful but rural. Why drive long distances for notarization when you can do it from home? Our Remote Online Notary (RON) service lets you get documents notarized via secure video call - available 24/7, legally valid in all 50 states.
+                    Warren County is beautiful but rural. Why drive long distances for notarization when you can do it from home? Our Remote Online Notary (RON) service lets you get documents notarized via secure video call - available by appointment including evenings and weekends, legally valid in all 50 states.
                   </p>
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2">
@@ -122,7 +122,7 @@ const WarrenCounty = () => {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">Available evenings and weekends - $60 flat rate</span>
+                      <span className="text-sm">Available evenings and weekends - $60 ($15 notary + $45 platform)</span>
                     </li>
                   </ul>
                 </div>
@@ -195,9 +195,9 @@ const WarrenCounty = () => {
               </Card>
               <Card className="p-6">
                 <Clock className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">24/7 Availability</h3>
+                <h3 className="text-xl font-bold mb-2">Flexible Scheduling</h3>
                 <p className="text-muted-foreground">
-                  Remote online notary available around the clock - perfect for busy schedules.
+                  Remote online notary available by appointment - including evenings, weekends, and holidays.
                 </p>
               </Card>
               <Card className="p-6">
@@ -259,7 +259,7 @@ const WarrenCounty = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Need a Notary in Warren County?</h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Get documents notarized from home with Remote Online Notary - available 24/7 throughout Warren County, PA.
+            Get documents notarized from home with Remote Online Notary - available by appointment throughout Warren County, PA.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 

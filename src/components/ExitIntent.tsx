@@ -44,7 +44,7 @@ const ExitIntent = () => {
               Schedule your appointment now and get notarized today
             </p>
             <p className="text-sm text-muted-foreground">
-              Starting at $60 for online • $125 for mobile
+              Online: $60 ($15 notary + $45 platform) • Mobile: $125+ ($5-15 notary + travel)
             </p>
           </div>
           <div className="flex flex-col gap-3 pt-4">

@@ -212,7 +212,7 @@ const BusinessRetainer = () => {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">24/7 phone support</span>
+                    <span className="text-sm">Extended phone support hours</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
