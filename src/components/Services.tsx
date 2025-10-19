@@ -11,11 +11,11 @@ const Services = () => {
       badge: "Most Popular",
       title: "Remote Online Notary (RON)",
       price: "$60",
-      priceDetail: "per document",
+      priceDetail: "$15 notary + $45 platform fee",
       description: "Notarize from anywhere via secure video call. Perfect for powers of attorney, affidavits, contracts, and most legal documents.",
       features: [
-        "Available 24/7, even weekends",
-        "Average 5-minute wait time",
+        "Available by appointment, including evenings & weekends",
+        "Average 5-minute sessions",
         "Legally valid in all 50 states",
         "Instant digital delivery"
       ],
@@ -26,14 +26,14 @@ const Services = () => {
       icon: Car,
       badge: "Same-Day",
       title: "Mobile Notary Service",
-      price: "$125",
-      priceDetail: "flat rate",
+      price: "$125+",
+      priceDetail: "$5-15 notary + travel fees",
       description: "We'll come to you anywhere in Erie County. Home, office, hospital, or care facility. Perfect for those who prefer in-person service.",
       features: [
-        "2-hour response time",
+        "Same-day appointments available",
         "Evening & weekend appointments",
         "Serving Erie, Crawford, Warren counties",
-        "Multiple signers included"
+        "Itemized pricing (notary + travel + admin)"
       ],
       ctaText: "Book Now",
       featured: false
@@ -42,14 +42,14 @@ const Services = () => {
       icon: Home,
       badge: "Certified",
       title: "Loan Signing Agent",
-      price: "$200",
-      priceDetail: "per closing",
+      price: "$150",
+      priceDetail: "$15 notary + $135 agent fee",
       description: "Certified signing agent for real estate transactions. Working with title companies, lenders, and real estate professionals.",
       features: [
         "NNA certified & background-checked",
         "Experienced with all loan types",
-        "Error-free signing guarantee",
-        "Scan-back service included"
+        "$100K E&O insurance",
+        "Print, scan & ship included"
       ],
       ctaText: "Book Now",
       featured: false

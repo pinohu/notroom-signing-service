@@ -41,8 +41,8 @@ const Hero = () => {
               onClick={scrollToBooking}
             >
               <div className="flex flex-col items-start">
-                <span className="text-xl">📱 Online Notary - Starting at $60</span>
-                <span className="text-sm font-normal opacity-90">Book Now</span>
+                <span className="text-xl">📱 Online Notary - $60</span>
+                <span className="text-sm font-normal opacity-90">$15 notary + $45 platform fee</span>
               </div>
             </Button>
             <Button 
@@ -53,7 +53,7 @@ const Hero = () => {
             >
               <div className="flex flex-col items-start">
                 <span className="text-xl">🚗 Mobile Notary - Starting at $125</span>
-                <span className="text-sm font-normal opacity-90">Book Now</span>
+                <span className="text-sm font-normal opacity-90">We come to you</span>
               </div>
             </Button>
           </div>
