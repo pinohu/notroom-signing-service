@@ -57,6 +57,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        hero: {
+          gradient: {
+            start: "hsl(var(--hero-gradient-start))",
+            end: "hsl(var(--hero-gradient-end))",
+          }
+        },
+        trust: "hsl(var(--trust-blue))",
+        speed: "hsl(var(--speed-accent))",
       },
       borderRadius: {
         lg: "var(--radius)",
