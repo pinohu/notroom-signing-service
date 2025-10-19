@@ -1,4 +1,5 @@
 import { Calendar, CheckCircle, FileText } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 import { Button } from "@/components/ui/button";
 
 const ProcessTimeline = () => {
@@ -31,7 +32,7 @@ const ProcessTimeline = () => {
   };
 
   return (
-    <section className="py-20 bg-muted">
+    <section id="process" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -52,7 +53,8 @@ const ProcessTimeline = () => {
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
-                <div key={index} className="relative">
+                <ScrollReveal key={index} delay={index * 200}>
+                  <div className="relative">
                   {/* Step Number Badge */}
                   <div className="flex justify-center mb-6">
                     <div className="relative">
@@ -90,6 +92,7 @@ const ProcessTimeline = () => {
                     </div>
                   </div>
                 </div>
+                </ScrollReveal>
               );
             })}
           </div>

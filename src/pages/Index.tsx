@@ -1,3 +1,4 @@
+import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import ProcessTimeline from "@/components/ProcessTimeline";
@@ -7,10 +8,16 @@ import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import BookingForm from "@/components/BookingForm";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
+import ScrollProgress from "@/components/ScrollProgress";
+import ExitIntent from "@/components/ExitIntent";
+import LiveActivityTicker from "@/components/LiveActivityTicker";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <ScrollProgress />
+      <Header />
       <Hero />
       <Services />
       <ProcessTimeline />
@@ -20,6 +27,9 @@ const Index = () => {
       <FinalCTA />
       <BookingForm />
       <Footer />
+      <BackToTop />
+      <ExitIntent />
+      <LiveActivityTicker />
     </div>
   );
 };

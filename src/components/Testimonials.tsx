@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 const Testimonials = () => {
   const testimonials = [
@@ -24,7 +25,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-muted">
+    <section id="testimonials" className="py-20 bg-muted">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -44,32 +45,34 @@ const Testimonials = () => {
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-background shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <CardContent className="p-8">
-                {/* Stars */}
-                <div className="flex gap-1 mb-4">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="w-5 h-5 fill-[hsl(var(--urgency-amber))] text-[hsl(var(--urgency-amber))]" />
-                  ))}
-                </div>
-
-                {/* Quote */}
-                <blockquote className="text-foreground mb-6 leading-relaxed text-lg">
-                  "{testimonial.quote}"
-                </blockquote>
-
-                {/* Author */}
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-md">
-                    {testimonial.avatar}
+            <ScrollReveal key={index} delay={index * 150}>
+              <Card className="bg-background shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+                <CardContent className="p-8">
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-4">
+                    {[1, 2, 3, 4, 5].map((i) => (
+                      <Star key={i} className="w-5 h-5 fill-[hsl(var(--urgency-amber))] text-[hsl(var(--urgency-amber))]" />
+                    ))}
                   </div>
-                  <div>
-                    <div className="font-bold text-foreground">{testimonial.author}</div>
-                    <div className="text-sm text-muted-foreground">{testimonial.location}</div>
+
+                  {/* Quote */}
+                  <blockquote className="text-foreground mb-6 leading-relaxed text-lg">
+                    "{testimonial.quote}"
+                  </blockquote>
+
+                  {/* Author */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-md">
+                      {testimonial.avatar}
+                    </div>
+                    <div>
+                      <div className="font-bold text-foreground">{testimonial.author}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.location}</div>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </ScrollReveal>
           ))}
         </div>
 

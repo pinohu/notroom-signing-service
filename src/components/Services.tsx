@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Monitor, Car, Home, Check } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 const Services = () => {
   const services = [
@@ -60,7 +61,7 @@ const Services = () => {
   };
 
   return (
-    <section className="py-20 bg-background">
+    <section id="services" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -77,12 +78,12 @@ const Services = () => {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card 
-                key={index} 
-                className={`relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 ${
-                  service.featured ? 'border-[hsl(var(--urgency-amber))] border-4' : ''
-                }`}
-              >
+              <ScrollReveal key={index} delay={index * 150}>
+                <Card 
+                  className={`relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 ${
+                    service.featured ? 'border-[hsl(var(--urgency-amber))] border-4' : ''
+                  }`}
+                >
                 {/* Badge */}
                 {service.badge && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
@@ -135,6 +136,7 @@ const Services = () => {
                   </Button>
                 </CardContent>
               </Card>
+              </ScrollReveal>
             );
           })}
         </div>
