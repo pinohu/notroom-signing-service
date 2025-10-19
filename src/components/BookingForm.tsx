@@ -11,14 +11,29 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
+import { format } from "date-fns";
+import { CalendarIcon, MapPin, FileText, Users, Clock } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const bookingSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
   phone: z.string().trim().min(1, "Phone number is required").max(20, "Phone number must be less than 20 characters"),
   service: z.enum(["ron", "mobile", "loan"], { required_error: "Please select a service" }),
+  preferred_date: z.date().optional(),
+  preferred_time: z.string().optional(),
+  document_type: z.string().max(100).optional(),
+  number_of_signers: z.number().min(1).max(20).default(1),
+  location_address: z.string().max(300).optional(),
+  urgency: z.enum(["flexible", "within_week", "within_24hrs", "same_day"]).default("flexible"),
   message: z.string().max(1000, "Message must be less than 1000 characters").optional(),
 });
 
@@ -28,12 +43,23 @@ const BookingForm = () => {
     email: string;
     phone: string;
     service: string;
+    preferred_date?: Date;
+    preferred_time: string;
+    document_type: string;
+    number_of_signers: number;
+    location_address: string;
+    urgency: string;
     message: string;
   }>({
     name: "",
     email: "",
     phone: "",
     service: "",
+    preferred_time: "",
+    document_type: "",
+    number_of_signers: 1,
+    location_address: "",
+    urgency: "flexible",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,6 +72,10 @@ const BookingForm = () => {
       // Validate form data
       const validatedData = bookingSchema.parse({
         ...formData,
+        preferred_date: formData.preferred_date || undefined,
+        preferred_time: formData.preferred_time || undefined,
+        document_type: formData.document_type || undefined,
+        location_address: formData.location_address || undefined,
         message: formData.message || undefined
       });
 
@@ -57,6 +87,12 @@ const BookingForm = () => {
           email: validatedData.email,
           phone: validatedData.phone,
           service: validatedData.service,
+          preferred_date: validatedData.preferred_date ? format(validatedData.preferred_date, "yyyy-MM-dd") : null,
+          preferred_time: validatedData.preferred_time || null,
+          document_type: validatedData.document_type || null,
+          number_of_signers: validatedData.number_of_signers,
+          location_address: validatedData.location_address || null,
+          urgency: validatedData.urgency,
           message: validatedData.message || null
         }]);
 
@@ -74,6 +110,12 @@ const BookingForm = () => {
         email: "",
         phone: "",
         service: "",
+        preferred_date: undefined,
+        preferred_time: "",
+        document_type: "",
+        number_of_signers: 1,
+        location_address: "",
+        urgency: "flexible",
         message: ""
       });
     } catch (error) {
@@ -91,78 +133,220 @@ const BookingForm = () => {
   return (
     <section id="booking-form" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Book Your Notary Service
             </h2>
             <p className="text-xl text-muted-foreground">
-              Complete the form below and we'll contact you within 2 hours to schedule your appointment.
+              Complete the form below and we'll contact you within 2 hours to confirm your appointment.
             </p>
           </div>
           
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <Label htmlFor="name">Full Name *</Label>
-              <Input
-                id="name"
-                type="text"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="John Doe"
-                required
-              />
+          <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Contact Information */}
+            <div className="space-y-6 p-6 rounded-lg border border-border bg-card">
+              <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                <Users className="w-5 h-5" />
+                Contact Information
+              </h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="name">Full Name *</Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="phone">Phone Number *</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    placeholder="(814) 555-0123"
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <Label htmlFor="email">Email Address *</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="john@example.com"
+                  required
+                />
+              </div>
             </div>
-            
-            <div>
-              <Label htmlFor="email">Email Address *</Label>
-              <Input
-                id="email"
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="john@example.com"
-                required
-              />
+
+            {/* Service Details */}
+            <div className="space-y-6 p-6 rounded-lg border border-border bg-card">
+              <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                <FileText className="w-5 h-5" />
+                Service Details
+              </h3>
+              <div>
+                <Label htmlFor="service">Select Service *</Label>
+                <Select 
+                  value={formData.service}
+                  onValueChange={(value) => setFormData({ ...formData, service: value })}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Choose your service" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-popover z-50">
+                    <SelectItem value="ron">Remote Online Notary ($60)</SelectItem>
+                    <SelectItem value="mobile">Mobile Notary Erie County ($125)</SelectItem>
+                    <SelectItem value="loan">Loan Signing Agent ($200)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label htmlFor="document_type">Document Type (Optional)</Label>
+                <Select 
+                  value={formData.document_type}
+                  onValueChange={(value) => setFormData({ ...formData, document_type: value })}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="What needs to be notarized?" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-popover z-50">
+                    <SelectItem value="real_estate">Real Estate Document</SelectItem>
+                    <SelectItem value="power_of_attorney">Power of Attorney</SelectItem>
+                    <SelectItem value="affidavit">Affidavit</SelectItem>
+                    <SelectItem value="loan_documents">Loan Documents</SelectItem>
+                    <SelectItem value="will">Will/Trust</SelectItem>
+                    <SelectItem value="contract">Contract/Agreement</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label htmlFor="number_of_signers">Number of Signers</Label>
+                <Input
+                  id="number_of_signers"
+                  type="number"
+                  min="1"
+                  max="20"
+                  value={formData.number_of_signers}
+                  onChange={(e) => setFormData({ ...formData, number_of_signers: parseInt(e.target.value) || 1 })}
+                />
+              </div>
+
+              {formData.service === "mobile" && (
+                <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                  <Label htmlFor="location_address" className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4" />
+                    Service Location *
+                  </Label>
+                  <Input
+                    id="location_address"
+                    type="text"
+                    value={formData.location_address}
+                    onChange={(e) => setFormData({ ...formData, location_address: e.target.value })}
+                    placeholder="123 Main St, Erie, PA 16501"
+                    required={formData.service === "mobile"}
+                  />
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Mobile service is available within Erie County
+                  </p>
+                </div>
+              )}
             </div>
-            
-            <div>
-              <Label htmlFor="phone">Phone Number *</Label>
-              <Input
-                id="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="(814) 555-0123"
-                required
-              />
+
+            {/* Scheduling */}
+            <div className="space-y-6 p-6 rounded-lg border border-border bg-card">
+              <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                Scheduling Preferences
+              </h3>
+              
+              <div>
+                <Label>Urgency</Label>
+                <Select 
+                  value={formData.urgency}
+                  onValueChange={(value) => setFormData({ ...formData, urgency: value })}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="bg-popover z-50">
+                    <SelectItem value="flexible">Flexible - Any time works</SelectItem>
+                    <SelectItem value="within_week">Within a week</SelectItem>
+                    <SelectItem value="within_24hrs">Within 24 hours</SelectItem>
+                    <SelectItem value="same_day">Same day (if available)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <Label>Preferred Date (Optional)</Label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className={cn(
+                          "w-full justify-start text-left font-normal",
+                          !formData.preferred_date && "text-muted-foreground"
+                        )}
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {formData.preferred_date ? format(formData.preferred_date, "PPP") : "Pick a date"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0 bg-popover z-50" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={formData.preferred_date}
+                        onSelect={(date) => setFormData({ ...formData, preferred_date: date })}
+                        disabled={(date) => date < new Date()}
+                        initialFocus
+                        className="pointer-events-auto"
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+
+                <div>
+                  <Label htmlFor="preferred_time">Preferred Time (Optional)</Label>
+                  <Select 
+                    value={formData.preferred_time}
+                    onValueChange={(value) => setFormData({ ...formData, preferred_time: value })}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select time" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-popover z-50">
+                      <SelectItem value="morning">Morning (8 AM - 12 PM)</SelectItem>
+                      <SelectItem value="afternoon">Afternoon (12 PM - 5 PM)</SelectItem>
+                      <SelectItem value="evening">Evening (5 PM - 8 PM)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
             </div>
-            
-            <div>
-              <Label htmlFor="service">Select Service *</Label>
-              <Select 
-                value={formData.service}
-                onValueChange={(value) => setFormData({ ...formData, service: value })}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="ron">Remote Online Notary ($60)</SelectItem>
-                  <SelectItem value="mobile">Mobile Notary Erie County ($125)</SelectItem>
-                  <SelectItem value="loan">Loan Signing Agent ($200)</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            
-            <div>
+
+            {/* Additional Information */}
+            <div className="space-y-4">
               <Label htmlFor="message">Additional Information (Optional)</Label>
               <Textarea
                 id="message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Tell us about your document and preferred date/time"
+                placeholder="Any special requirements or questions?"
                 rows={4}
+                className="resize-none"
               />
             </div>
             
@@ -174,6 +358,10 @@ const BookingForm = () => {
             >
               {isSubmitting ? "Submitting..." : "Request Appointment"}
             </Button>
+            
+            <p className="text-center text-sm text-muted-foreground">
+              We'll review your request and contact you within 2 hours to confirm your appointment
+            </p>
           </form>
         </div>
       </div>

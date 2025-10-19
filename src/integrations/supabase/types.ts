@@ -17,36 +17,54 @@ export type Database = {
       bookings: {
         Row: {
           created_at: string
+          document_type: string | null
           email: string
           id: string
+          location_address: string | null
           message: string | null
           name: string
+          number_of_signers: number | null
           phone: string
+          preferred_date: string | null
+          preferred_time: string | null
           service: string
           status: string
           updated_at: string
+          urgency: string | null
         }
         Insert: {
           created_at?: string
+          document_type?: string | null
           email: string
           id?: string
+          location_address?: string | null
           message?: string | null
           name: string
+          number_of_signers?: number | null
           phone: string
+          preferred_date?: string | null
+          preferred_time?: string | null
           service: string
           status?: string
           updated_at?: string
+          urgency?: string | null
         }
         Update: {
           created_at?: string
+          document_type?: string | null
           email?: string
           id?: string
+          location_address?: string | null
           message?: string | null
           name?: string
+          number_of_signers?: number | null
           phone?: string
+          preferred_date?: string | null
+          preferred_time?: string | null
           service?: string
           status?: string
           updated_at?: string
+          urgency?: string | null
         }
         Relationships: []
       }
