@@ -46,7 +46,7 @@ const BookingForm = () => {
       // TODO: Implement actual email sending when backend is set up
       console.log("Form submission:", formData);
       
-      toast.success("You're on the waitlist! We'll contact you when we launch.");
+      toast.success("Thank you! We'll contact you within 2 hours to confirm your appointment.");
       
       // Reset form
       setFormData({
@@ -69,10 +69,10 @@ const BookingForm = () => {
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Join Our Waitlist
+              Book Your Notary Service
             </h2>
             <p className="text-xl text-muted-foreground">
-              Be the first to know when we launch. We'll contact you as soon as services are available.
+              Complete the form below and we'll contact you within 2 hours to schedule your appointment.
             </p>
           </div>
           
@@ -114,7 +114,7 @@ const BookingForm = () => {
             </div>
             
             <div>
-              <Label htmlFor="service">Service Interested In *</Label>
+              <Label htmlFor="service">Select Service *</Label>
               <Select 
                 value={formData.service}
                 onValueChange={(value) => setFormData({ ...formData, service: value })}
@@ -136,7 +136,7 @@ const BookingForm = () => {
                 id="message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Any questions or specific needs you'd like us to know about?"
+                placeholder="Tell us about your document and preferred date/time"
                 rows={4}
               />
             </div>
@@ -147,7 +147,7 @@ const BookingForm = () => {
               className="w-full"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Joining..." : "Join Waitlist"}
+              {isSubmitting ? "Submitting..." : "Request Appointment"}
             </Button>
           </form>
         </div>

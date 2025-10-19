@@ -12,12 +12,12 @@ const FinalCTA = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Heading */}
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Join Our Waitlist Today
+            Ready to Get Your Document Notarized?
           </h2>
           
           {/* Subheading */}
           <p className="text-xl text-white/90 mb-10 leading-relaxed">
-            Be among the first to experience fast, professional notary services launching soon in Erie, PA
+            Fast, professional notary services available now in Erie, PA. Online or mobile - we're here to help.
           </p>
 
           {/* CTA Buttons */}
@@ -28,7 +28,7 @@ const FinalCTA = () => {
               className="text-lg px-8 py-7 h-auto shadow-2xl"
               onClick={scrollToBooking}
             >
-              📱 Join Online Waitlist - Starting at $60
+              📱 Book Online Now - Starting at $60
             </Button>
             
             <Button 
@@ -37,7 +37,7 @@ const FinalCTA = () => {
               className="text-lg px-8 py-7 h-auto"
               onClick={scrollToBooking}
             >
-              🚗 Join Mobile Waitlist - Starting at $125
+              🚗 Schedule Mobile Visit - Starting at $125
             </Button>
           </div>
 

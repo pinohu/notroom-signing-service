@@ -8,18 +8,18 @@ const Services = () => {
   const services = [
     {
       icon: Monitor,
-      badge: "Coming Soon",
+      badge: "Most Popular",
       title: "Remote Online Notary (RON)",
       price: "$60",
       priceDetail: "per document",
       description: "Notarize from anywhere via secure video call. Perfect for powers of attorney, affidavits, contracts, and most legal documents.",
       features: [
-        "Will be available 24/7, even weekends",
-        "Target 5-minute wait time",
+        "Available 24/7, even weekends",
+        "Average 5-minute wait time",
         "Legally valid in all 50 states",
         "Instant digital delivery"
       ],
-      ctaText: "Join Waitlist",
+      ctaText: "Book Now",
       featured: true
     },
     {
@@ -30,12 +30,12 @@ const Services = () => {
       priceDetail: "flat rate",
       description: "We'll come to you anywhere in Erie County. Home, office, hospital, or care facility. Perfect for those who prefer in-person service.",
       features: [
-        "Target 2-hour response time",
+        "2-hour response time",
         "Evening & weekend appointments",
-        "Will serve Erie, Crawford, Warren counties",
+        "Serving Erie, Crawford, Warren counties",
         "Multiple signers included"
       ],
-      ctaText: "Join Waitlist",
+      ctaText: "Book Now",
       featured: false
     },
     {
@@ -44,14 +44,14 @@ const Services = () => {
       title: "Loan Signing Agent",
       price: "$200",
       priceDetail: "per closing",
-      description: "Certified signing agent for real estate transactions. Will work with title companies, lenders, and real estate professionals.",
+      description: "Certified signing agent for real estate transactions. Working with title companies, lenders, and real estate professionals.",
       features: [
         "NNA certified & background-checked",
         "Experienced with all loan types",
         "Error-free signing guarantee",
         "Scan-back service included"
       ],
-      ctaText: "Join Waitlist",
+      ctaText: "Book Now",
       featured: false
     }
   ];

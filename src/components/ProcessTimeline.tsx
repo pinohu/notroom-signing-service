@@ -37,7 +37,7 @@ const ProcessTimeline = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            How It Will Work - 3 Simple Steps
+            How It Works - 3 Simple Steps
           </h2>
           <p className="text-xl text-muted-foreground">
             Fast and convenient - whether online or in-person
@@ -106,7 +106,7 @@ const ProcessTimeline = () => {
             className="text-lg px-12 py-7 h-auto shadow-xl"
             onClick={scrollToBooking}
           >
-            Join Waitlist Now
+            Book Your Appointment
           </Button>
         </div>
       </div>
