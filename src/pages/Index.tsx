@@ -11,7 +11,6 @@ import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
 import ScrollProgress from "@/components/ScrollProgress";
 import ExitIntent from "@/components/ExitIntent";
-import LiveActivityTicker from "@/components/LiveActivityTicker";
 
 const Index = () => {
   return (
