@@ -12,13 +12,12 @@ const FinalCTA = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Heading */}
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Get Your Document Notarized?
+            Join Our Waitlist Today
           </h2>
           
           {/* Subheading */}
           <p className="text-xl text-white/90 mb-10 leading-relaxed">
-            Join 500+ satisfied clients who chose Notroom for fast, 
-            professional notary services in Erie, PA
+            Be among the first to experience fast, professional notary services launching soon in Erie, PA
           </p>
 
           {/* CTA Buttons */}
@@ -29,7 +28,7 @@ const FinalCTA = () => {
               className="text-lg px-8 py-7 h-auto shadow-2xl"
               onClick={scrollToBooking}
             >
-              📱 Book Online Now - $60
+              📱 Join Online Waitlist - Starting at $60
             </Button>
             
             <Button 
@@ -38,7 +37,7 @@ const FinalCTA = () => {
               className="text-lg px-8 py-7 h-auto"
               onClick={scrollToBooking}
             >
-              🚗 Schedule Mobile Visit - $125
+              🚗 Join Mobile Waitlist - Starting at $125
             </Button>
           </div>
 
@@ -50,17 +49,17 @@ const FinalCTA = () => {
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">Satisfaction Guaranteed</span>
+              <span className="font-medium">Licensed & Bonded</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">Same-Day Available</span>
+              <span className="font-medium">PA State Approved</span>
             </div>
           </div>
 
           {/* Contact Alternative */}
           <div className="text-white/80 text-lg">
-            Prefer to talk?{" "}
+            Have questions?{" "}
             <a 
               href="tel:814-480-0989" 
               className="inline-flex items-center gap-2 text-white font-semibold hover:text-[hsl(var(--urgency-amber))] transition-colors underline underline-offset-4"

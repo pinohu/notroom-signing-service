@@ -7,7 +7,7 @@ const WhyNotroom = () => {
     {
       icon: Zap,
       title: "Lightning Fast",
-      description: "Average 5-minute wait for online, 2-hour response for mobile. No more waiting days for an appointment."
+      description: "Targeting 5-minute wait for online, 2-hour response for mobile. No more waiting days for an appointment."
     },
     {
       icon: Lock,
@@ -27,10 +27,10 @@ const WhyNotroom = () => {
   ];
 
   const stats = [
-    { number: "500+", label: "Documents Notarized" },
-    { number: "4.9★", label: "Average Rating" },
-    { number: "2hr", label: "Average Mobile Response" },
-    { number: "24/7", label: "Online Availability" }
+    { number: "5min", label: "Target Online Wait Time" },
+    { number: "2hr", label: "Target Mobile Response" },
+    { number: "24/7", label: "Planned Online Hours" },
+    { number: "100%", label: "Secure & Encrypted" }
   ];
 
   return (

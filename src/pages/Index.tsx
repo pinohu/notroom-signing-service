@@ -29,7 +29,6 @@ const Index = () => {
       <Footer />
       <BackToTop />
       <ExitIntent />
-      <LiveActivityTicker />
     </div>
   );
 };

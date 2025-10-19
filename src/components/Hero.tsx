@@ -10,11 +10,10 @@ const Hero = () => {
     <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20" />
       
-      {/* Floating "Online Now" Badge */}
+      {/* Floating "Coming Soon" Badge */}
       <div className="absolute top-8 right-8 hidden lg:block z-10">
-        <div className="bg-[hsl(var(--success-green))] text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg animate-pulse">
-          <span className="w-3 h-3 bg-white rounded-full"></span>
-          <span className="font-semibold">Online Now</span>
+        <div className="bg-[hsl(var(--action-cyan))] text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
+          <span className="font-semibold">Launching Soon</span>
         </div>
       </div>
       
@@ -22,22 +21,21 @@ const Hero = () => {
         <div className="max-w-5xl mx-auto text-center">
           {/* Eyebrow */}
           <div className="inline-block mb-6 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-            <span className="text-white font-semibold">⭐ Erie's #1 Rated Notary Service</span>
+            <span className="text-white font-semibold">🚀 Launching Soon in Erie, PA</span>
           </div>
           
           {/* Main Heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             Online or Mobile Notary in Erie, PA
             <span className="block text-[hsl(var(--action-cyan))] mt-2 text-5xl md:text-6xl lg:text-7xl">
-              Available 24/7
+              Coming Soon
             </span>
           </h1>
           
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed max-w-4xl mx-auto">
-            Get documents notarized in 5 minutes online or same-day mobile 
-            service to your location. Licensed, bonded, and background-checked 
-            Pennsylvania notaries you can trust.
+            Be the first to experience fast, convenient notary services. Join our waitlist for online or mobile 
+            notarization with licensed, bonded, and background-checked Pennsylvania notaries.
           </p>
           
           {/* CTA Buttons */}
@@ -49,8 +47,8 @@ const Hero = () => {
               onClick={scrollToBooking}
             >
               <div className="flex flex-col items-start">
-                <span className="text-xl">📱 Book Online Notary - $60</span>
-                <span className="text-sm font-normal opacity-90">Available Now</span>
+                <span className="text-xl">📱 Online Notary - Starting at $60</span>
+                <span className="text-sm font-normal opacity-90">Join Waitlist</span>
               </div>
             </Button>
             <Button 
@@ -60,8 +58,8 @@ const Hero = () => {
               onClick={scrollToBooking}
             >
               <div className="flex flex-col items-start">
-                <span className="text-xl">🚗 Request Mobile Notary - $125</span>
-                <span className="text-sm font-normal opacity-90">Same-Day Available</span>
+                <span className="text-xl">🚗 Mobile Notary - Starting at $125</span>
+                <span className="text-sm font-normal opacity-90">Join Waitlist</span>
               </div>
             </Button>
           </div>
@@ -70,19 +68,19 @@ const Hero = () => {
           <div className="flex flex-wrap justify-center gap-6 text-white/90 text-base">
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">500+ Documents Notarized</span>
+              <span className="font-medium">PA State Approved Technology</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">4.9★ Google Rating</span>
+              <span className="font-medium">Licensed & Bonded</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">PA State Approved</span>
+              <span className="font-medium">Background Checked</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">Same-Day Service</span>
+              <span className="font-medium">Secure & Encrypted</span>
             </div>
           </div>
           

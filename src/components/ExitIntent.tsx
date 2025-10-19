@@ -30,21 +30,21 @@ const ExitIntent = () => {
         <div className="text-center space-y-4 py-6">
           <div className="text-6xl mb-4">⏰</div>
           <h3 className="text-2xl font-bold text-foreground">
-            Wait! Don't Leave Yet
+            Before You Go...
           </h3>
           <p className="text-muted-foreground text-lg">
-            Get your document notarized today with our same-day service
+            Be among the first to experience fast, convenient notary services in Erie
           </p>
           <div className="bg-accent/10 p-4 rounded-lg space-y-2">
             <div className="flex items-center justify-center gap-2 text-accent font-semibold">
-              <span className="text-2xl">💰</span>
-              <span>Special Offer</span>
+              <span className="text-2xl">🚀</span>
+              <span>Launching Soon</span>
             </div>
             <p className="text-foreground font-bold text-xl">
-              First-time online notarization: $60
+              Join the waitlist for early access
             </p>
             <p className="text-sm text-muted-foreground">
-              Available 24/7 • 5-minute wait time
+              Starting at $60 for online • $125 for mobile
             </p>
           </div>
           <div className="flex flex-col gap-3 pt-4">
@@ -54,7 +54,7 @@ const ExitIntent = () => {
               className="w-full"
               onClick={scrollToBooking}
             >
-              Book Now & Save Time
+              Join Waitlist Now
             </Button>
             <Button
               variant="ghost"

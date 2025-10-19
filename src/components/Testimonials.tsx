@@ -5,22 +5,22 @@ import ScrollReveal from "./ScrollReveal";
 const Testimonials = () => {
   const testimonials = [
     {
-      quote: "Needed a power of attorney notarized urgently. Notroom had me done in 10 minutes via video call. Can't believe how easy this was compared to driving to the bank.",
-      author: "Sarah M.",
-      location: "Erie, PA",
-      avatar: "SM"
+      quote: "Online notarization saves so much time. No driving to the bank, no waiting in line. Just jump on a video call and you're done in minutes.",
+      author: "Typical Online User",
+      location: "Pennsylvania",
+      avatar: "OU"
     },
     {
-      quote: "Used them for a real estate closing. Professional, on-time, and knew exactly what they were doing. Will use again and recommend to other agents.",
-      author: "Jennifer T.",
-      location: "Real Estate Agent, Erie",
-      avatar: "JT"
+      quote: "Mobile notary services are perfect for real estate closings. Having a notary come to you makes the process so much smoother and more convenient.",
+      author: "Real Estate Professional",
+      location: "Erie County",
+      avatar: "RE"
     },
     {
-      quote: "They came to my dad's nursing home to notarize his will. Compassionate, patient, and made a difficult process much easier. Thank you Notroom.",
-      author: "Michael K.",
-      location: "Millcreek, PA",
-      avatar: "MK"
+      quote: "For elderly or hospitalized family members, mobile notary services are essential. Being able to get documents notarized at home or in care facilities makes a difficult time easier.",
+      author: "Family Caregiver",
+      location: "Erie Area",
+      avatar: "FC"
     }
   ];
 
@@ -30,16 +30,11 @@ const Testimonials = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            What Erie Residents Are Saying
+            Why Choose Professional Notary Services
           </h2>
-          <div className="inline-flex items-center gap-2 bg-background px-6 py-3 rounded-full shadow-lg">
-            <div className="flex gap-1">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} className="w-5 h-5 fill-[hsl(var(--urgency-amber))] text-[hsl(var(--urgency-amber))]" />
-              ))}
-            </div>
-            <span className="text-foreground font-semibold ml-2">4.9 out of 5 on Google</span>
-          </div>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Here's what people typically experience with quality notary services
+          </p>
         </div>
 
         {/* Testimonials Grid */}
@@ -78,8 +73,8 @@ const Testimonials = () => {
 
         {/* CTA Link */}
         <div className="text-center mt-12">
-          <a href="#reviews" className="text-primary hover:text-accent font-semibold text-lg underline underline-offset-4 transition-colors">
-            Read All 50+ Reviews →
+          <a href="#booking-form" className="text-primary hover:text-accent font-semibold text-lg underline underline-offset-4 transition-colors">
+            Join Our Waitlist →
           </a>
         </div>
       </div>

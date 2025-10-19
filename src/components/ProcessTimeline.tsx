@@ -37,10 +37,10 @@ const ProcessTimeline = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Get Notarized in 3 Simple Steps
+            How It Will Work - 3 Simple Steps
           </h2>
           <p className="text-xl text-muted-foreground">
-            Whether online or in-person, we make it easy
+            Fast and convenient - whether online or in-person
           </p>
         </div>
 
@@ -106,7 +106,7 @@ const ProcessTimeline = () => {
             className="text-lg px-12 py-7 h-auto shadow-xl"
             onClick={scrollToBooking}
           >
-            Get Started Now
+            Join Waitlist Now
           </Button>
         </div>
       </div>

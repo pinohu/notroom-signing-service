@@ -46,7 +46,7 @@ const BookingForm = () => {
       // TODO: Implement actual email sending when backend is set up
       console.log("Form submission:", formData);
       
-      toast.success("Booking request received! We'll contact you shortly.");
+      toast.success("You're on the waitlist! We'll contact you when we launch.");
       
       // Reset form
       setFormData({
@@ -69,10 +69,10 @@ const BookingForm = () => {
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Book Your Service
+              Join Our Waitlist
             </h2>
             <p className="text-xl text-muted-foreground">
-              Fill out the form and we'll get back to you right away
+              Be the first to know when we launch. We'll contact you as soon as services are available.
             </p>
           </div>
           
@@ -114,7 +114,7 @@ const BookingForm = () => {
             </div>
             
             <div>
-              <Label htmlFor="service">Service Needed *</Label>
+              <Label htmlFor="service">Service Interested In *</Label>
               <Select 
                 value={formData.service}
                 onValueChange={(value) => setFormData({ ...formData, service: value })}
@@ -131,12 +131,12 @@ const BookingForm = () => {
             </div>
             
             <div>
-              <Label htmlFor="message">Additional Details</Label>
+              <Label htmlFor="message">Additional Information (Optional)</Label>
               <Textarea
                 id="message"
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Tell us about your notarization needs..."
+                placeholder="Any questions or specific needs you'd like us to know about?"
                 rows={4}
               />
             </div>
@@ -147,7 +147,7 @@ const BookingForm = () => {
               className="w-full"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Submitting..." : "Submit Booking Request"}
+              {isSubmitting ? "Joining..." : "Join Waitlist"}
             </Button>
           </form>
         </div>

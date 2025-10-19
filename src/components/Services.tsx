@@ -8,18 +8,18 @@ const Services = () => {
   const services = [
     {
       icon: Monitor,
-      badge: "Most Popular",
+      badge: "Coming Soon",
       title: "Remote Online Notary (RON)",
       price: "$60",
       priceDetail: "per document",
       description: "Notarize from anywhere via secure video call. Perfect for powers of attorney, affidavits, contracts, and most legal documents.",
       features: [
-        "Available 24/7, even weekends",
-        "5-minute average wait time",
+        "Will be available 24/7, even weekends",
+        "Target 5-minute wait time",
         "Legally valid in all 50 states",
         "Instant digital delivery"
       ],
-      ctaText: "Start Online Notarization",
+      ctaText: "Join Waitlist",
       featured: true
     },
     {
@@ -28,14 +28,14 @@ const Services = () => {
       title: "Mobile Notary Service",
       price: "$125",
       priceDetail: "flat rate",
-      description: "We come to you anywhere in Erie County. Home, office, hospital, or care facility. Perfect for those who prefer in-person service.",
+      description: "We'll come to you anywhere in Erie County. Home, office, hospital, or care facility. Perfect for those who prefer in-person service.",
       features: [
-        "2-hour response time available",
+        "Target 2-hour response time",
         "Evening & weekend appointments",
-        "Serves Erie, Crawford, Warren counties",
+        "Will serve Erie, Crawford, Warren counties",
         "Multiple signers included"
       ],
-      ctaText: "Schedule Mobile Visit",
+      ctaText: "Join Waitlist",
       featured: false
     },
     {
@@ -44,14 +44,14 @@ const Services = () => {
       title: "Loan Signing Agent",
       price: "$200",
       priceDetail: "per closing",
-      description: "Certified signing agent for real estate transactions. Work with title companies, lenders, and real estate professionals.",
+      description: "Certified signing agent for real estate transactions. Will work with title companies, lenders, and real estate professionals.",
       features: [
         "NNA certified & background-checked",
         "Experienced with all loan types",
         "Error-free signing guarantee",
         "Scan-back service included"
       ],
-      ctaText: "Request Signing Agent",
+      ctaText: "Join Waitlist",
       featured: false
     }
   ];
