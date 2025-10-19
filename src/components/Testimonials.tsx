@@ -74,7 +74,7 @@ const Testimonials = () => {
         {/* CTA Link */}
         <div className="text-center mt-12">
           <a href="#booking-form" className="text-primary hover:text-accent font-semibold text-lg underline underline-offset-4 transition-colors">
-            Join Our Waitlist →
+            Book Your Appointment →
           </a>
         </div>
       </div>
