@@ -13,6 +13,7 @@ import Apostille from "./pages/services/Apostille";
 import HowRonWorks from "./pages/resources/HowRonWorks";
 import Pricing from "./pages/Pricing";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import ErieCounty from "./pages/areas/ErieCounty";
 import CrawfordCounty from "./pages/areas/CrawfordCounty";
 import WarrenCounty from "./pages/areas/WarrenCounty";
@@ -48,6 +49,7 @@ const App = () => (
           {/* Other Pages */}
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

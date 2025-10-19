@@ -3,7 +3,7 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Globe, Video, Clock, Shield, CheckCircle, Zap } from "lucide-react";
+import { Globe, Video, Clock, Shield, CheckCircle, Zap, AlertCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const StatewideOnline = () => {
@@ -155,6 +155,17 @@ const StatewideOnline = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8">Serving All of Pennsylvania</h2>
+            <Card className="p-6 bg-primary/10 border-primary mb-8 max-w-4xl mx-auto">
+              <div className="flex items-start gap-4">
+                <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-bold mb-2 text-primary">Important Location Requirement</h3>
+                  <p className="text-sm">
+                    RON services are available to individuals physically located anywhere in Pennsylvania during the notarization session. You must be physically present in Pennsylvania at the time of the video session, but we can accommodate appointments from any PA county or municipality.
+                  </p>
+                </div>
+              </div>
+            </Card>
             <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
               Remote Online Notary is available to anyone in Pennsylvania with an internet connection. No matter where you are in the state, you have access to professional notarization.
             </p>

@@ -69,10 +69,10 @@ const Apostille = () => {
               International Documents
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Apostille Services in Pennsylvania
+              Apostille Assistance & Document Preparation in Pennsylvania
             </h1>
             <p className="text-xl mb-8 text-white/90">
-              Get your documents authenticated for international use. We handle the entire apostille process with the Pennsylvania Department of State.
+              We notarize your documents and assist with the apostille application process through the Pennsylvania Department of State.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -101,6 +101,17 @@ const Apostille = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8">What is an Apostille?</h2>
             <Card className="p-8">
+              <div className="bg-primary/10 border-l-4 border-primary p-6 mb-6">
+                <div className="flex items-start gap-3">
+                  <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-bold mb-2 text-primary">Important Disclaimer</h3>
+                    <p className="text-sm">
+                      <strong>Please note:</strong> Notaries cannot issue apostilles in Pennsylvania. Only the Pennsylvania Department of State can authenticate documents with an apostille. We provide document notarization and assistance with the apostille application process.
+                    </p>
+                  </div>
+                </div>
+              </div>
               <p className="text-lg mb-4">
                 An apostille is an official certification that authenticates the origin of a public document for use in another country. It's required under the Hague Convention for documents traveling between member countries.
               </p>
@@ -111,9 +122,9 @@ const Apostille = () => {
                 <div className="flex items-start gap-3">
                   <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-bold mb-2">Important Note</h3>
+                    <h3 className="font-bold mb-2">How We Help</h3>
                     <p className="text-sm text-muted-foreground">
-                      The apostille process varies by document type and destination country. We'll guide you through the specific requirements for your situation and ensure everything is done correctly.
+                      The apostille process varies by document type and destination country. We notarize your documents (if needed), prepare your apostille application, and can submit it to the PA Department of State on your behalf.
                     </p>
                   </div>
                 </div>
@@ -135,9 +146,9 @@ const Apostille = () => {
                     1
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Document Review</h3>
+                    <h3 className="text-xl font-bold mb-2">Document Review & Notarization</h3>
                     <p className="text-muted-foreground">
-                      We verify your documents are eligible for apostille and determine if any preliminary notarization is needed before submission to the PA Department of State.
+                      We verify your documents are eligible for apostille and provide notarization if required ($5-15 per signature as allowed by PA law). Many documents must be notarized before they can receive an apostille.
                     </p>
                   </div>
                 </div>
@@ -149,9 +160,9 @@ const Apostille = () => {
                     2
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Notarization (If Required)</h3>
+                    <h3 className="text-xl font-bold mb-2">Apostille Application Preparation</h3>
                     <p className="text-muted-foreground">
-                      Many documents must be notarized before they can receive an apostille. We handle this step immediately if needed.
+                      We prepare your complete apostille application package with all required documentation for submission to the PA Department of State.
                     </p>
                   </div>
                 </div>
@@ -163,9 +174,9 @@ const Apostille = () => {
                     3
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">State Submission</h3>
+                    <h3 className="text-xl font-bold mb-2">Submission to PA Department of State</h3>
                     <p className="text-muted-foreground">
-                      We submit your documents to the Pennsylvania Department of State for apostille certification. Standard processing is 3-5 business days; expedited available.
+                      We submit your documents to the Pennsylvania Department of State for apostille certification. Typical processing: 2-3 weeks standard; expedited options available.
                     </p>
                   </div>
                 </div>
@@ -177,9 +188,9 @@ const Apostille = () => {
                     4
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">Delivery</h3>
+                    <h3 className="text-xl font-bold mb-2">Delivery of Apostilled Documents</h3>
                     <p className="text-muted-foreground">
-                      Once apostilled, we return your documents via secure tracked shipping or you can arrange local pickup in Erie.
+                      Once the PA Department of State issues the apostille, we return your authenticated documents via secure tracked shipping or local pickup in Erie.
                     </p>
                   </div>
                 </div>
@@ -233,8 +244,8 @@ const Apostille = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-4 border-b">
                   <div>
-                    <h3 className="font-bold">Standard Apostille Service</h3>
-                    <p className="text-sm text-muted-foreground">Processing time: 5-7 business days</p>
+                    <h3 className="font-bold">Document Notarization + Apostille Assistance</h3>
+                    <p className="text-sm text-muted-foreground">Includes notarization + application preparation + submission assistance</p>
                   </div>
                   <span className="text-2xl font-bold">$175</span>
                 </div>
@@ -261,7 +272,7 @@ const Apostille = () => {
                 </div>
               </div>
               <p className="text-sm text-muted-foreground mt-6 text-center">
-                * Prices include notarization if required and state apostille fees
+                * Prices include notarization ($5-15 per signature per PA law), application preparation, and submission assistance. PA Department of State processing fees and shipping are additional. Processing times reflect PA DOS typical turnaround.
               </p>
             </Card>
           </div>

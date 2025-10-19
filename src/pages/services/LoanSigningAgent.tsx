@@ -86,6 +86,9 @@ const LoanSigningAgent = () => {
               >
                 Schedule Signing - $150
               </Button>
+              <p className="text-sm text-white/80 mt-2">
+                $15 notary fee + $135 signing agent service fee
+              </p>
               <Button 
                 size="lg" 
                 variant="outline"
@@ -200,7 +203,7 @@ const LoanSigningAgent = () => {
                   <div>
                     <h3 className="font-bold mb-2">Fully Insured & Bonded</h3>
                     <p className="text-muted-foreground">
-                      $100,000 errors and omissions insurance provides peace of mind for your transactions.
+                      $100,000 errors and omissions insurance provides peace of mind for your transactions. Pennsylvania notary fee ($15 per signature) is separate from signing agent services as required by law.
                     </p>
                   </div>
                 </div>

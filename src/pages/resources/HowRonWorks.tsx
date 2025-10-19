@@ -9,11 +9,13 @@ const HowRonWorks = () => {
   const navigate = useNavigate();
 
   const requirements = [
+    "Must be physically located in Pennsylvania during the video session",
     "Valid government-issued photo ID (driver's license or passport)",
     "Device with camera and microphone (computer, tablet, or smartphone)",
     "Stable internet connection",
     "Document in PDF or common digital format",
-    "Email address to receive notarized document"
+    "Email address to receive notarized document",
+    "Ability to complete Knowledge-Based Authentication (KBA) verification"
   ];
 
   const benefits = [
@@ -165,10 +167,16 @@ const HowRonWorks = () => {
                     <p className="text-muted-foreground mb-4">
                       Present your valid government-issued photo ID to the camera. The notary will verify your identity using advanced credential analysis technology, which checks for security features and authenticity.
                     </p>
-                    <div className="bg-muted/30 p-4 rounded-lg">
-                      <p className="text-sm font-semibold mb-2">Knowledge-Based Authentication (KBA):</p>
+                    <div className="bg-muted/30 p-4 rounded-lg mb-4">
+                      <p className="text-sm font-semibold mb-2">Knowledge-Based Authentication (KBA) - Required by PA Law:</p>
                       <p className="text-sm text-muted-foreground">
-                        You may be asked to answer a few questions based on your public records (like previous addresses or loan amounts). This is a standard security measure required by Pennsylvania law.
+                        You will be asked to answer questions based on your public records (like previous addresses, loan amounts, or vehicle information). This is a mandatory security measure required by Pennsylvania law for RON services.
+                      </p>
+                    </div>
+                    <div className="bg-primary/10 p-4 rounded-lg border-l-4 border-primary">
+                      <p className="text-sm font-semibold mb-2 text-primary">Important Location Requirement:</p>
+                      <p className="text-sm">
+                        You must be physically located in Pennsylvania during the entire video session. This is a legal requirement under Pennsylvania RON law.
                       </p>
                     </div>
                   </div>

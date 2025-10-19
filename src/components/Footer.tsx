@@ -138,6 +138,20 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Legal Compliance Section */}
+      <div className="border-t border-white/10">
+        <div className="container mx-auto px-4 py-6">
+          <div className="text-center mb-4">
+            <p className="text-white/60 text-xs mb-2">
+              Licensed & Bonded Pennsylvania Notary Public | Compliant with 57 Pa.C.S. Chapter 3 (RULONA)
+            </p>
+            <p className="text-white/60 text-xs">
+              Pennsylvania-commissioned notary with required 3-hour state-approved education | Remote Online Notarization authorized under Act 79 of 2020
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Footer Bottom */}
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-6">
@@ -152,18 +166,21 @@ const Footer = () => {
               <a href="/privacy-policy" className="text-white/60 hover:text-white text-sm transition-colors">
                 Privacy Policy
               </a>
+              <a href="/terms-of-service" className="text-white/60 hover:text-white text-sm transition-colors">
+                Terms of Service
+              </a>
             </div>
 
             {/* Badges */}
             <div className="flex gap-3 flex-wrap justify-center">
               <div className="px-3 py-1 bg-white/10 rounded-full text-xs font-semibold">
-                PA State Approved
+                PA State Commissioned
               </div>
               <div className="px-3 py-1 bg-white/10 rounded-full text-xs font-semibold">
-                MISMO Certified
+                NNA Certified
               </div>
               <div className="px-3 py-1 bg-white/10 rounded-full text-xs font-semibold">
-                SOC 2 Compliant
+                RULONA Compliant
               </div>
             </div>
           </div>

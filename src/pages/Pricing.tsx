@@ -32,11 +32,12 @@ const Pricing = () => {
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">Remote Online Notary</h3>
               <div className="text-4xl font-bold mb-4">$60</div>
-              <p className="text-muted-foreground mb-6">Per notarization session</p>
+              <p className="text-muted-foreground mb-2">Per notarization session</p>
+              <p className="text-sm text-muted-foreground mb-6">$15 notary fee + $45 platform/technology fee</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Available 24/7</span>
+                  <span className="text-sm">Available by appointment</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -52,8 +53,9 @@ const Pricing = () => {
 
             <Card className="p-8 border-primary border-2">
               <h3 className="text-2xl font-bold mb-2">Mobile Notary</h3>
-              <div className="text-4xl font-bold mb-4">$125</div>
-              <p className="text-muted-foreground mb-6">Base fee + travel</p>
+              <div className="text-4xl font-bold mb-4">$125+</div>
+              <p className="text-muted-foreground mb-2">Starting price</p>
+              <p className="text-sm text-muted-foreground mb-6">$5-15 notary fee + $100 travel + $10 admin</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -74,7 +76,8 @@ const Pricing = () => {
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">Loan Signing</h3>
               <div className="text-4xl font-bold mb-4">$150</div>
-              <p className="text-muted-foreground mb-6">Per signing appointment</p>
+              <p className="text-muted-foreground mb-2">Per signing appointment</p>
+              <p className="text-sm text-muted-foreground mb-6">$15 notary fee + $135 signing agent service</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -90,6 +93,33 @@ const Pricing = () => {
                 </li>
               </ul>
               <Button className="w-full" onClick={() => navigate("/services/loan-signing-agent")}>Learn More</Button>
+            </Card>
+          </div>
+
+          {/* Fee Disclosure */}
+          <div className="max-w-4xl mx-auto mt-12">
+            <Card className="p-8 bg-muted/30">
+              <h3 className="text-xl font-bold mb-4 text-center">Pennsylvania Notary Fee Regulations</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Pennsylvania law regulates notary fees to protect consumers. Here's how our pricing complies with state law:
+              </p>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>RON Services:</strong> $15 per signature (maximum allowed by PA law) + $45 technology platform fee for secure video infrastructure, scheduling system, document storage, and administrative services.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Mobile Notary:</strong> $5-15 per signature (as allowed by PA law) + separate travel service fee, mileage, and administrative charges for on-location services.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Loan Signing Agent:</strong> $15 notary fee per signature + $135 signing agent service fee (covering document review, printing, travel, scanning, and overnight return shipping).</span>
+                </li>
+              </ul>
+              <p className="text-xs text-muted-foreground mt-4 text-center">
+                All pricing complies with 57 Pa.C.S. Chapter 3 (Pennsylvania Revised Uniform Law on Notarial Acts)
+              </p>
             </Card>
           </div>
         </div>

@@ -131,9 +131,9 @@ const MobileNotary = () => {
               </Card>
               <Card className="p-6">
                 <Shield className="w-10 h-10 text-primary mb-3" />
-                <h3 className="font-bold mb-2">Licensed & Bonded</h3>
+                <h3 className="font-bold mb-2">PA Commissioned</h3>
                 <p className="text-sm text-muted-foreground">
-                  $25,000 E&O insurance and PA state licensed
+                  Pennsylvania-commissioned notary with required state education
                 </p>
               </Card>
               <Card className="p-6">
@@ -187,32 +187,44 @@ const MobileNotary = () => {
               <div className="space-y-4">
                 <div className="flex justify-between items-center pb-4 border-b">
                   <div>
-                    <h3 className="font-bold">Base Mobile Service Fee</h3>
-                    <p className="text-sm text-muted-foreground">Includes travel within Erie city limits</p>
+                    <h3 className="font-bold">Notary Fee (per signature)</h3>
+                    <p className="text-sm text-muted-foreground">As allowed by Pennsylvania law</p>
                   </div>
-                  <span className="text-2xl font-bold">$125</span>
+                  <span className="text-xl font-bold">$5-15</span>
                 </div>
                 <div className="flex justify-between items-center pb-4 border-b">
                   <div>
-                    <h3 className="font-bold">Additional Signatures</h3>
-                    <p className="text-sm text-muted-foreground">Per signature beyond the first</p>
+                    <h3 className="font-bold">Travel Service Fee</h3>
+                    <p className="text-sm text-muted-foreground">Within Erie city limits</p>
                   </div>
-                  <span className="text-xl font-bold">$15</span>
+                  <span className="text-2xl font-bold">$100</span>
                 </div>
                 <div className="flex justify-between items-center pb-4 border-b">
                   <div>
-                    <h3 className="font-bold">Extended Service Area</h3>
+                    <h3 className="font-bold">Mileage Fee</h3>
                     <p className="text-sm text-muted-foreground">Outside Erie city limits (per mile)</p>
                   </div>
                   <span className="text-xl font-bold">$1.50</span>
                 </div>
+                <div className="flex justify-between items-center pb-4 border-b">
+                  <div>
+                    <h3 className="font-bold">Administrative Fee</h3>
+                    <p className="text-sm text-muted-foreground">Scheduling and coordination</p>
+                  </div>
+                  <span className="text-xl font-bold">$10</span>
+                </div>
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="font-bold">After-Hours Service</h3>
+                    <h3 className="font-bold">After-Hours Surcharge</h3>
                     <p className="text-sm text-muted-foreground">Evenings after 7 PM or weekends</p>
                   </div>
                   <span className="text-xl font-bold">+$50</span>
                 </div>
+              </div>
+              <div className="mt-6 pt-6 border-t">
+                <p className="text-sm text-muted-foreground text-center">
+                  Pennsylvania law limits notary fees to $5-15 per signature. Additional fees shown are for travel, scheduling, and administrative services.
+                </p>
               </div>
             </Card>
           </div>

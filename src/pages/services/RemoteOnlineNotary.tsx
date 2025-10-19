@@ -3,7 +3,7 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Video, Clock, Shield, Globe, FileCheck } from "lucide-react";
+import { CheckCircle, Video, Clock, Shield, Globe, FileCheck, AlertCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const RemoteOnlineNotary = () => {
@@ -19,11 +19,18 @@ const RemoteOnlineNotary = () => {
 
   const features = [
     "Complete notarization in 5 minutes",
-    "Available 24/7 including weekends",
+    "Available by appointment, including evenings & weekends",
     "Legally valid in all 50 states",
     "Bank-level encryption & security",
     "Digital certificate included",
-    "Record stored securely for 10 years"
+    "Record stored securely for 10 years (PA law requirement)"
+  ];
+
+  const requirements = [
+    "Must be physically located in Pennsylvania during session",
+    "Valid government-issued photo ID required",
+    "Knowledge-Based Authentication (KBA) verification",
+    "Stable internet connection with camera and microphone"
   ];
 
   const documents = [
@@ -57,7 +64,8 @@ const RemoteOnlineNotary = () => {
     "offers": {
       "@type": "Offer",
       "price": "60",
-      "priceCurrency": "USD"
+      "priceCurrency": "USD",
+      "description": "$15 notary fee per signature + $45 technology platform fee"
     }
   };
 
@@ -76,7 +84,7 @@ const RemoteOnlineNotary = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-[hsl(var(--action-cyan))] text-white border-0">
-              Available 24/7
+              PA Department of State Registered
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Remote Online Notary (RON) Service
@@ -90,8 +98,11 @@ const RemoteOnlineNotary = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Book Online Session - $60
+                Book RON Session - $60
               </Button>
+              <p className="text-sm text-white/80 mt-2">
+                $15 notary fee + $45 platform/technology fee
+              </p>
               <Button 
                 size="lg" 
                 variant="outline"
@@ -192,8 +203,53 @@ const RemoteOnlineNotary = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* PA Authorization Section */}
       <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <Card className="p-8 bg-muted/30">
+              <h2 className="text-3xl font-bold mb-6 text-center">Pennsylvania RON Authorization</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="font-bold mb-4 text-lg">Registered & Compliant</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Registered with PA Department of State for Remote Online Notarization</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Using state-approved RON technology platform</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">All sessions recorded and stored for 10 years (PA law requirement)</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                      <span className="text-sm">Compliant with Act 79 of 2020 (RULONA)</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="font-bold mb-4 text-lg">Session Requirements</h3>
+                  <ul className="space-y-3">
+                    {requirements.map((req, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <AlertCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-sm">{req}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12">
@@ -218,6 +274,9 @@ const RemoteOnlineNotary = () => {
                     </li>
                   ))}
                 </ul>
+                <p className="text-sm text-muted-foreground mt-4">
+                  * PA notary fee: $15 per signature. Additional fees shown are for technology platform, scheduling, secure storage, and administrative services.
+                </p>
               </div>
             </div>
           </div>

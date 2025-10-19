@@ -226,6 +226,11 @@ const BusinessRetainer = () => {
                 <Button className="w-full" onClick={scrollToBooking}>Contact Sales</Button>
               </Card>
             </div>
+            <div className="mt-8 text-center">
+              <p className="text-sm text-muted-foreground">
+                <strong>Legal Disclosure:</strong> Prepaid notarization packages. Pennsylvania notary fee limits ($5-15 per signature) still apply to each individual notarial act. Unused notarizations expire at contract end and are non-refundable.
+              </p>
+            </div>
           </div>
         </div>
       </section>
