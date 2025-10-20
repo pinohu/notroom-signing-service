@@ -9,6 +9,7 @@ import FinalCTA from "@/components/FinalCTA";
 import BookingForm from "@/components/BookingForm";
 import ExitIntent from "@/components/ExitIntent";
 import SEO from "@/components/SEO";
+import PricingCalculator from "@/components/PricingCalculator";
 
 const Index = () => {
   const schema = {
@@ -67,6 +68,13 @@ const Index = () => {
       />
       <Hero />
       <Services />
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <PricingCalculator />
+          </div>
+        </div>
+      </section>
       <ProcessTimeline />
       <WhyNotroom />
       <Testimonials />
