@@ -55,6 +55,8 @@ const Header = () => {
     { label: "Erie County", path: "/areas/erie-county" },
     { label: "Crawford County", path: "/areas/crawford-county" },
     { label: "Warren County", path: "/areas/warren-county" },
+    { label: "Mercer County", path: "/areas/mercer-county" },
+    { label: "Venango County", path: "/areas/venango-county" },
     { label: "Statewide Online", path: "/areas/statewide-online" },
   ];
 
@@ -143,6 +145,12 @@ const Header = () => {
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               FAQ
+            </button>
+            <button
+              onClick={() => navigate("/track-booking")}
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
+              Track Booking
             </button>
           </nav>
 
@@ -239,6 +247,16 @@ const Header = () => {
                   className="text-left text-lg font-medium hover:text-primary transition-colors"
                 >
                   FAQ
+                </button>
+
+                <button
+                  onClick={() => {
+                    navigate("/track-booking");
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-left text-lg font-medium hover:text-primary transition-colors"
+                >
+                  Track Booking
                 </button>
 
                 <a

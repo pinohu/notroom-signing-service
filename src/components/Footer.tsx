@@ -76,6 +76,16 @@ const Footer = () => {
                 </a>
               </li>
               <li>
+                <a href="/areas/mercer-county" className="text-white/70 hover:text-white transition-colors text-sm">
+                  Mercer County
+                </a>
+              </li>
+              <li>
+                <a href="/areas/venango-county" className="text-white/70 hover:text-white transition-colors text-sm">
+                  Venango County
+                </a>
+              </li>
+              <li>
                 <a href="/areas/statewide-online" className="text-white/70 hover:text-white transition-colors text-sm">
                   Statewide Online
                 </a>
@@ -100,6 +110,11 @@ const Footer = () => {
               <li>
                 <a href="/pricing" className="text-white/70 hover:text-white transition-colors text-sm">
                   Pricing
+                </a>
+              </li>
+              <li>
+                <a href="/track-booking" className="text-white/70 hover:text-white transition-colors text-sm">
+                  Track Booking
                 </a>
               </li>
             </ul>

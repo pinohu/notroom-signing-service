@@ -19,6 +19,9 @@ import ErieCounty from "./pages/areas/ErieCounty";
 import CrawfordCounty from "./pages/areas/CrawfordCounty";
 import WarrenCounty from "./pages/areas/WarrenCounty";
 import StatewideOnline from "./pages/areas/StatewideOnline";
+import MercerCounty from "./pages/areas/MercerCounty";
+import VenangoCounty from "./pages/areas/VenangoCounty";
+import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
 
@@ -48,10 +51,13 @@ const App = () => (
           <Route path="/areas/erie-county" element={<ErieCounty />} />
           <Route path="/areas/crawford-county" element={<CrawfordCounty />} />
           <Route path="/areas/warren-county" element={<WarrenCounty />} />
+          <Route path="/areas/mercer-county" element={<MercerCounty />} />
+          <Route path="/areas/venango-county" element={<VenangoCounty />} />
           <Route path="/areas/statewide-online" element={<StatewideOnline />} />
           
           {/* Other Pages */}
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/track-booking" element={<TrackBooking />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           
