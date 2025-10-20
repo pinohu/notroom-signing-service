@@ -429,7 +429,7 @@ const TermsOfService = () => {
                   <li>All applicable federal and state privacy, data security, and consumer protection laws</li>
                 </ul>
                 <p className="mt-4">
-                  <strong className="text-foreground">Notary Commission Information:</strong> All notarial acts are performed by commissioned Pennsylvania notaries public. Notary commission number: [COMMISSION_NUMBER]. This information is available upon request and appears on all notarial certificates.
+                  <strong className="text-foreground">Notary Commission Information:</strong> All notarial acts are performed by commissioned Pennsylvania notaries public. Commission information is available upon request and appears on all notarial certificates.
                 </p>
                 <p>
                   <strong className="text-foreground">Errors and Omissions Insurance:</strong> As required by Pennsylvania law, our notaries maintain errors and omissions insurance coverage. Insurance information is available upon written request.
