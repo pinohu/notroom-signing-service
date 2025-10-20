@@ -84,7 +84,7 @@ const BookingForm = () => {
       });
 
       // Insert booking into database
-      const { error } = await supabase
+      const { data: bookingData, error } = await supabase
         .from("bookings")
         .insert([{
           name: validatedData.name,
@@ -98,12 +98,31 @@ const BookingForm = () => {
           location_address: validatedData.location_address || null,
           urgency: validatedData.urgency,
           message: validatedData.message || null
-        }]);
+        }])
+        .select()
+        .single();
 
       if (error) {
         console.error("Booking submission error:", error);
         toast.error("Failed to submit booking. Please try again.");
         return;
+      }
+
+      // Send confirmation email
+      try {
+        await supabase.functions.invoke('send-booking-confirmation', {
+          body: {
+            name: validatedData.name,
+            email: validatedData.email,
+            service: validatedData.service,
+            preferredDate: validatedData.preferred_date ? format(validatedData.preferred_date, "PPP") : undefined,
+            preferredTime: validatedData.preferred_time || undefined,
+            bookingId: bookingData.id
+          }
+        });
+      } catch (emailError) {
+        console.error("Email sending error:", emailError);
+        // Don't fail the booking if email fails
       }
 
       toast.success("Thank you! We'll contact you within 2 hours to confirm your appointment.");
