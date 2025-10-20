@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import RemoteOnlineNotary from "./pages/services/RemoteOnlineNotary";
@@ -18,16 +19,19 @@ import ErieCounty from "./pages/areas/ErieCounty";
 import CrawfordCounty from "./pages/areas/CrawfordCounty";
 import WarrenCounty from "./pages/areas/WarrenCounty";
 import StatewideOnline from "./pages/areas/StatewideOnline";
+import AdminLogin from "./pages/admin/Login";
+import AdminBookings from "./pages/admin/Bookings";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
           <Route path="/" element={<Index />} />
           
           {/* Service Pages */}
@@ -51,12 +55,17 @@ const App = () => (
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           
+          {/* Admin Pages */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/bookings" element={<AdminBookings />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;

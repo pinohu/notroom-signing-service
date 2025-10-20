@@ -147,6 +147,43 @@ const BookingForm = () => {
               Complete the form below and we'll contact you within 2 hours to confirm your appointment.
             </p>
           </div>
+
+          {/* Progress Indicator */}
+          <div className="mb-8" role="progressbar" aria-valuenow={currentStep} aria-valuemin={1} aria-valuemax={3}>
+            <div className="flex items-center justify-between max-w-md mx-auto">
+              {[1, 2, 3].map((step) => (
+                <div key={step} className="flex items-center flex-1">
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all ${
+                      currentStep >= step
+                        ? "bg-primary text-primary-foreground shadow-lg"
+                        : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    {step}
+                  </div>
+                  {step < 3 && (
+                    <div
+                      className={`flex-1 h-1 mx-2 transition-all ${
+                        currentStep > step ? "bg-primary" : "bg-muted"
+                      }`}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-between max-w-md mx-auto mt-2">
+              <span className={`text-xs ${currentStep >= 1 ? "text-foreground font-semibold" : "text-muted-foreground"}`}>
+                Contact
+              </span>
+              <span className={`text-xs ${currentStep >= 2 ? "text-foreground font-semibold" : "text-muted-foreground"}`}>
+                Service
+              </span>
+              <span className={`text-xs ${currentStep >= 3 ? "text-foreground font-semibold" : "text-muted-foreground"}`}>
+                Schedule
+              </span>
+            </div>
+          </div>
           
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Step 1: Contact Information */}

@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="bg-[hsl(var(--neutral-dark))] text-white">
       {/* Footer Top */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <div className="text-2xl font-bold mb-3">NOTROOM</div>
@@ -143,7 +143,7 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="text-center mb-4">
             <p className="text-white/60 text-xs mb-2">
-              Licensed & Bonded Pennsylvania Notary Public | Commission #[COMMISSION_NUMBER] | Compliant with 57 Pa.C.S. Chapter 3 (RULONA)
+              Licensed & Bonded Pennsylvania Notary Public | Commission #1431527 | Compliant with 57 Pa.C.S. Chapter 3 (RULONA)
             </p>
             <p className="text-white/60 text-xs">
               Pennsylvania-commissioned notary with required 3-hour state-approved education | Remote Online Notarization authorized under Act 79 of 2020

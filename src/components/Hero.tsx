@@ -37,23 +37,25 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="amber"
-              className="text-lg px-8 py-7 h-auto shadow-2xl"
+              className="text-base sm:text-lg px-6 sm:px-8 py-6 sm:py-7 h-auto shadow-2xl"
               onClick={scrollToBooking}
+              aria-label="Book online notary service for $60"
             >
-              <div className="flex flex-col items-start">
-                <span className="text-xl">📱 Online Notary - $60</span>
-                <span className="text-sm font-normal opacity-90">$15 notary + $45 platform fee</span>
+              <div className="flex flex-col items-center sm:items-start">
+                <span className="text-lg sm:text-xl">📱 Online Notary - $60</span>
+                <span className="text-xs sm:text-sm font-normal opacity-90">$15 notary + $45 platform</span>
               </div>
             </Button>
             <Button 
               size="lg" 
               variant="amberOutline"
-              className="text-lg px-8 py-7 h-auto"
+              className="text-base sm:text-lg px-6 sm:px-8 py-6 sm:py-7 h-auto"
               onClick={scrollToBooking}
+              aria-label="Book mobile notary service starting at $125"
             >
-              <div className="flex flex-col items-start">
-                <span className="text-xl">🚗 Mobile Notary - Starting at $125</span>
-                <span className="text-sm font-normal opacity-90">We come to you</span>
+              <div className="flex flex-col items-center sm:items-start">
+                <span className="text-lg sm:text-xl">🚗 Mobile Notary - $125+</span>
+                <span className="text-xs sm:text-sm font-normal opacity-90">We come to you</span>
               </div>
             </Button>
           </div>

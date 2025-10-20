@@ -84,8 +84,8 @@ const Header = () => {
                   <NavigationMenuTrigger className="text-foreground hover:text-primary">
                     Services
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4">
+                  <NavigationMenuContent className="bg-popover">
+                    <ul className="grid w-[400px] gap-3 p-4 bg-popover">
                       {services.map((service) => (
                         <li key={service.path}>
                           <NavigationMenuLink asChild>
@@ -106,8 +106,8 @@ const Header = () => {
                   <NavigationMenuTrigger className="text-foreground hover:text-primary">
                     Areas
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4">
+                  <NavigationMenuContent className="bg-popover">
+                    <ul className="grid w-[400px] gap-3 p-4 bg-popover">
                       {areas.map((area) => (
                         <li key={area.path}>
                           <NavigationMenuLink asChild>
