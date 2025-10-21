@@ -11,6 +11,8 @@ import MobileNotary from "./pages/services/MobileNotary";
 import LoanSigningAgent from "./pages/services/LoanSigningAgent";
 import BusinessRetainer from "./pages/services/BusinessRetainer";
 import Apostille from "./pages/services/Apostille";
+import I9Verification from "./pages/services/I9Verification";
+import RegisteredOffice from "./pages/services/RegisteredOffice";
 import HowRonWorks from "./pages/resources/HowRonWorks";
 import Pricing from "./pages/Pricing";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -43,6 +45,8 @@ const App = () => (
           <Route path="/services/loan-signing-agent" element={<LoanSigningAgent />} />
           <Route path="/services/business-retainer" element={<BusinessRetainer />} />
           <Route path="/services/apostille" element={<Apostille />} />
+          <Route path="/services/i9-verification" element={<I9Verification />} />
+          <Route path="/services/registered-office" element={<RegisteredOffice />} />
           
           {/* Resource Pages */}
           <Route path="/resources/how-ron-works" element={<HowRonWorks />} />

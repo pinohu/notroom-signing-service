@@ -1,26 +1,30 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Monitor, Car, Home, Check } from "lucide-react";
+import { Monitor, Car, Home, Check, Users, Building, Globe, FileCheck } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import { useNavigate } from "react-router-dom";
 
 const Services = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
       icon: Monitor,
       badge: "Most Popular",
       title: "Remote Online Notary (RON)",
       price: "$60",
-      priceDetail: "$15 notary + $45 platform fee",
+      priceDetail: "From $25 with subscriptions",
       description: "Notarize from anywhere via secure video call. Perfect for powers of attorney, affidavits, contracts, and most legal documents.",
       features: [
         "Available by appointment, including evenings & weekends",
         "Average 5-minute sessions",
-        "Legally valid in all 50 states",
+        "Subscription plans available",
         "Instant digital delivery"
       ],
-      ctaText: "Book Now",
-      featured: true
+      ctaText: "Learn More",
+      featured: true,
+      link: "/services/remote-online-notary"
     },
     {
       icon: Car,
@@ -35,8 +39,9 @@ const Services = () => {
         "Serving Erie, Crawford, Warren counties",
         "Itemized pricing (notary + travel + admin)"
       ],
-      ctaText: "Book Now",
-      featured: false
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/mobile-notary"
     },
     {
       icon: Home,
@@ -51,10 +56,66 @@ const Services = () => {
         "$100K E&O insurance",
         "Print, scan & ship included"
       ],
-      ctaText: "Book Now",
-      featured: false
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/loan-signing-agent"
+    },
+    {
+      icon: Globe,
+      badge: "International",
+      title: "Apostille Services",
+      price: "$175+",
+      priceDetail: "Rush service available",
+      description: "Professional apostille assistance for international documents. We handle PA Department of State submissions.",
+      features: [
+        "Document notarization included",
+        "Application preparation",
+        "State submission handling",
+        "2-3 week standard processing"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/apostille"
+    },
+    {
+      icon: Users,
+      badge: "Employers",
+      title: "I-9 Verification",
+      price: "$35+",
+      priceDetail: "Remote & mobile options",
+      description: "DHS-compliant I-9 employment verification. Remote service for E-Verify employers and mobile in-person verification.",
+      features: [
+        "E-Verify alternative procedure",
+        "Authorized representative service",
+        "Volume discounts available",
+        "Same-day appointments"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/i9-verification"
+    },
+    {
+      icon: Building,
+      badge: "Business",
+      title: "Registered Office & Filings",
+      price: "$99+",
+      priceDetail: "LLC formation from $149",
+      description: "PA Commercial Registered Office Provider (CROP). LLC formation, annual reports, and business compliance services.",
+      features: [
+        "Professional registered office address",
+        "Business formation services",
+        "Annual report reminders",
+        "Compliance management"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/registered-office"
     }
   ];
+
+  const handleServiceClick = (link: string) => {
+    navigate(link);
+  };
 
   const scrollToBooking = () => {
     document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
@@ -66,10 +127,10 @@ const Services = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-full">
-            <span className="text-primary font-semibold text-sm">Three Ways We Serve You</span>
+            <span className="text-primary font-semibold text-sm">Complete Notary & Business Services</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Professional Notary Services in Erie & Surrounding Counties
+            Professional Services in Erie & Surrounding Counties
           </h2>
         </div>
 
@@ -130,7 +191,7 @@ const Services = () => {
                   {/* CTA Button */}
                   <Button 
                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 shadow-md hover:shadow-lg transition-all"
-                    onClick={scrollToBooking}
+                    onClick={() => handleServiceClick(service.link)}
                   >
                     {service.ctaText} →
                   </Button>
