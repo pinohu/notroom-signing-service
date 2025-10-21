@@ -85,7 +85,7 @@ const Apostille = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Get Started - From $245
+                Get Started - Book Apostille Service
               </Button>
               <Button 
                 size="lg" 
@@ -391,7 +391,7 @@ const Apostille = () => {
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Need Documents Apostilled?</h2>
+          <h2 className="text-3xl font-bold mb-4">Book Your Apostille Service</h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
             Let us handle the complex apostille process for you. Fast, reliable, and stress-free international document authentication.
           </p>

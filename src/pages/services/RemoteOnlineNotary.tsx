@@ -385,9 +385,9 @@ const RemoteOnlineNotary = () => {
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+          <h2 className="text-3xl font-bold mb-4">Book Your Remote Online Notary Session</h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Book your remote online notary session now. Available by appointment with instant confirmation.
+            Schedule your remote online notary session now. Available by appointment with instant confirmation.
           </p>
           <Button 
             size="lg" 
