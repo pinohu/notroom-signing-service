@@ -5,115 +5,115 @@
 @tailwind utilities;
 
 /* Notroom Brand Design System
-   Primary: Trust Blue (#1e40af)
-   Secondary: Action Cyan (#0891b2)
-   Accent: Urgency Amber (#f59e0b)
+   Primary: Olive Green (#8B8A5E)
+   Secondary: Lavender (#E8E7F3)
+   Accent: Chartreuse (#C9E34B)
    All colors in HSL for theme compatibility
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 217 33% 17%;
+    --background: 58 22% 45%;
+    --foreground: 245 33% 93%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 217 33% 17%;
+    --card: 245 33% 93%;
+    --card-foreground: 48 20% 21%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 217 33% 17%;
+    --popover: 245 33% 93%;
+    --popover-foreground: 48 20% 21%;
 
-    /* Trust Blue - Primary brand color */
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
+    /* Olive Green - Primary brand color */
+    --primary: 48 20% 21%;
+    --primary-foreground: 245 33% 93%;
 
-    --secondary: 214 32% 91%;
-    --secondary-foreground: 217 33% 17%;
+    --secondary: 245 33% 93%;
+    --secondary-foreground: 48 20% 21%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 58 15% 60%;
+    --muted-foreground: 58 10% 30%;
 
-    /* Action Cyan - Secondary brand color */
-    --accent: 186 100% 42%;
-    --accent-foreground: 0 0% 100%;
+    /* Chartreuse - Accent brand color */
+    --accent: 72 70% 60%;
+    --accent-foreground: 48 20% 21%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 245 33% 93%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --border: 58 15% 55%;
+    --input: 245 33% 93%;
+    --ring: 72 70% 60%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     /* Brand-specific colors */
-    --trust-blue: 221 83% 53%;
-    --action-cyan: 186 100% 42%;
-    --urgency-amber: 38 92% 50%;
-    --success-green: 152 69% 39%;
-    --neutral-dark: 217 19% 27%;
-    --neutral-light: 214 32% 91%;
+    --olive-green: 58 22% 45%;
+    --lavender: 245 33% 93%;
+    --chartreuse: 72 70% 60%;
+    --soft-yellow: 54 83% 74%;
+    --dark-brown: 48 20% 21%;
+    --muted-olive: 58 15% 60%;
     
     /* Gradient for hero sections */
-    --hero-gradient-from: 221 83% 30%;
-    --hero-gradient-to: 186 100% 35%;
+    --hero-gradient-from: 58 22% 40%;
+    --hero-gradient-to: 72 70% 55%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 245 33% 93%;
+    --sidebar-foreground: 48 20% 21%;
+    --sidebar-primary: 48 20% 21%;
+    --sidebar-primary-foreground: 245 33% 93%;
+    --sidebar-accent: 72 70% 60%;
+    --sidebar-accent-foreground: 48 20% 21%;
+    --sidebar-border: 58 15% 55%;
+    --sidebar-ring: 72 70% 60%;
   }
 
   .dark {
-    --background: 217 33% 17%;
-    --foreground: 0 0% 100%;
+    --background: 48 20% 15%;
+    --foreground: 245 33% 93%;
 
-    --card: 217 33% 17%;
-    --card-foreground: 0 0% 100%;
+    --card: 48 20% 21%;
+    --card-foreground: 245 33% 93%;
 
-    --popover: 217 33% 17%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 48 20% 21%;
+    --popover-foreground: 245 33% 93%;
 
-    --primary: 221 83% 53%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 72 70% 60%;
+    --primary-foreground: 48 20% 15%;
 
-    --secondary: 217 19% 27%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 58 22% 35%;
+    --secondary-foreground: 245 33% 93%;
 
-    --muted: 217 19% 27%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 58 15% 30%;
+    --muted-foreground: 58 15% 70%;
 
-    --accent: 186 100% 42%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 72 70% 60%;
+    --accent-foreground: 48 20% 15%;
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 245 33% 93%;
 
-    --border: 217 19% 27%;
-    --input: 217 19% 27%;
-    --ring: 221 83% 53%;
+    --border: 58 15% 30%;
+    --input: 48 20% 25%;
+    --ring: 72 70% 60%;
     
-    --trust-blue: 221 83% 60%;
-    --action-cyan: 186 100% 50%;
-    --urgency-amber: 38 92% 55%;
-    --success-green: 152 69% 45%;
-    --neutral-dark: 217 19% 17%;
-    --neutral-light: 214 32% 91%;
+    --olive-green: 58 22% 35%;
+    --lavender: 245 33% 80%;
+    --chartreuse: 72 70% 55%;
+    --soft-yellow: 54 83% 65%;
+    --dark-brown: 48 20% 15%;
+    --muted-olive: 58 15% 40%;
     
-    --hero-gradient-from: 221 83% 35%;
-    --hero-gradient-to: 186 100% 40%;
+    --hero-gradient-from: 58 22% 30%;
+    --hero-gradient-to: 72 70% 50%;
 
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 48 20% 18%;
+    --sidebar-foreground: 245 33% 93%;
+    --sidebar-primary: 72 70% 60%;
+    --sidebar-primary-foreground: 48 20% 15%;
+    --sidebar-accent: 58 15% 25%;
+    --sidebar-accent-foreground: 245 33% 93%;
+    --sidebar-border: 58 15% 30%;
+    --sidebar-ring: 72 70% 60%;
   }
 }
 
