@@ -125,6 +125,31 @@ const BookingForm = () => {
         // Don't fail the booking if email fails
       }
 
+      // Sync booking to Suitedash
+      try {
+        await supabase.functions.invoke('sync-booking-to-suitedash', {
+          body: {
+            bookingId: bookingData.id,
+            name: validatedData.name,
+            email: validatedData.email,
+            phone: validatedData.phone,
+            service: validatedData.service,
+            preferredDate: validatedData.preferred_date ? format(validatedData.preferred_date, "yyyy-MM-dd") : undefined,
+            preferredTime: validatedData.preferred_time || undefined,
+            documentType: validatedData.document_type || undefined,
+            numberOfSigners: validatedData.number_of_signers,
+            locationAddress: validatedData.location_address || undefined,
+            urgency: validatedData.urgency,
+            message: validatedData.message || undefined,
+            status: 'pending'
+          }
+        });
+        console.log("Booking synced to Suitedash successfully");
+      } catch (suitedashError) {
+        console.error("Suitedash sync error:", suitedashError);
+        // Don't fail the booking if Suitedash sync fails
+      }
+
       toast.success("Thank you! We'll contact you within 2 hours to confirm your appointment.");
       
       // Reset form
