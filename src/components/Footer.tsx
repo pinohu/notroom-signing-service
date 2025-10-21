@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import notroomLogo from "@/assets/notroom-logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,7 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <div className="text-2xl font-bold mb-3">NOTROOM</div>
+            <img src={notroomLogo} alt="Notroom" className="h-10 mb-3 brightness-0 invert" />
             <p className="text-white/70 mb-4 text-sm">
               Erie's Most Trusted Notary Service
             </p>

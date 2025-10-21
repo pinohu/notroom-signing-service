@@ -11,6 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import notroomLogo from "@/assets/notroom-logo.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,9 +76,9 @@ const Header = () => {
           {/* Logo */}
           <button
             onClick={handleLogoClick}
-            className="text-2xl font-bold text-primary hover:text-accent transition-colors"
+            className="hover:opacity-80 transition-opacity"
           >
-            NOTROOM
+            <img src={notroomLogo} alt="Notroom" className="h-10" />
           </button>
 
           {/* Desktop Navigation */}
@@ -188,8 +189,8 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px]">
               <div className="flex flex-col gap-6 mt-8">
-                <div className="text-2xl font-bold text-primary mb-4">
-                  NOTROOM
+                <div className="mb-4">
+                  <img src={notroomLogo} alt="Notroom" className="h-10" />
                 </div>
                 
                 {/* Services Dropdown */}
