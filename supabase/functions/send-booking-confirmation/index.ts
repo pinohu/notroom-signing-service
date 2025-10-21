@@ -1,7 +1,18 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@4.0.0";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
+
+// HTML escaping function to prevent injection attacks
+const escapeHtml = (unsafe: string): string => {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+};
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -34,7 +45,39 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Verify JWT authentication
+    const authHeader = req.headers.get('Authorization');
+    if (!authHeader) {
+      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+        status: 401,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
+
+    // Create Supabase client with user's auth token
+    const supabaseClient = createClient(
+      Deno.env.get('SUPABASE_URL') ?? '',
+      Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+      { global: { headers: { Authorization: authHeader } } }
+    );
+
     const { name, email, service, preferredDate, preferredTime, bookingId }: BookingConfirmationRequest = await req.json();
+
+    // Verify the booking exists and belongs to the requester
+    const { data: booking, error: bookingError } = await supabaseClient
+      .from('bookings')
+      .select('*')
+      .eq('id', bookingId)
+      .eq('email', email)
+      .single();
+
+    if (bookingError || !booking) {
+      console.error("Booking verification failed:", bookingError);
+      return new Response(JSON.stringify({ error: 'Invalid booking or unauthorized access' }), {
+        status: 403,
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+      });
+    }
 
     console.log("Sending booking confirmation to:", email);
 
@@ -57,7 +100,7 @@ const handler = async (req: Request): Promise<Response> => {
             </div>
             
             <div style="background: #f8fafc; padding: 30px; border-radius: 0 0 10px 10px;">
-              <p style="font-size: 18px; margin-bottom: 20px;">Hi ${name},</p>
+              <p style="font-size: 18px; margin-bottom: 20px;">Hi ${escapeHtml(name)},</p>
               
               <p style="margin-bottom: 20px;">Thank you for booking with Notroom! We've received your request and will process it shortly.</p>
               
@@ -66,22 +109,22 @@ const handler = async (req: Request): Promise<Response> => {
                 <table style="width: 100%; border-collapse: collapse;">
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #64748b;">Booking ID:</td>
-                    <td style="padding: 8px 0;">${bookingId}</td>
+                    <td style="padding: 8px 0;">${escapeHtml(bookingId)}</td>
                   </tr>
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #64748b;">Service:</td>
-                    <td style="padding: 8px 0;">${serviceLabel}</td>
+                    <td style="padding: 8px 0;">${escapeHtml(serviceLabel)}</td>
                   </tr>
                   ${preferredDate ? `
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #64748b;">Preferred Date:</td>
-                    <td style="padding: 8px 0;">${preferredDate}</td>
+                    <td style="padding: 8px 0;">${escapeHtml(preferredDate)}</td>
                   </tr>
                   ` : ''}
                   ${preferredTime ? `
                   <tr>
                     <td style="padding: 8px 0; font-weight: bold; color: #64748b;">Preferred Time:</td>
-                    <td style="padding: 8px 0;">${preferredTime}</td>
+                    <td style="padding: 8px 0;">${escapeHtml(preferredTime)}</td>
                   </tr>
                   ` : ''}
                 </table>
