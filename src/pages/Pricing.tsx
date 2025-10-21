@@ -28,7 +28,7 @@ const Pricing = () => {
 
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">Remote Online Notary</h3>
               <div className="text-4xl font-bold mb-4">$45</div>
@@ -93,6 +93,72 @@ const Pricing = () => {
                 </li>
               </ul>
               <Button className="w-full" onClick={() => navigate("/services/loan-signing-agent")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Apostille Services</h3>
+              <div className="text-4xl font-bold mb-4">$245+</div>
+              <p className="text-muted-foreground mb-2">Standard processing</p>
+              <p className="text-sm text-muted-foreground mb-6">$15 PA state fee + notarization + service fees</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Standard (7-10 days) $245</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Expedited (2-3 days) $395</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Full-chain authentication $495</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/apostille")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">I-9 Verification</h3>
+              <div className="text-4xl font-bold mb-4">$85+</div>
+              <p className="text-muted-foreground mb-2">Per employee verification</p>
+              <p className="text-sm text-muted-foreground mb-6">In-person or remote verification available</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">In-person verification $85</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Remote verification $125</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Volume discounts available</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/i9-verification")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Registered Office</h3>
+              <div className="text-4xl font-bold mb-4">$149/yr</div>
+              <p className="text-muted-foreground mb-2">Annual registered agent</p>
+              <p className="text-sm text-muted-foreground mb-6">PA commercial registered office provider</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">PA street address provided</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Mail forwarding included</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">LLC formation packages available</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/registered-office")}>Learn More</Button>
             </Card>
           </div>
 
