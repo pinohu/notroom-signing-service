@@ -242,8 +242,6 @@ const LoanSigningAgent = () => {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <SocialProof service="loan" />
 
       {/* FAQs */}
       <FAQSection 

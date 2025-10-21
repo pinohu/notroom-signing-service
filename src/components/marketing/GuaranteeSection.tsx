@@ -1,27 +1,27 @@
-import { Shield, CheckCircle, Clock, RefreshCw } from "lucide-react";
+import { Shield, CheckCircle, Clock, FileCheck } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const GuaranteeSection = () => {
-  const guarantees = [
+  const commitments = [
     {
       icon: Shield,
-      title: "100% Satisfaction Guarantee",
-      desc: "If you're not completely satisfied with our service, we'll make it right or refund your money."
+      title: "Pennsylvania Licensed",
+      desc: "State-commissioned notary public with required bonding and errors & omissions insurance coverage."
     },
     {
       icon: CheckCircle,
-      title: "Legally Compliant",
-      desc: "All notarizations meet Pennsylvania state law requirements. Fully insured and bonded for your protection."
+      title: "RULONA Compliant",
+      desc: "All notarizations follow Pennsylvania state law (57 Pa.C.S. Chapter 3) and Act 79 of 2020 for RON services."
     },
     {
       icon: Clock,
-      title: "On-Time Promise",
-      desc: "We show up when we say we will. Your time is valuable, and we respect that commitment."
+      title: "Professional Service",
+      desc: "Punctual, organized, and detail-oriented service for all notarization and business filing needs."
     },
     {
-      icon: RefreshCw,
-      title: "Error-Free Service",
-      desc: "Meticulous attention to detail ensures documents are completed correctly the first time, every time."
+      icon: FileCheck,
+      title: "Secure & Confidential",
+      desc: "All documents handled with strict confidentiality. RON sessions recorded and stored for 10 years per PA law."
     }
   ];
 
@@ -30,17 +30,17 @@ const GuaranteeSection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Our Guarantee to You</h2>
+            <h2 className="text-3xl font-bold mb-4">Our Commitment</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              We stand behind our work with industry-leading guarantees and professional standards
+              Professional notary and business services following Pennsylvania state regulations
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {guarantees.map((guarantee, index) => (
+            {commitments.map((commitment, index) => (
               <Card key={index} className="p-6 text-center">
-                <guarantee.icon className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="font-bold mb-2">{guarantee.title}</h3>
-                <p className="text-sm text-muted-foreground">{guarantee.desc}</p>
+                <commitment.icon className="w-12 h-12 text-primary mx-auto mb-4" />
+                <h3 className="font-bold mb-2">{commitment.title}</h3>
+                <p className="text-sm text-muted-foreground">{commitment.desc}</p>
               </Card>
             ))}
           </div>

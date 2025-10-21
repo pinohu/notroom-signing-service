@@ -317,8 +317,6 @@ const I9Verification = () => {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <SocialProof service="i9" />
 
       {/* FAQs */}
       <FAQSection 

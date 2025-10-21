@@ -294,8 +294,6 @@ const Apostille = () => {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <SocialProof service="apostille" />
 
       {/* FAQs */}
       <FAQSection 

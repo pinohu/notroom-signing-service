@@ -318,10 +318,7 @@ const RemoteOnlineNotary = () => {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <SocialProof service="ron" />
-
-      {/* Guarantee Section */}
+      {/* Professional Commitments */}
       <GuaranteeSection />
 
       {/* FAQs */}

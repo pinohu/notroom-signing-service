@@ -282,8 +282,6 @@ const BusinessRetainer = () => {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <SocialProof service="business" />
 
       {/* FAQs */}
       <FAQSection 

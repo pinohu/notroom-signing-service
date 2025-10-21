@@ -354,8 +354,6 @@ const RegisteredOffice = () => {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <SocialProof service="registered" />
 
       {/* FAQs */}
       <FAQSection 

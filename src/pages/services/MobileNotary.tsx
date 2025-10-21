@@ -246,10 +246,7 @@ const MobileNotary = () => {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <SocialProof service="mobile" />
-
-      {/* Guarantee Section */}
+      {/* Professional Commitments */}
       <GuaranteeSection />
 
       {/* FAQs */}
