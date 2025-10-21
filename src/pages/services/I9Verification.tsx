@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Users, Video, MapPin, Building2, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import LegalDisclaimer from "@/components/LegalDisclaimer";
 
 const I9Verification = () => {
   const navigate = useNavigate();
@@ -86,9 +87,15 @@ const I9Verification = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               I-9 Employment Verification Services
             </h1>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-6 text-white/90">
               Professional I-9 document verification for employers. Remote service for E-Verify employers and mobile in-person verification for all businesses. Compliant, fast, and affordable.
             </p>
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-4 mb-8 text-sm">
+              <p className="font-semibold mb-2">⚠️ Important Notice</p>
+              <p className="text-white/90">
+                <strong>This is NOT a notarization service.</strong> I-9 verification is performed as an Authorized Representative on behalf of employers. No notary seal or commission is used in this process, per Pennsylvania Department of State guidance. I am not an attorney and do not provide legal or immigration advice.
+              </p>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
@@ -321,6 +328,15 @@ const I9Verification = () => {
             >
               Call (814) 480-0989
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Legal Disclaimer */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <LegalDisclaimer service="i9" />
           </div>
         </div>
       </section>

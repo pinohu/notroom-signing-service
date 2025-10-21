@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Video, Clock, Shield, Globe, FileCheck, AlertCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import LegalDisclaimer from "@/components/LegalDisclaimer";
 
 const RemoteOnlineNotary = () => {
   const navigate = useNavigate();
@@ -283,6 +284,25 @@ const RemoteOnlineNotary = () => {
         </div>
       </section>
 
+      {/* Subscription Offer */}
+      <section className="py-16 bg-gradient-to-br from-primary/10 to-primary/5">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge className="mb-4">Save Up to 65%</Badge>
+            <h2 className="text-3xl font-bold mb-4">Need Regular Notarizations? Try a Subscription</h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              Monthly plans start at just $99 for 5 sessions ($25 value each). Perfect for attorneys, real estate agents, and businesses with recurring needs.
+            </p>
+            <Button 
+              size="lg" 
+              onClick={() => navigate("/subscriptions")}
+            >
+              View Subscription Plans
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
@@ -297,6 +317,15 @@ const RemoteOnlineNotary = () => {
           >
             Book RON Session - $60
           </Button>
+        </div>
+      </section>
+
+      {/* Legal Disclaimer */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <LegalDisclaimer service="ron" />
+          </div>
         </div>
       </section>
     </Layout>

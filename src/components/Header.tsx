@@ -47,8 +47,10 @@ const Header = () => {
     { label: "Remote Online Notary", path: "/services/remote-online-notary" },
     { label: "Mobile Notary", path: "/services/mobile-notary" },
     { label: "Loan Signing Agent", path: "/services/loan-signing-agent" },
-    { label: "Business Retainer Plans", path: "/services/business-retainer" },
     { label: "Apostille Services", path: "/services/apostille" },
+    { label: "I-9 Verification", path: "/services/i9-verification" },
+    { label: "Registered Office & Business Filings", path: "/services/registered-office" },
+    { label: "Business Retainer Plans", path: "/services/business-retainer" },
   ];
 
   const areas = [
@@ -133,6 +135,12 @@ const Header = () => {
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Pricing
+            </button>
+            <button
+              onClick={() => navigate("/subscriptions")}
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
+              Subscriptions
             </button>
             <button
               onClick={() => navigate("/resources/how-ron-works")}
@@ -230,6 +238,16 @@ const Header = () => {
                   className="text-left text-lg font-medium hover:text-primary transition-colors"
                 >
                   Pricing
+                </button>
+
+                <button
+                  onClick={() => {
+                    navigate("/subscriptions");
+                    setMobileMenuOpen(false);
+                  }}
+                  className="text-left text-lg font-medium hover:text-primary transition-colors"
+                >
+                  Subscriptions
                 </button>
 
                 <button

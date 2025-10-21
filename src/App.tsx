@@ -15,6 +15,7 @@ import I9Verification from "./pages/services/I9Verification";
 import RegisteredOffice from "./pages/services/RegisteredOffice";
 import HowRonWorks from "./pages/resources/HowRonWorks";
 import Pricing from "./pages/Pricing";
+import Subscriptions from "./pages/Subscriptions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import ErieCounty from "./pages/areas/ErieCounty";
@@ -61,6 +62,7 @@ const App = () => (
           
           {/* Other Pages */}
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/subscriptions" element={<Subscriptions />} />
           <Route path="/track-booking" element={<TrackBooking />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />

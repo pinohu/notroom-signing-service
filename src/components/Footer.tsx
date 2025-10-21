@@ -44,13 +44,18 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="/services/business-retainer" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Business Retainer Plans
+                <a href="/services/apostille" className="text-white/70 hover:text-white transition-colors text-sm">
+                  Apostille Services
                 </a>
               </li>
               <li>
-                <a href="/services/apostille" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Apostille Services
+                <a href="/services/i9-verification" className="text-white/70 hover:text-white transition-colors text-sm">
+                  I-9 Verification
+                </a>
+              </li>
+              <li>
+                <a href="/services/registered-office" className="text-white/70 hover:text-white transition-colors text-sm">
+                  Registered Office & Business Filings
                 </a>
               </li>
             </ul>
@@ -110,6 +115,11 @@ const Footer = () => {
               <li>
                 <a href="/pricing" className="text-white/70 hover:text-white transition-colors text-sm">
                   Pricing
+                </a>
+              </li>
+              <li>
+                <a href="/subscriptions" className="text-white/70 hover:text-white transition-colors text-sm">
+                  Subscription Plans
                 </a>
               </li>
               <li>

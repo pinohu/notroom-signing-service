@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Building, FileText, Bell, Shield, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import LegalDisclaimer from "@/components/LegalDisclaimer";
 
 const RegisteredOffice = () => {
   const navigate = useNavigate();
@@ -362,6 +363,15 @@ const RegisteredOffice = () => {
             >
               Call (814) 480-0989
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Legal Disclaimer */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <LegalDisclaimer service="business" />
           </div>
         </div>
       </section>
