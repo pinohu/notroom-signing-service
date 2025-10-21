@@ -5,3 +5,6 @@ verify_jwt = false
 
 [functions.sync-booking-to-suitedash]
 verify_jwt = false
+
+[functions.suitedash-webhook]
+verify_jwt = false

@@ -134,6 +134,11 @@ const TrackBooking = () => {
                     {booking.status.charAt(0).toUpperCase() + booking.status.slice(1)}
                   </Badge>
                 </div>
+                {booking.suitedash_synced_at && (
+                  <CardDescription className="text-xs text-muted-foreground">
+                    Synced to Suitedash {format(new Date(booking.suitedash_synced_at), "PPp")}
+                  </CardDescription>
+                )}
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">

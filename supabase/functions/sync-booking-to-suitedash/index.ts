@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -29,6 +30,9 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const suitedashApiKey = Deno.env.get('SUITEDASH_API_KEY');
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
     
     if (!suitedashApiKey) {
       console.error('SUITEDASH_API_KEY not configured');
@@ -102,10 +106,76 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log('Successfully created contact in Suitedash:', suitedashData);
 
+    const suitedashContactId = suitedashData.id || suitedashData.data?.id;
+
+    // Create a project for this booking
+    let suitedashProjectId = null;
+    try {
+      const projectPayload = {
+        contact_id: suitedashContactId,
+        name: `${serviceLabel} - ${bookingData.name}`,
+        description: `Booking ID: ${bookingData.bookingId}\n\nService: ${serviceLabel}\nPreferred Date: ${bookingData.preferredDate || 'Not specified'}\nPreferred Time: ${bookingData.preferredTime || 'Not specified'}\n\nNotes: ${bookingData.message || 'None'}`,
+        status: 'active',
+        priority: bookingData.urgency === 'same_day' ? 'high' : bookingData.urgency === 'within_24hrs' ? 'high' : 'medium',
+        custom_fields: {
+          booking_id: bookingData.bookingId,
+          service_type: serviceLabel,
+          document_type: bookingData.documentType || 'Not specified',
+          location: bookingData.locationAddress || 'N/A'
+        }
+      };
+
+      console.log('Creating project in Suitedash:', projectPayload);
+
+      const projectResponse = await fetch('https://app.suitedash.com/api/v1/projects', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${suitedashApiKey}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(projectPayload)
+      });
+
+      if (projectResponse.ok) {
+        const projectData = await projectResponse.json();
+        suitedashProjectId = projectData.id || projectData.data?.id;
+        console.log('Successfully created project in Suitedash:', projectData);
+      } else {
+        const errorText = await projectResponse.text();
+        console.error('Failed to create project in Suitedash:', errorText);
+      }
+    } catch (projectError) {
+      console.error('Error creating project:', projectError);
+      // Don't fail the whole sync if project creation fails
+    }
+
+    // Update booking with Suitedash IDs
+    try {
+      const { error: updateError } = await supabase
+        .from('bookings')
+        .update({
+          suitedash_contact_id: suitedashContactId,
+          suitedash_project_id: suitedashProjectId,
+          suitedash_synced_at: new Date().toISOString()
+        })
+        .eq('id', bookingData.bookingId);
+
+      if (updateError) {
+        console.error('Error updating booking with Suitedash IDs:', updateError);
+      } else {
+        console.log('Successfully updated booking with Suitedash IDs');
+      }
+    } catch (dbError) {
+      console.error('Database update error:', dbError);
+      // Don't fail the sync if DB update fails
+    }
+
     return new Response(
       JSON.stringify({ 
         success: true, 
-        suitedashContactId: suitedashData.id || suitedashData.data?.id,
+        suitedashContactId: suitedashContactId,
+        suitedashProjectId: suitedashProjectId,
         message: 'Booking synced to Suitedash successfully' 
       }),
       {

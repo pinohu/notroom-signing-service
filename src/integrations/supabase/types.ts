@@ -29,6 +29,9 @@ export type Database = {
           preferred_time: string | null
           service: string
           status: string
+          suitedash_contact_id: string | null
+          suitedash_project_id: string | null
+          suitedash_synced_at: string | null
           updated_at: string
           urgency: string | null
         }
@@ -46,6 +49,9 @@ export type Database = {
           preferred_time?: string | null
           service: string
           status?: string
+          suitedash_contact_id?: string | null
+          suitedash_project_id?: string | null
+          suitedash_synced_at?: string | null
           updated_at?: string
           urgency?: string | null
         }
@@ -63,6 +69,9 @@ export type Database = {
           preferred_time?: string | null
           service?: string
           status?: string
+          suitedash_contact_id?: string | null
+          suitedash_project_id?: string | null
+          suitedash_synced_at?: string | null
           updated_at?: string
           urgency?: string | null
         }
