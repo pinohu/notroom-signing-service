@@ -68,6 +68,17 @@ const BookingForm = () => {
   const canProceedFromStep1 = formData.name && formData.email && formData.phone;
   const canProceedFromStep2 = formData.service && (formData.service !== "mobile" || formData.location_address);
 
+  const getServiceTitle = () => {
+    const titles: Record<string, string> = {
+      ron: "Book Your Remote Online Notary",
+      mobile: "Book Your Mobile Notary Service",
+      loan: "Book Your Loan Signing Agent",
+      apostille: "Book Your Apostille Service",
+      i9: "Book Your I-9 Verification",
+    };
+    return formData.service ? titles[formData.service] || "Book Your Notary Service" : "Book Your Notary Service";
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -185,10 +196,12 @@ const BookingForm = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Book Your Notary Service
+              {getServiceTitle()}
             </h2>
             <p className="text-xl text-muted-foreground">
-              Complete the form below and we'll contact you within 2 hours to confirm your appointment.
+              {formData.service 
+                ? "Complete the form below and we'll contact you within 2 hours to confirm your appointment."
+                : "Select a service and complete the form below. We'll contact you within 2 hours to confirm your appointment."}
             </p>
           </div>
 
