@@ -37,6 +37,11 @@ const PricingCalculator = () => {
       }
     } else if (service === "loan") {
       basePrice = 175;
+    } else if (service === "i9") {
+      basePrice = 85; // In-person I-9
+      if (urgency === "remote") basePrice = 125; // Remote I-9
+    } else if (service === "registeredOffice") {
+      basePrice = 149; // Annual fee
     }
 
     // Urgency adjustments
@@ -62,7 +67,9 @@ const PricingCalculator = () => {
       ron: "/services/remote-online-notary",
       mobile: "/services/mobile-notary",
       apostille: "/services/apostille",
-      loan: "/services/loan-signing-agent"
+      loan: "/services/loan-signing-agent",
+      i9: "/services/i9-verification",
+      registeredOffice: "/services/registered-office"
     };
     return routes[service as keyof typeof routes] || "/";
   };
@@ -98,6 +105,8 @@ const PricingCalculator = () => {
               <SelectItem value="mobile">Mobile Notary</SelectItem>
               <SelectItem value="apostille">Apostille Service</SelectItem>
               <SelectItem value="loan">Loan Signing</SelectItem>
+              <SelectItem value="i9">I-9 Verification</SelectItem>
+              <SelectItem value="registeredOffice">Registered Office</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -147,9 +156,18 @@ const PricingCalculator = () => {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="flexible">Flexible (Standard Rate)</SelectItem>
-              <SelectItem value="urgent">Within 48 Hours (+25%)</SelectItem>
-              <SelectItem value="same-day">Same Day (+50%)</SelectItem>
+              {service === "i9" ? (
+                <>
+                  <SelectItem value="inPerson">In-Person Verification</SelectItem>
+                  <SelectItem value="remote">Remote Verification</SelectItem>
+                </>
+              ) : (
+                <>
+                  <SelectItem value="flexible">Flexible (Standard Rate)</SelectItem>
+                  <SelectItem value="urgent">Within 48 Hours (+25%)</SelectItem>
+                  <SelectItem value="same-day">Same Day (+50%)</SelectItem>
+                </>
+              )}
             </SelectContent>
           </Select>
         </div>
@@ -207,6 +225,20 @@ const PricingCalculator = () => {
               <li>• PA notary fee: $5-15 per signature</li>
               <li>• Document printing & travel included</li>
               <li>• FedEx return shipping included</li>
+            </>
+          )}
+          {service === "i9" && (
+            <>
+              <li>• Document verification included</li>
+              <li>• E-Verify coordination available</li>
+              <li>• Volume discounts for multiple employees</li>
+            </>
+          )}
+          {service === "registeredOffice" && (
+            <>
+              <li>• PA street address provided</li>
+              <li>• Mail forwarding service</li>
+              <li>• Annual compliance included</li>
             </>
           )}
         </ul>
