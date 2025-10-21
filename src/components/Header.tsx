@@ -73,8 +73,8 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
+          ? "bg-background/98 backdrop-blur-md shadow-lg border-b border-border/50"
+          : "bg-background/80 backdrop-blur-sm shadow-sm"
       }`}
       role="banner"
     >
@@ -96,19 +96,19 @@ const Header = () => {
                 {/* Services Dropdown */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger 
-                    className="text-foreground hover:text-primary focus:text-primary"
+                    className="text-foreground hover:text-primary focus:text-primary font-medium bg-transparent hover:bg-accent/50"
                     aria-label="Services menu"
                   >
                     Services
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-popover border border-border shadow-lg z-50">
-                    <ul className="grid w-[500px] gap-2 p-4 bg-popover" role="menu">
+                  <NavigationMenuContent className="bg-card border border-border shadow-xl z-50">
+                    <ul className="grid w-[500px] gap-2 p-4 bg-card" role="menu">
                       {services.map((service) => (
                         <li key={service.path} role="none">
                           <NavigationMenuLink asChild>
                             <button
                               onClick={() => navigateToPage(service.path)}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left bg-card"
                               role="menuitem"
                             >
                               <div className="text-sm font-medium leading-none">{service.label}</div>
@@ -126,19 +126,19 @@ const Header = () => {
                 {/* Service Areas Dropdown */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger 
-                    className="text-foreground hover:text-primary focus:text-primary"
+                    className="text-foreground hover:text-primary focus:text-primary font-medium bg-transparent hover:bg-accent/50"
                     aria-label="Service areas menu"
                   >
                     Service Areas
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-popover border border-border shadow-lg z-50">
-                    <ul className="grid w-[300px] gap-2 p-4 bg-popover" role="menu">
+                  <NavigationMenuContent className="bg-card border border-border shadow-xl z-50">
+                    <ul className="grid w-[300px] gap-2 p-4 bg-card" role="menu">
                       {areas.map((area) => (
                         <li key={area.path} role="none">
                           <NavigationMenuLink asChild>
                             <button
                               onClick={() => navigateToPage(area.path)}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left bg-card"
                               role="menuitem"
                             >
                               <div className="text-sm font-medium leading-none">{area.label}</div>
