@@ -28,7 +28,7 @@ const Index = () => {
         },
         "telephone": "814-480-0989",
         "email": "support@notroom.com",
-        "priceRange": "$35-$495",
+        "priceRange": "$45-$495",
         "url": "https://notroom.com",
         "areaServed": [
           {

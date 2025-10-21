@@ -53,7 +53,7 @@ const LoanSigningAgent = () => {
     "description": "Professional loan signing agent services in Erie, PA. NNA certified with $100K E&O insurance. Specializing in mortgage closings and real estate transactions.",
     "offers": {
       "@type": "Offer",
-      "price": "150",
+      "price": "175",
       "priceCurrency": "USD"
     }
   };
@@ -87,10 +87,10 @@ const LoanSigningAgent = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Schedule Signing - From $150
+                Schedule Signing - From $175
               </Button>
               <p className="text-sm text-white/80 mt-2">
-                Purchase/Refi $150 | Hybrid/e-Closing $200
+                Purchase/Refi $175 | Hybrid/e-Closing $225
               </p>
               <Button 
                 size="lg" 
@@ -251,7 +251,7 @@ const LoanSigningAgent = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="p-6">
                 <h3 className="text-xl font-bold mb-4">Purchase/Refinance Closing</h3>
-                <div className="text-3xl font-bold mb-4">$150</div>
+                <div className="text-3xl font-bold mb-4">$175</div>
                 <div className="bg-muted/50 p-4 rounded text-sm space-y-2 mb-4">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">PA notary fee (per signature):</span>
@@ -259,7 +259,7 @@ const LoanSigningAgent = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Signing agent service fee:</span>
-                    <span className="font-semibold">$135</span>
+                    <span className="font-semibold">$160</span>
                   </div>
                 </div>
                 <ul className="space-y-2 text-sm">
@@ -284,7 +284,7 @@ const LoanSigningAgent = () => {
 
               <Card className="p-6 border-primary border-2">
                 <h3 className="text-xl font-bold mb-4">Hybrid/e-Closing</h3>
-                <div className="text-3xl font-bold mb-4">$200</div>
+                <div className="text-3xl font-bold mb-4">$225</div>
                 <div className="bg-muted/50 p-4 rounded text-sm space-y-2 mb-4">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">PA notary fee (per signature):</span>
@@ -292,7 +292,7 @@ const LoanSigningAgent = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Digital closing service fee:</span>
-                    <span className="font-semibold">$185</span>
+                    <span className="font-semibold">$210</span>
                   </div>
                 </div>
                 <ul className="space-y-2 text-sm">
@@ -336,7 +336,7 @@ const LoanSigningAgent = () => {
           },
           {
             question: "What's the difference between standard and hybrid/e-closing pricing?",
-            answer: "Standard purchase/refi closings are $150. Hybrid or electronic closings are $200 due to additional technology integration, digital document handling, and electronic signature coordination."
+            answer: "Standard purchase/refi closings are $175. Hybrid or electronic closings are $225 due to additional technology integration, digital document handling, and electronic signature coordination."
           },
           {
             question: "How do title companies set up an account with you?",

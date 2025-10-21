@@ -13,13 +13,13 @@ const Services = () => {
       icon: Monitor,
       badge: "Most Popular",
       title: "Remote Online Notary (RON)",
-      price: "$35",
-      priceDetail: "Standard docs | Real estate $75",
+      price: "$45",
+      priceDetail: "Standard docs | Real estate $95",
       description: "Notarize from anywhere via secure video call. Perfect for powers of attorney, affidavits, contracts, and most legal documents.",
       features: [
         "Available by appointment, including evenings & weekends",
         "Average 5-minute sessions",
-        "Business subscription: $299/mo for 10 acts",
+        "Business subscription: $399/mo for 10 acts",
         "Instant digital delivery"
       ],
       ctaText: "Learn More",
@@ -47,8 +47,8 @@ const Services = () => {
       icon: Home,
       badge: "Certified",
       title: "Loan Signing Agent",
-      price: "$150",
-      priceDetail: "Purchase/refi | Hybrid e-closing $200",
+      price: "$175",
+      priceDetail: "Purchase/refi | Hybrid e-closing $225",
       description: "Certified signing agent for real estate transactions. Working with title companies, lenders, and real estate professionals.",
       features: [
         "NNA certified & background-checked",
@@ -64,8 +64,8 @@ const Services = () => {
       icon: Globe,
       badge: "International",
       title: "Apostille Services",
-      price: "$195",
-      priceDetail: "7-10 days | Expedited $295",
+      price: "$245",
+      priceDetail: "7-10 days | Expedited $395",
       description: "Professional apostille assistance for international documents. We handle PA Department of State submissions.",
       features: [
         "PA state fee $15 included",

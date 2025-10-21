@@ -69,9 +69,9 @@ const RemoteOnlineNotary = () => {
     "description": "Remote online notarization service available by appointment in Pennsylvania. Get documents notarized via secure video call.",
     "offers": {
       "@type": "Offer",
-      "price": "60",
+      "price": "45",
       "priceCurrency": "USD",
-      "description": "$15 notary fee per signature + $45 technology platform fee"
+      "description": "$5 notary fee per signature + $40 technology platform fee"
     }
   };
 
@@ -104,10 +104,10 @@ const RemoteOnlineNotary = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Book RON Session - From $35
+                Book RON Session - From $45
               </Button>
               <p className="text-sm text-white/80 mt-2">
-                Standard docs $35 | Real estate docs $75
+                Standard docs $45 | Real estate docs $95
               </p>
               <Button 
                 size="lg" 
@@ -290,7 +290,7 @@ const RemoteOnlineNotary = () => {
                           <h3 className="font-bold">Standard Notarization</h3>
                           <p className="text-xs text-muted-foreground">Powers of attorney, affidavits, contracts, healthcare directives</p>
                         </div>
-                        <span className="text-2xl font-bold">$35</span>
+                        <span className="text-2xl font-bold">$45</span>
                       </div>
                       <div className="text-xs bg-background/50 p-2 rounded space-y-1">
                         <div className="flex justify-between">
@@ -299,7 +299,7 @@ const RemoteOnlineNotary = () => {
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Technology + admin fee:</span>
-                          <span>$30</span>
+                          <span>$40</span>
                         </div>
                       </div>
                     </div>
@@ -310,7 +310,7 @@ const RemoteOnlineNotary = () => {
                           <h3 className="font-bold">Real Estate Documents</h3>
                           <p className="text-xs text-muted-foreground">Deeds, mortgages, closing packages (higher complexity)</p>
                         </div>
-                        <span className="text-2xl font-bold">$75</span>
+                        <span className="text-2xl font-bold">$95</span>
                       </div>
                       <div className="text-xs bg-background/50 p-2 rounded space-y-1">
                         <div className="flex justify-between">
@@ -319,7 +319,7 @@ const RemoteOnlineNotary = () => {
                         </div>
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Technology + document review:</span>
-                          <span>$60</span>
+                          <span>$80</span>
                         </div>
                       </div>
                     </div>
@@ -341,7 +341,7 @@ const RemoteOnlineNotary = () => {
             <Badge className="mb-4">Business Subscription Available</Badge>
             <h2 className="text-3xl font-bold mb-4">Need Regular Notarizations?</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Business subscription: $299/month for 10 notarization sessions ($29.90 per act). Perfect for attorneys, real estate agents, and businesses with recurring needs.
+              Business subscription: $399/month for 10 notarization sessions ($39.90 per act). Perfect for attorneys, real estate agents, and businesses with recurring needs.
             </p>
             <Button 
               size="lg" 
@@ -373,11 +373,11 @@ const RemoteOnlineNotary = () => {
           },
           {
             question: "Can I notarize multiple documents in one session?",
-            answer: "Yes! You can notarize multiple documents during a single session. Standard documents are $35 per session. Complex real estate documents are $75 due to additional review requirements."
+            answer: "Yes! You can notarize multiple documents during a single session. Standard documents are $45 per session. Complex real estate documents are $95 due to additional review requirements."
           },
           {
             question: "Do you offer subscription plans for frequent RON users?",
-            answer: "Absolutely! We have a business subscription at $299/month for 10 notarization sessions ($29.90 per act). Perfect for attorneys, real estate professionals, and businesses with recurring needs."
+            answer: "Absolutely! We have a business subscription at $399/month for 10 notarization sessions ($39.90 per act). Perfect for attorneys, real estate professionals, and businesses with recurring needs."
           }
         ]}
       />

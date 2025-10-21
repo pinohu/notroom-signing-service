@@ -51,7 +51,7 @@ const Apostille = () => {
     "description": "Professional apostille services for international document authentication in Pennsylvania. Fast, reliable service for documents going abroad.",
     "offers": {
       "@type": "Offer",
-      "price": "175",
+      "price": "245",
       "priceCurrency": "USD"
     }
   };
@@ -85,7 +85,7 @@ const Apostille = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Get Started - From $195
+                Get Started - From $245
               </Button>
               <Button 
                 size="lg" 
@@ -263,7 +263,7 @@ const Apostille = () => {
                       <h3 className="font-bold text-lg">Standard Apostille Service</h3>
                       <p className="text-sm text-muted-foreground">Processing time: 7–10 business days</p>
                     </div>
-                    <span className="text-2xl font-bold">$195</span>
+                    <span className="text-2xl font-bold">$245</span>
                   </div>
                   <div className="bg-muted/50 p-3 rounded text-xs space-y-1">
                     <div className="flex justify-between">
@@ -276,7 +276,7 @@ const Apostille = () => {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Service fee (prep + submission + return):</span>
-                      <span className="font-semibold">$165</span>
+                      <span className="font-semibold">$215</span>
                     </div>
                   </div>
                 </div>
@@ -287,7 +287,7 @@ const Apostille = () => {
                       <h3 className="font-bold text-lg">Expedited Apostille Service</h3>
                       <p className="text-sm text-muted-foreground">Processing time: 1–2 business days</p>
                     </div>
-                    <span className="text-2xl font-bold">$295</span>
+                    <span className="text-2xl font-bold">$395</span>
                   </div>
                   <div className="bg-muted/50 p-3 rounded text-xs space-y-1">
                     <div className="flex justify-between">
@@ -300,7 +300,7 @@ const Apostille = () => {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Service fee (expedited processing + courier):</span>
-                      <span className="font-semibold">$265</span>
+                      <span className="font-semibold">$365</span>
                     </div>
                   </div>
                 </div>

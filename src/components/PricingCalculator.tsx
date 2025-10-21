@@ -15,7 +15,7 @@ const PricingCalculator = () => {
     let basePrice = 0;
     
     if (service === "ron") {
-      basePrice = 35; // Standard notarization
+      basePrice = 45; // Standard notarization
     } else if (service === "mobile") {
       basePrice = 125;
       // Add per document fee for mobile
@@ -27,19 +27,19 @@ const PricingCalculator = () => {
         basePrice += (signers - 1) * 15;
       }
     } else if (service === "apostille") {
-      basePrice = 195; // Standard apostille service
+      basePrice = 245; // Standard apostille service
       // Add per document for apostille
       if (documents > 1) {
-        basePrice += (documents - 1) * 100;
+        basePrice += (documents - 1) * 150;
       }
     } else if (service === "loan") {
-      basePrice = 150;
+      basePrice = 175;
     }
 
     // Urgency adjustments
     if (service === "apostille") {
       if (urgency === "same-day") {
-        basePrice = 295; // Expedited apostille flat rate
+        basePrice = 395; // Expedited apostille flat rate
       }
     } else {
       if (urgency === "same-day") {
@@ -152,8 +152,8 @@ const PricingCalculator = () => {
           {service === "ron" && (
             <>
               <li>• PA notary fee: $5 per signature</li>
-              <li>• Technology platform fee: $30</li>
-              <li>• Real estate docs: $75 total</li>
+              <li>• Technology platform fee: $40</li>
+              <li>• Real estate docs: $95 total</li>
             </>
           )}
           {service === "mobile" && (
