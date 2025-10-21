@@ -28,6 +28,7 @@ import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
 import LogoProcessor from "./pages/LogoProcessor";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
           <Route path="/" element={<Index />} />
           
