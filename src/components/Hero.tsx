@@ -6,6 +6,10 @@ const Hero = () => {
     document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToServices = () => {
+    document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00em0wLTEwYzAtMi4yMS0xLjc5LTQtNC00cy00IDEuNzktNCA0IDEuNzkgNCA0IDQgNC0xLjc5IDQtNHoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-20" />
@@ -15,21 +19,20 @@ const Hero = () => {
         <div className="max-w-5xl mx-auto text-center">
           {/* Eyebrow */}
           <div className="inline-block mb-6 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-            <span className="text-white font-semibold">⭐ Erie's Trusted Notary Service</span>
+            <span className="text-white font-semibold">⭐ Erie's Complete Business Services Hub</span>
           </div>
           
           {/* Main Heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Online or Mobile Notary in Erie, PA
+            Notary, Business Filing & Compliance Services
             <span className="block text-[hsl(var(--action-cyan))] mt-2 text-5xl md:text-6xl lg:text-7xl">
-              Available Now
+              All in One Place
             </span>
           </h1>
           
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed max-w-4xl mx-auto">
-            Get documents notarized in minutes with fast, convenient notary services. Online or mobile 
-            notarization with licensed, bonded, and background-checked Pennsylvania notaries.
+            From remote notarization to LLC formation, apostille services to I-9 verification—all your business, legal, and compliance needs. Licensed, bonded, and Pennsylvania-compliant.
           </p>
           
           {/* CTA Buttons */}
@@ -38,12 +41,12 @@ const Hero = () => {
               size="lg" 
               variant="amber"
               className="text-base sm:text-lg px-6 sm:px-8 py-6 sm:py-7 h-auto shadow-2xl"
-              onClick={scrollToBooking}
-              aria-label="Book online notary service for $60"
+              onClick={scrollToServices}
+              aria-label="View all services"
             >
               <div className="flex flex-col items-center sm:items-start">
-                <span className="text-lg sm:text-xl">📱 Online Notary - $60</span>
-                <span className="text-xs sm:text-sm font-normal opacity-90">$15 notary + $45 platform</span>
+                <span className="text-lg sm:text-xl">View All Services</span>
+                <span className="text-xs sm:text-sm font-normal opacity-90">Notary • Business • Compliance</span>
               </div>
             </Button>
             <Button 
@@ -51,11 +54,11 @@ const Hero = () => {
               variant="amberOutline"
               className="text-base sm:text-lg px-6 sm:px-8 py-6 sm:py-7 h-auto"
               onClick={scrollToBooking}
-              aria-label="Book mobile notary service starting at $125"
+              aria-label="Book a service"
             >
               <div className="flex flex-col items-center sm:items-start">
-                <span className="text-lg sm:text-xl">🚗 Mobile Notary - $125+</span>
-                <span className="text-xs sm:text-sm font-normal opacity-90">We come to you</span>
+                <span className="text-lg sm:text-xl">📅 Book Now</span>
+                <span className="text-xs sm:text-sm font-normal opacity-90">Starting at $35</span>
               </div>
             </Button>
           </div>
@@ -64,19 +67,19 @@ const Hero = () => {
           <div className="flex flex-wrap justify-center gap-6 text-white/90 text-base">
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">PA State Approved Technology</span>
+              <span className="font-medium">PA State Commissioned</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">Licensed & Bonded</span>
+              <span className="font-medium">Registered CROP</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">Background Checked</span>
+              <span className="font-medium">NNA Certified</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">Secure & Encrypted</span>
+              <span className="font-medium">6 Services, 1 Provider</span>
             </div>
           </div>
           

@@ -8,12 +8,12 @@ import {
 const FAQ = () => {
   const faqs = [
     {
-      question: "How much does online notarization cost?",
-      answer: "$60 per document ($15 notary fee + $45 platform/technology fee). Additional documents in the same session: $20 each ($15 notary + $5 admin fee). Includes digital certificate and secure storage. No hidden charges."
+      question: "What services does Notroom offer?",
+      answer: "We provide six core services: (1) Remote Online Notarization ($60), (2) Mobile Notary Service ($125+), (3) Loan Signing Agent ($150), (4) Apostille Services ($175+), (5) I-9 Employment Verification ($35+), and (6) Registered Office & Business Filing services ($99+). All services are fully licensed and Pennsylvania-compliant."
     },
     {
-      question: "Is online notarization legal in Pennsylvania?",
-      answer: "Yes! Pennsylvania permanently authorized remote online notarization in 2020 under Act 97. Documents notarized online through our PA-approved platform are legally valid and accepted nationwide."
+      question: "How much does notarization cost?",
+      answer: "Remote online notary: $60 per document ($15 notary fee + $45 platform fee). Mobile notary: $125+ ($5-15 notary + travel fee). Loan signing: $150 total. Additional documents in the same session have reduced pricing. All pricing is transparent with no hidden fees."
     },
     {
       question: "How fast can you get to my location for mobile service?",

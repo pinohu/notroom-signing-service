@@ -6,31 +6,31 @@ const WhyNotroom = () => {
   const advantages = [
     {
       icon: Zap,
-      title: "Lightning Fast",
-      description: "Average 5-minute wait for online, 2-hour response for mobile. No more waiting days for an appointment."
+      title: "Complete Service Suite",
+      description: "6 essential services: notary (remote & mobile), loan signing, apostille, I-9 verification, and business filings—all in one place."
     },
     {
       icon: Lock,
-      title: "Bank-Level Security",
-      description: "SOC 2 compliant platform, encrypted video, secure ID verification. Your documents are protected."
+      title: "Fully Licensed & Compliant",
+      description: "PA-commissioned notary, registered CROP with PA DOS, NNA-certified signing agent. Compliant with RULONA, Act 97, and 15 Pa.C.S."
     },
     {
       icon: Shield,
-      title: "State Approved",
-      description: "PA Department of State approved technology. Our notaries are commissioned, bonded, and background-checked."
+      title: "Local Expertise, Statewide Reach",
+      description: "Based in Erie with mobile service across PA counties. Remote notarization and business services available statewide."
     },
     {
       icon: DollarSign,
       title: "Transparent Pricing",
-      description: "No hidden fees, no surprises. What you see is what you pay. Satisfaction guaranteed or money back."
+      description: "Clear, itemized pricing for every service. No hidden fees. Know exactly what you'll pay before booking."
     }
   ];
 
   const stats = [
-    { number: "5min", label: "Average Online Wait Time" },
-    { number: "2hr", label: "Mobile Response Time" },
-    { number: "Same-Day", label: "Appointment Scheduling" },
-    { number: "100%", label: "Secure & Encrypted" }
+    { number: "6", label: "Essential Services" },
+    { number: "Same-Day", label: "Availability" },
+    { number: "5", label: "Counties Served" },
+    { number: "100%", label: "PA Compliant" }
   ];
 
   return (
@@ -39,8 +39,11 @@ const WhyNotroom = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Why Erie Trusts Notroom
+            Why Choose Notroom?
           </h2>
+          <p className="text-xl text-muted-foreground">
+            Your one-stop solution for notary, business filing, compliance, and legal document services in Erie, PA
+          </p>
         </div>
 
         {/* Advantages Grid */}

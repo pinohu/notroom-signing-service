@@ -7,23 +7,23 @@ const ProcessTimeline = () => {
     {
       number: "1",
       icon: Calendar,
-      title: "Book Your Appointment",
-      description: "Choose online (instant) or mobile service (select your time). Upload your document and pay securely online.",
+      title: "Choose Your Service",
+      description: "Select from notary (online/mobile), loan signing, apostille, I-9 verification, or business filing. Book online or call (814) 480-0989.",
       time: "Takes 2 minutes"
     },
     {
       number: "2",
       icon: CheckCircle,
-      title: "Meet Your Notary",
-      description: "Join secure video call (online) or welcome our notary to your location (mobile). Show your ID and review documents together.",
-      time: "Takes 10-15 minutes"
+      title: "Prepare & Schedule",
+      description: "For notary: Upload documents. For business: Provide details. For I-9: Coordinate with employer. We guide you through each step.",
+      time: "Simple process"
     },
     {
       number: "3",
       icon: FileText,
-      title: "Receive Notarized Documents",
-      description: "Get your notarized document instantly via email (online) or in-hand (mobile). Digital certificate included for verification.",
-      time: "Instant delivery"
+      title: "Complete & Receive",
+      description: "Notarization via video or mobile. Business filings submitted to PA DOS. I-9 completed. Apostille applications prepared. All deliverables sent promptly.",
+      time: "Fast turnaround"
     }
   ];
 
@@ -40,7 +40,7 @@ const ProcessTimeline = () => {
             How It Works - 3 Simple Steps
           </h2>
           <p className="text-xl text-muted-foreground">
-            Fast and convenient - whether online or in-person
+            Simple process for all our services—notarization, business filing, and compliance
           </p>
         </div>
 

@@ -12,12 +12,12 @@ const FinalCTA = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Heading */}
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Get Your Document Notarized?
+            Ready to Get Started?
           </h2>
           
           {/* Subheading */}
           <p className="text-xl text-white/90 mb-10 leading-relaxed">
-            Fast, professional notary services available now in Erie, PA. Online or mobile - we're here to help.
+            Professional notary, business filing, and compliance services available now in Erie, PA. Remote, mobile, or concierge—we're here to help.
           </p>
 
           {/* CTA Buttons */}
@@ -28,16 +28,16 @@ const FinalCTA = () => {
               className="text-lg px-8 py-7 h-auto shadow-2xl"
               onClick={scrollToBooking}
             >
-              📱 Book Online Now - Starting at $60
+              📅 Book Any Service Now
             </Button>
             
             <Button 
               size="lg" 
               variant="amberOutline"
               className="text-lg px-8 py-7 h-auto"
-              onClick={scrollToBooking}
+              onClick={() => window.location.href = "tel:814-480-0989"}
             >
-              🚗 Schedule Mobile Visit - Starting at $125
+              📞 Call (814) 480-0989
             </Button>
           </div>
 
@@ -45,27 +45,27 @@ const FinalCTA = () => {
           <div className="flex flex-wrap justify-center gap-6 text-white/90 mb-8">
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">No Hidden Fees</span>
+              <span className="font-medium">6 Services Available</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">Licensed & Bonded</span>
+              <span className="font-medium">Fully Licensed</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">PA State Approved</span>
+              <span className="font-medium">Transparent Pricing</span>
             </div>
           </div>
 
           {/* Contact Alternative */}
           <div className="text-white/80 text-lg">
-            Have questions?{" "}
+            Questions about which service you need?{" "}
             <a 
               href="tel:814-480-0989" 
               className="inline-flex items-center gap-2 text-white font-semibold hover:text-[hsl(var(--urgency-amber))] transition-colors underline underline-offset-4"
             >
               <Phone className="w-5 h-5" />
-              Call or text us at (814) 480-0989
+              Call us at (814) 480-0989
             </a>
           </div>
         </div>

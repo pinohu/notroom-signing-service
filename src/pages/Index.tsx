@@ -17,9 +17,9 @@ const Index = () => {
     "@graph": [
       {
         "@type": "ProfessionalService",
-        "name": "Notroom Notary Services",
+        "name": "Notroom - Notary, Business Filing & Compliance Services",
         "image": "https://notroom.com/logo.png",
-        "description": "Professional notary services in Erie, PA. Online and mobile notarization available.",
+        "description": "Complete business services in Erie, PA: notary (remote & mobile), loan signing, apostille, I-9 verification, LLC formation, and registered office services.",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Erie",
@@ -28,9 +28,13 @@ const Index = () => {
         },
         "telephone": "814-480-0989",
         "email": "support@notroom.com",
-        "priceRange": "$60-$150",
+        "priceRange": "$35-$375",
         "url": "https://notroom.com",
         "areaServed": [
+          {
+            "@type": "State",
+            "name": "Pennsylvania"
+          },
           {
             "@type": "City",
             "name": "Erie",
@@ -39,6 +43,15 @@ const Index = () => {
               "name": "Pennsylvania"
             }
           }
+        ],
+        "serviceType": [
+          "Remote Online Notarization",
+          "Mobile Notary Service",
+          "Loan Signing Agent",
+          "Apostille Services",
+          "I-9 Employment Verification",
+          "Business Formation",
+          "Registered Office Provider"
         ]
       },
       {
@@ -60,9 +73,9 @@ const Index = () => {
   return (
     <Layout>
       <SEO
-        title="Notroom | Online & Mobile Notary in Erie, PA | Fast & Convenient"
-        description="Professional notary services in Erie, PA. Get documents notarized online ($60) or mobile service ($125+). Licensed, bonded, and background-checked. Same-day appointments available."
-        keywords="notary Erie PA, online notary, mobile notary, remote notarization, RON, loan signing agent, Erie County notary"
+        title="Notroom | Notary, Business Filing & Compliance Services | Erie, PA"
+        description="Complete business services in Erie, PA: Remote & mobile notary ($60+), loan signing, apostille services, I-9 verification, LLC formation, and registered office. Licensed, bonded, PA-compliant."
+        keywords="notary Erie PA, online notary, mobile notary, loan signing agent, apostille service, I-9 verification, LLC formation Pennsylvania, registered office PA, business filing Erie"
         canonical="https://notroom.com"
         schema={schema}
       />
