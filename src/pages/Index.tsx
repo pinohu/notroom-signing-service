@@ -28,7 +28,7 @@ const Index = () => {
         },
         "telephone": "814-480-0989",
         "email": "support@notroom.com",
-        "priceRange": "$35-$375",
+        "priceRange": "$35-$495",
         "url": "https://notroom.com",
         "areaServed": [
           {
@@ -74,7 +74,7 @@ const Index = () => {
     <Layout>
       <SEO
         title="Notroom | Notary, Business Filing & Compliance Services | Erie, PA"
-        description="Complete business services in Erie, PA: Remote & mobile notary ($60+), loan signing, apostille services, I-9 verification, LLC formation, and registered office. Licensed, bonded, PA-compliant."
+        description="Complete business services in Erie, PA: Remote & mobile notary (from $35), loan signing ($150+), apostille services ($195+), I-9 verification ($85+), LLC formation ($249), and registered office ($149/yr). Licensed, bonded, PA-compliant."
         keywords="notary Erie PA, online notary, mobile notary, loan signing agent, apostille service, I-9 verification, LLC formation Pennsylvania, registered office PA, business filing Erie"
         canonical="https://notroom.com"
         schema={schema}

@@ -13,13 +13,13 @@ const Services = () => {
       icon: Monitor,
       badge: "Most Popular",
       title: "Remote Online Notary (RON)",
-      price: "$60",
-      priceDetail: "From $25 with subscriptions",
+      price: "$35",
+      priceDetail: "Standard docs | Real estate $75",
       description: "Notarize from anywhere via secure video call. Perfect for powers of attorney, affidavits, contracts, and most legal documents.",
       features: [
         "Available by appointment, including evenings & weekends",
         "Average 5-minute sessions",
-        "Subscription plans available",
+        "Business subscription: $299/mo for 10 acts",
         "Instant digital delivery"
       ],
       ctaText: "Learn More",
@@ -48,7 +48,7 @@ const Services = () => {
       badge: "Certified",
       title: "Loan Signing Agent",
       price: "$150",
-      priceDetail: "$15 notary + $135 agent fee",
+      priceDetail: "Purchase/refi | Hybrid e-closing $200",
       description: "Certified signing agent for real estate transactions. Working with title companies, lenders, and real estate professionals.",
       features: [
         "NNA certified & background-checked",
@@ -64,14 +64,14 @@ const Services = () => {
       icon: Globe,
       badge: "International",
       title: "Apostille Services",
-      price: "$175+",
-      priceDetail: "Rush service available",
+      price: "$195",
+      priceDetail: "7-10 days | Expedited $295",
       description: "Professional apostille assistance for international documents. We handle PA Department of State submissions.",
       features: [
+        "PA state fee $15 included",
         "Document notarization included",
-        "Application preparation",
-        "State submission handling",
-        "2-3 week standard processing"
+        "Application prep & submission",
+        "Full-chain authentication $495"
       ],
       ctaText: "Learn More",
       featured: false,
@@ -81,13 +81,13 @@ const Services = () => {
       icon: Users,
       badge: "Employers",
       title: "I-9 Verification",
-      price: "$35+",
-      priceDetail: "Remote & mobile options",
-      description: "DHS-compliant I-9 employment verification. Remote service for E-Verify employers and mobile in-person verification.",
+      price: "$85",
+      priceDetail: "In-person | Remote $125",
+      description: "DHS-compliant I-9 employment verification. In-person at your location or remote for E-Verify employers.",
       features: [
         "E-Verify alternative procedure",
         "Authorized representative service",
-        "Volume discounts available",
+        "Volume discounts: $65-75 each",
         "Same-day appointments"
       ],
       ctaText: "Learn More",
@@ -98,14 +98,14 @@ const Services = () => {
       icon: Building,
       badge: "Business",
       title: "Registered Office & Filings",
-      price: "$99+",
-      priceDetail: "LLC formation from $149",
+      price: "$149",
+      priceDetail: "Annual office | LLC formation $249",
       description: "PA Commercial Registered Office Provider (CROP). LLC formation, annual reports, and business compliance services.",
       features: [
         "Professional registered office address",
-        "Business formation services",
-        "Annual report reminders",
-        "Compliance management"
+        "LLC formation with EIN: $249",
+        "Annual renewals & mail: $99",
+        "Registered CROP with PA DOS"
       ],
       ctaText: "Learn More",
       featured: false,
