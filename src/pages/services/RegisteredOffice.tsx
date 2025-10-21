@@ -31,12 +31,12 @@ const RegisteredOffice = () => {
   ];
 
   const filingServices = [
-    { service: "LLC Formation", desc: "Complete setup with Articles of Organization", price: "$149" },
-    { service: "Corporation Formation", desc: "Articles of Incorporation filing", price: "$199" },
-    { service: "DBA/Fictitious Name", desc: "Trade name registration", price: "$99" },
-    { service: "Annual Report Filing", desc: "On-time PA corporate filings", price: "$79" },
-    { service: "EIN Assistance", desc: "Federal tax ID number application", price: "$49" },
-    { service: "Operating Agreement", desc: "Customized LLC templates", price: "$99" }
+    { service: "LLC Formation", desc: "Form preparation & filing assistance (you provide entity details)", price: "$149", note: "Includes: Certificate of Organization filing with PA DOS. PA state fee $125 additional. We fill forms with your provided information only." },
+    { service: "Corporation Formation", desc: "Articles of Incorporation form assistance", price: "$199", note: "Includes: Filing with PA DOS. PA state fee $125 additional. We prepare forms per your instructions only." },
+    { service: "DBA/Fictitious Name", desc: "Trade name registration filing", price: "$99", note: "Includes: County registration filing. County fees vary $20-70 additional." },
+    { service: "Annual Report Filing", desc: "PA Decennial Report form preparation", price: "$79", note: "PA does not require annual reports for LLCs/Corps. We assist with decennial filings when due." },
+    { service: "EIN Application Assistance", desc: "Federal tax ID (Form SS-4) preparation", price: "$49", note: "We prepare Form SS-4 per your information. IRS filing is free. You remain responsible party." },
+    { service: "Operating Agreement Template", desc: "Standard PA LLC template (your customization)", price: "$99", note: "Pre-drafted template only. We do NOT draft custom provisions or provide legal advice on terms. Consult attorney for custom agreements." }
   ];
 
   const complianceClubFeatures = [
@@ -226,15 +226,22 @@ const RegisteredOffice = () => {
                 <Card key={index} className="p-6">
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="font-bold text-lg">{item.service}</h3>
-                    <span className="text-xl font-bold text-primary">{item.price}+</span>
+                    <span className="text-xl font-bold text-primary">{item.price}</span>
                   </div>
-                  <p className="text-sm text-muted-foreground">{item.desc}</p>
+                  <p className="text-sm text-muted-foreground mb-3">{item.desc}</p>
+                  <p className="text-xs text-muted-foreground border-t pt-3">{item.note}</p>
                 </Card>
               ))}
             </div>
-            <p className="text-sm text-muted-foreground text-center mt-6">
-              * Prices shown are service fees. PA state filing fees are additional and vary by filing type.
-            </p>
+            <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 p-6 rounded-lg mt-8">
+              <h3 className="font-bold text-amber-900 dark:text-amber-100 mb-3">Important Legal Limitations - Not Legal Advice</h3>
+              <ul className="text-sm text-amber-800 dark:text-amber-200 space-y-2">
+                <li>• <strong>Document Preparation Only:</strong> We fill out government forms with information you provide. We do NOT select entity types for you, advise on business structure, or draft custom legal documents.</li>
+                <li>• <strong>No Legal/Tax Advice:</strong> We cannot advise whether an LLC vs. Corporation is better for your situation, draft bylaws/operating agreement provisions, or provide tax guidance. Consult an attorney or CPA.</li>
+                <li>• <strong>State Fees Separate:</strong> All prices are our service fees. PA Department of State filing fees ($125 LLC/Corp, $70 name reservation, $250 foreign entity, etc.) are paid directly to the state and not included in our pricing.</li>
+                <li>• <strong>CROP Status:</strong> We are registered with the PA Department of State Bureau of Corporations as a Commercial Registered Office Provider under 15 Pa.C.S. § 109. A written service contract is required before listing us on any filing.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -265,7 +272,7 @@ const RegisteredOffice = () => {
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Operating agreement template</span>
+                  <span className="text-sm">Standard operating agreement template</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
@@ -372,7 +379,15 @@ const RegisteredOffice = () => {
           },
           {
             question: "What's included in the Business Launch Pack?",
-            answer: "The $349 pack includes LLC formation filing, 1 year of registered office service, EIN application assistance, operating agreement template, compliance calendar, and 2 RON credits—everything you need to launch your business."
+            answer: "The $349 pack (plus $125 PA state fee) includes: LLC formation form preparation and filing, 1 year of CROP registered office service, EIN application assistance, standard operating agreement template, compliance calendar, and 2 RON credits. Note: We prepare forms per your information only—entity selection and custom legal provisions require an attorney."
+          },
+          {
+            question: "Can you help me decide between an LLC and Corporation?",
+            answer: "We cannot advise on entity selection as that constitutes legal/tax advice we're not authorized to provide. We recommend consulting a licensed attorney or CPA to determine which structure best fits your situation. Once you decide, we can assist with the form preparation and filing."
+          },
+          {
+            question: "What are the PA state filing fees?",
+            answer: "PA Department of State charges: $125 for LLC Certificate of Organization, $125 for Corporation Articles of Incorporation, $70 for name reservations, $250 for foreign entity registration. These fees are separate from our service fees and paid directly to the state."
           },
           {
             question: "Do you handle ongoing compliance reminders?",
