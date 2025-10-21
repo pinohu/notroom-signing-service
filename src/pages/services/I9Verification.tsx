@@ -134,32 +134,9 @@ const I9Verification = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Choose Your I-9 Verification Method</h2>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <Card className="p-8">
-              <Video className="w-12 h-12 text-primary mb-4" />
-              <h3 className="text-2xl font-bold mb-4">Remote I-9 Verification</h3>
-              <p className="text-muted-foreground mb-6">
-                For E-Verify employers using DHS alternative procedure. Complete I-9 verification via secure video call.
-              </p>
-              <div className="space-y-3 mb-6">
-                {remoteFeatures.map((feature, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="bg-primary/10 p-4 rounded-lg mb-6">
-                <p className="text-2xl font-bold text-primary">$35-60 per employee</p>
-                <p className="text-sm text-muted-foreground">Volume discounts available</p>
-              </div>
-              <Button className="w-full" onClick={scrollToBooking}>
-                Book Remote I-9
-              </Button>
-            </Card>
-
             <Card className="p-8 border-primary border-2">
               <MapPin className="w-12 h-12 text-primary mb-4" />
-              <h3 className="text-2xl font-bold mb-4">Mobile I-9 Verification</h3>
+              <h3 className="text-2xl font-bold mb-4">In-Person I-9 Verification</h3>
               <p className="text-muted-foreground mb-6">
                 In-person I-9 completion as your authorized representative. We come to your location.
               </p>
@@ -172,11 +149,52 @@ const I9Verification = () => {
                 ))}
               </div>
               <div className="bg-primary/10 p-4 rounded-lg mb-6">
-                <p className="text-2xl font-bold text-primary">$85-150 per employee</p>
-                <p className="text-sm text-muted-foreground">Multi-employee onsite rates</p>
+                <p className="text-2xl font-bold text-primary">$85</p>
+                <p className="text-sm text-muted-foreground">Per employee verification</p>
+                <div className="mt-3 text-xs bg-background/50 p-2 rounded">
+                  <div className="flex justify-between mb-1">
+                    <span className="text-muted-foreground">Verification service:</span>
+                    <span>$85</span>
+                  </div>
+                  <div className="flex justify-between text-muted-foreground text-[10px]">
+                    <span>Includes travel to location + document review</span>
+                  </div>
+                </div>
               </div>
               <Button className="w-full" onClick={scrollToBooking}>
-                Book Mobile I-9
+                Book In-Person I-9
+              </Button>
+            </Card>
+
+            <Card className="p-8">
+              <Video className="w-12 h-12 text-primary mb-4" />
+              <h3 className="text-2xl font-bold mb-4">Remote I-9 (E-Verify Employers)</h3>
+              <p className="text-muted-foreground mb-6">
+                For E-Verify employers using DHS alternative procedure. Complete I-9 verification via secure video call.
+              </p>
+              <div className="space-y-3 mb-6">
+                {remoteFeatures.map((feature, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-sm">{feature}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="bg-primary/10 p-4 rounded-lg mb-6">
+                <p className="text-2xl font-bold text-primary">$125</p>
+                <p className="text-sm text-muted-foreground">Per employee (E-Verify employers only)</p>
+                <div className="mt-3 text-xs bg-background/50 p-2 rounded">
+                  <div className="flex justify-between mb-1">
+                    <span className="text-muted-foreground">Remote verification + technology:</span>
+                    <span>$125</span>
+                  </div>
+                  <div className="flex justify-between text-muted-foreground text-[10px]">
+                    <span>Video platform + document analysis + DHS compliance</span>
+                  </div>
+                </div>
+              </div>
+              <Button className="w-full" onClick={scrollToBooking}>
+                Book Remote I-9
               </Button>
             </Card>
           </div>
@@ -274,40 +292,42 @@ const I9Verification = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Transparent Pricing</h2>
             <div className="grid md:grid-cols-2 gap-6">
+              <Card className="p-6 border-primary border-2">
+                <h3 className="text-xl font-bold mb-4">In-Person I-9 Verification</h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center pb-3 border-b">
+                    <span>Single employee</span>
+                    <span className="font-bold text-lg">$85</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-3 border-b">
+                    <span>2-5 employees (same visit)</span>
+                    <span className="font-bold text-lg">$75 each</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span>6+ employees (same visit)</span>
+                    <span className="font-bold text-lg">$65 each</span>
+                  </div>
+                </div>
+                <p className="text-xs text-muted-foreground mt-4">Travel to your location included for Erie County</p>
+              </Card>
+
               <Card className="p-6">
                 <h3 className="text-xl font-bold mb-4">Remote I-9 (E-Verify Employers)</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-3 border-b">
-                    <span>Single employee</span>
-                    <span className="font-bold text-lg">$35-60</span>
+                    <span>Per employee</span>
+                    <span className="font-bold text-lg">$125</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b">
-                    <span>5-10 employees/month</span>
-                    <span className="font-bold text-lg">$40 each</span>
+                    <span>5+ employees/month</span>
+                    <span className="font-bold text-lg">$110 each</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span>10+ employees/month</span>
-                    <span className="font-bold text-lg">$35 each</span>
+                    <span className="font-bold text-lg">$100 each</span>
                   </div>
                 </div>
-              </Card>
-
-              <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">Mobile I-9 (In-Person)</h3>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center pb-3 border-b">
-                    <span>Single employee onsite</span>
-                    <span className="font-bold text-lg">$85-150</span>
-                  </div>
-                  <div className="flex justify-between items-center pb-3 border-b">
-                    <span>2-5 employees same visit</span>
-                    <span className="font-bold text-lg">$60 each</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span>6+ employees same visit</span>
-                    <span className="font-bold text-lg">$50 each</span>
-                  </div>
-                </div>
+                <p className="text-xs text-muted-foreground mt-4">Requires E-Verify enrollment by employer</p>
               </Card>
             </div>
             <p className="text-sm text-muted-foreground text-center mt-6">
@@ -326,8 +346,8 @@ const I9Verification = () => {
             answer: "Form I-9 is required by federal law for all US employers to verify each employee's identity and work authorization. We act as your authorized representative to complete Section 2 of the I-9 form."
           },
           {
-            question: "What's the difference between remote and mobile I-9 verification?",
-            answer: "Remote I-9 uses video calls and is only available for E-Verify employers using the DHS alternative procedure. Mobile I-9 is in-person verification available for all employers at your location."
+            question: "What's the difference between remote and in-person I-9 verification?",
+            answer: "In-person I-9 ($85) is available for all employers and done at your location. Remote I-9 ($125) uses video calls and is only available for E-Verify employers using the DHS alternative procedure, with added technology costs."
           },
           {
             question: "How quickly can you complete I-9 verification?",

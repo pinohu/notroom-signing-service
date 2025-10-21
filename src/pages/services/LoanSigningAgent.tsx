@@ -87,10 +87,10 @@ const LoanSigningAgent = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Schedule Signing - $150
+                Schedule Signing - From $150
               </Button>
               <p className="text-sm text-white/80 mt-2">
-                $15 notary fee + $135 signing agent service fee
+                Purchase/Refi $150 | Hybrid/e-Closing $200
               </p>
               <Button 
                 size="lg" 
@@ -243,6 +243,82 @@ const LoanSigningAgent = () => {
       </section>
 
 
+      {/* Pricing Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Transparent Pricing</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold mb-4">Purchase/Refinance Closing</h3>
+                <div className="text-3xl font-bold mb-4">$150</div>
+                <div className="bg-muted/50 p-4 rounded text-sm space-y-2 mb-4">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">PA notary fee (per signature):</span>
+                    <span className="font-semibold">$5-15</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Signing agent service fee:</span>
+                    <span className="font-semibold">$135</span>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                    <span>Document printing included</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                    <span>Travel to closing location</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                    <span>Same-day FedEx return shipping</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                    <span>$100K E&O insurance coverage</span>
+                  </li>
+                </ul>
+              </Card>
+
+              <Card className="p-6 border-primary border-2">
+                <h3 className="text-xl font-bold mb-4">Hybrid/e-Closing</h3>
+                <div className="text-3xl font-bold mb-4">$200</div>
+                <div className="bg-muted/50 p-4 rounded text-sm space-y-2 mb-4">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">PA notary fee (per signature):</span>
+                    <span className="font-semibold">$5-15</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Digital closing service fee:</span>
+                    <span className="font-semibold">$185</span>
+                  </div>
+                </div>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                    <span>Electronic document handling</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                    <span>Hybrid wet/e-signing coordination</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                    <span>Digital scan-back service</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                    <span>Platform integration support</span>
+                  </li>
+                </ul>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQs */}
       <FAQSection 
         faqs={[
@@ -252,15 +328,15 @@ const LoanSigningAgent = () => {
           },
           {
             question: "Do you handle all types of loan signings?",
-            answer: "Yes! We handle purchases, refinances, HELOCs, reverse mortgages, commercial loans, and construction loans. Experienced with all major title companies and lenders."
+            answer: "Yes! We handle purchases, refinances, HELOCs, reverse mortgages, commercial loans, and construction loans. We also specialize in hybrid and electronic closings."
           },
           {
             question: "How far in advance should we book a signing?",
             answer: "We can accommodate most signings within 24-48 hours. For rush closings, call us directly at (814) 480-0989."
           },
           {
-            question: "What's included in the $150 signing fee?",
-            answer: "The fee includes notary services ($15 per signature per PA law), document printing, travel throughout Erie County, conducting the signing, same-day FedEx return shipping, and comprehensive E&O insurance coverage."
+            question: "What's the difference between standard and hybrid/e-closing pricing?",
+            answer: "Standard purchase/refi closings are $150. Hybrid or electronic closings are $200 due to additional technology integration, digital document handling, and electronic signature coordination."
           },
           {
             question: "How do title companies set up an account with you?",

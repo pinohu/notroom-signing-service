@@ -104,10 +104,10 @@ const RemoteOnlineNotary = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Book RON Session - $60
+                Book RON Session - From $35
               </Button>
               <p className="text-sm text-white/80 mt-2">
-                $15 notary fee + $45 platform/technology fee
+                Standard docs $35 | Real estate docs $75
               </p>
               <Button 
                 size="lg" 
@@ -281,18 +281,53 @@ const RemoteOnlineNotary = () => {
                 </ul>
               </div>
               <div>
-                <h2 className="text-3xl font-bold mb-6">Accepted Documents</h2>
-                <ul className="space-y-3">
-                  {documents.map((doc, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <FileCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span>{doc}</span>
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-sm text-muted-foreground mt-4">
-                  * PA notary fee: $15 per signature. Additional fees shown are for technology platform, scheduling, secure storage, and administrative services.
-                </p>
+                <h2 className="text-3xl font-bold mb-6">Service Pricing</h2>
+                <Card className="p-6 bg-primary/5">
+                  <div className="space-y-4">
+                    <div className="pb-3 border-b">
+                      <div className="flex justify-between items-start mb-2">
+                        <div>
+                          <h3 className="font-bold">Standard Notarization</h3>
+                          <p className="text-xs text-muted-foreground">Powers of attorney, affidavits, contracts, healthcare directives</p>
+                        </div>
+                        <span className="text-2xl font-bold">$35</span>
+                      </div>
+                      <div className="text-xs bg-background/50 p-2 rounded space-y-1">
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">PA notary fee (per signature):</span>
+                          <span>$5</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Technology + admin fee:</span>
+                          <span>$30</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <div className="flex justify-between items-start mb-2">
+                        <div>
+                          <h3 className="font-bold">Real Estate Documents</h3>
+                          <p className="text-xs text-muted-foreground">Deeds, mortgages, closing packages (higher complexity)</p>
+                        </div>
+                        <span className="text-2xl font-bold">$75</span>
+                      </div>
+                      <div className="text-xs bg-background/50 p-2 rounded space-y-1">
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">PA notary fee (per signature):</span>
+                          <span>$15</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Technology + document review:</span>
+                          <span>$60</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-4">
+                    * All sessions include secure video platform, KBA verification, 10-year recording storage, and digital certificate delivery
+                  </p>
+                </Card>
               </div>
             </div>
           </div>
@@ -303,10 +338,10 @@ const RemoteOnlineNotary = () => {
       <section className="py-16 bg-gradient-to-br from-primary/10 to-primary/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4">Save Up to 65%</Badge>
-            <h2 className="text-3xl font-bold mb-4">Need Regular Notarizations? Try a Subscription</h2>
+            <Badge className="mb-4">Business Subscription Available</Badge>
+            <h2 className="text-3xl font-bold mb-4">Need Regular Notarizations?</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Monthly plans start at just $99 for 5 sessions ($25 value each). Perfect for attorneys, real estate agents, and businesses with recurring needs.
+              Business subscription: $299/month for 10 notarization sessions ($29.90 per act). Perfect for attorneys, real estate agents, and businesses with recurring needs.
             </p>
             <Button 
               size="lg" 
@@ -338,11 +373,11 @@ const RemoteOnlineNotary = () => {
           },
           {
             question: "Can I notarize multiple documents in one session?",
-            answer: "Yes! You can notarize multiple documents during a single session. The $60 fee covers the session and all documents signed during that time."
+            answer: "Yes! You can notarize multiple documents during a single session. Standard documents are $35 per session. Complex real estate documents are $75 due to additional review requirements."
           },
           {
             question: "Do you offer subscription plans for frequent RON users?",
-            answer: "Absolutely! We have subscription plans starting at $99/month for 5 sessions ($25 value each). Perfect for attorneys, real estate professionals, and businesses with recurring needs."
+            answer: "Absolutely! We have a business subscription at $299/month for 10 notarization sessions ($29.90 per act). Perfect for attorneys, real estate professionals, and businesses with recurring needs."
           }
         ]}
       />
@@ -359,7 +394,7 @@ const RemoteOnlineNotary = () => {
             onClick={scrollToBooking}
             className="bg-white text-primary hover:bg-white/90"
           >
-            Book RON Session - $60
+            Book RON Session - From $35
           </Button>
         </div>
       </section>

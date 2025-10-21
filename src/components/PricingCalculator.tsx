@@ -15,7 +15,7 @@ const PricingCalculator = () => {
     let basePrice = 0;
     
     if (service === "ron") {
-      basePrice = 60;
+      basePrice = 35; // Standard notarization
     } else if (service === "mobile") {
       basePrice = 125;
       // Add per document fee for mobile
@@ -27,20 +27,26 @@ const PricingCalculator = () => {
         basePrice += (signers - 1) * 15;
       }
     } else if (service === "apostille") {
-      basePrice = 100;
+      basePrice = 195; // Standard apostille service
       // Add per document for apostille
       if (documents > 1) {
-        basePrice += (documents - 1) * 75;
+        basePrice += (documents - 1) * 100;
       }
     } else if (service === "loan") {
       basePrice = 150;
     }
 
-    // Urgency multiplier
-    if (urgency === "same-day") {
-      basePrice *= 1.5;
-    } else if (urgency === "urgent") {
-      basePrice *= 1.25;
+    // Urgency adjustments
+    if (service === "apostille") {
+      if (urgency === "same-day") {
+        basePrice = 295; // Expedited apostille flat rate
+      }
+    } else {
+      if (urgency === "same-day") {
+        basePrice *= 1.5;
+      } else if (urgency === "urgent") {
+        basePrice *= 1.25;
+      }
     }
 
     return Math.round(basePrice);
@@ -145,30 +151,30 @@ const PricingCalculator = () => {
         <ul className="text-xs text-muted-foreground space-y-1">
           {service === "ron" && (
             <>
-              <li>• Secure video notarization session</li>
-              <li>• Digital document delivery</li>
-              <li>• Legal in all 50 states</li>
+              <li>• PA notary fee: $5 per signature</li>
+              <li>• Technology platform fee: $30</li>
+              <li>• Real estate docs: $75 total</li>
             </>
           )}
           {service === "mobile" && (
             <>
-              <li>• Travel to your location</li>
-              <li>• Professional notary service</li>
+              <li>• PA notary fee: $5-15 per signature</li>
+              <li>• Travel service fee included</li>
               <li>• Up to 3 documents included</li>
             </>
           )}
           {service === "apostille" && (
             <>
-              <li>• Document notarization</li>
-              <li>• Apostille filing with PA Dept of State</li>
-              <li>• Return shipping included</li>
+              <li>• PA state apostille fee: $15</li>
+              <li>• Document notarization included</li>
+              <li>• Service & return shipping included</li>
             </>
           )}
           {service === "loan" && (
             <>
-              <li>• Complete loan document package</li>
-              <li>• Travel to closing location</li>
-              <li>• Scan-back service included</li>
+              <li>• PA notary fee: $5-15 per signature</li>
+              <li>• Document printing & travel included</li>
+              <li>• FedEx return shipping included</li>
             </>
           )}
         </ul>

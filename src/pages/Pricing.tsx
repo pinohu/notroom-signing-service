@@ -31,9 +31,9 @@ const Pricing = () => {
           <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">Remote Online Notary</h3>
-              <div className="text-4xl font-bold mb-4">$60</div>
-              <p className="text-muted-foreground mb-2">Per notarization session</p>
-              <p className="text-sm text-muted-foreground mb-6">$15 notary fee + $45 platform/technology fee</p>
+              <div className="text-4xl font-bold mb-4">$35</div>
+              <p className="text-muted-foreground mb-2">Standard documents</p>
+              <p className="text-sm text-muted-foreground mb-6">$5 notary fee + $30 platform/technology fee</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -45,7 +45,7 @@ const Pricing = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Digital certificate included</span>
+                  <span className="text-sm">Real estate docs $75</span>
                 </li>
               </ul>
               <Button className="w-full" onClick={() => navigate("/services/remote-online-notary")}>Learn More</Button>
@@ -106,7 +106,7 @@ const Pricing = () => {
               <ul className="space-y-3 text-sm">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>RON Services:</strong> $15 per signature (maximum allowed by PA law) + $45 technology platform fee for secure video infrastructure, scheduling system, document storage, and administrative services.</span>
+                  <span><strong>RON Services:</strong> $5-15 per signature (maximum allowed by PA law) + $30-60 technology platform fee for secure video infrastructure, scheduling system, document storage, and administrative services. Standard docs $35 total, real estate docs $75 total.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
@@ -114,7 +114,11 @@ const Pricing = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Loan Signing Agent:</strong> $15 notary fee per signature + $135 signing agent service fee (covering document review, printing, travel, scanning, and overnight return shipping).</span>
+                  <span><strong>Loan Signing Agent:</strong> $5-15 notary fee per signature + $135-185 signing agent service fee (covering document review, printing, travel, scanning, and overnight return shipping). Standard closings $150, hybrid/e-closings $200.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Apostille Services:</strong> PA Dept of State fee $15 + notarization $5-15 + service fees. Standard (7-10 days) $195, Expedited (1-2 days) $295, Full-chain authentication $495.</span>
                 </li>
               </ul>
               <p className="text-xs text-muted-foreground mt-4 text-center">

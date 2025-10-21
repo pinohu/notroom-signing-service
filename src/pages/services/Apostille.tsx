@@ -85,7 +85,7 @@ const Apostille = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Get Started - $175
+                Get Started - From $195
               </Button>
               <Button 
                 size="lg" 
@@ -256,38 +256,105 @@ const Apostille = () => {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8">Transparent Pricing</h2>
             <Card className="p-8">
-              <div className="space-y-4">
-                <div className="flex justify-between items-center pb-4 border-b">
-                  <div>
-                    <h3 className="font-bold">Document Notarization + Apostille Assistance</h3>
-                    <p className="text-sm text-muted-foreground">Includes notarization + application preparation + submission assistance</p>
+              <div className="space-y-6">
+                <div className="pb-4 border-b">
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <h3 className="font-bold text-lg">Standard Apostille Service</h3>
+                      <p className="text-sm text-muted-foreground">Processing time: 7–10 business days</p>
+                    </div>
+                    <span className="text-2xl font-bold">$195</span>
                   </div>
-                  <span className="text-2xl font-bold">$175</span>
+                  <div className="bg-muted/50 p-3 rounded text-xs space-y-1">
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">PA Dept of State apostille fee:</span>
+                      <span className="font-semibold">$15</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Notarization (if required):</span>
+                      <span className="font-semibold">$5-15</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Service fee (prep + submission + return):</span>
+                      <span className="font-semibold">$165</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center pb-4 border-b">
-                  <div>
-                    <h3 className="font-bold">Expedited Service</h3>
-                    <p className="text-sm text-muted-foreground">Processing time: 2-3 business days</p>
+                
+                <div className="pb-4 border-b">
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <h3 className="font-bold text-lg">Expedited Apostille Service</h3>
+                      <p className="text-sm text-muted-foreground">Processing time: 1–2 business days</p>
+                    </div>
+                    <span className="text-2xl font-bold">$295</span>
                   </div>
-                  <span className="text-xl font-bold">$275</span>
+                  <div className="bg-muted/50 p-3 rounded text-xs space-y-1">
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">PA Dept of State apostille fee:</span>
+                      <span className="font-semibold">$15</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Notarization (if required):</span>
+                      <span className="font-semibold">$5-15</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Service fee (expedited processing + courier):</span>
+                      <span className="font-semibold">$265</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center pb-4 border-b">
-                  <div>
-                    <h3 className="font-bold">Rush Service</h3>
-                    <p className="text-sm text-muted-foreground">Processing time: 24 hours</p>
+
+                <div className="pb-4 border-b">
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <h3 className="font-bold text-lg">Full-Chain Authentication</h3>
+                      <p className="text-sm text-muted-foreground">For non-Hague countries (PA → US Dept of State → Embassy)</p>
+                    </div>
+                    <span className="text-2xl font-bold">$495</span>
                   </div>
-                  <span className="text-xl font-bold">$375</span>
+                  <div className="bg-muted/50 p-3 rounded text-xs space-y-1">
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">PA Dept of State certification:</span>
+                      <span className="font-semibold">$15</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">US Dept of State authentication:</span>
+                      <span className="font-semibold">$20</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Embassy legalization (varies):</span>
+                      <span className="font-semibold">$25-50</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Service fee (complete chain coordination):</span>
+                      <span className="font-semibold">$385</span>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <h3 className="font-bold">Additional Documents</h3>
-                    <p className="text-sm text-muted-foreground">When processed together</p>
+
+                <div className="pb-4 border-b">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="font-bold">Translation + Notarization Add-on</h3>
+                      <p className="text-sm text-muted-foreground">Certified translation with notarized affidavit</p>
+                    </div>
+                    <span className="text-xl font-bold">+$75</span>
                   </div>
-                  <span className="text-xl font-bold">$50</span>
+                </div>
+
+                <div>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h3 className="font-bold">Courier Return (Overnight)</h3>
+                      <p className="text-sm text-muted-foreground">FedEx overnight shipping to your address</p>
+                    </div>
+                    <span className="text-xl font-bold">+$45</span>
+                  </div>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground mt-6 text-center">
-                * Prices include notarization ($5-15 per signature per PA law), application preparation, and submission assistance. PA Department of State processing fees and shipping are additional. Processing times reflect PA DOS typical turnaround.
+              <p className="text-sm text-muted-foreground mt-6 text-center border-t pt-4">
+                All pricing includes government fees + service fees. No hidden charges. Processing times are typical turnaround from PA Department of State.
               </p>
             </Card>
           </div>
@@ -304,7 +371,7 @@ const Apostille = () => {
           },
           {
             question: "How long does the apostille process take?",
-            answer: "Standard processing through PA Department of State takes 2-3 weeks. We offer expedited service (2-3 business days) for $275 and rush service (24 hours) for $375."
+            answer: "Standard processing takes 7-10 business days ($195). Expedited service takes 1-2 business days ($295). Full-chain authentication for non-Hague countries takes 3-6 weeks ($495)."
           },
           {
             question: "Do all documents need to be notarized before apostille?",
@@ -316,7 +383,7 @@ const Apostille = () => {
           },
           {
             question: "How much does apostille service cost?",
-            answer: "Our complete service starts at $175 (standard 2-3 weeks) and includes document notarization, application preparation, and submission assistance. Expedited and rush options available."
+            answer: "Our complete service starts at $195 (standard 7-10 business days) which includes PA state fees ($15), notarization ($5-15), and service fees. Expedited service (1-2 days) is $295. Full-chain authentication for non-Hague countries is $495."
           }
         ]}
       />
