@@ -3,9 +3,12 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Calculator, DollarSign } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const PricingCalculator = () => {
+  const navigate = useNavigate();
   const [service, setService] = useState("ron");
   const [documents, setDocuments] = useState(1);
   const [signers, setSigners] = useState(1);
@@ -53,6 +56,28 @@ const PricingCalculator = () => {
   };
 
   const price = calculatePrice();
+
+  const getServiceRoute = () => {
+    const routes = {
+      ron: "/services/remote-online-notary",
+      mobile: "/services/mobile-notary",
+      apostille: "/services/apostille",
+      loan: "/services/loan-signing-agent"
+    };
+    return routes[service as keyof typeof routes] || "/";
+  };
+
+  const scrollToBooking = () => {
+    if (service === "ron" || service === "mobile") {
+      navigate("/");
+      setTimeout(() => {
+        const element = document.getElementById("booking-form");
+        element?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      navigate(getServiceRoute());
+    }
+  };
 
   return (
     <Card className="p-6 bg-gradient-to-br from-primary/5 to-accent/5 border-2 border-primary/20">
@@ -131,7 +156,7 @@ const PricingCalculator = () => {
       </div>
 
       <div className="border-t-2 border-primary/20 pt-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-sm text-muted-foreground mb-1">Estimated Total</p>
             <div className="flex items-center gap-2">
@@ -144,6 +169,13 @@ const PricingCalculator = () => {
             <p className="text-xs text-muted-foreground">Final price confirmed at booking</p>
           </div>
         </div>
+        <Button 
+          onClick={scrollToBooking} 
+          className="w-full"
+          size="lg"
+        >
+          Book This Service
+        </Button>
       </div>
 
       <div className="mt-4 p-4 bg-background rounded-lg">
