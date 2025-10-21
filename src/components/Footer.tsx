@@ -1,8 +1,15 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import notroomLogo from "@/assets/notroom-logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+
+  const navigateToPage = (path: string) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <footer className="bg-[hsl(var(--neutral-dark))] text-white">
@@ -30,34 +37,34 @@ const Footer = () => {
             <h4 className="font-bold mb-4 text-lg">Services</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/services/remote-online-notary" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/services/remote-online-notary")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Remote Online Notary
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/services/mobile-notary" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/services/mobile-notary")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Mobile Notary Erie PA
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/services/loan-signing-agent" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/services/loan-signing-agent")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Loan Signing Agent
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/services/apostille" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/services/apostille")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Apostille Services
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/services/i9-verification" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/services/i9-verification")} className="text-white/70 hover:text-white transition-colors text-sm">
                   I-9 Verification
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/services/registered-office" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/services/registered-office")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Registered Office & Business Filings
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -67,34 +74,34 @@ const Footer = () => {
             <h4 className="font-bold mb-4 text-lg">Service Areas</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/areas/erie-county" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/erie-county")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Erie County
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/areas/crawford-county" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/crawford-county")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Crawford County
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/areas/warren-county" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/warren-county")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Warren County
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/areas/mercer-county" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/mercer-county")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Mercer County
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/areas/venango-county" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/venango-county")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Venango County
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/areas/statewide-online" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/statewide-online")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Statewide Online
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -104,29 +111,29 @@ const Footer = () => {
             <h4 className="font-bold mb-4 text-lg">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <a href="/resources/how-ron-works" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/resources/how-ron-works")} className="text-white/70 hover:text-white transition-colors text-sm">
                   How RON Works
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/#faq" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => { navigate("/"); setTimeout(() => document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" }), 100); }} className="text-white/70 hover:text-white transition-colors text-sm">
                   FAQ
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/pricing" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/pricing")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Pricing
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/subscriptions" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/subscriptions")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Subscription Plans
-                </a>
+                </button>
               </li>
               <li>
-                <a href="/track-booking" className="text-white/70 hover:text-white transition-colors text-sm">
+                <button onClick={() => navigateToPage("/track-booking")} className="text-white/70 hover:text-white transition-colors text-sm">
                   Track Booking
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -189,12 +196,12 @@ const Footer = () => {
 
             {/* Legal Links */}
             <div className="flex gap-6">
-              <a href="/privacy-policy" className="text-white/60 hover:text-white text-sm transition-colors">
+              <button onClick={() => navigateToPage("/privacy-policy")} className="text-white/60 hover:text-white text-sm transition-colors">
                 Privacy Policy
-              </a>
-              <a href="/terms-of-service" className="text-white/60 hover:text-white text-sm transition-colors">
+              </button>
+              <button onClick={() => navigateToPage("/terms-of-service")} className="text-white/60 hover:text-white text-sm transition-colors">
                 Terms of Service
-              </a>
+              </button>
             </div>
 
             {/* Badges */}

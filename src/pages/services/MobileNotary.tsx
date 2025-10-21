@@ -5,6 +5,11 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Clock, Shield, Home, Building, Hospital, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SocialProof from "@/components/marketing/SocialProof";
+import GuaranteeSection from "@/components/marketing/GuaranteeSection";
+import TrustIndicators from "@/components/marketing/TrustIndicators";
+import UrgencyBanner from "@/components/marketing/UrgencyBanner";
+import FAQSection from "@/components/marketing/FAQSection";
 
 const MobileNotary = () => {
   const navigate = useNavigate();
@@ -94,6 +99,16 @@ const MobileNotary = () => {
                 Call (814) 480-0989
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Indicators */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto space-y-6">
+            <TrustIndicators />
+            <UrgencyBanner type="booking" message="Same-day mobile appointments available - call now!" />
           </div>
         </div>
       </section>
@@ -230,6 +245,38 @@ const MobileNotary = () => {
           </div>
         </div>
       </section>
+
+      {/* Social Proof */}
+      <SocialProof service="mobile" />
+
+      {/* Guarantee Section */}
+      <GuaranteeSection />
+
+      {/* FAQs */}
+      <FAQSection 
+        faqs={[
+          {
+            question: "How far will you travel?",
+            answer: "We serve all of Erie County and surrounding areas including Crawford, Warren, Mercer, and Venango counties. Mileage fees apply outside Erie city limits at $1.50 per mile."
+          },
+          {
+            question: "Do you offer same-day mobile notary service?",
+            answer: "Yes! Most mobile appointments are available same-day or next-day. Call (814) 480-0989 for urgent scheduling."
+          },
+          {
+            question: "How much does mobile notary service cost?",
+            answer: "Base price is $125 which includes $5-15 notary fee per signature (PA law), $100 travel service fee, and $10 admin fee. Additional charges may apply for mileage and after-hours service."
+          },
+          {
+            question: "Can you come to a hospital or nursing home?",
+            answer: "Absolutely. We provide compassionate notary service at hospitals, nursing homes, and assisted living facilities throughout our service area."
+          },
+          {
+            question: "What documents can you notarize during a mobile visit?",
+            answer: "We can notarize virtually any document that requires notarization including powers of attorney, affidavits, contracts, real estate documents, loan modifications, and more."
+          }
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">

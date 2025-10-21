@@ -5,6 +5,9 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { FileText, Clock, Shield, CheckCircle, Award, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SocialProof from "@/components/marketing/SocialProof";
+import TrustIndicators from "@/components/marketing/TrustIndicators";
+import FAQSection from "@/components/marketing/FAQSection";
 
 const LoanSigningAgent = () => {
   const navigate = useNavigate();
@@ -98,6 +101,15 @@ const LoanSigningAgent = () => {
                 Call (814) 480-0989
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Indicators */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <TrustIndicators />
           </div>
         </div>
       </section>
@@ -229,6 +241,35 @@ const LoanSigningAgent = () => {
           </div>
         </div>
       </section>
+
+      {/* Social Proof */}
+      <SocialProof service="loan" />
+
+      {/* FAQs */}
+      <FAQSection 
+        faqs={[
+          {
+            question: "What makes you different from other signing agents?",
+            answer: "We're NNA certified with $100K E&O insurance, MISMO compliant, and maintain a 99.8% on-time performance rate. We treat every signing with professionalism and understand the importance of closing deadlines."
+          },
+          {
+            question: "Do you handle all types of loan signings?",
+            answer: "Yes! We handle purchases, refinances, HELOCs, reverse mortgages, commercial loans, and construction loans. Experienced with all major title companies and lenders."
+          },
+          {
+            question: "How far in advance should we book a signing?",
+            answer: "We can accommodate most signings within 24-48 hours. For rush closings, call us directly at (814) 480-0989."
+          },
+          {
+            question: "What's included in the $150 signing fee?",
+            answer: "The fee includes notary services ($15 per signature per PA law), document printing, travel throughout Erie County, conducting the signing, same-day FedEx return shipping, and comprehensive E&O insurance coverage."
+          },
+          {
+            question: "How do title companies set up an account with you?",
+            answer: "Contact us to set up a signing agent account. We'll provide all necessary documentation including W-9, E&O certificate, background check, and NNA certification."
+          }
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">

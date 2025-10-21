@@ -5,6 +5,9 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building2, Users, Clock, TrendingDown, CheckCircle, Zap } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import SocialProof from "@/components/marketing/SocialProof";
+import TrustIndicators from "@/components/marketing/TrustIndicators";
+import FAQSection from "@/components/marketing/FAQSection";
 
 const BusinessRetainer = () => {
   const navigate = useNavigate();
@@ -97,6 +100,15 @@ const BusinessRetainer = () => {
                 Call (814) 480-0989
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Indicators */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <TrustIndicators />
           </div>
         </div>
       </section>
@@ -269,6 +281,35 @@ const BusinessRetainer = () => {
           </div>
         </div>
       </section>
+
+      {/* Social Proof */}
+      <SocialProof service="business" />
+
+      {/* FAQs */}
+      <FAQSection 
+        faqs={[
+          {
+            question: "How do prepaid notarization packages work?",
+            answer: "You purchase a monthly plan with a set number of notarizations included. Unused notarizations expire at contract end. Pennsylvania notary fee limits ($5-15 per signature) still apply to each individual notarial act."
+          },
+          {
+            question: "Can multiple people in our company use the retainer?",
+            answer: "Yes! All employees at your company can use the notarization credits included in your plan. Your dedicated account manager helps coordinate scheduling."
+          },
+          {
+            question: "What happens if we need more notarizations than our plan includes?",
+            answer: "Additional notarizations beyond your plan are available at discounted retainer rates. We can also upgrade your plan mid-contract if your needs increase."
+          },
+          {
+            question: "Is there a contract term requirement?",
+            answer: "Plans are month-to-month or annual. Annual contracts receive additional discounts. No long-term commitment required—cancel anytime with 30 days notice."
+          },
+          {
+            question: "What types of businesses benefit most from retainer plans?",
+            answer: "Law firms, real estate agencies, title companies, financial services firms, HR departments, and healthcare facilities with recurring notarization needs see the most value and cost savings."
+          }
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">

@@ -6,6 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Users, Video, MapPin, Building2, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
+import SocialProof from "@/components/marketing/SocialProof";
+import TrustIndicators from "@/components/marketing/TrustIndicators";
+import FAQSection from "@/components/marketing/FAQSection";
 
 const I9Verification = () => {
   const navigate = useNavigate();
@@ -113,6 +116,15 @@ const I9Verification = () => {
                 Call (814) 480-0989
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Indicators */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <TrustIndicators />
           </div>
         </div>
       </section>
@@ -304,6 +316,35 @@ const I9Verification = () => {
           </div>
         </div>
       </section>
+
+      {/* Social Proof */}
+      <SocialProof service="i9" />
+
+      {/* FAQs */}
+      <FAQSection 
+        faqs={[
+          {
+            question: "What is I-9 verification and why do I need it?",
+            answer: "Form I-9 is required by federal law for all US employers to verify each employee's identity and work authorization. We act as your authorized representative to complete Section 2 of the I-9 form."
+          },
+          {
+            question: "What's the difference between remote and mobile I-9 verification?",
+            answer: "Remote I-9 uses video calls and is only available for E-Verify employers using the DHS alternative procedure. Mobile I-9 is in-person verification available for all employers at your location."
+          },
+          {
+            question: "How quickly can you complete I-9 verification?",
+            answer: "Most verifications are completed within 15 minutes per employee. Same-day and next-day appointments are available for both remote and mobile services."
+          },
+          {
+            question: "Do you offer volume discounts for multiple employees?",
+            answer: "Yes! Volume discounts are available starting at 5 employees per month for remote verification, and for multiple employees during the same mobile visit."
+          },
+          {
+            question: "Is this service compliant with DHS requirements?",
+            answer: "Absolutely. We follow all Department of Homeland Security guidelines for I-9 verification. Note: This is NOT a notarization service—it's performed as an authorized representative per DHS rules."
+          }
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">

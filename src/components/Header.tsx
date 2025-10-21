@@ -44,6 +44,12 @@ const Header = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const navigateToPage = (path: string) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setMobileMenuOpen(false);
+  };
+
   const services = [
     { label: "Remote Online Notary", path: "/services/remote-online-notary" },
     { label: "Mobile Notary", path: "/services/mobile-notary" },
@@ -95,7 +101,7 @@ const Header = () => {
                         <li key={service.path}>
                           <NavigationMenuLink asChild>
                             <button
-                              onClick={() => navigate(service.path)}
+                              onClick={() => navigateToPage(service.path)}
                               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left"
                             >
                               <div className="text-sm font-medium leading-none">{service.label}</div>
@@ -117,7 +123,7 @@ const Header = () => {
                         <li key={area.path}>
                           <NavigationMenuLink asChild>
                             <button
-                              onClick={() => navigate(area.path)}
+                              onClick={() => navigateToPage(area.path)}
                               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left"
                             >
                               <div className="text-sm font-medium leading-none">{area.label}</div>
@@ -132,19 +138,19 @@ const Header = () => {
             </NavigationMenu>
 
             <button
-              onClick={() => navigate("/pricing")}
+              onClick={() => navigateToPage("/pricing")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Pricing
             </button>
             <button
-              onClick={() => navigate("/subscriptions")}
+              onClick={() => navigateToPage("/subscriptions")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Subscriptions
             </button>
             <button
-              onClick={() => navigate("/resources/how-ron-works")}
+              onClick={() => navigateToPage("/resources/how-ron-works")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               How RON Works
@@ -156,7 +162,7 @@ const Header = () => {
               FAQ
             </button>
             <button
-              onClick={() => navigate("/track-booking")}
+              onClick={() => navigateToPage("/track-booking")}
               className="text-foreground hover:text-primary transition-colors font-medium"
             >
               Track Booking
@@ -200,10 +206,7 @@ const Header = () => {
                     {services.map((service) => (
                       <button
                         key={service.path}
-                        onClick={() => {
-                          navigate(service.path);
-                          setMobileMenuOpen(false);
-                        }}
+                        onClick={() => navigateToPage(service.path)}
                         className="text-left text-sm hover:text-primary transition-colors"
                       >
                         {service.label}
@@ -219,10 +222,7 @@ const Header = () => {
                     {areas.map((area) => (
                       <button
                         key={area.path}
-                        onClick={() => {
-                          navigate(area.path);
-                          setMobileMenuOpen(false);
-                        }}
+                        onClick={() => navigateToPage(area.path)}
                         className="text-left text-sm hover:text-primary transition-colors"
                       >
                         {area.label}
@@ -232,30 +232,21 @@ const Header = () => {
                 </div>
 
                 <button
-                  onClick={() => {
-                    navigate("/pricing");
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={() => navigateToPage("/pricing")}
                   className="text-left text-lg font-medium hover:text-primary transition-colors"
                 >
                   Pricing
                 </button>
 
                 <button
-                  onClick={() => {
-                    navigate("/subscriptions");
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={() => navigateToPage("/subscriptions")}
                   className="text-left text-lg font-medium hover:text-primary transition-colors"
                 >
                   Subscriptions
                 </button>
 
                 <button
-                  onClick={() => {
-                    navigate("/resources/how-ron-works");
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={() => navigateToPage("/resources/how-ron-works")}
                   className="text-left text-lg font-medium hover:text-primary transition-colors"
                 >
                   How RON Works
@@ -269,10 +260,7 @@ const Header = () => {
                 </button>
 
                 <button
-                  onClick={() => {
-                    navigate("/track-booking");
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={() => navigateToPage("/track-booking")}
                   className="text-left text-lg font-medium hover:text-primary transition-colors"
                 >
                   Track Booking

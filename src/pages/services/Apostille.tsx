@@ -6,6 +6,10 @@ import { Badge } from "@/components/ui/badge";
 import { Globe, FileCheck, Clock, CheckCircle, AlertCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
+import SocialProof from "@/components/marketing/SocialProof";
+import TrustIndicators from "@/components/marketing/TrustIndicators";
+import UrgencyBanner from "@/components/marketing/UrgencyBanner";
+import FAQSection from "@/components/marketing/FAQSection";
 
 const Apostille = () => {
   const navigate = useNavigate();
@@ -92,6 +96,16 @@ const Apostille = () => {
                 Call (814) 480-0989
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Indicators */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto space-y-6">
+            <TrustIndicators />
+            <UrgencyBanner type="seasonal" message="International document rush? We offer 24-hour expedited processing!" />
           </div>
         </div>
       </section>
@@ -279,6 +293,35 @@ const Apostille = () => {
           </div>
         </div>
       </section>
+
+      {/* Social Proof */}
+      <SocialProof service="apostille" />
+
+      {/* FAQs */}
+      <FAQSection 
+        faqs={[
+          {
+            question: "What documents can be apostilled?",
+            answer: "Common documents include birth certificates, marriage certificates, diplomas, transcripts, powers of attorney, corporate documents, and court documents. Most public documents can receive an apostille."
+          },
+          {
+            question: "How long does the apostille process take?",
+            answer: "Standard processing through PA Department of State takes 2-3 weeks. We offer expedited service (2-3 business days) for $275 and rush service (24 hours) for $375."
+          },
+          {
+            question: "Do all documents need to be notarized before apostille?",
+            answer: "Many documents require notarization before they can receive an apostille. We'll review your documents and provide notarization if needed as part of our service."
+          },
+          {
+            question: "Which countries accept apostilles?",
+            answer: "Apostilles are accepted by all Hague Convention member countries (100+ nations) including Canada, Mexico, UK, Germany, France, Spain, China, Japan, Australia, and Brazil."
+          },
+          {
+            question: "How much does apostille service cost?",
+            answer: "Our complete service starts at $175 (standard 2-3 weeks) and includes document notarization, application preparation, and submission assistance. Expedited and rush options available."
+          }
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">

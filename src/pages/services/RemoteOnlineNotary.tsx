@@ -6,6 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Video, Clock, Shield, Globe, FileCheck, AlertCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
+import SocialProof from "@/components/marketing/SocialProof";
+import GuaranteeSection from "@/components/marketing/GuaranteeSection";
+import TrustIndicators from "@/components/marketing/TrustIndicators";
+import UrgencyBanner from "@/components/marketing/UrgencyBanner";
+import FAQSection from "@/components/marketing/FAQSection";
 
 const RemoteOnlineNotary = () => {
   const navigate = useNavigate();
@@ -113,6 +118,16 @@ const RemoteOnlineNotary = () => {
                 How RON Works
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Indicators + Urgency */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto space-y-6">
+            <TrustIndicators />
+            <UrgencyBanner type="booking" message="Same-day appointments available - book your RON session now!" />
           </div>
         </div>
       </section>
@@ -302,6 +317,38 @@ const RemoteOnlineNotary = () => {
           </div>
         </div>
       </section>
+
+      {/* Social Proof */}
+      <SocialProof service="ron" />
+
+      {/* Guarantee Section */}
+      <GuaranteeSection />
+
+      {/* FAQs */}
+      <FAQSection 
+        faqs={[
+          {
+            question: "Is remote online notarization legally valid?",
+            answer: "Yes! RON notarizations are legally recognized in all 50 states and comply with Pennsylvania Act 79 of 2020 (RULONA). Your notarized documents will be accepted nationwide."
+          },
+          {
+            question: "What do I need for a RON session?",
+            answer: "You'll need: 1) A valid government-issued photo ID, 2) A device with camera and microphone, 3) Stable internet connection, 4) To be physically located in Pennsylvania during the session."
+          },
+          {
+            question: "How long does a RON session take?",
+            answer: "Most sessions are completed in 5-10 minutes. We handle everything efficiently while maintaining accuracy and legal compliance."
+          },
+          {
+            question: "Can I notarize multiple documents in one session?",
+            answer: "Yes! You can notarize multiple documents during a single session. The $60 fee covers the session and all documents signed during that time."
+          },
+          {
+            question: "Do you offer subscription plans for frequent RON users?",
+            answer: "Absolutely! We have subscription plans starting at $99/month for 5 sessions ($25 value each). Perfect for attorneys, real estate professionals, and businesses with recurring needs."
+          }
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-primary text-white">

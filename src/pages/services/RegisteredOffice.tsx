@@ -6,6 +6,9 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Building, FileText, Bell, Shield, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
+import SocialProof from "@/components/marketing/SocialProof";
+import TrustIndicators from "@/components/marketing/TrustIndicators";
+import FAQSection from "@/components/marketing/FAQSection";
 
 const RegisteredOffice = () => {
   const navigate = useNavigate();
@@ -107,6 +110,15 @@ const RegisteredOffice = () => {
                 Call (814) 480-0989
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Indicators */}
+      <section className="py-12 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <TrustIndicators />
           </div>
         </div>
       </section>
@@ -341,6 +353,35 @@ const RegisteredOffice = () => {
           </div>
         </div>
       </section>
+
+      {/* Social Proof */}
+      <SocialProof service="registered" />
+
+      {/* FAQs */}
+      <FAQSection 
+        faqs={[
+          {
+            question: "What's the difference between a registered office and a registered agent?",
+            answer: "In Pennsylvania, CROP (Commercial Registered Office Provider) is the official term. We provide a physical address for your business and handle legal correspondence, service of process, and state filings on your behalf."
+          },
+          {
+            question: "Can I use your address as my business address?",
+            answer: "Yes! Our registered office address can be used as your business address on all state filings, keeping your personal address private from public records."
+          },
+          {
+            question: "How long does LLC formation take?",
+            answer: "Standard LLC formation through PA Department of State typically takes 5-7 business days. Expedited processing options are available for faster turnaround."
+          },
+          {
+            question: "What's included in the Business Launch Pack?",
+            answer: "The $349 pack includes LLC formation filing, 1 year of registered office service, EIN application assistance, operating agreement template, compliance calendar, and 2 RON credits—everything you need to launch your business."
+          },
+          {
+            question: "Do you handle ongoing compliance reminders?",
+            answer: "Yes! All registered office clients receive automatic reminders for annual reports, FinCEN BOI filings, and other compliance deadlines. Compliance Club members get enhanced monitoring and priority support."
+          }
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-background">

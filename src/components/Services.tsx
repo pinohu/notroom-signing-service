@@ -115,6 +115,7 @@ const Services = () => {
 
   const handleServiceClick = (link: string) => {
     navigate(link);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const scrollToBooking = () => {
