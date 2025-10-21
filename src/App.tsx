@@ -27,6 +27,7 @@ import VenangoCounty from "./pages/areas/VenangoCounty";
 import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
+import LogoProcessor from "./pages/LogoProcessor";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,9 @@ const App = () => (
           {/* Admin Pages */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/bookings" element={<AdminBookings />} />
+          
+          {/* Utility Pages */}
+          <Route path="/logo-processor" element={<LogoProcessor />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
