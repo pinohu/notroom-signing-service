@@ -167,6 +167,14 @@ const Header = () => {
             >
               Track Booking
             </button>
+            <a
+              href="https://portal.notroom.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
+              Customer Portal
+            </a>
           </nav>
 
           {/* Desktop CTA */}
@@ -265,6 +273,15 @@ const Header = () => {
                 >
                   Track Booking
                 </button>
+
+                <a
+                  href="https://portal.notroom.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-left text-lg font-medium hover:text-primary transition-colors"
+                >
+                  Customer Portal
+                </a>
 
                 <a
                   href="tel:814-480-0989"
