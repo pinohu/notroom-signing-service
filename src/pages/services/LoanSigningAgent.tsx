@@ -78,9 +78,9 @@ const LoanSigningAgent = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Professional Loan Signing Agent in Erie, PA
             </h1>
-            <p className="text-xl mb-8 text-white/90">
-              Certified, experienced signing agent for mortgage closings, refinances, and real estate transactions. $100K E&O insurance and MISMO compliant.
-            </p>
+              <p className="text-xl mb-8 text-white/90">
+                NNA-certified loan signing agent for mortgage closings, refinances, and real estate transactions. $100K E&O insurance and MISMO compliant. Pennsylvania does not require separate state licensing for signing agents—certification through the National Notary Association is the industry standard recognized by title companies and lenders.
+              </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 

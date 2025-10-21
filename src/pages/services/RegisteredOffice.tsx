@@ -22,11 +22,11 @@ const RegisteredOffice = () => {
   };
 
   const registeredOfficeFeatures = [
-    "PA-compliant Commercial Registered Office Provider (CROP)",
+    "Registered Commercial Registered Office Provider (CROP) with PA Department of State Bureau of Corporations",
     "Professional business address for your LLC/Corporation",
     "Mail scanning & digital forwarding",
-    "Service of process acceptance",
-    "Annual report reminders",
+    "Service of process acceptance & forwarding",
+    "Annual report and FinCEN BOI deadline reminders",
     "Secure document vault"
   ];
 
@@ -85,7 +85,7 @@ const RegisteredOffice = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-[hsl(var(--action-cyan))] text-white border-0">
-              PA-Compliant CROP Services
+              PA Department of State Registered CROP
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Pennsylvania Registered Office & Business Filing Services
@@ -129,20 +129,20 @@ const RegisteredOffice = () => {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-8">What is a Commercial Registered Office Provider (CROP)?</h2>
             <Card className="p-8">
-              <p className="text-lg mb-4">
-                In Pennsylvania, businesses must maintain a registered office address—a physical location where legal documents and official correspondence can be received. A CROP provides this service professionally.
+            <p className="text-lg mb-4">
+                In Pennsylvania, every business entity must maintain a registered office address—a physical location in Pennsylvania where legal documents, service of process, and official correspondence can be received. A Commercial Registered Office Provider (CROP) is a third-party service registered with the PA Department of State Bureau of Corporations that provides this address professionally.
               </p>
               <p className="text-muted-foreground mb-6">
-                Unlike a registered agent, Pennsylvania's unique CROP system allows third-party providers to serve as your official registered office, handling mail, service of process, and state correspondence on your behalf.
+                Unlike other states that use "registered agents," Pennsylvania uses the CROP system under 15 Pa.C.S. § 109 and § 415. We are registered with the PA Department of State and maintain a physical Pennsylvania address to serve as your official registered office, handling mail, service of process, and state correspondence on your behalf per written agreement.
               </p>
               <div className="bg-primary/10 p-6 rounded-lg">
                 <div className="flex items-start gap-3">
                   <Shield className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-bold mb-2">Why Use Our CROP Service?</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Protect your privacy by keeping your home address off public records. Get professional mail handling, digital scanning, and compliance reminders—all in one place.
-                    </p>
+                     <h3 className="font-bold mb-2">Why Use Our CROP Service?</h3>
+                     <p className="text-sm text-muted-foreground">
+                       Protect your privacy by keeping your home address off public Secretary of State records. Get professional mail handling, digital scanning, service of process acceptance, and compliance deadline reminders—all in one place. Required by Pennsylvania law: You must list a CROP on your filings only after we have agreed in writing to serve in that capacity (contract provided).
+                     </p>
                   </div>
                 </div>
               </div>
@@ -360,7 +360,7 @@ const RegisteredOffice = () => {
         faqs={[
           {
             question: "What's the difference between a registered office and a registered agent?",
-            answer: "In Pennsylvania, CROP (Commercial Registered Office Provider) is the official term. We provide a physical address for your business and handle legal correspondence, service of process, and state filings on your behalf."
+            answer: "Pennsylvania uses the term 'Commercial Registered Office Provider' (CROP) instead of 'registered agent.' Under 15 Pa.C.S. § 109 and § 415, CROPs must register with the PA Department of State Bureau of Corporations. We are a registered CROP and provide a physical Pennsylvania address where your business can receive legal documents, service of process, and official state correspondence. This is different from other states' registered agent systems."
           },
           {
             question: "Can I use your address as my business address?",

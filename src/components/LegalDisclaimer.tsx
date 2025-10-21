@@ -24,13 +24,13 @@ const LegalDisclaimer = ({ service, compact = false }: LegalDisclaimerProps) => 
       case "business":
         return (
           <>
-            <strong>Business Filing Services:</strong> I provide administrative document preparation and filing assistance only. I do not choose business structures for clients, draft custom legal documents, or provide legal, tax, or financial advice. All entity decisions must be made by the client or their attorney/CPA.
+            <strong>Business Filing Services & CROP Registration:</strong> <span className="text-destructive">⚠️ [CRITICAL: You MUST register with the PA Department of State Bureau of Corporations as a Commercial Registered Office Provider (CROP) before offering registered office services. Submit CROP registration statement to PA DOS.]</span> I provide administrative document preparation and filing assistance only. I do not choose business structures for clients, draft custom legal documents, or provide legal, tax, or financial advice. All entity decisions must be made by the client or their attorney/CPA.
           </>
         );
       case "ron":
         return (
           <>
-            <strong>Remote Online Notarization:</strong> Authorized under Pennsylvania RULONA (Act 97 of 2020). I am registered with the PA Department of State as an electronic/remote notary and use state-approved RON technology platforms.
+            <strong>Remote Online Notarization:</strong> Authorized under Pennsylvania RULONA (Act 97 of 2020, effective October 29, 2020). I have notified the PA Department of State of my intent to perform electronic and remote notarizations and use PA Department of State-approved RON technology platforms. <span className="text-destructive">⚠️ [You must specify which approved platform(s) you use: e.g., "Platform: Notarize.com" - see PA DOS approved provider list]</span>
           </>
         );
       default:
@@ -77,8 +77,11 @@ const LegalDisclaimer = ({ service, compact = false }: LegalDisclaimerProps) => 
               My role is strictly limited to witnessing signatures, administering oaths, verifying identity, and performing other notarial acts as authorized under Pennsylvania's Revised Uniform Law on Notarial Acts (RULONA), 57 Pa. Cons. Stat. §§ 301-352. For legal advice, please consult a licensed attorney.
             </p>
             
-            <p className="text-xs italic mt-3">
-              Pennsylvania Commission #{" "}[Commission Number] | Bonded & Insured | Registered Remote Notary
+            <p className="text-xs italic mt-3 text-center border-t pt-3 mt-4">
+              <strong>⚠️ COMPLIANCE REQUIREMENT:</strong> You must add your actual Pennsylvania Notary Public Commission Number here before going live. Example: "Pennsylvania Commission #123456 | Expires: MM/DD/YYYY | Bonded ($10,000) & Insured | Registered Remote Notary"
+            </p>
+            <p className="text-xs italic mt-2 text-center text-destructive">
+              This placeholder must be replaced with your real credentials. Operating without displaying your commission number may violate PA disclosure requirements.
             </p>
           </div>
         </div>

@@ -176,10 +176,13 @@ const Footer = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="text-center mb-4">
             <p className="text-white/60 text-xs mb-2">
-              Licensed & Bonded Pennsylvania Notary Public | Compliant with 57 Pa.C.S. Chapter 3 (RULONA)
+              <span className="text-amber-400">⚠️ COMPLIANCE NOTICE:</span> Pennsylvania Notary Public Commission #[YOUR COMMISSION NUMBER REQUIRED] | Expires: [DATE] | Bonded ($10,000) & Insured | Compliant with 57 Pa.C.S. Chapter 3 (RULONA)
             </p>
             <p className="text-white/60 text-xs">
-              Pennsylvania-commissioned notary with required 3-hour state-approved education | Remote Online Notarization authorized under Act 79 of 2020
+              Remote Online Notarization authorized under Act 97 of 2020 | Registered with PA Department of State | RON Platform: [SPECIFY APPROVED PLATFORM] | Commercial Registered Office Provider registered with PA Department of State Bureau of Corporations
+            </p>
+            <p className="text-white/60 text-xs mt-2">
+              <em>All services require completion of proper licensing and registrations before launch. See COMPLIANCE_CHECKLIST.md for details.</em>
             </p>
           </div>
         </div>
