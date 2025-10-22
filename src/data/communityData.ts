@@ -19,10 +19,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16501", "16502", "16503", "16504", "16505", "16506", "16507", "16508", "16509", "16510", "16511", "16512", "16514", "16515", "16522", "16530", "16531", "16534", "16538", "16544", "16546", "16550", "16553", "16563"],
     nearbyComm: ["Millcreek", "Harborcreek", "Wesleyville", "Lawrence Park", "Fairview"],
-    landmarks: ["Presque Isle State Park", "Erie Maritime Museum", "Bayfront Convention Center", "UPMC Park", "Waldameer Park"],
-    description: "Pennsylvania's fourth-largest city and the Gem City of the Great Lakes",
+    landmarks: ["Presque Isle State Park", "Erie Maritime Museum", "Bayfront Convention Center", "UPMC Park", "Waldameer Park", "Erie Insurance Arena", "Blasco Library", "Downtown Erie"],
+    description: "Pennsylvania's fourth-largest city and the Gem City of the Great Lakes, Erie is a vibrant waterfront community with rich history and modern amenities",
     population: "~95,000",
-    uniqueTrait: "Home to Presque Isle State Park and Lake Erie waterfront"
+    uniqueTrait: "Home to Presque Isle State Park, one of PA's most visited attractions, and Lake Erie's stunning waterfront with beaches, marinas, and year-round activities"
   },
   millcreek: {
     name: "Millcreek",
@@ -30,10 +30,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16509", "16565"],
     nearbyComm: ["Erie", "Fairview", "Edinboro", "Girard", "Lake City"],
-    landmarks: ["Millcreek Mall", "Splash Lagoon", "LECOM Institute", "Asbury Woods Nature Center"],
-    description: "Erie County's largest township with vibrant shopping and dining",
+    landmarks: ["Millcreek Mall Complex", "Splash Lagoon Indoor Waterpark", "LECOM Institute", "Asbury Woods Nature Center", "I-79 Commercial District", "Millcreek Township Building"],
+    description: "Erie County's largest and most populous township, featuring major commercial centers, family entertainment, healthcare facilities, and excellent schools",
     population: "~55,000",
-    uniqueTrait: "Home to the Millcreek Mall and major commercial district"
+    uniqueTrait: "Pennsylvania's largest township by population, home to Millcreek Mall (one of PA's largest shopping centers), Splash Lagoon waterpark resort, and thriving business community"
   },
   harborcreek: {
     name: "Harborcreek",
@@ -41,10 +41,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16421", "16510"],
     nearbyComm: ["Erie", "North East", "Wesleyville", "Lawrence Park"],
-    landmarks: ["Woodlands Golf Course", "Lake Erie Coastline", "Harborcreek Township Park"],
-    description: "Peaceful lakeside township with scenic beauty",
+    landmarks: ["Woodlands Golf Course", "Lake Erie Coastline", "Harborcreek Township Park", "Route 5 (Lake Road)", "Harborcreek Youth Services", "Harborcreek School District"],
+    description: "Premier lakeside township in eastern Erie County offering beautiful Lake Erie views, top-rated schools, and quiet residential neighborhoods",
     population: "~15,000",
-    uniqueTrait: "Scenic Lake Erie coastline and award-winning schools"
+    uniqueTrait: "Boasts scenic Lake Erie shoreline, award-winning Harborcreek School District consistently ranked among PA's best, and peaceful suburban living with easy access to Erie"
   },
   fairview: {
     name: "Fairview",
@@ -52,10 +52,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16415", "16428"],
     nearbyComm: ["Millcreek", "Girard", "Erie", "Lake City"],
-    landmarks: ["Fairview Park", "West Ridge School District", "Lake Erie shoreline"],
-    description: "Growing lakeside community with excellent schools",
+    landmarks: ["Fairview Township Park", "West Ridge School District", "Lake Erie shoreline", "Route 20 Commercial Corridor", "Avonia Beach", "Fairview Fire Department"],
+    description: "Fast-growing lakeside township in western Erie County, known for excellent schools, family-friendly atmosphere, and Lake Erie beach access",
     population: "~11,000",
-    uniqueTrait: "Family-friendly community with Lake Erie access"
+    uniqueTrait: "One of Erie County's fastest-growing communities, featuring top-rated Fairview School District, direct Lake Erie beach access at Avonia, and strong sense of community"
   },
   northEast: {
     name: "North East",
@@ -74,10 +74,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16412", "16444"],
     nearbyComm: ["Millcreek", "Cambridge Springs", "Waterford", "Erie"],
-    landmarks: ["Edinboro University", "Edinboro Lake", "Downtown Historic District"],
-    description: "College town with lakeside charm",
+    landmarks: ["Edinboro University (PennWest Edinboro)", "Edinboro Lake", "Downtown Historic District", "Porreco College Center", "Route 6N", "Edinboro Borough Hall"],
+    description: "Vibrant college town in southern Erie County, centered around PennWest Edinboro campus and the scenic natural Edinboro Lake",
     population: "~6,500",
-    uniqueTrait: "Home to Edinboro University and beautiful Edinboro Lake"
+    uniqueTrait: "Home to PennWest Edinboro University with 5,000+ students, and Edinboro Lake - Pennsylvania's largest natural lake. Offers unique college-town culture with small-town charm"
   },
   wesleyville: {
     name: "Wesleyville",
@@ -85,10 +85,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16510"],
     nearbyComm: ["Erie", "Harborcreek", "Lawrence Park"],
-    landmarks: ["East Erie Commercial District", "Wesleyville Elementary"],
-    description: "Small borough in eastern Erie County",
+    landmarks: ["East Erie Commercial District", "Wesleyville Elementary School", "Buffalo Road (Route 20)", "Wesleyville Borough Building", "Lake Erie shoreline"],
+    description: "Compact, close-knit borough in eastern Erie County along Lake Erie, offering easy access to Erie city amenities",
     population: "~3,300",
-    uniqueTrait: "Close-knit community with convenient Erie access"
+    uniqueTrait: "Small but strategic location on Buffalo Road corridor between Erie and Harborcreek, providing residents with hometown feel and big-city convenience"
   },
   girard: {
     name: "Girard",
@@ -96,10 +96,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16417"],
     nearbyComm: ["Fairview", "Lake City", "Cranberry Township", "Millcreek"],
-    landmarks: ["Girard Borough Park", "Dan Rice Days Festival", "Downtown Square"],
-    description: "Historic borough with small-town charm",
+    landmarks: ["Girard Borough Park", "Dan Rice Days Festival", "Historic Downtown Square", "Girard High School", "Route 20 Main Street", "Battles Museums of Rural Life"],
+    description: "Historic borough in southwestern Erie County, celebrating its Victorian heritage and famous resident Dan Rice with annual festival",
     population: "~3,100",
-    uniqueTrait: "Birthplace of circus clown Dan Rice"
+    uniqueTrait: "Birthplace of Dan Rice, 19th century circus performer who inspired Uncle Sam. Annual Dan Rice Days celebrates local history with parades and festivities"
   },
   waterford: {
     name: "Waterford",
@@ -107,10 +107,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16441"],
     nearbyComm: ["Edinboro", "Union City", "Wattsburg", "Erie"],
-    landmarks: ["Fort LeBoeuf Museum", "Eagle Historic District", "LeBoeuf Creek"],
-    description: "Historic crossroads community",
+    landmarks: ["Fort LeBoeuf Museum", "Eagle Historic District", "LeBoeuf Creek", "Waterford Community Park", "Route 19 & Route 97 Junction", "Historic Downtown Waterford"],
+    description: "Historic borough at the crossroads of southern Erie County, featuring French & Indian War heritage and small-town Pennsylvania charm",
     population: "~1,500",
-    uniqueTrait: "Rich French colonial and Erie Canal history"
+    uniqueTrait: "Home to Fort LeBoeuf, a strategic French fort during French & Indian War (1753). George Washington visited here on his first military mission. Rich Erie Canal and early American history"
   },
   
   // Crawford County Communities
@@ -380,10 +380,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16401"],
     nearbyComm: ["Cranberry Township", "Girard", "Conneaut OH"],
-    landmarks: ["Albion Borough", "Downtown square"],
-    description: "Small borough in northwestern Pennsylvania",
+    landmarks: ["Downtown Albion Square", "Albion Borough Hall", "Route 18", "Northwestern School District", "Albion Area Fair Grounds"],
+    description: "Quiet borough in western Erie County near the Ohio border, offering small-town living with agricultural heritage",
     population: "~1,500",
-    uniqueTrait: "Western Erie County community"
+    uniqueTrait: "Westernmost borough in Erie County, serving as a local hub for surrounding farming communities and close to Ohio border shopping"
   },
   cranberryTownship: {
     name: "Cranberry Township",

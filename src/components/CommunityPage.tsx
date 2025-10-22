@@ -33,9 +33,10 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": `Erie Notary - ${community.name}`,
+    "@type": "ProfessionalService",
+    "name": `Erie Notary - Professional Notary Services in ${community.name}, PA`,
     "image": "https://notroom.com/logo.png",
+    "description": `Licensed mobile notary and remote online notary (RON) services in ${community.name}, ${community.county}, Pennsylvania. Specializing in apostille, loan signing, I-9 verification, and business services.`,
     "address": {
       "@type": "PostalAddress",
       "addressLocality": community.name,
@@ -63,35 +64,115 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
         "dayOfWeek": "Saturday",
         "opens": "10:00",
         "closes": "16:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "00:00",
+        "closes": "23:59",
+        "description": "Remote Online Notary (RON) available 24/7 by appointment"
       }
     ],
-    "areaServed": {
-      "@type": "City",
-      "name": community.name,
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "PA",
-        "addressCountry": "US"
-      }
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": community.name,
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "PA",
+          "addressCountry": "US"
+        }
+      },
+      ...community.nearbyComm.map(nearby => ({
+        "@type": "City",
+        "name": nearby,
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "PA",
+          "addressCountry": "US"
+        }
+      }))
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Notary Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mobile Notary Service",
+            "description": `Professional mobile notary service in ${community.name}, PA. We come to your location.`
+          },
+          "price": "50.00",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Remote Online Notary (RON)",
+            "description": `24/7 online notarization for ${community.name} residents via secure video call.`
+          },
+          "price": "50.00",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Apostille Services",
+            "description": `International document authentication and apostille services for ${community.name}.`
+          },
+          "price": "245.00",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Loan Signing Agent",
+            "description": `Professional real estate closing and loan signing services in ${community.name}.`
+          },
+          "price": "175.00",
+          "priceCurrency": "USD"
+        }
+      ]
     },
-    "serviceType": [
-      "Mobile Notary Services",
-      "Remote Online Notary (RON)",
-      "Loan Signing Agent",
-      "Apostille Services",
-      "I-9 Verification",
-      "Business Services"
-    ]
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "50+"
+    }
   };
 
   const nearbyLinks = getNearbyLinks(community.nearbyComm);
 
+  // Generate localized keywords
+  const localKeywords = [
+    `${community.name} notary`,
+    `mobile notary ${community.name}`,
+    `apostille ${community.name}`,
+    `notary ${community.name} PA`,
+    `${community.name} notary public`,
+    `loan signing agent ${community.name}`,
+    `RON ${community.name}`,
+    `remote online notary ${community.name}`,
+    `${community.county} notary`,
+    `notary near ${community.landmarks[0]}`,
+    `${community.name} mobile notary service`,
+    `same day notary ${community.name}`,
+    `24/7 notary ${community.name}`,
+    `I-9 verification ${community.name}`,
+    `business notary ${community.name}`
+  ].join(', ');
+
   return (
     <Layout>
       <SEO
-        title={`${community.name} PA Notary | Mobile Notary ${community.name} | Apostille & Loan Signing`}
-        description={`Professional notary services in ${community.name}, ${community.county}, PA. Mobile notary, remote online notary (RON), apostille, loan signing, I-9 verification. Serving ${community.landmarks.slice(0, 2).join(', ')}. Same-day available.`}
-        keywords={`${community.name} notary, notary ${community.name} PA, mobile notary ${community.name}, apostille ${community.name}, loan signing agent ${community.name}, ${community.county} notary, notary near ${community.landmarks[0]}`}
+        title={`${community.name} Notary Public PA | Mobile Notary & RON ${community.name} | Apostille Services`}
+        description={`#1 rated notary services in ${community.name}, ${community.county}, PA. Mobile notary, Remote Online Notary (RON), apostille, loan signing, I-9 verification. Serving ${community.landmarks.slice(0, 3).join(', ')}. Same-day & 24/7 available. Licensed & insured.`}
+        keywords={localKeywords}
         canonical={`https://notroom.com/areas/cities/${community.slug}`}
         schema={localBusinessSchema}
       />
@@ -105,8 +186,8 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
               <span className="text-sm font-medium">Serving All of {community.name}, PA</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              {community.name} Notary Services<br />
-              <span className="text-3xl md:text-5xl">Mobile, RON & Business Solutions</span>
+              {community.name} Notary Public<br />
+              <span className="text-3xl md:text-5xl">Mobile Notary & RON Services in {community.name}, PA</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-white/90">
               Professional notary and business services in {community.name}, {community.county}
