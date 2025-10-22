@@ -142,9 +142,11 @@ const Services = () => {
             return (
               <ScrollReveal key={index} delay={index * 150}>
                 <Card 
-                  className={`relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 ${
+                  className={`relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group ${
                     service.featured ? 'border-[hsl(var(--urgency-amber))] border-4' : ''
                   }`}
+                  role="article"
+                  aria-label={`${service.title} service card`}
                 >
                 {/* Badge */}
                 {service.badge && (

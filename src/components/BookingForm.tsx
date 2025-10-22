@@ -206,7 +206,14 @@ const BookingForm = () => {
           </div>
 
           {/* Progress Indicator */}
-          <div className="mb-8" role="progressbar" aria-valuenow={currentStep} aria-valuemin={1} aria-valuemax={3}>
+          <div 
+            className="mb-8" 
+            role="progressbar" 
+            aria-valuenow={currentStep} 
+            aria-valuemin={1} 
+            aria-valuemax={3}
+            aria-valuetext={`Step ${currentStep} of 3: ${['Contact Information', 'Service Details', 'Scheduling Preferences'][currentStep-1]}`}
+          >
             <div className="flex items-center justify-between max-w-md mx-auto">
               {[1, 2, 3].map((step) => (
                 <div key={step} className="flex items-center flex-1">
@@ -252,7 +259,9 @@ const BookingForm = () => {
                 </h3>
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="name">Full Name *</Label>
+                    <Label htmlFor="name">
+                      Full Name <span className="text-destructive" aria-label="required">*</span>
+                    </Label>
                     <Input
                       id="name"
                       type="text"
@@ -260,29 +269,41 @@ const BookingForm = () => {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="John Doe"
                       required
+                      aria-required="true"
+                      aria-invalid={!formData.name && currentStep > 1}
                     />
                   </div>
                   <div>
-                    <Label htmlFor="phone">Phone Number *</Label>
+                    <Label htmlFor="phone">
+                      Phone Number <span className="text-destructive" aria-label="required">*</span>
+                    </Label>
                     <Input
                       id="phone"
                       type="tel"
+                      inputMode="numeric"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="(814) 555-0123"
                       required
+                      aria-required="true"
+                      aria-invalid={!formData.phone && currentStep > 1}
                     />
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="email">Email Address *</Label>
+                  <Label htmlFor="email">
+                    Email Address <span className="text-destructive" aria-label="required">*</span>
+                  </Label>
                   <Input
                     id="email"
                     type="email"
+                    inputMode="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="john@example.com"
                     required
+                    aria-required="true"
+                    aria-invalid={!formData.email && currentStep > 1}
                   />
                 </div>
                 <Button 
@@ -304,15 +325,17 @@ const BookingForm = () => {
                   Service Details
                 </h3>
                 <div>
-                  <Label htmlFor="service">Select Service *</Label>
+                  <Label htmlFor="service">
+                    Select Service <span className="text-destructive" aria-label="required">*</span>
+                  </Label>
                   <Select 
                     value={formData.service}
                     onValueChange={(value) => setFormData({ ...formData, service: value })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger aria-required="true">
                       <SelectValue placeholder="Choose your service" />
                     </SelectTrigger>
-                    <SelectContent className="bg-popover z-50">
+                    <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
                       <SelectItem value="ron">Remote Online Notary ($60: $15 notary + $45 platform)</SelectItem>
                       <SelectItem value="mobile">Mobile Notary Erie County ($125+: $5-15 notary + travel)</SelectItem>
                       <SelectItem value="loan">Loan Signing Agent ($150: $15 notary + $135 agent fee)</SelectItem>
@@ -329,7 +352,7 @@ const BookingForm = () => {
                     <SelectTrigger>
                       <SelectValue placeholder="What needs to be notarized?" />
                     </SelectTrigger>
-                    <SelectContent className="bg-popover z-50">
+                    <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
                       <SelectItem value="real_estate">Real Estate Document</SelectItem>
                       <SelectItem value="power_of_attorney">Power of Attorney</SelectItem>
                       <SelectItem value="affidavit">Affidavit</SelectItem>
@@ -411,7 +434,7 @@ const BookingForm = () => {
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-popover z-50">
+                    <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
                       <SelectItem value="flexible">Flexible - Any time works</SelectItem>
                       <SelectItem value="within_week">Within a week</SelectItem>
                       <SelectItem value="within_24hrs">Within 24 hours</SelectItem>

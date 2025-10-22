@@ -141,7 +141,7 @@ const PricingCalculator = () => {
             <SelectTrigger id="service-type">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
               <SelectItem value="ron">Remote Online Notary (RON)</SelectItem>
               <SelectItem value="mobile">Mobile Notary</SelectItem>
               <SelectItem value="apostille">Apostille Service</SelectItem>
@@ -158,7 +158,7 @@ const PricingCalculator = () => {
               <SelectTrigger id="loanType">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
                 <SelectItem value="standard">In-Office/Virtual</SelectItem>
                 <SelectItem value="mobile">Mobile (We Come to You)</SelectItem>
               </SelectContent>
@@ -206,7 +206,7 @@ const PricingCalculator = () => {
               <SelectTrigger id="urgency">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
                 <SelectItem value="inPerson">In-Person Verification</SelectItem>
                 <SelectItem value="remote">Remote Verification</SelectItem>
               </SelectContent>

@@ -31,7 +31,7 @@ const Hero = () => {
           </h1>
           
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed max-w-4xl mx-auto">
+          <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-10 leading-relaxed max-w-4xl mx-auto">
             From remote notarization to LLC formation, apostille services to I-9 verification—all your business, legal, and compliance needs. Licensed, bonded, and Pennsylvania-compliant.
           </p>
           
@@ -40,38 +40,34 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="amber"
-              className="text-base sm:text-lg px-6 sm:px-8 py-6 sm:py-7 h-auto shadow-2xl"
+              className="text-lg sm:text-xl px-8 py-7 h-auto shadow-2xl font-bold"
               onClick={scrollToServices}
               aria-label="View all services"
             >
-              <div className="flex flex-col items-center sm:items-start">
-                <span className="text-lg sm:text-xl">View All Services</span>
-                <span className="text-xs sm:text-sm font-normal opacity-90">Notary • Business • Compliance</span>
+              <div className="flex flex-col items-center sm:items-start gap-1">
+                <span>View All Services</span>
+                <span className="text-sm font-normal opacity-90">Notary • Business • Compliance</span>
               </div>
             </Button>
             <Button 
               size="lg" 
               variant="amberOutline"
-              className="text-base sm:text-lg px-6 sm:px-8 py-6 sm:py-7 h-auto"
+              className="text-lg sm:text-xl px-8 py-7 h-auto font-bold"
               onClick={scrollToBooking}
               aria-label="Book a service"
             >
-              <div className="flex flex-col items-center sm:items-start">
-                <span className="text-lg sm:text-xl">📅 Book Now</span>
-                <span className="text-xs sm:text-sm font-normal opacity-90">From $35</span>
+              <div className="flex flex-col items-center sm:items-start gap-1">
+                <span>📅 Book Now</span>
+                <span className="text-sm font-normal opacity-90">From $45</span>
               </div>
             </Button>
           </div>
           
-          {/* Trust Bar */}
-          <div className="flex flex-wrap justify-center gap-6 text-white/90 text-base">
+          {/* Trust Bar - Reduced to 3 key indicators */}
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-white/90 text-sm md:text-base">
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">PA State Commissioned</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">Registered CROP</span>
+              <span className="font-medium">PA State Licensed</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
@@ -84,20 +80,22 @@ const Hero = () => {
           </div>
           
           {/* Contact Info */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-white/80 mt-8">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center text-white/80 mt-8">
             <a 
               href="mailto:support@notroom.com" 
-              className="flex items-center gap-2 hover:text-white transition-colors"
+              className="flex items-center gap-2 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white rounded px-2 py-1"
+              aria-label="Email us at support@notroom.com"
             >
               <Mail className="w-5 h-5" />
-              <span>support@notroom.com</span>
+              <span className="text-sm sm:text-base">support@notroom.com</span>
             </a>
             <a 
               href="tel:814-480-0989" 
-              className="flex items-center gap-2 hover:text-white transition-colors"
+              className="flex items-center gap-2 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white rounded px-2 py-1"
+              aria-label="Call us at 814-480-0989"
             >
               <Phone className="w-5 h-5" />
-              <span>(814) 480-0989</span>
+              <span className="text-sm sm:text-base">(814) 480-0989</span>
             </a>
           </div>
         </div>

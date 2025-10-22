@@ -101,8 +101,8 @@ const Header = () => {
                   >
                     Services
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-card border border-border shadow-xl z-50">
-                    <ul className="grid w-[500px] gap-2 p-4 bg-card" role="menu">
+                  <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
+                    <ul className="grid w-[500px] gap-2 p-4 bg-card/98" role="menu">
                       {services.map((service) => (
                         <li key={service.path} role="none">
                           <NavigationMenuLink asChild>
@@ -131,8 +131,8 @@ const Header = () => {
                   >
                     Service Areas
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-card border border-border shadow-xl z-50">
-                    <ul className="grid w-[300px] gap-2 p-4 bg-card" role="menu">
+                  <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
+                    <ul className="grid w-[300px] gap-2 p-4 bg-card/98" role="menu">
                       {areas.map((area) => (
                         <li key={area.path} role="none">
                           <NavigationMenuLink asChild>
@@ -184,8 +184,17 @@ const Header = () => {
               aria-label="Call us at 814-480-0989"
             >
               <Phone className="w-4 h-4" />
-              <span className="hidden xl:inline">(814) 480-0989</span>
+              <span className="hidden lg:inline">(814) 480-0989</span>
             </a>
+
+            {/* Price Calculator Link */}
+            <button
+              onClick={() => navigateToPage("/pricing")}
+              className="text-sm text-primary hover:text-primary/80 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
+              aria-label="Calculate price"
+            >
+              💰 Calculate
+            </button>
 
             {/* Secondary Actions */}
             <button
