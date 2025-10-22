@@ -23,10 +23,10 @@ const Footer = () => {
               Erie's Most Trusted Notary Service
             </p>
             <div className="flex gap-4">
-              <a href="#" className="text-white/70 hover:text-white transition-colors">
+              <a href="https://facebook.com/notroom" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
                 Facebook
               </a>
-              <a href="#" className="text-white/70 hover:text-white transition-colors">
+              <a href="https://linkedin.com/company/notroom" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white transition-colors">
                 LinkedIn
               </a>
             </div>
