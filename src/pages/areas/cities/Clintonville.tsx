@@ -45,18 +45,18 @@ const Clintonville = () => {
         schema={schema}
       />
 
-      <section className="relative py-20 bg-gradient-to-br from-primary via-primary-dark to-accent overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-primary via-primary-dark to-accent overflow-hidden text-primary-foreground">
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-primary-foreground/20">
               <MapPin className="w-4 h-4" />
               <span className="text-sm font-medium">Serving All of Clintonville, PA</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">Clintonville's Complete<br />Notary & Business Services</h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90">Professional RON, Mobile Notary, Loan Signing & More in Clintonville, Pennsylvania</p>
+            <p className="text-xl md:text-2xl mb-8 opacity-90">Professional RON, Mobile Notary, Loan Signing & More in Clintonville, Pennsylvania</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button size="lg" onClick={scrollToBooking} className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto shadow-xl">Book Service in Clintonville</Button>
-              <Button size="lg" variant="outline" asChild className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6 h-auto"><a href="tel:814-480-0989">Call (814) 480-0989</a></Button>
+              <Button size="lg" onClick={scrollToBooking} variant="secondary" className="text-lg px-8 py-6 h-auto shadow-xl">Book Service in Clintonville</Button>
+              <Button size="lg" variant="outline" asChild className="border-2 border-primary-foreground/20 hover:bg-primary-foreground/10 text-lg px-8 py-6 h-auto"><a href="tel:814-480-0989">Call (814) 480-0989</a></Button>
             </div>
           </div>
         </div>
@@ -94,13 +94,13 @@ const Clintonville = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-primary text-white">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">Book Your Clintonville Notary Service Today</h2>
-          <p className="text-xl mb-8 text-white/90">Serving Clintonville with professional notary and business services</p>
+          <p className="text-xl mb-8 opacity-90">Serving Clintonville with professional notary and business services</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" onClick={scrollToBooking} className="bg-white text-primary hover:bg-white/90">Book Now</Button>
-            <Button size="lg" variant="outline" asChild className="border-2 border-white text-white hover:bg-white hover:text-primary"><Link to="/areas/venango-county">View Venango County Services</Link></Button>
+            <Button size="lg" onClick={scrollToBooking} variant="secondary">Book Now</Button>
+            <Button size="lg" variant="outline" asChild className="border-2 border-primary-foreground/20 hover:bg-primary-foreground/10"><Link to="/areas/venango-county">View Venango County Services</Link></Button>
           </div>
         </div>
       </section>

@@ -34,13 +34,13 @@ const Girard = () => {
         canonical="https://notroom.com/areas/girard-pa"
       />
 
-      <section className="py-20 bg-gradient-to-br from-primary to-accent text-white">
+      <section className="py-20 bg-gradient-to-br from-primary to-accent text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full mb-6"><MapPin className="w-4 h-4" /><span>Girard, PA</span></div>
+            <div className="inline-flex items-center gap-2 bg-primary-foreground/10 px-4 py-2 rounded-full mb-6"><MapPin className="w-4 h-4" /><span>Girard, PA</span></div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">Girard Notary Services</h1>
             <p className="text-xl mb-8">Complete notary and business services for Girard</p>
-            <Button size="lg" onClick={scrollToBooking} className="bg-white text-primary">Book Now</Button>
+            <Button size="lg" onClick={scrollToBooking} variant="secondary">Book Now</Button>
           </div>
         </div>
       </section>

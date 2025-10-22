@@ -125,12 +125,12 @@ const VenangoCounty = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-primary via-primary-dark to-accent overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-primary via-primary-dark to-accent overflow-hidden text-primary-foreground">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIxLTEuNzktNC00LTRzLTQgMS43OS00IDQgMS43OSA0IDQgNCA0LTEuNzkgNC00eiIvPjwvZz48L2c+PC9zdmc+')] opacity-20"></div>
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-primary-foreground/20">
               <MapPin className="w-4 h-4" />
               <span className="text-sm font-medium">Serving All of Venango County</span>
             </div>
@@ -139,15 +139,14 @@ const VenangoCounty = () => {
               Complete Notary & Business Services<br />for Venango County
             </h1>
             
-            <p className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
-              RON, Mobile Notary, Loan Signing, Apostille, I-9 Verification, LLC Formation & More serving Oil City, Franklin, and all surrounding areas
-            </p>
+            <p className="text-xl md:text-2xl mb-8 opacity-90">Professional RON, Mobile Notary, Loan Signing & More in Venango County</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button
                 size="lg"
                 onClick={scrollToBooking}
-                className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto shadow-xl"
+                variant="secondary"
+                className="text-lg px-8 py-6 h-auto shadow-xl"
               >
                 Book Any Service Now
               </Button>
@@ -155,7 +154,7 @@ const VenangoCounty = () => {
                 size="lg"
                 variant="outline"
                 asChild
-                className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6 h-auto"
+                className="border-2 border-primary-foreground/20 hover:bg-primary-foreground/10 text-lg px-8 py-6 h-auto"
               >
                 <Link to="/services/remote-online-notary">View All Services</Link>
               </Button>
@@ -285,17 +284,17 @@ const VenangoCounty = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Book Your Notary Service in Venango County</h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Book your mobile notary appointment or get notarized online in minutes
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button
               size="lg"
               onClick={scrollToBooking}
-              className="bg-white text-primary hover:bg-white/90"
+              variant="secondary"
             >
               Book Mobile Service
             </Button>
@@ -303,7 +302,7 @@ const VenangoCounty = () => {
               size="lg"
               variant="outline"
               asChild
-              className="border-2 border-white text-white hover:bg-white hover:text-primary"
+              className="border-2 border-primary-foreground/20 hover:bg-primary-foreground/10"
             >
               <Link to="/services/remote-online-notary">Online Notarization</Link>
             </Button>
