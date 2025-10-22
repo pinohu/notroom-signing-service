@@ -23,11 +23,14 @@ export const calculateDistance = async (
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY || '',
       },
       body: JSON.stringify({ destination: destinationAddress }),
     });
 
     if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      console.error('Distance API error:', errorData);
       throw new Error('Failed to calculate distance');
     }
 
@@ -38,7 +41,7 @@ export const calculateDistance = async (
     return {
       distance: 15,
       duration: "20 mins",
-      error: "Unable to calculate distance. Using estimate."
+      error: "Unable to calculate exact distance. Using estimate. Exact mileage will be calculated at booking."
     };
   }
 };

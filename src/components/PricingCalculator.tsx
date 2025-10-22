@@ -143,14 +143,14 @@ const PricingCalculator = () => {
               <Input
                 id="destination"
                 type="text"
-                placeholder="123 Main St, City, PA 12345"
+                placeholder="Enter your full address (e.g., 123 Main St, City, PA 12345)"
                 value={destinationAddress}
                 onChange={(e) => setDestinationAddress(e.target.value)}
                 className="pl-10"
               />
             </div>
             <p className="text-xs text-muted-foreground mt-1">
-              We travel from {getOriginAddress()}
+              Distance calculated from our Erie location
             </p>
             {isCalculatingDistance && (
               <p className="text-xs text-primary mt-1 animate-pulse">
