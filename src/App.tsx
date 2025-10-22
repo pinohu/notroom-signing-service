@@ -47,6 +47,8 @@ import Titusville from "./pages/areas/cities/Titusville";
 import Warren from "./pages/areas/cities/Warren";
 import Youngsville from "./pages/areas/cities/Youngsville";
 import Sheffield from "./pages/areas/cities/Sheffield";
+import CambridgeSprings from "./pages/areas/cities/CambridgeSprings";
+import Linesville from "./pages/areas/cities/Linesville";
 import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
@@ -113,6 +115,8 @@ const App = () => (
           {/* City Pages - Crawford County */}
           <Route path="/areas/meadville-pa" element={<Meadville />} />
           <Route path="/areas/titusville-pa" element={<Titusville />} />
+          <Route path="/areas/cambridge-springs-pa" element={<CambridgeSprings />} />
+          <Route path="/areas/linesville-pa" element={<Linesville />} />
           
           {/* City Pages - Warren County */}
           <Route path="/areas/warren-pa" element={<Warren />} />

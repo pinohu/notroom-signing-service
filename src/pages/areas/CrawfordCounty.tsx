@@ -108,7 +108,9 @@ const CrawfordCounty = () => {
               {cities.map((city, index) => {
                 const cityLinks: Record<string, string> = {
                   "Meadville": "/areas/meadville-pa",
-                  "Titusville": "/areas/titusville-pa"
+                  "Titusville": "/areas/titusville-pa",
+                  "Cambridge Springs": "/areas/cambridge-springs-pa",
+                  "Linesville": "/areas/linesville-pa"
                 };
                 const cityLink = cityLinks[city];
                 
