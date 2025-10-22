@@ -58,6 +58,7 @@ import BloomingValley from "./pages/areas/cities/BloomingValley";
 import Harmonsburg from "./pages/areas/cities/Harmonsburg";
 import VenangoCrawford from "./pages/areas/cities/VenangoCrawford";
 import Albion from "./pages/areas/cities/Albion";
+import McKean from "./pages/areas/cities/McKean";
 import SugarGrove from "./pages/areas/cities/SugarGrove";
 import Tidioute from "./pages/areas/cities/Tidioute";
 import Clarendon from "./pages/areas/cities/Clarendon";
@@ -173,6 +174,7 @@ const App = () => (
           
           {/* City Pages - Erie County (additional) */}
           <Route path="/areas/albion-pa" element={<Albion />} />
+          <Route path="/areas/mckean-pa" element={<McKean />} />
           <Route path="/areas/millcreek-pa" element={<Millcreek />} />
           <Route path="/areas/harborcreek-pa" element={<Harborcreek />} />
           <Route path="/areas/fairview-pa" element={<Fairview />} />

@@ -385,6 +385,17 @@ export const communityData: Record<string, CommunityData> = {
     population: "~1,500",
     uniqueTrait: "Westernmost borough in Erie County, serving as a local hub for surrounding farming communities and close to Ohio border shopping"
   },
+  mckean: {
+    name: "McKean",
+    slug: "mckean",
+    county: "Erie County",
+    zipCodes: ["16426", "16505"],
+    nearbyComm: ["Edinboro", "Waterford", "Erie"],
+    landmarks: ["McKean Township Municipal Building", "McKean Elementary School", "Lake Pleasant", "Route 99 Corridor", "McKean Community Park"],
+    description: "Thriving township in southern Erie County, known for residential neighborhoods, local businesses, and convenient access to Erie amenities",
+    population: "~4,500",
+    uniqueTrait: "Growing suburban township offering perfect balance of Erie city convenience and peaceful countryside, with strong schools and family-friendly atmosphere"
+  },
   cranberryTownship: {
     name: "Cranberry Township",
     slug: "cranberry-township",
