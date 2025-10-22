@@ -58,6 +58,15 @@ import BloomingValley from "./pages/areas/cities/BloomingValley";
 import Harmonsburg from "./pages/areas/cities/Harmonsburg";
 import VenangoCrawford from "./pages/areas/cities/VenangoCrawford";
 import Albion from "./pages/areas/cities/Albion";
+import SugarGrove from "./pages/areas/cities/SugarGrove";
+import Tidioute from "./pages/areas/cities/Tidioute";
+import Clarendon from "./pages/areas/cities/Clarendon";
+import BearLake from "./pages/areas/cities/BearLake";
+import Russell from "./pages/areas/cities/Russell";
+import NorthWarren from "./pages/areas/cities/NorthWarren";
+import Kinzua from "./pages/areas/cities/Kinzua";
+import Irvine from "./pages/areas/cities/Irvine";
+import Pittsfield from "./pages/areas/cities/Pittsfield";
 import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
@@ -142,6 +151,15 @@ const App = () => (
           <Route path="/areas/warren-pa" element={<Warren />} />
           <Route path="/areas/youngsville-pa" element={<Youngsville />} />
           <Route path="/areas/sheffield-pa" element={<Sheffield />} />
+          <Route path="/areas/sugar-grove-pa" element={<SugarGrove />} />
+          <Route path="/areas/tidioute-pa" element={<Tidioute />} />
+          <Route path="/areas/clarendon-pa" element={<Clarendon />} />
+          <Route path="/areas/bear-lake-pa" element={<BearLake />} />
+          <Route path="/areas/russell-pa" element={<Russell />} />
+          <Route path="/areas/north-warren-pa" element={<NorthWarren />} />
+          <Route path="/areas/kinzua-pa" element={<Kinzua />} />
+          <Route path="/areas/irvine-pa" element={<Irvine />} />
+          <Route path="/areas/pittsfield-pa" element={<Pittsfield />} />
           
           {/* Other Pages */}
           <Route path="/pricing" element={<Pricing />} />
