@@ -230,7 +230,10 @@ const MercerCounty = () => {
                   "Mercer": "/areas/mercer-pa",
                   "Farrell": "/areas/farrell-pa",
                   "Sharpsville": "/areas/sharpsville-pa",
-                  "Greenville": "/areas/greenville-pa"
+                  "Greenville": "/areas/greenville-pa",
+                  "Stoneboro": "/areas/stoneboro-pa",
+                  "Sandy Lake": "/areas/sandy-lake-pa",
+                  "Clark": "/areas/clark-pa"
                 };
                 const cityLink = cityLinks[city];
                 

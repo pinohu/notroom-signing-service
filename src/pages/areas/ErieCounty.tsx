@@ -112,7 +112,16 @@ const ErieCounty = () => {
                   "North East": "/areas/north-east-pa",
                   "Girard": "/areas/girard-pa",
                   "Corry": "/areas/corry-pa",
-                  "Waterford": "/areas/waterford-pa"
+                  "Waterford": "/areas/waterford-pa",
+                  "Albion": "/areas/albion-pa",
+                  "Millcreek": "/areas/millcreek-pa",
+                  "Harborcreek": "/areas/harborcreek-pa",
+                  "Fairview": "/areas/fairview-pa",
+                  "Wesleyville": "/areas/wesleyville-pa",
+                  "Lawrence Park": "/areas/lawrence-park-pa",
+                  "Union City": "/areas/union-city-pa",
+                  "Lake City": "/areas/lake-city-pa",
+                  "Wattsburg": "/areas/wattsburg-pa"
                 };
                 const cityLink = cityLinks[city];
                 

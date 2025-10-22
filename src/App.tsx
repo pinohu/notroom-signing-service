@@ -67,6 +67,29 @@ import NorthWarren from "./pages/areas/cities/NorthWarren";
 import Kinzua from "./pages/areas/cities/Kinzua";
 import Irvine from "./pages/areas/cities/Irvine";
 import Pittsfield from "./pages/areas/cities/Pittsfield";
+import Townville from "./pages/areas/cities/Townville";
+import Conneautville from "./pages/areas/cities/Conneautville";
+import Hydetown from "./pages/areas/cities/Hydetown";
+import Riceville from "./pages/areas/cities/Riceville";
+import ChandlersValley from "./pages/areas/cities/ChandlersValley";
+import SpringCreek from "./pages/areas/cities/SpringCreek";
+import Millcreek from "./pages/areas/cities/Millcreek";
+import Harborcreek from "./pages/areas/cities/Harborcreek";
+import Fairview from "./pages/areas/cities/Fairview";
+import Wesleyville from "./pages/areas/cities/Wesleyville";
+import LawrencePark from "./pages/areas/cities/LawrencePark";
+import UnionCity from "./pages/areas/cities/UnionCity";
+import LakeCity from "./pages/areas/cities/LakeCity";
+import Wattsburg from "./pages/areas/cities/Wattsburg";
+import Stoneboro from "./pages/areas/cities/Stoneboro";
+import SandyLake from "./pages/areas/cities/SandyLake";
+import Clark from "./pages/areas/cities/Clark";
+import CranberryTownship from "./pages/areas/cities/CranberryTownship";
+import Polk from "./pages/areas/cities/Polk";
+import Rouseville from "./pages/areas/cities/Rouseville";
+import Cooperstown from "./pages/areas/cities/Cooperstown";
+import Utica from "./pages/areas/cities/Utica";
+import Pleasantville from "./pages/areas/cities/Pleasantville";
 import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
@@ -143,9 +166,21 @@ const App = () => (
           <Route path="/areas/blooming-valley-pa" element={<BloomingValley />} />
           <Route path="/areas/harmonsburg-pa" element={<Harmonsburg />} />
           <Route path="/areas/venango-pa" element={<VenangoCrawford />} />
+          <Route path="/areas/townville-pa" element={<Townville />} />
+          <Route path="/areas/conneautville-pa" element={<Conneautville />} />
+          <Route path="/areas/hydetown-pa" element={<Hydetown />} />
+          <Route path="/areas/riceville-pa" element={<Riceville />} />
           
           {/* City Pages - Erie County (additional) */}
           <Route path="/areas/albion-pa" element={<Albion />} />
+          <Route path="/areas/millcreek-pa" element={<Millcreek />} />
+          <Route path="/areas/harborcreek-pa" element={<Harborcreek />} />
+          <Route path="/areas/fairview-pa" element={<Fairview />} />
+          <Route path="/areas/wesleyville-pa" element={<Wesleyville />} />
+          <Route path="/areas/lawrence-park-pa" element={<LawrencePark />} />
+          <Route path="/areas/union-city-pa" element={<UnionCity />} />
+          <Route path="/areas/lake-city-pa" element={<LakeCity />} />
+          <Route path="/areas/wattsburg-pa" element={<Wattsburg />} />
           
           {/* City Pages - Warren County */}
           <Route path="/areas/warren-pa" element={<Warren />} />
@@ -160,6 +195,21 @@ const App = () => (
           <Route path="/areas/kinzua-pa" element={<Kinzua />} />
           <Route path="/areas/irvine-pa" element={<Irvine />} />
           <Route path="/areas/pittsfield-pa" element={<Pittsfield />} />
+          <Route path="/areas/chandlers-valley-pa" element={<ChandlersValley />} />
+          <Route path="/areas/spring-creek-pa" element={<SpringCreek />} />
+          
+          {/* City Pages - Mercer County (additional) */}
+          <Route path="/areas/stoneboro-pa" element={<Stoneboro />} />
+          <Route path="/areas/sandy-lake-pa" element={<SandyLake />} />
+          <Route path="/areas/clark-pa" element={<Clark />} />
+          
+          {/* City Pages - Venango County (additional) */}
+          <Route path="/areas/cranberry-township-pa" element={<CranberryTownship />} />
+          <Route path="/areas/polk-pa" element={<Polk />} />
+          <Route path="/areas/rouseville-pa" element={<Rouseville />} />
+          <Route path="/areas/cooperstown-pa" element={<Cooperstown />} />
+          <Route path="/areas/utica-pa" element={<Utica />} />
+          <Route path="/areas/pleasantville-pa" element={<Pleasantville />} />
           
           {/* Other Pages */}
           <Route path="/pricing" element={<Pricing />} />

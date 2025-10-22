@@ -227,7 +227,13 @@ const VenangoCounty = () => {
                   "Franklin": "/areas/franklin-pa",
                   "Sugarcreek": "/areas/sugarcreek-pa",
                   "Clintonville": "/areas/clintonville-pa",
-                  "Emlenton": "/areas/emlenton-pa"
+                  "Emlenton": "/areas/emlenton-pa",
+                  "Cranberry Township": "/areas/cranberry-township-pa",
+                  "Polk": "/areas/polk-pa",
+                  "Rouseville": "/areas/rouseville-pa",
+                  "Cooperstown": "/areas/cooperstown-pa",
+                  "Utica": "/areas/utica-pa",
+                  "Pleasantville": "/areas/pleasantville-pa"
                 };
                 const cityLink = cityLinks[city];
                 

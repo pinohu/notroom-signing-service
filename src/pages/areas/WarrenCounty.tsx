@@ -142,7 +142,18 @@ const WarrenCounty = () => {
                 const cityLinks: Record<string, string> = {
                   "Warren": "/areas/warren-pa",
                   "Youngsville": "/areas/youngsville-pa",
-                  "Sheffield": "/areas/sheffield-pa"
+                  "Sheffield": "/areas/sheffield-pa",
+                  "Sugar Grove": "/areas/sugar-grove-pa",
+                  "Tidioute": "/areas/tidioute-pa",
+                  "Clarendon": "/areas/clarendon-pa",
+                  "Bear Lake": "/areas/bear-lake-pa",
+                  "Russell": "/areas/russell-pa",
+                  "North Warren": "/areas/north-warren-pa",
+                  "Kinzua": "/areas/kinzua-pa",
+                  "Irvine": "/areas/irvine-pa",
+                  "Pittsfield": "/areas/pittsfield-pa",
+                  "Chandlers Valley": "/areas/chandlers-valley-pa",
+                  "Spring Creek": "/areas/spring-creek-pa"
                 };
                 const cityLink = cityLinks[city];
                 

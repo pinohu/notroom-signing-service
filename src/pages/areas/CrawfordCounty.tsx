@@ -110,7 +110,17 @@ const CrawfordCounty = () => {
                   "Meadville": "/areas/meadville-pa",
                   "Titusville": "/areas/titusville-pa",
                   "Cambridge Springs": "/areas/cambridge-springs-pa",
-                  "Linesville": "/areas/linesville-pa"
+                  "Linesville": "/areas/linesville-pa",
+                  "Conneaut Lake": "/areas/conneaut-lake-pa",
+                  "Saegertown": "/areas/saegertown-pa",
+                  "Venango": "/areas/venango-pa",
+                  "Townville": "/areas/townville-pa",
+                  "Cochranton": "/areas/cochranton-pa",
+                  "Conneautville": "/areas/conneautville-pa",
+                  "Hydetown": "/areas/hydetown-pa",
+                  "Spartansburg": "/areas/spartansburg-pa",
+                  "Riceville": "/areas/riceville-pa",
+                  "Blooming Valley": "/areas/blooming-valley-pa"
                 };
                 const cityLink = cityLinks[city];
                 
