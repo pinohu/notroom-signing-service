@@ -220,17 +220,34 @@ const VenangoCounty = () => {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">Communities We Serve</h2>
+            <h2 className="text-3xl font-bold text-center mb-8">Communities We Serve in Venango County</h2>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-              {cities.map((city) => (
-                <div key={city} className="text-center p-4 bg-background rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                  <MapPin className="w-5 h-5 text-primary mx-auto mb-2" />
-                  <p className="font-medium">{city}</p>
-                </div>
-              ))}
+              {cities.map((city) => {
+                const cityLinks: Record<string, string> = {
+                  "Oil City": "/areas/oil-city-pa",
+                  "Franklin": "/areas/franklin-pa"
+                };
+                const cityLink = cityLinks[city];
+                
+                if (cityLink) {
+                  return (
+                    <Link key={city} to={cityLink} className="text-center p-4 bg-background rounded-lg shadow-sm hover:shadow-md transition-shadow hover:border-primary border-2 border-transparent">
+                      <MapPin className="w-5 h-5 text-primary mx-auto mb-2" />
+                      <p className="font-medium">{city}</p>
+                    </Link>
+                  );
+                }
+                
+                return (
+                  <div key={city} className="text-center p-4 bg-background rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <MapPin className="w-5 h-5 text-primary mx-auto mb-2" />
+                    <p className="font-medium">{city}</p>
+                  </div>
+                );
+              })}
             </div>
             <p className="text-center text-muted-foreground mt-6">
-              And all surrounding Venango County communities
+              And all surrounding Venango County communities. Click on a city for location-specific information.
             </p>
           </div>
         </div>

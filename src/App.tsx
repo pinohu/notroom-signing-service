@@ -24,6 +24,11 @@ import WarrenCounty from "./pages/areas/WarrenCounty";
 import StatewideOnline from "./pages/areas/StatewideOnline";
 import MercerCounty from "./pages/areas/MercerCounty";
 import VenangoCounty from "./pages/areas/VenangoCounty";
+import OilCity from "./pages/areas/cities/OilCity";
+import Franklin from "./pages/areas/cities/Franklin";
+import Sharon from "./pages/areas/cities/Sharon";
+import Hermitage from "./pages/areas/cities/Hermitage";
+import GroveCity from "./pages/areas/cities/GroveCity";
 import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
@@ -62,6 +67,15 @@ const App = () => (
           <Route path="/areas/mercer-county" element={<MercerCounty />} />
           <Route path="/areas/venango-county" element={<VenangoCounty />} />
           <Route path="/areas/statewide-online" element={<StatewideOnline />} />
+          
+          {/* City Pages - Venango County */}
+          <Route path="/areas/oil-city-pa" element={<OilCity />} />
+          <Route path="/areas/franklin-pa" element={<Franklin />} />
+          
+          {/* City Pages - Mercer County */}
+          <Route path="/areas/sharon-pa" element={<Sharon />} />
+          <Route path="/areas/hermitage-pa" element={<Hermitage />} />
+          <Route path="/areas/grove-city-pa" element={<GroveCity />} />
           
           {/* Other Pages */}
           <Route path="/pricing" element={<Pricing />} />
