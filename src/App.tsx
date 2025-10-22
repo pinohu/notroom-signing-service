@@ -26,9 +26,24 @@ import MercerCounty from "./pages/areas/MercerCounty";
 import VenangoCounty from "./pages/areas/VenangoCounty";
 import OilCity from "./pages/areas/cities/OilCity";
 import Franklin from "./pages/areas/cities/Franklin";
+import Sugarcreek from "./pages/areas/cities/Sugarcreek";
+import Clintonville from "./pages/areas/cities/Clintonville";
+import Emlenton from "./pages/areas/cities/Emlenton";
 import Sharon from "./pages/areas/cities/Sharon";
 import Hermitage from "./pages/areas/cities/Hermitage";
 import GroveCity from "./pages/areas/cities/GroveCity";
+import Mercer from "./pages/areas/cities/Mercer";
+import Farrell from "./pages/areas/cities/Farrell";
+import Sharpsville from "./pages/areas/cities/Sharpsville";
+import Greenville from "./pages/areas/cities/Greenville";
+import Erie from "./pages/areas/cities/Erie";
+import Edinboro from "./pages/areas/cities/Edinboro";
+import NorthEast from "./pages/areas/cities/NorthEast";
+import Girard from "./pages/areas/cities/Girard";
+import Corry from "./pages/areas/cities/Corry";
+import Waterford from "./pages/areas/cities/Waterford";
+import Meadville from "./pages/areas/cities/Meadville";
+import Titusville from "./pages/areas/cities/Titusville";
 import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
@@ -71,11 +86,30 @@ const App = () => (
           {/* City Pages - Venango County */}
           <Route path="/areas/oil-city-pa" element={<OilCity />} />
           <Route path="/areas/franklin-pa" element={<Franklin />} />
+          <Route path="/areas/sugarcreek-pa" element={<Sugarcreek />} />
+          <Route path="/areas/clintonville-pa" element={<Clintonville />} />
+          <Route path="/areas/emlenton-pa" element={<Emlenton />} />
           
           {/* City Pages - Mercer County */}
           <Route path="/areas/sharon-pa" element={<Sharon />} />
           <Route path="/areas/hermitage-pa" element={<Hermitage />} />
           <Route path="/areas/grove-city-pa" element={<GroveCity />} />
+          <Route path="/areas/mercer-pa" element={<Mercer />} />
+          <Route path="/areas/farrell-pa" element={<Farrell />} />
+          <Route path="/areas/sharpsville-pa" element={<Sharpsville />} />
+          <Route path="/areas/greenville-pa" element={<Greenville />} />
+          
+          {/* City Pages - Erie County */}
+          <Route path="/areas/erie-pa" element={<Erie />} />
+          <Route path="/areas/edinboro-pa" element={<Edinboro />} />
+          <Route path="/areas/north-east-pa" element={<NorthEast />} />
+          <Route path="/areas/girard-pa" element={<Girard />} />
+          <Route path="/areas/corry-pa" element={<Corry />} />
+          <Route path="/areas/waterford-pa" element={<Waterford />} />
+          
+          {/* City Pages - Crawford County */}
+          <Route path="/areas/meadville-pa" element={<Meadville />} />
+          <Route path="/areas/titusville-pa" element={<Titusville />} />
           
           {/* Other Pages */}
           <Route path="/pricing" element={<Pricing />} />
