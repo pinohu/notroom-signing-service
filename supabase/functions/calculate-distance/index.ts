@@ -23,21 +23,49 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
 // Geocode address using Nominatim (free OpenStreetMap service)
 async function geocodeAddress(address: string): Promise<{ lat: number; lon: number } | null> {
   try {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`;
-    const response = await fetch(url, {
-      headers: {
-        'User-Agent': 'NotaryApp/1.0' // Nominatim requires a User-Agent
+    // Try multiple query formats for better results
+    const queries = [
+      address, // Original address
+      address.replace(/Suite [A-Z0-9]+,?\s*/gi, ''), // Remove suite info
+      address.replace(/,\s+/g, ', ').trim() // Normalize spacing
+    ];
+    
+    for (const query of queries) {
+      const url = `https://nominatim.openstreetmap.org/search?` + 
+        `format=json&q=${encodeURIComponent(query)}&` +
+        `countrycodes=us&limit=1&addressdetails=1`;
+      
+      console.log('Trying geocoding query:', query);
+      
+      const response = await fetch(url, {
+        headers: {
+          'User-Agent': 'NotaryServices/1.0 (notroom.app contact)',
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        console.error('Nominatim API error:', response.status);
+        continue;
       }
-    });
-    
-    const data = await response.json();
-    
-    if (data && data.length > 0) {
-      return {
-        lat: parseFloat(data[0].lat),
-        lon: parseFloat(data[0].lon)
-      };
+      
+      const data = await response.json();
+      console.log('Geocoding response:', JSON.stringify(data));
+      
+      if (data && data.length > 0) {
+        console.log('Successfully geocoded:', data[0].display_name);
+        return {
+          lat: parseFloat(data[0].lat),
+          lon: parseFloat(data[0].lon)
+        };
+      }
+      
+      // Add small delay between attempts to respect rate limits
+      if (queries.indexOf(query) < queries.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 500));
+      }
     }
+    
     return null;
   } catch (error) {
     console.error('Geocoding error:', error);
