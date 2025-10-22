@@ -23,6 +23,15 @@ export const PRICING = {
     total: 175,
     description: "$5 PA notary + $170 signing agent service"
   },
+  LOAN_SIGNING_MOBILE: {
+    display: "$175 + mileage",
+    notaryFee: 5,
+    agentFee: 170,
+    baseTotal: 175,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "$5 PA notary + $170 agent service + $1.50/mile"
+  },
   APOSTILLE: {
     display: "$245+",
     notaryFee: 5,

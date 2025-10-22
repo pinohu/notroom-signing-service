@@ -16,6 +16,7 @@ const PricingCalculator = () => {
   const [documents, setDocuments] = useState(1);
   const [signers, setSigners] = useState(1);
   const [urgency, setUrgency] = useState("flexible");
+  const [loanType, setLoanType] = useState("standard");
   const [destinationAddress, setDestinationAddress] = useState("");
   const [distance, setDistance] = useState<number | null>(null);
   const [isCalculatingDistance, setIsCalculatingDistance] = useState(false);
@@ -23,7 +24,8 @@ const PricingCalculator = () => {
 
   // Calculate distance when address changes (debounced)
   useEffect(() => {
-    if (service === "mobile" && destinationAddress.length > 10) {
+    const needsDistance = service === "mobile" || (service === "loan" && loanType === "mobile");
+    if (needsDistance && destinationAddress.length > 10) {
       const timer = setTimeout(async () => {
         setIsCalculatingDistance(true);
         setDistanceError(null);
@@ -37,7 +39,7 @@ const PricingCalculator = () => {
       
       return () => clearTimeout(timer);
     }
-  }, [destinationAddress, service]);
+  }, [destinationAddress, service, loanType]);
 
   const calculatePriceBreakdown = () => {
     let breakdown: {
@@ -73,9 +75,23 @@ const PricingCalculator = () => {
       breakdown.processingFee = PRICING.APOSTILLE.processingFee;
       breakdown.total = PRICING.APOSTILLE.baseTotal;
     } else if (service === "loan") {
-      breakdown.baseNotaryFee = PRICING.LOAN_SIGNING.notaryFee;
-      breakdown.agentFee = PRICING.LOAN_SIGNING.agentFee;
-      breakdown.total = PRICING.LOAN_SIGNING.total;
+      if (loanType === "mobile") {
+        breakdown.baseNotaryFee = PRICING.LOAN_SIGNING_MOBILE.notaryFee;
+        breakdown.agentFee = PRICING.LOAN_SIGNING_MOBILE.agentFee;
+        breakdown.total = PRICING.LOAN_SIGNING_MOBILE.baseTotal;
+        
+        // Add mileage if distance is calculated
+        if (distance !== null) {
+          const roundTripDistance = calculateRoundTripDistance(distance);
+          breakdown.distance = roundTripDistance;
+          breakdown.mileageFee = roundTripDistance * PRICING.LOAN_SIGNING_MOBILE.mileageRate;
+          breakdown.total += breakdown.mileageFee;
+        }
+      } else {
+        breakdown.baseNotaryFee = PRICING.LOAN_SIGNING.notaryFee;
+        breakdown.agentFee = PRICING.LOAN_SIGNING.agentFee;
+        breakdown.total = PRICING.LOAN_SIGNING.total;
+      }
     } else if (service === "i9") {
       breakdown.total = urgency === "remote" 
         ? PRICING.I9_VERIFICATION.remote 
@@ -135,7 +151,22 @@ const PricingCalculator = () => {
           </Select>
         </div>
 
-        {service === "mobile" && (
+        {service === "loan" && (
+          <div>
+            <Label htmlFor="loanType">Service Location</Label>
+            <Select value={loanType} onValueChange={setLoanType}>
+              <SelectTrigger id="loanType">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="standard">In-Office/Virtual</SelectItem>
+                <SelectItem value="mobile">Mobile (We Come to You)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        )}
+
+        {(service === "mobile" || (service === "loan" && loanType === "mobile")) && (
           <div>
             <Label htmlFor="destination">Your Address (for distance calculation)</Label>
             <div className="relative">
@@ -224,7 +255,7 @@ const PricingCalculator = () => {
             </div>
           )}
           
-          {service === "mobile" && breakdown.distance !== undefined && breakdown.mileageFee !== undefined && (
+          {(service === "mobile" || (service === "loan" && loanType === "mobile")) && breakdown.distance !== undefined && breakdown.mileageFee !== undefined && (
             <>
               <div className="flex justify-between text-sm border-t pt-2">
                 <span className="text-muted-foreground">
@@ -234,14 +265,14 @@ const PricingCalculator = () => {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">
-                  Mileage Fee (${PRICING.MOBILE.mileageRate}/mile)
+                  Mileage Fee (${service === "mobile" ? PRICING.MOBILE.mileageRate : PRICING.LOAN_SIGNING_MOBILE.mileageRate}/mile)
                 </span>
                 <span className="font-medium">${breakdown.mileageFee.toFixed(2)}</span>
               </div>
             </>
           )}
           
-          {service === "mobile" && !distance && (
+          {((service === "mobile" || (service === "loan" && loanType === "mobile")) && !distance) && (
             <div className="flex justify-between text-sm border-t pt-2">
               <span className="text-muted-foreground italic">
                 + Travel mileage (enter address above)
@@ -252,7 +283,7 @@ const PricingCalculator = () => {
           
           <div className="flex justify-between text-lg font-bold border-t-2 pt-3 mt-2">
             <span>Total</span>
-            <span className="text-primary">${price}{service === "mobile" && !distance && "+"}</span>
+            <span className="text-primary">${price}{((service === "mobile" || (service === "loan" && loanType === "mobile")) && !distance) && "+"}</span>
           </div>
         </div>
         
@@ -261,7 +292,7 @@ const PricingCalculator = () => {
             <p className="text-sm text-muted-foreground mb-1">Your Total</p>
             <div className="flex items-center gap-2">
               <DollarSign className="w-8 h-8 text-primary" />
-              <span className="text-4xl font-bold text-primary">{price}{service === "mobile" && !distance && "+"}</span>
+              <span className="text-4xl font-bold text-primary">{price}{((service === "mobile" || (service === "loan" && loanType === "mobile")) && !distance) && "+"}</span>
             </div>
           </div>
           <div className="text-right">
@@ -309,6 +340,9 @@ const PricingCalculator = () => {
             <>
               <li>• PA notarization: ${PRICING.LOAN_SIGNING.notaryFee}</li>
               <li>• Certified signing agent service</li>
+              {loanType === "mobile" && (
+                <li>• Round-trip mileage: ${PRICING.LOAN_SIGNING_MOBILE.mileageRate}/mile from Erie</li>
+              )}
               <li>• Document printing if needed</li>
               <li>• Scan back & FedEx return included</li>
             </>
