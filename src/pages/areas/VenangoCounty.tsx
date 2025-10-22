@@ -225,7 +225,10 @@ const VenangoCounty = () => {
               {cities.map((city) => {
                 const cityLinks: Record<string, string> = {
                   "Oil City": "/areas/oil-city-pa",
-                  "Franklin": "/areas/franklin-pa"
+                  "Franklin": "/areas/franklin-pa",
+                  "Sugarcreek": "/areas/sugarcreek-pa",
+                  "Clintonville": "/areas/clintonville-pa",
+                  "Emlenton": "/areas/emlenton-pa"
                 };
                 const cityLink = cityLinks[city];
                 

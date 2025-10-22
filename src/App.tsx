@@ -44,6 +44,9 @@ import Corry from "./pages/areas/cities/Corry";
 import Waterford from "./pages/areas/cities/Waterford";
 import Meadville from "./pages/areas/cities/Meadville";
 import Titusville from "./pages/areas/cities/Titusville";
+import Warren from "./pages/areas/cities/Warren";
+import Youngsville from "./pages/areas/cities/Youngsville";
+import Sheffield from "./pages/areas/cities/Sheffield";
 import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
@@ -110,6 +113,11 @@ const App = () => (
           {/* City Pages - Crawford County */}
           <Route path="/areas/meadville-pa" element={<Meadville />} />
           <Route path="/areas/titusville-pa" element={<Titusville />} />
+          
+          {/* City Pages - Warren County */}
+          <Route path="/areas/warren-pa" element={<Warren />} />
+          <Route path="/areas/youngsville-pa" element={<Youngsville />} />
+          <Route path="/areas/sheffield-pa" element={<Sheffield />} />
           
           {/* Other Pages */}
           <Route path="/pricing" element={<Pricing />} />

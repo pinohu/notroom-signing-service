@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Clock, Video, Shield, CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const WarrenCounty = () => {
   const navigate = useNavigate();
@@ -138,12 +138,30 @@ const WarrenCounty = () => {
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12">Warren County Communities We Serve</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
-              {cities.map((city, index) => (
-                <div key={index} className="flex items-center gap-2 p-3 bg-background rounded-lg">
-                  <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
-                  <span className="text-sm font-medium">{city}</span>
-                </div>
-              ))}
+              {cities.map((city, index) => {
+                const cityLinks: Record<string, string> = {
+                  "Warren": "/areas/warren-pa",
+                  "Youngsville": "/areas/youngsville-pa",
+                  "Sheffield": "/areas/sheffield-pa"
+                };
+                const cityLink = cityLinks[city];
+                
+                if (cityLink) {
+                  return (
+                    <Link key={index} to={cityLink} className="flex items-center gap-2 p-3 bg-background rounded-lg hover:bg-primary/10 transition-colors">
+                      <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+                      <span className="text-sm font-medium">{city}</span>
+                    </Link>
+                  );
+                }
+                
+                return (
+                  <div key={index} className="flex items-center gap-2 p-3 bg-background rounded-lg">
+                    <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span className="text-sm font-medium">{city}</span>
+                  </div>
+                );
+              })}
             </div>
             <p className="text-center text-muted-foreground">
               And all surrounding Warren County townships and boroughs

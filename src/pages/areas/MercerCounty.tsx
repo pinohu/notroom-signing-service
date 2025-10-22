@@ -226,7 +226,11 @@ const MercerCounty = () => {
                 const cityLinks: Record<string, string> = {
                   "Sharon": "/areas/sharon-pa",
                   "Hermitage": "/areas/hermitage-pa",
-                  "Grove City": "/areas/grove-city-pa"
+                  "Grove City": "/areas/grove-city-pa",
+                  "Mercer": "/areas/mercer-pa",
+                  "Farrell": "/areas/farrell-pa",
+                  "Sharpsville": "/areas/sharpsville-pa",
+                  "Greenville": "/areas/greenville-pa"
                 };
                 const cityLink = cityLinks[city];
                 
