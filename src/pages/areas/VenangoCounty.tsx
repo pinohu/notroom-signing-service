@@ -3,14 +3,17 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { MapPin, Clock, DollarSign, CheckCircle, Phone, Mail } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const VenangoCounty = () => {
+  const navigate = useNavigate();
+  
   const scrollToBooking = () => {
-    const bookingForm = document.getElementById("booking-form");
-    if (bookingForm) {
-      bookingForm.scrollIntoView({ behavior: "smooth" });
-    }
+    navigate("/");
+    setTimeout(() => {
+      const element = document.getElementById("booking-form");
+      element?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   };
 
   const cities = [

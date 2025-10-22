@@ -1,8 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import { Button } from "@/components/ui/button";
 
 const Testimonials = () => {
+  const scrollToBooking = () => {
+    const element = document.getElementById("booking-form");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const testimonials = [
     {
       quote: "Online notarization saves so much time. No driving to the bank, no waiting in line. Just jump on a video call and you're done in minutes.",
@@ -73,9 +81,13 @@ const Testimonials = () => {
 
         {/* CTA Link */}
         <div className="text-center mt-12">
-          <a href="#booking-form" className="text-primary hover:text-accent font-semibold text-lg underline underline-offset-4 transition-colors">
+          <Button
+            onClick={scrollToBooking}
+            variant="link"
+            className="text-primary hover:text-accent font-semibold text-lg underline underline-offset-4 transition-colors"
+          >
             Book Your Appointment →
-          </a>
+          </Button>
         </div>
       </div>
     </section>
