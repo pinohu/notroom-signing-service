@@ -120,10 +120,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16335", "16388"],
     nearbyComm: ["Cochranton", "Saegertown", "Cambridge Springs", "Conneaut Lake"],
-    landmarks: ["Allegheny College", "Diamond Park", "Market House", "Baldwin Reynolds House"],
-    description: "Crawford County seat and college town",
+    landmarks: ["Allegheny College", "Diamond Park", "Market House Historic District", "Baldwin Reynolds House Museum", "Talon Conference Center", "Meadville Medical Center", "Downtown Meadville"],
+    description: "Crawford County's vibrant seat and largest city, home to historic Allegheny College and a thriving downtown with arts, culture, and commerce",
     population: "~13,000",
-    uniqueTrait: "Home to Allegheny College and zipper manufacturing history"
+    uniqueTrait: "Home to prestigious Allegheny College (founded 1815), birthplace of the zipper, and Crawford County's economic and cultural hub with historic architecture and college-town atmosphere"
   },
   conneautLake: {
     name: "Conneaut Lake",
@@ -131,10 +131,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16316"],
     nearbyComm: ["Meadville", "Harmonsburg", "Linesville", "Conneautville"],
-    landmarks: ["Conneaut Lake", "Conneaut Lake Park", "Beach areas"],
-    description: "Pennsylvania's largest natural lake resort community",
+    landmarks: ["Conneaut Lake", "Conneaut Lake Park Amusement Park", "Beach Club", "Lakefront Properties", "Conneaut Hotel", "Blue Water Beach"],
+    description: "Pennsylvania's largest natural lake resort community offering year-round recreation, lakefront living, and family entertainment",
     population: "~700",
-    uniqueTrait: "Pennsylvania's largest natural glacier-formed lake"
+    uniqueTrait: "Pennsylvania's largest natural glacier-formed lake spanning 929 acres, featuring historic amusement park (opened 1892), pristine beaches, and premier fishing destination"
   },
   titusville: {
     name: "Titusville",
@@ -142,10 +142,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16354"],
     nearbyComm: ["Pleasantville", "Hydetown", "Oil City", "Spartansburg"],
-    landmarks: ["Drake Well Museum", "Oil Creek State Park", "Downtown Historic District"],
-    description: "Birthplace of the American oil industry",
+    landmarks: ["Drake Well Museum & Park", "Oil Creek State Park", "Historic Downtown District", "Oil Creek & Titusville Railroad", "Titusville Regional Hospital", "St. Titus Church"],
+    description: "Historic city where the American oil industry was born in 1859, featuring oil heritage museums, outdoor recreation, and Victorian architecture",
     population: "~5,400",
-    uniqueTrait: "Site of world's first commercial oil well (1859)"
+    uniqueTrait: "Birthplace of the American oil industry - site of Colonel Edwin Drake's world's first commercial oil well drilled in 1859. Oil Creek State Park offers 36 miles of hiking trails"
   },
   
   // Mercer County Communities
@@ -155,10 +155,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Mercer County",
     zipCodes: ["16137"],
     nearbyComm: ["Grove City", "Greenville", "Sharon", "Stoneboro"],
-    landmarks: ["Mercer County Courthouse", "Magoffin House Museum", "Downtown Square"],
-    description: "Charming county seat with historic downtown",
+    landmarks: ["Mercer County Courthouse", "Magoffin House Museum", "Downtown Historic Square", "Mercer Area Historical Society", "Central Park", "Route 19/62 Intersection"],
+    description: "Charming county seat featuring beautifully preserved Victorian courthouse, historic downtown square, and small-town Pennsylvania atmosphere",
     population: "~2,000",
-    uniqueTrait: "Home to beautiful Victorian-era courthouse"
+    uniqueTrait: "Home to stunning 1909 Beaux-Arts Mercer County Courthouse with clock tower, surrounded by historic square. Annual Mercer County Fair and strong agricultural heritage"
   },
   groveCity: {
     name: "Grove City",
@@ -166,10 +166,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Mercer County",
     zipCodes: ["16127"],
     nearbyComm: ["Mercer", "Slippery Rock", "Harrisville", "Clintonville"],
-    landmarks: ["Grove City College", "Grove City Premium Outlets", "Downtown Grove City"],
-    description: "College town with premier outlet shopping",
+    landmarks: ["Grove City College", "Grove City Premium Outlets", "Historic Downtown Grove City", "Wolf Creek Village", "Kettle Creek Environmental Center", "Grove City Area Library"],
+    description: "Thriving college town combining premier Christian higher education with one of America's largest outlet shopping destinations",
     population: "~8,100",
-    uniqueTrait: "Home to Grove City College and premium outlet mall"
+    uniqueTrait: "Home to Grove City College (1876) - renowned Christian liberal arts college, plus Grove City Premium Outlets - one of the largest outlet malls in America with over 130 stores"
   },
   hermitage: {
     name: "Hermitage",
@@ -177,10 +177,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Mercer County",
     zipCodes: ["16148"],
     nearbyComm: ["Sharon", "Farrell", "Sharpsville", "Greenville"],
-    landmarks: ["Shenango River Lake", "Winner's Circle Golf Course", "Hermitage Stadium"],
-    description: "Growing commercial hub of Mercer County",
+    landmarks: ["Shenango River Lake", "Winner's Circle Golf Course", "Hermitage Stadium", "Hickory Memorial Park", "The Avenue at Hermitage", "Shenango Valley Mall"],
+    description: "Mercer County's largest and fastest-growing city, serving as the region's commercial, retail, and recreational hub",
     population: "~16,200",
-    uniqueTrait: "Largest city in Mercer County with thriving retail"
+    uniqueTrait: "Largest city in Mercer County with thriving retail corridor including The Avenue shopping district. Gateway to Shenango River Lake with 3,500 acres for boating and fishing"
   },
   sharon: {
     name: "Sharon",
@@ -188,10 +188,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Mercer County",
     zipCodes: ["16146"],
     nearbyComm: ["Hermitage", "Farrell", "Sharpsville", "West Middlesex"],
-    landmarks: ["Daffin's Candies", "Buhl Park", "Downtown Sharon"],
-    description: "Historic steel town with Victorian charm",
+    landmarks: ["Daffin's Candies & Chocolate Kingdom", "Buhl Park", "Historic Downtown Sharon", "Sharon Regional Medical Center", "Winner District", "Shenango River"],
+    description: "Historic steel town transformed into charming city featuring world-famous chocolate kingdom, beautiful parks, and Victorian downtown",
     population: "~13,100",
-    uniqueTrait: "Home to world's largest chocolate kingdom at Daffin's"
+    uniqueTrait: "Home to Daffin's Candies featuring the world's largest chocolate kingdom (10,000+ sq ft). Beautiful Buhl Park with 300+ acres, gardens, and recreational facilities"
   },
   greenville: {
     name: "Greenville",
@@ -199,10 +199,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Mercer County",
     zipCodes: ["16125"],
     nearbyComm: ["Mercer", "Hermitage", "Jamestown", "Sandy Lake"],
-    landmarks: ["Greenville Railroad Park Museum", "Downtown Historic District"],
-    description: "Railroad heritage town in northwestern Mercer County",
+    landmarks: ["Greenville Railroad Park Museum", "Historic Downtown District", "Thiel College Greenville Center", "Shenango River Trail", "Memorial Park", "Greenville Area Library"],
+    description: "Historic railroad heritage town in northwestern Mercer County, preserving transportation history while serving modern community needs",
     population: "~5,900",
-    uniqueTrait: "Preserved railroad history and museum"
+    uniqueTrait: "Preserved railroad history showcased at Greenville Railroad Park Museum featuring vintage locomotives, cabooses, and station. Active downtown with local shops and dining"
   },
   
   // Venango County Communities
@@ -212,10 +212,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16323"],
     nearbyComm: ["Oil City", "Cooperstown", "Emlenton", "Clintonville"],
-    landmarks: ["DeBence Antique Music World", "Allegheny River", "Franklin Area Historical Society"],
-    description: "Historic river town in Venango County",
+    landmarks: ["DeBence Antique Music World", "Allegheny River", "Franklin Area Historical Society", "Barrow-Civic Theatre", "Downtown Historic District", "Samuel Justus Recreation Trail"],
+    description: "Historic river town at the confluence of French Creek and Allegheny River, featuring antique music museum and Victorian architecture",
     population: "~6,500",
-    uniqueTrait: "Confluence of French Creek and Allegheny River"
+    uniqueTrait: "Confluence of French Creek and Allegheny River. Home to DeBence Antique Music World - world's largest collection of automatic music machines. Rich lumber and oil boom heritage"
   },
   oilCity: {
     name: "Oil City",
@@ -223,10 +223,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16301"],
     nearbyComm: ["Franklin", "Titusville", "Rouseville", "Pleasantville"],
-    landmarks: ["Oil Creek State Park", "Venango Museum", "Historic Downtown"],
-    description: "Oil boom heritage city",
+    landmarks: ["Oil Creek State Park", "Venango Museum of Art, Science & Industry", "Historic Downtown", "Oil Creek & Titusville Railroad", "McClintock Well", "Allegheny River Trail"],
+    description: "Pennsylvania oil boom heritage city nestled along the Allegheny River and Oil Creek, gateway to outdoor recreation and industrial history",
     population: "~10,000",
-    uniqueTrait: "Center of Pennsylvania's oil boom history"
+    uniqueTrait: "Center of Pennsylvania's oil boom history - Oil Creek State Park preserves oil heritage with 36 miles of trails. Scenic train rides on Oil Creek & Titusville Railroad through history"
   },
   
   // Warren County Communities
@@ -236,10 +236,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16365"],
     nearbyComm: ["North Warren", "Youngsville", "Russell", "Tidioute"],
-    landmarks: ["Allegheny National Forest", "Kinzua Bridge", "Warren County Courthouse"],
-    description: "Gateway to Allegheny National Forest",
+    landmarks: ["Allegheny National Forest", "Kinzua Bridge State Park", "Warren County Courthouse", "Downtown Historic District", "Struthers Library Theatre", "Jackson Run Trail System"],
+    description: "Gateway city to Pennsylvania's only national forest, offering outdoor recreation, historic downtown, and small-city amenities in forest setting",
     population: "~9,400",
-    uniqueTrait: "Gateway city to Pennsylvania's only national forest"
+    uniqueTrait: "Gateway to 517,000-acre Allegheny National Forest. Base for Kinzua Bridge Skywalk, Allegheny River water trail, hiking, hunting, and year-round outdoor adventure"
   },
   northWarren: {
     name: "North Warren",

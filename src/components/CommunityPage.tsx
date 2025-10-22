@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Video, Car, FileText, Globe, Users, Building2, Briefcase, MapPin, ArrowRight, CheckCircle, Phone } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { CommunityData, getNearbyLinks } from "@/data/communityData";
+import PricingCalculator from "@/components/PricingCalculator";
 
 interface CommunityPageProps {
   community: CommunityData;
@@ -263,6 +264,21 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Distance-Sensitive Pricing Calculator */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto mb-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Calculate Your Exact Price
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Get instant pricing based on your location in {community.name}, {community.county}
+            </p>
+          </div>
+          <PricingCalculator />
         </div>
       </section>
 
