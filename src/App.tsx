@@ -49,6 +49,15 @@ import Youngsville from "./pages/areas/cities/Youngsville";
 import Sheffield from "./pages/areas/cities/Sheffield";
 import CambridgeSprings from "./pages/areas/cities/CambridgeSprings";
 import Linesville from "./pages/areas/cities/Linesville";
+import ConneautLake from "./pages/areas/cities/ConneautLake";
+import Cochranton from "./pages/areas/cities/Cochranton";
+import Saegertown from "./pages/areas/cities/Saegertown";
+import Spartansburg from "./pages/areas/cities/Spartansburg";
+import GuysMills from "./pages/areas/cities/GuysMills";
+import BloomingValley from "./pages/areas/cities/BloomingValley";
+import Harmonsburg from "./pages/areas/cities/Harmonsburg";
+import VenangoCrawford from "./pages/areas/cities/VenangoCrawford";
+import Albion from "./pages/areas/cities/Albion";
 import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
@@ -117,6 +126,17 @@ const App = () => (
           <Route path="/areas/titusville-pa" element={<Titusville />} />
           <Route path="/areas/cambridge-springs-pa" element={<CambridgeSprings />} />
           <Route path="/areas/linesville-pa" element={<Linesville />} />
+          <Route path="/areas/conneaut-lake-pa" element={<ConneautLake />} />
+          <Route path="/areas/cochranton-pa" element={<Cochranton />} />
+          <Route path="/areas/saegertown-pa" element={<Saegertown />} />
+          <Route path="/areas/spartansburg-pa" element={<Spartansburg />} />
+          <Route path="/areas/guys-mills-pa" element={<GuysMills />} />
+          <Route path="/areas/blooming-valley-pa" element={<BloomingValley />} />
+          <Route path="/areas/harmonsburg-pa" element={<Harmonsburg />} />
+          <Route path="/areas/venango-pa" element={<VenangoCrawford />} />
+          
+          {/* City Pages - Erie County (additional) */}
+          <Route path="/areas/albion-pa" element={<Albion />} />
           
           {/* City Pages - Warren County */}
           <Route path="/areas/warren-pa" element={<Warren />} />
