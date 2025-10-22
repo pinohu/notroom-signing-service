@@ -12,7 +12,7 @@ const Pricing = () => {
     <Layout>
       <SEO
         title="Pricing - Transparent Notary Service Costs"
-        description="Clear, upfront pricing for notary services in Erie, PA. Remote online notary $60, mobile notary $125. No hidden fees. View all pricing."
+        description="Clear, upfront pricing for notary services in Erie, PA. Remote online notary $50, mobile notary $50 + mileage. No hidden fees. View all pricing."
         keywords="notary prices erie pa, notary cost, mobile notary pricing, online notary fees"
         canonical="https://notroom.com/pricing"
       />
@@ -31,9 +31,9 @@ const Pricing = () => {
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">Remote Online Notary</h3>
-              <div className="text-4xl font-bold mb-4">$45</div>
-              <p className="text-muted-foreground mb-2">Standard documents</p>
-              <p className="text-sm text-muted-foreground mb-6">$5 notary fee + $40 platform/technology fee</p>
+              <div className="text-4xl font-bold mb-4">$50</div>
+              <p className="text-muted-foreground mb-2">Per document</p>
+              <p className="text-sm text-muted-foreground mb-6">$5 PA notary fee + $45 technology fee</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -45,7 +45,7 @@ const Pricing = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Real estate docs $95</span>
+                  <span className="text-sm">Legally valid in all 50 states</span>
                 </li>
               </ul>
               <Button className="w-full" onClick={() => navigate("/services/remote-online-notary")}>Learn More</Button>
@@ -53,9 +53,9 @@ const Pricing = () => {
 
             <Card className="p-8 border-primary border-2">
               <h3 className="text-2xl font-bold mb-2">Mobile Notary</h3>
-              <div className="text-4xl font-bold mb-4">$125+</div>
+              <div className="text-4xl font-bold mb-4">$50 + mileage</div>
               <p className="text-muted-foreground mb-2">Starting price</p>
-              <p className="text-sm text-muted-foreground mb-6">$5-15 notary fee + $100 travel + $10 admin</p>
+              <p className="text-sm text-muted-foreground mb-6">$5 PA notary + $45 service + $1.50/mile from Erie</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -76,8 +76,8 @@ const Pricing = () => {
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">Loan Signing</h3>
               <div className="text-4xl font-bold mb-4">$175</div>
-              <p className="text-muted-foreground mb-2">Per signing appointment</p>
-              <p className="text-sm text-muted-foreground mb-6">$15 notary fee + $160 signing agent service</p>
+              <p className="text-muted-foreground mb-2">Base price + travel</p>
+              <p className="text-sm text-muted-foreground mb-6">$5 PA notary + $170 signing agent service</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -99,7 +99,7 @@ const Pricing = () => {
               <h3 className="text-2xl font-bold mb-2">Apostille Services</h3>
               <div className="text-4xl font-bold mb-4">$245+</div>
               <p className="text-muted-foreground mb-2">Standard processing</p>
-              <p className="text-sm text-muted-foreground mb-6">$15 PA state fee + notarization + service fees</p>
+              <p className="text-sm text-muted-foreground mb-6">$5 PA notary + $240+ processing & coordination</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -172,19 +172,19 @@ const Pricing = () => {
               <ul className="space-y-3 text-sm">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>RON Services:</strong> $5-15 per signature (maximum allowed by PA law) + $30-80 technology platform fee for secure video infrastructure, scheduling system, document storage, and administrative services. Standard docs $45 total, real estate docs $95 total.</span>
+                  <span><strong>RON Services:</strong> $5 per signature (maximum allowed by PA law) + $45 technology platform fee for secure video infrastructure, scheduling system, document storage, and administrative services. Total: $50 per document.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Mobile Notary:</strong> $5-15 per signature (as allowed by PA law) + separate travel service fee, mileage, and administrative charges for on-location services.</span>
+                  <span><strong>Mobile Notary:</strong> $5 per signature (as allowed by PA law) + $45 service fee + $1.50 per mile travel from 6238 Cobblestone Dr, Erie, PA 16509. Minimum: $50 + mileage.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Loan Signing Agent:</strong> $5-15 notary fee per signature + $160-210 signing agent service fee (covering document review, printing, travel, scanning, and overnight return shipping). Standard closings $175, hybrid/e-closings $225.</span>
+                  <span><strong>Loan Signing Agent:</strong> $5 notary fee per signature + $170 signing agent service fee (covering document review, printing, travel, scanning, and overnight return shipping). Base: $175 + travel if mobile.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Apostille Services:</strong> PA Dept of State fee $15 + notarization $5-15 + service fees. Standard (7-10 days) $245, Expedited (2-3 days) $395, Full-chain authentication $495.</span>
+                  <span><strong>Apostille Services:</strong> $5 PA notary fee + $240+ processing & coordination (includes PA Dept of State fees). Standard (7-10 days) $245, Expedited (2-3 days) $395, Full-chain authentication $495.</span>
                 </li>
               </ul>
               <p className="text-xs text-muted-foreground mt-4 text-center">

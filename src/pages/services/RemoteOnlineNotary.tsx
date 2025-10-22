@@ -69,9 +69,9 @@ const RemoteOnlineNotary = () => {
     "description": "Remote online notarization service available by appointment in Pennsylvania. Get documents notarized via secure video call.",
     "offers": {
       "@type": "Offer",
-      "price": "45",
+      "price": "50",
       "priceCurrency": "USD",
-      "description": "$5 notary fee per signature + $40 technology platform fee"
+      "description": "$5 PA notary fee + $45 technology platform fee"
     }
   };
 
@@ -79,7 +79,7 @@ const RemoteOnlineNotary = () => {
     <Layout>
       <SEO
         title="Remote Online Notary (RON) Service in PA"
-        description="Get documents notarized online in 5 minutes with Notroom's RON service in Pennsylvania. Available by appointment including evenings and weekends, legally valid nationwide. $60 per session. Book now!"
+        description="Get documents notarized online in 5 minutes with Notroom's RON service in Pennsylvania. Available by appointment including evenings and weekends, legally valid nationwide. $50 per session. Book now!"
         keywords="remote online notary pennsylvania, RON service PA, online notarization erie pa, notary by appointment, virtual notary pennsylvania"
         canonical="https://notroom.com/services/remote-online-notary"
         schema={schema}
@@ -104,11 +104,8 @@ const RemoteOnlineNotary = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Book RON Session - From $45
+                Book RON Session - $50
               </Button>
-              <p className="text-sm text-white/80 mt-2">
-                Standard docs $45 | Real estate docs $95
-              </p>
               <Button 
                 size="lg" 
                 variant="outline"
@@ -373,7 +370,7 @@ const RemoteOnlineNotary = () => {
           },
           {
             question: "Can I notarize multiple documents in one session?",
-            answer: "Yes! You can notarize multiple documents during a single session. Standard documents are $45 per session. Complex real estate documents are $95 due to additional review requirements."
+            answer: "Yes! You can notarize multiple documents during a single session for $50 total. Each document is notarized during the same video session."
           },
           {
             question: "Do you offer subscription plans for frequent RON users?",

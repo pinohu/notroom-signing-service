@@ -54,7 +54,7 @@ const MobileNotary = () => {
     "description": "Professional mobile notary service in Erie, PA. We come to your location for convenient document notarization.",
     "offers": {
       "@type": "Offer",
-      "price": "125",
+      "price": "50",
       "priceCurrency": "USD"
     }
   };
@@ -88,7 +88,7 @@ const MobileNotary = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90"
               >
-                Schedule Mobile Visit - $125
+                Schedule Mobile Visit - $50 + mileage
               </Button>
               <Button 
                 size="lg" 
@@ -262,7 +262,7 @@ const MobileNotary = () => {
           },
           {
             question: "How much does mobile notary service cost?",
-            answer: "Base price is $125 which includes $5-15 notary fee per signature (PA law), $100 travel service fee, and $10 admin fee. Additional charges may apply for mileage and after-hours service."
+            answer: "Base price is $50 ($5 PA notary fee + $45 service fee) plus $1.50 per mile from our Erie office (6238 Cobblestone Dr, Erie, PA 16509). Additional charges may apply for after-hours service or multiple documents."
           },
           {
             question: "Can you come to a hospital or nursing home?",
