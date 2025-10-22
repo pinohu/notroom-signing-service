@@ -2,7 +2,8 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { MapPin, Clock, DollarSign, CheckCircle, Phone, Mail } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { MapPin, Video, Car, FileText, Globe, Users, Building2, CheckCircle, Phone, Mail, Briefcase, Clock, DollarSign } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const MercerCounty = () => {
@@ -21,29 +22,104 @@ const MercerCounty = () => {
     "Greenville", "Mercer", "Stoneboro", "Sandy Lake", "Clark"
   ];
 
+  const services = [
+    {
+      icon: Video,
+      title: "Remote Online Notary (RON)",
+      price: "$45",
+      description: "Get documents notarized online from anywhere in Mercer County via secure video call",
+      features: ["Available 24/7", "Complete in 5 minutes", "Legally valid in all 50 states"],
+      link: "/services/remote-online-notary"
+    },
+    {
+      icon: Car,
+      title: "Mobile Notary Service",
+      price: "$125+",
+      description: "We travel to your location in Sharon, Hermitage, Grove City, or anywhere in Mercer County",
+      features: ["Same-day available", "Home, office, or hospital visits", "After-hours service"],
+      link: "/services/mobile-notary"
+    },
+    {
+      icon: FileText,
+      title: "Loan Signing Agent",
+      price: "$175",
+      description: "Certified loan signing services for real estate closings throughout Mercer County",
+      features: ["NNA certified", "$100K E&O insurance", "Mobile service to your location"],
+      link: "/services/loan-signing-agent"
+    },
+    {
+      icon: Globe,
+      title: "Apostille Services",
+      price: "$245+",
+      description: "International document authentication for Mercer County residents",
+      features: ["PA Dept of State processing", "Standard & expedited options", "Full-chain authentication"],
+      link: "/services/apostille"
+    },
+    {
+      icon: Users,
+      title: "I-9 Verification",
+      price: "$85+",
+      description: "Employment verification services for Mercer County businesses",
+      features: ["In-person verification", "Remote E-Verify option", "Volume discounts available"],
+      link: "/services/i9-verification"
+    },
+    {
+      icon: Building2,
+      title: "Registered Office & Business Filings",
+      price: "$149/yr",
+      description: "Pennsylvania business formation and registered office services",
+      features: ["LLC & Corporation formation", "Registered agent service", "Compliance management"],
+      link: "/services/registered-office"
+    },
+    {
+      icon: Briefcase,
+      title: "Business Retainer Plans",
+      price: "$399+",
+      description: "Monthly plans for Mercer County businesses with ongoing notary needs",
+      features: ["Volume discounts", "Priority scheduling", "Dedicated account manager"],
+      link: "/services/business-retainer"
+    }
+  ];
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Notroom Notary Services - Mercer County",
-    "description": "Professional mobile and online notary services in Mercer County, PA. Serving Sharon, Hermitage, Grove City, and all surrounding areas.",
+    "name": "Notroom - Complete Notary & Business Services - Mercer County, PA",
+    "description": "Full-service notary and business filing services in Mercer County, PA. Remote online notary, mobile notary, loan signing, apostille, I-9 verification, registered office, and business formation serving Sharon, Hermitage, Grove City, and all surrounding areas.",
     "areaServed": {
       "@type": "State",
       "name": "Pennsylvania",
-      "containsPlace": {
-        "@type": "City",
-        "name": "Mercer County"
-      }
+      "containsPlace": [
+        {"@type": "City", "name": "Sharon"},
+        {"@type": "City", "name": "Hermitage"},
+        {"@type": "City", "name": "Grove City"},
+        {"@type": "City", "name": "Mercer County"}
+      ]
     },
     "telephone": "814-480-0989",
-    "priceRange": "$60-$150"
+    "email": "support@notroom.com",
+    "priceRange": "$45-$500",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Notary and Business Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Remote Online Notary"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mobile Notary"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Loan Signing Agent"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Apostille Services"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "I-9 Verification"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Registered Office"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Business Retainer Plans"}}
+      ]
+    }
   };
 
   return (
     <Layout>
       <SEO
-        title="Mercer County Notary Services | Sharon, Hermitage, Grove City | Mobile & Online"
-        description="Professional notary services throughout Mercer County, PA. Mobile service in Sharon, Hermitage, Grove City, and all surrounding areas. Online notarization available statewide. Fast, reliable, licensed."
-        keywords="Mercer County notary, Sharon notary, Hermitage notary, Grove City notary, mobile notary Mercer County, online notary Pennsylvania"
+        title="Mercer County Notary & Business Services | Sharon, Hermitage, Grove City PA | RON, Mobile, Apostille, I-9, LLC Formation"
+        description="Complete notary and business services in Mercer County, PA. Remote online notary (RON), mobile notary, loan signing agent, apostille services, I-9 verification, registered office, LLC formation. Serving Sharon, Hermitage, Grove City, Farrell. Same-day available. Licensed & bonded."
+        keywords="Mercer County notary, Sharon PA notary, Hermitage notary, Grove City notary, mobile notary Mercer County, online notary Sharon PA, loan signing agent Hermitage, apostille Mercer County, I-9 verification Grove City, registered agent Mercer County, LLC formation Sharon PA, business filing Mercer County"
         canonical="https://notroom.com/areas/mercer-county"
         schema={schema}
       />
@@ -60,11 +136,11 @@ const MercerCounty = () => {
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              Mercer County's Trusted<br />Notary Service
+              Complete Notary & Business Services<br />for Mercer County
             </h1>
             
             <p className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
-              Professional mobile and online notarization serving Sharon, Hermitage, Grove City, and all of Mercer County
+              RON, Mobile Notary, Loan Signing, Apostille, I-9 Verification, LLC Formation & More serving Sharon, Hermitage, Grove City, and all surrounding areas
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
@@ -73,7 +149,7 @@ const MercerCounty = () => {
                 onClick={scrollToBooking}
                 className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto shadow-xl"
               >
-                Book Mobile Service
+                Book Any Service Now
               </Button>
               <Button
                 size="lg"
@@ -81,7 +157,7 @@ const MercerCounty = () => {
                 asChild
                 className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6 h-auto"
               >
-                <Link to="/services/remote-online-notary">Get Notarized Online</Link>
+                <Link to="/services/remote-online-notary">View All Services</Link>
               </Button>
             </div>
 
@@ -103,78 +179,39 @@ const MercerCounty = () => {
         </div>
       </section>
 
-      {/* Service Options */}
+      {/* All Services */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Choose Your Service</h2>
-            <p className="text-xl text-muted-foreground">Flexible options to meet your needs</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Complete Services for Mercer County</h2>
+            <p className="text-xl text-muted-foreground">From notarization to business formation - everything you need in one place</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <Card className="p-8 hover:shadow-lg transition-shadow border-2">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Mobile Notary</h3>
-                <div className="text-3xl font-bold text-primary mb-4">$125+</div>
-                <p className="text-muted-foreground mb-6">We come to you anywhere in Mercer County</p>
-                <ul className="text-left space-y-3 mb-6">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Service at your home, office, or location</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Same-day and after-hours available</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Perfect for multiple documents or signers</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>No travel required on your part</span>
-                  </li>
-                </ul>
-                <Button onClick={scrollToBooking} className="w-full" size="lg">
-                  Book Mobile Service
-                </Button>
-              </div>
-            </Card>
-
-            <Card className="p-8 hover:shadow-lg transition-shadow border-2 border-primary">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold mb-3">Online Notary (RON)</h3>
-                <div className="text-3xl font-bold text-primary mb-4">$60</div>
-                <p className="text-muted-foreground mb-6">Fast, secure video notarization</p>
-                <ul className="text-left space-y-3 mb-6">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Available 24/7 from anywhere</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Sessions typically under 15 minutes</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Legally valid in all 50 states</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Instant digital delivery</span>
-                  </li>
-                </ul>
-                <Button asChild className="w-full" size="lg">
-                  <Link to="/services/remote-online-notary">Get Notarized Online</Link>
-                </Button>
-              </div>
-            </Card>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                  <div className="text-2xl font-bold text-primary mb-3">{service.price}</div>
+                  <p className="text-muted-foreground mb-4 text-sm">{service.description}</p>
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm">
+                        <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button asChild className="w-full">
+                    <Link to={service.link}>Learn More</Link>
+                  </Button>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -230,9 +267,9 @@ const MercerCounty = () => {
       {/* Contact CTA */}
       <section className="py-16 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Book Your Notary Service in Mercer County</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">Book Your Service in Mercer County Today</h2>
           <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-            Book your mobile notary appointment or get notarized online in minutes
+            From notarization to business formation - complete services for Sharon, Hermitage, Grove City, and beyond
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button
@@ -240,7 +277,7 @@ const MercerCounty = () => {
               onClick={scrollToBooking}
               className="bg-white text-primary hover:bg-white/90"
             >
-              Book Mobile Service
+              Book Any Service
             </Button>
             <Button
               size="lg"
@@ -248,7 +285,7 @@ const MercerCounty = () => {
               asChild
               className="border-2 border-white text-white hover:bg-white hover:text-primary"
             >
-              <Link to="/services/remote-online-notary">Online Notarization</Link>
+              <Link to="/pricing">View Pricing</Link>
             </Button>
           </div>
           <div className="flex flex-col sm:flex-row gap-6 justify-center text-sm">
