@@ -247,9 +247,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16365"],
     nearbyComm: ["Warren", "Youngsville", "Sugar Grove"],
-    landmarks: ["Allegheny River", "Warren area"],
-    description: "Northern Warren County community",
-    uniqueTrait: "Residential community near Allegheny National Forest"
+    landmarks: ["Allegheny River", "North Warren residential area", "Warren County Airport area", "Route 6 corridor"],
+    description: "Residential community in northern Warren County near city of Warren",
+    population: "~2,000",
+    uniqueTrait: "Residential community adjacent to Warren city limits. Offers suburban living with easy access to Warren amenities and Allegheny National Forest recreation"
   },
   youngsville: {
     name: "Youngsville",
@@ -257,10 +258,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16371"],
     nearbyComm: ["Warren", "Sugar Grove", "Pittsfield"],
-    landmarks: ["Brokenstraw Creek", "Downtown Youngsville"],
-    description: "Small borough in Warren County",
+    landmarks: ["Brokenstraw Creek", "Downtown Youngsville", "Youngsville Area School District", "Route 6 Main Street", "Youngsville Borough Park"],
+    description: "Historic borough along Brokenstraw Creek in Warren County, offering small-town living and community pride",
     population: "~1,700",
-    uniqueTrait: "Quiet community along Brokenstraw Creek"
+    uniqueTrait: "Quiet community along Brokenstraw Creek with strong school district. Annual summer festival and Fourth of July celebration bring community together"
   },
   russell: {
     name: "Russell",
@@ -268,10 +269,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16345"],
     nearbyComm: ["Warren", "Clarendon", "Tidioute"],
-    landmarks: ["Allegheny River", "Russell area"],
-    description: "Small Warren County community",
+    landmarks: ["Allegheny River", "Kinzua-Wolf Run Marina", "Forest access", "Russell community"],
+    description: "Small Warren County community along Allegheny River near Kinzua Reservoir",
     population: "~350",
-    uniqueTrait: "Rural community near Allegheny River"
+    uniqueTrait: "Rural community near Allegheny River and Kinzua Reservoir. Popular with anglers and outdoor enthusiasts. Gateway to forest recreation"
   },
   tidioute: {
     name: "Tidioute",
@@ -279,10 +280,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16351"],
     nearbyComm: ["Warren", "Irvine", "Tionesta"],
-    landmarks: ["Allegheny River", "Historic downtown"],
-    description: "Scenic river borough",
+    landmarks: ["Allegheny River", "Historic downtown", "Hunter Station Bridge", "Tidioute Borough Park", "River access"],
+    description: "Scenic historic borough along Allegheny River, popular with paddlers and outdoor enthusiasts",
     population: "~680",
-    uniqueTrait: "Picturesque Allegheny River location"
+    uniqueTrait: "Picturesque Allegheny River location - popular kayaking/canoeing destination. Historic downtown with Victorian charm. Gateway to Allegheny River Islands Wilderness"
   },
   sugarGrove: {
     name: "Sugar Grove",
@@ -290,10 +291,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16350"],
     nearbyComm: ["Youngsville", "Bear Lake", "Warren"],
-    landmarks: ["Sugar Grove area", "Agricultural lands"],
-    description: "Rural Warren County township",
+    landmarks: ["Sugar Grove Township", "Agricultural farmland", "Route 69 corridor", "Rural countryside"],
+    description: "Rural agricultural township in Warren County preserving farming heritage",
     population: "~700",
-    uniqueTrait: "Agricultural community in Warren County"
+    uniqueTrait: "Agricultural community in Warren County maintaining farming traditions. Peaceful rural living with working farms and open spaces"
   },
   sheffield: {
     name: "Sheffield",
@@ -301,10 +302,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16347"],
     nearbyComm: ["Clarendon", "Warren", "Kinzua"],
-    landmarks: ["Allegheny National Forest access", "Sheffield area"],
-    description: "Forest township community",
+    landmarks: ["Allegheny National Forest access", "Kinzua Reservoir", "Sheffield Township", "Forest recreation areas"],
+    description: "Forest township community serving as gateway to Allegheny National Forest recreation",
     population: "~1,100",
-    uniqueTrait: "Located in heart of Allegheny National Forest region"
+    uniqueTrait: "Located in heart of Allegheny National Forest region. Base for hunting, fishing, hiking, and ATV recreation. Outdoor lifestyle community"
   },
   clarendon: {
     name: "Clarendon",
@@ -312,10 +313,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16313"],
     nearbyComm: ["Warren", "Sheffield", "Russell"],
-    landmarks: ["Allegheny River", "Forest lands"],
-    description: "Rural Warren County borough",
+    landmarks: ["Allegheny Reservoir", "Kinzua Dam area", "Forest lands", "Allegheny National Forest"],
+    description: "Small rural borough near Allegheny Reservoir and Kinzua Dam",
     population: "~475",
-    uniqueTrait: "Small community near Allegheny Reservoir"
+    uniqueTrait: "Small community near Allegheny Reservoir created by Kinzua Dam. Gateway to reservoir fishing, boating, and forest recreation"
   },
   kinzua: {
     name: "Kinzua",
@@ -323,10 +324,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16365"],
     nearbyComm: ["Warren", "Sheffield", "Mount Jewett"],
-    landmarks: ["Kinzua Bridge State Park", "Allegheny National Forest"],
-    description: "Forest community near historic bridge",
+    landmarks: ["Kinzua Bridge State Park", "Kinzua Bridge Skywalk", "Allegheny National Forest", "Kinzua viaduct ruins"],
+    description: "Forest community near world-famous Kinzua Bridge and skywalk attraction",
     population: "~300",
-    uniqueTrait: "Home to world-famous Kinzua Bridge skywalk"
+    uniqueTrait: "Home to world-famous Kinzua Bridge Skywalk - former railroad viaduct now popular tourist attraction. Deep in Allegheny National Forest with spectacular views"
   },
   
   // More Erie County
@@ -336,10 +337,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16423"],
     nearbyComm: ["Girard", "Fairview", "Edinboro"],
-    landmarks: ["Lake City area", "Historic downtown"],
-    description: "Small borough in southern Erie County",
+    landmarks: ["Historic downtown Lake City", "Lake City Area School", "Route 20 corridor", "Lake City Borough Park", "Northwestern Pennsylvania"],
+    description: "Charming small borough in southwestern Erie County with historic downtown and family-friendly atmosphere",
     population: "~2,900",
-    uniqueTrait: "Charming small town atmosphere"
+    uniqueTrait: "Charming small town atmosphere with historic downtown square. Strong community pride, annual celebrations, and Northwestern School District. Affordable living near Erie"
   },
   wattsburg: {
     name: "Wattsburg",
@@ -347,10 +348,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16442"],
     nearbyComm: ["Erie", "Edinboro", "Union City"],
-    landmarks: ["Wattsburg Area School District", "Downtown square"],
-    description: "Rural borough in Erie County",
+    landmarks: ["Wattsburg Area School District", "Downtown square", "Borough Park", "Route 8 corridor", "Rural countryside"],
+    description: "Small rural borough in southeastern Erie County known for excellent schools and quiet country living",
     population: "~380",
-    uniqueTrait: "Small-town charm in rural Erie County"
+    uniqueTrait: "Small-town charm in rural Erie County with top-rated Seneca High School. Peaceful living with strong agricultural heritage and community spirit"
   },
   unionCity: {
     name: "Union City",
@@ -358,10 +359,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16438"],
     nearbyComm: ["Waterford", "Edinboro", "Corry"],
-    landmarks: ["Union City Dam", "Downtown Union City"],
-    description: "Borough straddling Erie and Crawford counties",
+    landmarks: ["Union City Dam & Reservoir", "Downtown Union City", "Union City Area School District", "Bentley Creek", "Route 6/8 junction"],
+    description: "Unique borough straddling Erie and Crawford county line, serving as regional hub with dam and recreation",
     population: "~3,300",
-    uniqueTrait: "Located in both Erie and Crawford counties"
+    uniqueTrait: "Located in both Erie and Crawford counties - unique dual-county borough. Home to Union City Dam/Reservoir for fishing and recreation. Regional shopping and services hub"
   },
   corry: {
     name: "Corry",
@@ -369,10 +370,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16407"],
     nearbyComm: ["Union City", "Columbus", "Spartansburg"],
-    landmarks: ["Corry Area Historical Society", "Downtown Corry"],
-    description: "City in southeastern Erie County",
+    landmarks: ["Corry Area Historical Society", "Downtown Corry", "Mead Avenue business district", "Wright Park", "Corry Area Primary/Middle/High Schools"],
+    description: "Third-largest city in Erie County with industrial heritage, historic downtown, and strong community identity",
     population: "~6,600",
-    uniqueTrait: "Industrial heritage city in southeast Erie County"
+    uniqueTrait: "Industrial heritage city - once known as 'The Edge Tool Capital of the World'. Strong manufacturing history, tight-knit community, and revitalizing downtown with local businesses"
   },
   albion: {
     name: "Albion",
@@ -402,10 +403,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16319"],
     nearbyComm: ["Albion", "Girard", "Meadville"],
-    landmarks: ["Cranberry Mall area", "Township parks"],
-    description: "Township in western Erie County",
+    landmarks: ["Cranberry Mall", "Cranberry Township Park", "Route 18 Corridor", "Northwestern School District offices", "Conneaut Creek watershed"],
+    description: "Growing residential township in western Erie County, offering affordable housing, good schools, and easy access to I-79 corridor",
     population: "~7,000",
-    uniqueTrait: "Growing township in western Erie County"
+    uniqueTrait: "Fast-growing suburb between Erie and Crawford counties, popular with families seeking Northwestern School District and lower property taxes than Erie proper"
   },
   springCreek: {
     name: "Spring Creek",
@@ -413,10 +414,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16436"],
     nearbyComm: ["Waterford", "Union City", "Edinboro"],
-    landmarks: ["Spring Creek Township", "Rural lands"],
-    description: "Rural township in Erie County",
+    landmarks: ["Spring Creek Township Building", "Woodcock Creek State Park access", "Agricultural farmland", "Route 19 corridor", "Rural country roads"],
+    description: "Peaceful rural township in southern Erie County, maintaining agricultural heritage while offering quiet country living",
     population: "~1,100",
-    uniqueTrait: "Peaceful rural community"
+    uniqueTrait: "Quintessential rural Pennsylvania township with working farms, open spaces, and close-knit community. Gateway to Woodcock Creek State Park for outdoor recreation"
   },
   lawrencePark: {
     name: "Lawrence Park",
@@ -424,10 +425,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16511"],
     nearbyComm: ["Erie", "Wesleyville", "Harborcreek"],
-    landmarks: ["General Electric plant area", "Residential neighborhoods"],
-    description: "Small borough in eastern Erie",
+    landmarks: ["GE Transportation (Wabtec) plant", "Lawrence Park Shopping Center", "Iroquois Avenue", "Lawrence Park Elementary", "East Erie residential neighborhoods"],
+    description: "Historic company town in eastern Erie, originally built for General Electric employees, now a thriving residential borough",
     population: "~3,900",
-    uniqueTrait: "Historic GE employee community"
+    uniqueTrait: "Founded in 1926 as planned community for GE workers. Maintains strong neighborhood identity with affordable housing, walkable streets, and proximity to Erie amenities"
   },
   bearLake: {
     name: "Bear Lake",
@@ -448,10 +449,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16314"],
     nearbyComm: ["Meadville", "Conneaut Lake", "Saegertown"],
-    landmarks: ["French Creek", "Downtown Cochranton"],
-    description: "Small borough along French Creek",
+    landmarks: ["French Creek", "Downtown Cochranton", "Cochranton Volunteer Fire Department", "Route 322 Main Street", "Crawford Central School District"],
+    description: "Historic borough along French Creek in Crawford County, serving as gateway between Meadville and lake communities",
     population: "~1,150",
-    uniqueTrait: "French Creek community"
+    uniqueTrait: "Charming French Creek community with historic downtown, annual community events, and strategic location on Route 322 between Meadville and Conneaut Lake"
   },
   saegertown: {
     name: "Saegertown",
@@ -459,10 +460,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16433"],
     nearbyComm: ["Meadville", "Edinboro", "Cambridge Springs"],
-    landmarks: ["Woodcock Creek", "Saegertown schools"],
-    description: "Borough in eastern Crawford County",
+    landmarks: ["Woodcock Creek", "Saegertown Elementary/Jr-Sr High School", "Downtown Borough", "Route 6 corridor", "Saegertown Historical Society"],
+    description: "Small borough in eastern Crawford County along Woodcock Creek, known for excellent schools and family-friendly atmosphere",
     population: "~1,050",
-    uniqueTrait: "Small town along Woodcock Creek"
+    uniqueTrait: "Home to Penncrest School District with strong academic reputation. Small-town charm with annual Old Fashioned Christmas celebration and community pride"
   },
   cambridgeSprings: {
     name: "Cambridge Springs",
@@ -470,10 +471,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16403"],
     nearbyComm: ["Edinboro", "Meadville", "Saegertown"],
-    landmarks: ["Riverside Inn", "French Creek", "Historic spa town"],
-    description: "Historic spa and resort town",
+    landmarks: ["Riverside Inn Resort", "French Creek", "Historic spa town district", "Cambridge Springs High School", "Alliance College site"],
+    description: "Historic spa and resort town along French Creek, preserving Victorian-era mineral springs heritage",
     population: "~2,600",
-    uniqueTrait: "Historic mineral springs resort town"
+    uniqueTrait: "Once-famous mineral springs resort town (1880s-1920s). Riverside Inn continues hospitality tradition. Home to historic Alliance College campus until 1987"
   },
   conneautville: {
     name: "Conneautville",
@@ -481,10 +482,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16406"],
     nearbyComm: ["Conneaut Lake", "Meadville", "Harmonsburg"],
-    landmarks: ["Conneaut Marsh", "Downtown square"],
-    description: "Small borough in Crawford County",
+    landmarks: ["Conneaut Marsh Wildlife Area", "Downtown square", "Conneaut Valley School District", "Route 18/Route 198 junction"],
+    description: "Small borough serving as gateway to Pymatuning and Conneaut Lake recreation areas",
     population: "~750",
-    uniqueTrait: "Gateway to Conneaut Lake region"
+    uniqueTrait: "Gateway to Conneaut Lake region and Pymatuning Reservoir. Strategic location for lake access with small-town atmosphere and community spirit"
   },
   linesville: {
     name: "Linesville",
@@ -492,10 +493,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16424"],
     nearbyComm: ["Conneaut Lake", "Harmonsburg", "Jamestown"],
-    landmarks: ["Pymatuning Reservoir", "Linesville Spillway"],
-    description: "Borough on Pymatuning Lake",
+    landmarks: ["Pymatuning Reservoir", "Linesville Spillway ('Where Ducks Walk on Fish')", "Pymatuning State Park", "Downtown Linesville", "Linesville Area School"],
+    description: "Borough on Pymatuning Reservoir, home to Pennsylvania's famous spillway tourist attraction",
     population: "~1,000",
-    uniqueTrait: "Home to famous 'where ducks walk on fish' spillway"
+    uniqueTrait: "Home to iconic Linesville Spillway where 'ducks walk on fish' - famous Pennsylvania roadside attraction drawing thousands annually. Gateway to Pymatuning fishing and boating"
   },
   harmonsburg: {
     name: "Harmonsburg",
@@ -503,10 +504,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16422"],
     nearbyComm: ["Conneaut Lake", "Linesville", "Conneautville"],
-    landmarks: ["Pymatuning State Park", "Lake area"],
-    description: "Small borough near Pymatuning",
+    landmarks: ["Pymatuning State Park", "Lake Wilhelm", "Pymatuning Reservoir access", "Harmonsburg Community Park"],
+    description: "Small borough nestled between Pymatuning and Lake Wilhelm, offering outdoor recreation access",
     population: "~600",
-    uniqueTrait: "Pymatuning lake community"
+    uniqueTrait: "Peaceful Pymatuning lake community with easy access to both Pymatuning Reservoir and Lake Wilhelm. Popular with anglers, boaters, and outdoor enthusiasts"
   },
   spartansburg: {
     name: "Spartansburg",
@@ -514,10 +515,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16434"],
     nearbyComm: ["Corry", "Union City", "Centerville"],
-    landmarks: ["Spartansburg area", "Agricultural lands"],
-    description: "Rural borough in Crawford County",
+    landmarks: ["Spartansburg Borough Park", "Agricultural farmland", "Route 77 corridor", "Spartansburg Volunteer Fire Company"],
+    description: "Rural borough in northeastern Crawford County, maintaining agricultural heritage and small-town character",
     population: "~300",
-    uniqueTrait: "Small agricultural community"
+    uniqueTrait: "Small agricultural community on Crawford-Erie county border. Strong volunteer fire company tradition and annual community events bringing residents together"
   },
   bloomingValley: {
     name: "Blooming Valley",
@@ -525,10 +526,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16509"],
     nearbyComm: ["Meadville", "Cochranton", "Cambridge Springs"],
-    landmarks: ["Rural farmland", "Small community"],
-    description: "Tiny rural community",
+    landmarks: ["Rural farmland", "Blooming Valley community", "Agricultural heritage area"],
+    description: "Tiny rural community in Crawford County's agricultural heartland",
     population: "~400",
-    uniqueTrait: "Quiet rural farming area"
+    uniqueTrait: "Quiet rural farming area representing Crawford County's agricultural roots. Close-knit community with pastoral landscapes and country living"
   },
   guysMills: {
     name: "Guys Mills",
@@ -536,10 +537,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16327"],
     nearbyComm: ["Meadville", "Cambridge Springs", "Edinboro"],
-    landmarks: ["Rural community", "Agricultural area"],
-    description: "Small unincorporated community",
+    landmarks: ["Woodcock Creek Lake", "Rural community center", "Historic crossroads", "Agricultural area"],
+    description: "Small unincorporated community serving as historic rural crossroads in Crawford County",
     population: "~100",
-    uniqueTrait: "Historic rural crossroads"
+    uniqueTrait: "Historic rural crossroads community near Woodcock Creek Lake. Maintains rural character with access to fishing and outdoor recreation"
   },
   hydetown: {
     name: "Hydetown",
@@ -547,10 +548,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16328"],
     nearbyComm: ["Titusville", "Meadville", "Pleasantville"],
-    landmarks: ["Oil Creek area", "Historic oil region"],
-    description: "Oil region community",
+    landmarks: ["Oil Creek watershed", "Historic oil region", "Hydetown Borough Building", "Route 408"],
+    description: "Small oil region community preserving Pennsylvania's petroleum heritage",
     population: "~700",
-    uniqueTrait: "Oil boom heritage village"
+    uniqueTrait: "Oil boom heritage village named for early oil well fire doused with water. Part of historic Oil Creek oil production region from 1860s"
   },
   pleasantville: {
     name: "Pleasantville",
@@ -558,10 +559,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16341"],
     nearbyComm: ["Titusville", "Oil City", "Hydetown"],
-    landmarks: ["Oil Creek", "Rural area"],
-    description: "Small borough in oil country",
+    landmarks: ["Oil Creek", "Historic downtown", "Pleasantville Area School", "Route 227", "Oil heritage sites"],
+    description: "Small borough in Pennsylvania's historic oil country, preserving oil boom heritage",
     population: "~860",
-    uniqueTrait: "Oil heritage community"
+    uniqueTrait: "Oil heritage community in heart of Oil Creek region. Part of Pennsylvania's oil boom history from 1860s-1870s. Quiet small-town living with historical significance"
   },
   cooperstown: {
     name: "Cooperstown",
@@ -569,10 +570,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16317"],
     nearbyComm: ["Franklin", "Oil City", "Polk"],
-    landmarks: ["Allegheny River area", "Rural lands"],
-    description: "Small Venango County borough",
+    landmarks: ["Allegheny River", "Rural borough", "Route 257 corridor", "Cooperstown Volunteer Fire Department"],
+    description: "Small riverside borough in Venango County along the Allegheny River",
     population: "~440",
-    uniqueTrait: "Quiet Allegheny River community"
+    uniqueTrait: "Quiet Allegheny River community offering peaceful rural living. Tight-knit small borough with river access and natural beauty"
   },
   polk: {
     name: "Polk",
@@ -580,10 +581,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16342"],
     nearbyComm: ["Franklin", "Cooperstown", "Emlenton"],
-    landmarks: ["Allegheny River", "Rural area"],
-    description: "Small borough in Venango County",
+    landmarks: ["Allegheny River", "Polk Borough Park", "Route 62 corridor", "Rural countryside"],
+    description: "Small borough in Venango County maintaining rural Pennsylvania character",
     population: "~850",
-    uniqueTrait: "Small-town Venango County charm"
+    uniqueTrait: "Small-town Venango County charm with Allegheny River access. Family-friendly community with strong volunteer spirit and annual celebrations"
   },
   emlenton: {
     name: "Emlenton",
@@ -591,10 +592,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16373"],
     nearbyComm: ["Franklin", "Clintonville", "Parker"],
-    landmarks: ["Allegheny River", "Historic downtown"],
-    description: "River borough in Venango County",
+    landmarks: ["Allegheny River", "Historic downtown", "Emlenton Bridge", "Route 38", "Emlenton Area Historical Society"],
+    description: "Scenic river borough along Allegheny River with historic downtown and natural beauty",
     population: "~620",
-    uniqueTrait: "Scenic Allegheny River location"
+    uniqueTrait: "Scenic Allegheny River location with historic bridge. Gateway for kayaking, fishing, and river recreation. Charming downtown with Victorian architecture"
   },
   rouseville: {
     name: "Rouseville",
@@ -602,10 +603,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16344"],
     nearbyComm: ["Oil City", "Franklin", "Pleasantville"],
-    landmarks: ["Oil Creek", "Oil heritage"],
-    description: "Oil Creek community",
+    landmarks: ["Oil Creek", "Oil heritage sites", "Route 8 corridor", "Historic oil wells"],
+    description: "Historic oil creek community preserving Pennsylvania's petroleum industry heritage",
     population: "~510",
-    uniqueTrait: "Historic oil industry village"
+    uniqueTrait: "Historic oil industry village on Oil Creek. Site of some of Pennsylvania's earliest oil production. Part of Oil Creek State Park heritage corridor"
   },
   
   // More Mercer County
@@ -615,10 +616,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Mercer County",
     zipCodes: ["16121"],
     nearbyComm: ["Sharon", "Hermitage", "Wheatland"],
-    landmarks: ["Shenango River", "Downtown Farrell"],
-    description: "Steel heritage city",
+    landmarks: ["Shenango River", "Downtown Farrell", "Kennedy Catholic High School", "Farrell Area School District", "Historic steel mill sites"],
+    description: "Former steel city with rich immigrant heritage, rebuilding as residential community in Shenango Valley",
     population: "~4,900",
-    uniqueTrait: "Steel industry heritage"
+    uniqueTrait: "Steel industry heritage city founded by U.S. Steel in 1901. Strong Eastern European immigrant roots, tight-knit neighborhoods, and Shenango Valley community pride"
   },
   sharpsville: {
     name: "Sharpsville",
@@ -626,10 +627,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Mercer County",
     zipCodes: ["16150"],
     nearbyComm: ["Sharon", "Hermitage", "Clark"],
-    landmarks: ["Shenango River", "Historic downtown"],
-    description: "Borough in Mercer County",
+    landmarks: ["Shenango River", "Historic downtown", "Sharpsville Area School District", "Pierce Avenue business district", "Sharpsville Container facility"],
+    description: "Historic manufacturing borough along Shenango River, maintaining industrial heritage and strong community identity",
     population: "~4,400",
-    uniqueTrait: "Historic manufacturing community"
+    uniqueTrait: "Historic manufacturing community known for container and metals production. Small-town atmosphere with rich labor history and annual community celebrations"
   },
   stoneboro: {
     name: "Stoneboro",
@@ -637,10 +638,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Mercer County",
     zipCodes: ["16153"],
     nearbyComm: ["Sandy Lake", "Mercer", "Jackson Center"],
-    landmarks: ["Sandy Lake area", "Rural lands"],
-    description: "Small rural borough",
+    landmarks: ["Sandy Lake area", "Lakeview School District", "Rural farmland", "Route 258", "Stoneboro Fairgrounds"],
+    description: "Small rural borough serving as gateway to Sandy Lake recreational area",
     population: "~1,050",
-    uniqueTrait: "Gateway to Sandy Lake"
+    uniqueTrait: "Gateway to Sandy Lake with small-town charm. Annual Stoneboro Fair tradition brings community together. Mix of agriculture and lake recreation"
   },
   sandyLake: {
     name: "Sandy Lake",
@@ -648,10 +649,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Mercer County",
     zipCodes: ["16145"],
     nearbyComm: ["Stoneboro", "Greenville", "Mercer"],
-    landmarks: ["Sandy Lake", "Lake community"],
-    description: "Lake community borough",
+    landmarks: ["Sandy Lake", "Lake community", "Sandy Lake Park", "Fishing access", "Lakeview School District"],
+    description: "Peaceful lake community borough offering year-round recreation and lakeside living",
     population: "~700",
-    uniqueTrait: "Peaceful lake community"
+    uniqueTrait: "Peaceful lake community with fishing, boating, and swimming. Close-knit year-round and seasonal residents enjoying natural beauty"
   },
   clarkPa: {
     name: "Clark",
@@ -659,10 +660,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Mercer County",
     zipCodes: ["16113"],
     nearbyComm: ["Sharon", "Sharpsville", "Greenville"],
-    landmarks: ["Rural area", "Agricultural lands"],
-    description: "Small Mercer County borough",
+    landmarks: ["Rural Clark borough", "Agricultural lands", "Hickory Township area", "Route 18 corridor"],
+    description: "Small agricultural borough in Mercer County maintaining rural character",
     population: "~620",
-    uniqueTrait: "Small agricultural community"
+    uniqueTrait: "Small agricultural community preserving rural Mercer County character. Quiet living with proximity to Shenango Valley cities"
   },
   clintonville: {
     name: "Clintonville",
@@ -670,10 +671,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16372"],
     nearbyComm: ["Franklin", "Emlenton", "Grove City"],
-    landmarks: ["Allegheny River area", "Rural lands"],
-    description: "Small borough on county line",
+    landmarks: ["Allegheny River area", "Clintonville Borough Building", "Route 8 corridor", "Rural community center"],
+    description: "Small borough on Venango-Mercer county border, serving rural communities",
     population: "~470",
-    uniqueTrait: "Quiet community near Venango-Mercer border"
+    uniqueTrait: "Quiet community on Venango-Mercer border near Allegheny River. Strategic location between Franklin and Grove City on Route 8"
   },
   townville: {
     name: "Townville",
@@ -681,10 +682,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16360"],
     nearbyComm: ["Meadville", "Edinboro", "Cambridge Springs"],
-    landmarks: ["Rural farmland", "Small community"],
-    description: "Tiny Crawford County borough",
+    landmarks: ["Rural farmland", "Townville Borough", "Agricultural community", "Country roads"],
+    description: "One of Pennsylvania's smallest boroughs, maintaining agricultural rural character",
     population: "~320",
-    uniqueTrait: "One of Pennsylvania's smallest boroughs"
+    uniqueTrait: "One of Pennsylvania's smallest incorporated boroughs. Quiet agricultural community with strong farming heritage and rural lifestyle"
   },
   riceville: {
     name: "Riceville",
@@ -692,10 +693,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Crawford County",
     zipCodes: ["16427"],
     nearbyComm: ["Meadville", "Cambridge Springs", "Venango"],
-    landmarks: ["Rural area", "Agricultural lands"],
-    description: "Small rural community",
+    landmarks: ["Rural hamlet", "Agricultural lands", "Country living area", "Historic crossroads"],
+    description: "Tiny rural hamlet in Crawford County agricultural region",
     population: "~150",
-    uniqueTrait: "Tiny rural hamlet"
+    uniqueTrait: "Tiny rural hamlet representing Crawford County's agricultural heritage. Peaceful country living in Pennsylvania farm country"
   },
   utica: {
     name: "Utica",
@@ -703,10 +704,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16362"],
     nearbyComm: ["Franklin", "Polk", "Cooperstown"],
-    landmarks: ["Rural Venango County", "Agricultural area"],
-    description: "Small rural borough",
+    landmarks: ["Rural Venango County", "Agricultural area", "Cranberry Township area", "Country roads"],
+    description: "Small rural borough in Venango County preserving small-town Pennsylvania character",
     population: "~210",
-    uniqueTrait: "Small Venango County community"
+    uniqueTrait: "Small Venango County borough maintaining quintessential rural Pennsylvania atmosphere. Tight-knit community with agricultural roots"
   },
   irvine: {
     name: "Irvine",
@@ -714,10 +715,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16329"],
     nearbyComm: ["Warren", "Tidioute", "Sheffield"],
-    landmarks: ["Allegheny River area", "Forest lands"],
-    description: "Small Warren County borough",
+    landmarks: ["Allegheny River", "Irvine Borough Park", "Forest lands", "Route 62 corridor"],
+    description: "Small Warren County borough nestled along Allegheny River in forest region",
     population: "~600",
-    uniqueTrait: "Allegheny River community"
+    uniqueTrait: "Allegheny River community surrounded by forest. Gateway to Allegheny National Forest recreation. Quiet rural living with river and forest access"
   },
   pittsfield: {
     name: "Pittsfield",
@@ -725,10 +726,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16340"],
     nearbyComm: ["Youngsville", "Sugar Grove", "Columbus"],
-    landmarks: ["Brokenstraw Creek", "Rural area"],
-    description: "Small borough in Warren County",
+    landmarks: ["Brokenstraw Creek", "Rural borough", "Agricultural area", "Country roads"],
+    description: "Small rural borough along Brokenstraw Creek in Warren County",
     population: "~230",
-    uniqueTrait: "Small rural Warren County community"
+    uniqueTrait: "Small rural Warren County community along Brokenstraw Creek. Peaceful agricultural area with tight-knit community and country living"
   },
   chandlersValley: {
     name: "Chandlers Valley",
@@ -736,10 +737,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16312"],
     nearbyComm: ["Warren", "Clarendon", "Sugar Grove"],
-    landmarks: ["Rural valley", "Forest area"],
-    description: "Unincorporated community",
+    landmarks: ["Rural valley", "Allegheny National Forest proximity", "Forest area", "Remote countryside"],
+    description: "Remote unincorporated community deep in Warren County forest region",
     population: "~100",
-    uniqueTrait: "Remote forest community"
+    uniqueTrait: "Remote forest community near Allegheny National Forest. Ultimate rural Pennsylvania living surrounded by nature. Hunting, hiking, and outdoor lifestyle"
   },
   sugarcreek: {
     name: "Sugarcreek",
@@ -747,10 +748,10 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16323"],
     nearbyComm: ["Franklin", "Oil City", "Polk"],
-    landmarks: ["Allegheny River area", "Rural lands"],
-    description: "Small borough in Venango County",
+    landmarks: ["Allegheny River access", "Sugarcreek Borough", "Route 8 corridor", "Commercial district", "Franklin area suburbs"],
+    description: "Growing borough in Venango County along Route 8 corridor near Franklin",
     population: "~5,200",
-    uniqueTrait: "Growing Venango County community"
+    uniqueTrait: "Largest borough in Venango County with growing residential and commercial development. Affordable housing and convenient Franklin access make it popular with families"
   },
   venangoCounty: {
     name: "Venango Crawford",
@@ -758,9 +759,9 @@ export const communityData: Record<string, CommunityData> = {
     county: "Venango County",
     zipCodes: ["16365"],
     nearbyComm: ["Franklin", "Meadville", "Oil City"],
-    landmarks: ["County border area", "Rural region"],
-    description: "County border region",
-    uniqueTrait: "Border region between counties"
+    landmarks: ["County border region", "Rural area", "French Creek watershed", "Agricultural lands"],
+    description: "Rural region straddling Venango and Crawford county border",
+    uniqueTrait: "Border region between Venango and Crawford counties. Rural agricultural area with access to both county seats and natural beauty"
   }
 };
 
