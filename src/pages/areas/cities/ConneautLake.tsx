@@ -17,8 +17,8 @@ const ConneautLake = () => {
   };
 
   const services = [
-    { icon: Video, title: "Remote Online Notary (RON)", price: "$45", description: "Online notarization available 24/7 for Conneaut Lake residents from anywhere", link: "/services/remote-online-notary" },
-    { icon: Car, title: "Mobile Notary", price: "$125+", description: "We travel to your home, office, or location in Conneaut Lake", link: "/services/mobile-notary" },
+    { icon: Video, title: "Remote Online Notary (RON)", price: "$50", description: "Online notarization available 24/7 for Conneaut Lake residents from anywhere", link: "/services/remote-online-notary" },
+    { icon: Car, title: "Mobile Notary", price: "$50 + mileage", description: "We travel to your home, office, or location in Conneaut Lake", link: "/services/mobile-notary" },
     { icon: FileText, title: "Loan Signing Agent", price: "$175", description: "Professional real estate closing services in Conneaut Lake", link: "/services/loan-signing-agent" },
     { icon: Globe, title: "Apostille Services", price: "$245+", description: "International document authentication for travel and business", link: "/services/apostille" },
     { icon: Users, title: "I-9 Verification", price: "$85+", description: "Employment verification services for Conneaut Lake businesses", link: "/services/i9-verification" },

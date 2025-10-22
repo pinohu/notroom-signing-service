@@ -9,8 +9,8 @@ const LawrencePark = () => {
   const navigate = useNavigate();
   const scrollToBooking = () => { navigate("/"); setTimeout(() => document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" }), 100); };
   const services = [
-    { icon: Video, title: "Remote Online Notary (RON)", price: "$45", description: "Online notarization 24/7 for Lawrence Park residents", link: "/services/remote-online-notary" },
-    { icon: Car, title: "Mobile Notary", price: "$125+", description: "We come to your location in Lawrence Park", link: "/services/mobile-notary" },
+    { icon: Video, title: "Remote Online Notary (RON)", price: "$50", description: "Online notarization 24/7 for Lawrence Park residents", link: "/services/remote-online-notary" },
+    { icon: Car, title: "Mobile Notary", price: "$50 + mileage", description: "We come to your location in Lawrence Park", link: "/services/mobile-notary" },
     { icon: FileText, title: "Loan Signing Agent", price: "$175", description: "Real estate closing services in Lawrence Park", link: "/services/loan-signing-agent" },
     { icon: Globe, title: "Apostille Services", price: "$245+", description: "International document authentication", link: "/services/apostille" },
     { icon: Users, title: "I-9 Verification", price: "$85+", description: "Employment verification for Lawrence Park businesses", link: "/services/i9-verification" },

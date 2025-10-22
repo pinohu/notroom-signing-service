@@ -21,7 +21,7 @@ const OilCity = () => {
     {
       icon: Video,
       title: "Remote Online Notary (RON)",
-      price: "$45",
+      price: "$50",
       description: "Online notarization available 24/7 for Oil City residents",
       keywords: ["oil city online notary", "ron oil city pa", "virtual notary oil city"],
       link: "/services/remote-online-notary"
