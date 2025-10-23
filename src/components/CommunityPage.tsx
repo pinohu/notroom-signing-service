@@ -2,10 +2,12 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Video, Car, FileText, Globe, Users, Building2, Briefcase, MapPin, ArrowRight, CheckCircle, Phone, Shield, Clock, Star, Award } from "lucide-react";
+import { Video, Car, FileText, Globe, Users, Building2, Briefcase, MapPin, ArrowRight, CheckCircle, Phone, Shield, Clock, Star, Award, Heart, Sparkles } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { CommunityData, getNearbyLinks } from "@/data/communityData";
 import PricingCalculator from "@/components/PricingCalculator";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface CommunityPageProps {
   community: CommunityData;
@@ -13,6 +15,8 @@ interface CommunityPageProps {
 
 const CommunityPage = ({ community }: CommunityPageProps) => {
   const navigate = useNavigate();
+  const [communityImage, setCommunityImage] = useState<string | null>(null);
+  const [imageLoading, setImageLoading] = useState(false);
   
   const scrollToBooking = () => {
     navigate("/");
@@ -21,6 +25,31 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
       element?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   };
+
+  // Generate community image on mount if prompt exists
+  useEffect(() => {
+    const generateImage = async () => {
+      if (!community.imagePrompt || imageLoading || communityImage) return;
+      
+      setImageLoading(true);
+      try {
+        const { data, error } = await supabase.functions.invoke('generate-community-image', {
+          body: { prompt: community.imagePrompt }
+        });
+
+        if (error) throw error;
+        if (data?.imageUrl) {
+          setCommunityImage(data.imageUrl);
+        }
+      } catch (error) {
+        console.error('Error generating community image:', error);
+      } finally {
+        setImageLoading(false);
+      }
+    };
+
+    generateImage();
+  }, [community.imagePrompt]);
 
   const services = [
     { icon: Video, title: "Remote Online Notary (RON)", price: "$50", description: `Online notarization 24/7 for ${community.name} residents`, link: "/services/remote-online-notary" },
@@ -311,6 +340,82 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
           </div>
         </div>
       </section>
+
+      {/* Historical Narrative Section - Only show if data exists */}
+      {community.historicalNarrative && (
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-12 items-center">
+                <div className="order-2 md:order-1">
+                  <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
+                    <Sparkles className="w-4 h-4 text-primary" />
+                    <span className="text-sm font-medium text-primary">Our Heritage</span>
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                    {community.name}'s Story
+                  </h2>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {community.historicalNarrative}
+                  </p>
+                </div>
+                <div className="order-1 md:order-2">
+                  {imageLoading ? (
+                    <div className="aspect-[4/3] bg-muted rounded-lg flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+                        <p className="text-sm text-muted-foreground">Generating historic scene...</p>
+                      </div>
+                    </div>
+                  ) : communityImage ? (
+                    <img 
+                      src={communityImage} 
+                      alt={`Historic scene of ${community.name}`}
+                      className="rounded-lg shadow-xl w-full aspect-[4/3] object-cover"
+                    />
+                  ) : (
+                    <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">
+                      <MapPin className="w-16 h-16 text-primary/40" />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Favorite Things Section - Only show if data exists */}
+      {community.favoriteThings && community.favoriteThings.length > 0 && (
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
+                  <Heart className="w-4 h-4 text-primary" />
+                  <span className="text-sm font-medium text-primary">Local Favorites</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  What We Love About {community.name}
+                </h2>
+                <p className="text-muted-foreground">
+                  The little things that make {community.name} special to those who call it home
+                </p>
+              </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                {community.favoriteThings.map((thing, index) => (
+                  <Card key={index} className="p-4 border-2 hover:border-primary/50 transition-colors">
+                    <div className="flex items-start gap-3">
+                      <Heart className="w-5 h-5 text-primary mt-0.5 flex-shrink-0 fill-primary/20" />
+                      <p className="text-sm leading-relaxed">{thing}</p>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Services Grid */}
       <section className="py-16 bg-muted/30">

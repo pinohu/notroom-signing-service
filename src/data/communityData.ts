@@ -9,6 +9,9 @@ export interface CommunityData {
   description: string;
   population?: string;
   uniqueTrait: string;
+  historicalNarrative?: string;
+  favoriteThings?: string[];
+  imagePrompt?: string;
 }
 
 export const communityData: Record<string, CommunityData> = {
@@ -22,7 +25,17 @@ export const communityData: Record<string, CommunityData> = {
     landmarks: ["Presque Isle State Park", "Erie Maritime Museum", "Bayfront Convention Center", "UPMC Park", "Waldameer Park", "Erie Insurance Arena", "Blasco Library", "Downtown Erie"],
     description: "Pennsylvania's fourth-largest city and the Gem City of the Great Lakes, Erie is a vibrant waterfront community with rich history and modern amenities",
     population: "~95,000",
-    uniqueTrait: "Home to Presque Isle State Park, one of PA's most visited attractions, and Lake Erie's stunning waterfront with beaches, marinas, and year-round activities"
+    uniqueTrait: "Home to Presque Isle State Park, one of PA's most visited attractions, and Lake Erie's stunning waterfront with beaches, marinas, and year-round activities",
+    historicalNarrative: "Founded in 1795, Erie played a crucial role in the War of 1812 when Commodore Oliver Hazard Perry built his fleet here and defeated the British at the Battle of Lake Erie. The city's strategic location on Lake Erie made it a vital shipping hub during the canal era and later a manufacturing powerhouse. Today, Erie preserves its maritime heritage while embracing its role as northwestern Pennsylvania's cultural and economic center.",
+    favoriteThings: [
+      "Watching sunset over Lake Erie from Presque Isle State Park's beaches",
+      "Summer concerts and festivals at Liberty Park on the bayfront",
+      "Fresh perch and walleye at local waterfront restaurants",
+      "Historic Perry's Monument and Maritime Museum",
+      "Waldameer's iconic Ravine Flyer II wooden roller coaster",
+      "Ice skating and hockey games at Erie Insurance Arena"
+    ],
+    imagePrompt: "A beautiful scenic painting of Presque Isle State Park lighthouse at golden hour, with Lake Erie waves gently lapping the shore, sailboats in the distance, and families walking along the sandy beach. Warm sunset colors reflecting on the water. Photorealistic, inviting atmosphere."
   },
   millcreek: {
     name: "Millcreek",
@@ -123,7 +136,17 @@ export const communityData: Record<string, CommunityData> = {
     landmarks: ["Allegheny College", "Diamond Park", "Market House Historic District", "Baldwin Reynolds House Museum", "Talon Conference Center", "Meadville Medical Center", "Downtown Meadville"],
     description: "Crawford County's vibrant seat and largest city, home to historic Allegheny College and a thriving downtown with arts, culture, and commerce",
     population: "~13,000",
-    uniqueTrait: "Home to prestigious Allegheny College (founded 1815), birthplace of the zipper, and Crawford County's economic and cultural hub with historic architecture and college-town atmosphere"
+    uniqueTrait: "Home to prestigious Allegheny College (founded 1815), birthplace of the zipper, and Crawford County's economic and cultural hub with historic architecture and college-town atmosphere",
+    historicalNarrative: "Meadville's history dates to 1788 when David Mead established the first settlement. The city flourished as a manufacturing center in the 19th century and became famous as the birthplace of the modern zipper, invented here by Whitcomb Judson and perfected by Gideon Sundback. Allegheny College, founded in 1815, brought intellectual vitality that continues today. The city's beautiful Victorian architecture and Diamond Park remain testaments to its prosperous past.",
+    favoriteThings: [
+      "Exploring Diamond Park's historic bandstand and seasonal events",
+      "College football games at Allegheny College's Robertson Athletic Complex",
+      "Discovering local art at the Market House galleries",
+      "Strolling through the Victorian-era Baldwin Reynolds House Museum",
+      "Downtown coffee shops and independent bookstores",
+      "Annual Meadville Community Band summer concerts"
+    ],
+    imagePrompt: "A charming painting of Meadville's historic Diamond Park with its iconic bandstand, surrounded by Victorian buildings, autumn trees with golden leaves, students from Allegheny College walking through the park, and the courthouse in the background. Warm afternoon light, nostalgic small-town Pennsylvania atmosphere."
   },
   conneautLake: {
     name: "Conneaut Lake",
