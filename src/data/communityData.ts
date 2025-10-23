@@ -1221,7 +1221,7 @@ export const communityData: Record<string, CommunityData> = {
     ],
     imagePrompt: "A peaceful lake community scene at Sandy Lake with lakefront homes, fishing piers, families boating and swimming, Sandy Lake Park, serene waters. Year-round lake living."
   },
-  clarkPa: {
+  clark: {
     name: "Clark",
     slug: "clark",
     county: "Mercer County",
@@ -1406,7 +1406,7 @@ export const communityData: Record<string, CommunityData> = {
     ],
     imagePrompt: "A growing suburban scene of Sugarcreek with residential developments, Route 8 commercial district, families shopping and dining, Allegheny River access, Franklin visible nearby. Growing Venango County borough."
   },
-  venangoCounty: {
+  venangoCrawford: {
     name: "Venango Crawford",
     slug: "venango-crawford",
     county: "Venango County",
