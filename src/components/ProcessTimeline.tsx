@@ -1,8 +1,9 @@
 import { Calendar, CheckCircle, FileText } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { Button } from "@/components/ui/button";
+import { memo } from "react";
 
-const ProcessTimeline = () => {
+const ProcessTimeline = memo(() => {
   const steps = [
     {
       number: "1",
@@ -58,7 +59,7 @@ const ProcessTimeline = () => {
                   {/* Step Number Badge */}
                   <div className="flex justify-center mb-6">
                     <div className="relative">
-                      <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-white text-3xl font-bold shadow-lg z-10 relative">
+                      <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-3xl font-bold shadow-lg z-10 relative">
                         {step.number}
                       </div>
                       <div className="absolute inset-0 rounded-full bg-primary/20 animate-pulse" />
@@ -112,6 +113,8 @@ const ProcessTimeline = () => {
       </div>
     </section>
   );
-};
+});
+
+ProcessTimeline.displayName = 'ProcessTimeline';
 
 export default ProcessTimeline;

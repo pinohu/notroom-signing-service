@@ -22,7 +22,11 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("ErrorBoundary caught an error:", error, errorInfo);
+    if (import.meta.env.DEV) {
+      console.error("ErrorBoundary caught an error:", error, errorInfo);
+    }
+    // In production, you could send to error tracking service
+    // Example: Sentry.captureException(error);
   }
 
   private handleReset = () => {

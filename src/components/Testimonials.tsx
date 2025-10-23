@@ -2,8 +2,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { Button } from "@/components/ui/button";
+import { memo } from "react";
 
-const Testimonials = () => {
+const Testimonials = memo(() => {
   const scrollToBooking = () => {
     const element = document.getElementById("booking-form");
     if (element) {
@@ -65,7 +66,7 @@ const Testimonials = () => {
 
                   {/* Author */}
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold shadow-md">
+                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold shadow-md">
                       {testimonial.avatar}
                     </div>
                     <div>
@@ -92,6 +93,8 @@ const Testimonials = () => {
       </div>
     </section>
   );
-};
+});
+
+Testimonials.displayName = 'Testimonials';
 
 export default Testimonials;

@@ -4,8 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Monitor, Car, Home, Check, Users, Building, Globe, FileCheck } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { useNavigate } from "react-router-dom";
+import { memo } from "react";
 
-const Services = () => {
+const Services = memo(() => {
   const navigate = useNavigate();
 
   const services = [
@@ -207,6 +208,8 @@ const Services = () => {
       </div>
     </section>
   );
-};
+});
+
+Services.displayName = 'Services';
 
 export default Services;

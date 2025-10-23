@@ -30,14 +30,18 @@ export const calculateDistance = async (
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      console.error('Distance API error:', errorData);
+      if (import.meta.env.DEV) {
+        console.error('Distance API error:', errorData);
+      }
       throw new Error('Failed to calculate distance');
     }
 
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Distance calculation error:", error);
+    if (import.meta.env.DEV) {
+      console.error("Distance calculation error:", error);
+    }
     return {
       distance: 15,
       duration: "20 mins",

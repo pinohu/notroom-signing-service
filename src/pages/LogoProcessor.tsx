@@ -34,7 +34,9 @@ const LogoProcessor = () => {
       link.click();
       
     } catch (err) {
-      console.error('Error processing logo:', err);
+      if (import.meta.env.DEV) {
+        console.error('Error processing logo:', err);
+      }
       setError(err instanceof Error ? err.message : 'Failed to process logo');
     } finally {
       setProcessing(false);

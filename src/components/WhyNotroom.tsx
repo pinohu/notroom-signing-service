@@ -1,8 +1,9 @@
 import { Zap, Lock, Shield, DollarSign } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
 import ScrollReveal from "./ScrollReveal";
+import { memo } from "react";
 
-const WhyNotroom = () => {
+const WhyNotroom = memo(() => {
   const advantages = [
     {
       icon: Zap,
@@ -56,7 +57,7 @@ const WhyNotroom = () => {
                   {/* Icon */}
                   <div className="flex justify-center mb-6">
                     <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
-                      <Icon className="w-10 h-10 text-white" />
+                      <Icon className="w-10 h-10 text-primary-foreground" />
                     </div>
                   </div>
 
@@ -81,7 +82,7 @@ const WhyNotroom = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                  <div className="text-4xl md:text-5xl font-bold text-primary-foreground mb-2">
                     {stat.number.includes('+') ? (
                       <>
                         <AnimatedCounter end={parseInt(stat.number)} />+
@@ -90,7 +91,7 @@ const WhyNotroom = () => {
                       stat.number
                     )}
                   </div>
-                  <div className="text-white/90 font-medium">
+                  <div className="text-primary-foreground/90 font-medium">
                     {stat.label}
                   </div>
                 </div>
@@ -101,6 +102,8 @@ const WhyNotroom = () => {
       </div>
     </section>
   );
-};
+});
+
+WhyNotroom.displayName = 'WhyNotroom';
 
 export default WhyNotroom;
