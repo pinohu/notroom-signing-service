@@ -18,12 +18,12 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
           {/* Eyebrow */}
-          <div className="inline-block mb-6 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-            <span className="text-white font-semibold">⭐ Erie's Complete Business Services Hub</span>
+          <div className="inline-block mb-6 px-6 py-2 bg-background/10 backdrop-blur-sm rounded-full border border-background/20">
+            <span className="text-primary-foreground font-semibold">⭐ Erie's Complete Business Services Hub</span>
           </div>
           
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
             Notary, Business Filing & Compliance Services
             <span className="block text-[hsl(var(--action-cyan))] mt-2 text-5xl md:text-6xl lg:text-7xl">
               All in One Place
@@ -31,7 +31,7 @@ const Hero = () => {
           </h1>
           
           {/* Subheading */}
-          <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-10 leading-relaxed max-w-4xl mx-auto">
+          <p className="text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-10 leading-relaxed max-w-4xl mx-auto">
             From remote notarization to LLC formation, apostille services to I-9 verification—all your business, legal, and compliance needs. Licensed, bonded, and Pennsylvania-compliant.
           </p>
           
@@ -64,7 +64,7 @@ const Hero = () => {
           </div>
           
           {/* Trust Bar - Reduced to 3 key indicators */}
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-white/90 text-sm md:text-base">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-primary-foreground/90 text-sm md:text-base">
             <div className="flex items-center gap-2">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
               <span className="font-medium">PA State Licensed</span>
@@ -80,10 +80,10 @@ const Hero = () => {
           </div>
           
           {/* Contact Info */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center text-white/80 mt-8">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center text-primary-foreground/80 mt-8">
             <a 
               href="mailto:support@notroom.com" 
-              className="flex items-center gap-2 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white rounded px-2 py-1"
+              className="flex items-center gap-2 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground rounded px-2 py-1"
               aria-label="Email us at support@notroom.com"
             >
               <Mail className="w-5 h-5" />
@@ -91,7 +91,7 @@ const Hero = () => {
             </a>
             <a 
               href="tel:814-480-0989" 
-              className="flex items-center gap-2 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white rounded px-2 py-1"
+              className="flex items-center gap-2 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground rounded px-2 py-1"
               aria-label="Call us at 814-480-0989"
             >
               <Phone className="w-5 h-5" />

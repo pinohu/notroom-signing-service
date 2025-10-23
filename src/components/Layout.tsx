@@ -42,7 +42,7 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Mobile Sticky CTA */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur-md border-t border-border lg:hidden z-40 animate-slide-up">
         <Button 
-          className="w-full bg-amber text-white hover:bg-amber/90 shadow-lg" 
+          className="w-full bg-amber text-primary-foreground hover:bg-amber/90 shadow-lg"
           size="lg"
           onClick={scrollToBooking}
         >

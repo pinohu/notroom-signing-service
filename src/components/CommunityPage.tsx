@@ -39,7 +39,9 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
           setCommunityImage(data.imageUrl);
         }
       } catch (error) {
-        console.error('Error generating community image:', error);
+        if (import.meta.env.DEV) {
+          console.error('Error generating community image:', error);
+        }
       } finally {
         setImageLoading(false);
       }
@@ -205,29 +207,29 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
       />
 
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-primary via-primary-dark to-accent overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-primary via-primary to-accent overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMtMy4zMTQgMC02IDIuNjg2LTYgNnMyLjY4NiA2IDYgNiA2LTIuNjg2IDYtNi0yLjY4Ni02LTYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
+          <div className="max-w-4xl mx-auto text-center text-primary-foreground">
+            <div className="inline-flex items-center gap-2 bg-background/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-background/20">
               <MapPin className="w-4 h-4" />
               <span className="text-sm font-medium">Proudly Serving {community.name}, PA</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               Your Trusted {community.name} Notary Public
             </h1>
-            <p className="text-xl md:text-2xl mb-4 text-white/90 font-medium">
+            <p className="text-xl md:text-2xl mb-4 text-primary-foreground/90 font-medium">
               Mobile & Remote Online Notary Services
             </p>
-            <p className="text-lg md:text-xl mb-8 text-white/80 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl mb-8 text-primary-foreground/80 max-w-3xl mx-auto">
               Serving {community.name} families and businesses near {community.landmarks.slice(0, 2).join(', ')} 
               {community.population && ` - trusted by ${community.population.replace('~', 'over ')} residents`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button size="lg" onClick={scrollToBooking} className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto shadow-xl">
+              <Button size="lg" onClick={scrollToBooking} className="bg-background text-primary hover:bg-background/90 text-lg px-8 py-6 h-auto shadow-xl">
                 Book {community.name} Notary
               </Button>
-              <Button size="lg" variant="outline" asChild className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6 h-auto">
+              <Button size="lg" variant="outline" asChild className="border-2 border-background text-primary-foreground hover:bg-background hover:text-primary text-lg px-8 py-6 h-auto">
                 <a href="tel:814-480-0989"><Phone className="w-5 h-5 mr-2" />Call (814) 480-0989</a>
               </Button>
             </div>
@@ -594,19 +596,19 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
       )}
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-6">
             Book Your {community.name} Notary Today
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-primary-foreground/90">
             Fast, professional notary services in {community.name}, PA. Mobile or online – you choose!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" onClick={scrollToBooking} className="bg-white text-primary hover:bg-white/90">
+            <Button size="lg" onClick={scrollToBooking} className="bg-background text-primary hover:bg-background/90">
               Book Appointment
             </Button>
-            <Button size="lg" variant="outline" asChild className="border-2 border-white text-white hover:bg-white hover:text-primary">
+            <Button size="lg" variant="outline" asChild className="border-2 border-background text-primary-foreground hover:bg-background hover:text-primary">
               <Link to={`/areas/${community.county.toLowerCase().replace(/\s+/g, '-')}`}>
                 View All {community.county} Services
               </Link>

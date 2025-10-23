@@ -151,7 +151,7 @@ const Services = () => {
                 {/* Badge */}
                 {service.badge && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                    <Badge className="bg-[hsl(var(--urgency-amber))] text-white px-4 py-1 text-sm font-semibold shadow-lg">
+                    <Badge className="bg-amber text-primary-foreground px-4 py-1 text-sm font-semibold shadow-lg">
                       {service.badge}
                     </Badge>
                   </div>

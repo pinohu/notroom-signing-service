@@ -186,7 +186,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
         .single();
 
       if (error) {
-        console.error("Booking submission error:", error);
+        if (import.meta.env.DEV) {
+          console.error("Booking submission error:", error);
+        }
         toast.error("Failed to submit booking. Please try again.");
         return;
       }
@@ -204,7 +206,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
           }
         });
       } catch (emailError) {
-        console.error("Email sending error:", emailError);
+        if (import.meta.env.DEV) {
+          console.error("Email sending error:", emailError);
+        }
         // Don't fail the booking if email fails
       }
 
@@ -227,9 +231,13 @@ const BookingForm = ({ community }: BookingFormProps) => {
             status: 'pending'
           }
         });
-        console.log("Booking synced to Suitedash successfully");
+        if (import.meta.env.DEV) {
+          console.log("Booking synced to Suitedash successfully");
+        }
       } catch (suitedashError) {
-        console.error("Suitedash sync error:", suitedashError);
+        if (import.meta.env.DEV) {
+          console.error("Suitedash sync error:", suitedashError);
+        }
         // Don't fail the booking if Suitedash sync fails
       }
 
