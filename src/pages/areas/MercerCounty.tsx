@@ -139,7 +139,7 @@ const MercerCounty = () => {
               Complete Notary & Business Services<br />for Mercer County
             </h1>
             
-            <p className="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">
+            <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
               RON, Mobile Notary, Loan Signing, Apostille, I-9 Verification, LLC Formation & More serving Sharon, Hermitage, Grove City, and all surrounding areas
             </p>
 
@@ -147,7 +147,8 @@ const MercerCounty = () => {
               <Button
                 size="lg"
                 onClick={scrollToBooking}
-                className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto shadow-xl"
+                variant="secondary"
+                className="text-lg px-8 py-6 h-auto shadow-xl"
               >
                 Book Any Service Now
               </Button>
@@ -155,7 +156,7 @@ const MercerCounty = () => {
                 size="lg"
                 variant="outline"
                 asChild
-                className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6 h-auto"
+                className="border-2 border-primary-foreground hover:bg-primary-foreground/10 text-lg px-8 py-6 h-auto"
               >
                 <Link to="/services/remote-online-notary">View All Services</Link>
               </Button>
@@ -290,17 +291,17 @@ const MercerCounty = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Book Your Service in Mercer County Today</h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             From notarization to business formation - complete services for Sharon, Hermitage, Grove City, and beyond
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button
               size="lg"
               onClick={scrollToBooking}
-              className="bg-white text-primary hover:bg-white/90"
+              variant="secondary"
             >
               Book Any Service
             </Button>
@@ -308,7 +309,7 @@ const MercerCounty = () => {
               size="lg"
               variant="outline"
               asChild
-              className="border-2 border-white text-white hover:bg-white hover:text-primary"
+              className="border-2 border-primary-foreground hover:bg-primary-foreground/10"
             >
               <Link to="/pricing">View Pricing</Link>
             </Button>

@@ -78,30 +78,30 @@ const StatewideOnline = () => {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-white py-20">
+      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-[hsl(var(--action-cyan))] text-white border-0">
+            <Badge className="mb-4 bg-accent text-accent-foreground border-0">
               Available Statewide by Appointment
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Remote Online Notary Service Anywhere in Pennsylvania
             </h1>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 opacity-90">
               Get documents notarized from anywhere in PA via secure video call. No travel, no waiting rooms, no hassle. Available by appointment including evenings, weekends, and holidays.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
                 onClick={scrollToBooking}
-                className="bg-white text-primary hover:bg-white/90"
+                variant="secondary"
               >
                 Book Online Session - $60
               </Button>
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="border-primary-foreground hover:bg-primary-foreground/10"
                 onClick={() => navigate("/resources/how-ron-works")}
               >
                 How RON Works
@@ -189,7 +189,7 @@ const StatewideOnline = () => {
             <div className="space-y-6">
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl">
                     1
                   </div>
                   <div>
@@ -203,7 +203,7 @@ const StatewideOnline = () => {
 
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl">
                     2
                   </div>
                   <div>
@@ -217,7 +217,7 @@ const StatewideOnline = () => {
 
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl">
                     3
                   </div>
                   <div>
@@ -231,7 +231,7 @@ const StatewideOnline = () => {
 
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl">
                     4
                   </div>
                   <div>
@@ -245,7 +245,7 @@ const StatewideOnline = () => {
 
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xl">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-xl">
                     5
                   </div>
                   <div>
