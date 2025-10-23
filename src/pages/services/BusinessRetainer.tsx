@@ -71,30 +71,30 @@ const BusinessRetainer = () => {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-white py-20">
+      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-[hsl(var(--action-cyan))] text-white border-0">
+            <Badge className="mb-4 bg-accent text-accent-foreground border-0">
               For Businesses
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Business Notary Retainer Plans
             </h1>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 opacity-90">
               Streamline your company's notarization needs with a dedicated business account. Priority service, volume discounts, and simplified billing.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
                 onClick={scrollToBooking}
-                className="bg-white text-primary hover:bg-white/90"
+                variant="secondary"
               >
                 Get Custom Quote
               </Button>
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="border-primary-foreground opacity-90 hover:opacity-100"
                 onClick={() => window.location.href = "tel:814-480-0989"}
               >
                 Call (814) 480-0989
@@ -310,24 +310,24 @@ const BusinessRetainer = () => {
       />
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Streamline Your Notarization Process?</h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Get a custom quote tailored to your business needs. No obligations, free consultation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
               onClick={scrollToBooking}
-              className="bg-white text-primary hover:bg-white/90"
+              variant="secondary"
             >
               Request Quote
             </Button>
             <Button 
               size="lg" 
               variant="outline"
-              className="border-white text-white hover:bg-white/10"
+              className="border-primary-foreground opacity-90 hover:opacity-100"
               onClick={() => window.location.href = "tel:814-480-0989"}
             >
               Call (814) 480-0989

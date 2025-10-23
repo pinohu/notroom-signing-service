@@ -81,30 +81,30 @@ const RegisteredOffice = () => {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-white py-20">
+      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-[hsl(var(--action-cyan))] text-white border-0">
+            <Badge className="mb-4 bg-accent text-accent-foreground border-0">
               PA Department of State Registered CROP
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Pennsylvania Registered Office & Business Filing Services
             </h1>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 opacity-90">
               Professional registered office address and business filing concierge for Pennsylvania LLCs and corporations. Stay compliant without the hassle.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
                 onClick={scrollToBooking}
-                className="bg-white text-primary hover:bg-white/90"
+                variant="secondary"
               >
                 Get Started - $99/year
               </Button>
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="border-primary-foreground opacity-90 hover:opacity-100"
                 onClick={() => window.location.href = "tel:814-480-0989"}
               >
                 Call (814) 480-0989
@@ -247,46 +247,47 @@ const RegisteredOffice = () => {
       </section>
 
       {/* Business Launch Pack */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge className="mb-4 bg-white text-primary border-0">
+            <Badge className="mb-4 bg-background text-primary border-0">
               Best Value
             </Badge>
             <h2 className="text-3xl font-bold mb-6">Business Launch Pack</h2>
-            <Card className="p-8 bg-white/10 border-white/20 text-white">
+            <Card className="p-8 bg-background/10 border-primary-foreground/20">
               <p className="text-5xl font-bold mb-4">$349</p>
-              <p className="text-lg mb-8 text-white/90">+ PA state fees</p>
+              <p className="text-lg mb-8 opacity-90">+ PA state fees</p>
               <div className="grid md:grid-cols-2 gap-4 mb-8 text-left">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span className="text-sm">LLC formation filing</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span className="text-sm">Registered office (1 year)</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span className="text-sm">EIN application assistance</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span className="text-sm">Standard operating agreement template</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span className="text-sm">Compliance calendar</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                  <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                   <span className="text-sm">2 RON credits included</span>
                 </div>
               </div>
               <Button 
                 size="lg" 
                 onClick={scrollToBooking}
-                className="bg-white text-primary hover:bg-white/90 w-full"
+                variant="secondary"
+                className="w-full"
               >
                 Launch Your Business
               </Button>
@@ -303,7 +304,7 @@ const RegisteredOffice = () => {
             <div className="space-y-6">
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                     1
                   </div>
                   <div>
@@ -317,7 +318,7 @@ const RegisteredOffice = () => {
 
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                     2
                   </div>
                   <div>
@@ -331,7 +332,7 @@ const RegisteredOffice = () => {
 
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                     3
                   </div>
                   <div>

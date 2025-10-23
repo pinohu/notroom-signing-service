@@ -69,33 +69,33 @@ const LoanSigningAgent = () => {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-white py-20">
+      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-[hsl(var(--action-cyan))] text-white border-0">
+            <Badge className="mb-4 bg-accent text-accent-foreground border-0">
               NNA Certified
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Professional Loan Signing Agent in Erie, PA
             </h1>
-              <p className="text-xl mb-8 text-white/90">
+              <p className="text-xl mb-8 opacity-90">
                 NNA-certified loan signing agent for mortgage closings, refinances, and real estate transactions. $100K E&O insurance and MISMO compliant. Pennsylvania does not require separate state licensing for signing agents—certification through the National Notary Association is the industry standard recognized by title companies and lenders.
               </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
                 onClick={scrollToBooking}
-                className="bg-white text-primary hover:bg-white/90"
+                variant="secondary"
               >
                 Schedule Signing - From $175
               </Button>
-              <p className="text-sm text-white/80 mt-2">
+              <p className="text-sm opacity-80 mt-2">
                 Purchase/Refi $175 | Hybrid/e-Closing $225
               </p>
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="border-primary-foreground opacity-90 hover:opacity-100"
                 onClick={() => window.location.href = "tel:814-480-0989"}
               >
                 Call (814) 480-0989
@@ -152,7 +152,7 @@ const LoanSigningAgent = () => {
                 <h2 className="text-3xl font-bold mb-6">Our Process</h2>
                 <div className="space-y-4">
                   <div className="flex gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
                       1
                     </div>
                     <div>
@@ -161,7 +161,7 @@ const LoanSigningAgent = () => {
                     </div>
                   </div>
                   <div className="flex gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
                       2
                     </div>
                     <div>
@@ -170,7 +170,7 @@ const LoanSigningAgent = () => {
                     </div>
                   </div>
                   <div className="flex gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
                       3
                     </div>
                     <div>
@@ -179,7 +179,7 @@ const LoanSigningAgent = () => {
                     </div>
                   </div>
                   <div className="flex gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
                       4
                     </div>
                     <div>
@@ -346,24 +346,24 @@ const LoanSigningAgent = () => {
       />
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Need a Certified Loan Signing Agent?</h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Professional, reliable service for title companies, lenders, and borrowers throughout Erie County.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
               onClick={scrollToBooking}
-              className="bg-white text-primary hover:bg-white/90"
+              variant="secondary"
             >
               Schedule Loan Signing
             </Button>
             <Button 
               size="lg" 
               variant="outline"
-              className="border-white text-white hover:bg-white/10"
+              className="border-primary-foreground opacity-90 hover:opacity-100"
               onClick={() => window.location.href = "tel:814-480-0989"}
             >
               Call (814) 480-0989

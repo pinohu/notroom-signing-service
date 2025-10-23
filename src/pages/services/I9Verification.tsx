@@ -176,21 +176,21 @@ const I9Verification = () => {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-white py-20" role="banner">
+      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20" role="banner">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-[hsl(var(--action-cyan))] text-white border-0" aria-label="Service category">
+            <Badge className="mb-4 bg-accent text-accent-foreground border-0" aria-label="Service category">
               DHS-Compliant I-9 Services
             </Badge>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               I-9 Employment Verification Services
             </h1>
-            <p className="text-lg md:text-xl mb-6 text-white/90">
+            <p className="text-lg md:text-xl mb-6 opacity-90">
               Professional I-9 document verification for employers. Remote service for E-Verify employers and mobile in-person verification for all businesses. Compliant, fast, and affordable.
             </p>
-            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-5 mb-8 text-sm md:text-base" role="alert" aria-live="polite">
+            <div className="bg-background/10 backdrop-blur-sm border border-primary-foreground/20 rounded-lg p-5 mb-8 text-sm md:text-base" role="alert" aria-live="polite">
               <p className="font-semibold mb-2">⚠️ Important Notice</p>
-              <p className="text-white/90">
+              <p className="opacity-90">
                 <strong>This is NOT a notarization service.</strong> I-9 verification is performed as an Authorized Representative on behalf of employers. No notary seal or commission is used in this process, per Pennsylvania Department of State guidance. I am not an attorney and do not provide legal or immigration advice.
               </p>
             </div>
@@ -198,7 +198,7 @@ const I9Verification = () => {
               <Button 
                 size="lg" 
                 onClick={scrollToBooking}
-                className="bg-white text-primary hover:bg-white/90 text-base"
+                variant="secondary"
                 aria-label="Book I-9 verification service"
               >
                 Book I-9 Verification
@@ -324,7 +324,7 @@ const I9Verification = () => {
               <li>
                 <Card className="p-6 border-2">
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg" aria-label="Step 1">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg" aria-label="Step 1">
                       1
                     </div>
                     <div>
@@ -340,7 +340,7 @@ const I9Verification = () => {
               <li>
                 <Card className="p-6 border-2">
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg" aria-label="Step 2">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg" aria-label="Step 2">
                       2
                     </div>
                     <div>
@@ -357,7 +357,7 @@ const I9Verification = () => {
               <li>
                 <Card className="p-6 border-2">
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg" aria-label="Step 3">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg" aria-label="Step 3">
                       3
                     </div>
                     <div>
@@ -373,7 +373,7 @@ const I9Verification = () => {
               <li>
                 <Card className="p-6 border-2">
                   <div className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg" aria-label="Step 4">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg" aria-label="Step 4">
                       4
                     </div>
                     <div>
@@ -446,17 +446,17 @@ const I9Verification = () => {
       <FAQSection faqs={faqs} />
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-white" aria-labelledby="cta-heading">
+      <section className="py-16 bg-primary text-primary-foreground" aria-labelledby="cta-heading">
         <div className="container mx-auto px-4 text-center">
           <h2 id="cta-heading" className="text-3xl md:text-4xl font-bold mb-4">Book Your I-9 Verification Service</h2>
-          <p className="text-lg md:text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Professional I-9 verification that keeps your business compliant. Remote or mobile options to fit your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
               onClick={scrollToBooking}
-              className="bg-white text-primary hover:bg-white/90 text-base"
+              variant="secondary"
               aria-label="Schedule I-9 verification service"
             >
               Schedule I-9 Verification

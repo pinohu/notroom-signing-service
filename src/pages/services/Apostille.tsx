@@ -67,30 +67,30 @@ const Apostille = () => {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-white py-20">
+      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-[hsl(var(--action-cyan))] text-white border-0">
+            <Badge className="mb-4 bg-accent text-accent-foreground border-0">
               International Documents
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Apostille Assistance & Document Preparation in Pennsylvania
             </h1>
-            <p className="text-xl mb-8 text-white/90">
+            <p className="text-xl mb-8 opacity-90">
               We notarize your documents and assist with the apostille application process through the Pennsylvania Department of State.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
                 onClick={scrollToBooking}
-                className="bg-white text-primary hover:bg-white/90"
+                variant="secondary"
               >
                 Get Started - Book Apostille Service
               </Button>
               <Button 
                 size="lg" 
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="border-primary-foreground opacity-90 hover:opacity-100"
                 onClick={() => window.location.href = "tel:814-480-0989"}
               >
                 Call (814) 480-0989
@@ -157,7 +157,7 @@ const Apostille = () => {
             <div className="space-y-6">
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                     1
                   </div>
                   <div>
@@ -171,7 +171,7 @@ const Apostille = () => {
 
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                     2
                   </div>
                   <div>
@@ -185,7 +185,7 @@ const Apostille = () => {
 
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                     3
                   </div>
                   <div>
@@ -199,7 +199,7 @@ const Apostille = () => {
 
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                     4
                   </div>
                   <div>
@@ -389,24 +389,24 @@ const Apostille = () => {
       />
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Book Your Apostille Service</h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Let us handle the complex apostille process for you. Fast, reliable, and stress-free international document authentication.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
               onClick={scrollToBooking}
-              className="bg-white text-primary hover:bg-white/90"
+              variant="secondary"
             >
               Start Apostille Process
             </Button>
             <Button 
               size="lg" 
               variant="outline"
-              className="border-white text-white hover:bg-white/10"
+              className="border-primary-foreground opacity-90 hover:opacity-100"
               onClick={() => window.location.href = "tel:814-480-0989"}
             >
               Call (814) 480-0989
