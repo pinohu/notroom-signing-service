@@ -3,9 +3,10 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Video, Car, FileText, Globe, Users, Building2, Briefcase, MapPin, ArrowRight, CheckCircle, Phone, Shield, Clock, Star, Award, Heart, Sparkles } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CommunityData, getNearbyLinks } from "@/data/communityData";
 import PricingCalculator from "@/components/PricingCalculator";
+import BookingForm from "@/components/BookingForm";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -14,16 +15,12 @@ interface CommunityPageProps {
 }
 
 const CommunityPage = ({ community }: CommunityPageProps) => {
-  const navigate = useNavigate();
   const [communityImage, setCommunityImage] = useState<string | null>(null);
   const [imageLoading, setImageLoading] = useState(false);
   
   const scrollToBooking = () => {
-    navigate("/");
-    setTimeout(() => {
-      const element = document.getElementById("booking-form");
-      element?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+    const element = document.getElementById("booking-form");
+    element?.scrollIntoView({ behavior: "smooth" });
   };
 
   // Generate community image on mount if prompt exists
@@ -617,6 +614,9 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
           </div>
         </div>
       </section>
+
+      {/* Booking Form */}
+      <BookingForm community={community} />
     </Layout>
   );
 };

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -22,6 +22,8 @@ import { z } from "zod";
 import { format } from "date-fns";
 import { CalendarIcon, MapPin, FileText, Users, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CommunityData } from "@/data/communityData";
+import { formatPhoneNumber } from "@/utils/validation";
 
 const bookingSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -37,8 +39,16 @@ const bookingSchema = z.object({
   message: z.string().max(1000, "Message must be less than 1000 characters").optional(),
 });
 
-const BookingForm = () => {
+interface BookingFormProps {
+  community?: CommunityData;
+}
+
+const BookingForm = ({ community }: BookingFormProps) => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [activeSuggestionField, setActiveSuggestionField] = useState<string | null>(null);
+  const suggestionRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState<{
     name: string;
     email: string;
@@ -69,15 +79,77 @@ const BookingForm = () => {
   const canProceedFromStep2 = formData.service && (formData.service !== "mobile" || formData.location_address);
 
   const getServiceTitle = () => {
+    const communityName = community?.name || "";
     const titles: Record<string, string> = {
-      ron: "Book Your Remote Online Notary",
-      mobile: "Book Your Mobile Notary Service",
-      loan: "Book Your Loan Signing Agent",
-      apostille: "Book Your Apostille Service",
-      i9: "Book Your I-9 Verification",
+      ron: `Book Your Remote Online Notary${communityName ? ` - ${communityName}` : ""}`,
+      mobile: `Book Your Mobile Notary${communityName ? ` in ${communityName}` : " Service"}`,
+      loan: `Book Your Loan Signing Agent${communityName ? ` - ${communityName}` : ""}`,
+      apostille: `Book Your Apostille Service${communityName ? ` - ${communityName}` : ""}`,
+      i9: `Book Your I-9 Verification${communityName ? ` - ${communityName}` : ""}`,
     };
-    return formData.service ? titles[formData.service] || "Book Your Notary Service" : "Book Your Notary Service";
+    return formData.service ? titles[formData.service] || `Book Your Notary Service${communityName ? ` in ${communityName}` : ""}` : `Book Your Notary Service${communityName ? ` in ${communityName}` : ""}`;
   };
+
+  // Common PA street names for autocomplete
+  const getLocationSuggestions = (input: string) => {
+    const paAddresses = [
+      "Main Street",
+      "State Street",
+      "Peach Street",
+      "West 8th Street",
+      "East 12th Street",
+      "26th Street",
+      "38th Street",
+      "Peninsula Drive",
+      "Interchange Road",
+      ...(community?.landmarks || [])
+    ];
+    
+    return paAddresses
+      .filter(addr => addr.toLowerCase().includes(input.toLowerCase()))
+      .slice(0, 5)
+      .map(addr => `${addr}${community?.name ? `, ${community.name}, PA` : ", PA"}`);
+  };
+
+  // Handle phone number formatting
+  const handlePhoneChange = (value: string) => {
+    const formatted = formatPhoneNumber(value);
+    setFormData({ ...formData, phone: formatted });
+  };
+
+  // Handle location input with suggestions
+  const handleLocationChange = (value: string) => {
+    setFormData({ ...formData, location_address: value });
+    if (value.length > 2) {
+      const locationSuggestions = getLocationSuggestions(value);
+      setSuggestions(locationSuggestions);
+      setShowSuggestions(locationSuggestions.length > 0);
+      setActiveSuggestionField('location');
+    } else {
+      setShowSuggestions(false);
+    }
+  };
+
+  // Handle suggestion selection
+  const handleSuggestionClick = (suggestion: string) => {
+    if (activeSuggestionField === 'location') {
+      setFormData({ ...formData, location_address: suggestion });
+    }
+    setShowSuggestions(false);
+    setSuggestions([]);
+  };
+
+  // Close suggestions when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (suggestionRef.current && !suggestionRef.current.contains(event.target as Node)) {
+        setShowSuggestions(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -199,9 +271,11 @@ const BookingForm = () => {
               {getServiceTitle()}
             </h2>
             <p className="text-xl text-muted-foreground">
-              {formData.service 
-                ? "Complete the form below and we'll contact you within 2 hours to confirm your appointment."
-                : "Select a service and complete the form below. We'll contact you within 2 hours to confirm your appointment."}
+              {community 
+                ? `Trusted by ${community.name} residents and businesses. Complete the form below for fast, professional notary service.`
+                : formData.service 
+                  ? "Complete the form below and we'll contact you within 2 hours to confirm your appointment."
+                  : "Select a service and complete the form below. We'll contact you within 2 hours to confirm your appointment."}
             </p>
           </div>
 
@@ -280,14 +354,15 @@ const BookingForm = () => {
                     <Input
                       id="phone"
                       type="tel"
-                      inputMode="numeric"
+                      inputMode="tel"
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      onChange={(e) => handlePhoneChange(e.target.value)}
                       placeholder="(814) 555-0123"
                       required
                       aria-required="true"
                       aria-invalid={!formData.phone && currentStep > 1}
                     />
+                    <p className="text-xs text-muted-foreground mt-1">Format applied automatically</p>
                   </div>
                 </div>
                 <div>
@@ -377,7 +452,7 @@ const BookingForm = () => {
                 </div>
 
                 {formData.service === "mobile" && (
-                  <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                  <div className="animate-in fade-in slide-in-from-top-2 duration-300 relative">
                     <Label htmlFor="location_address" className="flex items-center gap-2">
                       <MapPin className="w-4 h-4" />
                       Service Location *
@@ -386,12 +461,33 @@ const BookingForm = () => {
                       id="location_address"
                       type="text"
                       value={formData.location_address}
-                      onChange={(e) => setFormData({ ...formData, location_address: e.target.value })}
-                      placeholder="123 Main St, Erie, PA 16501"
+                      onChange={(e) => handleLocationChange(e.target.value)}
+                      onFocus={() => setActiveSuggestionField('location')}
+                      placeholder={community ? `123 Main St, ${community.name}, PA` : "123 Main St, Erie, PA 16501"}
                       required={formData.service === "mobile"}
+                      autoComplete="off"
                     />
+                    {showSuggestions && activeSuggestionField === 'location' && suggestions.length > 0 && (
+                      <div 
+                        ref={suggestionRef}
+                        className="absolute z-50 w-full mt-1 bg-popover border border-border rounded-md shadow-lg max-h-60 overflow-auto"
+                      >
+                        {suggestions.map((suggestion, index) => (
+                          <button
+                            key={index}
+                            type="button"
+                            onClick={() => handleSuggestionClick(suggestion)}
+                            className="w-full text-left px-4 py-2 hover:bg-accent hover:text-accent-foreground text-sm transition-colors"
+                          >
+                            {suggestion}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                     <p className="text-sm text-muted-foreground mt-1">
-                      Mobile service is available within Erie County
+                      {community 
+                        ? `Mobile service available throughout ${community.name} and ${community.county}`
+                        : "Mobile service is available within Erie County"}
                     </p>
                   </div>
                 )}
