@@ -32,6 +32,10 @@
     <meta name="geo.position" content="42.1292;-80.0851" />
     <meta name="ICBM" content="42.1292, -80.0851" />
     
+    <!-- Performance hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
@@ -42,7 +46,7 @@
       "url": "https://notroom.com",
       "telephone": "(814) 480-0989",
       "email": "support@notroom.com",
-      "priceRange": "$60-$200",
+      "priceRange": "$35-$495",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Erie",
@@ -77,7 +81,37 @@
             "addressCountry": "US"
           }
         }
-      ]
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Notary and Business Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Remote Online Notarization",
+              "description": "24/7 online notary service via secure video call"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile Notary Service",
+              "description": "Notary comes to your location in Erie County and surrounding areas"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "I-9 Employment Verification",
+              "description": "Professional I-9 verification for employers"
+            }
+          }
+        ]
+      }
     }
     </script>
   </head>
