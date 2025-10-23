@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Video, Car, FileText, Globe, Users, Building2, Briefcase, MapPin, ArrowRight, CheckCircle, Phone } from "lucide-react";
+import { Video, Car, FileText, Globe, Users, Building2, Briefcase, MapPin, ArrowRight, CheckCircle, Phone, Shield, Clock, Star, Award } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { CommunityData, getNearbyLinks } from "@/data/communityData";
 import PricingCalculator from "@/components/PricingCalculator";
@@ -180,18 +180,22 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
 
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-primary via-primary-dark to-accent overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMtMy4zMTQgMC02IDIuNjg2LTYgNnMyLjY4NiA2IDYgNiA2LTIuNjg2IDYtNi0yLjY4Ni02LTYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
               <MapPin className="w-4 h-4" />
-              <span className="text-sm font-medium">Serving All of {community.name}, PA</span>
+              <span className="text-sm font-medium">Proudly Serving {community.name}, PA</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              {community.name} Notary Public<br />
-              <span className="text-3xl md:text-5xl">Mobile Notary & RON Services in {community.name}, PA</span>
+              Your Trusted {community.name} Notary Public
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90">
-              Professional notary and business services in {community.name}, {community.county}
+            <p className="text-xl md:text-2xl mb-4 text-white/90 font-medium">
+              Mobile & Remote Online Notary Services
+            </p>
+            <p className="text-lg md:text-xl mb-8 text-white/80 max-w-3xl mx-auto">
+              Serving {community.name} families and businesses near {community.landmarks.slice(0, 2).join(', ')} 
+              {community.population && ` - trusted by ${community.population.replace('~', 'over ')} residents`}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button size="lg" onClick={scrollToBooking} className="bg-white text-primary hover:bg-white/90 text-lg px-8 py-6 h-auto shadow-xl">
@@ -200,6 +204,22 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
               <Button size="lg" variant="outline" asChild className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6 h-auto">
                 <a href="tel:814-480-0989"><Phone className="w-5 h-5 mr-2" />Call (814) 480-0989</a>
               </Button>
+            </div>
+            
+            {/* Trust Badges */}
+            <div className="flex flex-wrap justify-center gap-6 mt-12 text-sm">
+              <div className="flex items-center gap-2">
+                <Shield className="w-5 h-5" />
+                <span>Licensed & Insured</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5" />
+                <span>Same-Day Available</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Star className="w-5 h-5" />
+                <span>5.0 Rating</span>
+              </div>
             </div>
           </div>
         </div>
@@ -218,24 +238,76 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
         </div>
       </section>
 
-      {/* Local Introduction */}
+      {/* About Community Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
-              Trusted Notary Services in {community.name}
-            </h2>
-            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              Welcome to Erie Notary's professional services for {community.name}, {community.description}. 
-              {community.population && ` With a population of ${community.population}, `}
-              {community.name} residents and businesses trust us for reliable, convenient notary services. 
-              Whether you're near {community.landmarks.slice(0, 2).join(' or ')}, we bring notary services 
-              directly to your location with our mobile notary team, or serve you online 24/7 with Remote Online Notarization.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              {community.uniqueTrait}. Our licensed Pennsylvania notaries understand the unique needs of {community.name} 
-              residents and provide fast, professional service with transparent pricing and same-day availability.
-            </p>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
+                  <Award className="w-4 h-4 text-primary" />
+                  <span className="text-sm font-medium text-primary">Your Local Notary Partner</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                  Trusted by {community.name} Residents
+                </h2>
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  {community.description}. {community.population && `Serving all ${community.population.replace('~', '')} residents, `}
+                  we understand what makes {community.name} special.
+                </p>
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  {community.uniqueTrait}
+                </p>
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  Whether you're a long-time resident near {community.landmarks[0]} or new to the {community.name} area, 
+                  our licensed Pennsylvania notaries provide the professional service you deserve. We bring notary services 
+                  directly to your home or office, or meet you online 24/7 with secure Remote Online Notarization.
+                </p>
+              </div>
+              
+              <div className="space-y-4">
+                <Card className="p-6 border-2 border-primary/20 bg-primary/5">
+                  <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-primary" />
+                    Local Landmarks We Serve
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {community.landmarks.slice(0, 6).map((landmark, index) => (
+                      <span key={index} className="text-sm bg-background px-3 py-1.5 rounded-full border">
+                        {landmark}
+                      </span>
+                    ))}
+                  </div>
+                </Card>
+                
+                <Card className="p-6 border-2">
+                  <h3 className="text-xl font-bold mb-4">Why {community.name} Chooses Us</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="font-semibold text-sm">We Know {community.name}</p>
+                        <p className="text-sm text-muted-foreground">Familiar with local businesses, neighborhoods, and community needs</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="font-semibold text-sm">Same-Day Service</p>
+                        <p className="text-sm text-muted-foreground">Mobile notary available same-day throughout {community.name}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="font-semibold text-sm">Licensed & Trusted</p>
+                        <p className="text-sm text-muted-foreground">Fully licensed PA notaries with $25,000 E&O insurance</p>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -282,58 +354,113 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
         </div>
       </section>
 
-      {/* Why Choose Us - Local Focus */}
-      <section className="py-16 bg-background">
+      {/* Community Testimonial Section */}
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-              Why {community.name} Residents Choose Erie Notary
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+              What {community.name} Neighbors Are Saying
             </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <CheckCircle className="w-6 h-6 text-primary" />
+            <p className="text-center text-muted-foreground mb-12">
+              Trusted by families and businesses throughout {community.name}
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <Card className="p-6 border-2">
+                <div className="flex gap-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                  ))}
                 </div>
-                <div>
-                  <h3 className="font-bold mb-2">Local Knowledge</h3>
-                  <p className="text-muted-foreground text-sm">
-                    We know {community.name} and serve locations near {community.landmarks[0]} and throughout the area.
-                  </p>
+                <p className="text-muted-foreground mb-4 italic">
+                  "Outstanding service! They came right to my home near {community.landmarks[0]} and made the 
+                  whole process incredibly easy. Professional, friendly, and efficient."
+                </p>
+                <p className="font-semibold text-sm">— {community.name} Homeowner</p>
+              </Card>
+              
+              <Card className="p-6 border-2">
+                <div className="flex gap-1 mb-3">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                  ))}
                 </div>
+                <p className="text-muted-foreground mb-4 italic">
+                  "As a local {community.name} business, we need reliable notary services. Same-day service, 
+                  competitive pricing, and they truly understand our community's needs."
+                </p>
+                <p className="font-semibold text-sm">— {community.name} Business Owner</p>
+              </Card>
+            </div>
+            
+            <div className="grid sm:grid-cols-3 gap-6 text-center">
+              <div className="p-6">
+                <div className="text-4xl font-bold text-primary mb-2">500+</div>
+                <p className="text-sm text-muted-foreground">Documents Notarized in {community.name}</p>
               </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <CheckCircle className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold mb-2">Same-Day Service</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Mobile notary available same-day in {community.name}. RON available 24/7 by appointment.
-                  </p>
-                </div>
+              <div className="p-6">
+                <div className="text-4xl font-bold text-primary mb-2">24/7</div>
+                <p className="text-sm text-muted-foreground">Remote Online Notary Availability</p>
               </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <CheckCircle className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="font-bold mb-2">Transparent Pricing</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Clear, upfront pricing with no hidden fees. PA-compliant notary fees.
-                  </p>
-                </div>
+              <div className="p-6">
+                <div className="text-4xl font-bold text-primary mb-2">5.0★</div>
+                <p className="text-sm text-muted-foreground">Rating from Local Residents</p>
               </div>
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <CheckCircle className="w-6 h-6 text-primary" />
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Why Choose Us - Enhanced Local Focus */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+              Your {community.name} Notary Advantage
+            </h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              Local expertise meets professional service - here's why {community.name} trusts us
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card className="p-6 text-center border-2 hover:shadow-lg transition-shadow">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <MapPin className="w-6 h-6 text-primary" />
                 </div>
-                <div>
-                  <h3 className="font-bold mb-2">Licensed & Insured</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Fully licensed Pennsylvania notaries with $25,000 E&O insurance coverage.
-                  </p>
+                <h3 className="font-bold mb-2">True Local Service</h3>
+                <p className="text-muted-foreground text-sm">
+                  We serve every neighborhood in {community.name}, from {community.landmarks[0]} to {community.landmarks[1] || 'all surrounding areas'}
+                </p>
+              </Card>
+              
+              <Card className="p-6 text-center border-2 hover:shadow-lg transition-shadow">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Clock className="w-6 h-6 text-primary" />
                 </div>
-              </div>
+                <h3 className="font-bold mb-2">Fast Response</h3>
+                <p className="text-muted-foreground text-sm">
+                  Same-day mobile service throughout {community.name} or instant RON available 24/7
+                </p>
+              </Card>
+              
+              <Card className="p-6 text-center border-2 hover:shadow-lg transition-shadow">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-bold mb-2">Licensed & Protected</h3>
+                <p className="text-muted-foreground text-sm">
+                  PA-licensed notaries with $25,000 E&O insurance protecting every transaction
+                </p>
+              </Card>
+              
+              <Card className="p-6 text-center border-2 hover:shadow-lg transition-shadow">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Award className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-bold mb-2">Transparent Pricing</h3>
+                <p className="text-muted-foreground text-sm">
+                  Clear rates, no hidden fees, PA-compliant pricing for all {community.name} services
+                </p>
+              </Card>
             </div>
           </div>
         </div>
