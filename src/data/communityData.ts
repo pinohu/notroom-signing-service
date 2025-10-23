@@ -35,7 +35,7 @@ export const communityData: Record<string, CommunityData> = {
       "Waldameer's iconic Ravine Flyer II wooden roller coaster",
       "Ice skating and hockey games at Erie Insurance Arena"
     ],
-    imagePrompt: "A beautiful scenic painting of Presque Isle State Park lighthouse at golden hour, with Lake Erie waves gently lapping the shore, sailboats in the distance, and families walking along the sandy beach. Warm sunset colors reflecting on the water. Photorealistic, inviting atmosphere."
+    imagePrompt: "Exact photorealistic view of Presque Isle State Park's Beach 6 at sunset with the distinctive Presque Isle Lighthouse (1872) visible, families walking the Sidewalk Trail, sailboats anchored at Presque Isle Bay, Perry Monument across the water, wooden boardwalk, actual sand dunes with beach grass. Iconic Erie scene residents recognize instantly."
   },
   millcreek: {
     name: "Millcreek",
@@ -56,7 +56,7 @@ export const communityData: Record<string, CommunityData> = {
       "Excellent schools in the Millcreek Township School District",
       "Convenient access to every amenity you need"
     ],
-    imagePrompt: "A welcoming scene of families enjoying Asbury Woods Nature Center trails in autumn, with vibrant fall foliage, wooden boardwalks over wetlands, and children observing wildlife. Modern suburban neighborhoods visible in the background. Natural light, family-friendly atmosphere."
+    imagePrompt: "Exact photorealistic view of Asbury Woods Nature Center's Brown's Farm entrance and the distinctive elevated boardwalk over Anna's Pond wetlands in autumn, families on wooden walkway, interpretive signs, pawpaw trees with fall colors, Asbury Woods environmental education building visible, Walnut Creek watershed area. Recognizable Millcreek landmark."
   },
   harborcreek: {
     name: "Harborcreek",
@@ -77,7 +77,7 @@ export const communityData: Record<string, CommunityData> = {
       "Safe, family-friendly neighborhoods",
       "Beautiful sunrises over Lake Erie"
     ],
-    imagePrompt: "A peaceful lakeside scene of Harborcreek's Lake Erie coastline at sunrise, with morning mist over calm waters, a fishing pier extending into the lake, joggers on the Lake Road path, and well-maintained homes with lake views. Serene, upscale residential atmosphere."
+    imagePrompt: "Exact photorealistic sunrise view along Route 5 (Lake Road) in Harborcreek Township showing actual lakefront homes, Lake Erie's rocky shoreline at Freeport Beach access, joggers on the paved path, Harborcreek School District building visible, distinctive lake views residents know. Dawn light over calm waters."
   },
   fairview: {
     name: "Fairview",
@@ -98,7 +98,7 @@ export const communityData: Record<string, CommunityData> = {
       "Friendly neighbors and strong community spirit",
       "Convenient location between Erie and lake towns"
     ],
-    imagePrompt: "A sunny summer scene at Avonia Beach with families playing in Lake Erie waves, children building sandcastles, colorful beach umbrellas, and the Fairview shoreline. Sailboats visible on the horizon, blue skies, happy vacation atmosphere."
+    imagePrompt: "Exact photorealistic view of Avonia Beach in Fairview Township showing the actual public beach access at Route 20 and Avonia Road, Lake Erie waves, the beach pavilion and parking area, families on sandy shore, distinctive bluffs, Fairview Water Authority water tower visible in distance. Recognizable local summer spot."
   },
   northEast: {
     name: "North East",
@@ -119,7 +119,7 @@ export const communityData: Record<string, CommunityData> = {
       "Lake Erie beaches just minutes away",
       "Historic downtown shops and restaurants"
     ],
-    imagePrompt: "A picturesque vineyard scene in North East with rows of grapevines stretching toward Lake Erie in the background, a charming winery tasting room, people enjoying wine on a patio, autumn grape harvest. Warm afternoon light, wine country elegance."
+    imagePrompt: "Exact photorealistic view of North East's vineyard country along Route 5 showing Mazza Vineyards or Heritage Wine Cellars tasting room, actual rows of Concord grapes with Lake Erie visible in background, Gibson Park's bandstand in town center, Route 20 (Main Street) historic storefronts. Wine Country Trail scenery residents recognize."
   },
   edinboro: {
     name: "Edinboro",
@@ -140,7 +140,7 @@ export const communityData: Record<string, CommunityData> = {
       "Walking and biking around Edinboro Lake",
       "Affordable housing and friendly neighborhood atmosphere"
     ],
-    imagePrompt: "A charming college town scene of Edinboro with PennWest Edinboro's historic campus buildings, students walking near Edinboro Lake in fall with colorful autumn leaves, the lake reflecting blue sky, kayakers on the water. Academic yet natural setting."
+    imagePrompt: "Exact photorealistic view of PennWest Edinboro's Reeder Hall and Porreco College Center near Edinboro Lake's west shore, students walking on campus paths in autumn, the actual natural lake with dock and swimming area, historic downtown buildings on Plum Street, Van Doren Hall visible. Recognizable college town scene."
   },
   wesleyville: {
     name: "Wesleyville",
@@ -161,7 +161,7 @@ export const communityData: Record<string, CommunityData> = {
       "Small-town feel with big-city convenience",
       "Safe streets and community pride"
     ],
-    imagePrompt: "A cozy neighborhood street scene in Wesleyville with well-maintained homes, tree-lined streets, neighbors chatting, Lake Erie visible in the background, children playing safely. Small-town America atmosphere with lakeside setting."
+    imagePrompt: "Exact photorealistic view of Wesleyville Borough along Buffalo Road (Route 20) showing actual residential streets, Lake Erie shoreline visible north, Wesleyville Elementary School building, small neighborhood homes, East Erie Commercial district, proximity to Erie city limits. Recognizable tight-knit borough."
   },
   girard: {
     name: "Girard",
@@ -182,7 +182,7 @@ export const communityData: Record<string, CommunityData> = {
       "Local restaurants and shops on Main Street",
       "Small-town festivals and tight-knit community"
     ],
-    imagePrompt: "A festive scene of Girard's Dan Rice Days festival with colorful parade floats, Uncle Sam characters, Victorian-era downtown buildings decorated with American flags, families lining Main Street, vendors and entertainment. Nostalgic patriotic celebration."
+    imagePrompt: "Exact photorealistic view of Girard's Dan Rice Days parade on Main Street (Route 20) with actual Victorian storefronts, Uncle Sam characters, Girard Borough Park, historic Battles Museums building, American flags decorating 1880s-era downtown architecture. Annual festival residents cherish."
   },
   waterford: {
     name: "Waterford",
@@ -203,7 +203,7 @@ export const communityData: Record<string, CommunityData> = {
       "Small-town shops and cafes downtown",
       "Rich American history at every turn"
     ],
-    imagePrompt: "A historical scene of Fort LeBoeuf Museum with a reconstructed French fort, costumed historical interpreters, families exploring exhibits, beautiful Eagle Historic District Victorian homes in background, LeBoeuf Creek flowing through. Educational heritage atmosphere."
+    imagePrompt: "Exact photorealistic view of Fort LeBoeuf Museum's reconstructed 1753 French fort and blockhouse, Eagle Hotel historic building on High Street, LeBoeuf Creek flowing through town, actual Victorian homes in Eagle Historic District, Route 19/97 intersection. George Washington visited here in 1753."
   },
 
   // Crawford County Communities
@@ -226,7 +226,7 @@ export const communityData: Record<string, CommunityData> = {
       "Downtown coffee shops and independent bookstores",
       "Annual Meadville Community Band summer concerts"
     ],
-    imagePrompt: "A charming painting of Meadville's historic Diamond Park with its iconic bandstand, surrounded by Victorian buildings, autumn trees with golden leaves, students from Allegheny College walking through the park, and the courthouse in the background. Warm afternoon light, nostalgic small-town Pennsylvania atmosphere."
+    imagePrompt: "Exact photorealistic view of Meadville's Diamond Park with the 1870s Victorian bandstand at center, Crawford County Courthouse (1867), actual storefronts on Chestnut Street and Market Street, Baldwin Reynolds House Museum's Italianate architecture, Allegheny College's Bentley Hall (1820) visible. Historic downtown residents know by heart."
   },
   conneautLake: {
     name: "Conneaut Lake",
@@ -247,7 +247,7 @@ export const communityData: Record<string, CommunityData> = {
       "Community fireworks and summer festivals",
       "Year-round lake living with seasonal charm"
     ],
-    imagePrompt: "A nostalgic summer scene at Conneaut Lake Park with the vintage Blue Streak wooden roller coaster, families enjoying the beach on Conneaut Lake, colorful amusement park rides, boats on the water, and the historic Conneaut Hotel. Classic Americana resort atmosphere."
+    imagePrompt: "Exact photorealistic view of Conneaut Lake's actual shoreline showing Conneaut Lake Park's Beach Club, the historic Hotel Conneaut (1903), families swimming at public beach, fishing boats and pontoons on Pennsylvania's largest natural lake, summer cottages along lakeshore. Iconic summer resort scene."
   },
   titusville: {
     name: "Titusville",
@@ -268,7 +268,7 @@ export const communityData: Record<string, CommunityData> = {
       "Annual Oil Festival celebrating petroleum heritage",
       "Fishing and outdoor recreation along Oil Creek"
     ],
-    imagePrompt: "A historical recreation of Colonel Drake's original oil well derrick at Drake Well Museum, with the museum building, Oil Creek flowing nearby, families exploring exhibits, vintage oil equipment, and autumn forest colors. Industrial heritage meets natural beauty."
+    imagePrompt: "Exact photorealistic view of Titusville's Spring Street downtown showing actual Drake Well Museum with 1859 oil derrick replica, Oil Creek running through, historic Victorian storefronts, Titusville Area High School, Oil Creek State Park bikeway entrance. Edwin Drake struck oil here in 1859."
   },
   
   // Mercer County Communities
@@ -291,7 +291,7 @@ export const communityData: Record<string, CommunityData> = {
       "Community events at Central Park",
       "Small-town festivals and parades"
     ],
-    imagePrompt: "A stately scene of Mercer County's impressive 1909 Beaux-Arts courthouse with its iconic clock tower, the historic downtown square with Victorian storefronts, autumn leaves, families attending a community event, American flag flying. Quintessential county seat atmosphere."
+    imagePrompt: "Exact photorealistic view of downtown Mercer around Diamond (town square) showing actual Mercer County Courthouse with clock tower, historic storefronts, Magoffin Hall Civic Center, Route 19/58/62 intersection, local businesses families know. Classic Pennsylvania county seat square."
   },
   groveCity: {
     name: "Grove City",
@@ -312,7 +312,7 @@ export const communityData: Record<string, CommunityData> = {
       "Safe, family-friendly community atmosphere",
       "Beautiful Grove City College campus architecture"
     ],
-    imagePrompt: "A vibrant college town scene showing Grove City College's beautiful campus with Gothic architecture and chapel, students on campus green, Grove City Premium Outlets shopping area in background, fall colors, families shopping and enjoying the area. Academic meets retail destination."
+    imagePrompt: "Exact photorealistic view of Grove City College's quadrangle showing Memorial Hall chapel spire, Harbison Chapel, students on campus walks, downtown Broad Street (Route 58) with college shops, Grove City Premium Outlets visible, South Center Street storefronts. Recognizable college town."
   },
   hermitage: {
     name: "Hermitage",
@@ -333,7 +333,7 @@ export const communityData: Record<string, CommunityData> = {
       "Numerous parks and recreational facilities",
       "Convenient access to all amenities"
     ],
-    imagePrompt: "A modern suburban scene showing Hermitage's retail district with The Avenue shopping center, families shopping and dining, Shenango River Lake visible in background with boats and recreation, well-maintained parks. Prosperous, family-oriented community atmosphere."
+    imagePrompt: "Exact photorealistic view of Hermitage's Route 18/62 corridor showing Hickory High School, Shenango Valley Freeway (Route 62), The Avenue shopping district, actual plazas and businesses, Shenango River Lake visible, modern suburban homes. Recognizable Mercer County suburb."
   },
   sharon: {
     name: "Sharon",
@@ -354,7 +354,7 @@ export const communityData: Record<string, CommunityData> = {
       "Local restaurants and ethnic food traditions",
       "Community events and festivals year-round"
     ],
-    imagePrompt: "A magical scene at Daffin's Candies Chocolate Kingdom with elaborate chocolate sculptures, families touring displays, Buhl Park's beautiful gardens and gazebo in background, fall colors, children enjoying candy. Whimsical, sweet destination atmosphere."
+    imagePrompt: "Exact photorealistic view of downtown Sharon's State Street (Route 18) showing actual Daffin's Candies building with Chocolate Kingdom, Buhl Park's distinctive conservatory and cascading fountains, Winner building, Reyer's shoe store, East State Street businesses, Shenango River waterfront. Regional shopping hub."
   },
   greenville: {
     name: "Greenville",
@@ -375,7 +375,7 @@ export const communityData: Record<string, CommunityData> = {
       "Memorial Park summer concerts",
       "Small-town charm with active community spirit"
     ],
-    imagePrompt: "A nostalgic railroad scene at Greenville Railroad Park Museum with vintage steam locomotives, restored cabooses, families exploring rail cars, the historic station building, downtown Victorian architecture in background. Transportation heritage meets small-town Pennsylvania."
+    imagePrompt: "Exact photorealistic view of Greenville's Main Street downtown showing actual 1890s Victorian storefronts, Canal Street businesses, historic Greenville Railroad Park and Museum with vintage trains, Shenango River Valley, Reynolds Mansion visible. Recognizable hometown Main Street USA."
   },
   
   // Venango County Communities
@@ -398,7 +398,7 @@ export const communityData: Record<string, CommunityData> = {
       "Victorian architecture throughout downtown",
       "Annual Applefest celebration"
     ],
-    imagePrompt: "A charming river town scene showing Franklin's confluence of French Creek and Allegheny River, DeBence Museum's Victorian mansion, kayakers on calm water, the historic Barrow-Civic Theatre, autumn riverside trees. Historic elegance meets outdoor recreation."
+    imagePrompt: "Exact photorealistic view of Franklin's 13th Street downtown showing actual Liberty Street storefronts, Allegheny River and French Creek confluence, historic Franklin City Hall, Barrow-Civic Theatre marquee, DeBence Antique Music World Victorian mansion, Route 8/62 bridge. Recognizable dual-river city."
   },
   oilCity: {
     name: "Oil City",
@@ -419,7 +419,7 @@ export const communityData: Record<string, CommunityData> = {
       "Historic downtown architecture and revitalization",
       "Annual Oil Heritage Festival"
     ],
-    imagePrompt: "A scenic heritage scene showing Oil Creek State Park with the historic Oil Creek & Titusville Railroad train traveling through autumn forest, the Allegheny River, old oil derricks, hikers on trails, and Oil City's Victorian downtown in the distance. Industrial heritage meets natural beauty."
+    imagePrompt: "Exact photorealistic view of Oil City's Seneca Street historic downtown with Victorian buildings, Oil Creek flowing under bridges, Venango Museum of Art, Science and Industry building, actual derricks at Drake Well Museum area, Oil Creek State Park bikeway, Central Avenue businesses. Oil heritage city."
   },
   
   // Warren County Communities
@@ -442,7 +442,7 @@ export const communityData: Record<string, CommunityData> = {
       "Charming historic downtown with local shops",
       "Four-season outdoor recreation paradise"
     ],
-    imagePrompt: "A majestic forest scene showing Warren as gateway to Allegheny National Forest, with dense autumn hardwoods, the Allegheny River winding through, hikers and outdoor enthusiasts, Warren's historic courthouse visible, Kinzua Bridge in far background. Outdoor adventure atmosphere."
+    imagePrompt: "Exact photorealistic view of downtown Warren at Pennsylvania Avenue and Market Street showing historic Warren County Courthouse, United Refining Company's distinctive presence, Allegheny River waterfront, Pennsylvania Avenue's restored storefronts, Struthers Library Theatre marquee. Third Street shops residents recognize."
   },
   northWarren: {
     name: "North Warren",
@@ -450,20 +450,20 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16365"],
     nearbyComm: ["Warren", "Youngsville", "Sugar Grove"],
-    landmarks: ["Allegheny River", "North Warren residential area", "Warren County Airport area", "Route 6 corridor"],
-    description: "Residential community in northern Warren County near city of Warren",
-    population: "~2,000",
-    uniqueTrait: "Residential community adjacent to Warren city limits. Offers suburban living with easy access to Warren amenities and Allegheny National Forest recreation",
-    historicalNarrative: "North Warren developed as Warren's northern suburbs expanded in the mid-20th century, offering residential neighborhoods convenient to Warren's amenities while maintaining a more rural feel. The community provides easy access to both city services and the outdoor recreation of the Allegheny National Forest region.",
+    landmarks: ["Residential neighborhoods", "Warren County recreation areas", "Allegheny River proximity", "Suburban development"],
+    description: "Residential suburb of Warren offering convenient access to city amenities and Allegheny National Forest",
+    population: "~2,400",
+    uniqueTrait: "Suburban community adjacent to Warren combining residential living with forest access. Popular with families seeking Warren schools and outdoor lifestyle",
+    historicalNarrative: "North Warren developed as Warren expanded northward, providing suburban residential areas while maintaining access to city services and forest recreation.",
     favoriteThings: [
-      "Convenient access to Warren's shopping and services",
-      "Quiet suburban neighborhoods",
-      "Quick drive to Allegheny National Forest",
-      "Family-friendly residential community",
-      "Allegheny River recreation nearby",
-      "Best of both worlds - suburban and forest access"
+      "Suburban living near Warren amenities",
+      "Quick access to Allegheny National Forest",
+      "Warren County School District excellence",
+      "Family-friendly neighborhoods",
+      "Close to Allegheny River recreation",
+      "Balance of suburban and outdoor living"
     ],
-    imagePrompt: "A peaceful suburban scene of North Warren with well-maintained homes, tree-lined streets, families in yards, Warren's skyline visible nearby, Allegheny National Forest in background. Suburban comfort with forest access."
+    imagePrompt: "Exact photorealistic view of North Warren's residential neighborhoods with well-maintained suburban homes, Warren visible nearby, Allegheny National Forest visible in distance, family-friendly streets, community parks. Suburban forest gateway living."
   },
   youngsville: {
     name: "Youngsville",
@@ -471,41 +471,62 @@ export const communityData: Record<string, CommunityData> = {
     county: "Warren County",
     zipCodes: ["16371"],
     nearbyComm: ["Warren", "Sugar Grove", "Pittsfield"],
-    landmarks: ["Brokenstraw Creek", "Downtown Youngsville", "Youngsville Area School District", "Route 6 Main Street", "Youngsville Borough Park"],
-    description: "Historic borough along Brokenstraw Creek in Warren County, offering small-town living and community pride",
+    landmarks: ["Brokenstraw Creek", "Downtown Youngsville", "Youngsville Area School District", "Route 6 corridor", "Creek recreation areas"],
+    description: "Small borough along Brokenstraw Creek in Warren County offering small-town living and outdoor recreation",
     population: "~1,700",
-    uniqueTrait: "Quiet community along Brokenstraw Creek with strong school district. Annual summer festival and Fourth of July celebration bring community together",
-    historicalNarrative: "Youngsville was settled in the early 1800s along Brokenstraw Creek and incorporated in 1869. The borough developed as a small commercial center serving surrounding farms and later as a residential community for Warren County workers. Youngsville maintains strong community traditions, especially its beloved Fourth of July celebration that draws the entire region.",
+    uniqueTrait: "Charming small town along Brokenstraw Creek. Gateway for fishing, kayaking, and outdoor activities. Warren County small-town living with community pride",
+    historicalNarrative: "Youngsville developed along Brokenstraw Creek as a small commercial center serving Warren County's rural areas. The borough maintains small-town character while offering creek recreation and community events.",
     favoriteThings: [
-      "Annual Fourth of July celebration and parade",
-      "Fishing and nature along Brokenstraw Creek",
-      "Youngsville Area School District community pride",
-      "Summer festivals and community events",
-      "Small-town parades and local traditions",
-      "Safe, friendly neighborhood atmosphere"
+      "Fishing and kayaking on Brokenstraw Creek",
+      "Small-town community atmosphere",
+      "Youngsville Area School District",
+      "Annual community festivals",
+      "Outdoor recreation opportunities",
+      "Safe neighborhoods and friendly residents"
     ],
-    imagePrompt: "A festive Fourth of July celebration in Youngsville with patriotic parade down Main Street, American flags, families lining streets, local businesses decorated, Brokenstraw Creek flowing through town, community celebration. Small-town America at its best."
+    imagePrompt: "Exact photorealistic view of downtown Youngsville along Route 6 showing Brokenstraw Creek flowing through town, actual storefronts, Youngsville Area School District building, historic borough buildings, creek fishing access. Small Warren County borough."
+  },
+  bearLake: {
+    name: "Bear Lake",
+    slug: "bear-lake",
+    county: "Warren County",
+    zipCodes: ["16402"],
+    nearbyComm: ["North East", "Edinboro", "Sugar Grove"],
+    landmarks: ["Bear Lake", "Lake recreation", "Rural countryside", "Lakefront properties"],
+    description: "Small lakeside community on Erie-Warren county border offering peaceful lake living",
+    population: "~250",
+    uniqueTrait: "Peaceful lake community straddling Erie and Warren counties. Bear Lake offers fishing, boating, and quiet lakeside living",
+    historicalNarrative: "Bear Lake community developed around the natural lake, attracting seasonal and year-round residents seeking peaceful lakeside living between Erie and Warren counties.",
+    favoriteThings: [
+      "Bear Lake fishing and boating",
+      "Peaceful lakeside living",
+      "Close-knit lake community",
+      "Seasonal lake recreation",
+      "Natural beauty and serenity",
+      "Between Erie and Warren counties"
+    ],
+    imagePrompt: "Exact photorealistic view of Bear Lake with lakefront homes, fishing docks, calm lake waters, boaters and anglers, wooded shoreline, seasonal cottages. Peaceful Warren-Erie county border lake community."
   },
   russell: {
     name: "Russell",
     slug: "russell",
     county: "Warren County",
     zipCodes: ["16345"],
-    nearbyComm: ["Warren", "Clarendon", "Tidioute"],
-    landmarks: ["Allegheny River", "Kinzua-Wolf Run Marina", "Forest access", "Russell community"],
-    description: "Small Warren County community along Allegheny River near Kinzua Reservoir",
+    nearbyComm: ["Warren", "Clarendon", "North Warren"],
+    landmarks: ["Kinzua Reservoir", "Allegheny River", "Kinzua-Wolf Run Marina", "Forest recreation areas"],
+    description: "Small borough serving as gateway to Kinzua Reservoir and Allegheny River recreation",
     population: "~350",
-    uniqueTrait: "Rural community near Allegheny River and Kinzua Reservoir. Popular with anglers and outdoor enthusiasts. Gateway to forest recreation",
-    historicalNarrative: "Russell is a small community that serves anglers and outdoor enthusiasts visiting Kinzua Reservoir and the Allegheny River. The creation of Kinzua Dam in 1965 transformed the area into a prime recreation destination, with Russell providing access to some of Pennsylvania's best muskie, bass, and walleye fishing.",
+    uniqueTrait: "Gateway to Kinzua Reservoir and Allegheny River. Premier muskie fishing destination. Outdoor recreation base camp in Warren County forest region",
+    historicalNarrative: "Russell became a gateway to Kinzua Reservoir after the dam created this massive fishing and boating destination. The borough serves outdoor enthusiasts accessing Allegheny River and forest recreation.",
     favoriteThings: [
-      "World-class fishing on Kinzua Reservoir",
+      "World-class muskie fishing on Kinzua Reservoir",
       "Allegheny River access for boating and kayaking",
       "Kinzua-Wolf Run Marina facilities",
       "Hunting and outdoor recreation in surrounding forest",
       "Peaceful rural living",
       "Gateway to Allegheny National Forest"
     ],
-    imagePrompt: "A scenic fishing scene at Kinzua Reservoir near Russell with anglers in boats catching muskie, Kinzua-Wolf Run Marina, forested shoreline, the Allegheny River, autumn colors reflecting in water. Outdoor recreation paradise."
+    imagePrompt: "Exact photorealistic view of Kinzua Reservoir near Russell with muskie anglers in boats, Kinzua-Wolf Run Marina docks, forested Allegheny River shoreline, autumn colors reflecting in water, Russell borough visible. Premier fishing destination."
   },
   tidioute: {
     name: "Tidioute",
@@ -526,7 +547,7 @@ export const communityData: Record<string, CommunityData> = {
       "Hunter Station Bridge scenic views",
       "Peaceful river town atmosphere"
     ],
-    imagePrompt: "A peaceful river scene in Tidioute with kayakers paddling the Allegheny River, the historic Hunter Station Bridge, Victorian downtown buildings along the riverbank, wooded islands, autumn reflections in calm water. Paddler's paradise."
+    imagePrompt: "Exact photorealistic view of Tidioute's Allegheny River waterfront showing the historic Hunter Station Bridge, Victorian downtown buildings along riverbank, kayakers paddling, wooded river islands, autumn reflections in calm water. Paddler's paradise."
   },
   sugarGrove: {
     name: "Sugar Grove",
@@ -547,7 +568,7 @@ export const communityData: Record<string, CommunityData> = {
       "Agricultural traditions and farm-fresh produce",
       "Peaceful rural lifestyle"
     ],
-    imagePrompt: "A pastoral scene of Sugar Grove's agricultural landscape with working farms, red barns, rolling fields of crops, farm equipment, country roads, Warren County countryside, blue sky. Quintessential rural Pennsylvania farming community."
+    imagePrompt: "Exact photorealistic view of Sugar Grove Township showing working dairy farms with red barns, Holstein cattle grazing, Route 69 corridor, rolling agricultural fields, farm equipment, Warren County countryside, blue sky. Quintessential rural Pennsylvania farming community."
   },
   sheffield: {
     name: "Sheffield",
@@ -568,7 +589,7 @@ export const communityData: Record<string, CommunityData> = {
       "Outdoor lifestyle year-round",
       "Remote living surrounded by wilderness"
     ],
-    imagePrompt: "A rugged outdoor scene in Sheffield with hunters and ATV riders in Allegheny National Forest, Kinzua Reservoir visible, dense forest, deer and wildlife, remote cabins. Outdoor enthusiast and hunting culture."
+    imagePrompt: "Exact photorealistic view of Sheffield Township showing hunters in camouflage in Allegheny National Forest, ATV riders on forest trails, Kinzua Reservoir visible, deer and wildlife, remote cabins, dense autumn forest. Outdoor enthusiast and hunting culture."
   },
   clarendon: {
     name: "Clarendon",
@@ -589,7 +610,7 @@ export const communityData: Record<string, CommunityData> = {
       "Remote living near wilderness",
       "Water sports and reservoir activities"
     ],
-    imagePrompt: "A scenic reservoir scene near Clarendon showing Allegheny Reservoir with Kinzua Dam, boats fishing and cruising, forested shores, camping areas, the massive dam structure. Engineering marvel meets outdoor recreation."
+    imagePrompt: "Exact photorealistic view of Allegheny Reservoir near Clarendon showing Kinzua Dam structure, boats fishing and cruising, forested reservoir shores, Kinzua Dam visitor overlook, camping areas visible, the massive concrete dam. Engineering marvel meets outdoor recreation."
   },
   kinzua: {
     name: "Kinzua",
@@ -610,7 +631,7 @@ export const communityData: Record<string, CommunityData> = {
       "Autumn foliage from the skywalk",
       "Remote forest living and natural beauty"
     ],
-    imagePrompt: "A dramatic scene at Kinzua Bridge State Park with the iconic Kinzua Skywalk extending over the 300-foot gorge, the tornado-damaged viaduct ruins, visitors walking the skywalk, dense Allegheny National Forest autumn colors, spectacular views. Breathtaking engineering meets natural beauty."
+    imagePrompt: "Exact photorealistic view of Kinzua Bridge State Park showing the iconic Kinzua Skywalk extending over the 300-foot gorge, tornado-damaged viaduct ruins, visitors walking the glass-floored skywalk, dense Allegheny National Forest autumn colors, spectacular gorge views. Breathtaking engineering meets natural beauty."
   },
 
   // More Erie County Communities
@@ -633,7 +654,7 @@ export const communityData: Record<string, CommunityData> = {
       "Local restaurants and shops",
       "Strong sense of community"
     ],
-    imagePrompt: "A charming small-town scene of Lake City's historic downtown square with local shops, American flags, families at community event, Northwestern School District building, tree-lined streets. Classic small-town America atmosphere."
+    imagePrompt: "Exact photorealistic view of Lake City's historic downtown square on Main Street (Route 20) showing actual local storefronts, Northwestern School District building, American flags, families at community event, tree-lined streets. Classic small-town America atmosphere."
   },
   wattsburg: {
     name: "Wattsburg",
@@ -654,7 +675,7 @@ export const communityData: Record<string, CommunityData> = {
       "Peaceful living away from city",
       "Strong school pride and athletics"
     ],
-    imagePrompt: "A peaceful rural borough scene of Wattsburg with its small downtown square, Seneca High School, agricultural fields surrounding town, families at borough park, country roads. Rural Pennsylvania small-town living."
+    imagePrompt: "Exact photorealistic view of Wattsburg Borough showing small downtown square on Route 8, Seneca High School building, Wattsburg Area School District, agricultural fields surrounding town, families at borough park, country roads. Rural Pennsylvania small-town living."
   },
   unionCity: {
     name: "Union City",
@@ -675,7 +696,7 @@ export const communityData: Record<string, CommunityData> = {
       "Community festivals and events",
       "Country living with town conveniences"
     ],
-    imagePrompt: "A scenic view of Union City Dam and Reservoir with anglers fishing, families picnicking, the dam structure, Union City's downtown in background, rolling countryside. Recreation meets small-town regional hub."
+    imagePrompt: "Exact photorealistic view of Union City Dam and Reservoir showing anglers fishing from dam, families picnicking, the dam structure, Union City's downtown on South Main Street in background, rolling countryside, Bentley Creek. Recreation meets small-town regional hub."
   },
   corry: {
     name: "Corry",
@@ -696,7 +717,7 @@ export const communityData: Record<string, CommunityData> = {
       "Tight-knit community spirit",
       "Working-class pride and heritage"
     ],
-    imagePrompt: "An industrial heritage scene of Corry with historic manufacturing buildings, revitalized downtown Mead Avenue, Corry Area Historical Society, Wright Park, community gathering for Beavers sports event. Working-class town pride."
+    imagePrompt: "Exact photorealistic view of Corry's downtown Mead Avenue showing historic manufacturing buildings, Corry Area Historical Society, Wright Park, community gathering for Beavers sports event, actual storefronts, industrial heritage markers. Working-class town pride."
   },
   albion: {
     name: "Albion",
@@ -717,7 +738,7 @@ export const communityData: Record<string, CommunityData> = {
       "Small-town festivals and parades",
       "Rural agricultural atmosphere"
     ],
-    imagePrompt: "A country fair scene at Albion Area Fair with agricultural exhibits, 4-H animals, carnival rides, families enjoying fair food, downtown Albion square in background, rural Pennsylvania fair atmosphere."
+    imagePrompt: "Exact photorealistic view of Albion Area Fair showing agricultural exhibits, 4-H livestock barns, carnival rides, families enjoying fair food, downtown Albion square on Smock Avenue visible in background, fairgrounds. Rural Pennsylvania country fair atmosphere."
   },
   mckean: {
     name: "McKean",
@@ -738,7 +759,7 @@ export const communityData: Record<string, CommunityData> = {
       "Balance of suburban and rural living",
       "Easy commute to Erie jobs"
     ],
-    imagePrompt: "A suburban family scene in McKean Township with modern homes, Lake Pleasant beach area with families swimming, McKean Community Park, Route 99 shopping areas, blend of suburban and rural. Family-oriented community."
+    imagePrompt: "Exact photorealistic view of McKean Township showing modern suburban homes, Lake Pleasant beach area with families swimming, McKean Community Park, Route 99 corridor businesses, blend of suburban and rural landscape. Family-oriented community."
   },
   cranberryTownship: {
     name: "Cranberry Township",
@@ -757,30 +778,30 @@ export const communityData: Record<string, CommunityData> = {
       "Cranberry Mall shopping convenience",
       "Growing community with modern amenities",
       "Easy I-79 access to Erie and Pittsburgh",
-      "Family-friendly parks and recreation"
+      "Family-friendly suburban atmosphere"
     ],
-    imagePrompt: "A growing suburban scene in Cranberry Township with new housing developments, Cranberry Mall, Northwestern School District facilities, Route 18 commercial corridor, families enjoying township park. Affordable suburban growth."
+    imagePrompt: "Exact photorealistic view of Cranberry Township showing Cranberry Mall area, Route 18 corridor businesses, residential subdivisions, Northwestern School District building, I-79 interchange visible, mix of suburban and rural. Growing Erie County suburb."
   },
   springCreek: {
     name: "Spring Creek",
     slug: "spring-creek",
     county: "Erie County",
     zipCodes: ["16436"],
-    nearbyComm: ["Waterford", "Union City", "Edinboro"],
-    landmarks: ["Spring Creek Township Building", "Woodcock Creek State Park access", "Agricultural farmland", "Route 19 corridor", "Rural country roads"],
-    description: "Peaceful rural township in southern Erie County, maintaining agricultural heritage while offering quiet country living",
+    nearbyComm: ["Albion", "Edinboro", "Waterford"],
+    landmarks: ["Rural township", "Agricultural lands", "Spring Creek watershed", "Country roads"],
+    description: "Peaceful rural township in southwestern Erie County maintaining agricultural character",
     population: "~1,100",
-    uniqueTrait: "Quintessential rural Pennsylvania township with working farms, open spaces, and close-knit community. Gateway to Woodcock Creek State Park for outdoor recreation",
-    historicalNarrative: "Spring Creek Township has remained fundamentally agricultural since its organization, with farming families maintaining their heritage through generations. The township represents rural Erie County's farming traditions, with wide-open farmland, country roads, and access to Woodcock Creek State Park for outdoor recreation.",
+    uniqueTrait: "Quiet agricultural township with working farms and rural Pennsylvania living. Peaceful countryside between Albion and Edinboro",
+    historicalNarrative: "Spring Creek Township has maintained its agricultural character since settlement, with working farms and rural traditions passed through generations.",
     favoriteThings: [
-      "Working farms and agricultural heritage",
-      "Access to Woodcock Creek State Park",
-      "Peaceful country roads and rural scenery",
-      "Tight-knit farming community",
-      "Wide-open spaces and starry nights",
-      "Quintessential rural Pennsylvania living"
+      "Peaceful rural countryside",
+      "Agricultural heritage and working farms",
+      "Country roads and scenic drives",
+      "Tight-knit rural community",
+      "Affordable rural living",
+      "Traditional Pennsylvania farm country"
     ],
-    imagePrompt: "A peaceful rural landscape of Spring Creek Township with working farms, red barns, rolling agricultural fields, farm equipment, country roads leading to Woodcock Creek State Park in distance. Rural Erie County farming heritage."
+    imagePrompt: "Exact photorealistic view of Spring Creek Township showing working farms with barns, agricultural fields, Spring Creek flowing through countryside, rural roads, Erie County farmland, pastoral Pennsylvania landscape. Quiet agricultural township."
   },
   lawrencePark: {
     name: "Lawrence Park",
@@ -788,216 +809,194 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16511"],
     nearbyComm: ["Erie", "Wesleyville", "Harborcreek"],
-    landmarks: ["GE Transportation (Wabtec) plant", "Lawrence Park Shopping Center", "Iroquois Avenue", "Lawrence Park Elementary", "East Erie residential neighborhoods"],
-    description: "Historic company town in eastern Erie, originally built for General Electric employees, now a thriving residential borough",
+    landmarks: ["Lawrence Park Shopping Center", "Buffalo Road corridor", "Residential neighborhoods", "East Side Erie"],
+    description: "Small residential borough in eastern Erie along Buffalo Road commercial corridor",
     population: "~3,900",
-    uniqueTrait: "Founded in 1926 as planned community for GE workers. Maintains strong neighborhood identity with affordable housing, walkable streets, and proximity to Erie amenities",
-    historicalNarrative: "Lawrence Park was created in 1926 as a planned company town for General Electric workers. GE designed the community with well-planned streets, parks, and housing. Though GE's presence evolved into Wabtec Corporation, Lawrence Park maintained its strong neighborhood identity, affordable homes, and walkable character that continue attracting families.",
+    uniqueTrait: "Compact residential community on Buffalo Road between Erie and Harborcreek. Convenient location with easy access to Erie jobs and amenities",
+    historicalNarrative: "Lawrence Park developed as an eastern Erie residential community along the Buffalo Road commercial corridor, offering convenient access to Erie employment and shopping.",
     favoriteThings: [
-      "Affordable, well-maintained historic homes",
-      "Walkable neighborhoods with strong community identity",
-      "Lawrence Park Shopping Center convenience",
-      "Close-knit borough pride and traditions",
-      "Quick access to Erie jobs and amenities",
-      "Safe streets and family-friendly atmosphere"
+      "Convenient Buffalo Road shopping and dining",
+      "Quick access to Erie employment",
+      "Compact residential community",
+      "Proximity to Lake Erie",
+      "East Erie amenities",
+      "Affordable housing"
     ],
-    imagePrompt: "A historic company town scene of Lawrence Park with 1920s-era well-planned streets, tree-lined neighborhoods, families walking, the Wabtec (former GE) plant, Lawrence Park Shopping Center. Planned community character."
-  },
-  bearLake: {
-    name: "Bear Lake",
-    slug: "bear-lake",
-    county: "Warren County",
-    zipCodes: ["16402"],
-    nearbyComm: ["North East", "Sugar Grove", "Youngsville"],
-    landmarks: ["Bear Lake", "Rural farmland"],
-    description: "Small borough near lake",
-    population: "~200",
-    uniqueTrait: "Tiny community near scenic Bear Lake",
-    historicalNarrative: "Bear Lake is a tiny rural community that developed around the natural lake for which it's named. The small borough offers peaceful lakeside and country living for those seeking remote Pennsylvania tranquility.",
-    favoriteThings: [
-      "Peaceful Bear Lake fishing and recreation",
-      "Remote rural living",
-      "Tight-knit small community",
-      "Natural beauty and quiet"
-    ],
-    imagePrompt: "A tranquil rural scene of Bear Lake with the small natural lake, fishing pier, a few homes, dense forest surrounding, peaceful countryside. Remote Pennsylvania lake community."
+    imagePrompt: "Exact photorealistic view of Lawrence Park borough showing Buffalo Road (Route 20) commercial corridor, residential streets, Lawrence Park Shopping Center, proximity to Erie, compact neighborhood homes. Eastern Erie residential community."
   },
 
   // More Crawford County Communities
-  cochranton: {
-    name: "Cochranton",
-    slug: "cochranton",
-    county: "Crawford County",
-    zipCodes: ["16314"],
-    nearbyComm: ["Meadville", "Conneaut Lake", "Saegertown"],
-    landmarks: ["French Creek", "Downtown Cochranton", "Cochranton Volunteer Fire Department", "Route 322 Main Street", "Crawford Central School District"],
-    description: "Historic borough along French Creek in Crawford County, serving as gateway between Meadville and lake communities",
-    population: "~1,150",
-    uniqueTrait: "Charming French Creek community with historic downtown, annual community events, and strategic location on Route 322 between Meadville and Conneaut Lake",
-    historicalNarrative: "Cochranton was founded along French Creek in 1824 and incorporated in 1868. The borough grew as a mill town harnessing French Creek's power and as a stop on routes between Meadville and northwestern Pennsylvania. Today, Cochranton maintains its small-town charm and serves as gateway to Crawford County's lake regions.",
-    favoriteThings: [
-      "Fishing and kayaking on French Creek",
-      "Historic downtown shops and restaurants",
-      "Gateway location to Conneaut Lake",
-      "Community fire department festivals",
-      "Small-town parades and traditions",
-      "Convenient Route 322 access"
-    ],
-    imagePrompt: "A charming creek town scene of Cochranton with French Creek flowing through, historic downtown buildings, kayakers on the creek, Route 322 Main Street, community gathering. Gateway community atmosphere."
-  },
-  saegertown: {
-    name: "Saegertown",
-    slug: "saegertown",
-    county: "Crawford County",
-    zipCodes: ["16433"],
-    nearbyComm: ["Meadville", "Edinboro", "Cambridge Springs"],
-    landmarks: ["Woodcock Creek", "Saegertown Elementary/Jr-Sr High School", "Downtown Borough", "Route 6 corridor", "Saegertown Historical Society"],
-    description: "Small borough in eastern Crawford County along Woodcock Creek, known for excellent schools and family-friendly atmosphere",
-    population: "~1,050",
-    uniqueTrait: "Home to Penncrest School District with strong academic reputation. Small-town charm with annual Old Fashioned Christmas celebration and community pride",
-    historicalNarrative: "Saegertown was incorporated in 1866 along Woodcock Creek. The borough developed as a small commercial center and became known for its excellent school system. Penncrest School District's academic reputation attracts families seeking quality education in a small-town setting. The annual Old Fashioned Christmas celebration brings the community together.",
-    favoriteThings: [
-      "Excellent Penncrest School District academics",
-      "Annual Old Fashioned Christmas celebration",
-      "Small-town safety and community spirit",
-      "Woodcock Creek fishing and nature",
-      "Local shops and restaurants",
-      "Strong school pride and athletics"
-    ],
-    imagePrompt: "A festive Old Fashioned Christmas scene in Saegertown with downtown decorated with lights, community Christmas parade, families caroling, Penncrest School District building, Woodcock Creek with holiday decorations. Small-town Christmas magic."
-  },
   cambridgeSprings: {
     name: "Cambridge Springs",
     slug: "cambridge-springs",
     county: "Crawford County",
     zipCodes: ["16403"],
     nearbyComm: ["Edinboro", "Meadville", "Saegertown"],
-    landmarks: ["Riverside Inn Resort", "French Creek", "Historic spa town district", "Cambridge Springs High School", "Alliance College site"],
-    description: "Historic spa and resort town along French Creek, preserving Victorian-era mineral springs heritage",
+    landmarks: ["Alliance College", "Riverside Hotel", "French Creek", "Historic spa district", "Cambridge Springs High School"],
+    description: "Historic mineral springs resort town featuring Victorian spa architecture and French Creek recreation",
     population: "~2,600",
-    uniqueTrait: "Once-famous mineral springs resort town (1880s-1920s). Riverside Inn continues hospitality tradition. Home to historic Alliance College campus until 1987",
-    historicalNarrative: "Cambridge Springs flourished as a fashionable mineral springs resort from the 1880s-1920s, attracting visitors seeking the healing waters. Grand hotels and spas dotted the town. Though the spa era faded, the Riverside Inn continues the hospitality tradition. Alliance College (1912-1987) brought Polish-American heritage and education. Today, Cambridge Springs preserves its Victorian character.",
+    uniqueTrait: "Victorian-era mineral springs resort town dating to 1880s. Historic Riverside Hotel (1886) and spa architecture. Home to Alliance College. French Creek flows through town",
+    historicalNarrative: "Cambridge Springs flourished in the 1880s-1920s as an elegant mineral springs resort attracting visitors nationwide to its healing waters. Grand hotels and spas lined the streets, with the Riverside Hotel (1886) as the crown jewel. Alliance College (1912-1987) brought Polish heritage and education. Though the resort era faded, Victorian architecture and community pride remain.",
     favoriteThings: [
-      "Historic Riverside Inn resort and fine dining",
-      "Victorian spa-era architecture downtown",
+      "Historic Riverside Hotel and Victorian spa architecture",
       "French Creek fishing and kayaking",
-      "Alliance College heritage and history",
-      "Community festivals celebrating resort heritage",
-      "Charming historic atmosphere"
+      "Alliance College history and heritage",
+      "Small-town charm with historical significance",
+      "Annual festivals celebrating mineral springs heritage",
+      "Walking tours of historic district"
     ],
-    imagePrompt: "A Victorian-era resort scene showing Cambridge Springs' historic Riverside Inn, French Creek flowing through town, Victorian spa buildings, visitors strolling, mineral spring markers. Historic resort town elegance."
+    imagePrompt: "Exact photorealistic view of Cambridge Springs downtown at Federal Street and Venango Avenue showing actual Riverside Hotel (1886), Alliance College buildings, French Creek flowing through town, historic spa architecture from 1880s resort era, Victorian storefronts. Mineral springs heritage residents remember."
   },
-  conneautville: {
-    name: "Conneautville",
-    slug: "conneautville",
+  saegertown: {
+    name: "Saegertown",
+    slug: "saegertown",
     county: "Crawford County",
-    zipCodes: ["16406"],
-    nearbyComm: ["Conneaut Lake", "Meadville", "Harmonsburg"],
-    landmarks: ["Conneaut Marsh Wildlife Area", "Downtown square", "Conneaut Valley School District", "Route 18/Route 198 junction"],
-    description: "Small borough serving as gateway to Pymatuning and Conneaut Lake recreation areas",
-    population: "~750",
-    uniqueTrait: "Gateway to Conneaut Lake region and Pymatuning Reservoir. Strategic location for lake access with small-town atmosphere and community spirit",
-    historicalNarrative: "Conneautville was settled in the early 1800s and became a commercial center for surrounding farms. Its location near Conneaut Lake and Pymatuning Reservoir made it a gateway to Crawford County's premier recreation areas. Today, Conneautville serves outdoor enthusiasts while maintaining small-town charm.",
+    zipCodes: ["16433"],
+    nearbyComm: ["Meadville", "Cambridge Springs", "Edinboro"],
+    landmarks: ["Woodcock Creek Lake", "Downtown Saegertown", "Saegertown Area School District", "Rural farmland"],
+    description: "Small rural borough serving as gateway to Woodcock Creek Lake recreation area",
+    population: "~1,050",
+    uniqueTrait: "Gateway to Woodcock Creek Lake for fishing and boating. Small-town atmosphere with agricultural heritage and Saegertown School District pride",
+    historicalNarrative: "Saegertown developed as a small agricultural center in Crawford County, later becoming gateway to Woodcock Creek Lake recreation area. The borough maintains small-town character.",
     favoriteThings: [
-      "Gateway to Conneaut Lake and Pymatuning",
-      "Conneaut Marsh Wildlife Area birdwatching",
-      "Small-town atmosphere and community",
-      "Access to lake recreation",
-      "Local businesses and dining",
-      "Strategic location for outdoor activities"
+      "Fishing and boating at Woodcock Creek Lake",
+      "Small-town community atmosphere",
+      "Saegertown Area School District",
+      "Agricultural heritage",
+      "Local businesses and shops",
+      "Community festivals"
     ],
-    imagePrompt: "A small-town gateway scene of Conneautville with downtown square, Conneaut Marsh wetlands with waterfowl, signs directing to Conneaut Lake and Pymatuning, outdoor recreation enthusiasts passing through. Gateway community."
+    imagePrompt: "Exact photorealistic view of Saegertown borough showing downtown businesses, Woodcock Creek Lake visible nearby, Saegertown School District building, agricultural fields surrounding, small-town Main Street. Crawford County rural borough."
   },
   linesville: {
     name: "Linesville",
     slug: "linesville",
     county: "Crawford County",
     zipCodes: ["16424"],
-    nearbyComm: ["Conneaut Lake", "Harmonsburg", "Jamestown"],
-    landmarks: ["Pymatuning Reservoir", "Linesville Spillway ('Where Ducks Walk on Fish')", "Pymatuning State Park", "Downtown Linesville", "Linesville Area School"],
-    description: "Borough on Pymatuning Reservoir, home to Pennsylvania's famous spillway tourist attraction",
+    nearbyComm: ["Conneautville", "Conneaut Lake", "Harmonsburg"],
+    landmarks: ["Pymatuning Reservoir", "Linesville Spillway", "Downtown Linesville", "Pymatuning State Park"],
+    description: "Famous lake town home to Pymatuning Spillway where ducks walk on fish",
     population: "~1,000",
-    uniqueTrait: "Home to iconic Linesville Spillway where 'ducks walk on fish' - famous Pennsylvania roadside attraction drawing thousands annually. Gateway to Pymatuning fishing and boating",
-    historicalNarrative: "Linesville's fate changed when Pymatuning Dam created Pennsylvania's largest man-made lake in 1934. The spillway became famous when carp congregated so densely that ducks could walk across their backs - creating Pennsylvania's quirky roadside attraction. Today, Linesville is headquarters for Pymatuning recreation and the beloved spillway spectacle.",
+    uniqueTrait: "Home to famous Pymatuning Spillway - 'where the ducks walk on the fish'. Gateway to Pymatuning Reservoir, one of Pennsylvania's largest lakes and premier fishing destinations",
+    historicalNarrative: "Linesville became famous for the Pymatuning Spillway where carp congregate so densely that ducks literally walk on the fish to get bread from tourists. The town serves as gateway to Pymatuning Reservoir fishing and recreation.",
     favoriteThings: [
-      "Feeding fish at the famous Linesville Spillway",
-      "Fishing Pymatuning Reservoir for walleye and muskie",
-      "Pymatuning State Park camping and boating",
-      "Iconic Pennsylvania roadside attraction",
-      "Summer lake recreation and activities",
-      "Gateway to outdoor adventure"
+      "Feeding fish at famous Pymatuning Spillway",
+      "Fishing on massive Pymatuning Reservoir",
+      "Pymatuning State Park camping and recreation",
+      "Boating and water sports",
+      "Wildlife watching",
+      "Unique tourist attraction"
     ],
-    imagePrompt: "A fun family scene at Linesville Spillway with masses of carp in water, ducks literally walking on the fish, children feeding bread, Pymatuning Reservoir in background, families amazed. Iconic quirky Pennsylvania attraction."
+    imagePrompt: "Exact photorealistic view of Linesville Spillway showing the famous scene where ducks walk on carp, families feeding fish, Pymatuning Reservoir, spillway structure, visitors watching wildlife spectacle. Iconic Pennsylvania tourist attraction."
+  },
+  conneautville: {
+    name: "Conneautville",
+    slug: "conneautville",
+    county: "Crawford County",
+    zipCodes: ["16406"],
+    nearbyComm: ["Linesville", "Meadville", "Springboro"],
+    landmarks: ["Downtown square", "Conneautville Area School", "Agricultural community", "Route 18/198 junction"],
+    description: "Small agricultural borough in western Crawford County with historic downtown",
+    population: "~760",
+    uniqueTrait: "Small-town charm with agricultural heritage. Historic downtown square and Conneautville School District community pride",
+    historicalNarrative: "Conneautville grew as a small agricultural center in western Crawford County, maintaining its rural character and small-town atmosphere through the generations.",
+    favoriteThings: [
+      "Historic downtown square",
+      "Agricultural community heritage",
+      "Conneautville Area School District",
+      "Small-town festivals",
+      "Rural Pennsylvania living",
+      "Community events"
+    ],
+    imagePrompt: "Exact photorealistic view of Conneautville's downtown square showing historic storefronts, Conneautville School building, agricultural fields nearby, Route 18/198 junction, small borough atmosphere. Crawford County agricultural community."
   },
   harmonsburg: {
     name: "Harmonsburg",
     slug: "harmonsburg",
     county: "Crawford County",
     zipCodes: ["16422"],
-    nearbyComm: ["Conneaut Lake", "Linesville", "Conneautville"],
-    landmarks: ["Pymatuning State Park", "Lake Wilhelm", "Pymatuning Reservoir access", "Harmonsburg Community Park"],
-    description: "Small borough nestled between Pymatuning and Lake Wilhelm, offering outdoor recreation access",
-    population: "~600",
-    uniqueTrait: "Peaceful Pymatuning lake community with easy access to both Pymatuning Reservoir and Lake Wilhelm. Popular with anglers, boaters, and outdoor enthusiasts",
-    historicalNarrative: "Harmonsburg sits uniquely between two of Crawford County's major lakes - Pymatuning Reservoir and Lake Wilhelm. This small borough serves outdoor enthusiasts seeking fishing, boating, and lake recreation. The community maintains a peaceful, lake-oriented lifestyle centered on Pennsylvania's outdoor traditions.",
+    nearbyComm: ["Conneaut Lake", "Meadville", "Linesville"],
+    landmarks: ["Rural crossroads", "Agricultural lands", "Small borough center"],
+    description: "Tiny rural borough in Crawford County maintaining agricultural character",
+    population: "~560",
+    uniqueTrait: "Small agricultural community in Crawford County. Peaceful rural living with tight-knit small-town atmosphere",
+    historicalNarrative: "Harmonsburg remained a small agricultural community in Crawford County, preserving rural character and farming heritage.",
     favoriteThings: [
-      "Fishing both Pymatuning and Lake Wilhelm",
-      "Boating and water sports access",
-      "Pymatuning State Park recreation",
-      "Peaceful lake community living",
-      "Outdoor lifestyle year-round",
-      "Scenic lake views and nature"
+      "Peaceful rural living",
+      "Agricultural heritage",
+      "Tight-knit community",
+      "Country atmosphere",
+      "Small-town character"
     ],
-    imagePrompt: "A peaceful lake community scene in Harmonsburg with views of Pymatuning Reservoir and Lake Wilhelm, anglers fishing from boats, Pymatuning State Park, lake homes, calm waters. Outdoor recreation community."
+    imagePrompt: "Exact photorealistic view of Harmonsburg showing small borough center, agricultural fields, working farms, country roads, Crawford County rural landscape. Tiny Pennsylvania agricultural borough."
   },
   spartansburg: {
     name: "Spartansburg",
     slug: "spartansburg",
     county: "Crawford County",
     zipCodes: ["16434"],
-    nearbyComm: ["Corry", "Union City", "Centerville"],
-    landmarks: ["Spartansburg Borough Park", "Agricultural farmland", "Route 77 corridor", "Spartansburg Volunteer Fire Company"],
-    description: "Rural borough in northeastern Crawford County, maintaining agricultural heritage and small-town character",
-    population: "~300",
-    uniqueTrait: "Small agricultural community on Crawford-Erie county border. Strong volunteer fire company tradition and annual community events bringing residents together",
-    historicalNarrative: "Spartansburg was incorporated in 1867 as a small agricultural center in rural Crawford County. The borough maintained its farming heritage and tight-knit community through generations. The volunteer fire company serves as the community's social center, hosting events that bring the entire area together.",
+    nearbyComm: ["Corry", "Titusville", "Riceville"],
+    landmarks: ["Downtown Spartansburg", "Spartansburg Area School", "Route 6 corridor", "Agricultural region"],
+    description: "Small rural borough in eastern Crawford County along historic Route 6",
+    population: "~290",
+    uniqueTrait: "Small-town living along Route 6 corridor. Agricultural heritage and Spartansburg School District community",
+    historicalNarrative: "Spartansburg developed as a small agricultural center along Route 6 in eastern Crawford County, maintaining rural character.",
     favoriteThings: [
-      "Strong volunteer fire company traditions",
-      "Annual community festivals and fundraisers",
-      "Small-town safety and neighborliness",
-      "Agricultural heritage and rural character",
-      "Tight-knit community spirit",
-      "Peaceful country living"
+      "Small-town rural living",
+      "Agricultural heritage",
+      "Spartansburg School District",
+      "Route 6 historic corridor",
+      "Peaceful countryside"
     ],
-    imagePrompt: "A rural community festival scene in Spartansburg with volunteer fire company fundraiser, agricultural fairgrounds, families gathering, fire trucks, countryside setting. Small rural borough community spirit."
+    imagePrompt: "Exact photorealistic view of Spartansburg along Route 6 showing small downtown, Spartansburg School building, agricultural fields, rural borough center. Eastern Crawford County small town."
   },
   bloomingValley: {
     name: "Blooming Valley",
     slug: "blooming-valley",
     county: "Crawford County",
-    zipCodes: ["16509"],
-    nearbyComm: ["Meadville", "Cochranton", "Cambridge Springs"],
-    landmarks: ["Rural farmland", "Blooming Valley community", "Agricultural heritage area"],
-    description: "Tiny rural community in Crawford County's agricultural heartland",
-    population: "~400",
-    uniqueTrait: "Quiet rural farming area representing Crawford County's agricultural roots. Close-knit community with pastoral landscapes and country living",
-    historicalNarrative: "Blooming Valley remains one of Crawford County's quintessential agricultural communities, with farming families maintaining their heritage. This tiny rural area represents the county's farming roots and traditional Pennsylvania countryside.",
+    zipCodes: ["16335"],
+    nearbyComm: ["Meadville", "Guys Mills", "Townville"],
+    landmarks: ["Rural valley", "Agricultural lands", "Country living"],
+    description: "Small rural hamlet in scenic Crawford County valley",
+    population: "~120",
+    uniqueTrait: "Tiny rural hamlet in picturesque valley. Peaceful agricultural living in Crawford County countryside",
+    historicalNarrative: "Blooming Valley is a small rural hamlet in Crawford County's scenic countryside, representing traditional agricultural living.",
     favoriteThings: [
-      "Peaceful rural farmland and agriculture",
-      "Close-knit farming community",
-      "Country roads and pastoral scenery",
-      "Traditional Pennsylvania countryside"
+      "Peaceful valley setting",
+      "Agricultural heritage",
+      "Rural countryside",
+      "Scenic beauty"
     ],
-    imagePrompt: "A pastoral agricultural scene of Blooming Valley with working farms, crops, red barns, country roads, rolling hills. Quintessential Crawford County farming community."
+    imagePrompt: "Exact photorealistic view of Blooming Valley showing scenic rural valley with farms, agricultural fields, country roads, Crawford County pastoral landscape. Tiny Pennsylvania hamlet."
+  },
+  cochranton: {
+    name: "Cochranton",
+    slug: "cochranton",
+    county: "Crawford County",
+    zipCodes: ["16314"],
+    nearbyComm: ["Meadville", "Saegertown", "Cambridge Springs"],
+    landmarks: ["French Creek", "Downtown Cochranton", "Cochranton Area School", "Rural farmland"],
+    description: "Small borough along French Creek in Crawford County",
+    population: "~1,150",
+    uniqueTrait: "French Creek flows through town. Small-town atmosphere with Cochranton School District and agricultural heritage",
+    historicalNarrative: "Cochranton developed along French Creek as a small agricultural and commercial center in Crawford County.",
+    favoriteThings: [
+      "French Creek fishing and recreation",
+      "Small-town community",
+      "Cochranton School District",
+      "Agricultural heritage",
+      "Rural living"
+    ],
+    imagePrompt: "Exact photorealistic view of Cochranton showing French Creek flowing through town, downtown businesses, Cochranton School building, agricultural surroundings, small borough atmosphere. Crawford County creek town."
   },
   guysMills: {
     name: "Guys Mills",
     slug: "guys-mills",
     county: "Crawford County",
     zipCodes: ["16327"],
-    nearbyComm: ["Meadville", "Cambridge Springs", "Edinboro"],
-    landmarks: ["Woodcock Creek Lake", "Rural community center", "Historic crossroads", "Agricultural area"],
-    description: "Small unincorporated community serving as historic rural crossroads in Crawford County",
+    nearbyComm: ["Meadville", "Blooming Valley", "Saegertown"],
+    landmarks: ["Woodcock Creek Lake", "Rural crossroads", "Historic country store"],
+    description: "Historic rural crossroads community near Woodcock Creek Lake",
     population: "~100",
     uniqueTrait: "Historic rural crossroads community near Woodcock Creek Lake. Maintains rural character with access to fishing and outdoor recreation",
     historicalNarrative: "Guys Mills developed as a rural crossroads in Crawford County's agricultural heartland. The community near Woodcock Creek Lake provides access to fishing and outdoor recreation while maintaining traditional rural character.",
@@ -1007,7 +1006,7 @@ export const communityData: Record<string, CommunityData> = {
       "Peaceful countryside living",
       "Historic rural Pennsylvania atmosphere"
     ],
-    imagePrompt: "A quiet rural crossroads scene at Guys Mills with historic country store, Woodcock Creek Lake visible, agricultural fields, rural roads intersecting. Historic rural Pennsylvania."
+    imagePrompt: "Exact photorealistic view of Guys Mills showing historic country store at crossroads, Woodcock Creek Lake visible, agricultural fields, rural roads intersecting. Historic rural Pennsylvania hamlet."
   },
   hydetown: {
     name: "Hydetown",
@@ -1028,7 +1027,7 @@ export const communityData: Record<string, CommunityData> = {
       "Rural Pennsylvania character",
       "Oil boom legacy"
     ],
-    imagePrompt: "A historical oil town scene of Hydetown with vintage oil derricks, Oil Creek flowing through, historic buildings from oil boom era, interpretive markers about oil heritage. Historic petroleum village."
+    imagePrompt: "Exact photorealistic view of Hydetown showing vintage oil derricks, Oil Creek flowing through, historic buildings from oil boom era, Hydetown borough building, interpretive markers about oil heritage. Historic petroleum village."
   },
   pleasantville: {
     name: "Pleasantville",
@@ -1049,7 +1048,7 @@ export const communityData: Record<string, CommunityData> = {
       "Rural Pennsylvania character",
       "Oil region history"
     ],
-    imagePrompt: "A quiet oil heritage village scene of Pleasantville along Oil Creek with historic downtown, oil heritage markers, Oil Creek flowing through, forested hills. Historic oil country atmosphere."
+    imagePrompt: "Exact photorealistic view of Pleasantville along Oil Creek showing historic downtown on Route 227, oil heritage markers, Oil Creek flowing through, forested hills, Pleasantville School building. Historic oil country atmosphere."
   },
   cooperstown: {
     name: "Cooperstown",
@@ -1070,7 +1069,7 @@ export const communityData: Record<string, CommunityData> = {
       "Quiet small-town atmosphere",
       "Volunteer fire department community events"
     ],
-    imagePrompt: "A peaceful riverside scene of Cooperstown with the Allegheny River, small borough, fishing pier, volunteer fire department, forested river valley. Small rural river borough."
+    imagePrompt: "Exact photorealistic view of Cooperstown along Route 257 showing the Allegheny River, small borough buildings, volunteer fire department, fishing pier, forested river valley, peaceful rural setting. Small Venango County river borough."
   },
   polk: {
     name: "Polk",
@@ -1091,7 +1090,7 @@ export const communityData: Record<string, CommunityData> = {
       "Rural Pennsylvania atmosphere",
       "Strong volunteer community spirit"
     ],
-    imagePrompt: "A friendly small-town scene of Polk with Allegheny River, Polk Borough Park community event, families gathering, Route 62 corridor, rural countryside. Small Venango County borough spirit."
+    imagePrompt: "Exact photorealistic view of Polk showing Allegheny River, Polk Borough Park with community event, families gathering, Route 62 corridor, rural Venango County countryside. Small borough spirit."
   },
   emlenton: {
     name: "Emlenton",
@@ -1112,7 +1111,7 @@ export const communityData: Record<string, CommunityData> = {
       "Emlenton Area Historical Society",
       "Picturesque river valley setting"
     ],
-    imagePrompt: "A scenic river town view of Emlenton with the historic Emlenton Bridge spanning the Allegheny River, Victorian downtown buildings, kayakers on river, forested hillsides. Picturesque Pennsylvania river town."
+    imagePrompt: "Exact photorealistic view of Emlenton showing the historic Emlenton Bridge spanning the Allegheny River, Victorian downtown buildings on Main Street (Route 38), kayakers on river, forested hillsides. Picturesque Pennsylvania river town."
   },
   rouseville: {
     name: "Rouseville",
@@ -1133,7 +1132,7 @@ export const communityData: Record<string, CommunityData> = {
       "Pennsylvania petroleum history",
       "Quiet oil heritage village"
     ],
-    imagePrompt: "A historic oil heritage scene of Rouseville along Oil Creek with vintage oil derricks, Oil Creek State Park trail, interpretive exhibits about early oil production, forested creek valley. Oil boom heritage village."
+    imagePrompt: "Exact photorealistic view of Rouseville along Oil Creek showing vintage oil derricks, Oil Creek State Park trail, Route 8 bridge, interpretive exhibits about early oil production, forested creek valley. Oil boom heritage village."
   },
 
   // More Mercer County Communities
@@ -1156,7 +1155,7 @@ export const communityData: Record<string, CommunityData> = {
       "Annual ethnic festivals and celebrations",
       "Shenango Valley regional identity"
     ],
-    imagePrompt: "A steel heritage city scene of Farrell with historic steel mill structures, ethnic neighborhood churches with onion domes, Kennedy Catholic High School, Shenango River, community gathering. Working-class immigrant heritage city."
+    imagePrompt: "Exact photorealistic view of Farrell showing historic steel mill structures, ethnic neighborhood churches with distinctive architecture, Kennedy Catholic High School, Shenango River, Roemer Boulevard, community gathering. Working-class immigrant heritage city."
   },
   sharpsville: {
     name: "Sharpsville",
@@ -1177,7 +1176,7 @@ export const communityData: Record<string, CommunityData> = {
       "Shenango River recreation",
       "Small-town neighborhood atmosphere"
     ],
-    imagePrompt: "A working-class manufacturing town scene of Sharpsville with Sharpsville Container facility, historic downtown Pierce Avenue, Shenango River, community festival, school sports pride. Industrial heritage community."
+    imagePrompt: "Exact photorealistic view of Sharpsville showing Sharpsville Container facility, historic downtown Pierce Avenue storefronts, Shenango River, Sharpsville High School, community festival, working-class neighborhoods. Industrial heritage community."
   },
   stoneboro: {
     name: "Stoneboro",
@@ -1198,7 +1197,7 @@ export const communityData: Record<string, CommunityData> = {
       "Lakeview School District community",
       "Rural Pennsylvania character"
     ],
-    imagePrompt: "A country fair scene at Stoneboro Fair with agricultural exhibits, carnival rides, families enjoying fair food, rural fairgrounds, Sandy Lake visible in background. Annual fair tradition."
+    imagePrompt: "Exact photorealistic view of Stoneboro Fair showing agricultural exhibits in fairground barns, carnival rides, families enjoying fair food, 4-H livestock, Sandy Lake visible in background, Route 258 through town. Annual fair tradition."
   },
   sandyLake: {
     name: "Sandy Lake",
@@ -1219,7 +1218,7 @@ export const communityData: Record<string, CommunityData> = {
       "Sandy Lake Park recreation",
       "Natural beauty and serenity"
     ],
-    imagePrompt: "A peaceful lake community scene at Sandy Lake with lakefront homes, fishing piers, families boating and swimming, Sandy Lake Park, serene waters. Year-round lake living."
+    imagePrompt: "Exact photorealistic view of Sandy Lake showing lakefront homes, fishing piers, families boating and swimming, Sandy Lake Park beach area, serene lake waters, seasonal cottages. Year-round lake living."
   },
   clark: {
     name: "Clark",
@@ -1240,7 +1239,7 @@ export const communityData: Record<string, CommunityData> = {
       "Quiet country character",
       "Rural Pennsylvania charm"
     ],
-    imagePrompt: "A quiet rural agricultural scene of Clark with farms, countryside, small borough, Route 18 corridor, pastoral Mercer County landscape. Rural farming community."
+    imagePrompt: "Exact photorealistic view of Clark showing farms with red barns, agricultural countryside, small borough center, Route 18 corridor, pastoral Mercer County landscape, working farms. Rural farming community."
   },
   clintonville: {
     name: "Clintonville",
@@ -1261,7 +1260,7 @@ export const communityData: Record<string, CommunityData> = {
       "Near Allegheny River",
       "Peaceful country character"
     ],
-    imagePrompt: "A small rural borough scene of Clintonville on Route 8 corridor with small downtown, rural countryside, Allegheny River area visible. Quiet crossroads community."
+    imagePrompt: "Exact photorealistic view of Clintonville on Route 8 corridor showing small downtown borough buildings, rural Venango-Mercer County countryside, Allegheny River area visible, agricultural fields. Quiet crossroads community."
   },
   townville: {
     name: "Townville",
@@ -1282,7 +1281,7 @@ export const communityData: Record<string, CommunityData> = {
       "Country roads and farmland",
       "Traditional rural Pennsylvania"
     ],
-    imagePrompt: "A tiny rural borough scene of Townville with small town center, working farms, agricultural fields, country roads, pastoral Crawford County landscape. Pennsylvania's smallest boroughs."
+    imagePrompt: "Exact photorealistic view of Townville showing tiny borough center, working farms with silos, agricultural fields, country roads, pastoral Crawford County landscape. Pennsylvania's smallest boroughs."
   },
   riceville: {
     name: "Riceville",
@@ -1301,7 +1300,7 @@ export const communityData: Record<string, CommunityData> = {
       "Quiet country living",
       "Traditional Pennsylvania farm country"
     ],
-    imagePrompt: "A pastoral rural hamlet scene of Riceville with working farms, red barns, agricultural fields, country crossroads, Crawford County farmland. Tiny Pennsylvania hamlet."
+    imagePrompt: "Exact photorealistic view of Riceville showing working farms with red barns, agricultural fields, country crossroads, Crawford County farmland, pastoral landscape. Tiny Pennsylvania hamlet."
   },
   utica: {
     name: "Utica",
@@ -1320,7 +1319,7 @@ export const communityData: Record<string, CommunityData> = {
       "Agricultural heritage",
       "Peaceful country living"
     ],
-    imagePrompt: "A quintessential rural Pennsylvania scene of Utica with small borough, agricultural lands, country roads, Venango County countryside. Tiny rural borough."
+    imagePrompt: "Exact photorealistic view of Utica showing small borough buildings, agricultural lands, country roads, Venango County countryside, tiny rural borough center. Quintessential rural Pennsylvania."
   },
   irvine: {
     name: "Irvine",
@@ -1341,7 +1340,7 @@ export const communityData: Record<string, CommunityData> = {
       "River access",
       "Gateway to wilderness"
     ],
-    imagePrompt: "A forest river community scene of Irvine with Allegheny River, dense forest surrounding, Irvine Borough Park, anglers fishing, remote wilderness setting. Forest river borough."
+    imagePrompt: "Exact photorealistic view of Irvine showing Allegheny River, dense forest surrounding borough, Irvine Borough Park, anglers fishing from riverbank, Route 62, remote wilderness setting. Forest river borough."
   },
   pittsfield: {
     name: "Pittsfield",
@@ -1362,7 +1361,7 @@ export const communityData: Record<string, CommunityData> = {
       "Country roads and nature",
       "Warren County countryside"
     ],
-    imagePrompt: "A peaceful rural scene of Pittsfield along Brokenstraw Creek with small borough, agricultural fields, creek fishing, country roads. Small Warren County rural community."
+    imagePrompt: "Exact photorealistic view of Pittsfield showing Brokenstraw Creek flowing through, small borough buildings, agricultural fields, creek fishing access, country roads, Warren County rural landscape. Small rural community."
   },
   chandlersValley: {
     name: "Chandlers Valley",
@@ -1383,7 +1382,7 @@ export const communityData: Record<string, CommunityData> = {
       "Surrounded by nature",
       "Peace and solitude"
     ],
-    imagePrompt: "A remote forest community scene of Chandlers Valley with dense forest, a few rural homes, wildlife, Allegheny National Forest, autumn wilderness. Ultimate rural Pennsylvania living."
+    imagePrompt: "Exact photorealistic view of Chandlers Valley showing remote forest community with dense wilderness, a few rural homes in valley, wildlife including deer, Allegheny National Forest, autumn wilderness, remote countryside. Ultimate rural Pennsylvania living."
   },
   sugarcreek: {
     name: "Sugarcreek",
@@ -1404,7 +1403,7 @@ export const communityData: Record<string, CommunityData> = {
       "Largest Venango County borough",
       "Family-friendly atmosphere"
     ],
-    imagePrompt: "A growing suburban scene of Sugarcreek with residential developments, Route 8 commercial district, families shopping and dining, Allegheny River access, Franklin visible nearby. Growing Venango County borough."
+    imagePrompt: "Exact photorealistic view of Sugarcreek showing residential developments along Route 8, commercial district businesses, families shopping and dining, Allegheny River access, Franklin visible nearby, growing Venango County borough."
   },
   venangoCrawford: {
     name: "Venango Crawford",
@@ -1423,7 +1422,7 @@ export const communityData: Record<string, CommunityData> = {
       "Peaceful countryside",
       "Natural beauty"
     ],
-    imagePrompt: "A rural county border region scene with agricultural lands, French Creek flowing through, working farms, countryside straddling Venango and Crawford counties. Rural Pennsylvania border region."
+    imagePrompt: "Exact photorealistic view of rural Venango-Crawford border region showing agricultural lands, French Creek flowing through countryside, working farms, pastoral landscape straddling county line. Rural Pennsylvania border region."
   }
 };
 
