@@ -16,7 +16,7 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline min-h-0",
         amber: "bg-[hsl(var(--amber))] text-[hsl(var(--amber-foreground))] hover:bg-[hsl(var(--amber))]/90 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 font-semibold",
-        amberOutline: "border-2 border-white bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-primary transition-all duration-300 font-semibold",
+        amberOutline: "border-2 border-primary-foreground bg-background/10 backdrop-blur-sm hover:bg-background hover:text-primary transition-all duration-300 font-semibold",
       },
       size: {
         default: "h-10 px-4 py-2 min-h-[44px]",

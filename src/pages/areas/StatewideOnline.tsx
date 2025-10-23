@@ -341,24 +341,24 @@ const StatewideOnline = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-16 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Book Your Remote Online Notary Session</h2>
-          <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             Join thousands of Pennsylvania residents who've discovered the convenience of Remote Online Notary. Available by appointment statewide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
               onClick={scrollToBooking}
-              className="bg-white text-primary hover:bg-white/90"
+              variant="secondary"
             >
               Start Your Session - $60
             </Button>
             <Button 
               size="lg" 
               variant="outline"
-              className="border-white text-white hover:bg-white/10"
+              className="border-primary-foreground opacity-90 hover:opacity-100"
               onClick={() => window.location.href = "tel:814-480-0989"}
             >
               Questions? Call (814) 480-0989

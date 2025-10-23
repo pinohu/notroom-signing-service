@@ -346,7 +346,7 @@ const RegisteredOffice = () => {
 
               <Card className="p-6">
                 <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                     4
                   </div>
                   <div>
