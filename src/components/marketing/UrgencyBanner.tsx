@@ -30,11 +30,11 @@ const UrgencyBanner = ({ type = "booking", message }: UrgencyBannerProps) => {
   const Icon = banner.icon;
 
   return (
-    <Card className="p-4 bg-[hsl(var(--urgency-amber))]/10 border-[hsl(var(--urgency-amber))]">
+    <Card className="p-4 bg-amber/10 border-amber">
       <div className="flex items-center gap-4">
-        <Icon className="w-6 h-6 text-[hsl(var(--urgency-amber))] flex-shrink-0" />
+        <Icon className="w-6 h-6 text-amber flex-shrink-0" />
         <div className="flex-1">
-          <Badge className="mb-2 bg-[hsl(var(--urgency-amber))] text-white">
+          <Badge className="mb-2 bg-amber text-amber-foreground">
             {banner.badge}
           </Badge>
           <p className="text-sm font-medium">{banner.text}</p>

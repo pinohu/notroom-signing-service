@@ -12,12 +12,12 @@ const TermsOfService = () => {
         canonical="https://notroom.com/terms-of-service"
       />
 
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-white py-20">
+      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Terms of Service</h1>
-            <p className="text-xl text-white/90">Last Updated: January 2025</p>
-            <p className="text-sm text-white/80 mt-4">PLEASE READ THESE TERMS CAREFULLY BEFORE USING OUR SERVICES</p>
+            <p className="text-xl opacity-90">Last Updated: January 2025</p>
+            <p className="text-sm opacity-80 mt-4">PLEASE READ THESE TERMS CAREFULLY BEFORE USING OUR SERVICES</p>
           </div>
         </div>
       </section>

@@ -127,10 +127,10 @@ const AdminBookings = () => {
 
   const getStatusColor = (status: string) => {
     const colors: Record<string, string> = {
-      pending: "bg-amber text-white",
-      confirmed: "bg-primary text-white",
-      completed: "bg-success text-white",
-      cancelled: "bg-destructive text-white",
+      pending: "bg-amber text-amber-foreground",
+      confirmed: "bg-primary text-primary-foreground",
+      completed: "bg-success text-success-foreground",
+      cancelled: "bg-destructive text-destructive-foreground",
     };
     return colors[status] || "bg-muted";
   };

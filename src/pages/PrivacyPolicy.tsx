@@ -12,13 +12,13 @@ const PrivacyPolicy = () => {
         canonical="https://notroom.com/privacy-policy"
       />
 
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-white py-20">
+      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Shield className="w-16 h-16 mx-auto mb-6" />
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Privacy Policy</h1>
-            <p className="text-xl text-white/90">Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
-            <p className="text-sm text-white/80 mt-4">Effective Date: January 1, 2025</p>
+            <p className="text-xl opacity-90">Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+            <p className="text-sm opacity-80 mt-4">Effective Date: January 1, 2025</p>
           </div>
         </div>
       </section>

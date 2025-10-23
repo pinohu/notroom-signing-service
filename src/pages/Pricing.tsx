@@ -17,11 +17,11 @@ const Pricing = () => {
         canonical="https://notroom.com/pricing"
       />
 
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-white py-20">
+      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Simple, Transparent Pricing</h1>
-            <p className="text-xl text-white/90">No hidden fees. No surprises. Just honest pricing for quality notary services.</p>
+            <p className="text-xl opacity-90">No hidden fees. No surprises. Just honest pricing for quality notary services.</p>
           </div>
         </div>
       </section>
