@@ -24,7 +24,9 @@ const PricingCalculator = () => {
 
   // Calculate distance when address changes (debounced)
   useEffect(() => {
-    const needsDistance = service === "mobile" || (service === "loan" && loanType === "mobile");
+    const needsDistance = service === "mobile" || 
+                         (service === "loan" && loanType === "mobile") ||
+                         (service === "i9" && urgency === "inPerson");
     if (needsDistance && destinationAddress.length > 10) {
       const timer = setTimeout(async () => {
         setIsCalculatingDistance(true);
@@ -93,9 +95,20 @@ const PricingCalculator = () => {
         breakdown.total = PRICING.LOAN_SIGNING.total;
       }
     } else if (service === "i9") {
-      breakdown.total = urgency === "remote" 
-        ? PRICING.I9_VERIFICATION.remote 
-        : PRICING.I9_VERIFICATION.inPerson;
+      if (urgency === "inPerson") {
+        breakdown.serviceFee = PRICING.I9_VERIFICATION_MOBILE.baseFee;
+        breakdown.total = PRICING.I9_VERIFICATION_MOBILE.baseFee;
+        
+        // Add mileage if distance is calculated
+        if (distance !== null) {
+          const roundTripDistance = calculateRoundTripDistance(distance);
+          breakdown.distance = roundTripDistance;
+          breakdown.mileageFee = roundTripDistance * PRICING.I9_VERIFICATION_MOBILE.mileageRate;
+          breakdown.total += breakdown.mileageFee;
+        }
+      } else {
+        breakdown.total = PRICING.I9_VERIFICATION.remote;
+      }
     }
 
     return breakdown;
@@ -166,7 +179,7 @@ const PricingCalculator = () => {
           </div>
         )}
 
-        {(service === "mobile" || (service === "loan" && loanType === "mobile")) && (
+        {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson")) && (
           <div>
             <Label htmlFor="destination">Your Address (for distance calculation)</Label>
             <div className="relative">
@@ -255,7 +268,7 @@ const PricingCalculator = () => {
             </div>
           )}
           
-          {(service === "mobile" || (service === "loan" && loanType === "mobile")) && breakdown.distance !== undefined && breakdown.mileageFee !== undefined && (
+          {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson")) && breakdown.distance !== undefined && breakdown.mileageFee !== undefined && (
             <>
               <div className="flex justify-between text-sm border-t pt-2">
                 <span className="text-muted-foreground">
@@ -265,14 +278,19 @@ const PricingCalculator = () => {
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">
-                  Mileage Fee (${service === "mobile" ? PRICING.MOBILE.mileageRate : PRICING.LOAN_SIGNING_MOBILE.mileageRate}/mile)
+                  Mileage Fee ($
+                  {service === "mobile" 
+                    ? PRICING.MOBILE.mileageRate 
+                    : service === "i9" 
+                      ? PRICING.I9_VERIFICATION_MOBILE.mileageRate 
+                      : PRICING.LOAN_SIGNING_MOBILE.mileageRate}/mile)
                 </span>
                 <span className="font-medium">${breakdown.mileageFee.toFixed(2)}</span>
               </div>
             </>
           )}
           
-          {((service === "mobile" || (service === "loan" && loanType === "mobile")) && !distance) && (
+          {((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson")) && !distance) && (
             <div className="flex justify-between text-sm border-t pt-2">
               <span className="text-muted-foreground italic">
                 + Travel mileage (enter address above)
@@ -283,7 +301,7 @@ const PricingCalculator = () => {
           
           <div className="flex justify-between text-lg font-bold border-t-2 pt-3 mt-2">
             <span>Total</span>
-            <span className="text-primary">${price}{((service === "mobile" || (service === "loan" && loanType === "mobile")) && !distance) && "+"}</span>
+            <span className="text-primary">${price}{((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson")) && !distance) && "+"}</span>
           </div>
         </div>
         
@@ -292,7 +310,7 @@ const PricingCalculator = () => {
             <p className="text-sm text-muted-foreground mb-1">Your Total</p>
             <div className="flex items-center gap-2">
               <DollarSign className="w-8 h-8 text-primary" />
-              <span className="text-4xl font-bold text-primary">{price}{((service === "mobile" || (service === "loan" && loanType === "mobile")) && !distance) && "+"}</span>
+              <span className="text-4xl font-bold text-primary">{price}{((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson")) && !distance) && "+"}</span>
             </div>
           </div>
           <div className="text-right">
@@ -349,10 +367,10 @@ const PricingCalculator = () => {
           )}
           {service === "i9" && (
             <>
-              <li>• In-person: ${PRICING.I9_VERIFICATION.inPerson}</li>
-              <li>• Remote I-9: ${PRICING.I9_VERIFICATION.remote}</li>
+              <li>• In-person verification: ${PRICING.I9_VERIFICATION_MOBILE.baseFee} + ${PRICING.I9_VERIFICATION_MOBILE.mileageRate}/mile from Erie</li>
+              <li>• Remote I-9 verification: ${PRICING.I9_VERIFICATION.remote}</li>
               <li>• E-Verify coordination available</li>
-              <li>• Volume discounts available</li>
+              <li>• Volume discounts for multiple employees</li>
             </>
           )}
         </ul>

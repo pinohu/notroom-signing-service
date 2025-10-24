@@ -45,6 +45,13 @@ export const PRICING = {
     remote: 125,
     description: "Employment verification services"
   },
+  I9_VERIFICATION_MOBILE: {
+    display: "$85 + mileage",
+    baseFee: 85,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "In-person verification with travel"
+  },
   LLC_FORMATION: {
     display: "$149+",
     total: 149,

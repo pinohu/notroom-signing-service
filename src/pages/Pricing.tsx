@@ -119,17 +119,17 @@ const Pricing = () => {
 
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">I-9 Verification</h3>
-              <div className="text-4xl font-bold mb-4">$85+</div>
-              <p className="text-muted-foreground mb-2">Per employee verification</p>
-              <p className="text-sm text-muted-foreground mb-6">In-person or remote verification available</p>
+              <div className="text-4xl font-bold mb-4">$85 + mileage</div>
+              <p className="text-muted-foreground mb-2">In-person verification</p>
+              <p className="text-sm text-muted-foreground mb-6">$85 base + $1.50/mile from Erie • Remote option $125</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">In-person verification $85</span>
+                  <span className="text-sm">In-person: $85 + travel costs</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Remote verification $125</span>
+                  <span className="text-sm">Remote verification: $125 flat</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -176,11 +176,15 @@ const Pricing = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Mobile Notary:</strong> $5 per signature (as allowed by PA law) + $45 service fee + $1.50 per mile travel from 6238 Cobblestone Dr, Erie, PA 16509. Minimum: $50 + mileage.</span>
+                  <span><strong>Mobile Notary:</strong> $5 per signature (as allowed by PA law) + $45 service fee + $1.50 per mile round-trip travel from 6238 Cobblestone Dr, Erie, PA 16509. Minimum: $50 + mileage.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Loan Signing Agent:</strong> $5 notary fee per signature + $170 signing agent service fee (covering document review, printing, travel, scanning, and overnight return shipping). Base: $175 + travel if mobile.</span>
+                  <span><strong>Loan Signing Agent:</strong> $5 notary fee per signature + $170 signing agent service fee (covering document review, printing, travel, scanning, and overnight return shipping). Base: $175 + $1.50/mile if mobile service requested.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>I-9 Verification:</strong> In-person verification $85 base + $1.50/mile round-trip travel from Erie. Remote verification $125 flat (no travel). E-Verify coordination and volume discounts available.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
