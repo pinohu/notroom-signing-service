@@ -12,15 +12,15 @@ const AuthorityBuilder = () => {
     },
     {
       icon: Shield,
-      title: "$100K E&O Insurance",
-      description: "Full errors & omissions coverage for your protection",
-      proof: "Policy underwritten by major carrier"
+      title: "Bonded & E&O Insured",
+      description: "Professional liability insurance and surety bond protection",
+      proof: "Comprehensive coverage for your peace of mind"
     },
     {
       icon: BookOpen,
-      title: "NNA Certified",
-      description: "National Notary Association Certified Signing Agent",
-      proof: "Background screened & trained"
+      title: "Professional Certified",
+      description: "Background-screened and professionally trained signing agent",
+      proof: "Comprehensive training & certification"
     },
     {
       icon: Users,

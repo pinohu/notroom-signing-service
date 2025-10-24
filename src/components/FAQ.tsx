@@ -29,7 +29,7 @@ const FAQ = () => {
     },
     {
       question: "Are your notaries background-checked?",
-      answer: "Absolutely. All Notroom notaries are Pennsylvania-commissioned, bonded, and have undergone comprehensive background checks. Our loan signing agents also carry E&O insurance and are NNA certified. Your security and privacy are our top priorities."
+      answer: "Absolutely. All Notroom notaries are Pennsylvania-commissioned, bonded, and have undergone comprehensive background checks. Our loan signing agents carry professional liability insurance. Your security and privacy are our top priorities."
     }
   ];
 

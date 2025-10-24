@@ -329,7 +329,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
                       <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="font-semibold text-sm">Licensed & Trusted</p>
-                        <p className="text-sm text-muted-foreground">Fully licensed PA notaries with $25,000 E&O insurance</p>
+                        <p className="text-sm text-muted-foreground">Fully licensed PA notaries, bonded and insured</p>
                       </div>
                     </div>
                   </div>

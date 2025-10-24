@@ -54,7 +54,7 @@ const ValueStack = ({ service = "all" }: ValueStackProps) => {
       items: [
         { item: "PA Licensed Notary Service", value: "$5" },
         { item: "NNA Certified Signing Agent", value: "$100" },
-        { item: "$100K E&O Insurance Coverage", value: "$50" },
+        { item: "Professional Liability Insurance", value: "$50" },
         { item: "Document Printing (if needed)", value: "$30" },
         { item: "Mobile Service to Closing Location", value: "$50" },
         { item: "Scan Back Service", value: "$25" },

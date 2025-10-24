@@ -33,7 +33,7 @@ const Hero = () => {
           {/* Subheading - Professional Value */}
           <p className="text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-10 leading-relaxed max-w-4xl mx-auto">
             From remote online notarization to comprehensive business services—professional, efficient, and fully compliant. 
-            <strong className="text-primary-foreground"> PA State Licensed • NNA Certified • $100K E&O Insured</strong>
+            <strong className="text-primary-foreground">PA State Licensed • Background Checked • Fully Insured</strong>
           </p>
           
           {/* CTA Buttons */}
@@ -84,11 +84,11 @@ const Hero = () => {
           <div className="flex flex-wrap justify-center gap-4 text-primary-foreground/80 text-xs md:text-sm">
             <span>📜 PA State Licensed</span>
             <span>•</span>
-            <span>🏆 NNA Certified</span>
-            <span>•</span>
-            <span>🔒 $100K E&O Insured</span>
-            <span>•</span>
             <span>🎓 Background Checked</span>
+            <span>•</span>
+            <span>🔒 Bonded & Insured</span>
+            <span>•</span>
+            <span>⚡ Same-Day Available</span>
           </div>
           
           {/* Contact Info */}

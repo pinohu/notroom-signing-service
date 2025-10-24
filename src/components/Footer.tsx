@@ -171,18 +171,25 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Legal Compliance Section */}
-      <div className="border-t border-border/10">
+      {/* Legal Compliance Section - CRITICAL WARNING */}
+      <div className="border-t border-border/10 bg-destructive/10">
         <div className="container mx-auto px-4 py-6">
-          <div className="text-center mb-4">
-            <p className="text-primary-foreground/60 text-xs mb-2">
-              <span className="text-amber">⚠️ COMPLIANCE NOTICE:</span> Pennsylvania Notary Public Commission #[YOUR COMMISSION NUMBER REQUIRED] | Expires: [DATE] | Bonded ($10,000) & Insured | Compliant with 57 Pa.C.S. Chapter 3 (RULONA)
+          <div className="bg-destructive/20 border-2 border-destructive rounded-lg p-6 max-w-6xl mx-auto">
+            <p className="text-destructive font-bold text-base mb-3 text-center">
+              🚨 CRITICAL COMPLIANCE WARNING - SITE NOT READY FOR LIVE OPERATION 🚨
             </p>
-            <p className="text-primary-foreground/60 text-xs">
-              Remote Online Notarization authorized under Act 97 of 2020 | Registered with PA Department of State | RON Platform: [SPECIFY APPROVED PLATFORM] | Commercial Registered Office Provider registered with PA Department of State Bureau of Corporations
+            <p className="text-destructive text-sm mb-3 font-semibold">
+              REQUIRED BEFORE ACCEPTING ANY CLIENTS:
             </p>
-            <p className="text-primary-foreground/60 text-xs mt-2">
-              <em>All services require completion of proper licensing and registrations before launch. See COMPLIANCE_CHECKLIST.md for details.</em>
+            <div className="text-destructive text-xs space-y-2 bg-background/50 p-4 rounded">
+              <p>✓ Pennsylvania Notary Public Commission #<span className="bg-yellow-300 text-black px-2 py-1 rounded font-bold">[ADD YOUR ACTUAL 6-DIGIT NUMBER]</span> | Expires: <span className="bg-yellow-300 text-black px-2 py-1 rounded font-bold">[MM/DD/YYYY]</span> | Commissioned in <span className="bg-yellow-300 text-black px-2 py-1 rounded font-bold">[COUNTY NAME]</span> County</p>
+              <p>✓ Surety Bond: $10,000 | Bond #<span className="bg-yellow-300 text-black px-2 py-1 rounded font-bold">[ADD BOND NUMBER]</span> | Carrier: <span className="bg-yellow-300 text-black px-2 py-1 rounded font-bold">[ADD CARRIER NAME]</span></p>
+              <p>✓ E&O Insurance: <span className="bg-yellow-300 text-black px-2 py-1 rounded font-bold">[VERIFY & ADD ACTUAL COVERAGE AMOUNT]</span> | Policy #<span className="bg-yellow-300 text-black px-2 py-1 rounded font-bold">[ADD POLICY NUMBER]</span></p>
+              <p>✓ RON Authorization: <span className="bg-yellow-300 text-black px-2 py-1 rounded font-bold">[VERIFY PA DOS AUTHORIZATION STATUS]</span> | Platform: <span className="bg-yellow-300 text-black px-2 py-1 rounded font-bold">[SPECIFY PA-APPROVED PLATFORM - e.g., Notarize, Proof, OneNotary]</span></p>
+              <p>✓ CROP Registration: <span className="bg-yellow-300 text-black px-2 py-1 rounded font-bold">[ADD PA DOS CROP REGISTRATION NUMBER OR REMOVE CROP SERVICES FROM WEBSITE]</span></p>
+            </div>
+            <p className="text-destructive text-xs mt-3 text-center font-bold">
+              ⚠️ Operating without proper credentials violates Pennsylvania law (57 Pa.C.S. § 321) and may result in commission suspension, civil penalties up to $1,000 per violation, and potential criminal charges. ⚠️
             </p>
           </div>
         </div>
@@ -210,10 +217,10 @@ const Footer = () => {
             {/* Badges */}
             <div className="flex gap-3 flex-wrap justify-center">
               <div className="px-3 py-1 bg-background/10 rounded-full text-xs font-semibold">
-                PA State Commissioned
+                PA State Licensed
               </div>
               <div className="px-3 py-1 bg-background/10 rounded-full text-xs font-semibold">
-                NNA Certified
+                Background Checked
               </div>
               <div className="px-3 py-1 bg-background/10 rounded-full text-xs font-semibold">
                 RULONA Compliant

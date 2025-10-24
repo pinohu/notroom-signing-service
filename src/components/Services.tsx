@@ -55,9 +55,9 @@ const Services = memo(() => {
       priceDetail: "Purchase/refi | Hybrid e-closing $225",
       description: "Certified signing agent for real estate transactions. Working with title companies, lenders, and real estate professionals.",
       features: [
-        "NNA certified & background-checked",
+        "Background-checked & certified",
         "Experienced with all loan types",
-        "$100K E&O insurance",
+        "Bonded & E&O insured",
         "Print, scan & ship included"
       ],
       ctaText: "Learn More",

@@ -16,13 +16,13 @@ const ComparisonTable = () => {
       impact: "Legal protection & validity"
     },
     { 
-      feature: "NNA Certified Signing Agent", 
+      feature: "Certified Signing Agent", 
       us: true, 
       others: false,
       impact: "Professional expertise"
     },
     { 
-      feature: "$100K E&O Insurance", 
+      feature: "Bonded & E&O Insured", 
       us: true, 
       others: "Variable",
       impact: "Your risk protection"
