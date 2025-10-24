@@ -4,12 +4,17 @@ import Services from "@/components/Services";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import WhyNotroom from "@/components/WhyNotroom";
 import Testimonials from "@/components/Testimonials";
+import RealTestimonials from "@/components/marketing/RealTestimonials";
 import FAQ from "@/components/FAQ";
 import FinalCTA from "@/components/FinalCTA";
 import BookingForm from "@/components/BookingForm";
 import ExitIntent from "@/components/ExitIntent";
 import SEO from "@/components/SEO";
 import PricingCalculator from "@/components/PricingCalculator";
+import GuaranteeSection from "@/components/marketing/GuaranteeSection";
+import ValueStack from "@/components/marketing/ValueStack";
+import TrustBadges from "@/components/marketing/TrustBadges";
+import ComparisonTable from "@/components/marketing/ComparisonTable";
 
 const Index = () => {
   const schema = {
@@ -80,7 +85,14 @@ const Index = () => {
         schema={schema}
       />
       <Hero />
+      <TrustBadges />
       <Services />
+      <ValueStack />
+      <ComparisonTable />
+      <ProcessTimeline />
+      <WhyNotroom />
+      <RealTestimonials />
+      <GuaranteeSection />
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
@@ -88,9 +100,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-      <ProcessTimeline />
-      <WhyNotroom />
-      <Testimonials />
       <FAQ />
       <FinalCTA />
       <BookingForm />
