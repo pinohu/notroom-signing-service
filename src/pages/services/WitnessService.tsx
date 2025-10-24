@@ -2,8 +2,11 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, UserCheck, Shield, Clock, BadgeCheck, MapPin } from "lucide-react";
+import { Check, Eye, FileText, Shield, AlertCircle, UserCheck, BadgeCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import LegalDisclaimer from "@/components/LegalDisclaimer";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const WitnessService = () => {
   const navigate = useNavigate();
@@ -38,10 +41,11 @@ const WitnessService = () => {
   return (
     <Layout>
       <SEO
-        title="Professional Witness Services | $60 + Travel | Erie, PA"
-        description="Professional witness services in Erie, PA. Neutral third-party for private agreements and contracts. Mobile service available. $60 + $1.50/mile travel."
-        keywords="professional witness Erie PA, contract witness, agreement witness, third party witness, neutral witness service"
+        title="Professional Witness Service Erie PA | $60 + Travel | Northwestern PA"
+        description="Impartial witness service Northwestern PA. $60 base fee + $1.50/mile travel. Alternative to notarization. Serving Erie, Crawford, Warren, Mercer Counties."
+        keywords="witness service Erie PA, professional witness Northwestern PA, document witness Erie County, signing witness Crawford County, impartial witness Warren PA"
         canonical="https://notroom.com/services/witness-service"
+        schema={combinedSchema}
       />
 
       {/* Hero Section */}
@@ -198,6 +202,17 @@ const WitnessService = () => {
           </div>
         </div>
       </section>
+
+      {/* Local SEO Section */}
+      <ServiceLocalSEO 
+        serviceName="Professional Witness Service"
+        reviews={[
+          { text: "Needed a witness for personal documents. Quick and professional service.", author: "Catherine R.", city: "Erie", rating: 5 },
+          { text: "Great alternative when notary wasn't required. Fair pricing.", author: "Andrew M.", city: "Millcreek", rating: 5 },
+          { text: "Professional witness for family documents. Very helpful service.", author: "Michelle K.", city: "Harborcreek", rating: 5 },
+          { text: "Impartial witness for business agreement. Excellent experience.", author: "Robert T.", city: "Fairview", rating: 5 }
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-background">

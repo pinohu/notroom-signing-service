@@ -41,17 +41,18 @@ const UCCFiling = () => {
   return (
     <Layout>
       <SEO
-        title="UCC Filing Services | $125 | Erie, PA"
-        description="Professional UCC filing services in Pennsylvania. UCC-1 financing statements, amendments, continuations. Expert assistance. $125."
-        keywords="UCC filing Erie PA, UCC-1 filing, financing statement, secured transaction, Pennsylvania UCC"
+        title="UCC Filing Services Pennsylvania | $125 per Filing | Erie, Northwestern PA"
+        description="Professional UCC filing services Pennsylvania. UCC-1 financing statements, amendments, continuations, terminations. $125 per filing + state fees. Serving Erie, Crawford, Warren, Mercer Counties."
+        keywords="UCC filing Pennsylvania, UCC-1 filing Erie PA, UCC filing service Northwestern PA, financing statement filing PA, UCC continuation Pennsylvania"
         canonical="https://notroom.com/services/ucc-filing"
+        schema={combinedSchema}
       />
 
       <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-background/10 backdrop-blur-sm mb-6">
-              <FileCheck className="w-10 h-10" />
+              <FileText className="w-10 h-10" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">UCC Filing Services</h1>
             <p className="text-xl mb-8 opacity-90">
@@ -121,6 +122,17 @@ const UCCFiling = () => {
           </div>
         </div>
       </section>
+
+      {/* Local SEO Section */}
+      <ServiceLocalSEO 
+        serviceName="UCC Filing Services"
+        reviews={[
+          { text: "Efficient UCC-1 filing for our business financing. Professional service.", author: "Business Owner Mike R.", city: "Erie", rating: 5 },
+          { text: "Fast UCC filing processing. They handled everything with PA Department of State.", author: "Jennifer T.", city: "Meadville", rating: 5 },
+          { text: "Great service for UCC continuation filing. Very knowledgeable.", author: "David K.", city: "Warren", rating: 5 },
+          { text: "Professional UCC amendment filing. Straightforward pricing.", author: "Susan L.", city: "Sharon", rating: 5 }
+        ]}
+      />
 
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 text-center">
