@@ -4,9 +4,10 @@ import EnhancedUPLDisclaimer from "@/components/EnhancedUPLDisclaimer";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, FileText, Shield, Clock, BadgeCheck } from "lucide-react";
+import { Check, FileText, Shield, Clock, BadgeCheck, AlertCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import FAQSection from "@/components/marketing/FAQSection";
 import { generateFAQSchema, generateBreadcrumbSchema, generateServiceSchema } from "@/utils/schemaGenerator";
 
 const DocumentPreparation = () => {
@@ -138,40 +139,171 @@ const DocumentPreparation = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Process Section */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Why Choose Notroom for Document Preparation?</h2>
-            
-            <div className="grid md:grid-cols-3 gap-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Our Document Preparation Process</h2>
+            <div className="space-y-6">
               <Card className="p-6">
-                <Shield className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Professional Quality</h3>
-                <p className="text-muted-foreground">
-                  Years of experience preparing legal documents. Proper formatting and attention to detail.
-                </p>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">1</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Initial Consultation</h3>
+                    <p className="text-muted-foreground">Share your document needs and provide necessary information. We'll confirm the document type and complexity to provide accurate pricing.</p>
+                  </div>
+                </div>
               </Card>
-
               <Card className="p-6">
-                <Clock className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Quick Turnaround</h3>
-                <p className="text-muted-foreground">
-                  Most documents completed within 1-2 business days. Rush service available for urgent needs.
-                </p>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">2</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Document Drafting</h3>
+                    <p className="text-muted-foreground">We format your document according to PA standards, using your provided information. We type, organize, and ensure proper legal formatting.</p>
+                  </div>
+                </div>
               </Card>
-
               <Card className="p-6">
-                <BadgeCheck className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Affordable Pricing</h3>
-                <p className="text-muted-foreground">
-                  Save hundreds compared to attorney fees for standard document preparation work.
-                </p>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">3</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Review & Revisions</h3>
+                    <p className="text-muted-foreground">You review the draft document. We make any necessary formatting corrections or incorporate changes to information you provide.</p>
+                  </div>
+                </div>
+              </Card>
+              <Card className="p-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">4</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Final Delivery</h3>
+                    <p className="text-muted-foreground">Receive your professionally formatted document via email or printed copy. Notarization available separately if needed.</p>
+                  </div>
+                </div>
               </Card>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Common Documents Detail */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Documents We Prepare</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="p-6">
+                <h3 className="font-bold text-lg mb-3">Affidavits & Declarations</h3>
+                <p className="text-sm text-muted-foreground mb-3">Sworn statements for court, government, or private use. Starting at $100.</p>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  <li>• Affidavit of identity</li>
+                  <li>• Affidavit of heirship</li>
+                  <li>• Affidavit of residency</li>
+                  <li>• General affidavit</li>
+                </ul>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-bold text-lg mb-3">Business Documents</h3>
+                <p className="text-sm text-muted-foreground mb-3">Contracts and agreements for business transactions. Starting at $150.</p>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  <li>• Service agreements</li>
+                  <li>• Independent contractor agreements</li>
+                  <li>• Non-disclosure agreements</li>
+                  <li>• Purchase agreements</li>
+                </ul>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-bold text-lg mb-3">Personal Legal Documents</h3>
+                <p className="text-sm text-muted-foreground mb-3">Important personal planning documents. Starting at $125.</p>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  <li>• Living wills</li>
+                  <li>• Advance directives</li>
+                  <li>• Personal agreements</li>
+                  <li>• Demand letters</li>
+                </ul>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-bold text-lg mb-3">Real Estate Forms</h3>
+                <p className="text-sm text-muted-foreground mb-3">Standard real estate transaction documents. Starting at $100.</p>
+                <ul className="text-xs text-muted-foreground space-y-1">
+                  <li>• Lease agreements</li>
+                  <li>• Purchase agreements</li>
+                  <li>• Disclosure forms</li>
+                  <li>• Property agreements</li>
+                </ul>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What We Don't Do */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <Card className="p-8 border-amber-500 border-2">
+              <div className="flex items-start gap-4 mb-6">
+                <AlertCircle className="w-8 h-8 text-amber-500 flex-shrink-0" />
+                <div>
+                  <h2 className="text-2xl font-bold mb-4">Important: What We Cannot Do</h2>
+                  <div className="space-y-3 text-muted-foreground">
+                    <p>✗ <strong>No Legal Advice:</strong> We cannot advise whether a document is right for your situation, what clauses to include, or legal implications.</p>
+                    <p>✗ <strong>No Practice of Law:</strong> Per Pennsylvania UPL statutes, we cannot select legal forms for you or draft custom legal provisions.</p>
+                    <p>✗ <strong>No Court Representation:</strong> We cannot represent you in legal proceedings or draft court pleadings.</p>
+                    <p>✗ <strong>Formatting Only:</strong> We prepare documents based solely on information and instructions you provide.</p>
+                    <p className="pt-3 border-t">For complex legal matters, estate planning, business entity formation, or legal strategy, consult a licensed Pennsylvania attorney.</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Local SEO */}
+      <ServiceLocalSEO 
+        serviceName="Document Preparation"
+        reviews={[
+          { text: "Affordable document preparation service. They formatted my affidavit perfectly.", author: "Maria G.", city: "Erie", rating: 5 },
+          { text: "Much cheaper than a lawyer for simple document typing. Professional work.", author: "James T.", city: "Meadville", rating: 5 },
+          { text: "Fast document preparation for my business contract. Great service.", author: "Linda R.", city: "Warren", rating: 5 },
+          { text: "They prepared my living will document quickly and professionally.", author: "Robert K.", city: "Harborcreek", rating: 5 }
+        ]}
+      />
+
+      {/* FAQs */}
+      <FAQSection
+        faqs={[
+          {
+            question: "What is the difference between document preparation and legal services?",
+            answer: "Document preparation involves typing, formatting, and organizing documents based on your provided information. We do not provide legal advice, select document types for you, or draft custom legal provisions. For legal advice or representation, consult a licensed attorney."
+          },
+          {
+            question: "How much does document preparation cost in Pennsylvania?",
+            answer: "Pricing starts at $100 for simple documents like affidavits, up to $200+ for complex business contracts. Final cost depends on document type, length, and complexity. We provide quotes before starting work."
+          },
+          {
+            question: "Can you prepare my will or trust documents?",
+            answer: "No. Estate planning documents like wills, trusts, and powers of attorney should be prepared by a licensed Pennsylvania attorney. These require legal advice about your specific situation and must comply with complex PA estate laws."
+          },
+          {
+            question: "How long does document preparation take?",
+            answer: "Most standard documents are completed within 1-2 business days. Rush service (24 hours) is available for an additional fee. Complex documents may require 3-5 business days."
+          },
+          {
+            question: "Do you notarize the documents you prepare?",
+            answer: "Notarization is a separate service. If your document requires notarization, we can provide that service for an additional fee (PA notary fees $5-15 per signature plus any applicable service fees)."
+          },
+          {
+            question: "Can you file my document with the court or government agency?",
+            answer: "We prepare documents for your use but generally do not file them on your behalf. Court filings may require legal representation. Government filings (like business registrations) may be available through our business filing services."
+          },
+          {
+            question: "What information do I need to provide for document preparation?",
+            answer: "You must provide all content, details, names, dates, terms, and specific information to include in the document. We format and organize the information you provide but do not create or suggest content."
+          }
+        ]}
+      />
 
       {/* UPL Disclaimer */}
       <EnhancedUPLDisclaimer service="document-prep" />

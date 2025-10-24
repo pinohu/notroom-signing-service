@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Check, Fingerprint, Shield, Clock, BadgeCheck, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import FAQSection from "@/components/marketing/FAQSection";
 import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const Fingerprinting = () => {
@@ -140,40 +141,147 @@ const Fingerprinting = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* PA Act 34/151 Section */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Why Choose Notroom for Fingerprinting?</h2>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6">
-                <Shield className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">FBI-Approved Equipment</h3>
-                <p className="text-muted-foreground">
-                  We use only FBI-certified electronic fingerprinting systems for accurate, reliable results.
-                </p>
-              </Card>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Pennsylvania Clearance Requirements</h2>
+            <Card className="p-8">
+              <p className="text-lg mb-6">Pennsylvania law requires several clearances for individuals working with children, including teachers, coaches, and childcare workers:</p>
+              <div className="space-y-4">
+                <div className="bg-muted/50 p-4 rounded-lg">
+                  <h3 className="font-bold mb-2">PA Act 34 - Pennsylvania Criminal History</h3>
+                  <p className="text-sm text-muted-foreground">State police background check. Obtained through PA State Police PATCH system. Fingerprinting typically not required unless you've lived out of state.</p>
+                </div>
+                <div className="bg-muted/50 p-4 rounded-lg">
+                  <h3 className="font-bold mb-2">PA Act 151 - FBI Criminal History (Fingerprint-Based)</h3>
+                  <p className="text-sm text-muted-foreground">Federal fingerprint background check. <strong>This is where we help!</strong> We provide FBI-approved electronic fingerprinting that gets submitted to the FBI for your federal clearance.</p>
+                </div>
+                <div className="bg-muted/50 p-4 rounded-lg">
+                  <h3 className="font-bold mb-2">PA Act 33/151 - Child Abuse History</h3>
+                  <p className="text-sm text-muted-foreground">Pennsylvania Department of Human Services clearance. Obtained through DHS online system. Fingerprints not required for this clearance.</p>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
 
+      {/* Process Section */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Fingerprinting Process</h2>
+            <div className="space-y-6">
               <Card className="p-6">
-                <MapPin className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Mobile Convenience</h3>
-                <p className="text-muted-foreground">
-                  No need to travel - we bring fingerprinting equipment to your workplace or home.
-                </p>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">1</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Schedule Appointment</h3>
+                    <p className="text-muted-foreground">Book your mobile fingerprinting session. Provide your location in Erie County and reason for fingerprinting (PA teaching license, adoption, etc.).</p>
+                  </div>
+                </div>
               </Card>
-
               <Card className="p-6">
-                <Clock className="w-12 h-12 text-primary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Fast Processing</h3>
-                <p className="text-muted-foreground">
-                  Electronic submission means faster processing compared to traditional ink fingerprinting.
-                </p>
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">2</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Bring Required Information</h3>
+                    <p className="text-muted-foreground">Have your ORI number (from requesting agency), reason code, and photo ID ready. For PA teaching license: ORI is PADE130 (PA Department of Education).</p>
+                  </div>
+                </div>
+              </Card>
+              <Card className="p-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">3</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Electronic Capture</h3>
+                    <p className="text-muted-foreground">We use FBI-certified LiveScan equipment to capture your fingerprints electronically. Process takes about 5-10 minutes. No ink mess!</p>
+                  </div>
+                </div>
+              </Card>
+              <Card className="p-6">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">4</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Electronic Submission</h3>
+                    <p className="text-muted-foreground">Fingerprints are transmitted electronically to FBI and PA State Police. Results typically returned to requesting agency within 24-72 hours.</p>
+                  </div>
+                </div>
               </Card>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Who Needs Fingerprinting */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Who Needs FBI Fingerprinting in PA?</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card className="p-6">
+                <h3 className="font-bold mb-2">Education Professionals</h3>
+                <p className="text-sm text-muted-foreground">Teachers, substitutes, coaches, administrators requiring PA Act 151 clearance.</p>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-bold mb-2">Healthcare Workers</h3>
+                <p className="text-sm text-muted-foreground">Nurses, CNAs, home health aides, medical staff for state licensing.</p>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-bold mb-2">Adoption & Foster Care</h3>
+                <p className="text-sm text-muted-foreground">Prospective adoptive and foster parents for PA DHS requirements.</p>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-bold mb-2">Professional Licenses</h3>
+                <p className="text-sm text-muted-foreground">Real estate agents, insurance agents, security guards, notaries.</p>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-bold mb-2">Immigration (USCIS)</h3>
+                <p className="text-sm text-muted-foreground">Green card applications, citizenship, visa sponsorship, I-485 forms.</p>
+              </Card>
+              <Card className="p-6">
+                <h3 className="font-bold mb-2">Employment Checks</h3>
+                <p className="text-sm text-muted-foreground">Pre-employment background checks, security clearances, contractor badges.</p>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQs */}
+      <FAQSection
+        faqs={[
+          {
+            question: "What is the ORI number and where do I get it?",
+            answer: "ORI (Originating Agency Identifier) is a code for the agency requesting your fingerprints. For PA teaching licenses, it's PADE130. Your requesting agency (employer, licensing board, adoption agency) will provide your ORI number."
+          },
+          {
+            question: "How long does it take to get FBI fingerprint results back?",
+            answer: "Electronic fingerprint results typically return within 24-72 hours to the requesting agency. However, the agency may take additional time to process and send you your clearance certificate. Allow 1-2 weeks total."
+          },
+          {
+            question: "Do I need fingerprints for PA teaching certification?",
+            answer: "Yes, if you're applying for PA teaching certification or clearances, you need Act 151 fingerprinting (federal FBI check). This is separate from the PA Act 34 state check and Act 33 child abuse clearance."
+          },
+          {
+            question: "What's the difference between electronic and ink fingerprinting?",
+            answer: "Electronic (LiveScan) fingerprinting is more accurate, faster, and cleaner than traditional ink cards. Results are transmitted instantly to FBI. Ink cards must be mailed, take weeks longer, and have higher rejection rates."
+          },
+          {
+            question: "Can I get fingerprinted for USCIS immigration applications?",
+            answer: "Yes! We provide FBI-approved fingerprinting for all USCIS purposes including green card applications (I-485), citizenship (N-400), visa sponsorship, and other immigration forms requiring biometric collection."
+          },
+          {
+            question: "Do you travel outside Erie County for fingerprinting?",
+            answer: "Yes, we provide mobile fingerprinting throughout Northwestern PA including Crawford, Warren, Mercer, and Venango counties. Travel fees apply at $1.50/mile round-trip from Erie."
+          },
+          {
+            question: "What do I need to bring to my fingerprinting appointment?",
+            answer: "Bring: 1) Valid government-issued photo ID, 2) ORI number from requesting agency, 3) Reason code if provided, 4) Payment for service. We handle the rest!"
+          }
+        ]}
+      />
 
       {/* Local SEO Section */}
       <ServiceLocalSEO 
