@@ -428,7 +428,9 @@ const RegisteredOffice = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <EnhancedUPLDisclaimer service="registered-office" />
-            <LegalDisclaimer service="business" />
+            <div className="mt-8">
+              <LegalDisclaimer variant="compact" />
+            </div>
           </div>
         </div>
       </section>

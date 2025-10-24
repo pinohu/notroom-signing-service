@@ -196,36 +196,76 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="border-t border-border/10">
+      <div className="border-t border-border/10" id="footer-content">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            {/* Copyright */}
-            <div className="text-primary-foreground/60 text-sm">
-              © {currentYear} Notroom LLC. All rights reserved.
+            {/* Copyright & Trademark */}
+            <div className="text-primary-foreground/60 text-sm text-center md:text-left">
+              <div>© {currentYear} Notroom LLC. All rights reserved.</div>
+              <div className="text-xs mt-1">
+                "Notroom" is a trademark of Notroom LLC. Unauthorized use prohibited.
+              </div>
             </div>
 
             {/* Legal Links */}
-            <div className="flex gap-6">
-              <button onClick={() => navigateToPage("/privacy-policy")} className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
+            <div className="flex gap-6" role="navigation" aria-label="Legal information">
+              <button 
+                onClick={() => navigateToPage("/privacy-policy")} 
+                className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                aria-label="View privacy policy"
+              >
                 Privacy Policy
               </button>
-              <button onClick={() => navigateToPage("/terms-of-service")} className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
+              <button 
+                onClick={() => navigateToPage("/terms-of-service")} 
+                className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                aria-label="View terms of service"
+              >
                 Terms of Service
               </button>
             </div>
 
             {/* Badges */}
-            <div className="flex gap-3 flex-wrap justify-center">
-              <div className="px-3 py-1 bg-background/10 rounded-full text-xs font-semibold">
+            <div className="flex gap-3 flex-wrap justify-center" role="list" aria-label="Compliance certifications">
+              <div className="px-3 py-1 bg-background/10 rounded-full text-xs font-semibold" role="listitem">
                 PA State Licensed
               </div>
-              <div className="px-3 py-1 bg-background/10 rounded-full text-xs font-semibold">
+              <div className="px-3 py-1 bg-background/10 rounded-full text-xs font-semibold" role="listitem">
                 Background Checked
               </div>
-              <div className="px-3 py-1 bg-background/10 rounded-full text-xs font-semibold">
+              <div className="px-3 py-1 bg-background/10 rounded-full text-xs font-semibold" role="listitem">
                 RULONA Compliant
               </div>
             </div>
+          </div>
+
+          {/* E-Sign Act & AML Disclaimer */}
+          <div className="mt-6 pt-6 border-t border-border/10 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-4 text-xs text-primary-foreground/50">
+              <div>
+                <strong className="text-primary-foreground/70">E-Sign Act Compliance:</strong> Electronic signatures 
+                and records provided through our RON services comply with the Electronic Signatures in Global and 
+                National Commerce Act (15 U.S.C. § 7001) and Pennsylvania RULONA (57 Pa.C.S. § 301 et seq.). 
+                Electronic signatures have the same legal effect as handwritten signatures.
+              </div>
+              <div>
+                <strong className="text-primary-foreground/70">AML & Financial Crimes Prevention:</strong> We maintain 
+                procedures to detect and prevent money laundering in compliance with FinCEN guidelines. We reserve 
+                the right to refuse service, request additional identification, and report suspicious activity to 
+                appropriate authorities without prior notice.
+              </div>
+            </div>
+          </div>
+
+          {/* CCPA Link */}
+          <div className="mt-4 text-center">
+            <button 
+              onClick={() => navigateToPage("/privacy-policy#ccpa")} 
+              className="text-xs text-primary-foreground/60 hover:text-primary-foreground underline underline-offset-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+              aria-label="California privacy rights - Do not sell my personal information"
+            >
+              Do Not Sell or Share My Personal Information (CCPA)
+            </button>
           </div>
         </div>
       </div>

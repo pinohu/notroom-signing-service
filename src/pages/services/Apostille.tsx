@@ -417,7 +417,7 @@ const Apostille = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <LegalDisclaimer service="apostille" />
+            <LegalDisclaimer variant="compact" />
           </div>
         </div>
       </section>

@@ -23,28 +23,50 @@ const Layout = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen">
-      {/* Skip Navigation */}
-      <a 
-        href="#main-content" 
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md"
-      >
-        Skip to main content
-      </a>
-      <ScrollProgress />
+    <div className="min-h-screen" lang="en">
+      {/* Skip Navigation Links - WCAG 2.1 AA Compliance */}
+      <div className="sr-only">
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        >
+          Skip to main content
+        </a>
+        <a 
+          href="#main-navigation" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-48 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        >
+          Skip to navigation
+        </a>
+        <a 
+          href="#footer-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-96 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        >
+          Skip to footer
+        </a>
+      </div>
+
+      <ScrollProgress aria-hidden="true" />
       <Header />
-      <main id="main-content" role="main">
+      
+      <main id="main-content" role="main" aria-label="Main content">
         {children}
       </main>
+      
       <Footer />
       <BackToTop />
       
-      {/* Mobile Sticky CTA */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur-md border-t border-border lg:hidden z-40 animate-slide-up">
+      {/* Mobile Sticky CTA - WCAG Compliant */}
+      <div 
+        className="fixed bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur-md border-t border-border lg:hidden z-40 animate-slide-up"
+        role="region"
+        aria-label="Quick booking action"
+      >
         <Button 
-          className="w-full bg-amber text-primary-foreground hover:bg-amber/90 shadow-lg"
+          className="w-full bg-amber text-primary-foreground hover:bg-amber/90 shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2"
           size="lg"
           onClick={scrollToBooking}
+          aria-label="Book notary appointment starting from $45"
         >
           📅 Book Now • From $45
         </Button>

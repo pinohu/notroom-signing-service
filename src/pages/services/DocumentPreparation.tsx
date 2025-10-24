@@ -1,5 +1,7 @@
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
+import EnhancedUPLDisclaimer from "@/components/EnhancedUPLDisclaimer";
+import LegalDisclaimer from "@/components/LegalDisclaimer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, FileText, Shield, Clock, BadgeCheck } from "lucide-react";
@@ -148,6 +150,14 @@ const DocumentPreparation = () => {
         </div>
       </section>
 
+      {/* UPL Disclaimer */}
+      <EnhancedUPLDisclaimer service="document-prep" />
+
+      {/* Legal Disclaimers */}
+      <div className="container mx-auto px-4 py-8">
+        <LegalDisclaimer variant="compact" />
+      </div>
+
       {/* CTA Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 text-center">
@@ -173,5 +183,6 @@ const DocumentPreparation = () => {
     </Layout>
   );
 };
+
 
 export default DocumentPreparation;

@@ -477,7 +477,7 @@ const I9Verification = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <LegalDisclaimer service="i9" />
+            <LegalDisclaimer variant="compact" />
           </div>
         </div>
       </section>
