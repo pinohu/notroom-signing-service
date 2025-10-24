@@ -355,11 +355,27 @@ const LoanSigningAgent = () => {
           },
           {
             question: "What's the difference between standard and hybrid/e-closing pricing?",
-            answer: "Standard purchase/refi closings are $175. Hybrid or electronic closings are $225 due to additional technology integration, digital document handling, and electronic signature coordination."
+            answer: "Hybrid/e-closings ($225) involve coordinating digital signature platforms with wet-signed notarized documents, requiring additional technology and platform integration work compared to standard paper closings ($175). Both include full signing agent services."
           },
           {
-            question: "How do title companies set up an account with you?",
-            answer: "Contact us to set up a signing agent account. We'll provide all necessary documentation including W-9, E&O certificate, background check, and NNA certification."
+            question: "Do you have errors and omissions insurance?",
+            answer: "Yes, we carry $100,000 E&O insurance that covers all loan signing activities. Certificate of insurance provided upon request to title companies and lenders."
+          },
+          {
+            question: "What areas do you cover for loan signings in Pennsylvania?",
+            answer: "We serve Erie, Crawford, Warren, Mercer, and Venango counties. Travel fees may apply for locations outside Erie city limits. Call us for specific coverage confirmation in your area."
+          },
+          {
+            question: "Are you background checked?",
+            answer: "Yes. We've completed comprehensive background screening including criminal history, credit check, and NNA background verification. All documentation is available for title company review."
+          },
+          {
+            question: "Can you handle same-day signings?",
+            answer: "In many cases, yes. If documents arrive before 2 PM, we can often accommodate same-day signings in Erie County. Call us directly for same-day availability at (814) 480-0989."
+          },
+          {
+            question: "Do you work with signing services and title companies nationwide?",
+            answer: "Absolutely. We're approved with major title companies and signing services throughout Pennsylvania. We accept orders via fax, email, or direct portal uploads. Quick turnaround on document scan-backs guaranteed."
           }
         ]}
       />

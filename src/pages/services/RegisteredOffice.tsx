@@ -376,8 +376,36 @@ const RegisteredOffice = () => {
       />
 
       {/* FAQs */}
-      <FAQSection
+      <FAQSection 
         faqs={[
+          {
+            question: "What is a Commercial Registered Office Provider (CROP)?",
+            answer: "A CROP provides a professional PA address for your business's registered office. We're registered with PA Dept of State and accept service of process on your behalf per written agreement."
+          },
+          {
+            question: "How much does LLC formation cost in Pennsylvania?",
+            answer: "Our service is $149 + $125 PA state fee = $274 total. Includes preparing Certificate of Organization with your info and filing with PA Department of State. 5-7 business days processing."
+          },
+          {
+            question: "Do I need an attorney to form an LLC in Pennsylvania?",
+            answer: "No, but we cannot provide legal advice. We prepare standard forms with your information only. Consult an attorney for complex structures or custom operating agreements."
+          },
+          {
+            question: "Does Pennsylvania require annual reports for LLCs?",
+            answer: "No. PA doesn't require annual reports but requires decennial (every 10 years) filings. We track these deadlines and remind you when due."
+          },
+          {
+            question: "What happens if I receive a lawsuit at my registered office?",
+            answer: "We accept service of process, then immediately forward all legal documents to you via email and certified mail. You're responsible for responding—we're the official receiving address."
+          },
+          {
+            question: "Can I use a P.O. Box as my registered office?",
+            answer: "No. PA law requires a physical street address—P.O. Boxes aren't acceptable. Our CROP service provides the required physical PA address."
+          },
+          {
+            question: "What's included in the Business Launch Pack?",
+            answer: "The $349 pack includes LLC formation, 1 year registered office, EIN assistance, operating agreement template, compliance calendar, and 2 RON credits. PA state fees ($125+) additional."
+          },
           {
             question: "What's the difference between a registered office and a registered agent?",
             answer: "Pennsylvania uses the term 'Commercial Registered Office Provider' (CROP) instead of 'registered agent.' Under 15 Pa.C.S. § 109 and § 415, CROPs must register with the PA Department of State Bureau of Corporations. We are a registered CROP and provide a physical Pennsylvania address where your business can receive legal documents, service of process, and official state correspondence. This is different from other states' registered agent systems."

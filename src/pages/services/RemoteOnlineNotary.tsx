@@ -388,6 +388,10 @@ const RemoteOnlineNotary = () => {
             answer: "Most sessions are completed in 5-10 minutes. We handle everything efficiently while maintaining accuracy and legal compliance."
           },
           {
+            question: "Are there documents that cannot be notarized via RON in PA?",
+            answer: "Most documents can be notarized remotely. However, wills and testamentary trusts cannot be notarized via RON in Pennsylvania. Some institutions may not accept RON for specific forms—check first."
+          },
+          {
             question: "Can I notarize multiple documents in one session?",
             answer: "Yes! You can notarize multiple documents during a single session for $50 total. Each document is notarized during the same video session."
           },

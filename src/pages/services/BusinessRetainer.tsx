@@ -316,6 +316,18 @@ const BusinessRetainer = () => {
           {
             question: "What types of businesses benefit most from retainer plans?",
             answer: "Law firms, real estate agencies, title companies, financial services firms, HR departments, and healthcare facilities with recurring notarization needs see the most value and cost savings."
+          },
+          {
+            question: "Are prepaid notary packages legal in Pennsylvania?",
+            answer: "Yes, with proper structure. PA law requires each notarial act be charged separately at the maximum fee ($5-15). Retainer packages are legal as long as individual notarial acts remain separately identifiable and comply with fee limits. Our plans are structured in full compliance with PA notary law."
+          },
+          {
+            question: "Do you offer mobile notary service for retainer clients?",
+            answer: "Yes! Priority mobile service is included in Professional and Enterprise plans. We come to your office location throughout Erie and surrounding counties. Travel fees may apply for locations outside Erie city limits."
+          },
+          {
+            question: "Can we customize a plan for our specific needs?",
+            answer: "Absolutely. Enterprise clients receive fully customized service level agreements (SLAs) tailored to their volume, response time requirements, and specific document types. Contact us for a consultation and custom quote."
           }
         ]}
       />

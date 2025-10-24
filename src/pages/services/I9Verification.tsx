@@ -70,6 +70,18 @@ const I9Verification = () => {
     {
       question: "Is this service compliant with DHS requirements?",
       answer: "Absolutely. We follow all Department of Homeland Security guidelines for I-9 verification. Note: This is NOT a notarization service—it's performed as an authorized representative per DHS rules."
+    },
+    {
+      question: "Can I-9 forms be notarized instead of using an authorized representative?",
+      answer: "No. USCIS explicitly prohibits notarizing Form I-9. Federal regulations require I-9 Section 2 completion by the employer or an authorized representative—never a notary acting in their notarial capacity. Our service complies with USCIS guidelines as an authorized representative only."
+    },
+    {
+      question: "What documents do employees need for I-9 verification?",
+      answer: "Employees must present original documents from the USCIS I-9 acceptable documents list: List A (passport, permanent resident card) OR combination of List B (driver's license, state ID) + List C (Social Security card, birth certificate). We verify originals only—no copies or expired documents."
+    },
+    {
+      question: "How long must employers retain completed I-9 forms?",
+      answer: "Federal law requires employers to retain I-9 forms for 3 years after the date of hire OR 1 year after employment ends, whichever is later. Employers must produce I-9 forms within 3 business days of an ICE inspection request. We provide secure digital copies for your records."
     }
   ];
 
