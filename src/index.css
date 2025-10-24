@@ -49,6 +49,8 @@
     --trust-blue: 221 83% 53%;
     --action-cyan: 186 100% 42%;
     --urgency-amber: 38 92% 50%;
+    --amber: 38 92% 50%;
+    --amber-foreground: 217 33% 17%;
     --success-green: 152 69% 39%;
     --neutral-dark: 217 19% 27%;
     --neutral-light: 214 32% 91%;
@@ -99,6 +101,8 @@
     --trust-blue: 221 83% 60%;
     --action-cyan: 186 100% 50%;
     --urgency-amber: 38 92% 55%;
+    --amber: 38 92% 55%;
+    --amber-foreground: 0 0% 100%;
     --success-green: 152 69% 45%;
     --neutral-dark: 217 19% 17%;
     --neutral-light: 214 32% 91%;
