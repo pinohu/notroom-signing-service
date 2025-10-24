@@ -163,21 +163,21 @@ const Pricing = () => {
 
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">Certified Copies</h3>
-              <div className="text-4xl font-bold mb-4">$20</div>
+              <div className="text-4xl font-bold mb-4">$20+</div>
               <p className="text-muted-foreground mb-2">Per document</p>
-              <p className="text-sm text-muted-foreground mb-6">Official notary certification</p>
+              <p className="text-sm text-muted-foreground mb-6">At office $20 • By mail $25 • Mobile $20 + travel</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Birth certificates, diplomas, passports</span>
+                  <span className="text-sm">At office: $20/doc</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Same-day service available</span>
+                  <span className="text-sm">By mail: $25/doc (includes shipping)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Legally valid worldwide</span>
+                  <span className="text-sm">Mobile: $20/doc + $1.50/mile</span>
                 </li>
               </ul>
               <Button className="w-full" onClick={() => navigate("/services/certified-copies")}>Learn More</Button>
@@ -187,19 +187,19 @@ const Pricing = () => {
               <h3 className="text-2xl font-bold mb-2">Document Preparation</h3>
               <div className="text-4xl font-bold mb-4">$100+</div>
               <p className="text-muted-foreground mb-2">Varies by complexity</p>
-              <p className="text-sm text-muted-foreground mb-6">Affidavits, contracts, agreements, legal forms</p>
+              <p className="text-sm text-muted-foreground mb-6">At office/remote $100 • Mobile $100 + travel</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Professional formatting</span>
+                  <span className="text-sm">At office or remote: $100+</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Mobile service: $100 + $1.50/mile</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
                   <span className="text-sm">Quick turnaround (1-2 days)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Affordable vs attorney fees</span>
                 </li>
               </ul>
               <Button className="w-full" onClick={() => navigate("/services/document-preparation")}>Learn More</Button>
@@ -251,21 +251,21 @@ const Pricing = () => {
 
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">Passport Photos</h3>
-              <div className="text-4xl font-bold mb-4">$15</div>
+              <div className="text-4xl font-bold mb-4">$15+</div>
               <p className="text-muted-foreground mb-2">Per session</p>
-              <p className="text-sm text-muted-foreground mb-6">Official passport & visa photos</p>
+              <p className="text-sm text-muted-foreground mb-6">At office $15 • Mobile $15 + travel</p>
               <ul className="space-y-3 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">At office: $15</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Mobile service: $15 + $1.50/mile</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
                   <span className="text-sm">Government-compliant photos</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Digital & print copies</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Quick turnaround</span>
                 </li>
               </ul>
               <Button className="w-full" onClick={() => navigate("/services/passport-photos")}>Learn More</Button>
@@ -274,20 +274,20 @@ const Pricing = () => {
             <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">Translation Certification</h3>
               <div className="text-4xl font-bold mb-4">$35+</div>
-              <p className="text-muted-foreground mb-2">Per page</p>
-              <p className="text-sm text-muted-foreground mb-6">Certified translation services</p>
+              <p className="text-muted-foreground mb-2">Per page • Remote service</p>
+              <p className="text-sm text-muted-foreground mb-6">Mail or email delivery</p>
               <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Remote service: $35/page</span>
+                </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
                   <span className="text-sm">Immigration & legal documents</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Notarized certification</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Multiple language support</span>
+                  <span className="text-sm">Notarized certification included</span>
                 </li>
               </ul>
               <Button className="w-full" onClick={() => navigate("/services/translation-certification")}>Learn More</Button>

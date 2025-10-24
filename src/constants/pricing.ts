@@ -65,12 +65,30 @@ export const PRICING = {
   CERTIFIED_COPIES: {
     display: "$20",
     perDocument: 20,
-    description: "Certified copy services for official documents"
+    office: 20,
+    remote: 25,
+    description: "At office or by mail"
+  },
+  CERTIFIED_COPIES_MOBILE: {
+    display: "$20 + mileage",
+    perDocument: 20,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "Mobile certified copy service with travel"
   },
   DOCUMENT_PREP: {
     display: "$100+",
     basePrice: 100,
+    office: 100,
+    remote: 100,
     description: "Professional document preparation services"
+  },
+  DOCUMENT_PREP_MOBILE: {
+    display: "$100 + mileage",
+    basePrice: 100,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "Mobile document preparation with travel"
   },
   FINGERPRINTING: {
     display: "$35",
@@ -99,12 +117,21 @@ export const PRICING = {
   PASSPORT_PHOTOS: {
     display: "$15",
     perSession: 15,
-    description: "Official passport and visa photos"
+    office: 15,
+    description: "At our office location"
+  },
+  PASSPORT_PHOTOS_MOBILE: {
+    display: "$15 + mileage",
+    perSession: 15,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "Mobile passport photo service with travel"
   },
   TRANSLATION_CERT: {
     display: "$35+",
     perPage: 35,
-    description: "Translation certification services"
+    remote: 35,
+    description: "Remote service - mail or email"
   },
   VEHICLE_TITLE: {
     display: "$40",

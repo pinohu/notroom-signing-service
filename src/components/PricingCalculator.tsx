@@ -30,7 +30,10 @@ const PricingCalculator = () => {
                          (service === "i9" && urgency === "inPerson") ||
                          (service === "fingerprinting" && serviceLocation === "mobile") ||
                          (service === "witness" && serviceLocation === "mobile") ||
-                         (service === "vehicleTitle" && serviceLocation === "mobile");
+                         (service === "vehicleTitle" && serviceLocation === "mobile") ||
+                         (service === "certifiedCopies" && serviceLocation === "mobile") ||
+                         (service === "documentPrep" && serviceLocation === "mobile") ||
+                         (service === "passportPhotos" && serviceLocation === "mobile");
     if (needsDistance && destinationAddress.length > 10) {
       const timer = setTimeout(async () => {
         setIsCalculatingDistance(true);
@@ -114,11 +117,38 @@ const PricingCalculator = () => {
         breakdown.total = PRICING.I9_VERIFICATION.remote;
       }
     } else if (service === "certifiedCopies") {
-      breakdown.serviceFee = PRICING.CERTIFIED_COPIES.perDocument * documents;
-      breakdown.total = breakdown.serviceFee;
+      if (serviceLocation === "mobile") {
+        breakdown.serviceFee = PRICING.CERTIFIED_COPIES_MOBILE.perDocument * documents;
+        breakdown.total = breakdown.serviceFee;
+        
+        if (distance !== null) {
+          const roundTripDistance = calculateRoundTripDistance(distance);
+          breakdown.distance = roundTripDistance;
+          breakdown.mileageFee = roundTripDistance * PRICING.CERTIFIED_COPIES_MOBILE.mileageRate;
+          breakdown.total += breakdown.mileageFee;
+        }
+      } else if (serviceLocation === "remote") {
+        breakdown.serviceFee = PRICING.CERTIFIED_COPIES.remote * documents;
+        breakdown.total = breakdown.serviceFee;
+      } else {
+        breakdown.serviceFee = PRICING.CERTIFIED_COPIES.office * documents;
+        breakdown.total = breakdown.serviceFee;
+      }
     } else if (service === "documentPrep") {
-      breakdown.serviceFee = PRICING.DOCUMENT_PREP.basePrice;
-      breakdown.total = PRICING.DOCUMENT_PREP.basePrice;
+      if (serviceLocation === "mobile") {
+        breakdown.serviceFee = PRICING.DOCUMENT_PREP_MOBILE.basePrice;
+        breakdown.total = breakdown.serviceFee;
+        
+        if (distance !== null) {
+          const roundTripDistance = calculateRoundTripDistance(distance);
+          breakdown.distance = roundTripDistance;
+          breakdown.mileageFee = roundTripDistance * PRICING.DOCUMENT_PREP_MOBILE.mileageRate;
+          breakdown.total += breakdown.mileageFee;
+        }
+      } else {
+        breakdown.serviceFee = PRICING.DOCUMENT_PREP.basePrice;
+        breakdown.total = breakdown.serviceFee;
+      }
     } else if (service === "fingerprinting") {
       if (serviceLocation === "mobile") {
         breakdown.serviceFee = PRICING.FINGERPRINTING_MOBILE.baseFee;
@@ -150,8 +180,20 @@ const PricingCalculator = () => {
         breakdown.total = PRICING.WITNESS_SERVICE.baseFee;
       }
     } else if (service === "passportPhotos") {
-      breakdown.serviceFee = PRICING.PASSPORT_PHOTOS.perSession;
-      breakdown.total = PRICING.PASSPORT_PHOTOS.perSession;
+      if (serviceLocation === "mobile") {
+        breakdown.serviceFee = PRICING.PASSPORT_PHOTOS_MOBILE.perSession;
+        breakdown.total = breakdown.serviceFee;
+        
+        if (distance !== null) {
+          const roundTripDistance = calculateRoundTripDistance(distance);
+          breakdown.distance = roundTripDistance;
+          breakdown.mileageFee = roundTripDistance * PRICING.PASSPORT_PHOTOS_MOBILE.mileageRate;
+          breakdown.total += breakdown.mileageFee;
+        }
+      } else {
+        breakdown.serviceFee = PRICING.PASSPORT_PHOTOS.office;
+        breakdown.total = breakdown.serviceFee;
+      }
     } else if (service === "translationCert") {
       breakdown.serviceFee = PRICING.TRANSLATION_CERT.perPage;
       breakdown.total = PRICING.TRANSLATION_CERT.perPage;
@@ -269,7 +311,7 @@ const PricingCalculator = () => {
           </div>
         )}
 
-        {(service === "fingerprinting" || service === "witness" || service === "vehicleTitle") && (
+        {(service === "fingerprinting" || service === "witness" || service === "vehicleTitle" || service === "certifiedCopies" || service === "documentPrep" || service === "passportPhotos") && (
           <div>
             <Label htmlFor="serviceLocation">Service Location</Label>
             <Select value={serviceLocation} onValueChange={setServiceLocation}>
@@ -278,6 +320,7 @@ const PricingCalculator = () => {
               </SelectTrigger>
               <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
                 <SelectItem value="office">At Our Office</SelectItem>
+                {service === "certifiedCopies" && <SelectItem value="remote">By Mail (+$5)</SelectItem>}
                 <SelectItem value="mobile">Mobile (We Come to You)</SelectItem>
               </SelectContent>
             </Select>
@@ -297,7 +340,7 @@ const PricingCalculator = () => {
           </div>
         )}
 
-        {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile") || (service === "vehicleTitle" && serviceLocation === "mobile")) && (
+        {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile") || (service === "vehicleTitle" && serviceLocation === "mobile") || (service === "certifiedCopies" && serviceLocation === "mobile") || (service === "documentPrep" && serviceLocation === "mobile") || (service === "passportPhotos" && serviceLocation === "mobile")) && (
           <div>
             <Label htmlFor="destination">Your Address (for distance calculation)</Label>
             <div className="relative">
@@ -386,7 +429,7 @@ const PricingCalculator = () => {
             </div>
           )}
           
-          {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile") || (service === "vehicleTitle" && serviceLocation === "mobile")) && breakdown.distance !== undefined && breakdown.mileageFee !== undefined && (
+          {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile") || (service === "vehicleTitle" && serviceLocation === "mobile") || (service === "certifiedCopies" && serviceLocation === "mobile") || (service === "documentPrep" && serviceLocation === "mobile") || (service === "passportPhotos" && serviceLocation === "mobile")) && breakdown.distance !== undefined && breakdown.mileageFee !== undefined && (
             <>
               <div className="flex justify-between text-sm border-t pt-2">
                 <span className="text-muted-foreground">
