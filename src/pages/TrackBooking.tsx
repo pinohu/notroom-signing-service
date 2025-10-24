@@ -10,20 +10,22 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Search, Calendar, Clock, FileText, MapPin, User, Mail, Phone } from "lucide-react";
 import { format } from "date-fns";
+import { emailSchema } from "@/utils/validation";
+import type { Tables } from "@/integrations/supabase/types";
 
 const TrackBooking = () => {
   const [bookingId, setBookingId] = useState("");
   const [email, setEmail] = useState("");
-  const [booking, setBooking] = useState<any>(null);
+  const [booking, setBooking] = useState<Tables<"bookings"> | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const navigate = useNavigate();
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "pending": return "bg-yellow-500/10 text-yellow-500 border-yellow-500/20";
-      case "confirmed": return "bg-green-500/10 text-green-500 border-green-500/20";
-      case "completed": return "bg-blue-500/10 text-blue-500 border-blue-500/20";
-      case "cancelled": return "bg-red-500/10 text-red-500 border-red-500/20";
+      case "pending": return "bg-warning/10 text-warning border-warning/20";
+      case "confirmed": return "bg-success/10 text-success border-success/20";
+      case "completed": return "bg-primary/10 text-primary border-primary/20";
+      case "cancelled": return "bg-destructive/10 text-destructive border-destructive/20";
       default: return "bg-muted text-muted-foreground";
     }
   };
@@ -40,17 +42,42 @@ const TrackBooking = () => {
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate inputs
+    const trimmedEmail = email.toLowerCase().trim();
+    const trimmedBookingId = bookingId.trim();
+    
+    if (!trimmedBookingId) {
+      toast.error("Please enter a Booking ID");
+      return;
+    }
+    
+    const emailValidation = emailSchema.safeParse(trimmedEmail);
+    if (!emailValidation.success) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+    
     setIsSearching(true);
 
     try {
       const { data, error } = await supabase
         .from("bookings")
         .select("*")
-        .eq("id", bookingId)
-        .eq("email", email.toLowerCase().trim())
-        .single();
+        .eq("id", trimmedBookingId)
+        .eq("email", trimmedEmail)
+        .maybeSingle();
 
-      if (error || !data) {
+      if (error) {
+        if (import.meta.env.DEV) {
+          console.error("Error fetching booking:", error);
+        }
+        toast.error("An error occurred. Please try again.");
+        setBooking(null);
+        return;
+      }
+
+      if (!data) {
         toast.error("Booking not found. Please check your Booking ID and email address.");
         setBooking(null);
         return;
@@ -59,7 +86,11 @@ const TrackBooking = () => {
       setBooking(data);
       toast.success("Booking found!");
     } catch (error) {
+      if (import.meta.env.DEV) {
+        console.error("Unexpected error:", error);
+      }
       toast.error("An error occurred. Please try again.");
+      setBooking(null);
     } finally {
       setIsSearching(false);
     }
