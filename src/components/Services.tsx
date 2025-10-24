@@ -1,15 +1,18 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Monitor, Car, Home, Check, Users, Building, Globe, FileCheck, FileText, Fingerprint, UserCheck } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Monitor, Car, Home, Check, Users, Building, Globe, FileCheck, FileText, Fingerprint, UserCheck, Camera, Languages, CarFront, Heart, Scale, Mail, FileInput, Search } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { useNavigate } from "react-router-dom";
-import { memo } from "react";
+import { memo, useState } from "react";
 
 const Services = memo(() => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("popular");
 
-  const services = [
+  // Core/Popular Services - Most frequently used
+  const popularServices = [
     {
       icon: Monitor,
       badge: "Most Popular",
@@ -182,111 +185,44 @@ const Services = memo(() => {
     }
   ];
 
-  const additionalServices = [
-    {
-      icon: Monitor,
-      badge: "Quick",
-      title: "Passport Photos",
-      price: "$15",
-      priceDetail: "Per session | Digital & print",
-      description: "Government-compliant passport and visa photos. Quick turnaround with both digital and print copies provided.",
-      features: [
-        "Government-compliant photos",
-        "Digital & print copies",
-        "Same-day service",
-        "All visa types accepted"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/passport-photos"
-    },
-    {
-      icon: FileText,
-      badge: "Certified",
-      title: "Translation Certification",
-      price: "$35+",
-      priceDetail: "Per page | Multiple languages",
-      description: "Notarized certification of translated documents. Perfect for immigration, legal, and business documents.",
-      features: [
-        "Notarized certification",
-        "Immigration documents",
-        "Legal translations",
-        "Multiple languages"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/translation-certification"
-    },
-    {
-      icon: Car,
-      badge: "Mobile",
-      title: "Vehicle Title Transfer",
-      price: "$40+",
-      priceDetail: "$40 + $1.50/mile travel",
-      description: "PA vehicle title notarization. We can come to you or meet at a convenient location for title transfers.",
-      features: [
-        "Title notarization",
-        "Mobile service available",
-        "Fast & convenient",
-        "Buyer & seller present"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/vehicle-title-transfer"
-    },
-    {
-      icon: Users,
-      badge: "Celebrations",
-      title: "Wedding Officiant",
-      price: "$200",
-      priceDetail: "Full ceremony service",
-      description: "Professional wedding officiant services throughout Pennsylvania. Personalized ceremonies for your special day.",
-      features: [
-        "Personalized ceremonies",
-        "Marriage license signing",
-        "All locations welcome",
-        "Experienced officiant"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/wedding-officiant"
-    },
-    {
-      icon: FileCheck,
-      badge: "Legal",
-      title: "Process Serving",
-      price: "$75+",
-      priceDetail: "$75 + $1.50/mile travel",
-      description: "Professional legal document delivery service. Proof of service provided for court filings.",
-      features: [
-        "Legal document delivery",
-        "Proof of service",
-        "Professional & discreet",
-        "Fast turnaround"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/process-serving"
-    },
+  // Business & Legal Services
+  const businessServices = [
     {
       icon: Building,
       badge: "Business",
-      title: "Virtual Mailbox",
-      price: "$50/mo",
-      priceDetail: "Monthly subscription",
-      description: "Professional business address with mail scanning and forwarding. Perfect for remote businesses and entrepreneurs.",
+      title: "Registered Office & Filings",
+      price: "$149",
+      priceDetail: "Annual office | LLC formation $249",
+      description: "PA Commercial Registered Office Provider (CROP). LLC formation, annual reports, and business compliance services.",
       features: [
-        "PA street address",
-        "Mail scanning",
-        "Package handling",
-        "Forwarding included"
+        "Professional registered office address",
+        "LLC formation with EIN: $249",
+        "Annual renewals & mail: $99",
+        "Registered CROP with PA DOS"
       ],
       ctaText: "Learn More",
       featured: false,
-      link: "/services/virtual-mailbox"
+      link: "/services/registered-office"
     },
     {
       icon: FileText,
+      badge: "Affordable",
+      title: "Document Preparation",
+      price: "$100+",
+      priceDetail: "Varies by complexity",
+      description: "Professional document preparation. Affidavits, contracts, agreements, legal forms. Save money vs attorney fees.",
+      features: [
+        "Professional formatting",
+        "Quick turnaround (1-2 days)",
+        "Review for completeness",
+        "Affordable alternative to lawyers"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/document-preparation"
+    },
+    {
+      icon: FileInput,
       badge: "Filing",
       title: "UCC Filing",
       price: "$125",
@@ -303,7 +239,113 @@ const Services = memo(() => {
       link: "/services/ucc-filing"
     },
     {
-      icon: FileCheck,
+      icon: Mail,
+      badge: "Business",
+      title: "Virtual Mailbox",
+      price: "$50/mo",
+      priceDetail: "Monthly subscription",
+      description: "Professional business address with mail scanning and forwarding. Perfect for remote businesses and entrepreneurs.",
+      features: [
+        "PA street address",
+        "Mail scanning",
+        "Package handling",
+        "Forwarding included"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/virtual-mailbox"
+    }
+  ];
+
+  // Specialized Services
+  const specializedServices = [
+    {
+      icon: Camera,
+      badge: "Quick",
+      title: "Passport Photos",
+      price: "$15",
+      priceDetail: "Per session | Digital & print",
+      description: "Government-compliant passport and visa photos. Quick turnaround with both digital and print copies provided.",
+      features: [
+        "Government-compliant photos",
+        "Digital & print copies",
+        "Same-day service",
+        "All visa types accepted"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/passport-photos"
+    },
+    {
+      icon: Languages,
+      badge: "Certified",
+      title: "Translation Certification",
+      price: "$35+",
+      priceDetail: "Per page | Multiple languages",
+      description: "Notarized certification of translated documents. Perfect for immigration, legal, and business documents.",
+      features: [
+        "Notarized certification",
+        "Immigration documents",
+        "Legal translations",
+        "Multiple languages"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/translation-certification"
+    },
+    {
+      icon: CarFront,
+      badge: "Mobile",
+      title: "Vehicle Title Transfer",
+      price: "$40+",
+      priceDetail: "$40 + $1.50/mile travel",
+      description: "PA vehicle title notarization. We can come to you or meet at a convenient location for title transfers.",
+      features: [
+        "Title notarization",
+        "Mobile service available",
+        "Fast & convenient",
+        "Buyer & seller present"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/vehicle-title-transfer"
+    },
+    {
+      icon: Heart,
+      badge: "Celebrations",
+      title: "Wedding Officiant",
+      price: "$200",
+      priceDetail: "Full ceremony service",
+      description: "Professional wedding officiant services throughout Pennsylvania. Personalized ceremonies for your special day.",
+      features: [
+        "Personalized ceremonies",
+        "Marriage license signing",
+        "All locations welcome",
+        "Experienced officiant"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/wedding-officiant"
+    },
+    {
+      icon: Scale,
+      badge: "Legal",
+      title: "Process Serving",
+      price: "$75+",
+      priceDetail: "$75 + $1.50/mile travel",
+      description: "Professional legal document delivery service. Proof of service provided for court filings.",
+      features: [
+        "Legal document delivery",
+        "Proof of service",
+        "Professional & discreet",
+        "Fast turnaround"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/process-serving"
+    },
+    {
+      icon: Search,
       badge: "Retrieval",
       title: "Document Retrieval",
       price: "$75+",
@@ -321,8 +363,6 @@ const Services = memo(() => {
     }
   ];
 
-  const allServices = [...services, ...additionalServices];
-
   const handleServiceClick = (link: string) => {
     navigate(link);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -332,87 +372,149 @@ const Services = memo(() => {
     document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const renderServiceCard = (service: typeof popularServices[0], index: number) => {
+    const Icon = service.icon;
+    return (
+      <ScrollReveal key={`${service.title}-${index}`} delay={index * 100}>
+        <Card 
+          className={`relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group h-full ${
+            service.featured ? 'border-[hsl(var(--urgency-amber))] border-4' : ''
+          }`}
+          role="article"
+          aria-label={`${service.title} service card`}
+        >
+          {/* Badge */}
+          {service.badge && (
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+              <Badge className="bg-amber text-primary-foreground px-4 py-1 text-sm font-semibold shadow-lg">
+                {service.badge}
+              </Badge>
+            </div>
+          )}
+
+          <CardContent className="p-8">
+            {/* Icon */}
+            <div className="flex justify-center mb-6">
+              <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
+                <Icon className="w-10 h-10 text-primary" />
+              </div>
+            </div>
+
+            {/* Title */}
+            <h3 className="text-2xl font-bold text-center mb-3 text-foreground">
+              {service.title}
+            </h3>
+
+            {/* Price */}
+            <div className="text-center mb-6">
+              <div className="text-4xl font-bold text-primary">{service.price}</div>
+              <div className="text-sm text-muted-foreground">{service.priceDetail}</div>
+            </div>
+
+            {/* Description */}
+            <p className="text-center text-muted-foreground mb-6 leading-relaxed">
+              {service.description}
+            </p>
+
+            {/* Features */}
+            <ul className="space-y-3 mb-8">
+              {service.features.map((feature, idx) => (
+                <li key={idx} className="flex items-start gap-3">
+                  <Check className="w-5 h-5 text-[hsl(var(--success-green))] flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-foreground">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA Button */}
+            <Button 
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 shadow-md hover:shadow-lg transition-all"
+              onClick={() => handleServiceClick(service.link)}
+            >
+              {service.ctaText} →
+            </Button>
+          </CardContent>
+        </Card>
+      </ScrollReveal>
+    );
+  };
+
   return (
     <section id="services" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div className="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-full">
             <span className="text-primary font-semibold text-sm">Complete Notary & Business Services</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Professional Services in Erie & Surrounding Counties
           </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Browse our services by category to find exactly what you need
+          </p>
         </div>
 
-        {/* Service Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {allServices.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <ScrollReveal key={index} delay={index * 150}>
-                <Card 
-                  className={`relative transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 group ${
-                    service.featured ? 'border-[hsl(var(--urgency-amber))] border-4' : ''
-                  }`}
-                  role="article"
-                  aria-label={`${service.title} service card`}
-                >
-                {/* Badge */}
-                {service.badge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                    <Badge className="bg-amber text-primary-foreground px-4 py-1 text-sm font-semibold shadow-lg">
-                      {service.badge}
-                    </Badge>
-                  </div>
-                )}
+        {/* Tabbed Service Categories */}
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-12 h-auto">
+            <TabsTrigger value="popular" className="text-sm md:text-base py-3">
+              <Monitor className="w-4 h-4 mr-2" />
+              Most Popular
+            </TabsTrigger>
+            <TabsTrigger value="business" className="text-sm md:text-base py-3">
+              <Building className="w-4 h-4 mr-2" />
+              Business Services
+            </TabsTrigger>
+            <TabsTrigger value="specialized" className="text-sm md:text-base py-3">
+              <Globe className="w-4 h-4 mr-2" />
+              Specialized
+            </TabsTrigger>
+          </TabsList>
 
-                <CardContent className="p-8">
-                  {/* Icon */}
-                  <div className="flex justify-center mb-6">
-                    <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Icon className="w-10 h-10 text-primary" />
-                    </div>
-                  </div>
+          {/* Popular Services Tab */}
+          <TabsContent value="popular" className="mt-0">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {popularServices.map((service, index) => renderServiceCard(service, index))}
+            </div>
+          </TabsContent>
 
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold text-center mb-3 text-foreground">
-                    {service.title}
-                  </h3>
+          {/* Business Services Tab */}
+          <TabsContent value="business" className="mt-0">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {businessServices.map((service, index) => renderServiceCard(service, index))}
+            </div>
+          </TabsContent>
 
-                  {/* Price */}
-                  <div className="text-center mb-6">
-                    <div className="text-4xl font-bold text-primary">{service.price}</div>
-                    <div className="text-sm text-muted-foreground">{service.priceDetail}</div>
-                  </div>
+          {/* Specialized Services Tab */}
+          <TabsContent value="specialized" className="mt-0">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+              {specializedServices.map((service, index) => renderServiceCard(service, index))}
+            </div>
+          </TabsContent>
+        </Tabs>
 
-                  {/* Description */}
-                  <p className="text-center text-muted-foreground mb-6 leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  {/* Features */}
-                  <ul className="space-y-3 mb-8">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-[hsl(var(--success-green))] flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-foreground">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA Button */}
-                  <Button 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 shadow-md hover:shadow-lg transition-all"
-                    onClick={() => handleServiceClick(service.link)}
-                  >
-                    {service.ctaText} →
-                  </Button>
-                </CardContent>
-              </Card>
-              </ScrollReveal>
-            );
-          })}
+        {/* View All Services CTA */}
+        <div className="text-center mt-12">
+          <p className="text-muted-foreground mb-4">
+            Need help choosing? View our complete pricing guide or use our calculator.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => navigate("/pricing")}
+            >
+              View All Pricing
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => navigate("/calculator")}
+            >
+              Calculate Your Price
+            </Button>
+          </div>
         </div>
       </div>
     </section>
