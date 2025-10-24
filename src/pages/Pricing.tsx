@@ -316,50 +316,6 @@ const Pricing = () => {
             </Card>
 
             <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Wedding Officiant</h3>
-              <div className="text-4xl font-bold mb-4">$200</div>
-              <p className="text-muted-foreground mb-2">Full ceremony service</p>
-              <p className="text-sm text-muted-foreground mb-6">Professional wedding officiant in PA</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Personalized ceremonies</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Marriage license signing</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">All locations welcome</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/wedding-officiant")}>Learn More</Button>
-            </Card>
-
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Process Serving</h3>
-              <div className="text-4xl font-bold mb-4">$75 + travel</div>
-              <p className="text-muted-foreground mb-2">Per serve</p>
-              <p className="text-sm text-muted-foreground mb-6">$75 base + $1.50/mile from Erie</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Legal document delivery</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Proof of service provided</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Professional & discreet</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/process-serving")}>Learn More</Button>
-            </Card>
-
-            <Card className="p-8">
               <h3 className="text-2xl font-bold mb-2">Virtual Mailbox</h3>
               <div className="text-4xl font-bold mb-4">$50/mo</div>
               <p className="text-muted-foreground mb-2">Monthly service</p>
@@ -481,14 +437,6 @@ const Pricing = () => {
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
                   <span><strong>Vehicle Title Transfer:</strong> $40 base + $1.50/mile round-trip travel. PA title notarization with mobile service available.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Wedding Officiant:</strong> $200 flat fee. Professional wedding ceremony officiant services throughout Pennsylvania.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Process Serving:</strong> $75 base + $1.50/mile round-trip travel. Legal document delivery with proof of service.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />

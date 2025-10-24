@@ -311,40 +311,6 @@ const Services = memo(() => {
       link: "/services/vehicle-title-transfer"
     },
     {
-      icon: Heart,
-      badge: "Celebrations",
-      title: "Wedding Officiant",
-      price: "$200",
-      priceDetail: "Full ceremony service",
-      description: "Professional wedding officiant services throughout Pennsylvania. Personalized ceremonies for your special day.",
-      features: [
-        "Personalized ceremonies",
-        "Marriage license signing",
-        "All locations welcome",
-        "Experienced officiant"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/wedding-officiant"
-    },
-    {
-      icon: Scale,
-      badge: "Legal",
-      title: "Process Serving",
-      price: "$75+",
-      priceDetail: "$75 + $1.50/mile travel",
-      description: "Professional legal document delivery service. Proof of service provided for court filings.",
-      features: [
-        "Legal document delivery",
-        "Proof of service",
-        "Professional & discreet",
-        "Fast turnaround"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/process-serving"
-    },
-    {
       icon: Search,
       badge: "Retrieval",
       title: "Document Retrieval",
