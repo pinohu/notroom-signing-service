@@ -112,7 +112,7 @@ const Header = () => {
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
-                    <ul className="grid w-[500px] gap-2 p-4 bg-card/98" role="menu">
+                    <ul className="grid w-[95vw] max-w-[500px] gap-2 p-4 bg-card/98" role="menu">
                       {services.map((service) => (
                         <li key={service.path} role="none">
                           <NavigationMenuLink asChild>
@@ -142,7 +142,7 @@ const Header = () => {
                     Service Areas
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
-                    <ul className="grid w-[300px] gap-2 p-4 bg-card/98" role="menu">
+                    <ul className="grid w-[95vw] max-w-[300px] gap-2 p-4 bg-card/98" role="menu">
                       {areas.map((area) => (
                         <li key={area.path} role="none">
                           <NavigationMenuLink asChild>
