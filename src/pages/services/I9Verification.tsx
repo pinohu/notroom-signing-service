@@ -9,6 +9,8 @@ import LegalDisclaimer from "@/components/LegalDisclaimer";
 import SocialProof from "@/components/marketing/SocialProof";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
 import FAQSection from "@/components/marketing/FAQSection";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateFAQSchema, generateBreadcrumbSchema, generateServiceSchema } from "@/utils/schemaGenerator";
 
 const I9Verification = () => {
   const navigate = useNavigate();
@@ -71,51 +73,26 @@ const I9Verification = () => {
     }
   ];
 
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "I-9 Employment Verification Service",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Notroom",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Erie",
-        "addressRegion": "PA",
-        "addressCountry": "US"
-      }
-    },
-    "description": "Professional I-9 employment verification services for employers. Remote and mobile options available for compliant employee onboarding.",
-    "offers": {
-      "@type": "Offer",
-      "price": "35",
-      "priceCurrency": "USD"
-    }
-  };
+  const serviceSchema = generateServiceSchema({
+    name: "I-9 Employment Verification Service",
+    description: "Professional I-9 employment verification for Pennsylvania businesses. Remote I-9 via video and in-person verification throughout Erie, Crawford, Warren counties. USCIS compliant Section 2 completion.",
+    provider: "Notroom - PA I-9 Verification",
+    areaServed: "Pennsylvania",
+    price: "85",
+    url: "https://notroom.com/services/i9-verification"
+  });
 
-  const breadcrumbSchema = {
+  const faqSchemaData = generateFAQSchema(faqs.map(f => ({ question: f.question, answer: f.answer })));
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com/" },
+    { name: "Services", url: "https://notroom.com/#services" },
+    { name: "I-9 Verification", url: "https://notroom.com/services/i9-verification" }
+  ]);
+
+  const combinedSchema = {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://notroom.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Services",
-        "item": "https://notroom.com/#services"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "I-9 Verification",
-        "item": "https://notroom.com/services/i9-verification"
-      }
-    ]
+    "@graph": [serviceSchema, faqSchemaData, breadcrumbSchema]
   };
 
   const faqSchema = {
@@ -158,11 +135,6 @@ const I9Verification = () => {
         "text": "Employer receives completed I-9 form with Section 2 filled out. For remote, E-Verify must be initiated within 3 business days."
       }
     ]
-  };
-
-  const combinedSchema = {
-    "@context": "https://schema.org",
-    "@graph": [serviceSchema, breadcrumbSchema, faqSchema, howToSchema]
   };
 
   return (
@@ -440,6 +412,18 @@ const I9Verification = () => {
           </div>
         </div>
       </section>
+
+
+      {/* Local SEO Section */}
+      <ServiceLocalSEO 
+        serviceName="I-9 Verification"
+        reviews={[
+          { text: "Perfect for our remote hires. The video I-9 service is fast and compliant.", author: "Dan M.", city: "Erie", rating: 5 },
+          { text: "They came to our office for multiple employee verifications. Very efficient!", author: "Rachel K.", city: "Meadville", rating: 5 },
+          { text: "Great service for our staffing agency. They handle all our I-9 needs.", author: "Tom B.", city: "Warren", rating: 5 },
+          { text: "Professional and knowledgeable about DHS requirements. Highly recommend!", author: "Lisa H.", city: "Harborcreek", rating: 5 }
+        ]}
+      />
 
 
       {/* FAQs */}

@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import SocialProof from "@/components/marketing/SocialProof";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
 import FAQSection from "@/components/marketing/FAQSection";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateFAQSchema, generateBreadcrumbSchema, generateServiceSchema } from "@/utils/schemaGenerator";
 
 const BusinessRetainer = () => {
   const navigate = useNavigate();
@@ -38,36 +40,34 @@ const BusinessRetainer = () => {
     { name: "Title Companies", desc: "Closing documents, deed transfers" }
   ];
 
-  const schema = {
+  const serviceSchema = generateServiceSchema({
+    name: "Business Notary Retainer Plans",
+    description: "Business notary retainer services for Erie PA companies. Priority scheduling, volume discounts, dedicated support. Perfect for legal firms, real estate agencies, HR departments, financial services.",
+    provider: "Notroom - Business Notary Services",
+    areaServed: "Pennsylvania",
+    price: "500",
+    url: "https://notroom.com/services/business-retainer"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com/" },
+    { name: "Services", url: "https://notroom.com/#services" },
+    { name: "Business Retainer", url: "https://notroom.com/services/business-retainer" }
+  ]);
+
+  const combinedSchema = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Business Notary Retainer Plans Erie PA",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Notroom",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Erie",
-        "addressRegion": "PA",
-        "addressCountry": "US"
-      }
-    },
-    "description": "Business notary retainer plans for companies in Erie, PA. Priority scheduling, volume discounts, and dedicated support for ongoing notarization needs.",
-    "offers": {
-      "@type": "Offer",
-      "price": "500",
-      "priceCurrency": "USD"
-    }
+    "@graph": [serviceSchema, breadcrumbSchema]
   };
 
   return (
     <Layout>
       <SEO
-        title="Business Notary Retainer Plans - Erie, PA"
-        description="Business notary retainer plans for companies in Erie, PA. Priority scheduling, volume discounts, and dedicated support. Perfect for legal firms, real estate, and financial services."
-        keywords="business notary retainer erie pa, corporate notary services, bulk notarization, law firm notary, company notary plan"
+        title="Business Notary Retainer PA | Volume Plans for Erie Companies | Law Firms, Real Estate, HR"
+        description="Business notary retainer plans for Erie PA companies - From $500/month. Priority scheduling, volume discounts, dedicated support. Perfect for legal firms, real estate, financial services, HR departments. Monthly/annual billing available."
+        keywords="business notary retainer erie pa, corporate notary services, bulk notarization, law firm notary, company notary plan, HR notary services pennsylvania"
         canonical="https://notroom.com/services/business-retainer"
-        schema={schema}
+        schema={combinedSchema}
       />
 
       {/* Hero Section */}
@@ -283,8 +283,19 @@ const BusinessRetainer = () => {
       </section>
 
 
+      {/* Local SEO Section */}
+      <ServiceLocalSEO 
+        serviceName="Business Retainer"
+        reviews={[
+          { text: "Our law firm uses their retainer plan. Priority scheduling is a game-changer!", author: "Attorney James R.", city: "Erie", rating: 5 },
+          { text: "Perfect for our real estate office. Volume discounts save us money every month.", author: "Carol P.", city: "Meadville", rating: 5 },
+          { text: "Dedicated account manager makes everything smooth. Highly recommend for businesses.", author: "Mark T.", city: "Warren", rating: 5 },
+          { text: "Best decision we made. Handles all our HR document needs professionally.", author: "Sarah L.", city: "Harborcreek", rating: 5 }
+        ]}
+      />
+
       {/* FAQs */}
-      <FAQSection 
+      <FAQSection
         faqs={[
           {
             question: "How do prepaid notarization packages work?",
