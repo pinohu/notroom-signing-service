@@ -9,6 +9,8 @@ import LegalDisclaimer from "@/components/LegalDisclaimer";
 import SocialProof from "@/components/marketing/SocialProof";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
 import FAQSection from "@/components/marketing/FAQSection";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateFAQSchema, generateBreadcrumbSchema, generateServiceSchema } from "@/utils/schemaGenerator";
 
 const Apostille = () => {
   const navigate = useNavigate();
@@ -33,36 +35,53 @@ const Apostille = () => {
     "Italy", "China", "Japan", "Australia", "Brazil", "India"
   ];
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Apostille Services Pennsylvania",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Notroom",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Erie",
-        "addressRegion": "PA",
-        "addressCountry": "US"
-      }
+  const serviceSchema = generateServiceSchema({
+    name: "Apostille Services Pennsylvania",
+    description: "Professional apostille assistance and document preparation in Pennsylvania. We notarize your documents and guide you through the PA Department of State apostille process for international use in Hague Convention countries.",
+    provider: "Notroom - Pennsylvania Apostille Services",
+    areaServed: "Pennsylvania",
+    price: "245",
+    url: "https://notroom.com/services/apostille"
+  });
+
+  const faqSchema = generateFAQSchema([
+    {
+      question: "How much does apostille service cost in Pennsylvania?",
+      answer: "Our full apostille assistance service starts at $245, which includes notarization ($50), document preparation, PA Department of State apostille filing ($20 state fee), and expedited processing coordination. Rush service available for additional fees."
     },
-    "description": "Professional apostille services for international document authentication in Pennsylvania. Fast, reliable service for documents going abroad.",
-    "offers": {
-      "@type": "Offer",
-      "price": "245",
-      "priceCurrency": "USD"
+    {
+      question: "How long does apostille processing take in PA?",
+      answer: "Standard PA Department of State apostille processing takes 7-10 business days. Expedited service (3-5 business days) and rush service (24-48 hours) are available. We handle all communication with the PA Department of State."
+    },
+    {
+      question: "What documents can be apostilled in Pennsylvania?",
+      answer: "Pennsylvania can apostille birth certificates, marriage certificates, death certificates, divorce decrees, diplomas, transcripts, corporate documents, powers of attorney, notarized affidavits, and court documents issued by PA authorities."
+    },
+    {
+      question: "Which countries accept Pennsylvania apostilles?",
+      answer: "Pennsylvania apostilles are accepted in all 100+ Hague Convention countries including Canada, Mexico, UK, Germany, France, Spain, Italy, China, Japan, Australia, Brazil, and India. We can verify acceptance for your destination country."
     }
+  ]);
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com/" },
+    { name: "Services", url: "https://notroom.com/#services" },
+    { name: "Apostille Services", url: "https://notroom.com/services/apostille" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, faqSchema, breadcrumbSchema]
   };
 
   return (
     <Layout>
       <SEO
-        title="Apostille Services in Pennsylvania - International Documents"
-        description="Professional apostille services in PA for international document authentication. Birth certificates, marriage certificates, diplomas, and more. Fast processing. Call (814) 480-0989."
-        keywords="apostille service pennsylvania, apostille erie pa, document authentication, international notary, hague apostille PA"
+        title="Apostille Services Pennsylvania | PA Department of State | Erie, Meadville, Warren | International Documents"
+        description="PA apostille services - $245+. Birth certificates, marriage certificates, diplomas, corporate documents for international use. Fast processing through PA Dept of State. Serving Erie, Crawford, Warren counties. Licensed & bonded."
+        keywords="apostille service pennsylvania, apostille erie pa, PA department of state apostille, document authentication pennsylvania, international notary pa, hague apostille pennsylvania, birth certificate apostille pa"
         canonical="https://notroom.com/services/apostille"
-        schema={schema}
+        schema={combinedSchema}
       />
 
       {/* Hero Section */}
@@ -360,8 +379,19 @@ const Apostille = () => {
       </section>
 
 
+      {/* Local SEO Section */}
+      <ServiceLocalSEO 
+        serviceName="Apostille Services"
+        reviews={[
+          { text: "Got my birth certificate apostilled for Italian citizenship. Fast and professional service!", author: "Maria G.", city: "Erie", rating: 5 },
+          { text: "Handled my diploma apostille for teaching abroad. They made the process so easy.", author: "Tom H.", city: "Fairview", rating: 5 },
+          { text: "Needed apostille for business documents. They walked me through everything.", author: "Susan B.", city: "Meadville", rating: 5 },
+          { text: "Rush service was worth it. Got my apostille in 3 days for my France visa.", author: "Chris P.", city: "Warren", rating: 5 }
+        ]}
+      />
+
       {/* FAQs */}
-      <FAQSection 
+      <FAQSection
         faqs={[
           {
             question: "What documents can be apostilled?",

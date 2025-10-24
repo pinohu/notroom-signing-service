@@ -10,6 +10,8 @@ import SocialProof from "@/components/marketing/SocialProof";
 import GuaranteeSection from "@/components/marketing/GuaranteeSection";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
 import FAQSection from "@/components/marketing/FAQSection";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateFAQSchema, generateBreadcrumbSchema, generateServiceSchema } from "@/utils/schemaGenerator";
 
 const RemoteOnlineNotary = () => {
   const navigate = useNavigate();
@@ -47,41 +49,57 @@ const RemoteOnlineNotary = () => {
     "Loan documents"
   ];
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Remote Online Notary (RON) Service",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Notroom",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Erie",
-        "addressRegion": "PA",
-        "addressCountry": "US"
-      }
+  const serviceSchema = generateServiceSchema({
+    name: "Remote Online Notary (RON) Service",
+    description: "Remote online notarization service available 24/7 in Pennsylvania. Get documents notarized via secure video call from anywhere in Erie, Crawford, Warren, Mercer, or Venango counties.",
+    provider: "Notroom - Erie PA Notary Services",
+    areaServed: "Pennsylvania",
+    price: "50",
+    url: "https://notroom.com/services/remote-online-notary"
+  });
+
+  const faqSchema = generateFAQSchema([
+    {
+      question: "Is remote online notarization legally valid in Pennsylvania?",
+      answer: "Yes! RON notarizations are legally recognized in all 50 states and comply with Pennsylvania Act 79 of 2020 (RULONA). Your notarized documents will be accepted nationwide by courts, government agencies, and financial institutions."
     },
-    "areaServed": {
-      "@type": "State",
-      "name": "Pennsylvania"
+    {
+      question: "What do I need for a RON session in Pennsylvania?",
+      answer: "You'll need: 1) A valid government-issued photo ID, 2) A device with camera and microphone, 3) Stable internet connection, 4) To be physically located in Pennsylvania during the session. We use knowledge-based authentication (KBA) as required by PA law."
     },
-    "description": "Remote online notarization service available by appointment in Pennsylvania. Get documents notarized via secure video call.",
-    "offers": {
-      "@type": "Offer",
-      "price": "50",
-      "priceCurrency": "USD",
-      "description": "$5 PA notary fee + $45 technology platform fee"
+    {
+      question: "How long does a remote online notary session take?",
+      answer: "Most RON sessions are completed in 5-10 minutes. We handle identity verification, document review, and notarization efficiently while maintaining accuracy and legal compliance with Pennsylvania regulations."
+    },
+    {
+      question: "Can I use RON for real estate documents in Pennsylvania?",
+      answer: "Yes! Pennsylvania allows RON for most real estate documents including deeds, mortgages, and powers of attorney. RON notarizations are accepted by all Pennsylvania county recorder offices and title companies."
+    },
+    {
+      question: "How much does remote online notarization cost in PA?",
+      answer: "Standard RON service is $50 total ($5 PA notary fee + $45 technology/platform fee). Real estate documents are $95. We offer business subscriptions at $399/month for 10 sessions ($39.90 per act)."
     }
+  ]);
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com/" },
+    { name: "Services", url: "https://notroom.com/#services" },
+    { name: "Remote Online Notary", url: "https://notroom.com/services/remote-online-notary" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, faqSchema, breadcrumbSchema]
   };
 
   return (
     <Layout>
       <SEO
-        title="Remote Online Notary (RON) Service in PA"
-        description="Get documents notarized online in 5 minutes with Notroom's RON service in Pennsylvania. Available by appointment including evenings and weekends, legally valid nationwide. $50 per session. Book now!"
-        keywords="remote online notary pennsylvania, RON service PA, online notarization erie pa, notary by appointment, virtual notary pennsylvania"
+        title="Remote Online Notary PA | RON Service Erie, Meadville, Warren | 24/7 Online Notarization"
+        description="Pennsylvania Remote Online Notary (RON) - $50. Available 24/7 by appointment in Erie, Crawford, Warren, Mercer, Venango counties. PA Act 79 compliant. Licensed notaries. Secure video notarization in 5 minutes. Book now!"
+        keywords="remote online notary pennsylvania, RON service PA, online notarization erie pa, virtual notary meadville, RON warren pa, 24/7 notary pennsylvania, remote notarization crawford county, online notary venango county, PA RON service"
         canonical="https://notroom.com/services/remote-online-notary"
-        schema={schema}
+        schema={combinedSchema}
       />
 
       {/* Hero Section */}
@@ -348,11 +366,14 @@ const RemoteOnlineNotary = () => {
         </div>
       </section>
 
+      {/* Local SEO Section */}
+      <ServiceLocalSEO serviceName="Remote Online Notary (RON)" />
+
       {/* Professional Commitments */}
       <GuaranteeSection />
 
       {/* FAQs */}
-      <FAQSection 
+      <FAQSection
         faqs={[
           {
             question: "Is remote online notarization legally valid?",

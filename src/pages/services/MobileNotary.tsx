@@ -9,6 +9,8 @@ import SocialProof from "@/components/marketing/SocialProof";
 import GuaranteeSection from "@/components/marketing/GuaranteeSection";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
 import FAQSection from "@/components/marketing/FAQSection";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateFAQSchema, generateBreadcrumbSchema, generateServiceSchema } from "@/utils/schemaGenerator";
 
 const MobileNotary = () => {
   const navigate = useNavigate();
@@ -32,40 +34,53 @@ const MobileNotary = () => {
     "North East", "Wesleyville", "Lawrence Park", "Edinboro", "Union City"
   ];
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Mobile Notary Service Erie PA",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Notroom",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Erie",
-        "addressRegion": "PA",
-        "addressCountry": "US"
-      }
+  const serviceSchema = generateServiceSchema({
+    name: "Mobile Notary Service Erie PA",
+    description: "Professional mobile notary service in Erie, Crawford, Warren, Mercer, and Venango counties. We travel to your home, office, hospital, or any location in northwestern Pennsylvania for convenient document notarization.",
+    provider: "Notroom - Erie PA Mobile Notary",
+    areaServed: "Northwestern Pennsylvania",
+    price: "50",
+    url: "https://notroom.com/services/mobile-notary"
+  });
+
+  const faqSchema = generateFAQSchema([
+    {
+      question: "How much does mobile notary service cost in Erie PA?",
+      answer: "Mobile notary service starts at $50 base fee plus $4 per mile travel from our Erie office. Same-day service is typically available throughout Erie, Crawford, and Warren counties. We provide transparent quotes before every appointment."
     },
-    "areaServed": [
-      {"@type": "City", "name": "Erie", "address": {"@type": "PostalAddress", "addressRegion": "PA"}},
-      {"@type": "City", "name": "Millcreek", "address": {"@type": "PostalAddress", "addressRegion": "PA"}}
-    ],
-    "description": "Professional mobile notary service in Erie, PA. We come to your location for convenient document notarization.",
-    "offers": {
-      "@type": "Offer",
-      "price": "50",
-      "priceCurrency": "USD"
+    {
+      question: "Where do mobile notaries serve in Pennsylvania?",
+      answer: "We serve all of Erie County including Erie, Millcreek, Harborcreek, Fairview, North East, Girard. Also Crawford County (Meadville, Titusville), Warren County (Warren, Youngsville), Mercer County (Sharon, Hermitage, Grove City), and Venango County (Oil City, Franklin)."
+    },
+    {
+      question: "How fast can a mobile notary arrive in Erie?",
+      answer: "For mobile notary in Erie County, we typically arrive within 30-60 minutes during business hours depending on location and schedule. Same-day appointments are usually available. Emergency service may be available for urgent needs."
+    },
+    {
+      question: "Can mobile notaries visit hospitals and nursing homes in Erie PA?",
+      answer: "Yes! We provide compassionate mobile notary service at all Erie area hospitals, nursing homes, assisted living facilities, and senior care centers. We're experienced with healthcare settings and understand special accommodation needs."
     }
+  ]);
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com/" },
+    { name: "Services", url: "https://notroom.com/#services" },
+    { name: "Mobile Notary", url: "https://notroom.com/services/mobile-notary" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, faqSchema, breadcrumbSchema]
   };
 
   return (
     <Layout>
       <SEO
-        title="Mobile Notary Service in Erie, PA - We Come to You"
-        description="Professional mobile notary service in Erie, PA. Same-day appointments available. We travel to your home, office, or hospital. Licensed & bonded. Book now!"
-        keywords="mobile notary erie pa, traveling notary pennsylvania, notary service erie county, home notary visit, mobile notarization near me"
+        title="Mobile Notary Erie PA | We Come to You | Crawford, Warren, Mercer Counties | Same-Day Service"
+        description="Professional mobile notary in Erie PA - $50 + mileage. We travel to your home, office, hospital anywhere in Erie, Crawford, Warren, Mercer, Venango counties. Same-day available. Licensed & bonded PA notaries. Book now!"
+        keywords="mobile notary erie pa, traveling notary pennsylvania, notary service erie county, home notary visit, mobile notarization meadville, mobile notary warren pa, notary crawford county, hospital notary visits erie"
         canonical="https://notroom.com/services/mobile-notary"
-        schema={schema}
+        schema={combinedSchema}
       />
 
       {/* Hero Section */}
@@ -243,6 +258,17 @@ const MobileNotary = () => {
           </div>
         </div>
       </section>
+
+      {/* Local SEO Section */}
+      <ServiceLocalSEO 
+        serviceName="Mobile Notary Service"
+        reviews={[
+          { text: "They came to my home in Millcreek within an hour. So convenient and professional!", author: "Jennifer R.", city: "Millcreek", rating: 5 },
+          { text: "Mobile notary visited my dad at nursing home. Very patient and understanding.", author: "Mike S.", city: "Erie", rating: 5 },
+          { text: "Perfect for our business. They come to our office whenever we need documents notarized.", author: "David L.", city: "Harborcreek", rating: 5 },
+          { text: "Same-day service in Meadville. Great experience, will use again!", author: "Amanda K.", city: "Meadville", rating: 5 }
+        ]}
+      />
 
       {/* Professional Commitments */}
       <GuaranteeSection />

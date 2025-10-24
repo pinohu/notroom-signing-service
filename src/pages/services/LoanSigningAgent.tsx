@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import SocialProof from "@/components/marketing/SocialProof";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
 import FAQSection from "@/components/marketing/FAQSection";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateFAQSchema, generateBreadcrumbSchema, generateServiceSchema } from "@/utils/schemaGenerator";
 
 const LoanSigningAgent = () => {
   const navigate = useNavigate();
@@ -36,36 +38,53 @@ const LoanSigningAgent = () => {
     { icon: Clock, title: "Flexible Scheduling", desc: "Available by appointment including evenings and weekends" }
   ];
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Loan Signing Agent Service Erie PA",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Notroom",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Erie",
-        "addressRegion": "PA",
-        "addressCountry": "US"
-      }
+  const serviceSchema = generateServiceSchema({
+    name: "Loan Signing Agent Service Erie PA",
+    description: "NNA-certified loan signing agent for real estate closings in Erie, Crawford, Warren, Mercer, and Venango counties. $100K E&O insurance, MISMO compliant. Specializing in purchase mortgages, refinances, HELOCs, and reverse mortgages.",
+    provider: "Notroom - NNA Certified Loan Signing Agent",
+    areaServed: "Northwestern Pennsylvania",
+    price: "175",
+    url: "https://notroom.com/services/loan-signing-agent"
+  });
+
+  const faqSchema = generateFAQSchema([
+    {
+      question: "How much does a loan signing agent cost in Erie PA?",
+      answer: "Loan signing services start at $175 for standard purchase/refinance closings. Hybrid e-closings are $225. Prices include travel within Erie County, document printing, scanning/returning documents to title company, and comprehensive MISMO-compliant signing process."
     },
-    "description": "Professional loan signing agent services in Erie, PA. NNA certified with $100K E&O insurance. Specializing in mortgage closings and real estate transactions.",
-    "offers": {
-      "@type": "Offer",
-      "price": "175",
-      "priceCurrency": "USD"
+    {
+      question: "Are you a certified loan signing agent in Pennsylvania?",
+      answer: "Yes, we are NNA (National Notary Association) certified signing agents with $100K errors & omissions insurance. Pennsylvania does not require separate state certification—NNA certification is the industry standard recognized by all title companies and lenders."
+    },
+    {
+      question: "What areas do you serve for loan signings in Pennsylvania?",
+      answer: "We provide loan signing services throughout Erie County (Erie, Millcreek, Harborcreek), Crawford County (Meadville, Titusville), Warren County (Warren), Mercer County (Sharon, Hermitage, Grove City), and Venango County (Oil City, Franklin)."
+    },
+    {
+      question: "Can you handle evening and weekend loan signings in Erie?",
+      answer: "Yes! We offer flexible scheduling including evening and weekend loan signing appointments throughout northwestern Pennsylvania. This allows borrowers to close at convenient times outside traditional business hours."
     }
+  ]);
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com/" },
+    { name: "Services", url: "https://notroom.com/#services" },
+    { name: "Loan Signing Agent", url: "https://notroom.com/services/loan-signing-agent" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, faqSchema, breadcrumbSchema]
   };
 
   return (
     <Layout>
       <SEO
-        title="Loan Signing Agent in Erie, PA - NNA Certified"
-        description="Professional loan signing agent in Erie, PA. NNA certified with $100K E&O insurance. Specializing in mortgage closings, refinances, and real estate transactions. Available by appointment."
-        keywords="loan signing agent erie pa, notary signing agent pennsylvania, mortgage closing notary, real estate notary erie, certified signing agent"
+        title="Loan Signing Agent Erie PA | NNA Certified | Meadville, Warren, Sharon | Real Estate Closings"
+        description="NNA-certified loan signing agent in Erie PA - $175+. $100K E&O insurance, MISMO compliant. Purchase, refinance, HELOC, reverse mortgage closings. Serving Erie, Crawford, Warren, Mercer counties. Flexible scheduling. Book now!"
+        keywords="loan signing agent erie pa, notary signing agent pennsylvania, mortgage closing notary, real estate notary erie, certified signing agent meadville, loan signing warren pa, NNA certified notary"
         canonical="https://notroom.com/services/loan-signing-agent"
-        schema={schema}
+        schema={combinedSchema}
       />
 
       {/* Hero Section */}

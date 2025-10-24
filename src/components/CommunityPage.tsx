@@ -86,7 +86,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
       "latitude": "",
       "longitude": ""
     },
-    "url": `https://notroom.com/areas/cities/${community.slug}`,
+    "url": `https://notroom.com/areas/${community.slug}-pa`,
     "telephone": "(814) 480-0989",
     "priceRange": "$50-$399",
     "openingHoursSpecification": [
@@ -186,7 +186,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://notroom.com/" },
     { name: community.county, url: `https://notroom.com/areas/${community.county.toLowerCase().replace(/\s+/g, '-')}` },
-    { name: community.name, url: `https://notroom.com/areas/cities/${community.slug}` }
+    { name: community.name, url: `https://notroom.com/areas/${community.slug}-pa` }
   ]);
   
   const faqSchema = generateFAQSchema([
@@ -240,7 +240,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
         title={`${community.name} Notary Public PA | Mobile Notary & RON ${community.name} | Apostille Services`}
         description={`#1 rated notary services in ${community.name}, ${community.county}, PA. Mobile notary, Remote Online Notary (RON), apostille, loan signing, I-9 verification. Serving ${community.landmarks.slice(0, 3).join(', ')}. Same-day & 24/7 available. Licensed & insured.`}
         keywords={localKeywords}
-        canonical={`https://notroom.com/areas/cities/${community.slug}`}
+        canonical={`https://notroom.com/areas/${community.slug}-pa`}
         schema={combinedSchema}
       />
 
@@ -650,7 +650,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
               <div className="flex flex-wrap justify-center gap-4">
                 {nearbyLinks.map((nearby, index) => (
                   <Button key={index} variant="outline" asChild>
-                    <Link to={`/areas/cities/${nearby.slug}`}>
+                    <Link to={`/areas/${nearby.slug}-pa`}>
                       {nearby.name} Notary
                     </Link>
                   </Button>
