@@ -23,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen" lang="en">
+    <div className="min-h-screen overflow-x-hidden max-w-full" lang="en">
       {/* Skip Navigation Links - WCAG 2.1 AA Compliance */}
       <div className="sr-only">
         <a 
@@ -58,7 +58,7 @@ const Layout = ({ children }: LayoutProps) => {
       
       {/* Mobile Sticky CTA - WCAG Compliant */}
       <div 
-        className="fixed bottom-0 left-0 right-0 p-3 bg-background/98 backdrop-blur-md border-t border-border lg:hidden z-50 animate-slide-up shadow-2xl"
+        className="fixed bottom-0 left-0 right-0 p-3 bg-background/98 backdrop-blur-md border-t border-border lg:hidden z-50 animate-slide-up shadow-2xl max-w-full"
         role="region"
         aria-label="Quick booking action"
       >
