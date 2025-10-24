@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Building, FileText, Bell, Shield, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
+import EnhancedUPLDisclaimer from "@/components/EnhancedUPLDisclaimer";
 import SocialProof from "@/components/marketing/SocialProof";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
 import FAQSection from "@/components/marketing/FAQSection";
@@ -426,6 +427,7 @@ const RegisteredOffice = () => {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
+            <EnhancedUPLDisclaimer service="registered-office" />
             <LegalDisclaimer service="business" />
           </div>
         </div>

@@ -24,6 +24,7 @@ import { CalendarIcon, MapPin, FileText, Users, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CommunityData } from "@/data/communityData";
 import { formatPhoneNumber } from "@/utils/validation";
+import BiometricConsent from "@/components/BiometricConsent";
 
 const bookingSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -74,6 +75,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [showBiometricConsent, setShowBiometricConsent] = useState(false);
+  const [biometricConsent, setBiometricConsent] = useState(false);
 
   const canProceedFromStep1 = formData.name && formData.email && formData.phone;
   const canProceedFromStep2 = formData.service && (formData.service !== "mobile" || formData.location_address);
@@ -153,6 +157,20 @@ const BookingForm = ({ community }: BookingFormProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate terms agreement
+    if (!agreedToTerms) {
+      toast.error("You must agree to the Terms of Service and Privacy Policy to continue.");
+      return;
+    }
+
+    // Check if RON service requires biometric consent
+    if (formData.service === "ron" && !biometricConsent) {
+      setShowBiometricConsent(true);
+      toast.error("Biometric data consent is required for Remote Online Notarization.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -245,6 +263,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
       
       // Reset form
       setCurrentStep(1);
+      setAgreedToTerms(false);
+      setBiometricConsent(false);
+      setShowBiometricConsent(false);
       setFormData({
         name: "",
         email: "",
@@ -605,6 +626,64 @@ const BookingForm = ({ community }: BookingFormProps) => {
                     className="resize-none"
                   />
                 </div>
+
+                {/* Terms and Conditions Clickwrap */}
+                <div className="bg-muted/30 p-4 rounded-lg border-2">
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="terms-agreement"
+                      checked={agreedToTerms}
+                      onChange={(e) => setAgreedToTerms(e.target.checked)}
+                      className="mt-1 w-4 h-4"
+                      required
+                    />
+                    <Label htmlFor="terms-agreement" className="text-sm cursor-pointer">
+                      <span className="text-destructive font-bold">* REQUIRED:</span> I have read and agree to the{" "}
+                      <button
+                        type="button"
+                        onClick={() => window.open("/terms-of-service", "_blank")}
+                        className="text-primary hover:underline font-semibold"
+                      >
+                        Terms of Service
+                      </button>
+                      {" "}and{" "}
+                      <button
+                        type="button"
+                        onClick={() => window.open("/privacy-policy", "_blank")}
+                        className="text-primary hover:underline font-semibold"
+                      >
+                        Privacy Policy
+                      </button>
+                      . I understand that this creates a legally binding agreement.
+                    </Label>
+                  </div>
+                </div>
+
+                {/* Biometric Consent for RON */}
+                {formData.service === "ron" && showBiometricConsent && (
+                  <div className="animate-in fade-in slide-in-from-top duration-500">
+                    <BiometricConsent
+                      onConsent={(consented) => {
+                        setBiometricConsent(consented);
+                        if (!consented) {
+                          toast.info("Biometric consent declined. Consider our mobile notary service instead.");
+                        } else {
+                          setShowBiometricConsent(false);
+                        }
+                      }}
+                      required={true}
+                    />
+                  </div>
+                )}
+
+                {formData.service === "ron" && !showBiometricConsent && !biometricConsent && (
+                  <div className="bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500 p-4 rounded">
+                    <p className="text-sm text-amber-800 dark:text-amber-200">
+                      <strong>⚠️ Remote Online Notarization Notice:</strong> RON requires collection of biometric data (facial recognition) for identity verification. You will be asked to provide consent before submission.
+                    </p>
+                  </div>
+                )}
 
                 <div className="flex gap-4">
                   <Button 
