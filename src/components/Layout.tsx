@@ -58,12 +58,13 @@ const Layout = ({ children }: LayoutProps) => {
       
       {/* Mobile Sticky CTA - WCAG Compliant */}
       <div 
-        className="fixed bottom-0 left-0 right-0 p-4 bg-background/95 backdrop-blur-md border-t border-border lg:hidden z-40 animate-slide-up"
+        className="fixed bottom-0 left-0 right-0 p-3 bg-background/98 backdrop-blur-md border-t border-border lg:hidden z-50 animate-slide-up shadow-2xl"
         role="region"
         aria-label="Quick booking action"
       >
         <Button 
-          className="w-full bg-amber text-primary-foreground hover:bg-amber/90 shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          variant="amber"
+          className="w-full shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2"
           size="lg"
           onClick={scrollToBooking}
           aria-label="Book notary appointment starting from $45"

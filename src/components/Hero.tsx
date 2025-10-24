@@ -23,43 +23,43 @@ const Hero = () => {
           </div>
           
           {/* Main Heading - Clear Value Proposition */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight px-2">
             Pennsylvania Notary & Business Filing Services
-            <span className="block text-[hsl(var(--action-cyan))] mt-2 text-5xl md:text-6xl lg:text-7xl">
+            <span className="block text-[hsl(var(--action-cyan))] mt-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
               Licensed. Certified. Reliable.
             </span>
           </h1>
           
           {/* Subheading - Professional Value */}
-          <p className="text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-10 leading-relaxed max-w-4xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-10 leading-relaxed max-w-4xl mx-auto px-4">
             From remote online notarization to comprehensive business services—professional, efficient, and fully compliant. 
-            <strong className="text-primary-foreground">PA State Licensed • Background Checked • Fully Insured</strong>
+            <strong className="block mt-2 text-primary-foreground">PA State Licensed • Background Checked • Fully Insured</strong>
           </p>
           
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 px-4">
             <Button 
               size="lg" 
               variant="amber"
-              className="text-lg sm:text-xl px-8 py-7 h-auto shadow-2xl font-bold"
+              className="text-base sm:text-lg md:text-xl px-6 sm:px-8 py-6 sm:py-7 h-auto shadow-2xl font-bold w-full sm:w-auto"
               onClick={scrollToServices}
               aria-label="View all services"
             >
-              <div className="flex flex-col items-center sm:items-start gap-1">
+              <div className="flex flex-col items-center gap-1">
                 <span>View All Services</span>
-                <span className="text-sm font-normal opacity-90">Notary • Business • Compliance</span>
+                <span className="text-xs sm:text-sm font-normal opacity-90">Notary • Business • Compliance</span>
               </div>
             </Button>
             <Button 
               size="lg" 
               variant="amberOutline"
-              className="text-lg sm:text-xl px-8 py-7 h-auto font-bold"
+              className="text-base sm:text-lg md:text-xl px-6 sm:px-8 py-6 sm:py-7 h-auto font-bold w-full sm:w-auto"
               onClick={scrollToBooking}
               aria-label="Book a service"
             >
-              <div className="flex flex-col items-center sm:items-start gap-1">
+              <div className="flex flex-col items-center gap-1">
                 <span>📅 Book Now</span>
-                <span className="text-sm font-normal opacity-90">From $45</span>
+                <span className="text-xs sm:text-sm font-normal opacity-90">From $45</span>
               </div>
             </Button>
           </div>
