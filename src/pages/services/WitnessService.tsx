@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Check, Eye, FileText, Shield, AlertCircle, UserCheck, BadgeCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
+import FAQSection from "@/components/marketing/FAQSection";
 import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
 import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
@@ -211,6 +212,48 @@ const WitnessService = () => {
           { text: "Great alternative when notary wasn't required. Fair pricing.", author: "Andrew M.", city: "Millcreek", rating: 5 },
           { text: "Professional witness for family documents. Very helpful service.", author: "Michelle K.", city: "Harborcreek", rating: 5 },
           { text: "Impartial witness for business agreement. Excellent experience.", author: "Robert T.", city: "Fairview", rating: 5 }
+        ]}
+      />
+
+      {/* FAQs */}
+      <FAQSection
+        faqs={[
+          {
+            question: "What is a professional witness service?",
+            answer: "A professional witness service provides an impartial third-party to observe and witness the signing of documents. We verify the date, sign as a witness, and provide neutral verification that the signing occurred. This is different from notarization, which involves verifying identity and administering oaths."
+          },
+          {
+            question: "When do I need a witness instead of a notary?",
+            answer: "You need a witness (not notary) for private agreements, business contracts, personal documents, settlement agreements, and any documents that don't legally require notarization. If your document specifically states it needs to be 'notarized,' you need our Mobile Notary service instead."
+          },
+          {
+            question: "How much does professional witness service cost?",
+            answer: "Base fee is $60 within Erie city limits. Add $1.50 per mile round-trip from our Erie office (6238 Cobblestone Dr, Erie, PA 16509) for locations outside Erie. We provide transparent quotes before every appointment."
+          },
+          {
+            question: "What's the difference between a witness and a notary in Pennsylvania?",
+            answer: "A witness observes signing and signs as proof. A PA notary verifies signer identity, ensures understanding and willingness, maintains a journal, and applies an official seal. Notaries are state-commissioned and regulated under Pennsylvania law. Witnesses provide simpler verification without legal certification."
+          },
+          {
+            question: "Can the same person be both a notary and a witness?",
+            answer: "Yes, but for different purposes. If a document requires notarization, we provide notary service. If a document just needs witness signatures, we provide witness service. Some documents require both - we can provide both services during the same visit."
+          },
+          {
+            question: "Do you travel for witness services like mobile notary?",
+            answer: "Yes! We provide mobile witness service throughout Erie, Crawford, Warren, Mercer, and Venango counties. We come to your home, office, hospital, or any location. Same pricing as our mobile notary for travel: $60 base + mileage outside Erie."
+          },
+          {
+            question: "What documents commonly need witness signatures?",
+            answer: "Common documents include private contracts, business agreements, partnership agreements, settlement agreements, memorandums of understanding, service contracts, personal loans between family/friends, and various business transactions that don't require government filing or notarization."
+          },
+          {
+            question: "Are you allowed to witness documents as a PA notary?",
+            answer: "Yes. While Pennsylvania notaries are commissioned for notarial acts, they can also serve as regular witnesses for documents that don't require notarization. When providing witness service, we act as an impartial witness, not in our official notary capacity."
+          },
+          {
+            question: "How fast can you provide witness service in Erie?",
+            answer: "Same-day appointments are typically available throughout Erie County. Call (814) 480-0989 for urgent scheduling. Most appointments can be completed within 30-60 minutes from booking during business hours."
+          }
         ]}
       />
 

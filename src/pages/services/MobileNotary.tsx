@@ -277,24 +277,40 @@ const MobileNotary = () => {
       <FAQSection 
         faqs={[
           {
-            question: "How far will you travel?",
-            answer: "We serve all of Erie County and surrounding areas including Crawford, Warren, Mercer, and Venango counties. Mileage fees apply outside Erie city limits at $1.50 per mile."
+            question: "How far will you travel for mobile notary service?",
+            answer: "We serve all of Erie County and surrounding areas including Crawford, Warren, Mercer, and Venango counties. Within Erie city limits: $100 flat travel fee. Outside Erie: $1.50 per mile round-trip from our Erie office (6238 Cobblestone Dr, Erie, PA 16509). We'll provide exact pricing when you book."
           },
           {
             question: "Do you offer same-day mobile notary service?",
-            answer: "Yes! Most mobile appointments are available same-day or next-day. Call (814) 480-0989 for urgent scheduling."
+            answer: "Yes! Most mobile appointments are available same-day or next-day throughout Erie County. Call (814) 480-0989 for urgent scheduling. Emergency after-hours service may be available for an additional $50 surcharge."
           },
           {
-            question: "How much does mobile notary service cost?",
-            answer: "Base price is $50 ($5 PA notary fee + $45 service fee) plus $1.50 per mile from our Erie office (6238 Cobblestone Dr, Erie, PA 16509). Additional charges may apply for after-hours service or multiple documents."
+            question: "How much does mobile notary service cost in Erie PA?",
+            answer: "Within Erie city limits: $100 travel fee + $10 admin fee + $5-15 per notarized signature (PA law). Outside Erie city limits: add $1.50 per mile round-trip. After-hours (after 7 PM or weekends): add $50 surcharge. Example: 3 signatures in Millcreek = $100 + $10 + $15-45 + mileage."
           },
           {
             question: "Can you come to a hospital or nursing home?",
-            answer: "Absolutely. We provide compassionate notary service at hospitals, nursing homes, and assisted living facilities throughout our service area."
+            answer: "Absolutely. We provide compassionate mobile notary service at all Erie area hospitals (UPMC Hamot, Saint Vincent, Millcreek Community), nursing homes, assisted living facilities, and senior care centers. We're experienced with healthcare settings and understand special accommodation needs."
           },
           {
             question: "What documents can you notarize during a mobile visit?",
-            answer: "We can notarize virtually any document that requires notarization including powers of attorney, affidavits, contracts, real estate documents, loan modifications, and more."
+            answer: "We can notarize virtually any document that requires notarization including powers of attorney, healthcare directives, affidavits, contracts, real estate documents (deeds, mortgages), loan modifications, vehicle titles, business agreements, and more. Just let us know what you need when booking."
+          },
+          {
+            question: "What do I need to have ready for a mobile notary appointment?",
+            answer: "You need: (1) Valid government-issued photo ID (driver's license, passport, state ID), (2) All unsigned documents ready for review, (3) All signers present and mentally competent, (4) Understanding of what you're signing. Don't sign documents before we arrive - we must witness the signing."
+          },
+          {
+            question: "Can you notarize for someone who can't leave their home?",
+            answer: "Yes, that's exactly what our mobile service is for! We serve homebound individuals, seniors, people recovering from surgery, and anyone unable to travel to a notary office. We bring everything needed to your location and work at a pace comfortable for you."
+          },
+          {
+            question: "Are mobile notaries in Pennsylvania required to have special licensing?",
+            answer: "Pennsylvania mobile notaries must be commissioned by the PA Department of State and complete required notary education. Our notaries are fully commissioned, bonded, and insured. We maintain professional standards and follow all PA notary laws (57 Pa. Code Chapter 507)."
+          },
+          {
+            question: "How do I schedule a mobile notary appointment?",
+            answer: "Book online through our website booking form, call us at (814) 480-0989, or text us. We'll confirm your appointment time, location, document type, and provide a price quote. Most appointments can be scheduled for the same day or next business day."
           }
         ]}
       />

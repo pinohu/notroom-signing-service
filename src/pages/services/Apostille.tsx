@@ -394,24 +394,40 @@ const Apostille = () => {
       <FAQSection
         faqs={[
           {
-            question: "What documents can be apostilled?",
-            answer: "Common documents include birth certificates, marriage certificates, diplomas, transcripts, powers of attorney, corporate documents, and court documents. Most public documents can receive an apostille."
+            question: "What documents can be apostilled in Pennsylvania?",
+            answer: "Common documents include birth certificates, marriage certificates, death certificates, divorce decrees, diplomas, transcripts, powers of attorney, corporate documents, court documents, and notarized affidavits. Most Pennsylvania public documents can receive an apostille."
           },
           {
             question: "How long does the apostille process take?",
-            answer: "Standard processing takes 7-10 business days ($195). Expedited service takes 1-2 business days ($295). Full-chain authentication for non-Hague countries takes 3-6 weeks ($495)."
+            answer: "Standard processing takes 7-10 business days ($245). Expedited service takes 1-2 business days ($395). Full-chain authentication for non-Hague countries takes 3-6 weeks ($495). Processing times depend on PA Department of State workload."
           },
           {
             question: "Do all documents need to be notarized before apostille?",
-            answer: "Many documents require notarization before they can receive an apostille. We'll review your documents and provide notarization if needed as part of our service."
+            answer: "Many documents require notarization before they can receive an apostille. We'll review your documents and provide notarization if needed ($5-15 per signature) as part of our service. Pennsylvania-issued vital records typically don't need notarization."
           },
           {
-            question: "Which countries accept apostilles?",
-            answer: "Apostilles are accepted by all Hague Convention member countries (100+ nations) including Canada, Mexico, UK, Germany, France, Spain, China, Japan, Australia, and Brazil."
+            question: "Which countries accept Pennsylvania apostilles?",
+            answer: "Apostilles are accepted by all Hague Convention member countries (100+ nations) including Canada, Mexico, UK, Germany, France, Spain, Italy, China, Japan, Australia, Brazil, and India. We can verify acceptance for your destination country."
           },
           {
-            question: "How much does apostille service cost?",
-            answer: "Our complete service starts at $195 (standard 7-10 business days) which includes PA state fees ($15), notarization ($5-15), and service fees. Expedited service (1-2 days) is $295. Full-chain authentication for non-Hague countries is $495."
+            question: "How much does apostille service cost in PA?",
+            answer: "Our complete service starts at $245 (standard 7-10 business days) which includes PA state apostille fee ($15), notarization if required ($5-15), document preparation, submission, and return shipping. Expedited service (1-2 days) is $395. Full-chain authentication for non-Hague countries is $495."
+          },
+          {
+            question: "Can you apostille documents from other states in Pennsylvania?",
+            answer: "No. Each state can only apostille documents issued by that state. Pennsylvania can only apostille PA-issued documents, notarizations by PA notaries, or federal documents. Documents from other states must be apostilled by that state's Secretary of State office."
+          },
+          {
+            question: "What's the difference between apostille and authentication?",
+            answer: "Apostilles are for Hague Convention countries (100+ nations) - single-step process through PA Department of State. Authentication (also called legalization) is for non-Hague countries - multi-step process through PA Dept of State, US Dept of State, and then the foreign embassy. We handle both processes."
+          },
+          {
+            question: "Do you handle the entire apostille process or do I need to mail documents to Harrisburg?",
+            answer: "We handle everything! You just provide your documents to us. We notarize if needed, prepare the application, submit to PA Department of State in Harrisburg, track the process, and return your apostilled documents via secure shipping or local pickup. No need for you to mail anything to Harrisburg."
+          },
+          {
+            question: "Can apostilled documents be used multiple times in different countries?",
+            answer: "Each apostille is typically valid only in the country where you plan to use it, even though it's recognized by all Hague Convention countries. Many countries require original apostilled documents, not copies. If you need documents for multiple countries, you may need multiple apostilles on multiple original documents."
           }
         ]}
       />
