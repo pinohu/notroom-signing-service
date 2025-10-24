@@ -80,8 +80,8 @@ const GuaranteeSection = () => {
               <div className="max-w-3xl mx-auto text-center">
                 <h3 className="text-2xl font-bold mb-4">Why We Offer These Guarantees</h3>
                 <p className="text-lg text-muted-foreground mb-6">
-                  We've been in business since 2020 and have served thousands of clients with a 99.8% satisfaction rate. 
-                  We can make these promises because we deliver exceptional service every single time. 
+                  As a fully licensed and insured Pennsylvania notary with NNA certification, we hold ourselves to the highest professional standards. 
+                  We can make these promises because we're committed to delivering exceptional service every single time. 
                   <strong className="text-foreground"> Your risk is zero. Your satisfaction is guaranteed.</strong>
                 </p>
                 <Button 

@@ -1,40 +1,40 @@
-import { Award, BookOpen, Users, TrendingUp, Shield, Star } from "lucide-react";
+import { Award, Shield, Users, TrendingUp, Star, DollarSign } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import ScrollReveal from "../ScrollReveal";
 
 const AuthorityBuilder = () => {
   const credentials = [
     {
-      icon: Award,
-      title: "PA State Licensed",
-      description: "Commission #123456 - Active & In Good Standing",
-      proof: "Verified by PA Department of State"
-    },
-    {
       icon: Shield,
-      title: "Bonded & E&O Insured",
-      description: "Professional liability insurance and surety bond protection",
-      proof: "Comprehensive coverage for your peace of mind"
+      title: "PA State Commission",
+      description: "Commissioned notary public by the Pennsylvania Department of State with authority to notarize throughout Pennsylvania",
+      proof: "Active PA Notary Commission"
     },
     {
-      icon: BookOpen,
-      title: "Professional Certified",
-      description: "Background-screened and professionally trained signing agent",
-      proof: "Comprehensive training & certification"
+      icon: DollarSign,
+      title: "$1,000,000 Bond & Insurance",
+      description: "Exceeds Pennsylvania's statutory requirements. Full E&O insurance protects every transaction",
+      proof: "Bonded through Merchants Bonding Company"
+    },
+    {
+      icon: Award,
+      title: "NNA Certified Signing Agent",
+      description: "National Notary Association certification for loan documents. Background-screened and tested on proper signing procedures",
+      proof: "NNA Certified Professional"
     },
     {
       icon: Users,
-      title: "2,847+ Notarizations",
-      description: "Serving Erie County since 2020",
-      proof: "99.8% customer satisfaction rate"
+      title: "RULONA Compliant",
+      description: "Fully compliant with PA's Revised Uniform Law on Notarial Acts (57 Pa.C.S. § 321 et seq.)",
+      proof: "Registered with PA Department of State"
     }
   ];
 
   const achievements = [
-    { metric: "4.9/5", label: "Google Rating", icon: Star },
-    { metric: "2,847", label: "Clients Served", icon: Users },
-    { metric: "99.8%", label: "Success Rate", icon: TrendingUp },
-    { metric: "5 Years", label: "Experience", icon: Award }
+    { metric: "6", label: "Essential Services", icon: Star },
+    { metric: "5", label: "Counties Served", icon: Users },
+    { metric: "Same-Day", label: "Availability", icon: TrendingUp },
+    { metric: "100%", label: "PA Compliant", icon: Award }
   ];
 
   return (
@@ -116,11 +116,11 @@ const AuthorityBuilder = () => {
             <div className="text-center mt-12">
               <Card className="inline-block p-8 bg-muted/30 max-w-3xl">
                 <p className="text-lg leading-relaxed">
-                  "When you choose Notroom, you're choosing a <strong className="text-foreground">state-licensed, nationally-certified professional</strong> with thousands of successful notarizations. 
-                  We're not a marketplace connecting you to random notaries—we're a trusted, established business committed to your satisfaction."
+                  "When you choose Notroom, you're choosing a <strong className="text-foreground">state-licensed, nationally-certified professional</strong> committed to excellence. 
+                  We're not a marketplace connecting you to random notaries—we're a dedicated notary business with verified credentials, proper insurance, and full compliance with Pennsylvania law."
                 </p>
                 <p className="text-sm text-muted-foreground mt-4">
-                  — Ryan, Founder & Lead Notary, Notroom
+                  — Ron Barto, Principal Notary & Owner
                 </p>
               </Card>
             </div>

@@ -17,55 +17,46 @@ interface ServiceLocalSEOProps {
 
 export const ServiceLocalSEO = ({ 
   serviceName,
-  reviews = [
-    { text: "Fast, professional, and came to my home in Erie. Highly recommend!", author: "Sarah M.", city: "Erie", rating: 5 },
-    { text: "Used their RON service at 9pm. Incredibly convenient and secure.", author: "James T.", city: "Millcreek", rating: 5 },
-    { text: "Best notary experience I've had. They know the local requirements.", author: "Lisa K.", city: "Harborcreek", rating: 5 },
-    { text: "Professional loan signing for our home purchase. Very thorough.", author: "Robert D.", city: "Fairview", rating: 5 }
-  ],
+  reviews = [],
   counties = ["Erie County", "Crawford County", "Warren County", "Mercer County", "Venango County"]
 }: ServiceLocalSEOProps) => {
   return (
     <>
-      {/* Local Reviews */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                What Northwestern PA Says About Our {serviceName}
-              </h2>
-              <div className="flex items-center justify-center gap-2 mb-4">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="w-6 h-6 fill-primary text-primary" />
+      {/* Service Benefits - Educational content about service advantages */}
+      {reviews.length > 0 && (
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  Why Choose Professional {serviceName} in Northwestern PA
+                </h2>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                {reviews.map((review, index) => (
+                  <Card key={index} className="p-6">
+                    <div className="flex items-center gap-1 mb-3">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <Star key={star} className="w-4 h-4 fill-primary text-primary" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">"{review.text}"</p>
+                    <div className="flex items-center gap-2 text-sm">
+                      <span className="font-semibold">{review.author}</span>
+                      <span className="text-muted-foreground">•</span>
+                      <div className="flex items-center gap-1 text-muted-foreground">
+                        <MapPin className="w-3 h-3" />
+                        <span>{review.city}, PA</span>
+                      </div>
+                    </div>
+                  </Card>
                 ))}
-                <span className="text-lg font-semibold ml-2">5.0 from 50+ reviews</span>
               </div>
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              {reviews.map((review, index) => (
-                <Card key={index} className="p-6">
-                  <div className="flex items-center gap-1 mb-3">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="w-4 h-4 fill-primary text-primary" />
-                    ))}
-                  </div>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">"{review.text}"</p>
-                  <div className="flex items-center gap-2 text-sm">
-                    <span className="font-semibold">{review.author}</span>
-                    <span className="text-muted-foreground">•</span>
-                    <div className="flex items-center gap-1 text-muted-foreground">
-                      <MapPin className="w-3 h-3" />
-                      <span>{review.city}, PA</span>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Service Areas */}
       <section className="py-16 bg-background">

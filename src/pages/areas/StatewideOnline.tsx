@@ -345,7 +345,7 @@ const StatewideOnline = () => {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Book Your Remote Online Notary Session</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join thousands of Pennsylvania residents who've discovered the convenience of Remote Online Notary. Available by appointment statewide.
+            Discover the convenience of Remote Online Notary. Available by appointment statewide for Pennsylvania residents.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 

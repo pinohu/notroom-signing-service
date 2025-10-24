@@ -67,16 +67,16 @@ const Hero = () => {
           {/* Professional Credentials */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-primary-foreground/90 text-sm md:text-base mb-8">
             <div className="flex items-center gap-2 bg-background/10 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-[hsl(var(--success-green))] text-xl">★</span>
-              <span className="font-semibold">4.9/5 Rating</span>
+              <span className="text-[hsl(var(--success-green))] text-xl">🏛️</span>
+              <span className="font-semibold">PA Commissioned</span>
             </div>
             <div className="flex items-center gap-2 bg-background/10 backdrop-blur-sm px-4 py-2 rounded-full">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">2,800+ Clients Served</span>
+              <span className="font-medium">NNA Certified</span>
             </div>
             <div className="flex items-center gap-2 bg-background/10 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-[hsl(var(--success-green))] text-xl">🏛️</span>
-              <span className="font-medium">Since 2020</span>
+              <span className="text-[hsl(var(--success-green))] text-xl">⚡</span>
+              <span className="font-medium">Same-Day Available</span>
             </div>
           </div>
           

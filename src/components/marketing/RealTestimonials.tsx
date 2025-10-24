@@ -74,10 +74,10 @@ const RealTestimonials = memo(() => {
   ];
 
   const metrics = [
-    { number: "2,400+", label: "Clients Served", color: "primary" },
-    { number: "99.8%", label: "Satisfaction Rate", color: "success-green" },
+    { number: "6", label: "Essential Services", color: "primary" },
+    { number: "100%", label: "PA Compliant", color: "success-green" },
     { number: "<15min", label: "Avg. RON Session", color: "action-cyan" },
-    { number: "4.9/5.0", label: "Google Rating", color: "urgency-amber" }
+    { number: "Same-Day", label: "Available", color: "urgency-amber" }
   ];
 
   return (
@@ -182,7 +182,7 @@ const RealTestimonials = memo(() => {
               Get Your Fast, Professional Service Now →
             </Button>
             <p className="text-sm text-muted-foreground mt-4">
-              ⭐ 99.8% satisfaction rate | 💯 100% money-back guarantee | ⚡ 2-hour response time
+              🏛️ PA Commissioned | 💯 100% money-back guarantee | ⚡ 2-hour response time
             </p>
           </div>
         </ScrollReveal>

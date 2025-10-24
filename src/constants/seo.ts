@@ -114,8 +114,9 @@ export const BUSINESS_HOURS = {
   sunday: '24/7',
 } as const;
 
+// No rating data yet - business started in 2025
 export const RATING = {
-  value: 4.9,
-  count: 50,
+  value: 0,
+  count: 0,
   max: 5,
 } as const;

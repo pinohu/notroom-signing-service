@@ -165,8 +165,8 @@ const ComparisonTable = () => {
           <ScrollReveal delay={200}>
             <div className="mt-8 text-center p-6 bg-background rounded-lg border">
               <p className="text-muted-foreground text-sm">
-                <strong className="text-foreground">Over 2,400 satisfied clients</strong> have chosen Notroom for their notary needs. 
-                Join them and experience the difference professional service makes.
+                <strong className="text-foreground">PA licensed, NNA certified, and fully insured.</strong> 
+                Experience the difference that proper credentials and professional service make.
               </p>
             </div>
           </ScrollReveal>

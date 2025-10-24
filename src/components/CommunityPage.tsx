@@ -176,10 +176,10 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
         }
       ]
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "50"
+    "verified": {
+      "@type": "PropertyValue",
+      "name": "Verification",
+      "value": "PA State Licensed & NNA Certified"
     }
   };
   
@@ -284,7 +284,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
               </div>
               <div className="flex items-center gap-2">
                 <Star className="w-5 h-5" />
-                <span>5.0 Rating</span>
+                <span>PA Licensed</span>
               </div>
             </div>
           </div>
@@ -537,16 +537,16 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
             
             <div className="grid sm:grid-cols-3 gap-6 text-center">
               <div className="p-6">
-                <div className="text-4xl font-bold text-primary mb-2">500+</div>
-                <p className="text-sm text-muted-foreground">Documents Notarized in {community.name}</p>
+                <div className="text-4xl font-bold text-primary mb-2">6</div>
+                <p className="text-sm text-muted-foreground">Essential Services Offered</p>
               </div>
               <div className="p-6">
                 <div className="text-4xl font-bold text-primary mb-2">24/7</div>
                 <p className="text-sm text-muted-foreground">Remote Online Notary Availability</p>
               </div>
               <div className="p-6">
-                <div className="text-4xl font-bold text-primary mb-2">5.0★</div>
-                <p className="text-sm text-muted-foreground">Rating from Local Residents</p>
+                <div className="text-4xl font-bold text-primary mb-2">Same-Day</div>
+                <p className="text-sm text-muted-foreground">Service Available in {community.name}</p>
               </div>
             </div>
           </div>

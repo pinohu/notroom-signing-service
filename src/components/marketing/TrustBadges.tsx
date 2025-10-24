@@ -36,8 +36,8 @@ const TrustBadges = () => {
     },
     {
       icon: Star,
-      title: "4.9/5.0 Rating",
-      subtitle: "2,400+ Clients",
+      title: "NNA Certified",
+      subtitle: "Signing Agent",
       color: "urgency-amber"
     }
   ];
@@ -77,7 +77,7 @@ const TrustBadges = () => {
               ✓ Background Checked
             </Badge>
             <Badge className="px-4 py-2 text-sm">
-              ✓ 10+ Years Experience
+              ✓ NNA Certified
             </Badge>
             <Badge className="px-4 py-2 text-sm">
               ✓ Same-Day Available

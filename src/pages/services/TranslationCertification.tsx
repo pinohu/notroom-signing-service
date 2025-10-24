@@ -283,7 +283,7 @@ const TranslationCertification = () => {
           },
           {
             question: "Will USCIS accept your certified translations?",
-            answer: "Yes! Our translations meet all USCIS requirements: professional translator certification, complete translation of all content, and proper formatting. We've successfully provided translations for thousands of immigration applications."
+            answer: "Yes! Our translations meet all USCIS requirements: professional translator certification, complete translation of all content, and proper formatting. We follow USCIS guidelines for certified translations submitted with immigration applications."
           },
           {
             question: "Can I translate my own documents for USCIS?",
