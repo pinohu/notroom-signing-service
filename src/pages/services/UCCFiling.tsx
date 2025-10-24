@@ -3,8 +3,10 @@ import SEO from "@/components/SEO";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, FileCheck, Shield, Clock } from "lucide-react";
+import { Check, FileText, Shield, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const UCCFiling = () => {
   const navigate = useNavigate();
@@ -14,6 +16,26 @@ const UCCFiling = () => {
     setTimeout(() => {
       document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
+  };
+
+  const serviceSchema = generateServiceSchema({
+    name: "UCC Filing Services Pennsylvania",
+    description: "Professional UCC filing services in Pennsylvania. UCC-1, amendments, continuations, terminations. $125 per filing plus state fees.",
+    provider: "Notroom - UCC Filing Services",
+    areaServed: "Pennsylvania",
+    price: "125",
+    url: "https://notroom.com/services/ucc-filing"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com" },
+    { name: "Services", url: "https://notroom.com/pricing" },
+    { name: "UCC Filing", url: "https://notroom.com/services/ucc-filing" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema]
   };
 
   return (

@@ -2,8 +2,11 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Car, Shield, Clock } from "lucide-react";
+import { Check, Car, FileText, Shield } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import LegalDisclaimer from "@/components/LegalDisclaimer";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const VehicleTitleTransfer = () => {
   const navigate = useNavigate();
@@ -13,6 +16,26 @@ const VehicleTitleTransfer = () => {
     setTimeout(() => {
       document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
+  };
+
+  const serviceSchema = generateServiceSchema({
+    name: "Vehicle Title Transfer Notary Erie PA",
+    description: "Mobile notary for PA vehicle title transfers. We come to you in Erie County. $60 base fee + $1.50/mile travel. PennDOT MV-4ST forms.",
+    provider: "Notroom - Vehicle Title Transfer Notary",
+    areaServed: "Erie County PA",
+    price: "60",
+    url: "https://notroom.com/services/vehicle-title-transfer"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com" },
+    { name: "Services", url: "https://notroom.com/pricing" },
+    { name: "Vehicle Title Transfer", url: "https://notroom.com/services/vehicle-title-transfer" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema]
   };
 
   return (

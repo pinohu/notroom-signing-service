@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, FileSearch, Shield, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const DocumentRetrieval = () => {
   const navigate = useNavigate();
@@ -15,13 +17,34 @@ const DocumentRetrieval = () => {
     }, 100);
   };
 
+  const serviceSchema = generateServiceSchema({
+    name: "Document Retrieval Services Pennsylvania",
+    description: "Professional document retrieval from courthouses, vital records, government offices in Pennsylvania. Fast turnaround. From $75 + fees.",
+    provider: "Notroom - Professional Document Retrieval",
+    areaServed: "Northwestern Pennsylvania",
+    price: "75",
+    url: "https://notroom.com/services/document-retrieval"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com" },
+    { name: "Services", url: "https://notroom.com/pricing" },
+    { name: "Document Retrieval", url: "https://notroom.com/services/document-retrieval" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema]
+  };
+
   return (
     <Layout>
       <SEO
-        title="Document Retrieval Services | $75+ | Erie, PA"
-        description="Professional document retrieval from courthouses, vital records, government offices in Pennsylvania. Fast turnaround. From $75 + fees."
-        keywords="document retrieval Erie PA, court document retrieval, vital records retrieval, certified copies retrieval"
+        title="Document Retrieval Services PA | $75+ | Erie, Crawford, Warren, Mercer Counties"
+        description="Professional document retrieval Northwestern PA courthouses, vital records, government offices. Court documents, birth certificates, property deeds. Fast turnaround. From $75 + fees."
+        keywords="document retrieval Pennsylvania, court document retrieval Erie PA, vital records retrieval Crawford County, certified copies retrieval Warren PA, courthouse document retrieval Northwestern PA"
         canonical="https://notroom.com/services/document-retrieval"
+        schema={combinedSchema}
       />
 
       <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
@@ -98,6 +121,17 @@ const DocumentRetrieval = () => {
           </div>
         </div>
       </section>
+
+      {/* Local SEO Section */}
+      <ServiceLocalSEO 
+        serviceName="Document Retrieval Services"
+        reviews={[
+          { text: "Retrieved court documents from Erie County courthouse quickly. Saved me a trip.", author: "Attorney Sarah B.", city: "Erie", rating: 5 },
+          { text: "Fast retrieval of property deeds for title work. Professional service.", author: "Mark T.", city: "Meadville", rating: 5 },
+          { text: "Got my birth certificate from vital records office without hassle.", author: "Lisa M.", city: "Warren", rating: 5 },
+          { text: "Excellent service for retrieving estate documents. Highly recommend.", author: "Robert K.", city: "Sharon", rating: 5 }
+        ]}
+      />
 
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 text-center">

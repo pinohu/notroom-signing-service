@@ -15,6 +15,26 @@ const WitnessService = () => {
     }, 100);
   };
 
+  const serviceSchema = generateServiceSchema({
+    name: "Professional Witness Service Erie PA",
+    description: "Impartial witness service for document signings in Erie PA. $60 base fee + travel. Alternative to notarization for documents not requiring notarial acts.",
+    provider: "Notroom - Professional Witness",
+    areaServed: "Erie County PA",
+    price: "60",
+    url: "https://notroom.com/services/witness-service"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com" },
+    { name: "Services", url: "https://notroom.com/pricing" },
+    { name: "Witness Service", url: "https://notroom.com/services/witness-service" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema]
+  };
+
   return (
     <Layout>
       <SEO

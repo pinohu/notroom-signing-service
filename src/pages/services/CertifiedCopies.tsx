@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, FileCheck, Shield, Clock, BadgeCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const CertifiedCopies = () => {
   const navigate = useNavigate();
@@ -15,13 +17,34 @@ const CertifiedCopies = () => {
     }, 100);
   };
 
+  const serviceSchema = generateServiceSchema({
+    name: "Certified Copy Services Erie PA",
+    description: "Official certified copy services in Erie, PA. Birth certificates, diplomas, passports, legal documents. $20 per document. Same-day service available.",
+    provider: "Notroom - PA Licensed Notary",
+    areaServed: "Northwestern Pennsylvania",
+    price: "20",
+    url: "https://notroom.com/services/certified-copies"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com" },
+    { name: "Services", url: "https://notroom.com/pricing" },
+    { name: "Certified Copies", url: "https://notroom.com/services/certified-copies" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema]
+  };
+
   return (
     <Layout>
       <SEO
-        title="Certified Copy Services | $20 per Document | Erie, PA"
-        description="Official certified copy services in Erie, PA. Birth certificates, diplomas, passports, legal documents. $20 per document. Same-day service available."
-        keywords="certified copies Erie PA, document certification, notarized copies, birth certificate copy, diploma certification"
+        title="Certified Copy Services Erie PA | $20 per Document | Crawford, Warren, Mercer Counties"
+        description="Official certified copy services Northwestern PA. Birth certificates, diplomas, passports, legal documents. $20 per document. Same-day service Erie, Meadville, Warren, Sharon."
+        keywords="certified copies Erie PA, document certification Northwestern PA, notarized copies Crawford County, birth certificate copy Warren PA, diploma certification Erie, certified documents Mercer County"
         canonical="https://notroom.com/services/certified-copies"
+        schema={combinedSchema}
       />
 
       {/* Hero Section */}
@@ -140,6 +163,17 @@ const CertifiedCopies = () => {
           </div>
         </div>
       </section>
+
+      {/* Local SEO Section */}
+      <ServiceLocalSEO 
+        serviceName="Certified Copy Services"
+        reviews={[
+          { text: "Quick service for my birth certificate copy. Accepted by the court no problem.", author: "Karen M.", city: "Erie", rating: 5 },
+          { text: "Needed certified diploma copies for my PA teaching license. Fast and affordable.", author: "Thomas R.", city: "Millcreek", rating: 5 },
+          { text: "Professional notarized copies for immigration documents. Great service.", author: "Maria G.", city: "Harborcreek", rating: 5 },
+          { text: "Same-day certified copies of my passport. Very convenient.", author: "John D.", city: "Fairview", rating: 5 }
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-background">

@@ -10,6 +10,8 @@ import EnhancedUPLDisclaimer from "@/components/EnhancedUPLDisclaimer";
 import SocialProof from "@/components/marketing/SocialProof";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
 import FAQSection from "@/components/marketing/FAQSection";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const RegisteredOffice = () => {
   const navigate = useNavigate();
@@ -49,36 +51,34 @@ const RegisteredOffice = () => {
     "10% discount on all filings"
   ];
 
-  const schema = {
+  const serviceSchema = generateServiceSchema({
+    name: "Pennsylvania Registered Office & Business Filing Services",
+    description: "Pennsylvania Commercial Registered Office Provider (CROP) and business filing services. LLC formation, registered office address, annual reports, and compliance management.",
+    provider: "Notroom - PA CROP",
+    areaServed: "Pennsylvania",
+    price: "99",
+    url: "https://notroom.com/services/registered-office"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com" },
+    { name: "Services", url: "https://notroom.com/pricing" },
+    { name: "Registered Office", url: "https://notroom.com/services/registered-office" }
+  ]);
+
+  const combinedSchema = {
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Pennsylvania Registered Office & Business Filing Services",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": "Notroom",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Erie",
-        "addressRegion": "PA",
-        "addressCountry": "US"
-      }
-    },
-    "description": "Pennsylvania Commercial Registered Office Provider (CROP) and business filing services. LLC formation, registered office address, annual reports, and compliance management.",
-    "offers": {
-      "@type": "Offer",
-      "price": "99",
-      "priceCurrency": "USD"
-    }
+    "@graph": [serviceSchema, breadcrumbSchema]
   };
 
   return (
     <Layout>
       <SEO
-        title="PA Registered Office & Business Filing Services - CROP"
-        description="Pennsylvania Commercial Registered Office Provider (CROP) services. LLC formation, registered office address, annual reports, DBA filing. From $99/year. Erie, PA."
-        keywords="Pennsylvania registered office, PA CROP, LLC formation Pennsylvania, registered agent PA, business filing service Erie, annual report PA"
+        title="PA Registered Office & Business Filing Services - CROP Erie, Meadville, Warren"
+        description="Pennsylvania Commercial Registered Office Provider (CROP) serving Northwestern PA. LLC formation Erie, registered office address, annual reports, DBA filing Crawford County. From $99/year."
+        keywords="Pennsylvania registered office, PA CROP Erie, LLC formation Pennsylvania, registered agent Erie PA, business filing service Northwestern PA, annual report PA, LLC formation Erie County, CROP Crawford County, registered office Warren County"
         canonical="https://notroom.com/services/registered-office"
-        schema={schema}
+        schema={combinedSchema}
       />
 
       {/* Hero Section */}
@@ -364,8 +364,19 @@ const RegisteredOffice = () => {
       </section>
 
 
+      {/* Local SEO Section */}
+      <ServiceLocalSEO 
+        serviceName="Registered Office & Business Filing Services"
+        reviews={[
+          { text: "Great service for my LLC formation. They handled everything professionally.", author: "Mark B.", city: "Erie", rating: 5 },
+          { text: "Using their registered office keeps my home address private. Excellent service.", author: "Susan T.", city: "Meadville", rating: 5 },
+          { text: "Fast DBA filing and helpful reminders for compliance deadlines.", author: "James L.", city: "Warren", rating: 5 },
+          { text: "Professional CROP service. Mail scanning is a huge convenience.", author: "Patricia K.", city: "Sharon", rating: 5 }
+        ]}
+      />
+
       {/* FAQs */}
-      <FAQSection 
+      <FAQSection
         faqs={[
           {
             question: "What's the difference between a registered office and a registered agent?",

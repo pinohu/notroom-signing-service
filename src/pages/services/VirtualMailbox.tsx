@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, Mail, Shield, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import LegalDisclaimer from "@/components/LegalDisclaimer";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const VirtualMailbox = () => {
   const navigate = useNavigate();
@@ -13,6 +16,26 @@ const VirtualMailbox = () => {
     setTimeout(() => {
       document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
+  };
+
+  const serviceSchema = generateServiceSchema({
+    name: "Virtual Mailbox Services Erie PA",
+    description: "Professional virtual mailbox and mail forwarding service in Erie PA. Digital mail scanning, forwarding, shredding. From $29/month.",
+    provider: "Notroom - Virtual Mailbox",
+    areaServed: "United States",
+    price: "29",
+    url: "https://notroom.com/services/virtual-mailbox"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com" },
+    { name: "Services", url: "https://notroom.com/pricing" },
+    { name: "Virtual Mailbox", url: "https://notroom.com/services/virtual-mailbox" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema]
   };
 
   return (

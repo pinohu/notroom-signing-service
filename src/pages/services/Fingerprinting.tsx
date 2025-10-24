@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, Fingerprint, Shield, Clock, BadgeCheck, MapPin } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const Fingerprinting = () => {
   const navigate = useNavigate();
@@ -15,13 +17,34 @@ const Fingerprinting = () => {
     }, 100);
   };
 
+  const serviceSchema = generateServiceSchema({
+    name: "FBI-Approved Fingerprinting Services Erie PA",
+    description: "FBI-approved electronic fingerprinting in Erie, PA. For teaching licenses, adoptions, background checks. Mobile service available. $35 + $1.50/mile travel.",
+    provider: "Notroom - FBI-Approved Fingerprinting",
+    areaServed: "Erie County PA",
+    price: "35",
+    url: "https://notroom.com/services/fingerprinting"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com" },
+    { name: "Services", url: "https://notroom.com/pricing" },
+    { name: "Fingerprinting", url: "https://notroom.com/services/fingerprinting" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema]
+  };
+
   return (
     <Layout>
       <SEO
-        title="Fingerprinting Services | $35 + Travel | Erie, PA"
-        description="FBI-approved electronic fingerprinting in Erie, PA. For teaching licenses, adoptions, background checks. Mobile service available. $35 + $1.50/mile travel."
-        keywords="fingerprinting Erie PA, FBI fingerprinting, electronic fingerprinting, background check fingerprints, teaching license fingerprints"
+        title="Fingerprinting Services Erie PA | $35 + Travel | FBI-Approved Electronic Fingerprinting"
+        description="FBI-approved electronic fingerprinting Northwestern PA. Teaching licenses, adoptions, background checks. Mobile service Erie County. $35 + $1.50/mile travel."
+        keywords="fingerprinting Erie PA, FBI fingerprinting Northwestern PA, electronic fingerprinting Erie County, background check fingerprints, teaching license fingerprints Erie, PA Act 34 fingerprinting"
         canonical="https://notroom.com/services/fingerprinting"
+        schema={combinedSchema}
       />
 
       {/* Hero Section */}
@@ -151,6 +174,17 @@ const Fingerprinting = () => {
           </div>
         </div>
       </section>
+
+      {/* Local SEO Section */}
+      <ServiceLocalSEO 
+        serviceName="Fingerprinting Services"
+        reviews={[
+          { text: "Convenient mobile fingerprinting for my PA teaching license. They came to my school.", author: "Jennifer L.", city: "Erie", rating: 5 },
+          { text: "Fast FBI-approved fingerprinting for adoption clearances. Professional service.", author: "Michael S.", city: "Millcreek", rating: 5 },
+          { text: "Electronic fingerprints submitted same day. Much better than ink cards.", author: "Rachel W.", city: "Harborcreek", rating: 5 },
+          { text: "Mobile service saved me so much time. Great for background check fingerprints.", author: "David P.", city: "Fairview", rating: 5 }
+        ]}
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-background">

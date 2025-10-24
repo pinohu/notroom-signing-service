@@ -2,8 +2,10 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Camera, Shield, Clock } from "lucide-react";
+import { Check, Camera, Shield, Clock, CheckCircle } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const PassportPhotos = () => {
   const navigate = useNavigate();
@@ -13,6 +15,26 @@ const PassportPhotos = () => {
     setTimeout(() => {
       document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
+  };
+
+  const serviceSchema = generateServiceSchema({
+    name: "Passport & Visa Photos Erie PA",
+    description: "Professional passport and visa photos in Erie PA. Guaranteed compliant with US State Department and embassy requirements. $15 for 2 photos.",
+    provider: "Notroom - Passport Photo Services",
+    areaServed: "Northwestern Pennsylvania",
+    price: "15",
+    url: "https://notroom.com/services/passport-photos"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com" },
+    { name: "Services", url: "https://notroom.com/pricing" },
+    { name: "Passport Photos", url: "https://notroom.com/services/passport-photos" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema]
   };
 
   return (

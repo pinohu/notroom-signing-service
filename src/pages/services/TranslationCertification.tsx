@@ -2,8 +2,11 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Check, Languages, Shield, Clock } from "lucide-react";
+import { Check, Languages, Shield, FileCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import LegalDisclaimer from "@/components/LegalDisclaimer";
+import { ServiceLocalSEO } from "@/components/local-seo/ServiceLocalSEO";
+import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 const TranslationCertification = () => {
   const navigate = useNavigate();
@@ -13,6 +16,26 @@ const TranslationCertification = () => {
     setTimeout(() => {
       document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
+  };
+
+  const serviceSchema = generateServiceSchema({
+    name: "Translation Certification Services PA",
+    description: "Notarized certification of translated documents for USCIS, courts, and official use. From $35 per page. Serving Northwestern Pennsylvania.",
+    provider: "Notroom - Translation Certification",
+    areaServed: "Pennsylvania",
+    price: "35",
+    url: "https://notroom.com/services/translation-certification"
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com" },
+    { name: "Services", url: "https://notroom.com/pricing" },
+    { name: "Translation Certification", url: "https://notroom.com/services/translation-certification" }
+  ]);
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [serviceSchema, breadcrumbSchema]
   };
 
   return (
