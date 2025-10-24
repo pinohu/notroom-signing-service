@@ -105,7 +105,7 @@ const Apostille = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto space-y-6">
             <TrustIndicators />
-            <UrgencyBanner type="seasonal" message="International document rush? We offer 24-hour expedited processing!" />
+            <UrgencyBanner />
           </div>
         </div>
       </section>

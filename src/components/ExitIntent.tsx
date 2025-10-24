@@ -50,23 +50,34 @@ const ExitIntent = () => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-md">
         <div className="text-center space-y-4 py-6">
-          <div className="text-6xl mb-4">⏰</div>
+          <div className="text-6xl mb-4">⚠️</div>
           <h3 className="text-2xl font-bold text-foreground">
-            Before You Go...
+            Wait! Don't Leave Empty-Handed
           </h3>
           <p className="text-muted-foreground text-lg">
-            Fast, convenient notary services available now in Erie
+            You were just seconds away from solving your notarization needs...
           </p>
-          <div className="bg-accent/10 p-4 rounded-lg space-y-2">
-            <div className="flex items-center justify-center gap-2 text-accent font-semibold">
-              <span className="text-2xl">⚡</span>
-              <span>Book Today</span>
+          <div className="bg-[hsl(var(--amber))]/10 border-2 border-[hsl(var(--amber))] p-6 rounded-lg space-y-3">
+            <div className="flex items-center justify-center gap-2 text-[hsl(var(--amber))] font-bold text-xl">
+              <span className="text-3xl">🎁</span>
+              <span>EXCLUSIVE EXIT OFFER</span>
             </div>
-            <p className="text-foreground font-bold text-xl">
-              Schedule your appointment now and get notarized today
+            <p className="text-foreground font-bold text-2xl">
+              Book in the next 10 minutes and get
             </p>
-            <p className="text-sm text-muted-foreground">
-              Online: $60 • Mobile: $125+
+            <p className="text-[hsl(var(--success-green))] font-bold text-3xl">
+              $15 OFF Your First Service
+            </p>
+            <div className="bg-background/50 p-3 rounded-lg">
+              <p className="text-sm text-muted-foreground mb-2">Plus, you'll get:</p>
+              <ul className="text-sm space-y-1">
+                <li>✓ Priority booking (skip the wait)</li>
+                <li>✓ Free document pre-review ($25 value)</li>
+                <li>✓ 2-hour response guarantee</li>
+              </ul>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Use code: <strong className="text-foreground font-mono">WELCOME15</strong> at checkout
             </p>
           </div>
           <div className="flex flex-col gap-3 pt-4">

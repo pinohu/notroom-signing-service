@@ -124,7 +124,7 @@ const RemoteOnlineNotary = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto space-y-6">
             <TrustIndicators />
-            <UrgencyBanner type="booking" message="Same-day appointments available - book your RON session now!" />
+            <UrgencyBanner />
           </div>
         </div>
       </section>
