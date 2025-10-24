@@ -516,7 +516,7 @@ const PrivacyPolicy = () => {
               </div>
             </Card>
 
-            <Card className="p-8">
+            <Card className="p-8" id="ccpa">
               <h2 className="text-2xl font-bold mb-4">11. California Privacy Rights (CCPA)</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>

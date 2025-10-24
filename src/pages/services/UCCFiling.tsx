@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
+import LegalDisclaimer from "@/components/LegalDisclaimer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Check, FileCheck, Shield, Clock } from "lucide-react";
@@ -112,6 +113,15 @@ const UCCFiling = () => {
           </div>
         </div>
       </section>
+
+      {/* Legal Disclaimer */}
+      <div className="py-12 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <LegalDisclaimer variant="compact" />
+          </div>
+        </div>
+      </div>
     </Layout>
   );
 };

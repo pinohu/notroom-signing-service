@@ -30,6 +30,7 @@ import Calculator from "./pages/Calculator";
 import Subscriptions from "./pages/Subscriptions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import Agreements from "./pages/legal/Agreements";
 import ErieCounty from "./pages/areas/ErieCounty";
 import CrawfordCounty from "./pages/areas/CrawfordCounty";
 import WarrenCounty from "./pages/areas/WarrenCounty";
@@ -247,6 +248,7 @@ const App = () => (
           <Route path="/track-booking" element={<TrackBooking />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/legal/agreements" element={<Agreements />} />
           
           {/* Admin Pages */}
           <Route path="/admin/login" element={<AdminLogin />} />
