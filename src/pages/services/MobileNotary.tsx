@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import SocialProof from "@/components/marketing/SocialProof";
 import GuaranteeSection from "@/components/marketing/GuaranteeSection";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
-import UrgencyBanner from "@/components/marketing/UrgencyBanner";
 import FAQSection from "@/components/marketing/FAQSection";
 
 const MobileNotary = () => {
@@ -108,7 +107,6 @@ const MobileNotary = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto space-y-6">
             <TrustIndicators />
-            <UrgencyBanner />
           </div>
         </div>
       </section>

@@ -50,35 +50,39 @@ const ExitIntent = () => {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogContent className="sm:max-w-md">
         <div className="text-center space-y-4 py-6">
-          <div className="text-6xl mb-4">⚠️</div>
+          <div className="text-6xl mb-4">📋</div>
           <h3 className="text-2xl font-bold text-foreground">
-            Wait! Don't Leave Empty-Handed
+            Have Questions About Our Services?
           </h3>
           <p className="text-muted-foreground text-lg">
-            You were just seconds away from solving your notarization needs...
+            We're here to help you find the right notary solution
           </p>
-          <div className="bg-[hsl(var(--amber))]/10 border-2 border-[hsl(var(--amber))] p-6 rounded-lg space-y-3">
-            <div className="flex items-center justify-center gap-2 text-[hsl(var(--amber))] font-bold text-xl">
-              <span className="text-3xl">🎁</span>
-              <span>EXCLUSIVE EXIT OFFER</span>
+          <div className="bg-[hsl(var(--primary))]/10 border-2 border-[hsl(var(--primary))]/20 p-6 rounded-lg space-y-3">
+            <div className="flex items-center justify-center gap-2 text-[hsl(var(--primary))] font-semibold text-lg">
+              <span className="text-2xl">🤝</span>
+              <span>Professional Service Guarantee</span>
             </div>
-            <p className="text-foreground font-bold text-2xl">
-              Book in the next 10 minutes and get
-            </p>
-            <p className="text-[hsl(var(--success-green))] font-bold text-3xl">
-              $15 OFF Your First Service
-            </p>
-            <div className="bg-background/50 p-3 rounded-lg">
-              <p className="text-sm text-muted-foreground mb-2">Plus, you'll get:</p>
-              <ul className="text-sm space-y-1">
-                <li>✓ Priority booking (skip the wait)</li>
-                <li>✓ Free document pre-review ($25 value)</li>
-                <li>✓ 2-hour response guarantee</li>
+            <div className="bg-background/50 p-4 rounded-lg text-left space-y-2">
+              <p className="text-sm font-semibold text-foreground mb-3">What You Can Expect:</p>
+              <ul className="text-sm space-y-2">
+                <li className="flex items-start gap-2">
+                  <span className="text-[hsl(var(--success-green))] mt-0.5">✓</span>
+                  <span>Response within 2 business hours</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[hsl(var(--success-green))] mt-0.5">✓</span>
+                  <span>Licensed & certified professionals</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[hsl(var(--success-green))] mt-0.5">✓</span>
+                  <span>Transparent pricing, no hidden fees</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[hsl(var(--success-green))] mt-0.5">✓</span>
+                  <span>100% satisfaction commitment</span>
+                </li>
               </ul>
             </div>
-            <p className="text-xs text-muted-foreground">
-              Use code: <strong className="text-foreground font-mono">WELCOME15</strong> at checkout
-            </p>
           </div>
           <div className="flex flex-col gap-3 pt-4">
             <Button

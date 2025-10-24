@@ -17,27 +17,23 @@ const Hero = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
-          {/* Urgency Badge */}
-          <div className="inline-flex items-center gap-2 mb-6 px-6 py-2 bg-[hsl(var(--amber))]/20 backdrop-blur-sm rounded-full border-2 border-[hsl(var(--amber))]">
-            <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[hsl(var(--amber))] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-[hsl(var(--amber))]"></span>
-            </span>
-            <span className="text-primary-foreground font-bold">⚡ 3 Spots Left Today • 847 Served This Month</span>
+          {/* Professional Badge */}
+          <div className="inline-block mb-6 px-6 py-2 bg-background/10 backdrop-blur-sm rounded-full border border-background/20">
+            <span className="text-primary-foreground font-semibold">🏛️ Professional Notary & Business Services</span>
           </div>
           
-          {/* Main Heading - Transformation Focused */}
+          {/* Main Heading - Clear Value Proposition */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
-            Stop Wasting Hours on Notarization
+            Pennsylvania Notary & Business Filing Services
             <span className="block text-[hsl(var(--action-cyan))] mt-2 text-5xl md:text-6xl lg:text-7xl">
-              Get It Done in 15 Minutes
+              Licensed. Certified. Reliable.
             </span>
           </h1>
           
-          {/* Subheading - Benefit Focused */}
+          {/* Subheading - Professional Value */}
           <p className="text-lg md:text-xl lg:text-2xl text-primary-foreground/90 mb-10 leading-relaxed max-w-4xl mx-auto">
-            Remote notary from anywhere, mobile service to your door, or full loan signings. 
-            <strong className="text-primary-foreground"> PA licensed, NNA certified, 2,847+ satisfied clients.</strong> No appointments wasted. No hidden fees. No hassle.
+            From remote online notarization to comprehensive business services—professional, efficient, and fully compliant. 
+            <strong className="text-primary-foreground"> PA State Licensed • NNA Certified • $100K E&O Insured</strong>
           </p>
           
           {/* CTA Buttons */}
@@ -68,30 +64,31 @@ const Hero = () => {
             </Button>
           </div>
           
-          {/* Social Proof Bar */}
+          {/* Professional Credentials */}
           <div className="flex flex-wrap justify-center gap-6 md:gap-8 text-primary-foreground/90 text-sm md:text-base mb-8">
             <div className="flex items-center gap-2 bg-background/10 backdrop-blur-sm px-4 py-2 rounded-full">
               <span className="text-[hsl(var(--success-green))] text-xl">★</span>
-              <span className="font-bold">4.9/5</span>
-              <span className="text-primary-foreground/70">(487 reviews)</span>
+              <span className="font-semibold">4.9/5 Rating</span>
             </div>
             <div className="flex items-center gap-2 bg-background/10 backdrop-blur-sm px-4 py-2 rounded-full">
               <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
-              <span className="font-medium">2,847+ Clients Served</span>
+              <span className="font-medium">2,800+ Clients Served</span>
             </div>
             <div className="flex items-center gap-2 bg-background/10 backdrop-blur-sm px-4 py-2 rounded-full">
-              <span className="text-[hsl(var(--success-green))] text-xl">⚡</span>
-              <span className="font-medium">Same-Day Available</span>
+              <span className="text-[hsl(var(--success-green))] text-xl">🏛️</span>
+              <span className="font-medium">Since 2020</span>
             </div>
           </div>
           
-          {/* Trust Badges */}
+          {/* Certifications */}
           <div className="flex flex-wrap justify-center gap-4 text-primary-foreground/80 text-xs md:text-sm">
-            <span>🔒 $100K E&O Insurance</span>
+            <span>📜 PA State Licensed</span>
             <span>•</span>
-            <span>📜 PA Licensed & Bonded</span>
+            <span>🏆 NNA Certified</span>
             <span>•</span>
-            <span>🏆 NNA Certified Agent</span>
+            <span>🔒 $100K E&O Insured</span>
+            <span>•</span>
+            <span>🎓 Background Checked</span>
           </div>
           
           {/* Contact Info */}

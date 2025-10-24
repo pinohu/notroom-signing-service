@@ -11,28 +11,28 @@ const BeforeAfter = () => {
   const scenarios = [
     {
       before: {
-        title: "The Old Way",
+        title: "Traditional In-Person",
         items: [
-          "Drive to notary office during business hours",
-          "Wait in line for 30-45 minutes",
-          "Rush to make copies beforehand",
-          "Take time off work ($100+ in lost wages)",
-          "Multiple trips if documents aren't right",
-          "Hope notary is available"
+          "Drive to notary office during limited hours",
+          "Wait time: 30-45 minutes average",
+          "Prepare physical copies in advance",
+          "May require time off work",
+          "Multiple visits if documentation issues arise",
+          "Availability subject to walk-in traffic"
         ],
-        cost: "$150+ in time & money"
+        cost: "Estimated: $75-150 (time + travel + fees)"
       },
       after: {
-        title: "The Notroom Way",
+        title: "Remote Online Notarization",
         items: [
-          "Connect from anywhere via video",
-          "Appointment scheduled around YOUR schedule",
-          "Digital documents handled instantly",
-          "No time off work needed",
-          "Everything verified before you start",
-          "100% guaranteed availability"
+          "Connect from any location via secure video",
+          "Scheduled appointments at your convenience",
+          "Digital documents processed electronically",
+          "No need to leave home or office",
+          "Pre-verification ensures smooth completion",
+          "Confirmed availability with booking"
         ],
-        cost: "Just $60, done in 15 minutes"
+        cost: "$60 flat rate, typically 15-20 minutes"
       }
     }
   ];
@@ -43,14 +43,14 @@ const BeforeAfter = () => {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <div className="inline-block mb-4 px-6 py-2 bg-[hsl(var(--amber))]/10 rounded-full border border-[hsl(var(--amber))]/20">
-                <span className="text-[hsl(var(--amber))] font-bold">THE TRANSFORMATION</span>
+              <div className="inline-block mb-4 px-6 py-2 bg-[hsl(var(--primary))]/10 rounded-full border border-[hsl(var(--primary))]/20">
+                <span className="text-[hsl(var(--primary))] font-semibold">COMPARE THE EXPERIENCE</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                See The Difference
+                Traditional vs. Modern Notarization
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Why waste hours of your day when you could be done in minutes? Here's what changes when you choose Notroom.
+                See how remote notarization compares to traditional in-person services in terms of convenience, time, and cost.
               </p>
             </div>
           </ScrollReveal>
@@ -119,11 +119,11 @@ const BeforeAfter = () => {
           <ScrollReveal delay={200}>
             <div className="text-center mt-12">
               <Card className="inline-block p-8 bg-gradient-to-r from-[hsl(var(--primary))]/10 to-[hsl(var(--action-cyan))]/10 border-2 border-primary/20">
-                <div className="flex items-center justify-center gap-4 mb-4">
-                  <DollarSign className="w-12 h-12 text-[hsl(var(--success-green))]" />
+              <div className="flex items-center justify-center gap-4 mb-4">
+                  <DollarSign className="w-12 h-12 text-[hsl(var(--primary))]" />
                   <div className="text-left">
-                    <p className="text-sm text-muted-foreground">Average Savings Per Visit</p>
-                    <p className="text-3xl font-bold text-[hsl(var(--success-green))]">$90 + 2 Hours</p>
+                    <p className="text-sm text-muted-foreground">Average Time & Cost Efficiency</p>
+                    <p className="text-3xl font-bold text-[hsl(var(--primary))]">Save 2+ Hours Per Session</p>
                   </div>
                 </div>
                 <Button 
@@ -132,7 +132,7 @@ const BeforeAfter = () => {
                   onClick={scrollToBooking}
                   className="font-bold text-lg px-8"
                 >
-                  Start Saving Now →
+                  Schedule Your Appointment →
                 </Button>
               </Card>
             </div>

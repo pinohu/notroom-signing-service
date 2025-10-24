@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import LegalDisclaimer from "@/components/LegalDisclaimer";
 import SocialProof from "@/components/marketing/SocialProof";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
-import UrgencyBanner from "@/components/marketing/UrgencyBanner";
 import FAQSection from "@/components/marketing/FAQSection";
 
 const Apostille = () => {
@@ -105,7 +104,6 @@ const Apostille = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto space-y-6">
             <TrustIndicators />
-            <UrgencyBanner />
           </div>
         </div>
       </section>

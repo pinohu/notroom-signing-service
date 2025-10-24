@@ -16,10 +16,6 @@ import ValueStack from "@/components/marketing/ValueStack";
 import TrustBadges from "@/components/marketing/TrustBadges";
 import ComparisonTable from "@/components/marketing/ComparisonTable";
 import BeforeAfter from "@/components/marketing/BeforeAfter";
-import CostOfInaction from "@/components/marketing/CostOfInaction";
-import LeadMagnet from "@/components/marketing/LeadMagnet";
-import ReferralProgram from "@/components/marketing/ReferralProgram";
-import UrgencyBanner from "@/components/marketing/UrgencyBanner";
 import AuthorityBuilder from "@/components/marketing/AuthorityBuilder";
 
 const Index = () => {
@@ -92,12 +88,10 @@ const Index = () => {
       />
       <Hero />
       <TrustBadges />
-      <LeadMagnet />
       <Services />
       <BeforeAfter />
       <ValueStack />
       <ComparisonTable />
-      <CostOfInaction />
       <ProcessTimeline />
       <AuthorityBuilder />
       <WhyNotroom />
@@ -110,11 +104,9 @@ const Index = () => {
           </div>
         </div>
       </section>
-      <ReferralProgram />
       <FAQ />
       <FinalCTA />
       <BookingForm />
-      <UrgencyBanner />
       <ExitIntent />
     </Layout>
   );
