@@ -17,6 +17,7 @@ const PricingCalculator = () => {
   const [signers, setSigners] = useState(1);
   const [urgency, setUrgency] = useState("flexible");
   const [loanType, setLoanType] = useState("standard");
+  const [serviceLocation, setServiceLocation] = useState("office");
   const [destinationAddress, setDestinationAddress] = useState("");
   const [distance, setDistance] = useState<number | null>(null);
   const [isCalculatingDistance, setIsCalculatingDistance] = useState(false);
@@ -26,7 +27,9 @@ const PricingCalculator = () => {
   useEffect(() => {
     const needsDistance = service === "mobile" || 
                          (service === "loan" && loanType === "mobile") ||
-                         (service === "i9" && urgency === "inPerson");
+                         (service === "i9" && urgency === "inPerson") ||
+                         (service === "fingerprinting" && serviceLocation === "mobile") ||
+                         (service === "witness" && serviceLocation === "mobile");
     if (needsDistance && destinationAddress.length > 10) {
       const timer = setTimeout(async () => {
         setIsCalculatingDistance(true);
@@ -109,6 +112,42 @@ const PricingCalculator = () => {
       } else {
         breakdown.total = PRICING.I9_VERIFICATION.remote;
       }
+    } else if (service === "certifiedCopies") {
+      breakdown.serviceFee = PRICING.CERTIFIED_COPIES.perDocument * documents;
+      breakdown.total = breakdown.serviceFee;
+    } else if (service === "documentPrep") {
+      breakdown.serviceFee = PRICING.DOCUMENT_PREP.basePrice;
+      breakdown.total = PRICING.DOCUMENT_PREP.basePrice;
+    } else if (service === "fingerprinting") {
+      if (serviceLocation === "mobile") {
+        breakdown.serviceFee = PRICING.FINGERPRINTING_MOBILE.baseFee;
+        breakdown.total = PRICING.FINGERPRINTING_MOBILE.baseFee;
+        
+        if (distance !== null) {
+          const roundTripDistance = calculateRoundTripDistance(distance);
+          breakdown.distance = roundTripDistance;
+          breakdown.mileageFee = roundTripDistance * PRICING.FINGERPRINTING_MOBILE.mileageRate;
+          breakdown.total += breakdown.mileageFee;
+        }
+      } else {
+        breakdown.serviceFee = PRICING.FINGERPRINTING.inPerson;
+        breakdown.total = PRICING.FINGERPRINTING.inPerson;
+      }
+    } else if (service === "witness") {
+      if (serviceLocation === "mobile") {
+        breakdown.serviceFee = PRICING.WITNESS_SERVICE_MOBILE.baseFee;
+        breakdown.total = PRICING.WITNESS_SERVICE_MOBILE.baseFee;
+        
+        if (distance !== null) {
+          const roundTripDistance = calculateRoundTripDistance(distance);
+          breakdown.distance = roundTripDistance;
+          breakdown.mileageFee = roundTripDistance * PRICING.WITNESS_SERVICE_MOBILE.mileageRate;
+          breakdown.total += breakdown.mileageFee;
+        }
+      } else {
+        breakdown.serviceFee = PRICING.WITNESS_SERVICE.baseFee;
+        breakdown.total = PRICING.WITNESS_SERVICE.baseFee;
+      }
     }
 
     return breakdown;
@@ -123,7 +162,11 @@ const PricingCalculator = () => {
       mobile: "/services/mobile-notary",
       apostille: "/services/apostille",
       loan: "/services/loan-signing-agent",
-      i9: "/services/i9-verification"
+      i9: "/services/i9-verification",
+      certifiedCopies: "/services/certified-copies",
+      documentPrep: "/services/document-preparation",
+      fingerprinting: "/services/fingerprinting",
+      witness: "/services/witness-service"
     };
     return routes[service as keyof typeof routes] || "/";
   };
@@ -160,6 +203,10 @@ const PricingCalculator = () => {
               <SelectItem value="apostille">Apostille Service</SelectItem>
               <SelectItem value="loan">Loan Signing</SelectItem>
               <SelectItem value="i9">I-9 Verification</SelectItem>
+              <SelectItem value="certifiedCopies">Certified Copies</SelectItem>
+              <SelectItem value="documentPrep">Document Preparation</SelectItem>
+              <SelectItem value="fingerprinting">Fingerprinting</SelectItem>
+              <SelectItem value="witness">Professional Witness</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -179,7 +226,35 @@ const PricingCalculator = () => {
           </div>
         )}
 
-        {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson")) && (
+        {(service === "fingerprinting" || service === "witness") && (
+          <div>
+            <Label htmlFor="serviceLocation">Service Location</Label>
+            <Select value={serviceLocation} onValueChange={setServiceLocation}>
+              <SelectTrigger id="serviceLocation">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
+                <SelectItem value="office">At Our Office</SelectItem>
+                <SelectItem value="mobile">Mobile (We Come to You)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        )}
+
+        {service === "certifiedCopies" && (
+          <div>
+            <Label htmlFor="documents">Number of Documents</Label>
+            <Input
+              id="documents"
+              type="number"
+              min="1"
+              value={documents}
+              onChange={(e) => setDocuments(parseInt(e.target.value) || 1)}
+            />
+          </div>
+        )}
+
+        {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile")) && (
           <div>
             <Label htmlFor="destination">Your Address (for distance calculation)</Label>
             <div className="relative">
@@ -268,7 +343,7 @@ const PricingCalculator = () => {
             </div>
           )}
           
-          {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson")) && breakdown.distance !== undefined && breakdown.mileageFee !== undefined && (
+          {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile")) && breakdown.distance !== undefined && breakdown.mileageFee !== undefined && (
             <>
               <div className="flex justify-between text-sm border-t pt-2">
                 <span className="text-muted-foreground">
@@ -283,14 +358,18 @@ const PricingCalculator = () => {
                     ? PRICING.MOBILE.mileageRate 
                     : service === "i9" 
                       ? PRICING.I9_VERIFICATION_MOBILE.mileageRate 
-                      : PRICING.LOAN_SIGNING_MOBILE.mileageRate}/mile)
+                      : service === "fingerprinting"
+                        ? PRICING.FINGERPRINTING_MOBILE.mileageRate
+                        : service === "witness"
+                          ? PRICING.WITNESS_SERVICE_MOBILE.mileageRate
+                          : PRICING.LOAN_SIGNING_MOBILE.mileageRate}/mile)
                 </span>
                 <span className="font-medium">${breakdown.mileageFee.toFixed(2)}</span>
               </div>
             </>
           )}
           
-          {((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson")) && !distance) && (
+          {((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile")) && !distance) && (
             <div className="flex justify-between text-sm border-t pt-2">
               <span className="text-muted-foreground italic">
                 + Travel mileage (enter address above)
@@ -301,7 +380,7 @@ const PricingCalculator = () => {
           
           <div className="flex justify-between text-lg font-bold border-t-2 pt-3 mt-2">
             <span>Total</span>
-            <span className="text-primary">${price}{((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson")) && !distance) && "+"}</span>
+            <span className="text-primary">${price}{((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile")) && !distance) && "+"}</span>
           </div>
         </div>
         
@@ -310,7 +389,7 @@ const PricingCalculator = () => {
             <p className="text-sm text-muted-foreground mb-1">Your Total</p>
             <div className="flex items-center gap-2">
               <DollarSign className="w-8 h-8 text-primary" />
-              <span className="text-4xl font-bold text-primary">{price}{((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson")) && !distance) && "+"}</span>
+              <span className="text-4xl font-bold text-primary">{price}{((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile")) && !distance) && "+"}</span>
             </div>
           </div>
           <div className="text-right">
@@ -371,6 +450,42 @@ const PricingCalculator = () => {
               <li>• Remote I-9 verification: ${PRICING.I9_VERIFICATION.remote}</li>
               <li>• E-Verify coordination available</li>
               <li>• Volume discounts for multiple employees</li>
+            </>
+          )}
+          {service === "certifiedCopies" && (
+            <>
+              <li>• ${PRICING.CERTIFIED_COPIES.perDocument} per document certified</li>
+              <li>• Official notary seal and signature</li>
+              <li>• Accepted for legal, immigration, and business purposes</li>
+              <li>• Same-day service available</li>
+            </>
+          )}
+          {service === "documentPrep" && (
+            <>
+              <li>• Professional document formatting and preparation</li>
+              <li>• Common documents: affidavits, contracts, agreements</li>
+              <li>• Review for completeness (not legal advice)</li>
+              <li>• Quick turnaround - usually same day</li>
+            </>
+          )}
+          {service === "fingerprinting" && (
+            <>
+              <li>• FBI-approved electronic fingerprinting</li>
+              <li>• For: teaching licenses, adoptions, background checks</li>
+              {serviceLocation === "mobile" && (
+                <li>• Mobile service: ${PRICING.FINGERPRINTING_MOBILE.baseFee} + ${PRICING.FINGERPRINTING_MOBILE.mileageRate}/mile</li>
+              )}
+              <li>• Results submitted electronically</li>
+            </>
+          )}
+          {service === "witness" && (
+            <>
+              <li>• Professional witness for private agreements</li>
+              <li>• Neutral third-party verification</li>
+              {serviceLocation === "mobile" && (
+                <li>• Mobile service: ${PRICING.WITNESS_SERVICE_MOBILE.baseFee} + ${PRICING.WITNESS_SERVICE_MOBILE.mileageRate}/mile</li>
+              )}
+              <li>• Suitable for contracts not requiring notarization</li>
             </>
           )}
         </ul>

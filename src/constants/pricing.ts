@@ -61,6 +61,40 @@ export const PRICING = {
     display: "$399+",
     monthly: 399,
     description: "Monthly retainer plans for businesses"
+  },
+  CERTIFIED_COPIES: {
+    display: "$20",
+    perDocument: 20,
+    description: "Certified copy services for official documents"
+  },
+  DOCUMENT_PREP: {
+    display: "$100+",
+    basePrice: 100,
+    description: "Professional document preparation services"
+  },
+  FINGERPRINTING: {
+    display: "$35",
+    inPerson: 35,
+    description: "FBI-approved fingerprinting services"
+  },
+  FINGERPRINTING_MOBILE: {
+    display: "$35 + mileage",
+    baseFee: 35,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "Mobile fingerprinting with travel"
+  },
+  WITNESS_SERVICE: {
+    display: "$60",
+    baseFee: 60,
+    description: "Professional witness services"
+  },
+  WITNESS_SERVICE_MOBILE: {
+    display: "$60 + mileage",
+    baseFee: 60,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "Mobile witness service with travel"
   }
 };
 
@@ -71,5 +105,9 @@ export const getServicePricing = (cityName: string) => ({
   APOSTILLE: { ...PRICING.APOSTILLE, description: "International document authentication" },
   I9: { ...PRICING.I9_VERIFICATION, description: `Employment verification for ${cityName} businesses` },
   LLC: { ...PRICING.LLC_FORMATION, description: `Start your ${cityName} business today` },
-  RETAINER: { ...PRICING.BUSINESS_RETAINER, description: `Monthly plans for ${cityName} companies` }
+  RETAINER: { ...PRICING.BUSINESS_RETAINER, description: `Monthly plans for ${cityName} companies` },
+  CERTIFIED_COPIES: { ...PRICING.CERTIFIED_COPIES, description: `Document certification in ${cityName}` },
+  DOCUMENT_PREP: { ...PRICING.DOCUMENT_PREP, description: `Professional document services for ${cityName}` },
+  FINGERPRINTING: { ...PRICING.FINGERPRINTING_MOBILE, description: `Mobile fingerprinting in ${cityName}` },
+  WITNESS: { ...PRICING.WITNESS_SERVICE_MOBILE, description: `Professional witness service in ${cityName}` }
 });

@@ -13,6 +13,10 @@ import BusinessRetainer from "./pages/services/BusinessRetainer";
 import Apostille from "./pages/services/Apostille";
 import I9Verification from "./pages/services/I9Verification";
 import RegisteredOffice from "./pages/services/RegisteredOffice";
+import CertifiedCopies from "./pages/services/CertifiedCopies";
+import DocumentPreparation from "./pages/services/DocumentPreparation";
+import Fingerprinting from "./pages/services/Fingerprinting";
+import WitnessService from "./pages/services/WitnessService";
 import HowRonWorks from "./pages/resources/HowRonWorks";
 import Pricing from "./pages/Pricing";
 import Calculator from "./pages/Calculator";
@@ -124,6 +128,10 @@ const App = () => (
           <Route path="/services/apostille" element={<Apostille />} />
           <Route path="/services/i9-verification" element={<I9Verification />} />
           <Route path="/services/registered-office" element={<RegisteredOffice />} />
+          <Route path="/services/certified-copies" element={<CertifiedCopies />} />
+          <Route path="/services/document-preparation" element={<DocumentPreparation />} />
+          <Route path="/services/fingerprinting" element={<Fingerprinting />} />
+          <Route path="/services/witness-service" element={<WitnessService />} />
           
           {/* Resource Pages */}
           <Route path="/resources/how-ron-works" element={<HowRonWorks />} />
