@@ -9,6 +9,12 @@ import PricingCalculator from "@/components/PricingCalculator";
 import BookingForm from "@/components/BookingForm";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { LocalCaseStudies } from "@/components/local-seo/LocalCaseStudies";
+import { LocalProofSection } from "@/components/local-seo/LocalProofSection";
+import { EnhancedLocalFAQ } from "@/components/local-seo/EnhancedLocalFAQ";
+import { ServiceAreaMap } from "@/components/local-seo/ServiceAreaMap";
+import { getCaseStudiesForCity } from "@/data/localCaseStudies";
+import { generateFAQSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 
 interface CommunityPageProps {
   community: CommunityData;
@@ -60,6 +66,8 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
     { icon: Briefcase, title: "Business Retainer", price: "$399+", description: `Monthly plans for ${community.name} companies`, link: "/services/business-retainer" }
   ];
 
+  const caseStudies = getCaseStudiesForCity(community.slug);
+  
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -171,8 +179,38 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
-      "reviewCount": "50+"
+      "reviewCount": "50"
     }
+  };
+  
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Home", url: "https://notroom.com/" },
+    { name: community.county, url: `https://notroom.com/areas/${community.county.toLowerCase().replace(/\s+/g, '-')}` },
+    { name: community.name, url: `https://notroom.com/areas/cities/${community.slug}` }
+  ]);
+  
+  const faqSchema = generateFAQSchema([
+    {
+      question: `How quickly can you arrive in ${community.name}?`,
+      answer: `For mobile notary services in ${community.name}, we typically arrive within 30-60 minutes during business hours. Same-day appointments are usually available.`
+    },
+    {
+      question: `Do you serve all of ${community.name}?`,
+      answer: `Yes! We provide mobile notary services throughout all of ${community.name} and surrounding ${community.county} areas.`
+    },
+    {
+      question: `What are your rates for ${community.name} residents?`,
+      answer: `Mobile notary service starts at $50 base fee plus $4/mile travel. Remote Online Notary (RON) is a flat $50 with no travel charges.`
+    },
+    {
+      question: `Are you licensed to notarize in Pennsylvania?`,
+      answer: `Yes, we hold active Pennsylvania notary commissions and are fully bonded and insured.`
+    }
+  ]);
+  
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [localBusinessSchema, breadcrumbSchema, faqSchema]
   };
 
   const nearbyLinks = getNearbyLinks(community.nearbyComm);
@@ -203,7 +241,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
         description={`#1 rated notary services in ${community.name}, ${community.county}, PA. Mobile notary, Remote Online Notary (RON), apostille, loan signing, I-9 verification. Serving ${community.landmarks.slice(0, 3).join(', ')}. Same-day & 24/7 available. Licensed & insured.`}
         keywords={localKeywords}
         canonical={`https://notroom.com/areas/cities/${community.slug}`}
-        schema={localBusinessSchema}
+        schema={combinedSchema}
       />
 
       {/* Hero Section */}
@@ -569,6 +607,34 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
           </div>
         </div>
       </section>
+
+      {/* Service Area Map */}
+      <ServiceAreaMap 
+        cityName={community.name}
+        zipCodes={community.zipCodes}
+        nearbyComm={community.nearbyComm}
+        county={community.county}
+      />
+
+      {/* Local Proof Section */}
+      <LocalProofSection 
+        cityName={community.name}
+        county={community.county}
+        nearbyLandmarks={community.landmarks}
+      />
+
+      {/* Case Studies */}
+      <LocalCaseStudies 
+        cityName={community.name}
+        caseStudies={caseStudies}
+      />
+
+      {/* Enhanced FAQ */}
+      <EnhancedLocalFAQ 
+        cityName={community.name}
+        county={community.county}
+        zipCodes={community.zipCodes}
+      />
 
       {/* Nearby Communities */}
       {nearbyLinks.length > 0 && (
