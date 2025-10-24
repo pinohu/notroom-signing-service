@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Monitor, Car, Home, Check, Users, Building, Globe, FileCheck } from "lucide-react";
+import { Monitor, Car, Home, Check, Users, Building, Globe, FileCheck, FileText, Fingerprint, UserCheck } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import { useNavigate } from "react-router-dom";
 import { memo } from "react";
@@ -111,6 +111,74 @@ const Services = memo(() => {
       ctaText: "Learn More",
       featured: false,
       link: "/services/registered-office"
+    },
+    {
+      icon: FileCheck,
+      badge: "Quick",
+      title: "Certified Copies",
+      price: "$20",
+      priceDetail: "Per document | Same-day available",
+      description: "Official certified copies of important documents. Birth certificates, diplomas, passports. Accepted for legal and immigration purposes.",
+      features: [
+        "Official notary seal & signature",
+        "Same-day service available",
+        "Legally valid worldwide",
+        "All document types accepted"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/certified-copies"
+    },
+    {
+      icon: FileText,
+      badge: "Affordable",
+      title: "Document Preparation",
+      price: "$100+",
+      priceDetail: "Varies by complexity",
+      description: "Professional document preparation. Affidavits, contracts, agreements, legal forms. Save money vs attorney fees.",
+      features: [
+        "Professional formatting",
+        "Quick turnaround (1-2 days)",
+        "Review for completeness",
+        "Affordable alternative to lawyers"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/document-preparation"
+    },
+    {
+      icon: Fingerprint,
+      badge: "Mobile",
+      title: "Fingerprinting",
+      price: "$35+",
+      priceDetail: "$35 + $1.50/mile travel",
+      description: "FBI-approved electronic fingerprinting. For teaching licenses, adoptions, background checks. We come to you.",
+      features: [
+        "FBI-approved equipment",
+        "Mobile service available",
+        "Teaching & professional licenses",
+        "Electronic submission"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/fingerprinting"
+    },
+    {
+      icon: UserCheck,
+      badge: "Neutral",
+      title: "Professional Witness",
+      price: "$60+",
+      priceDetail: "$60 + $1.50/mile travel",
+      description: "Neutral third-party witness for private agreements and contracts. Lower cost alternative when notarization isn't required.",
+      features: [
+        "Professional verification",
+        "Mobile service available",
+        "Private contracts & agreements",
+        "Impartial third-party"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/witness-service"
     }
   ];
 

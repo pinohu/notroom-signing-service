@@ -160,6 +160,94 @@ const Pricing = () => {
               </ul>
               <Button className="w-full" onClick={() => navigate("/services/registered-office")}>Learn More</Button>
             </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Certified Copies</h3>
+              <div className="text-4xl font-bold mb-4">$20</div>
+              <p className="text-muted-foreground mb-2">Per document</p>
+              <p className="text-sm text-muted-foreground mb-6">Official notary certification</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Birth certificates, diplomas, passports</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Same-day service available</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Legally valid worldwide</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/certified-copies")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Document Preparation</h3>
+              <div className="text-4xl font-bold mb-4">$100+</div>
+              <p className="text-muted-foreground mb-2">Varies by complexity</p>
+              <p className="text-sm text-muted-foreground mb-6">Affidavits, contracts, agreements, legal forms</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Professional formatting</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Quick turnaround (1-2 days)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Affordable vs attorney fees</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/document-preparation")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Fingerprinting</h3>
+              <div className="text-4xl font-bold mb-4">$35 + travel</div>
+              <p className="text-muted-foreground mb-2">Mobile service</p>
+              <p className="text-sm text-muted-foreground mb-6">$35 base + $1.50/mile from Erie</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">FBI-approved equipment</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Teaching licenses, adoptions</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Mobile service available</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/fingerprinting")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Professional Witness</h3>
+              <div className="text-4xl font-bold mb-4">$60 + travel</div>
+              <p className="text-muted-foreground mb-2">Mobile service</p>
+              <p className="text-sm text-muted-foreground mb-6">$60 base + $1.50/mile from Erie</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Neutral third-party witness</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Private agreements & contracts</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Alternative to notarization</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/witness-service")}>Learn More</Button>
+            </Card>
           </div>
 
           {/* Fee Disclosure */}
@@ -189,6 +277,22 @@ const Pricing = () => {
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
                   <span><strong>Apostille Services:</strong> $5 PA notary fee + $240+ processing & coordination (includes PA Dept of State fees). Standard (7-10 days) $245, Expedited (2-3 days) $395, Full-chain authentication $495.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Certified Copies:</strong> $20 per document for official notary certification. Same-day service available. Accepted for legal, immigration, and business purposes.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Document Preparation:</strong> Starting at $100, varies by complexity. Professional formatting of affidavits, contracts, agreements, and legal forms. Not legal advice.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Fingerprinting:</strong> $35 base + $1.50/mile round-trip travel. FBI-approved electronic fingerprinting for teaching licenses, adoptions, background checks.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Professional Witness:</strong> $60 base + $1.50/mile round-trip travel. Neutral third-party witness for private agreements and contracts not requiring notarization.</span>
                 </li>
               </ul>
               <p className="text-xs text-muted-foreground mt-4 text-center">
