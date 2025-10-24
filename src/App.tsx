@@ -17,6 +17,14 @@ import CertifiedCopies from "./pages/services/CertifiedCopies";
 import DocumentPreparation from "./pages/services/DocumentPreparation";
 import Fingerprinting from "./pages/services/Fingerprinting";
 import WitnessService from "./pages/services/WitnessService";
+import PassportPhotos from "./pages/services/PassportPhotos";
+import TranslationCertification from "./pages/services/TranslationCertification";
+import VehicleTitleTransfer from "./pages/services/VehicleTitleTransfer";
+import WeddingOfficiant from "./pages/services/WeddingOfficiant";
+import ProcessServing from "./pages/services/ProcessServing";
+import VirtualMailbox from "./pages/services/VirtualMailbox";
+import UCCFiling from "./pages/services/UCCFiling";
+import DocumentRetrieval from "./pages/services/DocumentRetrieval";
 import HowRonWorks from "./pages/resources/HowRonWorks";
 import Pricing from "./pages/Pricing";
 import Calculator from "./pages/Calculator";
@@ -132,6 +140,14 @@ const App = () => (
           <Route path="/services/document-preparation" element={<DocumentPreparation />} />
           <Route path="/services/fingerprinting" element={<Fingerprinting />} />
           <Route path="/services/witness-service" element={<WitnessService />} />
+          <Route path="/services/passport-photos" element={<PassportPhotos />} />
+          <Route path="/services/translation-certification" element={<TranslationCertification />} />
+          <Route path="/services/vehicle-title-transfer" element={<VehicleTitleTransfer />} />
+          <Route path="/services/wedding-officiant" element={<WeddingOfficiant />} />
+          <Route path="/services/process-serving" element={<ProcessServing />} />
+          <Route path="/services/virtual-mailbox" element={<VirtualMailbox />} />
+          <Route path="/services/ucc-filing" element={<UCCFiling />} />
+          <Route path="/services/document-retrieval" element={<DocumentRetrieval />} />
           
           {/* Resource Pages */}
           <Route path="/resources/how-ron-works" element={<HowRonWorks />} />

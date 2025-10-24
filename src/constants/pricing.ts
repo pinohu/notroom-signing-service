@@ -95,6 +95,60 @@ export const PRICING = {
     mileageRate: 1.50,
     originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
     description: "Mobile witness service with travel"
+  },
+  PASSPORT_PHOTOS: {
+    display: "$15",
+    perSession: 15,
+    description: "Official passport and visa photos"
+  },
+  TRANSLATION_CERT: {
+    display: "$35+",
+    perPage: 35,
+    description: "Translation certification services"
+  },
+  VEHICLE_TITLE: {
+    display: "$40",
+    baseFee: 40,
+    description: "Vehicle title transfer notarization"
+  },
+  VEHICLE_TITLE_MOBILE: {
+    display: "$40 + mileage",
+    baseFee: 40,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "Mobile vehicle title service with travel"
+  },
+  WEDDING_OFFICIANT: {
+    display: "$200",
+    baseFee: 200,
+    description: "Wedding ceremony officiant services"
+  },
+  PROCESS_SERVING: {
+    display: "$75",
+    perServe: 75,
+    description: "Legal document process serving"
+  },
+  PROCESS_SERVING_MOBILE: {
+    display: "$75 + mileage",
+    baseFee: 75,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "Process serving with travel"
+  },
+  VIRTUAL_MAILBOX: {
+    display: "$50/mo",
+    monthly: 50,
+    description: "Virtual mailbox and mail forwarding"
+  },
+  UCC_FILING: {
+    display: "$125",
+    baseFee: 125,
+    description: "UCC filing services"
+  },
+  DOCUMENT_RETRIEVAL: {
+    display: "$75+",
+    baseFee: 75,
+    description: "Document retrieval from government offices"
   }
 };
 
@@ -109,5 +163,13 @@ export const getServicePricing = (cityName: string) => ({
   CERTIFIED_COPIES: { ...PRICING.CERTIFIED_COPIES, description: `Document certification in ${cityName}` },
   DOCUMENT_PREP: { ...PRICING.DOCUMENT_PREP, description: `Professional document services for ${cityName}` },
   FINGERPRINTING: { ...PRICING.FINGERPRINTING_MOBILE, description: `Mobile fingerprinting in ${cityName}` },
-  WITNESS: { ...PRICING.WITNESS_SERVICE_MOBILE, description: `Professional witness service in ${cityName}` }
+  WITNESS: { ...PRICING.WITNESS_SERVICE_MOBILE, description: `Professional witness service in ${cityName}` },
+  PASSPORT_PHOTOS: { ...PRICING.PASSPORT_PHOTOS, description: `Passport photos in ${cityName}` },
+  TRANSLATION_CERT: { ...PRICING.TRANSLATION_CERT, description: `Translation certification in ${cityName}` },
+  VEHICLE_TITLE: { ...PRICING.VEHICLE_TITLE_MOBILE, description: `Vehicle title services in ${cityName}` },
+  WEDDING: { ...PRICING.WEDDING_OFFICIANT, description: `Wedding officiant in ${cityName}` },
+  PROCESS_SERVING: { ...PRICING.PROCESS_SERVING_MOBILE, description: `Process serving in ${cityName}` },
+  VIRTUAL_MAILBOX: { ...PRICING.VIRTUAL_MAILBOX, description: `Virtual mailbox for ${cityName} businesses` },
+  UCC_FILING: { ...PRICING.UCC_FILING, description: `UCC filing services in ${cityName}` },
+  DOCUMENT_RETRIEVAL: { ...PRICING.DOCUMENT_RETRIEVAL, description: `Document retrieval in ${cityName}` }
 });
