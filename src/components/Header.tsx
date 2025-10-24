@@ -62,6 +62,14 @@ const Header = () => {
     { label: "Document Preparation", path: "/services/document-preparation", desc: "Affidavits, contracts, agreements" },
     { label: "Fingerprinting", path: "/services/fingerprinting", desc: "FBI-approved fingerprinting" },
     { label: "Professional Witness", path: "/services/witness-service", desc: "Neutral third-party witness" },
+    { label: "Passport Photos", path: "/services/passport-photos", desc: "Government-compliant photos" },
+    { label: "Translation Certification", path: "/services/translation-certification", desc: "Certified translation services" },
+    { label: "Vehicle Title Transfer", path: "/services/vehicle-title-transfer", desc: "PA title notarization" },
+    { label: "Wedding Officiant", path: "/services/wedding-officiant", desc: "Professional ceremony services" },
+    { label: "Process Serving", path: "/services/process-serving", desc: "Legal document delivery" },
+    { label: "Virtual Mailbox", path: "/services/virtual-mailbox", desc: "Business address & mail handling" },
+    { label: "UCC Filing", path: "/services/ucc-filing", desc: "UCC-1 filing assistance" },
+    { label: "Document Retrieval", path: "/services/document-retrieval", desc: "Court & vital records retrieval" },
   ];
 
   const areas = [

@@ -29,7 +29,9 @@ const PricingCalculator = () => {
                          (service === "loan" && loanType === "mobile") ||
                          (service === "i9" && urgency === "inPerson") ||
                          (service === "fingerprinting" && serviceLocation === "mobile") ||
-                         (service === "witness" && serviceLocation === "mobile");
+                         (service === "witness" && serviceLocation === "mobile") ||
+                         (service === "vehicleTitle" && serviceLocation === "mobile") ||
+                         (service === "processServing" && serviceLocation === "mobile");
     if (needsDistance && destinationAddress.length > 10) {
       const timer = setTimeout(async () => {
         setIsCalculatingDistance(true);
@@ -44,7 +46,7 @@ const PricingCalculator = () => {
       
       return () => clearTimeout(timer);
     }
-  }, [destinationAddress, service, loanType]);
+  }, [destinationAddress, service, loanType, serviceLocation, urgency]);
 
   const calculatePriceBreakdown = () => {
     let breakdown: {
@@ -148,6 +150,54 @@ const PricingCalculator = () => {
         breakdown.serviceFee = PRICING.WITNESS_SERVICE.baseFee;
         breakdown.total = PRICING.WITNESS_SERVICE.baseFee;
       }
+    } else if (service === "passportPhotos") {
+      breakdown.serviceFee = PRICING.PASSPORT_PHOTOS.perSession;
+      breakdown.total = PRICING.PASSPORT_PHOTOS.perSession;
+    } else if (service === "translationCert") {
+      breakdown.serviceFee = PRICING.TRANSLATION_CERT.perPage;
+      breakdown.total = PRICING.TRANSLATION_CERT.perPage;
+    } else if (service === "vehicleTitle") {
+      if (serviceLocation === "mobile") {
+        breakdown.serviceFee = PRICING.VEHICLE_TITLE_MOBILE.baseFee;
+        breakdown.total = PRICING.VEHICLE_TITLE_MOBILE.baseFee;
+        
+        if (distance !== null) {
+          const roundTripDistance = calculateRoundTripDistance(distance);
+          breakdown.distance = roundTripDistance;
+          breakdown.mileageFee = roundTripDistance * PRICING.VEHICLE_TITLE_MOBILE.mileageRate;
+          breakdown.total += breakdown.mileageFee;
+        }
+      } else {
+        breakdown.serviceFee = PRICING.VEHICLE_TITLE.baseFee;
+        breakdown.total = PRICING.VEHICLE_TITLE.baseFee;
+      }
+    } else if (service === "weddingOfficiant") {
+      breakdown.serviceFee = PRICING.WEDDING_OFFICIANT.baseFee;
+      breakdown.total = PRICING.WEDDING_OFFICIANT.baseFee;
+    } else if (service === "processServing") {
+      if (serviceLocation === "mobile") {
+        breakdown.serviceFee = PRICING.PROCESS_SERVING_MOBILE.baseFee;
+        breakdown.total = PRICING.PROCESS_SERVING_MOBILE.baseFee;
+        
+        if (distance !== null) {
+          const roundTripDistance = calculateRoundTripDistance(distance);
+          breakdown.distance = roundTripDistance;
+          breakdown.mileageFee = roundTripDistance * PRICING.PROCESS_SERVING_MOBILE.mileageRate;
+          breakdown.total += breakdown.mileageFee;
+        }
+      } else {
+        breakdown.serviceFee = PRICING.PROCESS_SERVING.perServe;
+        breakdown.total = PRICING.PROCESS_SERVING.perServe;
+      }
+    } else if (service === "virtualMailbox") {
+      breakdown.serviceFee = PRICING.VIRTUAL_MAILBOX.monthly;
+      breakdown.total = PRICING.VIRTUAL_MAILBOX.monthly;
+    } else if (service === "uccFiling") {
+      breakdown.serviceFee = PRICING.UCC_FILING.baseFee;
+      breakdown.total = PRICING.UCC_FILING.baseFee;
+    } else if (service === "documentRetrieval") {
+      breakdown.serviceFee = PRICING.DOCUMENT_RETRIEVAL.baseFee;
+      breakdown.total = PRICING.DOCUMENT_RETRIEVAL.baseFee;
     }
 
     return breakdown;
@@ -166,7 +216,15 @@ const PricingCalculator = () => {
       certifiedCopies: "/services/certified-copies",
       documentPrep: "/services/document-preparation",
       fingerprinting: "/services/fingerprinting",
-      witness: "/services/witness-service"
+      witness: "/services/witness-service",
+      passportPhotos: "/services/passport-photos",
+      translationCert: "/services/translation-certification",
+      vehicleTitle: "/services/vehicle-title-transfer",
+      weddingOfficiant: "/services/wedding-officiant",
+      processServing: "/services/process-serving",
+      virtualMailbox: "/services/virtual-mailbox",
+      uccFiling: "/services/ucc-filing",
+      documentRetrieval: "/services/document-retrieval"
     };
     return routes[service as keyof typeof routes] || "/";
   };
@@ -207,6 +265,14 @@ const PricingCalculator = () => {
               <SelectItem value="documentPrep">Document Preparation</SelectItem>
               <SelectItem value="fingerprinting">Fingerprinting</SelectItem>
               <SelectItem value="witness">Professional Witness</SelectItem>
+              <SelectItem value="passportPhotos">Passport Photos</SelectItem>
+              <SelectItem value="translationCert">Translation Certification</SelectItem>
+              <SelectItem value="vehicleTitle">Vehicle Title Transfer</SelectItem>
+              <SelectItem value="weddingOfficiant">Wedding Officiant</SelectItem>
+              <SelectItem value="processServing">Process Serving</SelectItem>
+              <SelectItem value="virtualMailbox">Virtual Mailbox</SelectItem>
+              <SelectItem value="uccFiling">UCC Filing</SelectItem>
+              <SelectItem value="documentRetrieval">Document Retrieval</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -226,7 +292,7 @@ const PricingCalculator = () => {
           </div>
         )}
 
-        {(service === "fingerprinting" || service === "witness") && (
+        {(service === "fingerprinting" || service === "witness" || service === "vehicleTitle" || service === "processServing") && (
           <div>
             <Label htmlFor="serviceLocation">Service Location</Label>
             <Select value={serviceLocation} onValueChange={setServiceLocation}>
@@ -254,7 +320,7 @@ const PricingCalculator = () => {
           </div>
         )}
 
-        {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile")) && (
+        {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile") || (service === "vehicleTitle" && serviceLocation === "mobile") || (service === "processServing" && serviceLocation === "mobile")) && (
           <div>
             <Label htmlFor="destination">Your Address (for distance calculation)</Label>
             <div className="relative">
@@ -343,7 +409,7 @@ const PricingCalculator = () => {
             </div>
           )}
           
-          {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile")) && breakdown.distance !== undefined && breakdown.mileageFee !== undefined && (
+          {(service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile") || (service === "vehicleTitle" && serviceLocation === "mobile") || (service === "processServing" && serviceLocation === "mobile")) && breakdown.distance !== undefined && breakdown.mileageFee !== undefined && (
             <>
               <div className="flex justify-between text-sm border-t pt-2">
                 <span className="text-muted-foreground">
@@ -362,14 +428,18 @@ const PricingCalculator = () => {
                         ? PRICING.FINGERPRINTING_MOBILE.mileageRate
                         : service === "witness"
                           ? PRICING.WITNESS_SERVICE_MOBILE.mileageRate
-                          : PRICING.LOAN_SIGNING_MOBILE.mileageRate}/mile)
+                          : service === "vehicleTitle"
+                            ? PRICING.VEHICLE_TITLE_MOBILE.mileageRate
+                            : service === "processServing"
+                              ? PRICING.PROCESS_SERVING_MOBILE.mileageRate
+                              : PRICING.LOAN_SIGNING_MOBILE.mileageRate}/mile)
                 </span>
                 <span className="font-medium">${breakdown.mileageFee.toFixed(2)}</span>
               </div>
             </>
           )}
           
-          {((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile")) && !distance) && (
+          {((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile") || (service === "vehicleTitle" && serviceLocation === "mobile") || (service === "processServing" && serviceLocation === "mobile")) && !distance) && (
             <div className="flex justify-between text-sm border-t pt-2">
               <span className="text-muted-foreground italic">
                 + Travel mileage (enter address above)
@@ -380,7 +450,7 @@ const PricingCalculator = () => {
           
           <div className="flex justify-between text-lg font-bold border-t-2 pt-3 mt-2">
             <span>Total</span>
-            <span className="text-primary">${price}{((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile")) && !distance) && "+"}</span>
+            <span className="text-primary">${price}{((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile") || (service === "vehicleTitle" && serviceLocation === "mobile") || (service === "processServing" && serviceLocation === "mobile")) && !distance) && "+"}</span>
           </div>
         </div>
         
@@ -389,7 +459,7 @@ const PricingCalculator = () => {
             <p className="text-sm text-muted-foreground mb-1">Your Total</p>
             <div className="flex items-center gap-2">
               <DollarSign className="w-8 h-8 text-primary" />
-              <span className="text-4xl font-bold text-primary">{price}{((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile")) && !distance) && "+"}</span>
+              <span className="text-4xl font-bold text-primary">{price}{((service === "mobile" || (service === "loan" && loanType === "mobile") || (service === "i9" && urgency === "inPerson") || (service === "fingerprinting" && serviceLocation === "mobile") || (service === "witness" && serviceLocation === "mobile") || (service === "vehicleTitle" && serviceLocation === "mobile") || (service === "processServing" && serviceLocation === "mobile")) && !distance) && "+"}</span>
             </div>
           </div>
           <div className="text-right">
@@ -486,6 +556,74 @@ const PricingCalculator = () => {
                 <li>• Mobile service: ${PRICING.WITNESS_SERVICE_MOBILE.baseFee} + ${PRICING.WITNESS_SERVICE_MOBILE.mileageRate}/mile</li>
               )}
               <li>• Suitable for contracts not requiring notarization</li>
+            </>
+          )}
+          {service === "passportPhotos" && (
+            <>
+              <li>• ${PRICING.PASSPORT_PHOTOS.perSession} per session</li>
+              <li>• Government-compliant passport & visa photos</li>
+              <li>• Digital and print copies provided</li>
+              <li>• Quick turnaround</li>
+            </>
+          )}
+          {service === "translationCert" && (
+            <>
+              <li>• Starting at ${PRICING.TRANSLATION_CERT.perPage} per page</li>
+              <li>• Notarized certification of translations</li>
+              <li>• Immigration and legal documents</li>
+              <li>• Multiple language support</li>
+            </>
+          )}
+          {service === "vehicleTitle" && (
+            <>
+              <li>• PA vehicle title notarization</li>
+              {serviceLocation === "mobile" && (
+                <li>• Mobile service: ${PRICING.VEHICLE_TITLE_MOBILE.baseFee} + ${PRICING.VEHICLE_TITLE_MOBILE.mileageRate}/mile</li>
+              )}
+              <li>• Fast and convenient</li>
+              <li>• Both buyer and seller present</li>
+            </>
+          )}
+          {service === "weddingOfficiant" && (
+            <>
+              <li>• ${PRICING.WEDDING_OFFICIANT.baseFee} flat fee</li>
+              <li>• Personalized ceremony services</li>
+              <li>• Marriage license signing</li>
+              <li>• All Pennsylvania locations</li>
+            </>
+          )}
+          {service === "processServing" && (
+            <>
+              <li>• Legal document delivery service</li>
+              {serviceLocation === "mobile" && (
+                <li>• Service fee: ${PRICING.PROCESS_SERVING_MOBILE.baseFee} + ${PRICING.PROCESS_SERVING_MOBILE.mileageRate}/mile</li>
+              )}
+              <li>• Proof of service provided</li>
+              <li>• Professional and discreet</li>
+            </>
+          )}
+          {service === "virtualMailbox" && (
+            <>
+              <li>• ${PRICING.VIRTUAL_MAILBOX.monthly} per month</li>
+              <li>• Professional PA business address</li>
+              <li>• Mail scanning and forwarding</li>
+              <li>• Package handling included</li>
+            </>
+          )}
+          {service === "uccFiling" && (
+            <>
+              <li>• ${PRICING.UCC_FILING.baseFee} including state filing</li>
+              <li>• UCC-1 preparation and submission</li>
+              <li>• Filing confirmation provided</li>
+              <li>• Expert guidance throughout</li>
+            </>
+          )}
+          {service === "documentRetrieval" && (
+            <>
+              <li>• Starting at ${PRICING.DOCUMENT_RETRIEVAL.baseFee} + government fees</li>
+              <li>• Court documents and vital records</li>
+              <li>• Property records retrieval</li>
+              <li>• Fast turnaround times</li>
             </>
           )}
         </ul>

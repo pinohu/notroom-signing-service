@@ -248,6 +248,182 @@ const Pricing = () => {
               </ul>
               <Button className="w-full" onClick={() => navigate("/services/witness-service")}>Learn More</Button>
             </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Passport Photos</h3>
+              <div className="text-4xl font-bold mb-4">$15</div>
+              <p className="text-muted-foreground mb-2">Per session</p>
+              <p className="text-sm text-muted-foreground mb-6">Official passport & visa photos</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Government-compliant photos</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Digital & print copies</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Quick turnaround</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/passport-photos")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Translation Certification</h3>
+              <div className="text-4xl font-bold mb-4">$35+</div>
+              <p className="text-muted-foreground mb-2">Per page</p>
+              <p className="text-sm text-muted-foreground mb-6">Certified translation services</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Immigration & legal documents</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Notarized certification</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Multiple language support</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/translation-certification")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Vehicle Title Transfer</h3>
+              <div className="text-4xl font-bold mb-4">$40 + travel</div>
+              <p className="text-muted-foreground mb-2">Mobile service available</p>
+              <p className="text-sm text-muted-foreground mb-6">$40 base + $1.50/mile from Erie</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">PA title notarization</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Mobile service available</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Fast & convenient</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/vehicle-title-transfer")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Wedding Officiant</h3>
+              <div className="text-4xl font-bold mb-4">$200</div>
+              <p className="text-muted-foreground mb-2">Full ceremony service</p>
+              <p className="text-sm text-muted-foreground mb-6">Professional wedding officiant in PA</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Personalized ceremonies</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Marriage license signing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">All locations welcome</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/wedding-officiant")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Process Serving</h3>
+              <div className="text-4xl font-bold mb-4">$75 + travel</div>
+              <p className="text-muted-foreground mb-2">Per serve</p>
+              <p className="text-sm text-muted-foreground mb-6">$75 base + $1.50/mile from Erie</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Legal document delivery</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Proof of service provided</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Professional & discreet</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/process-serving")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Virtual Mailbox</h3>
+              <div className="text-4xl font-bold mb-4">$50/mo</div>
+              <p className="text-muted-foreground mb-2">Monthly service</p>
+              <p className="text-sm text-muted-foreground mb-6">Professional business address</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Mail scanning & forwarding</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">PA street address</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Package handling included</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/virtual-mailbox")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">UCC Filing</h3>
+              <div className="text-4xl font-bold mb-4">$125</div>
+              <p className="text-muted-foreground mb-2">Filing service</p>
+              <p className="text-sm text-muted-foreground mb-6">PA UCC-1 filing assistance</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">UCC-1 preparation</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">State filing included</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Filing confirmation</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/ucc-filing")}>Learn More</Button>
+            </Card>
+
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold mb-2">Document Retrieval</h3>
+              <div className="text-4xl font-bold mb-4">$75+</div>
+              <p className="text-muted-foreground mb-2">Plus government fees</p>
+              <p className="text-sm text-muted-foreground mb-6">Professional retrieval services</p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Court documents & records</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Vital records retrieval</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">Fast turnaround</span>
+                </li>
+              </ul>
+              <Button className="w-full" onClick={() => navigate("/services/document-retrieval")}>Learn More</Button>
+            </Card>
           </div>
 
           {/* Fee Disclosure */}
@@ -293,6 +469,38 @@ const Pricing = () => {
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
                   <span><strong>Professional Witness:</strong> $60 base + $1.50/mile round-trip travel. Neutral third-party witness for private agreements and contracts not requiring notarization.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Passport Photos:</strong> $15 per session. Government-compliant passport and visa photos with digital and print copies.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Translation Certification:</strong> Starting at $35 per page. Notarized certification of translations for immigration and legal documents.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Vehicle Title Transfer:</strong> $40 base + $1.50/mile round-trip travel. PA title notarization with mobile service available.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Wedding Officiant:</strong> $200 flat fee. Professional wedding ceremony officiant services throughout Pennsylvania.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Process Serving:</strong> $75 base + $1.50/mile round-trip travel. Legal document delivery with proof of service.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Virtual Mailbox:</strong> $50 per month. Professional business address with mail scanning, forwarding, and package handling.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>UCC Filing:</strong> $125 flat fee including state filing. UCC-1 preparation and submission with filing confirmation.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
+                  <span><strong>Document Retrieval:</strong> $75 base + government fees. Professional retrieval of court documents, vital records, and official documents from government offices.</span>
                 </li>
               </ul>
               <p className="text-xs text-muted-foreground mt-4 text-center">

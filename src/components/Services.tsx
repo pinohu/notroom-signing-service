@@ -182,6 +182,147 @@ const Services = memo(() => {
     }
   ];
 
+  const additionalServices = [
+    {
+      icon: Monitor,
+      badge: "Quick",
+      title: "Passport Photos",
+      price: "$15",
+      priceDetail: "Per session | Digital & print",
+      description: "Government-compliant passport and visa photos. Quick turnaround with both digital and print copies provided.",
+      features: [
+        "Government-compliant photos",
+        "Digital & print copies",
+        "Same-day service",
+        "All visa types accepted"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/passport-photos"
+    },
+    {
+      icon: FileText,
+      badge: "Certified",
+      title: "Translation Certification",
+      price: "$35+",
+      priceDetail: "Per page | Multiple languages",
+      description: "Notarized certification of translated documents. Perfect for immigration, legal, and business documents.",
+      features: [
+        "Notarized certification",
+        "Immigration documents",
+        "Legal translations",
+        "Multiple languages"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/translation-certification"
+    },
+    {
+      icon: Car,
+      badge: "Mobile",
+      title: "Vehicle Title Transfer",
+      price: "$40+",
+      priceDetail: "$40 + $1.50/mile travel",
+      description: "PA vehicle title notarization. We can come to you or meet at a convenient location for title transfers.",
+      features: [
+        "Title notarization",
+        "Mobile service available",
+        "Fast & convenient",
+        "Buyer & seller present"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/vehicle-title-transfer"
+    },
+    {
+      icon: Users,
+      badge: "Celebrations",
+      title: "Wedding Officiant",
+      price: "$200",
+      priceDetail: "Full ceremony service",
+      description: "Professional wedding officiant services throughout Pennsylvania. Personalized ceremonies for your special day.",
+      features: [
+        "Personalized ceremonies",
+        "Marriage license signing",
+        "All locations welcome",
+        "Experienced officiant"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/wedding-officiant"
+    },
+    {
+      icon: FileCheck,
+      badge: "Legal",
+      title: "Process Serving",
+      price: "$75+",
+      priceDetail: "$75 + $1.50/mile travel",
+      description: "Professional legal document delivery service. Proof of service provided for court filings.",
+      features: [
+        "Legal document delivery",
+        "Proof of service",
+        "Professional & discreet",
+        "Fast turnaround"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/process-serving"
+    },
+    {
+      icon: Building,
+      badge: "Business",
+      title: "Virtual Mailbox",
+      price: "$50/mo",
+      priceDetail: "Monthly subscription",
+      description: "Professional business address with mail scanning and forwarding. Perfect for remote businesses and entrepreneurs.",
+      features: [
+        "PA street address",
+        "Mail scanning",
+        "Package handling",
+        "Forwarding included"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/virtual-mailbox"
+    },
+    {
+      icon: FileText,
+      badge: "Filing",
+      title: "UCC Filing",
+      price: "$125",
+      priceDetail: "Full service including state fees",
+      description: "Professional UCC-1 filing assistance. We handle preparation, submission, and confirmation with PA Department of State.",
+      features: [
+        "UCC-1 preparation",
+        "State filing included",
+        "Filing confirmation",
+        "Expert guidance"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/ucc-filing"
+    },
+    {
+      icon: FileCheck,
+      badge: "Retrieval",
+      title: "Document Retrieval",
+      price: "$75+",
+      priceDetail: "Base fee + government fees",
+      description: "Professional document retrieval from courthouses and government offices. Save time and hassle.",
+      features: [
+        "Court documents",
+        "Vital records",
+        "Property records",
+        "Fast turnaround"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/document-retrieval"
+    }
+  ];
+
+  const allServices = [...services, ...additionalServices];
+
   const handleServiceClick = (link: string) => {
     navigate(link);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -206,7 +347,7 @@ const Services = memo(() => {
 
         {/* Service Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {services.map((service, index) => {
+          {allServices.map((service, index) => {
             const Icon = service.icon;
             return (
               <ScrollReveal key={index} delay={index * 150}>
