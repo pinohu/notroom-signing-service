@@ -24,7 +24,7 @@ const ComparisonTable = () => {
     { 
       feature: "Bonded & E&O Insured", 
       us: true, 
-      others: "Variable",
+      others: "Varies by provider",
       impact: "Your risk protection"
     },
     { 
@@ -60,7 +60,7 @@ const ComparisonTable = () => {
     { 
       feature: "Transparent Itemized Pricing", 
       us: true, 
-      others: "Hidden fees",
+      others: "Varies by provider",
       impact: "No surprises"
     },
     { 
@@ -78,10 +78,10 @@ const ComparisonTable = () => {
           <ScrollReveal>
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                Why Choose Notroom Over Other Notaries?
+                What Notroom Offers
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Not all notary services are created equal. Here's how we compare to typical notary providers in Pennsylvania.
+                Our comprehensive credentials and service features, shown alongside common industry standards in Pennsylvania.
               </p>
             </div>
           </ScrollReveal>
@@ -92,8 +92,8 @@ const ComparisonTable = () => {
                 {/* Header Row */}
                 <div className="grid grid-cols-12 gap-4 bg-primary text-primary-foreground p-6 font-bold text-lg">
                   <div className="col-span-5">Feature</div>
-                  <div className="col-span-3 text-center">Notroom ✨</div>
-                  <div className="col-span-4 text-center opacity-70">Other Notaries</div>
+                  <div className="col-span-3 text-center">Notroom</div>
+                  <div className="col-span-4 text-center opacity-70">Typical Availability</div>
                 </div>
 
                 {/* Comparison Rows */}
@@ -139,11 +139,10 @@ const ComparisonTable = () => {
                 {/* Footer */}
                 <div className="bg-[hsl(var(--success-green))]/10 p-8 text-center border-t-4 border-[hsl(var(--success-green))]">
                   <h3 className="text-2xl font-bold mb-4">
-                    The Choice Is Clear
+                    Our Commitment to You
                   </h3>
                   <p className="text-lg text-muted-foreground mb-6 max-w-2xl mx-auto">
-                    Don't settle for less when you need important documents notarized. 
-                    Get professional, guaranteed service from a provider you can trust.
+                    Professional, guaranteed service you can trust for all your important document needs.
                   </p>
                   <Button 
                     size="lg"
