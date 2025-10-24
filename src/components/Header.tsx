@@ -189,7 +189,7 @@ const Header = () => {
 
             {/* Price Calculator Link */}
             <button
-              onClick={() => navigateToPage("/pricing")}
+              onClick={() => navigateToPage("/calculator")}
               className="text-sm text-primary hover:text-primary/80 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
               aria-label="Calculate price"
             >
