@@ -216,7 +216,7 @@ const Header = () => {
             </button>
 
             <a
-              href="https://app.suitedash.com"
+              href="https://portal.notroom.com"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
@@ -344,7 +344,7 @@ const Header = () => {
                   </button>
 
                   <a
-                    href="https://app.suitedash.com"
+                    href="https://portal.notroom.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-left text-base font-medium hover:text-primary transition-colors focus:outline-none focus:text-primary"
