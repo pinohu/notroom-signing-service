@@ -22,7 +22,7 @@ export const SITE_CONFIG = {
 
 export const DEFAULT_SEO = {
   title: 'Notroom | Notary, Business Filing & Compliance Services | Erie, PA',
-  description: 'Complete business services in Erie, PA: Remote & mobile notary (from $35), loan signing ($150+), apostille services ($195+), I-9 verification ($85+), LLC formation ($249), and registered office ($149/yr). Licensed, bonded, PA-compliant.',
+  description: 'Complete business services in Erie, PA: Remote & mobile notary (from $60), loan signing ($175), apostille services ($245+), I-9 verification ($85+), LLC formation ($149), and registered office ($149/yr). Licensed, bonded, PA-compliant.',
   keywords: 'notary Erie PA, online notary, mobile notary, loan signing agent, apostille service, I-9 verification, LLC formation Pennsylvania, registered office PA, business filing Erie',
   ogType: 'website',
 } as const;
@@ -64,14 +64,14 @@ export const SERVICES = [
     id: 'loan-signing-agent',
     name: 'Loan Signing Agent',
     shortName: 'Loan Signing',
-    basePrice: 150,
+    basePrice: 175,
     path: '/services/loan-signing-agent',
   },
   {
     id: 'apostille',
     name: 'Apostille Services',
     shortName: 'Apostille',
-    basePrice: 195,
+    basePrice: 245,
     path: '/services/apostille',
   },
   {
@@ -85,7 +85,7 @@ export const SERVICES = [
     id: 'business-retainer',
     name: 'Business Retainer Services',
     shortName: 'Business Retainer',
-    basePrice: 249,
+    basePrice: 399,
     path: '/services/business-retainer',
   },
   {

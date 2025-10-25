@@ -59,7 +59,7 @@ const Hero = () => {
             >
               <div className="flex flex-col items-center gap-1">
                 <span>📅 Book Now</span>
-                <span className="text-xs sm:text-sm font-normal opacity-90">From $45</span>
+                <span className="text-xs sm:text-sm font-normal opacity-90">From $60</span>
               </div>
             </Button>
           </div>

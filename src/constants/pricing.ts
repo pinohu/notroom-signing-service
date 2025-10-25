@@ -1,20 +1,20 @@
 // Pennsylvania Law Compliant Pricing Structure
 export const PRICING = {
   RON: {
-    display: "$50",
+    display: "$60",
     notaryFee: 5,
-    technologyFee: 45,
-    total: 50,
-    description: "$5 PA notary fee + $45 technology fee"
+    technologyFee: 55,
+    total: 60,
+    description: "$5 PA notary fee + $55 technology fee"
   },
   MOBILE: {
-    display: "$50 + mileage",
+    display: "$125 + mileage",
     notaryFee: 5,
-    serviceFee: 45,
-    baseTotal: 50,
+    serviceFee: 120,
+    baseTotal: 125,
     mileageRate: 1.50,
     originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
-    description: "$5 PA notary + $45 service + $1.50/mile"
+    description: "$5 PA notary + $120 service + $1.50/mile"
   },
   LOAN_SIGNING: {
     display: "$175",

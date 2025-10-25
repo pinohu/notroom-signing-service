@@ -67,9 +67,9 @@ const Layout = ({ children }: LayoutProps) => {
           className="w-full shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2"
           size="lg"
           onClick={scrollToBooking}
-          aria-label="Book notary appointment starting from $45"
+          aria-label="Book notary appointment starting from $60"
         >
-          📅 Book Now • From $45
+          📅 Book Now • From $60
         </Button>
       </div>
     </div>

@@ -440,9 +440,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
                       <SelectValue placeholder="Choose your service" />
                     </SelectTrigger>
                     <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
-                      <SelectItem value="ron">Remote Online Notary ($60: $15 notary + $45 platform)</SelectItem>
-                      <SelectItem value="mobile">Mobile Notary Erie County ($125+: $5-15 notary + travel)</SelectItem>
-                      <SelectItem value="loan">Loan Signing Agent ($150: $15 notary + $135 agent fee)</SelectItem>
+                      <SelectItem value="ron">Remote Online Notary ($60: $5 notary + $55 technology)</SelectItem>
+                      <SelectItem value="mobile">Mobile Notary Erie County ($125+: $5 notary + $120 service + travel)</SelectItem>
+                      <SelectItem value="loan">Loan Signing Agent ($175: $5 notary + $170 agent service)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

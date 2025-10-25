@@ -57,8 +57,8 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
   }, [community.imagePrompt]);
 
   const services = [
-    { icon: Video, title: "Remote Online Notary (RON)", price: "$50", description: `Online notarization 24/7 for ${community.name} residents`, link: "/services/remote-online-notary" },
-    { icon: Car, title: "Mobile Notary", price: "$50 + mileage", description: `We come to your location in ${community.name}`, link: "/services/mobile-notary" },
+    { icon: Video, title: "Remote Online Notary (RON)", price: "$60", description: `Online notarization 24/7 for ${community.name} residents`, link: "/services/remote-online-notary" },
+    { icon: Car, title: "Mobile Notary", price: "$125 + mileage", description: `We come to your location in ${community.name}`, link: "/services/mobile-notary" },
     { icon: FileText, title: "Loan Signing Agent", price: "$175", description: `Real estate closing services in ${community.name}`, link: "/services/loan-signing-agent" },
     { icon: Globe, title: "Apostille Services", price: "$245+", description: "International document authentication", link: "/services/apostille" },
     { icon: Users, title: "I-9 Verification", price: "$85+", description: `Employment verification for ${community.name} businesses`, link: "/services/i9-verification" },
@@ -88,7 +88,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
     },
     "url": `https://notroom.com/areas/${community.slug}-pa`,
     "telephone": "(814) 480-0989",
-    "priceRange": "$50-$399",
+    "priceRange": "$60-$399",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -141,7 +141,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
             "name": "Mobile Notary Service",
             "description": `Professional mobile notary service in ${community.name}, PA. We come to your location.`
           },
-          "price": "50.00",
+          "price": "60.00",
           "priceCurrency": "USD"
         },
         {
@@ -151,7 +151,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
             "name": "Remote Online Notary (RON)",
             "description": `24/7 online notarization for ${community.name} residents via secure video call.`
           },
-          "price": "50.00",
+          "price": "125.00",
           "priceCurrency": "USD"
         },
         {
@@ -200,7 +200,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
     },
     {
       question: `What are your rates for ${community.name} residents?`,
-      answer: `Mobile notary service starts at $50 base fee plus $4/mile travel. Remote Online Notary (RON) is a flat $50 with no travel charges.`
+      answer: `Mobile notary service starts at $125 base ($5 PA notary fee + $120 service fee) plus $1.50/mile travel. Remote Online Notary (RON) is a flat $60 ($5 notary + $55 technology fee) with no travel charges.`
     },
     {
       question: `Are you licensed to notarize in Pennsylvania?`,
