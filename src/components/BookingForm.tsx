@@ -31,7 +31,7 @@ import { PRICING } from "@/constants/pricing";
 import EmailVerification from "@/components/EmailVerification";
 
 // Cloudflare Turnstile site key (get from Cloudflare dashboard)
-const TURNSTILE_SITE_KEY = "0x4AAAAAAAzoK8wF8vF_QDkK"; // Replace with your actual site key
+const TURNSTILE_SITE_KEY = "0x4AAAAAAB8ttRw5M8Z_vCdC";
 
 const bookingSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
