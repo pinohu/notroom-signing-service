@@ -1,26 +1,29 @@
+import { lazy, Suspense } from "react";
 import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
-import ProcessTimeline from "@/components/ProcessTimeline";
-import WhyNotroom from "@/components/WhyNotroom";
-import Testimonials from "@/components/Testimonials";
-import RealTestimonials from "@/components/marketing/RealTestimonials";
-import FAQ from "@/components/FAQ";
-import FinalCTA from "@/components/FinalCTA";
-import BookingForm from "@/components/BookingForm";
-import ExitIntent from "@/components/ExitIntent";
-import SEO from "@/components/SEO";
-import PricingCalculator from "@/components/PricingCalculator";
-import GuaranteeSection from "@/components/marketing/GuaranteeSection";
-import ValueStack from "@/components/marketing/ValueStack";
 import TrustBadges from "@/components/marketing/TrustBadges";
-import ComparisonTable from "@/components/marketing/ComparisonTable";
-import BeforeAfter from "@/components/marketing/BeforeAfter";
-import AuthorityBuilder from "@/components/marketing/AuthorityBuilder";
-import LeadMagnet from "@/components/lead-gen/LeadMagnet";
-import ServiceQuiz from "@/components/lead-gen/ServiceQuiz";
-import TripwireOffer from "@/components/lead-gen/TripwireOffer";
-import ValueLadder from "@/components/lead-gen/ValueLadder";
+import SEO from "@/components/SEO";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
+
+// Performance optimization: Lazy load below-the-fold components
+const ProcessTimeline = lazy(() => import("@/components/ProcessTimeline"));
+const WhyNotroom = lazy(() => import("@/components/WhyNotroom"));
+const RealTestimonials = lazy(() => import("@/components/marketing/RealTestimonials"));
+const FAQ = lazy(() => import("@/components/FAQ"));
+const FinalCTA = lazy(() => import("@/components/FinalCTA"));
+const BookingForm = lazy(() => import("@/components/BookingForm"));
+const ExitIntent = lazy(() => import("@/components/ExitIntent"));
+const PricingCalculator = lazy(() => import("@/components/PricingCalculator"));
+const GuaranteeSection = lazy(() => import("@/components/marketing/GuaranteeSection"));
+const ValueStack = lazy(() => import("@/components/marketing/ValueStack"));
+const ComparisonTable = lazy(() => import("@/components/marketing/ComparisonTable"));
+const BeforeAfter = lazy(() => import("@/components/marketing/BeforeAfter"));
+const AuthorityBuilder = lazy(() => import("@/components/marketing/AuthorityBuilder"));
+const LeadMagnet = lazy(() => import("@/components/lead-gen/LeadMagnet"));
+const ServiceQuiz = lazy(() => import("@/components/lead-gen/ServiceQuiz"));
+const TripwireOffer = lazy(() => import("@/components/lead-gen/TripwireOffer"));
+const ValueLadder = lazy(() => import("@/components/lead-gen/ValueLadder"));
 
 const Index = () => {
   const schema = {
@@ -90,70 +93,115 @@ const Index = () => {
         canonical="https://notroom.com"
         schema={schema}
       />
+      {/* Critical above-the-fold content - loaded immediately */}
       <Hero />
       <TrustBadges />
       
-      {/* Lead Generation: Value Ladder */}
-      <ValueLadder />
+      {/* Below-the-fold content - lazy loaded for performance */}
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <ValueLadder />
+      </Suspense>
       
       <Services />
-      <BeforeAfter />
+      
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <BeforeAfter />
+      </Suspense>
       
       {/* Lead Generation: Service Quiz */}
-      <section className="py-16 bg-background" id="service-quiz">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Not Sure Which Service You Need?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Take our 60-second quiz to get a personalized recommendation
-            </p>
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <section className="py-16 bg-background" id="service-quiz" aria-labelledby="service-quiz-heading">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 id="service-quiz-heading" className="text-3xl md:text-4xl font-bold mb-4">
+                Not Sure Which Service You Need?
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Take our 60-second quiz to get a personalized recommendation
+              </p>
+            </div>
+            <div className="max-w-2xl mx-auto">
+              <ServiceQuiz />
+            </div>
           </div>
-          <div className="max-w-2xl mx-auto">
-            <ServiceQuiz />
-          </div>
-        </div>
-      </section>
+        </section>
+      </Suspense>
       
-      <ValueStack />
-      <ComparisonTable />
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <ValueStack />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <ComparisonTable />
+      </Suspense>
       
       {/* Lead Generation: Tripwire Offer */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
-            <TripwireOffer />
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <section className="py-16 bg-muted/30" aria-labelledby="special-offer-heading">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto">
+              <TripwireOffer />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </Suspense>
       
-      <ProcessTimeline />
-      <AuthorityBuilder />
-      <WhyNotroom />
-      <RealTestimonials />
-      <GuaranteeSection />
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <ProcessTimeline />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <AuthorityBuilder />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <WhyNotroom />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <RealTestimonials />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <GuaranteeSection />
+      </Suspense>
       
       {/* Lead Generation: Lead Magnet */}
-      <section className="py-16 bg-background" id="lead-magnet">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
-            <LeadMagnet />
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <section className="py-16 bg-background" id="lead-magnet" aria-labelledby="lead-magnet-heading">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto">
+              <LeadMagnet />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </Suspense>
       
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto">
-            <PricingCalculator />
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <section className="py-16 bg-muted/30" aria-labelledby="pricing-calculator-heading">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto">
+              <PricingCalculator />
+            </div>
           </div>
-        </div>
-      </section>
-      <FAQ />
-      <FinalCTA />
-      <BookingForm />
-      <ExitIntent />
+        </section>
+      </Suspense>
+      
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <FAQ />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <FinalCTA />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <BookingForm />
+      </Suspense>
+      
+      <Suspense fallback={<LoadingSkeleton variant="card" className="container mx-auto my-8" />}>
+        <ExitIntent />
+      </Suspense>
     </Layout>
   );
 };

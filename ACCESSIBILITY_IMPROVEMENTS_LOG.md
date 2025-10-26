@@ -374,10 +374,22 @@ This document tracks all accessibility improvements made to achieve WCAG 2.1 AA 
 - [x] WhyNotroom component accessibility
 - [x] ProcessTimeline component accessibility
 - [x] FinalCTA component accessibility
+- [x] Implement lazy loading for performance
+- [x] Enhance loading skeleton accessibility
 - [ ] Audit and fix color contrast issues
 - [ ] Implement error summary in forms
 - [ ] Test with screen readers (NVDA, JAWS, VoiceOver)
 - [ ] Run Lighthouse accessibility audit
+
+### Medium-term (Next month)
+- [ ] Achieve Lighthouse accessibility score of 100
+- [x] Implement performance optimizations (lazy loading)
+- [ ] Image optimization (WebP, lazy loading)
+- [ ] Font optimization (subsetting, preload)
+- [ ] Complete screen reader testing on all pages
+- [ ] Document keyboard shortcuts
+- [ ] Create accessibility statement page
+- [ ] Add accessibility feedback mechanism
 
 ### Medium-term (Next month)
 - [ ] Achieve Lighthouse accessibility score of 100
