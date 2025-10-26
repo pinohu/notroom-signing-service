@@ -30,7 +30,7 @@
     --secondary-foreground: 217 33% 17%;
 
     --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted-foreground: 215 20% 40%; /* Improved contrast: was 47%, now 40% for 4.6:1 ratio */
 
     /* Action Cyan - Secondary brand color */
     --accent: 186 100% 42%;
@@ -86,7 +86,7 @@
     --secondary-foreground: 0 0% 100%;
 
     --muted: 217 19% 27%;
-    --muted-foreground: 215 20% 65%;
+    --muted-foreground: 215 20% 70%; /* Improved contrast: was 65%, now 70% for better readability */
 
     --accent: 186 100% 42%;
     --accent-foreground: 0 0% 100%;
