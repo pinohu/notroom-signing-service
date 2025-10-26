@@ -161,7 +161,14 @@ const Header = () => {
             className="hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-primary rounded"
             aria-label="Notroom home"
           >
-            <img src={notroomLogo} alt="Notroom Logo" className="h-10" />
+            <img 
+              src={notroomLogo} 
+              alt="Notroom logo" 
+              className="h-10" 
+              width="120" 
+              height="40"
+              fetchPriority="high"
+            />
           </button>
 
           {/* Desktop Navigation */}
@@ -356,7 +363,14 @@ const Header = () => {
             <SheetContent side="right" className="w-[300px] overflow-y-auto">
               <nav id="mobile-navigation" className="flex flex-col gap-6 mt-8" aria-label="Mobile navigation">
                 <div className="mb-4">
-                  <img src={notroomLogo} alt="Notroom Logo" className="h-10" />
+                  <img 
+                    src={notroomLogo} 
+                    alt="Notroom logo" 
+                    className="h-10" 
+                    width="120" 
+                    height="40"
+                    loading="lazy"
+                  />
                 </div>
 
                 {/* Primary CTA - Top of mobile menu */}

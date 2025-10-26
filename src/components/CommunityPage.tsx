@@ -407,8 +407,11 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
                   ) : communityImage ? (
                     <img 
                       src={communityImage} 
-                      alt={`Historic scene of ${community.name}`}
+                      alt={`Historic scene of ${community.name}, Pennsylvania`}
                       className="rounded-lg shadow-xl w-full aspect-[4/3] object-cover"
+                      width="800"
+                      height="600"
+                      loading="lazy"
                     />
                   ) : (
                     <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg flex items-center justify-center">

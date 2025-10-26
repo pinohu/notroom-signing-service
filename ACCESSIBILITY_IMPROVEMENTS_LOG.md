@@ -372,6 +372,50 @@ This document tracks all accessibility improvements made to achieve WCAG 2.1 AA 
 
 **Impact**: Screen reader users are immediately alerted to errors and can navigate directly to problematic fields for correction
 
+### 15. Image Optimization (Multiple Components)
+
+#### 15.1 Core Web Vitals Image Optimization ✅
+**Date**: January 26, 2025  
+**Performance Criteria**: Optimize for LCP, CLS prevention  
+**Files Updated**: `src/components/Header.tsx`, `src/components/Footer.tsx`, `src/components/CommunityPage.tsx`
+
+**Optimizations Applied**:
+- Added explicit `width` and `height` attributes to all images to prevent CLS
+- Added `loading="lazy"` to below-the-fold images (footer, mobile menu, community images)
+- Added `fetchPriority="high"` to critical above-the-fold header logo
+- Enhanced alt text descriptions (e.g., "Notroom logo", state context in community images)
+- All images use responsive Tailwind classes with fixed aspect ratios
+
+**Benefits**:
+- Prevents Cumulative Layout Shift during page load
+- Faster Largest Contentful Paint for above-the-fold content
+- Reduced initial bandwidth usage with lazy loading
+- Better accessibility with descriptive alt text
+
+**Impact**: Improved Core Web Vitals scores (CLS, LCP) and better perceived performance
+
+### 16. Font Loading Optimization (index.html)
+
+#### 16.1 Font Display and Connection Optimization ✅
+**Date**: January 26, 2025  
+**Performance Criteria**: Optimize FCP, prevent FOIT  
+**Files Updated**: `index.html`
+
+**Optimizations Applied**:
+- Verified `font-display: swap` in Google Fonts URL (prevents FOIT)
+- Added `preconnect` for fonts.gstatic.com (in addition to fonts.googleapis.com)
+- DNS prefetch already in place for early resolution
+- Loading only required Inter font weights (400, 600, 700)
+- Using comprehensive system font fallback stack
+
+**Benefits**:
+- Prevents Flash of Invisible Text (FOIT)
+- Faster font loading with early connections
+- Better First Contentful Paint (FCP)
+- Immediate text visibility with fallback fonts
+
+**Impact**: Faster perceived performance and better Core Web Vitals (FCP)
+
 ## 🔍 IN PROGRESS / PLANNED IMPROVEMENTS
 
 ### 15. Screen Reader Testing

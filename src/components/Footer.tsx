@@ -18,7 +18,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <img src={notroomLogo} alt="Notroom" className="h-10 mb-3 brightness-0 invert" />
+            <img 
+              src={notroomLogo} 
+              alt="Notroom logo" 
+              className="h-10 mb-3 brightness-0 invert" 
+              width="120" 
+              height="40"
+              loading="lazy"
+            />
             <p className="text-primary-foreground/70 mb-4 text-sm">
               Erie's Most Trusted Notary Service
             </p>

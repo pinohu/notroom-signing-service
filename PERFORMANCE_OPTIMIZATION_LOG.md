@@ -184,6 +184,107 @@ const ProcessTimeline = lazy(() => import("@/components/ProcessTimeline"));
 
 ---
 
+## ✅ COMPLETED: Image Optimization for Performance
+
+**Date**: January 26, 2025  
+**Issue**: Images lacked explicit dimensions causing Cumulative Layout Shift (CLS) and weren't optimized for lazy loading  
+**Impact**: Poor LCP (Largest Contentful Paint) and CLS scores affecting Core Web Vitals  
+
+**Optimizations Applied**:
+
+1. **Logo Images (Header & Footer)**:
+   - Added explicit `width="120" height="40"` attributes to prevent layout shift
+   - Header logo: Added `fetchPriority="high"` (above-the-fold, critical)
+   - Footer logo: Added `loading="lazy"` (below-the-fold)
+   - Mobile menu logo: Added `loading="lazy"` and dimensions
+   - Improved alt text from "Notroom Logo" to "Notroom logo" (more natural)
+
+2. **Community Page Images**:
+   - Added explicit `width="800" height="600"` for generated images
+   - Added `loading="lazy"` (below-the-fold content)
+   - Enhanced alt text with state context (e.g., "Historic scene of Erie, Pennsylvania")
+   - Already using `aspect-[4/3]` class for consistent sizing
+
+3. **Background Patterns**:
+   - Using inline data URI SVGs (already optimized, no HTTP requests)
+   - Properly marked with `aria-hidden="true"`
+
+**Performance Benefits**:
+- **Prevents CLS**: Explicit dimensions reserve space before images load
+- **Faster LCP**: Critical images prioritized with `fetchPriority="high"`
+- **Reduced bandwidth**: Lazy loading defers non-critical images
+- **Better mobile experience**: Smaller initial payload
+
+**Core Web Vitals Impact**:
+- CLS: Reduced layout shift from image loading
+- LCP: Faster above-the-fold content rendering
+- FCP: Prioritized critical images load first
+
+**Best Practices Implemented**:
+- ✅ Width and height on all `<img>` tags
+- ✅ `loading="lazy"` for below-the-fold images
+- ✅ `fetchPriority="high"` for hero/critical images
+- ✅ Descriptive alt text for accessibility
+- ✅ Responsive sizing with Tailwind classes
+- ✅ Object-fit for consistent aspect ratios
+
+**Future Recommendations** (documented only):
+- Consider WebP format with JPEG/PNG fallbacks
+- Implement responsive images with `srcset`
+- Add blur-up placeholders for better UX
+- Consider image CDN for automatic optimization
+
+---
+
+## ✅ COMPLETED: Font Loading Optimization
+
+**Date**: January 26, 2025  
+**Issue**: Suboptimal font loading causing FOIT (Flash of Invisible Text) and delayed rendering  
+**Impact**: Slower FCP (First Contentful Paint) and perceived performance issues  
+
+**Optimizations Applied**:
+
+1. **Font Display Strategy**:
+   - Already using `display=swap` in Google Fonts URL
+   - This prevents FOIT by showing fallback fonts immediately
+   - Swap occurs when custom font loads (better UX than blocking)
+
+2. **Connection Optimization**:
+   - Added `<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>`
+   - Added `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`
+   - Added `<link rel="dns-prefetch" href="https://fonts.googleapis.com">`
+   - Reduces DNS lookup and connection time for font files
+
+3. **Font Selection**:
+   - Using Inter font family (modern, variable-friendly)
+   - Loading only required weights: 400 (regular), 600 (semibold), 700 (bold)
+   - Not loading unnecessary font variants
+
+**Performance Benefits**:
+- **Prevents FOIT**: Users see text immediately with fallback font
+- **Faster DNS resolution**: Preconnect establishes connections early
+- **Reduced latency**: Font files download faster with early connections
+- **Better FCP**: Text becomes visible sooner
+
+**Best Practices Implemented**:
+- ✅ `font-display: swap` for immediate text visibility
+- ✅ `preconnect` for font domains
+- ✅ Loading only required font weights
+- ✅ Using system font stack as fallback
+
+**Fallback Font Stack**:
+```css
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+```
+
+**Future Recommendations** (documented only):
+- Consider self-hosting fonts for more control
+- Implement font subsetting for specific character ranges
+- Explore variable fonts to reduce file count
+- Consider using `font-display: optional` for non-critical text
+
+---
+
 ## 🔍 NEXT OPTIMIZATION PRIORITIES
 
 ### 4. Image Optimization
