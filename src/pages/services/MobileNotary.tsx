@@ -286,7 +286,7 @@ const MobileNotary = () => {
           },
           {
             question: "How much does mobile notary service cost in Erie PA?",
-            answer: "Within Erie city limits: $100 travel fee + $10 admin fee + $5-15 per notarized signature (PA law). Outside Erie city limits: add $1.50 per mile round-trip. After-hours (after 7 PM or weekends): add $50 surcharge. Example: 3 signatures in Millcreek = $100 + $10 + $15-45 + mileage."
+            answer: "Within Erie city limits: $125 base ($5 notary + $120 service) plus $1.50 per mile round-trip. After-hours (after 7 PM or weekends): add $50 surcharge. Example: 3 signatures in Millcreek = $125 + mileage."
           },
           {
             question: "Can you come to a hospital or nursing home?",

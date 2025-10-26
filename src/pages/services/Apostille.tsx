@@ -47,7 +47,7 @@ const Apostille = () => {
   const faqSchema = generateFAQSchema([
     {
       question: "How much does apostille service cost in Pennsylvania?",
-      answer: "Our full apostille assistance service starts at $245, which includes notarization ($50), document preparation, PA Department of State apostille filing ($20 state fee), and expedited processing coordination. Rush service available for additional fees."
+      answer: "Our full apostille assistance service starts at $245, which includes notarization ($60), document preparation, PA Department of State apostille filing ($20 state fee), and expedited processing coordination. Rush service available for additional fees."
     },
     {
       question: "How long does apostille processing take in PA?",

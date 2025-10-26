@@ -16,27 +16,27 @@ const ValueStack = ({ service = "all" }: ValueStackProps) => {
   const valueStacks = {
     ron: {
       title: "Remote Online Notary - Everything You Get",
-      price: "$50",
+      price: "$60",
       items: [
         { item: "PA Licensed Notary Service", value: "$5" },
-        { item: "Secure Video Platform & Recording", value: "$25" },
+        { item: "Secure Video Platform & Recording", value: "$20" },
         { item: "Identity Verification Technology", value: "$15" },
-        { item: "Digital Certificate & Audit Trail", value: "$20" },
+        { item: "Digital Certificate & Audit Trail", value: "$10" },
         { item: "Tamper-Proof Electronic Seal", value: "$10" },
         { item: "Legally Valid in All 50 States", value: "Priceless" },
         { item: "Available 24/7 by Appointment", value: "$30" },
-        { item: "Instant Document Delivery", value: "$15" },
+        { item: "Instant Document Delivery", value: "$10" },
       ],
-      totalValue: "$120+",
-      savings: "$70",
+      totalValue: "$100+",
+      savings: "$40",
       bonus: "✨ BONUS: Free booking changes up to 2 hours before appointment"
     },
     mobile: {
       title: "Mobile Notary - Complete Service Package",
-      price: "$50 + mileage",
+      price: "$125+",
       items: [
         { item: "PA Licensed Notary Service", value: "$5" },
-        { item: "Mobile Service to Your Location", value: "$45" },
+        { item: "Mobile Service to Your Location", value: "$120" },
         { item: "Professional Notary Supplies", value: "$20" },
         { item: "Same-Day Availability", value: "$30" },
         { item: "Flexible Scheduling", value: "$25" },
@@ -44,7 +44,7 @@ const ValueStack = ({ service = "all" }: ValueStackProps) => {
         { item: "Travel to Erie County Locations", value: "Included" },
         { item: "Follow-Up Support", value: "$15" },
       ],
-      totalValue: "$165+",
+      totalValue: "$240+",
       savings: "$115+",
       bonus: "✨ BONUS: Free document pre-review to ensure everything is ready"
     },
