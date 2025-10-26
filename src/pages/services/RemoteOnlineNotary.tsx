@@ -393,7 +393,7 @@ const RemoteOnlineNotary = () => {
           },
           {
             question: "Can I notarize multiple documents in one session?",
-            answer: "Yes! You can notarize multiple documents during a single session for $50 total. Each document is notarized during the same video session."
+            answer: "Yes! You can notarize multiple documents during a single session for $60 total. Each document is notarized during the same video session."
           },
           {
             question: "Do you offer subscription plans for frequent RON users?",

@@ -278,7 +278,7 @@ const MobileNotary = () => {
         faqs={[
           {
             question: "How far will you travel for mobile notary service?",
-            answer: "We serve all of Erie County and surrounding areas including Crawford, Warren, Mercer, and Venango counties. Within Erie city limits: $100 flat travel fee. Outside Erie: $1.50 per mile round-trip from our Erie office (6238 Cobblestone Dr, Erie, PA 16509). We'll provide exact pricing when you book."
+            answer: "We serve all of Erie County and surrounding areas including Crawford, Warren, Mercer, and Venango counties. Within Erie city limits: $125 base service fee. Outside Erie: add $1.50 per mile round-trip from our Erie office (6238 Cobblestone Dr, Erie, PA 16509). We'll provide exact pricing when you book."
           },
           {
             question: "Do you offer same-day mobile notary service?",

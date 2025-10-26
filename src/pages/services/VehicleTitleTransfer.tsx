@@ -50,7 +50,7 @@ const VehicleTitleTransfer = () => {
     },
     {
       question: "How much does mobile vehicle title notarization cost?",
-      answer: "Our base notarization fee is $60, plus $1.50 per mile round-trip travel from Erie. For example, if you're 15 miles away, total cost would be $60 + $45 (30 miles round-trip) = $105."
+      answer: "Our base notarization fee is $60, plus $1.50 per mile round-trip travel from Erie. For example, if you're 15 miles away, total cost would be $60 + $45 (30 miles round-trip) = $105. This pricing structure separates the notary service from the mobile travel convenience."
     },
     {
       question: "Can you notarize if the seller or buyer isn't present?",

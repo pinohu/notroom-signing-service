@@ -180,7 +180,7 @@ const WitnessService = () => {
               </Card>
 
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4 text-primary">Mobile Notary Service ($50+)</h3>
+                <h3 className="text-xl font-bold mb-4 text-primary">Mobile Notary Service ($125+)</h3>
                 <p className="text-muted-foreground mb-4">Required for:</p>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
