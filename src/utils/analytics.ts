@@ -10,22 +10,26 @@ interface EventProperties {
 export const trackEvent = (eventName: string, properties?: EventProperties) => {
   if (import.meta.env.DEV) {
     console.log('[Analytics]', eventName, properties);
-    return;
   }
 
-  // Add your analytics service integration here
-  // Example: window.gtag?.('event', eventName, properties);
-  // Example: window.mixpanel?.track(eventName, properties);
+  // Send to Google Analytics 4
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('event', eventName, properties);
+  }
 };
 
 export const trackPageView = (path: string, title: string) => {
   if (import.meta.env.DEV) {
     console.log('[Analytics] Page view:', path, title);
-    return;
   }
 
-  // Add your analytics service integration here
-  // Example: window.gtag?.('config', 'GA_MEASUREMENT_ID', { page_path: path });
+  // Send to Google Analytics 4
+  if (typeof window !== 'undefined' && (window as any).gtag) {
+    (window as any).gtag('config', 'G-HZ29KE41TZ', {
+      page_path: path,
+      page_title: title,
+    });
+  }
 };
 
 export const trackBooking = (service: string, location?: string) => {
