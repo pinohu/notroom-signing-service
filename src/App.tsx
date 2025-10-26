@@ -111,6 +111,7 @@ import AdminBookings from "./pages/admin/Bookings";
 import LogoProcessor from "./pages/LogoProcessor";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentCanceled from "./pages/PaymentCanceled";
+import Sitemap from "./pages/Sitemap";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -261,6 +262,7 @@ const App = () => (
           <Route path="/admin/bookings" element={<AdminBookings />} />
           
           {/* Utility Pages */}
+          <Route path="/sitemap" element={<Sitemap />} />
           <Route path="/logo-processor" element={<LogoProcessor />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

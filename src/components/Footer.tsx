@@ -377,6 +377,13 @@ const Footer = () => {
               >
                 Terms of Service
               </button>
+              <button 
+                onClick={() => navigateToPage("/sitemap")} 
+                className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+                aria-label="View site map"
+              >
+                Sitemap
+              </button>
             </div>
 
             {/* Badges */}
