@@ -55,34 +55,6 @@ async function sendFollowUpCampaign(apiKey: string, phone: string, name: string,
   }
 }
 
-// Trigger voice call for high-intent leads
-async function triggerVoiceCall(apiKey: string, phone: string, name: string): Promise<boolean> {
-  try {
-    const response = await fetch(`${SMSIT_BASE_URL}/voice`, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        to: phone,
-        message: `Hi ${name.split(' ')[0]}, this is Ron from Notroom Notary Services. I saw you were interested in our services and wanted to personally reach out. Please give me a call back at 814-555-0100. Thanks!`,
-      }),
-    });
-
-    if (!response.ok) {
-      logStep("Voice call trigger failed");
-      return false;
-    }
-
-    logStep("Voice call triggered", { phone });
-    return true;
-  } catch (error) {
-    logStep("Voice call error", { error: String(error) });
-    return false;
-  }
-}
-
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -141,7 +113,6 @@ serve(async (req) => {
       logStep(`Processing ${stage2Bookings.length} bookings for 48h follow-up`);
       
       for (const booking of stage2Bookings) {
-        // Send SMS
         await sendFollowUpCampaign(
           smsitApiKey,
           booking.phone,
@@ -150,15 +121,10 @@ serve(async (req) => {
           booking.id,
           '48h_no_response'
         );
-        
-        // Trigger voice call for urgent bookings
-        if (booking.urgency === 'urgent') {
-          await triggerVoiceCall(smsitApiKey, booking.phone, booking.name);
-        }
       }
     }
 
-    // Stage 3: 72-hour nurture (move to long-term nurture)
+    // Stage 3: 72-hour follow-up (PHASE 8: Voice call for no SMS response)
     const { data: stage3Bookings } = await supabase
       .from('bookings')
       .select('*')
@@ -166,22 +132,60 @@ serve(async (req) => {
       .lt('created_at', seventyTwoHoursAgo.toISOString());
 
     if (stage3Bookings && stage3Bookings.length > 0) {
-      logStep(`Processing ${stage3Bookings.length} bookings for 72h nurture`);
+      logStep(`Processing ${stage3Bookings.length} bookings for 72h voice follow-up`);
       
       for (const booking of stage3Bookings) {
-        await sendFollowUpCampaign(
-          smsitApiKey,
-          booking.phone,
-          booking.name,
-          booking.service,
-          booking.id,
-          '72h_nurture'
-        );
+        // PHASE 8: Trigger voice call instead of just SMS
+        const voiceCallUrl = `${supabaseUrl}/functions/v1/smsit-voice-call`;
         
-        // Update status to indicate moved to nurture
+        try {
+          const voiceResponse = await fetch(voiceCallUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${supabaseKey}`
+            },
+            body: JSON.stringify({
+              bookingId: booking.id,
+              phone: booking.phone,
+              name: booking.name,
+              service: booking.service,
+              callType: 'followup',
+              preferredDate: booking.preferred_date
+            })
+          });
+          
+          if (voiceResponse.ok) {
+            logStep('Voice call triggered successfully', { bookingId: booking.id });
+          } else {
+            logStep('Voice call failed, falling back to SMS', { bookingId: booking.id });
+            // Fallback to SMS if voice fails
+            await sendFollowUpCampaign(
+              smsitApiKey,
+              booking.phone,
+              booking.name,
+              booking.service,
+              booking.id,
+              '72h_nurture'
+            );
+          }
+        } catch (voiceError) {
+          logStep('Voice call error, using SMS fallback', { error: String(voiceError) });
+          // Fallback to SMS
+          await sendFollowUpCampaign(
+            smsitApiKey,
+            booking.phone,
+            booking.name,
+            booking.service,
+            booking.id,
+            '72h_nurture'
+          );
+        }
+        
+        // Update status to indicate moved to nurture/voice attempted
         await supabase
           .from('bookings')
-          .update({ message: (booking.message || '') + ' [Moved to nurture campaign]' })
+          .update({ message: (booking.message || '') + ' [Voice call attempted - moved to nurture]' })
           .eq('id', booking.id);
       }
     }
