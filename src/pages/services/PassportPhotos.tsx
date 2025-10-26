@@ -227,7 +227,15 @@ const PassportPhotos = () => {
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold mb-2">Mobile Service</h3>
                   <div className="text-5xl font-bold text-primary mb-2">$15+</div>
-                  <p className="text-muted-foreground">+ $1.50/mile from Erie</p>
+                  <p className="text-muted-foreground">+ $1.50/mile round-trip from Erie</p>
+                  <div className="mt-3 bg-muted/30 p-3 rounded text-xs">
+                    <p className="font-semibold mb-1">Example: 10 miles from Erie</p>
+                    <div className="space-y-1">
+                      <div className="flex justify-between"><span>Photo service (2 photos):</span><span>$15</span></div>
+                      <div className="flex justify-between"><span>Travel (20 miles round-trip):</span><span>$30</span></div>
+                      <div className="flex justify-between border-t pt-1 mt-1 font-semibold"><span>Total:</span><span>$45</span></div>
+                    </div>
+                  </div>
                 </div>
                 <ul className="space-y-3 mb-6">
                   <li className="flex items-start gap-2">

@@ -80,7 +80,15 @@ const WitnessService = () => {
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold mb-4">Simple, Transparent Pricing</h2>
                 <div className="text-5xl font-bold text-primary mb-2">$60</div>
-                <p className="text-xl text-muted-foreground">Base fee + $1.50/mile round-trip from Erie</p>
+                <p className="text-xl text-muted-foreground">Mobile service + $1.50/mile round-trip from Erie</p>
+                <div className="mt-4 bg-muted/30 p-4 rounded-lg max-w-md mx-auto">
+                  <p className="text-sm">Example: 15 miles from Erie</p>
+                  <div className="text-xs space-y-1 mt-2">
+                    <div className="flex justify-between"><span>Witness service:</span><span className="font-semibold">$60</span></div>
+                    <div className="flex justify-between"><span>Travel (30 miles round-trip):</span><span className="font-semibold">$45</span></div>
+                    <div className="flex justify-between border-t pt-1 mt-1"><span className="font-bold">Total:</span><span className="font-bold">$105</span></div>
+                  </div>
+                </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
