@@ -670,11 +670,24 @@ const BookingForm = ({ community }: BookingFormProps) => {
   };
 
   return (
-    <section id="booking-form" className="py-20 bg-background">
+    <section id="booking-form" className="py-20 bg-background" aria-labelledby="booking-form-title">
+      {/* ARIA Live Region for Form Status Announcements */}
+      <div 
+        role="status" 
+        aria-live="polite" 
+        aria-atomic="true" 
+        className="sr-only"
+        aria-relevant="additions text"
+      >
+        {currentStep === 1 && "Step 1 of 3: Contact Information"}
+        {currentStep === 2 && "Step 2 of 3: Service Details"}
+        {currentStep === 3 && "Step 3 of 3: Scheduling Preferences"}
+      </div>
+      
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 id="booking-form-title" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               {getServiceTitle()}
             </h2>
             <p className="text-xl text-muted-foreground">
@@ -748,9 +761,11 @@ const BookingForm = ({ community }: BookingFormProps) => {
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      autoComplete="name"
+                      aria-required="true"
+                      aria-describedby="name-hint"
                       placeholder="John Doe"
                       required
-                      aria-required="true"
                       aria-invalid={!formData.name && currentStep > 1}
                     />
                   </div>
@@ -765,11 +780,13 @@ const BookingForm = ({ community }: BookingFormProps) => {
                       value={formData.phone}
                       onChange={(e) => handlePhoneChange(e.target.value)}
                       placeholder="(814) 555-0123"
+                      autoComplete="tel"
                       required
                       aria-required="true"
+                      aria-describedby="phone-hint"
                       aria-invalid={!formData.phone && currentStep > 1}
                     />
-                    <p className="text-xs text-muted-foreground mt-1">Format applied automatically</p>
+                    <p id="phone-hint" className="text-xs text-muted-foreground mt-1">Format applied automatically</p>
                   </div>
                 </div>
                 <div>
@@ -783,10 +800,13 @@ const BookingForm = ({ community }: BookingFormProps) => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="john@example.com"
+                    autoComplete="email"
                     required
                     aria-required="true"
+                    aria-describedby="email-hint"
                     aria-invalid={!formData.email && currentStep > 1}
                   />
+                  <p id="email-hint" className="sr-only">We'll send your booking confirmation here</p>
                 </div>
                 <Button 
                   type="button"

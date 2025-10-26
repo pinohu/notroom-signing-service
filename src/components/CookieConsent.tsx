@@ -63,7 +63,13 @@ const CookieConsent = () => {
   return (
     <>
       {/* Cookie Consent Banner */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-500 max-w-full">
+      <div 
+        className="fixed bottom-0 left-0 right-0 z-50 p-4 animate-in slide-in-from-bottom duration-500 max-w-full"
+        role="dialog"
+        aria-labelledby="cookie-banner-title"
+        aria-describedby="cookie-banner-description"
+        aria-modal="false"
+      >
         <Card className="max-w-6xl mx-auto shadow-2xl border-2">
           <div className="p-6">
             <div className="flex items-start gap-4">
@@ -72,11 +78,11 @@ const CookieConsent = () => {
               </div>
               
               <div className="flex-1">
-                <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-primary" />
+                <h3 id="cookie-banner-title" className="text-lg font-bold mb-2 flex items-center gap-2">
+                  <Shield className="w-5 h-5 text-primary" aria-hidden="true" />
                   Your Privacy Matters
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p id="cookie-banner-description" className="text-sm text-muted-foreground mb-4">
                   We use cookies and similar technologies to provide essential functionality, analyze usage, and improve your experience. 
                   Some cookies are necessary for the website to function, while others help us understand how you use our services.
                   <button 
@@ -111,57 +117,65 @@ const CookieConsent = () => {
                 ) : (
                   <div className="space-y-4">
                     <div className="grid md:grid-cols-2 gap-4">
-                      <label className="flex items-start gap-3 p-3 bg-muted/30 rounded-lg cursor-not-allowed">
+                      <div className="flex items-start gap-3 p-3 bg-muted/30 rounded-lg opacity-75">
                         <input 
                           type="checkbox" 
                           checked={true}
                           disabled
-                          className="mt-1"
+                          id="cookie-necessary"
+                          className="mt-1 focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                          aria-label="Necessary cookies - always enabled"
                         />
-                        <div>
+                        <label htmlFor="cookie-necessary" className="flex-1">
                           <div className="font-semibold text-sm">Necessary Cookies</div>
                           <div className="text-xs text-muted-foreground">Required for website functionality. Cannot be disabled.</div>
-                        </div>
-                      </label>
+                        </label>
+                      </div>
 
-                      <label className="flex items-start gap-3 p-3 bg-background rounded-lg cursor-pointer hover:bg-muted/30">
+                      <div className="flex items-start gap-3 p-3 bg-background rounded-lg hover:bg-muted/30 transition-colors">
                         <input 
                           type="checkbox" 
                           checked={preferences.functional}
                           onChange={(e) => setPreferences({...preferences, functional: e.target.checked})}
-                          className="mt-1"
+                          id="cookie-functional"
+                          className="mt-1 cursor-pointer focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                          aria-describedby="cookie-functional-desc"
                         />
-                        <div>
+                        <label htmlFor="cookie-functional" className="flex-1 cursor-pointer">
                           <div className="font-semibold text-sm">Functional Cookies</div>
-                          <div className="text-xs text-muted-foreground">Remember your preferences and settings.</div>
-                        </div>
-                      </label>
+                          <div id="cookie-functional-desc" className="text-xs text-muted-foreground">Remember your preferences and settings.</div>
+                        </label>
+                      </div>
 
-                      <label className="flex items-start gap-3 p-3 bg-background rounded-lg cursor-pointer hover:bg-muted/30">
+                      <div className="flex items-start gap-3 p-3 bg-background rounded-lg hover:bg-muted/30 transition-colors">
                         <input 
                           type="checkbox" 
                           checked={preferences.analytics}
                           onChange={(e) => setPreferences({...preferences, analytics: e.target.checked})}
-                          className="mt-1"
+                          id="cookie-analytics"
+                          className="mt-1 cursor-pointer focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                          aria-describedby="cookie-analytics-desc"
                         />
-                        <div>
+                        <label htmlFor="cookie-analytics" className="flex-1 cursor-pointer">
                           <div className="font-semibold text-sm">Analytics Cookies</div>
-                          <div className="text-xs text-muted-foreground">Help us improve our services by analyzing usage.</div>
-                        </div>
-                      </label>
+                          <div id="cookie-analytics-desc" className="text-xs text-muted-foreground">Help us improve our services by analyzing usage.</div>
+                        </label>
+                      </div>
 
-                      <label className="flex items-start gap-3 p-3 bg-background rounded-lg cursor-pointer hover:bg-muted/30">
+                      <div className="flex items-start gap-3 p-3 bg-background rounded-lg hover:bg-muted/30 transition-colors">
                         <input 
                           type="checkbox" 
                           checked={preferences.advertising}
                           onChange={(e) => setPreferences({...preferences, advertising: e.target.checked})}
-                          className="mt-1"
+                          id="cookie-advertising"
+                          className="mt-1 cursor-pointer focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                          aria-describedby="cookie-advertising-desc"
                         />
-                        <div>
+                        <label htmlFor="cookie-advertising" className="flex-1 cursor-pointer">
                           <div className="font-semibold text-sm">Advertising Cookies</div>
-                          <div className="text-xs text-muted-foreground">Personalize ads and measure campaign effectiveness.</div>
-                        </div>
-                      </label>
+                          <div id="cookie-advertising-desc" className="text-xs text-muted-foreground">Personalize ads and measure campaign effectiveness.</div>
+                        </label>
+                      </div>
                     </div>
 
                     <div className="flex gap-3">
