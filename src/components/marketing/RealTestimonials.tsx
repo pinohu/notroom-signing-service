@@ -86,7 +86,7 @@ const RealTestimonials = memo(() => {
         {/* Section Header */}
         <ScrollReveal>
           <div className="text-center mb-16">
-            <Badge className="mb-4 text-base px-6 py-2 bg-[hsl(var(--success-green))] text-white">
+            <Badge className="mb-4 text-base px-6 py-2 bg-[hsl(var(--success-green))] text-primary-foreground">
               REAL CLIENTS, REAL RESULTS
             </Badge>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">

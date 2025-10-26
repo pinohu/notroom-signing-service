@@ -32,7 +32,7 @@ const BiometricConsent = ({ onConsent, required = false }: BiometricConsentProps
       </div>
 
       <div className="space-y-4 text-sm text-amber-900 dark:text-amber-100">
-        <div className="bg-white dark:bg-amber-950/40 p-4 rounded-lg space-y-3">
+        <div className="bg-primary-foreground p-4 rounded-lg space-y-3">
           <div className="flex items-start gap-3">
             <Fingerprint className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
             <div>

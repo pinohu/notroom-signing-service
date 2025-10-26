@@ -84,7 +84,7 @@ const BeforeAfter = () => {
 
                 {/* Arrow */}
                 <div className="hidden md:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2 z-10">
-                  <div className="bg-[hsl(var(--success-green))] text-white p-4 rounded-full shadow-xl">
+                  <div className="bg-[hsl(var(--success-green))] text-primary-foreground p-4 rounded-full shadow-xl">
                     <ArrowRight className="w-8 h-8" />
                   </div>
                 </div>
