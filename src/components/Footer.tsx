@@ -15,7 +15,7 @@ const Footer = () => {
     <footer className="bg-[hsl(var(--neutral-dark))] text-primary-foreground">
       {/* Footer Top */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <img src={notroomLogo} alt="Notroom" className="h-10 mb-3 brightness-0 invert" />
@@ -32,9 +32,9 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Services Column */}
+          {/* Services Column 1 */}
           <div>
-            <h4 className="font-bold mb-4 text-lg">Services</h4>
+            <h4 className="font-bold mb-4 text-lg">Core Services</h4>
             <ul className="space-y-2">
               <li>
                 <button onClick={() => navigateToPage("/services/remote-online-notary")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
@@ -43,7 +43,7 @@ const Footer = () => {
               </li>
               <li>
                 <button onClick={() => navigateToPage("/services/mobile-notary")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
-                  Mobile Notary Erie PA
+                  Mobile Notary
                 </button>
               </li>
               <li>
@@ -63,7 +63,69 @@ const Footer = () => {
               </li>
               <li>
                 <button onClick={() => navigateToPage("/services/registered-office")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
-                  Registered Office & Business Filings
+                  Registered Office
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/business-retainer")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Business Retainer
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Services Column 2 */}
+          <div>
+            <h4 className="font-bold mb-4 text-lg">Additional Services</h4>
+            <ul className="space-y-2">
+              <li>
+                <button onClick={() => navigateToPage("/services/certified-copies")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Certified Copies
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/document-preparation")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Document Preparation
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/fingerprinting")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Fingerprinting
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/witness-service")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Witness Service
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/passport-photos")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Passport Photos
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/translation-certification")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Translation Certification
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/vehicle-title-transfer")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Vehicle Title Transfer
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/virtual-mailbox")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Virtual Mailbox
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/ucc-filing")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  UCC Filing
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/document-retrieval")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Document Retrieval
                 </button>
               </li>
             </ul>
@@ -71,36 +133,93 @@ const Footer = () => {
 
           {/* Service Areas Column */}
           <div>
-            <h4 className="font-bold mb-4 text-lg">Service Areas</h4>
+            <h4 className="font-bold mb-4 text-lg">Counties</h4>
             <ul className="space-y-2">
               <li>
-                <button onClick={() => navigateToPage("/areas/erie-county")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/erie-county")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm font-medium">
                   Erie County
                 </button>
               </li>
               <li>
-                <button onClick={() => navigateToPage("/areas/crawford-county")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/crawford-county")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm font-medium">
                   Crawford County
                 </button>
               </li>
               <li>
-                <button onClick={() => navigateToPage("/areas/warren-county")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/warren-county")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm font-medium">
                   Warren County
                 </button>
               </li>
               <li>
-                <button onClick={() => navigateToPage("/areas/mercer-county")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/mercer-county")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm font-medium">
                   Mercer County
                 </button>
               </li>
               <li>
-                <button onClick={() => navigateToPage("/areas/venango-county")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/venango-county")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm font-medium">
                   Venango County
                 </button>
               </li>
               <li>
-                <button onClick={() => navigateToPage("/areas/statewide-online")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                <button onClick={() => navigateToPage("/areas/statewide-online")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm font-medium">
                   Statewide Online
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Major Cities Column */}
+          <div>
+            <h4 className="font-bold mb-4 text-lg">Major Cities</h4>
+            <ul className="space-y-2">
+              <li>
+                <button onClick={() => navigateToPage("/areas/erie-pa")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Erie
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/areas/meadville-pa")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Meadville
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/areas/warren-pa")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Warren
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/areas/oil-city-pa")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Oil City
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/areas/sharon-pa")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Sharon
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/areas/titusville-pa")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Titusville
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/areas/hermitage-pa")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Hermitage
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/areas/grove-city-pa")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Grove City
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/areas/edinboro-pa")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Edinboro
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/areas/corry-pa")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Corry
                 </button>
               </li>
             </ul>
@@ -126,6 +245,11 @@ const Footer = () => {
                 </button>
               </li>
               <li>
+                <button onClick={() => navigateToPage("/calculator")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Price Calculator
+                </button>
+              </li>
+              <li>
                 <button onClick={() => navigateToPage("/subscriptions")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
                   Subscription Plans
                 </button>
@@ -133,6 +257,11 @@ const Footer = () => {
               <li>
                 <button onClick={() => navigateToPage("/track-booking")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
                   Track Booking
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/legal/agreements")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Service Agreements
                 </button>
               </li>
             </ul>

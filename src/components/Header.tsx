@@ -71,12 +71,76 @@ const Header = () => {
   ];
 
   const areas = [
-    { label: "Erie County", path: "/areas/erie-county" },
-    { label: "Crawford County", path: "/areas/crawford-county" },
-    { label: "Warren County", path: "/areas/warren-county" },
-    { label: "Mercer County", path: "/areas/mercer-county" },
-    { label: "Venango County", path: "/areas/venango-county" },
-    { label: "Statewide Online", path: "/areas/statewide-online" },
+    { 
+      label: "Erie County", 
+      path: "/areas/erie-county",
+      cities: [
+        { label: "Erie", path: "/areas/erie-pa" },
+        { label: "Millcreek", path: "/areas/millcreek-pa" },
+        { label: "Edinboro", path: "/areas/edinboro-pa" },
+        { label: "North East", path: "/areas/north-east-pa" },
+        { label: "Corry", path: "/areas/corry-pa" },
+        { label: "Girard", path: "/areas/girard-pa" },
+        { label: "Waterford", path: "/areas/waterford-pa" },
+        { label: "Harborcreek", path: "/areas/harborcreek-pa" },
+      ]
+    },
+    { 
+      label: "Crawford County", 
+      path: "/areas/crawford-county",
+      cities: [
+        { label: "Meadville", path: "/areas/meadville-pa" },
+        { label: "Titusville", path: "/areas/titusville-pa" },
+        { label: "Conneaut Lake", path: "/areas/conneaut-lake-pa" },
+        { label: "Cambridge Springs", path: "/areas/cambridge-springs-pa" },
+        { label: "Linesville", path: "/areas/linesville-pa" },
+        { label: "Saegertown", path: "/areas/saegertown-pa" },
+      ]
+    },
+    { 
+      label: "Warren County", 
+      path: "/areas/warren-county",
+      cities: [
+        { label: "Warren", path: "/areas/warren-pa" },
+        { label: "Youngsville", path: "/areas/youngsville-pa" },
+        { label: "Sheffield", path: "/areas/sheffield-pa" },
+        { label: "Sugar Grove", path: "/areas/sugar-grove-pa" },
+      ]
+    },
+    { 
+      label: "Mercer County", 
+      path: "/areas/mercer-county",
+      cities: [
+        { label: "Sharon", path: "/areas/sharon-pa" },
+        { label: "Hermitage", path: "/areas/hermitage-pa" },
+        { label: "Grove City", path: "/areas/grove-city-pa" },
+        { label: "Greenville", path: "/areas/greenville-pa" },
+        { label: "Mercer", path: "/areas/mercer-pa" },
+      ]
+    },
+    { 
+      label: "Venango County", 
+      path: "/areas/venango-county",
+      cities: [
+        { label: "Oil City", path: "/areas/oil-city-pa" },
+        { label: "Franklin", path: "/areas/franklin-pa" },
+        { label: "Sugarcreek", path: "/areas/sugarcreek-pa" },
+        { label: "Clintonville", path: "/areas/clintonville-pa" },
+      ]
+    },
+    { 
+      label: "Statewide Online", 
+      path: "/areas/statewide-online",
+      cities: []
+    },
+  ];
+
+  const resources = [
+    { label: "How RON Works", path: "/resources/how-ron-works", desc: "Learn about remote notarization" },
+    { label: "Pricing Calculator", path: "/calculator", desc: "Estimate your service cost" },
+    { label: "Subscription Plans", path: "/subscriptions", desc: "Volume discounts & retainers" },
+    { label: "Track Booking", path: "/track-booking", desc: "Check your appointment status" },
+    { label: "Service Agreements", path: "/legal/agreements", desc: "Legal agreements & templates" },
   ];
 
   return (
@@ -142,16 +206,59 @@ const Header = () => {
                     Service Areas
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
-                    <ul className="grid w-[95vw] max-w-[300px] gap-2 p-4 bg-card/98" role="menu">
-                      {areas.map((area) => (
-                        <li key={area.path} role="none">
+                    <div className="w-[95vw] max-w-[700px] p-4 bg-card/98">
+                      <div className="grid md:grid-cols-3 gap-4">
+                        {areas.map((area) => (
+                          <div key={area.path} className="space-y-2">
+                             <button
+                              onClick={() => navigateToPage(area.path)}
+                              className="block w-full text-left font-semibold text-sm hover:text-primary transition-colors p-2 rounded-md hover:bg-accent/50 bg-card"
+                            >
+                              {area.label} →
+                            </button>
+                            {area.cities && area.cities.length > 0 && (
+                              <ul className="space-y-1 pl-2 border-l-2 border-border/50">
+                                {area.cities.map((city) => (
+                                  <li key={city.path}>
+                                    <button
+                                      onClick={() => navigateToPage(city.path)}
+                                      className="block w-full text-left text-xs text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded hover:bg-accent/30 bg-card"
+                                    >
+                                      {city.label}
+                                    </button>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                {/* Resources Dropdown */}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger 
+                    className="text-foreground hover:text-primary focus:text-primary font-medium bg-transparent hover:bg-accent/50"
+                    aria-label="Resources menu"
+                  >
+                    Resources
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
+                    <ul className="grid w-[95vw] max-w-[400px] gap-2 p-4 bg-card/98" role="menu">
+                      {resources.map((resource) => (
+                        <li key={resource.path} role="none">
                           <NavigationMenuLink asChild>
                             <button
-                              onClick={() => navigateToPage(area.path)}
+                              onClick={() => navigateToPage(resource.path)}
                               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left bg-card"
                               role="menuitem"
                             >
-                              <div className="text-sm font-medium leading-none">{area.label}</div>
+                              <div className="text-sm font-medium leading-none">{resource.label}</div>
+                              <p className="text-xs text-muted-foreground leading-snug mt-1">
+                                {resource.desc}
+                              </p>
                             </button>
                           </NavigationMenuLink>
                         </li>
@@ -294,14 +401,45 @@ const Header = () => {
                   <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                     Service Areas
                   </h3>
-                  <div className="flex flex-col gap-2 pl-2">
+                  <div className="flex flex-col gap-3 pl-2">
                     {areas.map((area) => (
+                      <div key={area.path} className="space-y-1">
+                        <button
+                          onClick={() => navigateToPage(area.path)}
+                          className="text-left text-sm font-semibold hover:text-primary transition-colors focus:outline-none focus:text-primary"
+                        >
+                          {area.label} →
+                        </button>
+                        {area.cities && area.cities.length > 0 && (
+                          <div className="flex flex-col gap-1 pl-3 border-l-2 border-border/50">
+                            {area.cities.map((city) => (
+                              <button
+                                key={city.path}
+                                onClick={() => navigateToPage(city.path)}
+                                className="text-left text-xs text-muted-foreground hover:text-foreground transition-colors py-1 focus:outline-none focus:text-foreground"
+                              >
+                                {city.label}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="border-t pt-4">
+                  <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                    Resources
+                  </h3>
+                  <div className="flex flex-col gap-2 pl-2">
+                    {resources.map((resource) => (
                       <button
-                        key={area.path}
-                        onClick={() => navigateToPage(area.path)}
+                        key={resource.path}
+                        onClick={() => navigateToPage(resource.path)}
                         className="text-left text-sm hover:text-primary transition-colors py-2 focus:outline-none focus:text-primary"
                       >
-                        {area.label}
+                        {resource.label}
                       </button>
                     ))}
                   </div>
@@ -309,38 +447,10 @@ const Header = () => {
 
                 <div className="border-t pt-4 flex flex-col gap-3">
                   <button
-                    onClick={() => navigateToPage("/pricing")}
-                    className="text-left text-base font-medium hover:text-primary transition-colors focus:outline-none focus:text-primary"
-                  >
-                    Pricing
-                  </button>
-
-                  <button
-                    onClick={() => navigateToPage("/subscriptions")}
-                    className="text-left text-base font-medium hover:text-primary transition-colors focus:outline-none focus:text-primary"
-                  >
-                    Subscriptions
-                  </button>
-
-                  <button
-                    onClick={() => navigateToPage("/resources/how-ron-works")}
-                    className="text-left text-base font-medium hover:text-primary transition-colors focus:outline-none focus:text-primary"
-                  >
-                    How RON Works
-                  </button>
-
-                  <button
                     onClick={() => scrollToSection("faq")}
                     className="text-left text-base font-medium hover:text-primary transition-colors focus:outline-none focus:text-primary"
                   >
                     FAQ
-                  </button>
-
-                  <button
-                    onClick={() => navigateToPage("/track-booking")}
-                    className="text-left text-base font-medium hover:text-primary transition-colors focus:outline-none focus:text-primary"
-                  >
-                    Track Booking
                   </button>
 
                   <a
