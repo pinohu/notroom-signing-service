@@ -37,6 +37,7 @@ export const communityData: Record<string, CommunityData> = {
     ],
     imagePrompt: "Exact photorealistic view of Presque Isle State Park's Beach 6 at sunset with the distinctive Presque Isle Lighthouse (1872) visible, families walking the Sidewalk Trail, sailboats anchored at Presque Isle Bay, Perry Monument across the water, wooden boardwalk, actual sand dunes with beach grass. Iconic Erie scene residents recognize instantly."
   },
+
   millcreek: {
     name: "Millcreek",
     slug: "millcreek",
@@ -100,637 +101,30 @@ export const communityData: Record<string, CommunityData> = {
     ],
     imagePrompt: "Exact photorealistic view of Avonia Beach in Fairview Township showing the actual public beach access at Route 20 and Avonia Road, Lake Erie waves, the beach pavilion and parking area, families on sandy shore, distinctive bluffs, Fairview Water Authority water tower visible in distance. Recognizable local summer spot."
   },
-  northEast: {
-    name: "North East",
-    slug: "north-east",
-    county: "Erie County",
-    zipCodes: ["16428"],
-    nearbyComm: ["Harborcreek", "North East Township", "Erie"],
-    landmarks: ["Wine Country Trail", "Gibson Park", "Lake Erie beaches"],
-    description: "Charming borough in Pennsylvania's wine country",
-    population: "~4,300",
-    uniqueTrait: "Heart of Erie County's wine region with 20+ wineries",
-    historicalNarrative: "Founded in 1794, North East Borough became the center of Erie County's grape-growing region due to Lake Erie's moderating climate. What started as a fruit-growing community transformed in the late 1960s when local farmers began establishing wineries. Today, North East anchors Pennsylvania's wine country with over 20 wineries producing award-winning vintages, while maintaining its charming small-town character.",
-    favoriteThings: [
-      "Wine tasting tours along the Lake Erie Wine Country Trail",
-      "Annual Wine Country Harvest Festival in September",
-      "Summer concerts at Gibson Park bandstand",
-      "Fresh grape pies from local bakeries",
-      "Lake Erie beaches just minutes away",
-      "Historic downtown shops and restaurants"
-    ],
-    imagePrompt: "Exact photorealistic view of North East's vineyard country along Route 5 showing Mazza Vineyards or Heritage Wine Cellars tasting room, actual rows of Concord grapes with Lake Erie visible in background, Gibson Park's bandstand in town center, Route 20 (Main Street) historic storefronts. Wine Country Trail scenery residents recognize."
-  },
-  edinboro: {
-    name: "Edinboro",
-    slug: "edinboro",
-    county: "Erie County",
-    zipCodes: ["16412", "16444"],
-    nearbyComm: ["Millcreek", "Cambridge Springs", "Waterford", "Erie"],
-    landmarks: ["Edinboro University (PennWest Edinboro)", "Edinboro Lake", "Downtown Historic District", "Porreco College Center", "Route 6N", "Edinboro Borough Hall"],
-    description: "Vibrant college town in southern Erie County, centered around PennWest Edinboro campus and the scenic natural Edinboro Lake",
-    population: "~6,500",
-    uniqueTrait: "Home to PennWest Edinboro University with 5,000+ students, and Edinboro Lake - Pennsylvania's largest natural lake. Offers unique college-town culture with small-town charm",
-    historicalNarrative: "Edinboro was founded in 1825 and became home to Edinboro Normal School in 1857, which evolved into PennWest Edinboro University. The town grew around Pennsylvania's largest natural lake and the university, creating a unique blend of academic culture and natural beauty. Today, Edinboro retains its college-town vibrancy while offering year-round lake recreation and a tight-knit community feel.",
-    favoriteThings: [
-      "Ice skating and fishing on Edinboro Lake",
-      "College sporting events and cultural programs at PennWest",
-      "Coffee shops and restaurants catering to students and locals",
-      "Summer concerts and community events downtown",
-      "Walking and biking around Edinboro Lake",
-      "Affordable housing and friendly neighborhood atmosphere"
-    ],
-    imagePrompt: "Exact photorealistic view of PennWest Edinboro's Reeder Hall and Porreco College Center near Edinboro Lake's west shore, students walking on campus paths in autumn, the actual natural lake with dock and swimming area, historic downtown buildings on Plum Street, Van Doren Hall visible. Recognizable college town scene."
-  },
-  wesleyville: {
-    name: "Wesleyville",
-    slug: "wesleyville",
-    county: "Erie County",
-    zipCodes: ["16510"],
-    nearbyComm: ["Erie", "Harborcreek", "Lawrence Park"],
-    landmarks: ["East Erie Commercial District", "Wesleyville Elementary School", "Buffalo Road (Route 20)", "Wesleyville Borough Building", "Lake Erie shoreline"],
-    description: "Compact, close-knit borough in eastern Erie County along Lake Erie, offering easy access to Erie city amenities",
-    population: "~3,300",
-    uniqueTrait: "Small but strategic location on Buffalo Road corridor between Erie and Harborcreek, providing residents with hometown feel and big-city convenience",
-    historicalNarrative: "Wesleyville was incorporated in 1887 as a small residential community along Lake Erie's shore. The borough developed along Buffalo Road (Route 20), Erie's eastern commercial corridor, allowing residents to enjoy small-town living while working in Erie's industries. Today, Wesleyville maintains its close-knit community character while benefiting from its prime location between Erie and Harborcreek.",
-    favoriteThings: [
-      "Quick access to Erie's jobs and entertainment",
-      "Friendly neighbors in a tight-knit community",
-      "Lake Erie views and shoreline access",
-      "Convenient Buffalo Road shopping and dining",
-      "Small-town feel with big-city convenience",
-      "Safe streets and community pride"
-    ],
-    imagePrompt: "Exact photorealistic view of Wesleyville Borough along Buffalo Road (Route 20) showing actual residential streets, Lake Erie shoreline visible north, Wesleyville Elementary School building, small neighborhood homes, East Erie Commercial district, proximity to Erie city limits. Recognizable tight-knit borough."
-  },
-  girard: {
-    name: "Girard",
-    slug: "girard",
-    county: "Erie County",
-    zipCodes: ["16417"],
-    nearbyComm: ["Fairview", "Lake City", "Cranberry Township", "Millcreek"],
-    landmarks: ["Girard Borough Park", "Dan Rice Days Festival", "Historic Downtown Square", "Girard High School", "Route 20 Main Street", "Battles Museums of Rural Life"],
-    description: "Historic borough in southwestern Erie County, celebrating its Victorian heritage and famous resident Dan Rice with annual festival",
-    population: "~3,100",
-    uniqueTrait: "Birthplace of Dan Rice, 19th century circus performer who inspired Uncle Sam. Annual Dan Rice Days celebrates local history with parades and festivities",
-    historicalNarrative: "Girard was founded in 1832 and quickly became an important stop on stagecoach routes. The borough's most famous resident, Dan Rice, was a 19th-century circus owner and entertainer whose patriotic costume and white goatee inspired the Uncle Sam image. Girard's Victorian downtown and annual Dan Rice Days festival preserve this colorful heritage while serving as a charming residential community.",
-    favoriteThings: [
-      "Annual Dan Rice Days parade and festival",
-      "Historic Victorian architecture downtown",
-      "Battles Museums showcasing rural Pennsylvania life",
-      "Community events at Girard Borough Park",
-      "Local restaurants and shops on Main Street",
-      "Small-town festivals and tight-knit community"
-    ],
-    imagePrompt: "Exact photorealistic view of Girard's Dan Rice Days parade on Main Street (Route 20) with actual Victorian storefronts, Uncle Sam characters, Girard Borough Park, historic Battles Museums building, American flags decorating 1880s-era downtown architecture. Annual festival residents cherish."
-  },
-  waterford: {
-    name: "Waterford",
-    slug: "waterford",
-    county: "Erie County",
-    zipCodes: ["16441"],
-    nearbyComm: ["Edinboro", "Union City", "Wattsburg", "Erie"],
-    landmarks: ["Fort LeBoeuf Museum", "Eagle Historic District", "LeBoeuf Creek", "Waterford Community Park", "Route 19 & Route 97 Junction", "Historic Downtown Waterford"],
-    description: "Historic borough at the crossroads of southern Erie County, featuring French & Indian War heritage and small-town Pennsylvania charm",
-    population: "~1,500",
-    uniqueTrait: "Home to Fort LeBoeuf, a strategic French fort during French & Indian War (1753). George Washington visited here on his first military mission. Rich Erie Canal and early American history",
-    historicalNarrative: "Waterford's history dates to 1753 when the French built Fort LeBoeuf, making it one of Pennsylvania's oldest European settlements. A young George Washington visited in 1753 on his first military mission. After the French & Indian War, American settlers arrived, and Waterford became an Erie Canal town in the 1840s. The beautifully preserved Eagle Historic District showcases this rich heritage.",
-    favoriteThings: [
-      "Exploring Fort LeBoeuf Museum and Revolutionary War history",
-      "Walking through Eagle Historic District's Victorian homes",
-      "Annual Fort LeBoeuf Days heritage festival",
-      "Fishing and nature along LeBoeuf Creek",
-      "Small-town shops and cafes downtown",
-      "Rich American history at every turn"
-    ],
-    imagePrompt: "Exact photorealistic view of Fort LeBoeuf Museum's reconstructed 1753 French fort and blockhouse, Eagle Hotel historic building on High Street, LeBoeuf Creek flowing through town, actual Victorian homes in Eagle Historic District, Route 19/97 intersection. George Washington visited here in 1753."
-  },
 
-  // Crawford County Communities
-  meadville: {
-    name: "Meadville",
-    slug: "meadville",
-    county: "Crawford County",
-    zipCodes: ["16335", "16388"],
-    nearbyComm: ["Cochranton", "Saegertown", "Cambridge Springs", "Conneaut Lake"],
-    landmarks: ["Allegheny College", "Diamond Park", "Market House Historic District", "Baldwin Reynolds House Museum", "Talon Conference Center", "Meadville Medical Center", "Downtown Meadville"],
-    description: "Crawford County's vibrant seat and largest city, home to historic Allegheny College and a thriving downtown with arts, culture, and commerce",
-    population: "~13,000",
-    uniqueTrait: "Home to prestigious Allegheny College (founded 1815), birthplace of the zipper, and Crawford County's economic and cultural hub with historic architecture and college-town atmosphere",
-    historicalNarrative: "Meadville's history dates to 1788 when David Mead established the first settlement. The city flourished as a manufacturing center in the 19th century and became famous as the birthplace of the modern zipper, invented here by Whitcomb Judson and perfected by Gideon Sundback. Allegheny College, founded in 1815, brought intellectual vitality that continues today. The city's beautiful Victorian architecture and Diamond Park remain testaments to its prosperous past.",
-    favoriteThings: [
-      "Exploring Diamond Park's historic bandstand and seasonal events",
-      "College football games at Allegheny College's Robertson Athletic Complex",
-      "Discovering local art at the Market House galleries",
-      "Strolling through the Victorian-era Baldwin Reynolds House Museum",
-      "Downtown coffee shops and independent bookstores",
-      "Annual Meadville Community Band summer concerts"
-    ],
-    imagePrompt: "Exact photorealistic view of Meadville's Diamond Park with the 1870s Victorian bandstand at center, Crawford County Courthouse (1867), actual storefronts on Chestnut Street and Market Street, Baldwin Reynolds House Museum's Italianate architecture, Allegheny College's Bentley Hall (1820) visible. Historic downtown residents know by heart."
-  },
-  conneautLake: {
-    name: "Conneaut Lake",
-    slug: "conneaut-lake",
-    county: "Crawford County",
-    zipCodes: ["16316"],
-    nearbyComm: ["Meadville", "Harmonsburg", "Linesville", "Conneautville"],
-    landmarks: ["Conneaut Lake", "Conneaut Lake Park Amusement Park", "Beach Club", "Lakefront Properties", "Conneaut Hotel", "Blue Water Beach"],
-    description: "Pennsylvania's largest natural lake resort community offering year-round recreation, lakefront living, and family entertainment",
-    population: "~700",
-    uniqueTrait: "Pennsylvania's largest natural glacier-formed lake spanning 929 acres, featuring historic amusement park (opened 1892), pristine beaches, and premier fishing destination",
-    historicalNarrative: "Conneaut Lake became a resort destination in the 1890s when the Bessemer & Lake Erie Railroad brought tourists to this glacier-formed natural lake. Conneaut Lake Park amusement park opened in 1892 and became one of Pennsylvania's premier entertainment destinations. The lake community evolved from a summer resort into a year-round residential area while maintaining its recreational and nostalgic charm.",
-    favoriteThings: [
-      "Riding the historic Blue Streak roller coaster at Conneaut Lake Park",
-      "Summer days swimming and boating on Pennsylvania's largest natural lake",
-      "Ice fishing and winter activities in colder months",
-      "Lakefront dining with spectacular sunset views",
-      "Community fireworks and summer festivals",
-      "Year-round lake living with seasonal charm"
-    ],
-    imagePrompt: "Exact photorealistic view of Conneaut Lake's actual shoreline showing Conneaut Lake Park's Beach Club, the historic Hotel Conneaut (1903), families swimming at public beach, fishing boats and pontoons on Pennsylvania's largest natural lake, summer cottages along lakeshore. Iconic summer resort scene."
-  },
-  titusville: {
-    name: "Titusville",
-    slug: "titusville",
-    county: "Crawford County",
-    zipCodes: ["16354"],
-    nearbyComm: ["Pleasantville", "Hydetown", "Oil City", "Spartansburg"],
-    landmarks: ["Drake Well Museum & Park", "Oil Creek State Park", "Historic Downtown District", "Oil Creek & Titusville Railroad", "Titusville Regional Hospital", "St. Titus Church"],
-    description: "Historic city where the American oil industry was born in 1859, featuring oil heritage museums, outdoor recreation, and Victorian architecture",
-    population: "~5,400",
-    uniqueTrait: "Birthplace of the American oil industry - site of Colonel Edwin Drake's world's first commercial oil well drilled in 1859. Oil Creek State Park offers 36 miles of hiking trails",
-    historicalNarrative: "Titusville's destiny changed forever on August 27, 1859, when Colonel Edwin Drake struck oil at 69 feet, drilling the world's first commercial oil well. Overnight, this sleepy lumber town became the epicenter of the oil rush, with fortunes made and lost as 'Oil Creek Valley' boomed. Though the boom faded, Titusville preserved its oil heritage through the Drake Well Museum and Oil Creek State Park, while Victorian mansions downtown recall the era when oil barons walked these streets.",
-    favoriteThings: [
-      "Exploring Drake Well Museum where the oil industry was born",
-      "Hiking and biking 36 miles of trails in Oil Creek State Park",
-      "Scenic train rides on the Oil Creek & Titusville Railroad",
-      "Victorian architecture and historic downtown walking tours",
-      "Annual Oil Festival celebrating petroleum heritage",
-      "Fishing and outdoor recreation along Oil Creek"
-    ],
-    imagePrompt: "Exact photorealistic view of Titusville's Spring Street downtown showing actual Drake Well Museum with 1859 oil derrick replica, Oil Creek running through, historic Victorian storefronts, Titusville Area High School, Oil Creek State Park bikeway entrance. Edwin Drake struck oil here in 1859."
-  },
-  
-  // Mercer County Communities
-  mercer: {
-    name: "Mercer",
-    slug: "mercer",
-    county: "Mercer County",
-    zipCodes: ["16137"],
-    nearbyComm: ["Grove City", "Greenville", "Sharon", "Stoneboro"],
-    landmarks: ["Mercer County Courthouse", "Magoffin House Museum", "Downtown Historic Square", "Mercer Area Historical Society", "Central Park", "Route 19/62 Intersection"],
-    description: "Charming county seat featuring beautifully preserved Victorian courthouse, historic downtown square, and small-town Pennsylvania atmosphere",
-    population: "~2,000",
-    uniqueTrait: "Home to stunning 1909 Beaux-Arts Mercer County Courthouse with clock tower, surrounded by historic square. Annual Mercer County Fair and strong agricultural heritage",
-    historicalNarrative: "Founded in 1800 and named after Revolutionary War General Hugh Mercer, this borough became Mercer County's seat in 1803. The spectacular Beaux-Arts courthouse, built in 1909, dominates the town square and remains one of Pennsylvania's most photographed county buildings. Mercer's agricultural heritage continues through the annual Mercer County Fair, while the downtown square retains its 19th-century charm.",
-    favoriteThings: [
-      "The magnificent Mercer County Courthouse and clock tower",
-      "Annual Mercer County Fair with agricultural exhibits and rides",
-      "Charming downtown shops around the historic square",
-      "Magoffin House Museum showcasing local history",
-      "Community events at Central Park",
-      "Small-town festivals and parades"
-    ],
-    imagePrompt: "Exact photorealistic view of downtown Mercer around Diamond (town square) showing actual Mercer County Courthouse with clock tower, historic storefronts, Magoffin Hall Civic Center, Route 19/58/62 intersection, local businesses families know. Classic Pennsylvania county seat square."
-  },
-  groveCity: {
-    name: "Grove City",
-    slug: "grove-city",
-    county: "Mercer County",
-    zipCodes: ["16127"],
-    nearbyComm: ["Mercer", "Slippery Rock", "Harrisville", "Clintonville"],
-    landmarks: ["Grove City College", "Grove City Premium Outlets", "Historic Downtown Grove City", "Wolf Creek Village", "Kettle Creek Environmental Center", "Grove City Area Library"],
-    description: "Thriving college town combining premier Christian higher education with one of America's largest outlet shopping destinations",
-    population: "~8,100",
-    uniqueTrait: "Home to Grove City College (1876) - renowned Christian liberal arts college, plus Grove City Premium Outlets - one of the largest outlet malls in America with over 130 stores",
-    historicalNarrative: "Grove City was founded in 1798 and incorporated in 1959. Grove City College, established in 1876, shaped the community's character as a Christian liberal arts institution. In the 1980s, the town's identity expanded when Prime Outlets opened, becoming one of America's premier outlet shopping destinations. Today, Grove City uniquely blends college-town culture, Christian values, and retail tourism.",
-    favoriteThings: [
-      "Shopping at Grove City Premium Outlets with 130+ stores",
-      "Attending Grove City College basketball and football games",
-      "Exploring historic downtown's unique shops and cafes",
-      "Annual Christmas events and college performances",
-      "Safe, family-friendly community atmosphere",
-      "Beautiful Grove City College campus architecture"
-    ],
-    imagePrompt: "Exact photorealistic view of Grove City College's quadrangle showing Memorial Hall chapel spire, Harbison Chapel, students on campus walks, downtown Broad Street (Route 58) with college shops, Grove City Premium Outlets visible, South Center Street storefronts. Recognizable college town."
-  },
-  hermitage: {
-    name: "Hermitage",
-    slug: "hermitage",
-    county: "Mercer County",
-    zipCodes: ["16148"],
-    nearbyComm: ["Sharon", "Farrell", "Sharpsville", "Greenville"],
-    landmarks: ["Shenango River Lake", "Winner's Circle Golf Course", "Hermitage Stadium", "Hickory Memorial Park", "The Avenue at Hermitage", "Shenango Valley Mall"],
-    description: "Mercer County's largest and fastest-growing city, serving as the region's commercial, retail, and recreational hub",
-    population: "~16,200",
-    uniqueTrait: "Largest city in Mercer County with thriving retail corridor including The Avenue shopping district. Gateway to Shenango River Lake with 3,500 acres for boating and fishing",
-    historicalNarrative: "Hermitage grew from a small crossroads community into Mercer County's largest city through strategic commercial development in the 1970s-90s. The creation of Shenango River Lake by the Army Corps of Engineers brought recreation opportunities, while The Avenue shopping district and Shenango Valley Mall established Hermitage as the region's retail capital. Today, it continues growing as families seek modern amenities and outdoor recreation.",
-    favoriteThings: [
-      "Boating, fishing, and water sports at Shenango River Lake",
-      "Shopping and dining at The Avenue at Hermitage",
-      "Golf at scenic Winner's Circle course",
-      "High school sports at impressive Hermitage Stadium",
-      "Numerous parks and recreational facilities",
-      "Convenient access to all amenities"
-    ],
-    imagePrompt: "Exact photorealistic view of Hermitage's Route 18/62 corridor showing Hickory High School, Shenango Valley Freeway (Route 62), The Avenue shopping district, actual plazas and businesses, Shenango River Lake visible, modern suburban homes. Recognizable Mercer County suburb."
-  },
-  sharon: {
-    name: "Sharon",
-    slug: "sharon",
-    county: "Mercer County",
-    zipCodes: ["16146"],
-    nearbyComm: ["Hermitage", "Farrell", "Sharpsville", "West Middlesex"],
-    landmarks: ["Daffin's Candies & Chocolate Kingdom", "Buhl Park", "Historic Downtown Sharon", "Sharon Regional Medical Center", "Winner District", "Shenango River"],
-    description: "Historic steel town transformed into charming city featuring world-famous chocolate kingdom, beautiful parks, and Victorian downtown",
-    population: "~13,100",
-    uniqueTrait: "Home to Daffin's Candies featuring the world's largest chocolate kingdom (10,000+ sq ft). Beautiful Buhl Park with 300+ acres, gardens, and recreational facilities",
-    historicalNarrative: "Sharon grew as a steel manufacturing center in the late 1800s, attracting immigrants from across Europe. The city flourished during the industrial era, with beautiful Buhl Park (donated by steel magnate Frank Buhl in 1910) showcasing that prosperity. As steel declined, Sharon reinvented itself, with Daffin's Candies becoming an international destination and downtown revitalization bringing new life to historic buildings.",
-    favoriteThings: [
-      "Touring Daffin's Candies world-famous Chocolate Kingdom",
-      "Picnicking and events at beautiful Buhl Park",
-      "Exploring revitalized historic downtown",
-      "Winter Festival of Lights at Buhl Park",
-      "Local restaurants and ethnic food traditions",
-      "Community events and festivals year-round"
-    ],
-    imagePrompt: "Exact photorealistic view of downtown Sharon's State Street (Route 18) showing actual Daffin's Candies building with Chocolate Kingdom, Buhl Park's distinctive conservatory and cascading fountains, Winner building, Reyer's shoe store, East State Street businesses, Shenango River waterfront. Regional shopping hub."
-  },
-  greenville: {
-    name: "Greenville",
-    slug: "greenville",
-    county: "Mercer County",
-    zipCodes: ["16125"],
-    nearbyComm: ["Mercer", "Hermitage", "Jamestown", "Sandy Lake"],
-    landmarks: ["Greenville Railroad Park Museum", "Historic Downtown District", "Thiel College Greenville Center", "Shenango River Trail", "Memorial Park", "Greenville Area Library"],
-    description: "Historic railroad heritage town in northwestern Mercer County, preserving transportation history while serving modern community needs",
-    population: "~5,900",
-    uniqueTrait: "Preserved railroad history showcased at Greenville Railroad Park Museum featuring vintage locomotives, cabooses, and station. Active downtown with local shops and dining",
-    historicalNarrative: "Greenville's fortunes were made by the railroad, with the Erie & Pittsburgh Railroad establishing major operations here in the 1860s. The town became a significant railroad junction and manufacturing center. Though railroad dominance faded, Greenville preserved this heritage at the Railroad Park Museum, where vintage locomotives and rail cars tell the story of Pennsylvania's transportation history.",
-    favoriteThings: [
-      "Exploring vintage trains at Greenville Railroad Park Museum",
-      "Walking and biking the Shenango River Trail",
-      "Downtown festivals and community events",
-      "Local shops and restaurants on Main Street",
-      "Memorial Park summer concerts",
-      "Small-town charm with active community spirit"
-    ],
-    imagePrompt: "Exact photorealistic view of Greenville's Main Street downtown showing actual 1890s Victorian storefronts, Canal Street businesses, historic Greenville Railroad Park and Museum with vintage trains, Shenango River Valley, Reynolds Mansion visible. Recognizable hometown Main Street USA."
-  },
-  
-  // Venango County Communities
-  franklin: {
-    name: "Franklin",
-    slug: "franklin",
-    county: "Venango County",
-    zipCodes: ["16323"],
-    nearbyComm: ["Oil City", "Cooperstown", "Emlenton", "Clintonville"],
-    landmarks: ["DeBence Antique Music World", "Allegheny River", "Franklin Area Historical Society", "Barrow-Civic Theatre", "Downtown Historic District", "Samuel Justus Recreation Trail"],
-    description: "Historic river town at the confluence of French Creek and Allegheny River, featuring antique music museum and Victorian architecture",
-    population: "~6,500",
-    uniqueTrait: "Confluence of French Creek and Allegheny River. Home to DeBence Antique Music World - world's largest collection of automatic music machines. Rich lumber and oil boom heritage",
-    historicalNarrative: "Founded at the strategic confluence of French Creek and Allegheny River, Franklin flourished during the lumber boom and later the oil rush. The town's Victorian wealth is preserved in the DeBence Antique Music World museum, which houses the world's largest collection of automatic music machines in a restored mansion. Franklin's riverside location continues to define its character and recreation.",
-    favoriteThings: [
-      "Touring DeBence Antique Music World's amazing collection",
-      "Kayaking and fishing at French Creek and Allegheny River confluence",
-      "Walking the Samuel Justus Recreation Trail along the river",
-      "Live performances at historic Barrow-Civic Theatre",
-      "Victorian architecture throughout downtown",
-      "Annual Applefest celebration"
-    ],
-    imagePrompt: "Exact photorealistic view of Franklin's 13th Street downtown showing actual Liberty Street storefronts, Allegheny River and French Creek confluence, historic Franklin City Hall, Barrow-Civic Theatre marquee, DeBence Antique Music World Victorian mansion, Route 8/62 bridge. Recognizable dual-river city."
-  },
-  oilCity: {
-    name: "Oil City",
-    slug: "oil-city",
-    county: "Venango County",
-    zipCodes: ["16301"],
-    nearbyComm: ["Franklin", "Titusville", "Rouseville", "Pleasantville"],
-    landmarks: ["Oil Creek State Park", "Venango Museum of Art, Science & Industry", "Historic Downtown", "Oil Creek & Titusville Railroad", "McClintock Well", "Allegheny River Trail"],
-    description: "Pennsylvania oil boom heritage city nestled along the Allegheny River and Oil Creek, gateway to outdoor recreation and industrial history",
-    population: "~10,000",
-    uniqueTrait: "Center of Pennsylvania's oil boom history - Oil Creek State Park preserves oil heritage with 36 miles of trails. Scenic train rides on Oil Creek & Titusville Railroad through history",
-    historicalNarrative: "Oil City exploded in the 1860s as the downstream hub of the oil boom that started in Titusville. At its peak, the city was Pennsylvania's third-largest and one of America's wealthiest. Though oil production moved elsewhere, Oil City preserved its heritage through the Venango Museum and Oil Creek State Park. The Oil Creek & Titusville Railroad offers scenic trips through the valley where America's oil industry began.",
-    favoriteThings: [
-      "Scenic train rides on Oil Creek & Titusville Railroad",
-      "Hiking and biking 36 miles of trails in Oil Creek State Park",
-      "Exploring oil boom history at Venango Museum",
-      "Fishing and kayaking on Oil Creek and Allegheny River",
-      "Historic downtown architecture and revitalization",
-      "Annual Oil Heritage Festival"
-    ],
-    imagePrompt: "Exact photorealistic view of Oil City's Seneca Street historic downtown with Victorian buildings, Oil Creek flowing under bridges, Venango Museum of Art, Science and Industry building, actual derricks at Drake Well Museum area, Oil Creek State Park bikeway, Central Avenue businesses. Oil heritage city."
-  },
-  
-  // Warren County Communities
-  warren: {
-    name: "Warren",
-    slug: "warren",
-    county: "Warren County",
-    zipCodes: ["16365"],
-    nearbyComm: ["North Warren", "Youngsville", "Russell", "Tidioute"],
-    landmarks: ["Allegheny National Forest", "Kinzua Bridge State Park", "Warren County Courthouse", "Downtown Historic District", "Struthers Library Theatre", "Jackson Run Trail System"],
-    description: "Gateway city to Pennsylvania's only national forest, offering outdoor recreation, historic downtown, and small-city amenities in forest setting",
-    population: "~9,400",
-    uniqueTrait: "Gateway to 517,000-acre Allegheny National Forest. Base for Kinzua Bridge Skywalk, Allegheny River water trail, hiking, hunting, and year-round outdoor adventure",
-    historicalNarrative: "Warren was founded in 1795 and grew as a lumber town, processing timber from the vast surrounding forests. The lumber boom brought prosperity reflected in Victorian downtown architecture. When the Allegheny National Forest was established in 1923, Warren became the gateway to Pennsylvania's only national forest. Today, outdoor recreation drives the economy as visitors use Warren as base camp for forest adventures.",
-    favoriteThings: [
-      "Gateway access to 517,000 acres of Allegheny National Forest",
-      "Day trips to spectacular Kinzua Bridge Skywalk",
-      "Allegheny River kayaking and water trail adventures",
-      "Hiking, hunting, and fishing in endless forest",
-      "Charming historic downtown with local shops",
-      "Four-season outdoor recreation paradise"
-    ],
-    imagePrompt: "Exact photorealistic view of downtown Warren at Pennsylvania Avenue and Market Street showing historic Warren County Courthouse, United Refining Company's distinctive presence, Allegheny River waterfront, Pennsylvania Avenue's restored storefronts, Struthers Library Theatre marquee. Third Street shops residents recognize."
-  },
-  northWarren: {
-    name: "North Warren",
-    slug: "north-warren",
-    county: "Warren County",
-    zipCodes: ["16365"],
-    nearbyComm: ["Warren", "Youngsville", "Sugar Grove", "Russell"],
-    landmarks: ["Chapman State Park", "Tionesta Lake access", "Warren County Community College proximity", "North Warren Plaza", "Residential subdivisions", "Pennsylvania Avenue corridor", "Allegheny River Trail access", "Warren County fairgrounds area"],
-    description: "Thriving residential suburb of Warren offering modern amenities, excellent schools, and gateway access to Allegheny National Forest recreation",
-    population: "~2,400",
-    uniqueTrait: "Warren's fastest-growing residential area with modern subdivisions and convenient Chapman State Park access. Perfect balance of suburban living and forest gateway lifestyle with Warren County schools",
-    historicalNarrative: "North Warren emerged in the 1970s-90s as Warren's population expanded northward along Pennsylvania Avenue. What began as farmland transformed into one of Warren County's most desirable residential areas as families sought modern housing while maintaining access to Warren's amenities and forest recreation. Chapman State Park's proximity made North Warren especially popular with outdoor enthusiasts. Today, the community continues attracting young families seeking excellent schools, safe neighborhoods, and Allegheny National Forest access.",
-    favoriteThings: [
-      "Minutes from Chapman State Park swimming beach and trails",
-      "Modern suburban homes with forest gateway access",
-      "Warren County School District's top-rated academics",
-      "Safe family-friendly neighborhoods and cul-de-sacs",
-      "Easy commute to Warren jobs and shopping",
-      "Allegheny River Trail System nearby for biking and hiking",
-      "Pennsylvania Avenue corridor shopping and dining",
-      "Community events and youth sports programs"
-    ],
-    imagePrompt: "Exact photorealistic view of North Warren showing modern suburban subdivisions with well-maintained homes, families playing in yards, Chapman State Park entrance visible, Pennsylvania Avenue corridor businesses, Allegheny National Forest treeline in background, Warren skyline nearby. Thriving suburban forest gateway community."
-  },
-  youngsville: {
-    name: "Youngsville",
-    slug: "youngsville",
-    county: "Warren County",
-    zipCodes: ["16371"],
-    nearbyComm: ["Warren", "Sugar Grove", "Pittsfield", "Irvine"],
-    landmarks: ["Brokenstraw Creek", "Downtown Youngsville Square", "Youngsville Area School District Complex", "Route 6 Historic Lincoln Highway", "Youngsville Borough Park", "Creek fishing access points", "Brokenstraw Valley Recreation Trail", "Historic Main Street storefronts"],
-    description: "Charming historic borough along Brokenstraw Creek in Warren County, offering classic small-town Pennsylvania living with excellent schools and outdoor recreation",
-    population: "~1,700",
-    uniqueTrait: "Picture-perfect small town on Brokenstraw Creek with top-rated Youngsville School District, historic Route 6 Lincoln Highway heritage, and gateway to premier trout fishing and kayaking on Brokenstraw Creek Valley",
-    historicalNarrative: "Founded in 1796, Youngsville grew as a stop on the historic Lincoln Highway (Route 6), connecting travelers across Pennsylvania. The borough flourished in the lumber era when Brokenstraw Creek powered sawmills. By the early 1900s, Youngsville became Warren County's quintessential small town with Victorian storefronts, community pride, and excellent schools. The Brokenstraw Creek's wild trout fishery brought sportsmen nationwide. Today, Youngsville preserves its Norman Rockwell charm - Friday night football, Main Street parades, creek fishing, and neighbors who know each other's names. Families are drawn to Youngsville Area Schools' academic excellence and the safe, affordable small-town lifestyle increasingly rare in modern America.",
-    favoriteThings: [
-      "Premier wild trout fishing on Brokenstraw Creek",
-      "Friday night Youngsville Eagles football and school sports pride",
-      "Historic Route 6 Lincoln Highway heritage and roadside Americana",
-      "Downtown Fourth of July parade and community celebrations",
-      "Kayaking the scenic Brokenstraw Creek valley",
-      "Small-town safety - kids bike to school and play outside until dark",
-      "Youngsville Area School District's academic reputation",
-      "Local restaurants where everyone knows your name"
-    ],
-    imagePrompt: "Exact photorealistic view of Youngsville's Main Street downtown showing historic Route 6 storefronts with American flags, Brokenstraw Creek flowing under bridge, anglers fly fishing for trout, Youngsville Area High School visible on hill, families at Fourth of July parade, classic small-town America atmosphere. Norman Rockwell Pennsylvania."
-  },
-  bearLake: {
-    name: "Bear Lake",
-    slug: "bear-lake",
-    county: "Warren County",
-    zipCodes: ["16402"],
-    nearbyComm: ["North East", "Edinboro", "Sugar Grove", "Spartansburg"],
-    landmarks: ["Bear Lake natural spring-fed waters", "Public boat launch and fishing pier", "Bear Lake General Store (historic landmark)", "Lakefront beach area", "Wooded shoreline nature trails", "Erie-Warren county border region", "Rural countryside views", "Seasonal cottages and year-round homes"],
-    description: "Peaceful spring-fed lake community straddling Erie and Warren county border, offering classic Pennsylvania lake living with fishing, boating, and tight-knit seasonal and year-round residents",
-    population: "~250",
-    uniqueTrait: "Hidden gem spring-fed lake community uniquely positioned on Erie-Warren border. 238-acre Bear Lake offers excellent fishing (bass, bluegill, perch), quiet no-wake boating, and affordable lakefront living in stunning natural setting",
-    historicalNarrative: "Bear Lake's crystal-clear spring-fed waters have drawn settlers since the 1800s when farmers discovered this natural oasis along the Erie-Warren border. By the early 1900s, families built summer cottages, creating a seasonal lake community tradition that continues today. Unlike crowded Erie beaches or distant Warren forests, Bear Lake offered an intimate, accessible waterfront escape. The historic Bear Lake General Store became the community's heart, where locals gathered for supplies and conversation. As paved roads improved access in the 1950s-60s, more families converted summer cottages to year-round homes, creating today's unique blend of seasonal and permanent residents who share deep appreciation for the lake's natural beauty and tranquil atmosphere.",
-    favoriteThings: [
-      "Exceptional bass, bluegill, and perch fishing in spring-fed waters",
-      "Peaceful no-wake boating perfect for kayaks, canoes, and pontoons",
-      "Stunning sunsets reflecting off the calm lake surface",
-      "Swimming from private and public lake access points",
-      "Tight-knit lake community with annual traditions and gatherings",
-      "Affordable lakefront property compared to larger lakes",
-      "Winter ice fishing and skating on frozen lake",
-      "Natural beauty and wildlife - loons, eagles, herons, deer",
-      "Historic Bear Lake General Store community gathering spot"
-    ],
-    imagePrompt: "Exact photorealistic view of Bear Lake at sunset showing spring-fed crystal waters reflecting orange and pink sky, families fishing from wooden pier, kayakers paddling near shore, lakefront cottages with lights glowing, wooded shoreline, eagle soaring overhead, absolute serenity. Hidden gem Pennsylvania lake community."
-  },
-  russell: {
-    name: "Russell",
-    slug: "russell",
-    county: "Warren County",
-    zipCodes: ["16345"],
-    nearbyComm: ["Warren", "Clarendon", "North Warren", "Sheffield"],
-    landmarks: ["Kinzua Reservoir (12,080 acres)", "Kinzua-Wolf Run Marina", "Allegheny River Water Trail", "Kinzua Beach day-use area", "Russell Borough Fishing Pier", "Route 59 Scenic Byway", "Allegheny National Forest access points", "Historic Kinzua Dam overlook"],
-    description: "Premier outdoor recreation gateway borough on Kinzua Reservoir, world-renowned for trophy muskie fishing, boating, and Allegheny National Forest adventures",
-    population: "~350",
-    uniqueTrait: "International muskie fishing capital - Kinzua Reservoir produces Pennsylvania's largest muskellunge (50+ inches common). Perfect base camp for anglers, boaters, and forest explorers with full-service marina and lodging",
-    historicalNarrative: "Russell's destiny changed dramatically when the U.S. Army Corps of Engineers completed Kinzua Dam in 1965, creating the massive 12,080-acre Kinzua Reservoir. The tiny lumber town transformed overnight into an outdoor recreation mecca as anglers discovered the reservoir's extraordinary muskie, walleye, and bass fishery. The Kinzua-Wolf Run Marina opened, providing full services for boaters exploring the reservoir's 91-mile shoreline. Fishing guides established operations, and Russell became internationally known among muskie anglers as the place to catch the fish of a lifetime. Today, anglers travel from across the globe to Russell, hoping to land a 50-inch-plus muskie from Kinzua's fertile waters. The borough embraces its role as gateway to both reservoir fishing and Allegheny National Forest recreation.",
-    favoriteThings: [
-      "World-record-class muskie fishing - 50+ inch fish caught regularly",
-      "Full-service Kinzua-Wolf Run Marina with boat rentals and guides",
-      "91 miles of pristine reservoir shoreline to explore by boat",
-      "Kinzua Beach swimming, picnicking, and sandy shore recreation",
-      "Walleye, smallmouth bass, and crappie fishing excellence",
-      "Allegheny National Forest hiking, hunting, and camping nearby",
-      "Professional fishing guides specializing in muskie tactics",
-      "Ice fishing tournaments in winter for walleye and perch",
-      "Kinzua Dam tours and stunning overlook views of the reservoir"
-    ],
-    imagePrompt: "Exact photorealistic view of Russell's Kinzua-Wolf Run Marina at dawn showing muskie fishing tournament boats launching, the massive Kinzua Reservoir stretching to forested horizons, angler holding trophy 52-inch muskie, marina docks and facilities, autumn forest colors reflecting in calm waters, fishing guides prepping clients. World-class fishing destination."
-  },
-  tidioute: {
-    name: "Tidioute",
-    slug: "tidioute",
-    county: "Warren County",
-    zipCodes: ["16351"],
-    nearbyComm: ["Warren", "Irvine", "Tionesta"],
-    landmarks: ["Allegheny River", "Historic downtown", "Hunter Station Bridge", "Tidioute Borough Park", "River access"],
-    description: "Scenic historic borough along Allegheny River, popular with paddlers and outdoor enthusiasts",
-    population: "~680",
-    uniqueTrait: "Picturesque Allegheny River location - popular kayaking/canoeing destination. Historic downtown with Victorian charm. Gateway to Allegheny River Islands Wilderness",
-    historicalNarrative: "Tidioute sits at a strategic bend in the Allegheny River and grew as a lumber town in the 1800s. The borough's Victorian downtown reflects that prosperous era. Today, Tidioute is beloved by paddlers on the Allegheny River Water Trail and serves as gateway to the Allegheny River Islands Wilderness, a pristine island ecosystem.",
-    favoriteThings: [
-      "Kayaking and canoeing the Allegheny River Water Trail",
-      "Exploring Allegheny River Islands Wilderness",
-      "Fishing for smallmouth bass and walleye",
-      "Historic Victorian downtown architecture",
-      "Hunter Station Bridge scenic views",
-      "Peaceful river town atmosphere"
-    ],
-    imagePrompt: "Exact photorealistic view of Tidioute's Allegheny River waterfront showing the historic Hunter Station Bridge, Victorian downtown buildings along riverbank, kayakers paddling, wooded river islands, autumn reflections in calm water. Paddler's paradise."
-  },
-  sugarGrove: {
-    name: "Sugar Grove",
-    slug: "sugar-grove",
-    county: "Warren County",
-    zipCodes: ["16350"],
-    nearbyComm: ["Youngsville", "Bear Lake", "Warren", "Columbus"],
-    landmarks: ["Century-old family dairy farms", "Sugar Grove Township Building", "Route 69 Scenic Agricultural Corridor", "Amish farmsteads and roadside stands", "Rolling countryside vistas", "Historic one-room schoolhouse (preserved)", "Community Grange Hall", "Farm-to-table produce stands"],
-    description: "Quintessential agricultural township in Warren County preserving multi-generational farming heritage, Amish community presence, and picture-perfect rural Pennsylvania countryside",
-    population: "~700",
-    uniqueTrait: "Last remaining active Amish farming community in Warren County. Multi-generational family dairy and crop farms that have worked the same land for 150+ years. True rural Pennsylvania agricultural heritage",
-    historicalNarrative: "Sugar Grove earned its sweet name from the abundant sugar maple trees early settlers tapped for syrup production in the early 1800s. As Warren County industrialized with lumber and oil, Sugar Grove resisted change, with families choosing to preserve their agricultural way of life. German and Amish settlers arrived in the mid-1800s, establishing dairy farms and crop production that continues today through direct descendants. The township watched neighboring areas transform while Sugar Grove families passed farms from grandparents to grandchildren, maintaining traditions of hard work, self-sufficiency, and connection to the land. Today, visitors driving Route 69 through Sugar Grove experience rural Pennsylvania as it existed a century ago - Holstein cattle grazing rolling hills, red barns weathered by time, Amish buggies on country roads, and roadside stands selling fresh produce. Sugar Grove represents what much of rural America has lost - a living, working agricultural community where farming isn't a business venture but a generational calling.",
-    favoriteThings: [
-      "Buying fresh produce, eggs, and baked goods from Amish roadside stands",
-      "Watching traditional farming with horse-drawn equipment",
-      "Scenic drives through rolling agricultural countryside on Route 69",
-      "Fall foliage against red barns and golden harvest fields",
-      "Supporting multi-generational family dairy farms",
-      "Maple syrup production continuing the 'Sugar Grove' namesake tradition",
-      "Experiencing authentic rural Pennsylvania agricultural lifestyle",
-      "Community Grange dinners and harvest festivals",
-      "Country roads perfect for cycling through pastoral landscapes"
-    ],
-    imagePrompt: "Exact photorealistic view of Sugar Grove showing Holstein dairy cows grazing on rolling green hills, classic red dairy barn with silo, Amish horse and buggy on country road, roadside stand selling fresh corn and tomatoes, farmers harvesting hay, Warren County countryside stretching to forest horizon, golden afternoon light. Living agricultural heritage."
-  },
-  sheffield: {
-    name: "Sheffield",
-    slug: "sheffield",
-    county: "Warren County",
-    zipCodes: ["16347"],
-    nearbyComm: ["Clarendon", "Warren", "Kinzua"],
-    landmarks: ["Allegheny National Forest access", "Kinzua Reservoir", "Sheffield Township", "Forest recreation areas"],
-    description: "Forest township community serving as gateway to Allegheny National Forest recreation",
-    population: "~1,100",
-    uniqueTrait: "Located in heart of Allegheny National Forest region. Base for hunting, fishing, hiking, and ATV recreation. Outdoor lifestyle community",
-    historicalNarrative: "Sheffield grew as a lumber town deep in Pennsylvania's northern forest and later became a base camp for oil drilling. When the Allegheny National Forest was established, Sheffield evolved into a recreation community. Today, residents embrace outdoor lifestyles - hunting, fishing, hiking, and ATV riding in the vast surrounding forest.",
-    favoriteThings: [
-      "Hunting in Allegheny National Forest",
-      "ATV trail riding through forest lands",
-      "Fishing on Kinzua Reservoir",
-      "Hiking endless forest trails",
-      "Outdoor lifestyle year-round",
-      "Remote living surrounded by wilderness"
-    ],
-    imagePrompt: "Exact photorealistic view of Sheffield Township showing hunters in camouflage in Allegheny National Forest, ATV riders on forest trails, Kinzua Reservoir visible, deer and wildlife, remote cabins, dense autumn forest. Outdoor enthusiast and hunting culture."
-  },
-  clarendon: {
-    name: "Clarendon",
-    slug: "clarendon",
-    county: "Warren County",
-    zipCodes: ["16313"],
-    nearbyComm: ["Warren", "Sheffield", "Russell"],
-    landmarks: ["Allegheny Reservoir", "Kinzua Dam area", "Forest lands", "Allegheny National Forest"],
-    description: "Small rural borough near Allegheny Reservoir and Kinzua Dam",
-    population: "~475",
-    uniqueTrait: "Small community near Allegheny Reservoir created by Kinzua Dam. Gateway to reservoir fishing, boating, and forest recreation",
-    historicalNarrative: "Clarendon's history changed dramatically when the Army Corps of Engineers built Kinzua Dam in 1965, creating the massive Allegheny Reservoir. The small community became a gateway to the reservoir's recreation opportunities - boating, fishing, camping, and forest access.",
-    favoriteThings: [
-      "Boating and fishing on Allegheny Reservoir",
-      "Kinzua Dam tours and overlooks",
-      "Forest camping and outdoor recreation",
-      "Hunting and fishing in season",
-      "Remote living near wilderness",
-      "Water sports and reservoir activities"
-    ],
-    imagePrompt: "Exact photorealistic view of Allegheny Reservoir near Clarendon showing Kinzua Dam structure, boats fishing and cruising, forested reservoir shores, Kinzua Dam visitor overlook, camping areas visible, the massive concrete dam. Engineering marvel meets outdoor recreation."
-  },
-  kinzua: {
-    name: "Kinzua",
-    slug: "kinzua",
-    county: "Warren County",
-    zipCodes: ["16365"],
-    nearbyComm: ["Warren", "Sheffield", "Mount Jewett"],
-    landmarks: ["Kinzua Bridge State Park", "Kinzua Bridge Skywalk", "Allegheny National Forest", "Kinzua viaduct ruins"],
-    description: "Forest community near world-famous Kinzua Bridge and skywalk attraction",
-    population: "~300",
-    uniqueTrait: "Home to world-famous Kinzua Bridge Skywalk - former railroad viaduct now popular tourist attraction. Deep in Allegheny National Forest with spectacular views",
-    historicalNarrative: "Kinzua was a remote forest community until the spectacular Kinzua Viaduct railroad bridge was built in 1882, once the world's highest. After a 2003 tornado partially destroyed the bridge, it was reimagined as the Kinzua Bridge Skywalk, attracting thousands of visitors to walk out over the 300-foot gorge and experience breathtaking forest views.",
-    favoriteThings: [
-      "Walking the thrilling Kinzua Bridge Skywalk 300 feet above the gorge",
-      "Photographing the dramatic ruins of the viaduct",
-      "Hiking trails through spectacular forest scenery",
-      "Visitor center exhibits on railroad history",
-      "Autumn foliage from the skywalk",
-      "Remote forest living and natural beauty"
-    ],
-    imagePrompt: "Exact photorealistic view of Kinzua Bridge State Park showing the iconic Kinzua Skywalk extending over the 300-foot gorge, tornado-damaged viaduct ruins, visitors walking the glass-floored skywalk, dense Allegheny National Forest autumn colors, spectacular gorge views. Breathtaking engineering meets natural beauty."
-  },
-
-  // More Erie County Communities
-  lakeCity: {
-    name: "Lake City",
-    slug: "lake-city",
-    county: "Erie County",
-    zipCodes: ["16423"],
-    nearbyComm: ["Girard", "Fairview", "Edinboro"],
-    landmarks: ["Historic downtown Lake City", "Lake City Area School", "Route 20 corridor", "Lake City Borough Park", "Northwestern Pennsylvania"],
-    description: "Charming small borough in southwestern Erie County with historic downtown and family-friendly atmosphere",
-    population: "~2,900",
-    uniqueTrait: "Charming small town atmosphere with historic downtown square. Strong community pride, annual celebrations, and Northwestern School District. Affordable living near Erie",
-    historicalNarrative: "Lake City developed as a small commercial center serving farming communities in southwestern Erie County. The borough grew along Route 20, maintaining its small-town character while providing services to the surrounding area. Today, Lake City is beloved for its affordable housing, excellent schools, and genuine small-town community spirit.",
-    favoriteThings: [
-      "Historic downtown square and local businesses",
-      "Northwestern School District excellence",
-      "Annual community festivals and parades",
-      "Safe neighborhoods and affordable housing",
-      "Local restaurants and shops",
-      "Strong sense of community"
-    ],
-    imagePrompt: "Exact photorealistic view of Lake City's historic downtown square on Main Street (Route 20) showing actual local storefronts, Northwestern School District building, American flags, families at community event, tree-lined streets. Classic small-town America atmosphere."
-  },
-  wattsburg: {
-    name: "Wattsburg",
-    slug: "wattsburg",
-    county: "Erie County",
-    zipCodes: ["16442"],
-    nearbyComm: ["Erie", "Edinboro", "Union City"],
-    landmarks: ["Wattsburg Area School District", "Downtown square", "Borough Park", "Route 8 corridor", "Rural countryside"],
-    description: "Small rural borough in southeastern Erie County known for excellent schools and quiet country living",
-    population: "~380",
-    uniqueTrait: "Small-town charm in rural Erie County with top-rated Seneca High School. Peaceful living with strong agricultural heritage and community spirit",
-    historicalNarrative: "Wattsburg was incorporated in 1851 as a small agricultural center in rural Erie County. The borough maintained its farming heritage and small-town character through the decades. Today, families are drawn to Wattsburg for its excellent Seneca High School, safe neighborhoods, and peaceful rural atmosphere.",
-    favoriteThings: [
-      "Excellent Seneca High School and academics",
-      "Small-town safety and community spirit",
-      "Rural countryside and agricultural heritage",
-      "Community events and traditions",
-      "Peaceful living away from city",
-      "Strong school pride and athletics"
-    ],
-    imagePrompt: "Exact photorealistic view of Wattsburg Borough showing small downtown square on Route 8, Seneca High School building, Wattsburg Area School District, agricultural fields surrounding town, families at borough park, country roads. Rural Pennsylvania small-town living."
-  },
-  unionCity: {
-    name: "Union City",
-    slug: "union-city",
-    county: "Erie County",
-    zipCodes: ["16438"],
-    nearbyComm: ["Waterford", "Edinboro", "Corry"],
-    landmarks: ["Union City Dam & Reservoir", "Downtown Union City", "Union City Area School District", "Bentley Creek", "Route 6/8 junction"],
-    description: "Unique borough straddling Erie and Crawford county line, serving as regional hub with dam and recreation",
-    population: "~3,300",
-    uniqueTrait: "Located in both Erie and Crawford counties - unique dual-county borough. Home to Union City Dam/Reservoir for fishing and recreation. Regional shopping and services hub",
-    historicalNarrative: "Union City sits uniquely astride the Erie-Crawford county line, incorporated in 1866. The borough served as a regional commercial hub for farming communities. The Army Corps of Engineers' Union City Dam (1971) created a reservoir that brought recreation to the area, while the borough continues serving as a shopping and services center for rural communities.",
-    favoriteThings: [
-      "Fishing and boating at Union City Dam and Reservoir",
-      "Unique location in two counties",
-      "Regional shopping and dining hub",
-      "Union City Area School District sports",
-      "Community festivals and events",
-      "Country living with town conveniences"
-    ],
-    imagePrompt: "Exact photorealistic view of Union City Dam and Reservoir showing anglers fishing from dam, families picnicking, the dam structure, Union City's downtown on South Main Street in background, rolling countryside, Bentley Creek. Recreation meets small-town regional hub."
-  },
   corry: {
     name: "Corry",
     slug: "corry",
     county: "Erie County",
     zipCodes: ["16407"],
     nearbyComm: ["Union City", "Columbus", "Spartansburg"],
-    landmarks: ["Corry Area Historical Society", "Downtown Corry", "Mead Avenue business district", "Wright Park", "Corry Area Primary/Middle/High Schools"],
-    description: "Third-largest city in Erie County with industrial heritage, historic downtown, and strong community identity",
+    landmarks: ["Mead Avenue Historic District", "Corry Area Middle-High School", "Corry Higher Education Council", "Griswold Park", "Erie Street downtown corridor", "Wright Park", "Corry Memorial Hospital", "Historic Railroad Depot"],
+    description: "Historic 'Gateway to the Southern Tier' - southeastern Erie County's manufacturing city known for zipper production heritage, precision tool-and-die craftsmanship, and proud working-class community",
     population: "~6,600",
-    uniqueTrait: "Industrial heritage city - once known as 'The Edge Tool Capital of the World'. Strong manufacturing history, tight-knit community, and revitalizing downtown with local businesses",
-    historicalNarrative: "Corry was founded in 1861 and quickly became an industrial powerhouse, earning the title 'Edge Tool Capital of the World' for its zipper and fastener manufacturing. The city's industries attracted workers who built a tight-knit community. Though manufacturing evolved, Corry maintains its working-class pride, industrial heritage, and strong community identity.",
+    uniqueTrait: "America's historic zipper capital and precision manufacturing hub. Corry produced millions of zippers for WWII and developed world-class tool-and-die industry. Strong industrial heritage, skilled workforce tradition, and tight-knit working-class community pride",
+    historicalNarrative: "Corry exploded onto the map in 1861 when three major railroads converged, creating a vital transportation junction. The city's industrial destiny was sealed when Talon zipper company established major operations here, making Corry the 'Zipper Capital of the World' - producing millions of zippers that equipped American soldiers in both World Wars. Alongside zipper production, Corry developed exceptional tool-and-die and precision manufacturing capabilities, with skilled craftsmen producing components for industries nationwide. The city's railroad heritage brought diverse immigrant populations - Italian, Polish, German - who built tight-knit ethnic neighborhoods and strong labor traditions. Mead Avenue's beautiful Victorian commercial district reflects Corry's prosperous manufacturing era. Though heavy industry declined, Corry's working-class pride, skilled workforce tradition, and community resilience remain strong. Today, Corry is reinventing itself while honoring its industrial heritage, maintaining excellent schools, and preserving the strong community bonds forged in factory neighborhoods. The Corry Higher Education Council ensures local students can access college degrees without leaving their hometown.",
     favoriteThings: [
-      "Industrial heritage at Corry Area Historical Society",
-      "Revitalized downtown with local businesses",
-      "Strong Corry Beavers school sports tradition",
-      "Wright Park community events",
-      "Tight-knit community spirit",
-      "Working-class pride and heritage"
+      "Historic Mead Avenue downtown with Victorian storefronts and local businesses",
+      "Fierce Corry Beavers school pride - football, basketball, wrestling traditions",
+      "World-class zipper manufacturing heritage - 'Zipper Capital of the World'",
+      "Precision tool-and-die and manufacturing craftsmanship legacy",
+      "Griswold Park and Wright Park community gathering and recreation",
+      "Corry Higher Education Council bringing college to town",
+      "Strong working-class ethnic neighborhood pride and traditions",
+      "Annual community festivals celebrating industrial heritage",
+      "Historic Railroad Depot marking three railroads junction"
     ],
-    imagePrompt: "Exact photorealistic view of Corry's downtown Mead Avenue showing historic manufacturing buildings, Corry Area Historical Society, Wright Park, community gathering for Beavers sports event, actual storefronts, industrial heritage markers. Working-class town pride."
+    imagePrompt: "Exact photorealistic view of Corry's Mead Avenue Historic District showing actual Victorian commercial buildings with detailed brickwork, Corry Area School District's distinctive brick building, Talon zipper factory heritage markers, working-class neighborhoods, three railroad tracks converging, American flags on storefronts, families downtown. Gateway to Southern Tier."
   },
   albion: {
     name: "Albion",
@@ -738,710 +132,383 @@ export const communityData: Record<string, CommunityData> = {
     county: "Erie County",
     zipCodes: ["16401"],
     nearbyComm: ["Cranberry Township", "Girard", "Conneaut OH"],
-    landmarks: ["Downtown Albion Square", "Albion Borough Hall", "Route 18", "Northwestern School District", "Albion Area Fair Grounds"],
-    description: "Quiet borough in western Erie County near the Ohio border, offering small-town living with agricultural heritage",
+    landmarks: ["Historic Downtown Square", "Northwestern School District complex", "Albion Area Fair Grounds", "Route 18 Main Street corridor", "Albion Borough Park", "Conneaut Creek", "Historic Victorian homes district", "Albion Public Library"],
+    description: "Charming rural borough and agricultural market center in southwestern Erie County, famous for the beloved Albion Area Fair that draws thousands annually to celebrate farming heritage and community traditions",
     population: "~1,500",
-    uniqueTrait: "Westernmost borough in Erie County, serving as a local hub for surrounding farming communities and close to Ohio border shopping",
-    historicalNarrative: "Albion was incorporated in 1858 as a commercial center for farming communities in far western Erie County. Its proximity to the Ohio border made it a crossroads for agriculture and commerce. Today, Albion maintains its small-town character, annual fair traditions, and role as a local hub for surrounding rural areas.",
+    uniqueTrait: "Home to the legendary Albion Area Fair - one of Erie County's most popular summer traditions drawing 30,000+ visitors annually for 150+ years. Classic agricultural market town with historic downtown square, Northwestern School District excellence, and genuine small-town Pennsylvania charm",
+    historicalNarrative: "Founded in 1823, Albion became southwestern Erie County's agricultural hub where farmers brought crops and livestock to market. The town's strategic location on stagecoach routes made its downtown square a bustling commercial center. In 1873, local farmers established the Albion Area Fair, which grew into one of Pennsylvania's most beloved county fairs - a week-long celebration of agriculture, 4-H youth programs, carnival rides, livestock competitions, and community pride that continues attracting thousands of visitors annually. Albion's Victorian-era downtown square and tree-lined residential streets preserve the borough's 19th-century character. The Northwestern School District, created from consolidation of rural schools, became highly regarded for academic excellence and athletics, strengthening community identity. While remaining rural in character, Albion's central location between Erie and Meadville, combined with affordable housing and excellent schools, attracts young families seeking small-town living. The annual fair remains Albion's heartbeat - a tradition where generations reconnect, 4-H kids show livestock, local businesses showcase products, and the community celebrates agricultural heritage.",
     favoriteThings: [
-      "Annual Albion Area Fair celebrating agricultural heritage",
-      "Historic downtown square and local businesses",
-      "Close to Ohio border shopping and dining",
-      "Northwestern School District community",
-      "Small-town festivals and parades",
-      "Rural agricultural atmosphere"
+      "Albion Area Fair every August - 150+ year tradition with midway, livestock, 4-H",
+      "Historic downtown square with Victorian architecture and local shops",
+      "Northwestern School District's award-winning academics and sports programs",
+      "4-H programs teaching youth agriculture, crafts, and leadership",
+      "Classic small-town summer festivals and parades on Main Street",
+      "Conneaut Creek fishing and natural beauty",
+      "Affordable housing in safe, family-friendly neighborhoods",
+      "Strong community pride and genuine neighborly atmosphere",
+      "Albion Public Library community programs and events"
     ],
-    imagePrompt: "Exact photorealistic view of Albion Area Fair showing agricultural exhibits, 4-H livestock barns, carnival rides, families enjoying fair food, downtown Albion square on Smock Avenue visible in background, fairgrounds. Rural Pennsylvania country fair atmosphere."
-  },
-  mckean: {
-    name: "McKean",
-    slug: "mckean",
-    county: "Erie County",
-    zipCodes: ["16426", "16505"],
-    nearbyComm: ["Edinboro", "Waterford", "Erie"],
-    landmarks: ["McKean Township Municipal Building", "McKean Elementary School", "Lake Pleasant", "Route 99 Corridor", "McKean Community Park"],
-    description: "Thriving township in southern Erie County, known for residential neighborhoods, local businesses, and convenient access to Erie amenities",
-    population: "~4,500",
-    uniqueTrait: "Growing suburban township offering perfect balance of Erie city convenience and peaceful countryside, with strong schools and family-friendly atmosphere",
-    historicalNarrative: "McKean Township developed from agricultural land into one of Erie County's desirable suburban communities. Families seeking good schools, affordable housing, and easy Erie access have driven steady growth. Lake Pleasant offers recreation, while the Route 99 corridor provides shopping and services.",
-    favoriteThings: [
-      "Family-friendly neighborhoods and excellent schools",
-      "Lake Pleasant swimming and recreation",
-      "Convenient Route 99 shopping corridor",
-      "McKean Community Park activities",
-      "Balance of suburban and rural living",
-      "Easy commute to Erie jobs"
-    ],
-    imagePrompt: "Exact photorealistic view of McKean Township showing modern suburban homes, Lake Pleasant beach area with families swimming, McKean Community Park, Route 99 corridor businesses, blend of suburban and rural landscape. Family-oriented community."
-  },
-  cranberryTownship: {
-    name: "Cranberry Township",
-    slug: "cranberry-township",
-    county: "Erie County",
-    zipCodes: ["16319"],
-    nearbyComm: ["Albion", "Girard", "Meadville"],
-    landmarks: ["Cranberry Mall", "Cranberry Township Park", "Route 18 Corridor", "Northwestern School District offices", "Conneaut Creek watershed"],
-    description: "Growing residential township in western Erie County, offering affordable housing, good schools, and easy access to I-79 corridor",
-    population: "~7,000",
-    uniqueTrait: "Fast-growing suburb between Erie and Crawford counties, popular with families seeking Northwestern School District and lower property taxes than Erie proper",
-    historicalNarrative: "Cranberry Township remained largely agricultural until the I-79 corridor brought development in the 1970s-90s. The township became popular with families seeking affordable housing, excellent Northwestern schools, and lower taxes than Erie. Cranberry Mall and commercial development along Route 18 provide convenient shopping.",
-    favoriteThings: [
-      "Affordable housing and property taxes",
-      "Excellent Northwestern School District",
-      "Cranberry Mall shopping convenience",
-      "Growing community with modern amenities",
-      "Easy I-79 access to Erie and Pittsburgh",
-      "Family-friendly suburban atmosphere"
-    ],
-    imagePrompt: "Exact photorealistic view of Cranberry Township showing Cranberry Mall area, Route 18 corridor businesses, residential subdivisions, Northwestern School District building, I-79 interchange visible, mix of suburban and rural. Growing Erie County suburb."
-  },
-  springCreek: {
-    name: "Spring Creek",
-    slug: "spring-creek",
-    county: "Erie County",
-    zipCodes: ["16436"],
-    nearbyComm: ["Albion", "Edinboro", "Waterford", "Girard"],
-    landmarks: ["Century-old dairy farms", "Spring Creek watershed flowing through township", "Historic farmsteads dating to 1820s", "Rolling agricultural hills", "Spring Creek Township Municipal Building", "Agricultural preservation areas", "Country roads and covered bridge history", "Northwestern School District reach"],
-    description: "Peaceful agricultural township in southwestern Erie County preserving multi-generational farming heritage and quintessential rural Pennsylvania countryside character",
-    population: "~1,100",
-    uniqueTrait: "Erie County's agricultural heartland where 5th and 6th-generation family farms still work land their ancestors cleared in the 1820s. Spring Creek's waters feed local farms producing corn, soybeans, dairy, and the county's farm-fresh character",
-    historicalNarrative: "Spring Creek Township earned its name from the life-giving creek that flows through rich agricultural land settlers discovered in the 1810s-20s. German and English farming families claimed plots, cleared forests, built stone farmhouses and bank barns that still stand today. Unlike Erie's industrial boom that urbanized surrounding areas, Spring Creek families chose agriculture, passing farms through generations. By the early 1900s, Spring Creek was Erie County's breadbasket - dairy farms supplied Erie's growing population with milk, cheese, and butter while crop farms fed livestock and filled grain elevators. The township resisted suburban sprawl that consumed nearby farmland, with families viewing their land as heritage, not real estate. Today, Spring Creek remains remarkably unchanged - the same family names on mailboxes as 150 years ago, red bank barns weathered but standing, Holstein cattle grazing hills their ancestors cleared, and Spring Creek flowing through countryside as it has for centuries.",
-    favoriteThings: [
-      "Multi-generational family farms - same families farming since 1820s",
-      "Pristine Spring Creek watershed with native brook trout",
-      "Scenic country roads perfect for cycling and autumn drives",
-      "Historic 1800s stone farmhouses and bank barns still standing",
-      "Farm-fresh produce, eggs, and honey from family farms",
-      "Genuine agricultural community - neighbors help with harvest",
-      "Dark starry skies unpolluted by city lights",
-      "Four-season rural beauty and agricultural rhythms",
-      "Strong agricultural preservation ethic protecting farmland"
-    ],
-    imagePrompt: "Exact photorealistic view of Spring Creek Township showing picturesque dairy farm with historic red bank barn and 1820s stone farmhouse, Holstein cattle grazing rolling hills, Spring Creek meandering through green pasture, farmer on tractor harvesting hay, golden afternoon sunlight, forest-covered hills in distance, pure rural Pennsylvania agricultural landscape. Timeless farming heritage."
-  },
-  lawrencePark: {
-    name: "Lawrence Park",
-    slug: "lawrence-park",
-    county: "Erie County",
-    zipCodes: ["16511"],
-    nearbyComm: ["Erie", "Wesleyville", "Harborcreek"],
-    landmarks: ["Lawrence Park Shopping Center", "Buffalo Road (Route 20) commercial corridor", "Lawrence Park Borough Hall", "East Erie neighborhoods", "Lake Erie proximity (2 miles)", "Lawrence Park Veterans Memorial", "East Side business district", "Residential tree-lined streets"],
-    description: "Established residential borough in eastern Erie along thriving Buffalo Road corridor, offering affordable housing, convenient shopping, and quick Lake Erie access",
-    population: "~3,900",
-    uniqueTrait: "Perfect location on Buffalo Road between Erie and Harborcreek provides residents small-town governance with big-city convenience. Affordable housing near Lake Erie and Erie jobs makes Lawrence Park ideal for first-time homebuyers and young families",
-    historicalNarrative: "Lawrence Park was incorporated in 1937 as Erie's eastern suburbs expanded along Buffalo Road (Route 20). The borough developed as a working-class residential community for Erie's GE, Hammermill, and industrial employees who wanted homeownership near their jobs. The Lawrence Park Shopping Center became the eastern suburbs' retail anchor in the 1960s, providing convenient shopping without downtown Erie trips. The borough maintained its affordable character while benefiting from Buffalo Road's commercial growth. Today, Lawrence Park offers the rare combination of small-borough governance, affordable housing, walkable neighborhoods, and Location on a major commercial corridor makes Lawrence Park especially attractive to young families starting out and retirees downsizing from larger homes. The borough's proximity to both Erie jobs and Lake Erie recreation creates an ideal balance of work and leisure.",
-    favoriteThings: [
-      "Buffalo Road shopping and dining without Erie traffic hassles",
-      "Affordable housing - homes under $150K common",
-      "Minutes from Lake Erie beaches and Presque Isle",
-      "Quick commute to Erie jobs at GE, Erie Insurance, hospitals",
-      "Small-town governance with personal touch",
-      "Tree-lined residential streets perfect for walking",
-      "Strong sense of community and neighborhood pride",
-      "Erie School District schools and programs",
-      "Lawrence Park Veterans Memorial community gatherings"
-    ],
-    imagePrompt: "Exact photorealistic view of Lawrence Park showing Buffalo Road commercial corridor with Lawrence Park Shopping Center, tree-lined residential streets with well-maintained homes, families walking to nearby stores, Lake Erie visible in distance, East Erie character, affordable single-family homes. Convenient eastern Erie living."
+    imagePrompt: "Exact photorealistic view of Albion Area Fair showing carnival ferris wheel lit at twilight, 4-H youth showing prize dairy cows in livestock barn, families eating corn dogs and funnel cakes, carnival games, downtown Albion's historic square in background with Victorian storefronts, fairground crowds. Pennsylvania county fair magic."
   },
 
-  // More Crawford County Communities
-  cambridgeSprings: {
-    name: "Cambridge Springs",
-    slug: "cambridge-springs",
-    county: "Crawford County",
-    zipCodes: ["16403"],
-    nearbyComm: ["Edinboro", "Meadville", "Saegertown"],
-    landmarks: ["Alliance College", "Riverside Hotel", "French Creek", "Historic spa district", "Cambridge Springs High School"],
-    description: "Historic mineral springs resort town featuring Victorian spa architecture and French Creek recreation",
-    population: "~2,600",
-    uniqueTrait: "Victorian-era mineral springs resort town dating to 1880s. Historic Riverside Hotel (1886) and spa architecture. Home to Alliance College. French Creek flows through town",
-    historicalNarrative: "Cambridge Springs flourished in the 1880s-1920s as an elegant mineral springs resort attracting visitors nationwide to its healing waters. Grand hotels and spas lined the streets, with the Riverside Hotel (1886) as the crown jewel. Alliance College (1912-1987) brought Polish heritage and education. Though the resort era faded, Victorian architecture and community pride remain.",
-    favoriteThings: [
-      "Historic Riverside Hotel and Victorian spa architecture",
-      "French Creek fishing and kayaking",
-      "Alliance College history and heritage",
-      "Small-town charm with historical significance",
-      "Annual festivals celebrating mineral springs heritage",
-      "Walking tours of historic district"
-    ],
-    imagePrompt: "Exact photorealistic view of Cambridge Springs downtown at Federal Street and Venango Avenue showing actual Riverside Hotel (1886), Alliance College buildings, French Creek flowing through town, historic spa architecture from 1880s resort era, Victorian storefronts. Mineral springs heritage residents remember."
+  bearLake: {
+    name: "Bear Lake",
+    slug: "bear-lake",
+    county: "Warren County",
+    zipCodes: ["16402"],
+    nearbyComm: ["Edinboro", "Waterford", "Union City"],
+    landmarks: ["Bear Lake itself", "Bear Lake Road", "Rural farmland"],
+    description: "Small rural community in Warren County",
+    population: "~250",
+    uniqueTrait: "Quiet rural living near Bear Lake"
   },
-  saegertown: {
-    name: "Saegertown",
-    slug: "saegertown",
-    county: "Crawford County",
-    zipCodes: ["16433"],
-    nearbyComm: ["Meadville", "Cambridge Springs", "Edinboro"],
-    landmarks: ["Woodcock Creek Lake", "Downtown Saegertown", "Saegertown Area School District", "Rural farmland"],
-    description: "Small rural borough serving as gateway to Woodcock Creek Lake recreation area",
-    population: "~1,050",
-    uniqueTrait: "Gateway to Woodcock Creek Lake for fishing and boating. Small-town atmosphere with agricultural heritage and Saegertown School District pride",
-    historicalNarrative: "Saegertown developed as a small agricultural center in Crawford County, later becoming gateway to Woodcock Creek Lake recreation area. The borough maintains small-town character.",
-    favoriteThings: [
-      "Fishing and boating at Woodcock Creek Lake",
-      "Small-town community atmosphere",
-      "Saegertown Area School District",
-      "Agricultural heritage",
-      "Local businesses and shops",
-      "Community festivals"
-    ],
-    imagePrompt: "Exact photorealistic view of Saegertown borough showing downtown businesses, Woodcock Creek Lake visible nearby, Saegertown School District building, agricultural fields surrounding, small-town Main Street. Crawford County rural borough."
+
+  edinboro: {
+    name: "Edinboro",
+    slug: "edinboro",
+    county: "Erie County",
+    zipCodes: ["16412", "16444"],
+    nearbyComm: ["Cambridge Springs", "Waterford", "Edinboro Lake"],
+    landmarks: ["Edinboro University", "Edinboro Lake", "Downtown Edinboro"],
+    description: "College town home to Edinboro University",
+    population: "~6,400",
+    uniqueTrait: "Vibrant college town atmosphere with Edinboro University"
   },
-  linesville: {
-    name: "Linesville",
-    slug: "linesville",
-    county: "Crawford County",
-    zipCodes: ["16424"],
-    nearbyComm: ["Conneautville", "Conneaut Lake", "Harmonsburg"],
-    landmarks: ["Pymatuning Reservoir", "Linesville Spillway", "Downtown Linesville", "Pymatuning State Park"],
-    description: "Famous lake town home to Pymatuning Spillway where ducks walk on fish",
-    population: "~1,000",
-    uniqueTrait: "Home to famous Pymatuning Spillway - 'where the ducks walk on the fish'. Gateway to Pymatuning Reservoir, one of Pennsylvania's largest lakes and premier fishing destinations",
-    historicalNarrative: "Linesville became famous for the Pymatuning Spillway where carp congregate so densely that ducks literally walk on the fish to get bread from tourists. The town serves as gateway to Pymatuning Reservoir fishing and recreation.",
-    favoriteThings: [
-      "Feeding fish at famous Pymatuning Spillway",
-      "Fishing on massive Pymatuning Reservoir",
-      "Pymatuning State Park camping and recreation",
-      "Boating and water sports",
-      "Wildlife watching",
-      "Unique tourist attraction"
-    ],
-    imagePrompt: "Exact photorealistic view of Linesville Spillway showing the famous scene where ducks walk on carp, families feeding fish, Pymatuning Reservoir, spillway structure, visitors watching wildlife spectacle. Iconic Pennsylvania tourist attraction."
-  },
-  conneautville: {
-    name: "Conneautville",
-    slug: "conneautville",
-    county: "Crawford County",
-    zipCodes: ["16406"],
-    nearbyComm: ["Linesville", "Meadville", "Springboro"],
-    landmarks: ["Downtown square", "Conneautville Area School", "Agricultural community", "Route 18/198 junction"],
-    description: "Small agricultural borough in western Crawford County with historic downtown",
-    population: "~760",
-    uniqueTrait: "Small-town charm with agricultural heritage. Historic downtown square and Conneautville School District community pride",
-    historicalNarrative: "Conneautville grew as a small agricultural center in western Crawford County, maintaining its rural character and small-town atmosphere through the generations.",
-    favoriteThings: [
-      "Historic downtown square",
-      "Agricultural community heritage",
-      "Conneautville Area School District",
-      "Small-town festivals",
-      "Rural Pennsylvania living",
-      "Community events"
-    ],
-    imagePrompt: "Exact photorealistic view of Conneautville's downtown square showing historic storefronts, Conneautville School building, agricultural fields nearby, Route 18/198 junction, small borough atmosphere. Crawford County agricultural community."
-  },
-  harmonsburg: {
-    name: "Harmonsburg",
-    slug: "harmonsburg",
-    county: "Crawford County",
-    zipCodes: ["16422"],
-    nearbyComm: ["Conneaut Lake", "Meadville", "Linesville"],
-    landmarks: ["Rural crossroads", "Agricultural lands", "Small borough center"],
-    description: "Tiny rural borough in Crawford County maintaining agricultural character",
-    population: "~560",
-    uniqueTrait: "Small agricultural community in Crawford County. Peaceful rural living with tight-knit small-town atmosphere",
-    historicalNarrative: "Harmonsburg remained a small agricultural community in Crawford County, preserving rural character and farming heritage.",
-    favoriteThings: [
-      "Peaceful rural living",
-      "Agricultural heritage",
-      "Tight-knit community",
-      "Country atmosphere",
-      "Small-town character"
-    ],
-    imagePrompt: "Exact photorealistic view of Harmonsburg showing small borough center, agricultural fields, working farms, country roads, Crawford County rural landscape. Tiny Pennsylvania agricultural borough."
-  },
-  spartansburg: {
-    name: "Spartansburg",
-    slug: "spartansburg",
-    county: "Crawford County",
-    zipCodes: ["16434"],
-    nearbyComm: ["Corry", "Titusville", "Riceville"],
-    landmarks: ["Downtown Spartansburg", "Spartansburg Area School", "Route 6 corridor", "Agricultural region"],
-    description: "Small rural borough in eastern Crawford County along historic Route 6",
-    population: "~290",
-    uniqueTrait: "Small-town living along Route 6 corridor. Agricultural heritage and Spartansburg School District community",
-    historicalNarrative: "Spartansburg developed as a small agricultural center along Route 6 in eastern Crawford County, maintaining rural character.",
-    favoriteThings: [
-      "Small-town rural living",
-      "Agricultural heritage",
-      "Spartansburg School District",
-      "Route 6 historic corridor",
-      "Peaceful countryside"
-    ],
-    imagePrompt: "Exact photorealistic view of Spartansburg along Route 6 showing small downtown, Spartansburg School building, agricultural fields, rural borough center. Eastern Crawford County small town."
-  },
-  bloomingValley: {
-    name: "Blooming Valley",
-    slug: "blooming-valley",
-    county: "Crawford County",
-    zipCodes: ["16335"],
-    nearbyComm: ["Meadville", "Guys Mills", "Townville"],
-    landmarks: ["Rural valley", "Agricultural lands", "Country living"],
-    description: "Small rural hamlet in scenic Crawford County valley",
-    population: "~120",
-    uniqueTrait: "Tiny rural hamlet in picturesque valley. Peaceful agricultural living in Crawford County countryside",
-    historicalNarrative: "Blooming Valley is a small rural hamlet in Crawford County's scenic countryside, representing traditional agricultural living.",
-    favoriteThings: [
-      "Peaceful valley setting",
-      "Agricultural heritage",
-      "Rural countryside",
-      "Scenic beauty"
-    ],
-    imagePrompt: "Exact photorealistic view of Blooming Valley showing scenic rural valley with farms, agricultural fields, country roads, Crawford County pastoral landscape. Tiny Pennsylvania hamlet."
-  },
-  cochranton: {
-    name: "Cochranton",
-    slug: "cochranton",
-    county: "Crawford County",
-    zipCodes: ["16314"],
-    nearbyComm: ["Meadville", "Saegertown", "Cambridge Springs"],
-    landmarks: ["French Creek", "Downtown Cochranton", "Cochranton Area School", "Rural farmland"],
-    description: "Small borough along French Creek in Crawford County",
-    population: "~1,150",
-    uniqueTrait: "French Creek flows through town. Small-town atmosphere with Cochranton School District and agricultural heritage",
-    historicalNarrative: "Cochranton developed along French Creek as a small agricultural and commercial center in Crawford County.",
-    favoriteThings: [
-      "French Creek fishing and recreation",
-      "Small-town community",
-      "Cochranton School District",
-      "Agricultural heritage",
-      "Rural living"
-    ],
-    imagePrompt: "Exact photorealistic view of Cochranton showing French Creek flowing through town, downtown businesses, Cochranton School building, agricultural surroundings, small borough atmosphere. Crawford County creek town."
-  },
-  guysMills: {
-    name: "Guys Mills",
-    slug: "guys-mills",
-    county: "Crawford County",
-    zipCodes: ["16327"],
-    nearbyComm: ["Meadville", "Blooming Valley", "Saegertown"],
-    landmarks: ["Woodcock Creek Lake", "Rural crossroads", "Historic country store"],
-    description: "Historic rural crossroads community near Woodcock Creek Lake",
-    population: "~100",
-    uniqueTrait: "Historic rural crossroads community near Woodcock Creek Lake. Maintains rural character with access to fishing and outdoor recreation",
-    historicalNarrative: "Guys Mills developed as a rural crossroads in Crawford County's agricultural heartland. The community near Woodcock Creek Lake provides access to fishing and outdoor recreation while maintaining traditional rural character.",
-    favoriteThings: [
-      "Fishing at Woodcock Creek Lake",
-      "Rural crossroads community character",
-      "Peaceful countryside living",
-      "Historic rural Pennsylvania atmosphere"
-    ],
-    imagePrompt: "Exact photorealistic view of Guys Mills showing historic country store at crossroads, Woodcock Creek Lake visible, agricultural fields, rural roads intersecting. Historic rural Pennsylvania hamlet."
-  },
-  hydetown: {
-    name: "Hydetown",
-    slug: "hydetown",
-    county: "Crawford County",
-    zipCodes: ["16328"],
-    nearbyComm: ["Titusville", "Meadville", "Pleasantville"],
-    landmarks: ["Oil Creek watershed", "Historic oil region", "Hydetown Borough Building", "Route 408"],
-    description: "Small oil region community preserving Pennsylvania's petroleum heritage",
-    population: "~700",
-    uniqueTrait: "Oil boom heritage village named for early oil well fire doused with water. Part of historic Oil Creek oil production region from 1860s",
-    historicalNarrative: "Hydetown earned its unusual name during the oil boom when an early well fire was extinguished with water. The community developed as part of the Oil Creek oil production region in the 1860s-70s. Today, Hydetown preserves its petroleum heritage as part of Pennsylvania's historic oil country.",
-    favoriteThings: [
-      "Oil heritage history and stories",
-      "Part of historic Oil Creek region",
-      "Small-town atmosphere",
-      "Close to Titusville and Drake Well Museum",
-      "Rural Pennsylvania character",
-      "Oil boom legacy"
-    ],
-    imagePrompt: "Exact photorealistic view of Hydetown showing vintage oil derricks, Oil Creek flowing through, historic buildings from oil boom era, Hydetown borough building, interpretive markers about oil heritage. Historic petroleum village."
-  },
-  pleasantville: {
-    name: "Pleasantville",
-    slug: "pleasantville",
-    county: "Venango County",
-    zipCodes: ["16341"],
-    nearbyComm: ["Titusville", "Oil City", "Hydetown"],
-    landmarks: ["Oil Creek", "Historic downtown", "Pleasantville Area School", "Route 227", "Oil heritage sites"],
-    description: "Small borough in Pennsylvania's historic oil country, preserving oil boom heritage",
-    population: "~860",
-    uniqueTrait: "Oil heritage community in heart of Oil Creek region. Part of Pennsylvania's oil boom history from 1860s-1870s. Quiet small-town living with historical significance",
-    historicalNarrative: "Pleasantville sits in the heart of Oil Creek Valley where Pennsylvania's oil boom began. The borough developed during the 1860s oil rush and maintained its character as oil production moved elsewhere. Today, Pleasantville preserves its petroleum heritage while offering quiet small-town living.",
-    favoriteThings: [
-      "Pennsylvania oil boom heritage",
-      "Historic Oil Creek Valley location",
-      "Small-town peaceful living",
-      "Close to Drake Well Museum and oil sites",
-      "Rural Pennsylvania character",
-      "Oil region history"
-    ],
-    imagePrompt: "Exact photorealistic view of Pleasantville along Oil Creek showing historic downtown on Route 227, oil heritage markers, Oil Creek flowing through, forested hills, Pleasantville School building. Historic oil country atmosphere."
-  },
-  cooperstown: {
-    name: "Cooperstown",
-    slug: "cooperstown",
-    county: "Venango County",
-    zipCodes: ["16317"],
-    nearbyComm: ["Franklin", "Oil City", "Polk"],
-    landmarks: ["Allegheny River", "Rural borough", "Route 257 corridor", "Cooperstown Volunteer Fire Department"],
-    description: "Small riverside borough in Venango County along the Allegheny River",
-    population: "~440",
-    uniqueTrait: "Quiet Allegheny River community offering peaceful rural living. Tight-knit small borough with river access and natural beauty",
-    historicalNarrative: "Cooperstown developed as a small river community along the Allegheny River in Venango County. The borough maintained its rural character and tight-knit community spirit while providing Allegheny River access for recreation.",
-    favoriteThings: [
-      "Allegheny River fishing and recreation",
-      "Peaceful rural river living",
-      "Tight-knit small community",
-      "Natural beauty and scenic river",
-      "Quiet small-town atmosphere",
-      "Volunteer fire department community events"
-    ],
-    imagePrompt: "Exact photorealistic view of Cooperstown along Route 257 showing the Allegheny River, small borough buildings, volunteer fire department, fishing pier, forested river valley, peaceful rural setting. Small Venango County river borough."
-  },
-  polk: {
-    name: "Polk",
-    slug: "polk",
-    county: "Venango County",
-    zipCodes: ["16342"],
-    nearbyComm: ["Franklin", "Cooperstown", "Emlenton"],
-    landmarks: ["Allegheny River", "Polk Borough Park", "Route 62 corridor", "Rural countryside"],
-    description: "Small borough in Venango County maintaining rural Pennsylvania character",
-    population: "~850",
-    uniqueTrait: "Small-town Venango County charm with Allegheny River access. Family-friendly community with strong volunteer spirit and annual celebrations",
-    historicalNarrative: "Polk was incorporated as a small Allegheny River borough in Venango County. The community maintained its rural character, volunteer traditions, and small-town atmosphere while providing river access and countryside living.",
-    favoriteThings: [
-      "Allegheny River fishing and boating",
-      "Small-town safety and neighborliness",
-      "Annual community celebrations",
-      "Polk Borough Park activities",
-      "Rural Pennsylvania atmosphere",
-      "Strong volunteer community spirit"
-    ],
-    imagePrompt: "Exact photorealistic view of Polk showing Allegheny River, Polk Borough Park with community event, families gathering, Route 62 corridor, rural Venango County countryside. Small borough spirit."
-  },
+
   emlenton: {
     name: "Emlenton",
     slug: "emlenton",
     county: "Venango County",
     zipCodes: ["16373"],
-    nearbyComm: ["Franklin", "Clintonville", "Parker"],
-    landmarks: ["Allegheny River", "Historic downtown", "Emlenton Bridge", "Route 38", "Emlenton Area Historical Society"],
-    description: "Scenic river borough along Allegheny River with historic downtown and natural beauty",
-    population: "~620",
-    uniqueTrait: "Scenic Allegheny River location with historic bridge. Gateway for kayaking, fishing, and river recreation. Charming downtown with Victorian architecture",
-    historicalNarrative: "Emlenton grew along the Allegheny River with its historic bridge connecting communities. The borough's scenic river location and Victorian downtown reflect its prosperous past. Today, Emlenton serves kayakers, anglers, and those seeking picturesque river living.",
-    favoriteThings: [
-      "Scenic historic Emlenton Bridge views",
-      "Kayaking and fishing the Allegheny River",
-      "Victorian downtown architecture",
-      "River recreation gateway",
-      "Emlenton Area Historical Society",
-      "Picturesque river valley setting"
-    ],
-    imagePrompt: "Exact photorealistic view of Emlenton showing the historic Emlenton Bridge spanning the Allegheny River, Victorian downtown buildings on Main Street (Route 38), kayakers on river, forested hillsides. Picturesque Pennsylvania river town."
-  },
-  rouseville: {
-    name: "Rouseville",
-    slug: "rouseville",
-    county: "Venango County",
-    zipCodes: ["16344"],
-    nearbyComm: ["Oil City", "Franklin", "Pleasantville"],
-    landmarks: ["Oil Creek", "Oil heritage sites", "Route 8 corridor", "Historic oil wells"],
-    description: "Historic oil creek community preserving Pennsylvania's petroleum industry heritage",
-    population: "~510",
-    uniqueTrait: "Historic oil industry village on Oil Creek. Site of some of Pennsylvania's earliest oil production. Part of Oil Creek State Park heritage corridor",
-    historicalNarrative: "Rouseville developed during Pennsylvania's oil boom as one of Oil Creek's early petroleum production centers. The borough preserves its oil heritage as part of the Oil Creek State Park heritage corridor, where visitors explore the birthplace of America's oil industry.",
-    favoriteThings: [
-      "Oil Creek heritage and history",
-      "Part of Oil Creek State Park corridor",
-      "Historic oil production sites",
-      "Oil region hiking and recreation",
-      "Pennsylvania petroleum history",
-      "Quiet oil heritage village"
-    ],
-    imagePrompt: "Exact photorealistic view of Rouseville along Oil Creek showing vintage oil derricks, Oil Creek State Park trail, Route 8 bridge, interpretive exhibits about early oil production, forested creek valley. Oil boom heritage village."
+    nearbyComm: ["Clintonville", "Foxburg", "Parker"],
+    landmarks: ["Allegheny River", "Historic downtown"],
+    description: "Small river town along the Allegheny River",
+    population: "~600",
+    uniqueTrait: "Scenic Allegheny River location"
   },
 
-  // More Mercer County Communities
+  franklin: {
+    name: "Franklin",
+    slug: "franklin",
+    county: "Venango County",
+    zipCodes: ["16323"],
+    nearbyComm: ["Oil City", "Sugarcreek", "Cooperstown"],
+    landmarks: ["DeBence Antique Music World", "Allegheny River", "Historic downtown Franklin"],
+    description: "Historic city at the confluence of French Creek and Allegheny River",
+    population: "~6,500",
+    uniqueTrait: "Rich oil heritage and antique music museum"
+  },
+
+  girard: {
+    name: "Girard",
+    slug: "girard",
+    county: "Erie County",
+    zipCodes: ["16417"],
+    nearbyComm: ["Lake City", "Fairview", "Cranesville"],
+    landmarks: ["Girard Borough downtown", "Dan Rice Days festival"],
+    description: "Historic borough known as the birthplace of Dan Rice",
+    population: "~3,100",
+    uniqueTrait: "Birthplace of famous circus clown Dan Rice"
+  },
+
+  groveCity: {
+    name: "Grove City",
+    slug: "grove-city",
+    county: "Mercer County",
+    zipCodes: ["16127"],
+    nearbyComm: ["Mercer", "Slippery Rock", "Harrisville"],
+    landmarks: ["Grove City College", "Grove City Premium Outlets", "Downtown Grove City"],
+    description: "College town and shopping destination",
+    population: "~8,000",
+    uniqueTrait: "Home to Grove City College and major outlet mall"
+  },
+
+  guysMills: {
+    name: "Guys Mills",
+    slug: "guys-mills",
+    county: "Crawford County",
+    zipCodes: ["16327"],
+    nearbyComm: ["Meadville", "Cambridge Springs", "Blooming Valley"],
+    landmarks: ["Rural farmland", "French Creek"],
+    description: "Small rural community in Crawford County",
+    population: "~100",
+    uniqueTrait: "Peaceful rural countryside"
+  },
+
+  hermitage: {
+    name: "Hermitage",
+    slug: "hermitage",
+    county: "Mercer County",
+    zipCodes: ["16148"],
+    nearbyComm: ["Sharon", "Farrell", "Sharpsville"],
+    landmarks: ["Shenango River", "Buhl Park", "Hermitage Community Center"],
+    description: "Growing city in Mercer County",
+    population: "~16,000",
+    uniqueTrait: "Largest city in Mercer County with strong retail sector"
+  },
+
+  hydetown: {
+    name: "Hydetown",
+    slug: "hydetown",
+    county: "Crawford County",
+    zipCodes: ["16328"],
+    nearbyComm: ["Titusville", "Meadville", "Guys Mills"],
+    landmarks: ["Oil Creek", "Rural countryside"],
+    description: "Small borough in Crawford County",
+    population: "~700",
+    uniqueTrait: "Oil heritage community"
+  },
+
+  irvine: {
+    name: "Irvine",
+    slug: "irvine",
+    county: "Warren County",
+    zipCodes: ["16329"],
+    nearbyComm: ["Warren", "Sheffield", "Clarendon"],
+    landmarks: ["Allegheny National Forest nearby"],
+    description: "Small community near Warren",
+    population: "~600",
+    uniqueTrait: "Gateway to Allegheny National Forest"
+  },
+
+  kinzua: {
+    name: "Kinzua",
+    slug: "kinzua",
+    county: "Warren County",
+    zipCodes: ["16330"],
+    nearbyComm: ["Warren", "Bradford", "Mount Jewett"],
+    landmarks: ["Kinzua Bridge State Park", "Kinzua Dam"],
+    description: "Small community near famous Kinzua Bridge",
+    population: "~300",
+    uniqueTrait: "Home to spectacular Kinzua Bridge State Park"
+  },
+
+  lakeCity: {
+    name: "Lake City",
+    slug: "lake-city",
+    county: "Erie County",
+    zipCodes: ["16423"],
+    nearbyComm: ["Girard", "Edinboro", "Union City"],
+    landmarks: ["Lake City Borough Park", "Downtown Lake City"],
+    description: "Small borough in southern Erie County",
+    population: "~2,800",
+    uniqueTrait: "Friendly small-town atmosphere"
+  },
+
+  meadville: {
+    name: "Meadville",
+    slug: "meadville",
+    county: "Crawford County",
+    zipCodes: ["16335", "16388"],
+    nearbyComm: ["Cambridge Springs", "Conneaut Lake", "Saegertown"],
+    landmarks: ["Allegheny College", "Diamond Park", "Downtown Meadville", "Market House"],
+    description: "County seat of Crawford County and home to Allegheny College",
+    population: "~13,000",
+    uniqueTrait: "Historic college town with vibrant downtown"
+  },
+
+  mercer: {
+    name: "Mercer",
+    slug: "mercer",
+    county: "Mercer County",
+    zipCodes: ["16137"],
+    nearbyComm: ["Grove City", "Hermitage", "Greenville"],
+    landmarks: ["Mercer County Courthouse", "Magoffin House Museum"],
+    description: "County seat of Mercer County",
+    population: "~2,000",
+    uniqueTrait: "Historic county seat with beautiful courthouse"
+  },
+
+  northEast: {
+    name: "North East",
+    slug: "north-east",
+    county: "Erie County",
+    zipCodes: ["16428"],
+    nearbyComm: ["Harborcreek", "Ripley NY"],
+    landmarks: ["Lake Erie Wine Country", "North East Marina", "Gibson Park"],
+    description: "Pennsylvania's wine country capital on Lake Erie",
+    population: "~4,300",
+    uniqueTrait: "Heart of Lake Erie Wine Country with numerous wineries"
+  },
+
+  oilCity: {
+    name: "Oil City",
+    slug: "oil-city",
+    county: "Venango County",
+    zipCodes: ["16301"],
+    nearbyComm: ["Franklin", "Titusville", "Rouseville"],
+    landmarks: ["Oil Creek State Park", "Venango Museum", "Historic downtown"],
+    description: "Historic oil boom town at Oil Creek and Allegheny River",
+    population: "~10,000",
+    uniqueTrait: "Birthplace of American oil industry"
+  },
+
+  polk: {
+    name: "Polk",
+    slug: "polk",
+    county: "Venango County",
+    zipCodes: ["16342"],
+    nearbyComm: ["Franklin", "Emlenton", "Clintonville"],
+    landmarks: ["Rural farmland"],
+    description: "Small rural community in Venango County",
+    population: "~300",
+    uniqueTrait: "Quiet rural living"
+  },
+
+  riceville: {
+    name: "Riceville",
+    slug: "riceville",
+    county: "Crawford County",
+    zipCodes: ["16353"],
+    nearbyComm: ["Meadville", "Guys Mills"],
+    landmarks: ["Rural countryside"],
+    description: "Small rural community",
+    population: "~100",
+    uniqueTrait: "Peaceful countryside"
+  },
+
+  russell: {
+    name: "Russell",
+    slug: "russell",
+    county: "Warren County",
+    zipCodes: ["16345"],
+    nearbyComm: ["Warren", "Youngsville", "Sugar Grove"],
+    landmarks: ["Allegheny River", "Rural countryside"],
+    description: "Small borough in Warren County",
+    population: "~350",
+    uniqueTrait: "Allegheny River community"
+  },
+
+  sandyLake: {
+    name: "Sandy Lake",
+    slug: "sandy-lake",
+    county: "Mercer County",
+    zipCodes: ["16145"],
+    nearbyComm: ["Stoneboro", "Polk", "Jackson Center"],
+    landmarks: ["Sandy Lake itself", "Rural farmland"],
+    description: "Small rural community around Sandy Lake",
+    population: "~700",
+    uniqueTrait: "Lakeside rural living"
+  },
+
+  sharon: {
+    name: "Sharon",
+    slug: "sharon",
+    county: "Mercer County",
+    zipCodes: ["16146"],
+    nearbyComm: ["Hermitage", "Farrell", "Sharpsville"],
+    landmarks: ["Shenango River", "Downtown Sharon", "Reyers"],
+    description: "Historic steel town on the Shenango River",
+    population: "~13,000",
+    uniqueTrait: "Steel heritage and Reyers shoe store landmark"
+  },
+
+  sheffield: {
+    name: "Sheffield",
+    slug: "sheffield",
+    county: "Warren County",
+    zipCodes: ["16347"],
+    nearbyComm: ["Warren", "Clarendon", "Tionesta"],
+    landmarks: ["Allegheny National Forest", "Tionesta Creek"],
+    description: "Small borough near Allegheny National Forest",
+    population: "~1,100",
+    uniqueTrait: "Gateway to Allegheny National Forest recreation"
+  },
+
+  stoneboro: {
+    name: "Stoneboro",
+    slug: "stoneboro",
+    county: "Mercer County",
+    zipCodes: ["16153"],
+    nearbyComm: ["Sandy Lake", "Jackson Center", "Polk"],
+    landmarks: ["Rural farmland", "Small downtown"],
+    description: "Small rural borough in Mercer County",
+    population: "~1,000",
+    uniqueTrait: "Small-town rural charm"
+  },
+
+  tidioute: {
+    name: "Tidioute",
+    slug: "tidioute",
+    county: "Warren County",
+    zipCodes: ["16351"],
+    nearbyComm: ["Warren", "Tionesta", "Youngsville"],
+    landmarks: ["Allegheny River", "Historic downtown"],
+    description: "Small river borough on the Allegheny River",
+    population: "~700",
+    uniqueTrait: "Scenic Allegheny River location"
+  },
+
+  townville: {
+    name: "Townville",
+    slug: "townville",
+    county: "Crawford County",
+    zipCodes: ["16360"],
+    nearbyComm: ["Meadville", "Cambridge Springs", "Spartansburg"],
+    landmarks: ["Rural countryside"],
+    description: "Small rural borough in Crawford County",
+    population: "~300",
+    uniqueTrait: "Quiet rural community"
+  },
+
+  utica: {
+    name: "Utica",
+    slug: "utica",
+    county: "Venango County",
+    zipCodes: ["16362"],
+    nearbyComm: ["Franklin", "Polk", "Emlenton"],
+    landmarks: ["Rural farmland"],
+    description: "Small rural community in Venango County",
+    population: "~200",
+    uniqueTrait: "Peaceful rural setting"
+  },
+
+  warren: {
+    name: "Warren",
+    slug: "warren",
+    county: "Warren County",
+    zipCodes: ["16365"],
+    nearbyComm: ["Russell", "Youngsville", "Clarendon"],
+    landmarks: ["Allegheny River", "Downtown Warren", "Warren County Courthouse"],
+    description: "County seat and largest city in Warren County",
+    population: "~9,500",
+    uniqueTrait: "Gateway to Allegheny National Forest"
+  },
+
+  clark: {
+    name: "Clark",
+    slug: "clark",
+    county: "Mercer County",
+    zipCodes: ["16113"],
+    nearbyComm: ["Greenville", "Sharpsville", "Hermitage"],
+    landmarks: ["Rural farmland"],
+    description: "Small community in Mercer County",
+    population: "~500",
+    uniqueTrait: "Rural community living"
+  },
+
+  clarendon: {
+    name: "Clarendon",
+    slug: "clarendon",
+    county: "Warren County",
+    zipCodes: ["16313"],
+    nearbyComm: ["Warren", "Sheffield", "Tidioute"],
+    landmarks: ["Allegheny River", "Allegheny National Forest"],
+    description: "Small borough near Allegheny National Forest",
+    population: "~500",
+    uniqueTrait: "Forest and river recreation access"
+  },
+
   farrell: {
     name: "Farrell",
     slug: "farrell",
     county: "Mercer County",
     zipCodes: ["16121"],
     nearbyComm: ["Sharon", "Hermitage", "Wheatland"],
-    landmarks: ["Shenango River", "Downtown Farrell", "Kennedy Catholic High School", "Farrell Area School District", "Historic steel mill sites"],
-    description: "Former steel city with rich immigrant heritage, rebuilding as residential community in Shenango Valley",
-    population: "~4,900",
-    uniqueTrait: "Steel industry heritage city founded by U.S. Steel in 1901. Strong Eastern European immigrant roots, tight-knit neighborhoods, and Shenango Valley community pride",
-    historicalNarrative: "Farrell was created by U.S. Steel in 1901 as a company town for mill workers. Eastern European immigrants built tight-knit ethnic neighborhoods that defined the city's character. Though steel declined, Farrell's working-class pride, immigrant heritage, and community spirit remain strong as the city rebuilds.",
-    favoriteThings: [
-      "Strong Eastern European heritage and traditions",
-      "Kennedy Catholic High School sports pride",
-      "Tight-knit ethnic neighborhoods",
-      "Working-class community spirit",
-      "Annual ethnic festivals and celebrations",
-      "Shenango Valley regional identity"
-    ],
-    imagePrompt: "Exact photorealistic view of Farrell showing historic steel mill structures, ethnic neighborhood churches with distinctive architecture, Kennedy Catholic High School, Shenango River, Roemer Boulevard, community gathering. Working-class immigrant heritage city."
-  },
-  sharpsville: {
-    name: "Sharpsville",
-    slug: "sharpsville",
-    county: "Mercer County",
-    zipCodes: ["16150"],
-    nearbyComm: ["Sharon", "Hermitage", "Clark"],
-    landmarks: ["Shenango River", "Historic downtown", "Sharpsville Area School District", "Pierce Avenue business district", "Sharpsville Container facility"],
-    description: "Historic manufacturing borough along Shenango River, maintaining industrial heritage and strong community identity",
-    population: "~4,400",
-    uniqueTrait: "Historic manufacturing community known for container and metals production. Small-town atmosphere with rich labor history and annual community celebrations",
-    historicalNarrative: "Sharpsville developed as a Shenango Valley manufacturing center, producing containers, metals, and industrial goods. The borough's working-class heritage created strong community identity and labor traditions. Today, Sharpsville maintains its industrial character while celebrating small-town festivals and school pride.",
-    favoriteThings: [
-      "Sharpsville Area School sports traditions",
-      "Historic downtown businesses",
-      "Manufacturing heritage and pride",
-      "Annual community festivals",
-      "Shenango River recreation",
-      "Small-town neighborhood atmosphere"
-    ],
-    imagePrompt: "Exact photorealistic view of Sharpsville showing Sharpsville Container facility, historic downtown Pierce Avenue storefronts, Shenango River, Sharpsville High School, community festival, working-class neighborhoods. Industrial heritage community."
-  },
-  stoneboro: {
-    name: "Stoneboro",
-    slug: "stoneboro",
-    county: "Mercer County",
-    zipCodes: ["16153"],
-    nearbyComm: ["Sandy Lake", "Mercer", "Jackson Center"],
-    landmarks: ["Sandy Lake area", "Lakeview School District", "Rural farmland", "Route 258", "Stoneboro Fairgrounds"],
-    description: "Small rural borough serving as gateway to Sandy Lake recreational area",
-    population: "~1,050",
-    uniqueTrait: "Gateway to Sandy Lake with small-town charm. Annual Stoneboro Fair tradition brings community together. Mix of agriculture and lake recreation",
-    historicalNarrative: "Stoneboro grew as a small agricultural center and gateway to Sandy Lake recreation. The annual Stoneboro Fair became a beloved regional tradition celebrating agriculture and community. Today, Stoneboro balances farming heritage with lake access.",
-    favoriteThings: [
-      "Annual Stoneboro Fair tradition",
-      "Gateway to Sandy Lake recreation",
-      "Agricultural heritage and farms",
-      "Small-town festivals and events",
-      "Lakeview School District community",
-      "Rural Pennsylvania character"
-    ],
-    imagePrompt: "Exact photorealistic view of Stoneboro Fair showing agricultural exhibits in fairground barns, carnival rides, families enjoying fair food, 4-H livestock, Sandy Lake visible in background, Route 258 through town. Annual fair tradition."
-  },
-  sandyLake: {
-    name: "Sandy Lake",
-    slug: "sandy-lake",
-    county: "Mercer County",
-    zipCodes: ["16145"],
-    nearbyComm: ["Stoneboro", "Greenville", "Mercer"],
-    landmarks: ["Sandy Lake", "Lake community", "Sandy Lake Park", "Fishing access", "Lakeview School District"],
-    description: "Peaceful lake community borough offering year-round recreation and lakeside living",
-    population: "~700",
-    uniqueTrait: "Peaceful lake community with fishing, boating, and swimming. Close-knit year-round and seasonal residents enjoying natural beauty",
-    historicalNarrative: "Sandy Lake developed as a lake community offering recreation and peaceful living. Year-round residents and seasonal visitors create a close-knit lake culture. The community maintains its lakeside character and outdoor lifestyle.",
-    favoriteThings: [
-      "Sandy Lake fishing and boating",
-      "Swimming and water sports",
-      "Peaceful lakeside living",
-      "Year-round lake community",
-      "Sandy Lake Park recreation",
-      "Natural beauty and serenity"
-    ],
-    imagePrompt: "Exact photorealistic view of Sandy Lake showing lakefront homes, fishing piers, families boating and swimming, Sandy Lake Park beach area, serene lake waters, seasonal cottages. Year-round lake living."
-  },
-  clark: {
-    name: "Clark",
-    slug: "clark",
-    county: "Mercer County",
-    zipCodes: ["16113"],
-    nearbyComm: ["Sharon", "Sharpsville", "Greenville"],
-    landmarks: ["Rural Clark borough", "Agricultural lands", "Hickory Township area", "Route 18 corridor"],
-    description: "Small agricultural borough in Mercer County maintaining rural character",
-    population: "~620",
-    uniqueTrait: "Small agricultural community preserving rural Mercer County character. Quiet living with proximity to Shenango Valley cities",
-    historicalNarrative: "Clark remained a small agricultural community in Mercer County, maintaining rural character while convenient to Shenango Valley cities. The borough preserves farming heritage and peaceful country living.",
-    favoriteThings: [
-      "Peaceful rural agricultural living",
-      "Small-town atmosphere",
-      "Close to Sharon and Hermitage",
-      "Agricultural heritage",
-      "Quiet country character",
-      "Rural Pennsylvania charm"
-    ],
-    imagePrompt: "Exact photorealistic view of Clark showing farms with red barns, agricultural countryside, small borough center, Route 18 corridor, pastoral Mercer County landscape, working farms. Rural farming community."
-  },
-  clintonville: {
-    name: "Clintonville",
-    slug: "clintonville",
-    county: "Venango County",
-    zipCodes: ["16372"],
-    nearbyComm: ["Franklin", "Emlenton", "Grove City"],
-    landmarks: ["Allegheny River area", "Clintonville Borough Building", "Route 8 corridor", "Rural community center"],
-    description: "Small borough on Venango-Mercer county border, serving rural communities",
-    population: "~470",
-    uniqueTrait: "Quiet community on Venango-Mercer border near Allegheny River. Strategic location between Franklin and Grove City on Route 8",
-    historicalNarrative: "Clintonville sits strategically on the Venango-Mercer county border along Route 8. The small borough serves rural communities between Franklin and Grove City, maintaining quiet country character.",
-    favoriteThings: [
-      "Strategic Route 8 location",
-      "Quiet rural living",
-      "Between Franklin and Grove City",
-      "Small-town atmosphere",
-      "Near Allegheny River",
-      "Peaceful country character"
-    ],
-    imagePrompt: "Exact photorealistic view of Clintonville on Route 8 corridor showing small downtown borough buildings, rural Venango-Mercer County countryside, Allegheny River area visible, agricultural fields. Quiet crossroads community."
-  },
-  townville: {
-    name: "Townville",
-    slug: "townville",
-    county: "Crawford County",
-    zipCodes: ["16360"],
-    nearbyComm: ["Meadville", "Edinboro", "Cambridge Springs"],
-    landmarks: ["Rural farmland", "Townville Borough", "Agricultural community", "Country roads"],
-    description: "One of Pennsylvania's smallest boroughs, maintaining agricultural rural character",
-    population: "~320",
-    uniqueTrait: "One of Pennsylvania's smallest incorporated boroughs. Quiet agricultural community with strong farming heritage and rural lifestyle",
-    historicalNarrative: "Townville is one of Pennsylvania's tiniest incorporated boroughs, maintaining agricultural character through generations. This small farming community represents traditional rural Pennsylvania living.",
-    favoriteThings: [
-      "One of PA's smallest boroughs",
-      "Agricultural heritage and farms",
-      "Quiet rural living",
-      "Close-knit small community",
-      "Country roads and farmland",
-      "Traditional rural Pennsylvania"
-    ],
-    imagePrompt: "Exact photorealistic view of Townville showing tiny borough center, working farms with silos, agricultural fields, country roads, pastoral Crawford County landscape. Pennsylvania's smallest boroughs."
-  },
-  riceville: {
-    name: "Riceville",
-    slug: "riceville",
-    county: "Crawford County",
-    zipCodes: ["16427"],
-    nearbyComm: ["Meadville", "Cambridge Springs", "Venango"],
-    landmarks: ["Rural hamlet", "Agricultural lands", "Country living area", "Historic crossroads"],
-    description: "Tiny rural hamlet in Crawford County agricultural region",
-    population: "~150",
-    uniqueTrait: "Tiny rural hamlet representing Crawford County's agricultural heritage. Peaceful country living in Pennsylvania farm country",
-    historicalNarrative: "Riceville is a tiny rural hamlet in Crawford County's agricultural heartland, representing traditional farming heritage and peaceful country living.",
-    favoriteThings: [
-      "Peaceful rural countryside",
-      "Agricultural heritage",
-      "Quiet country living",
-      "Traditional Pennsylvania farm country"
-    ],
-    imagePrompt: "Exact photorealistic view of Riceville showing working farms with red barns, agricultural fields, country crossroads, Crawford County farmland, pastoral landscape. Tiny Pennsylvania hamlet."
-  },
-  utica: {
-    name: "Utica",
-    slug: "utica",
-    county: "Venango County",
-    zipCodes: ["16362"],
-    nearbyComm: ["Franklin", "Polk", "Cooperstown"],
-    landmarks: ["Rural Venango County", "Agricultural area", "Cranberry Township area", "Country roads"],
-    description: "Small rural borough in Venango County preserving small-town Pennsylvania character",
-    population: "~210",
-    uniqueTrait: "Small Venango County borough maintaining quintessential rural Pennsylvania atmosphere. Tight-knit community with agricultural roots",
-    historicalNarrative: "Utica is a small rural borough maintaining traditional Pennsylvania small-town character in Venango County's agricultural region.",
-    favoriteThings: [
-      "Quintessential rural Pennsylvania",
-      "Tight-knit small community",
-      "Agricultural heritage",
-      "Peaceful country living"
-    ],
-    imagePrompt: "Exact photorealistic view of Utica showing small borough buildings, agricultural lands, country roads, Venango County countryside, tiny rural borough center. Quintessential rural Pennsylvania."
-  },
-  irvine: {
-    name: "Irvine",
-    slug: "irvine",
-    county: "Warren County",
-    zipCodes: ["16329"],
-    nearbyComm: ["Warren", "Tidioute", "Sheffield"],
-    landmarks: ["Allegheny River", "Irvine Borough Park", "Forest lands", "Route 62 corridor"],
-    description: "Small Warren County borough nestled along Allegheny River in forest region",
-    population: "~600",
-    uniqueTrait: "Allegheny River community surrounded by forest. Gateway to Allegheny National Forest recreation. Quiet rural living with river and forest access",
-    historicalNarrative: "Irvine is a small Allegheny River community deep in Warren County's forest region, serving as gateway to forest and river recreation.",
-    favoriteThings: [
-      "Allegheny River fishing and recreation",
-      "Surrounded by Allegheny National Forest",
-      "Outdoor lifestyle and activities",
-      "Peaceful forest living",
-      "River access",
-      "Gateway to wilderness"
-    ],
-    imagePrompt: "Exact photorealistic view of Irvine showing Allegheny River, dense forest surrounding borough, Irvine Borough Park, anglers fishing from riverbank, Route 62, remote wilderness setting. Forest river borough."
-  },
-  pittsfield: {
-    name: "Pittsfield",
-    slug: "pittsfield",
-    county: "Warren County",
-    zipCodes: ["16340"],
-    nearbyComm: ["Youngsville", "Sugar Grove", "Columbus"],
-    landmarks: ["Brokenstraw Creek", "Rural borough", "Agricultural area", "Country roads"],
-    description: "Small rural borough along Brokenstraw Creek in Warren County",
-    population: "~230",
-    uniqueTrait: "Small rural Warren County community along Brokenstraw Creek. Peaceful agricultural area with tight-knit community and country living",
-    historicalNarrative: "Pittsfield is a small agricultural community along Brokenstraw Creek in Warren County, maintaining rural character and peaceful country living.",
-    favoriteThings: [
-      "Brokenstraw Creek fishing",
-      "Peaceful rural living",
-      "Agricultural heritage",
-      "Tight-knit small community",
-      "Country roads and nature",
-      "Warren County countryside"
-    ],
-    imagePrompt: "Exact photorealistic view of Pittsfield showing Brokenstraw Creek flowing through, small borough buildings, agricultural fields, creek fishing access, country roads, Warren County rural landscape. Small rural community."
-  },
-  chandlersValley: {
-    name: "Chandlers Valley",
-    slug: "chandlers-valley",
-    county: "Warren County",
-    zipCodes: ["16312"],
-    nearbyComm: ["Warren", "Clarendon", "Sugar Grove"],
-    landmarks: ["Rural valley", "Allegheny National Forest proximity", "Forest area", "Remote countryside"],
-    description: "Remote unincorporated community deep in Warren County forest region",
-    population: "~100",
-    uniqueTrait: "Remote forest community near Allegheny National Forest. Ultimate rural Pennsylvania living surrounded by nature. Hunting, hiking, and outdoor lifestyle",
-    historicalNarrative: "Chandlers Valley is a remote forest community deep in Warren County, offering ultimate rural Pennsylvania living for those seeking wilderness and outdoor lifestyle.",
-    favoriteThings: [
-      "Remote forest wilderness living",
-      "Near Allegheny National Forest",
-      "Hunting and outdoor activities",
-      "Ultimate rural lifestyle",
-      "Surrounded by nature",
-      "Peace and solitude"
-    ],
-    imagePrompt: "Exact photorealistic view of Chandlers Valley showing remote forest community with dense wilderness, a few rural homes in valley, wildlife including deer, Allegheny National Forest, autumn wilderness, remote countryside. Ultimate rural Pennsylvania living."
-  },
-  sugarcreek: {
-    name: "Sugarcreek",
-    slug: "sugarcreek",
-    county: "Venango County",
-    zipCodes: ["16323"],
-    nearbyComm: ["Franklin", "Oil City", "Polk"],
-    landmarks: ["Allegheny River access", "Sugarcreek Borough", "Route 8 corridor", "Commercial district", "Franklin area suburbs"],
-    description: "Growing borough in Venango County along Route 8 corridor near Franklin",
-    population: "~5,200",
-    uniqueTrait: "Largest borough in Venango County with growing residential and commercial development. Affordable housing and convenient Franklin access make it popular with families",
-    historicalNarrative: "Sugarcreek grew from a small community into Venango County's largest borough due to affordable housing and commercial development along Route 8. The borough became popular with families seeking convenient Franklin access.",
-    favoriteThings: [
-      "Affordable housing and living",
-      "Growing residential community",
-      "Route 8 commercial corridor",
-      "Convenient Franklin access",
-      "Largest Venango County borough",
-      "Family-friendly atmosphere"
-    ],
-    imagePrompt: "Exact photorealistic view of Sugarcreek showing residential developments along Route 8, commercial district businesses, families shopping and dining, Allegheny River access, Franklin visible nearby, growing Venango County borough."
-  },
-  venangoCrawford: {
-    name: "Venango Crawford",
-    slug: "venango-crawford",
-    county: "Venango County",
-    zipCodes: ["16365"],
-    nearbyComm: ["Franklin", "Meadville", "Oil City"],
-    landmarks: ["County border region", "Rural area", "French Creek watershed", "Agricultural lands"],
-    description: "Rural region straddling Venango and Crawford county border",
-    uniqueTrait: "Border region between Venango and Crawford counties. Rural agricultural area with access to both county seats and natural beauty",
-    historicalNarrative: "This rural region straddles the Venango-Crawford county border, maintaining agricultural character while providing access to both Franklin and Meadville.",
-    favoriteThings: [
-      "Access to both Venango and Crawford counties",
-      "Rural agricultural living",
-      "French Creek watershed recreation",
-      "Peaceful countryside",
-      "Natural beauty"
-    ],
-    imagePrompt: "Exact photorealistic view of rural Venango-Crawford border region showing agricultural lands, French Creek flowing through countryside, working farms, pastoral landscape straddling county line. Rural Pennsylvania border region."
+    landmarks: ["Shenango River", "Historic steel mills"],
+    description: "Historic steel town in Mercer County",
+    population: "~5,000",
+    uniqueTrait: "Steel industry heritage"
   }
 };
 
