@@ -1,5 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { MapPin, Navigation } from "lucide-react";
+import { Link } from "react-router-dom";
+import { getNearbyLinks } from "@/data/communityData";
 
 interface ServiceAreaMapProps {
   cityName: string;
@@ -9,6 +11,8 @@ interface ServiceAreaMapProps {
 }
 
 export const ServiceAreaMap = ({ cityName, zipCodes, nearbyComm, county }: ServiceAreaMapProps) => {
+  const nearbyLinks = getNearbyLinks(nearbyComm);
+  
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
@@ -51,11 +55,15 @@ export const ServiceAreaMap = ({ cityName, zipCodes, nearbyComm, county }: Servi
                 <h3 className="text-2xl font-bold">Nearby Communities</h3>
               </div>
               <div className="space-y-2">
-                {nearbyComm.map((community, index) => (
-                  <div key={index} className="flex items-center gap-2 p-2 rounded hover:bg-muted/50 transition-colors">
-                    <span className="text-primary">→</span>
-                    <span className="font-medium">{community}</span>
-                  </div>
+                {nearbyLinks.map((nearby, index) => (
+                  <Link 
+                    key={index} 
+                    to={`/areas/${nearby.slug}-pa`}
+                    className="flex items-center gap-2 p-2 rounded hover:bg-muted transition-colors group"
+                  >
+                    <span className="text-primary group-hover:translate-x-1 transition-transform">→</span>
+                    <span className="font-medium text-foreground group-hover:text-primary transition-colors">{nearby.name}</span>
+                  </Link>
                 ))}
               </div>
               <p className="mt-6 text-sm text-muted-foreground">
