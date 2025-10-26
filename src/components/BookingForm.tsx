@@ -107,6 +107,8 @@ const BookingForm = ({ community }: BookingFormProps) => {
   const [smsOptIn, setSmsOptIn] = useState(false);
   const [availableTimeSlots, setAvailableTimeSlots] = useState<string[]>([]);
   const [referralCode, setReferralCode] = useState<string | null>(null);
+  const [formErrors, setFormErrors] = useState<{ field: string; message: string }[]>([]);
+  const errorSummaryRef = useRef<HTMLDivElement>(null);
 
   // Detect referral code from URL on mount
   useEffect(() => {
@@ -224,6 +226,61 @@ const BookingForm = ({ community }: BookingFormProps) => {
     }
   }, [formData.urgency, formData.preferred_date]);
 
+  // Validation function
+  const validateStep = (step: number): { field: string; message: string }[] => {
+    const errors: { field: string; message: string }[] = [];
+    
+    if (step === 1) {
+      if (!formData.name.trim()) {
+        errors.push({ field: 'name', message: 'Full name is required' });
+      } else if (formData.name.length > 100) {
+        errors.push({ field: 'name', message: 'Name must be less than 100 characters' });
+      }
+      
+      if (!formData.email.trim()) {
+        errors.push({ field: 'email', message: 'Email address is required' });
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+        errors.push({ field: 'email', message: 'Please enter a valid email address' });
+      }
+      
+      if (!formData.phone.trim()) {
+        errors.push({ field: 'phone', message: 'Phone number is required' });
+      } else if (formData.phone.replace(/\D/g, '').length < 10) {
+        errors.push({ field: 'phone', message: 'Please enter a valid 10-digit phone number' });
+      }
+    }
+    
+    if (step === 2) {
+      if (!formData.service) {
+        errors.push({ field: 'service', message: 'Please select a service' });
+      }
+      
+      if (formData.service === 'mobile' && !formData.location_address.trim()) {
+        errors.push({ field: 'location_address', message: 'Service location is required for mobile notary' });
+      }
+    }
+    
+    if (step === 3) {
+      if (!agreedToTerms) {
+        errors.push({ field: 'terms', message: 'You must agree to the Terms of Service and Privacy Policy' });
+      }
+      
+      if (formData.service === 'ron' && !biometricConsent) {
+        errors.push({ field: 'biometric', message: 'Biometric consent is required for Remote Online Notarization' });
+      }
+      
+      if (!turnstileToken) {
+        errors.push({ field: 'turnstile', message: 'Please complete the security verification' });
+      }
+      
+      if (!emailVerified) {
+        errors.push({ field: 'email_verification', message: 'Please verify your email address' });
+      }
+    }
+    
+    return errors;
+  };
+
   const canProceedFromStep1 = formData.name && formData.email && formData.phone;
   const canProceedFromStep2 = formData.service && (formData.service !== "mobile" || formData.location_address);
 
@@ -315,10 +372,20 @@ const BookingForm = ({ community }: BookingFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Comprehensive validation
+    const errors = validateStep(3);
+    
     // Security Check 1: Honeypot field
     if (honeypot) {
       // Bot detected - silently fail
       toast.error("Please try again.");
+      return;
+    }
+
+    if (errors.length > 0) {
+      setFormErrors(errors);
+      errorSummaryRef.current?.focus();
+      toast.error('Please fix the errors before submitting');
       return;
     }
 
@@ -347,6 +414,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
       return;
     }
 
+    setFormErrors([]);
     setIsSubmitting(true);
 
     try {
@@ -744,6 +812,60 @@ const BookingForm = ({ community }: BookingFormProps) => {
           </div>
           
           <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Error Summary */}
+            {formErrors.length > 0 && (
+              <div 
+                ref={errorSummaryRef}
+                tabIndex={-1}
+                role="alert"
+                aria-labelledby="error-summary-title"
+                className="bg-destructive/10 border-2 border-destructive rounded-lg p-6 animate-in fade-in slide-in-from-top-4 duration-300"
+              >
+                <h3 
+                  id="error-summary-title" 
+                  className="text-lg font-semibold text-destructive flex items-center gap-2 mb-4"
+                >
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-6 w-6" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" 
+                    />
+                  </svg>
+                  There {formErrors.length === 1 ? 'is' : 'are'} {formErrors.length} error{formErrors.length === 1 ? '' : 's'} with your submission
+                </h3>
+                <ul className="space-y-2" role="list">
+                  {formErrors.map((error, index) => (
+                    <li key={index} className="text-sm">
+                      <a
+                        href={`#${error.field}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const element = document.getElementById(error.field);
+                          element?.focus();
+                          element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }}
+                        className="text-destructive hover:text-destructive/80 underline font-medium focus:outline-none focus:ring-2 focus:ring-destructive focus:ring-offset-2 rounded"
+                      >
+                        {error.message}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-sm text-muted-foreground mt-4">
+                  Please correct these errors and try again.
+                </p>
+              </div>
+            )}
+
             {/* Step 1: Contact Information */}
             {currentStep === 1 && (
               <div className="space-y-6 p-6 rounded-lg border border-border bg-card animate-in fade-in slide-in-from-bottom-4 duration-300">
@@ -763,11 +885,16 @@ const BookingForm = ({ community }: BookingFormProps) => {
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       autoComplete="name"
                       aria-required="true"
-                      aria-describedby="name-hint"
+                      aria-describedby={formErrors.some(e => e.field === 'name') ? "name-error name-hint" : "name-hint"}
                       placeholder="John Doe"
                       required
-                      aria-invalid={!formData.name && currentStep > 1}
+                      aria-invalid={formErrors.some(e => e.field === 'name')}
                     />
+                    {formErrors.some(e => e.field === 'name') && (
+                      <p id="name-error" className="text-sm text-destructive mt-1">
+                        {formErrors.find(e => e.field === 'name')?.message}
+                      </p>
+                    )}
                   </div>
                   <div>
                     <Label htmlFor="phone">
@@ -783,10 +910,15 @@ const BookingForm = ({ community }: BookingFormProps) => {
                       autoComplete="tel"
                       required
                       aria-required="true"
-                      aria-describedby="phone-hint"
-                      aria-invalid={!formData.phone && currentStep > 1}
+                      aria-describedby={formErrors.some(e => e.field === 'phone') ? "phone-error phone-hint" : "phone-hint"}
+                      aria-invalid={formErrors.some(e => e.field === 'phone')}
                     />
                     <p id="phone-hint" className="text-xs text-muted-foreground mt-1">Format applied automatically</p>
+                    {formErrors.some(e => e.field === 'phone') && (
+                      <p id="phone-error" className="text-sm text-destructive mt-1">
+                        {formErrors.find(e => e.field === 'phone')?.message}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -803,14 +935,29 @@ const BookingForm = ({ community }: BookingFormProps) => {
                     autoComplete="email"
                     required
                     aria-required="true"
-                    aria-describedby="email-hint"
-                    aria-invalid={!formData.email && currentStep > 1}
+                    aria-describedby={formErrors.some(e => e.field === 'email') ? "email-error email-hint" : "email-hint"}
+                    aria-invalid={formErrors.some(e => e.field === 'email')}
                   />
                   <p id="email-hint" className="sr-only">We'll send your booking confirmation here</p>
+                  {formErrors.some(e => e.field === 'email') && (
+                    <p id="email-error" className="text-sm text-destructive mt-1">
+                      {formErrors.find(e => e.field === 'email')?.message}
+                    </p>
+                  )}
                 </div>
                 <Button 
                   type="button"
-                  onClick={() => setCurrentStep(2)}
+                  onClick={() => {
+                    const errors = validateStep(1);
+                    if (errors.length > 0) {
+                      setFormErrors(errors);
+                      errorSummaryRef.current?.focus();
+                      toast.error('Please fix the errors before continuing');
+                    } else {
+                      setFormErrors([]);
+                      setCurrentStep(2);
+                    }
+                  }}
                   disabled={!canProceedFromStep1}
                   className="w-full"
                 >
@@ -834,7 +981,11 @@ const BookingForm = ({ community }: BookingFormProps) => {
                     value={formData.service}
                     onValueChange={(value) => setFormData({ ...formData, service: value })}
                   >
-                    <SelectTrigger aria-required="true">
+                    <SelectTrigger 
+                      aria-required="true"
+                      aria-invalid={formErrors.some(e => e.field === 'service')}
+                      aria-describedby={formErrors.some(e => e.field === 'service') ? "service-error" : undefined}
+                    >
                       <SelectValue placeholder="Choose your service" />
                     </SelectTrigger>
                     <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
@@ -857,6 +1008,11 @@ const BookingForm = ({ community }: BookingFormProps) => {
                       <SelectItem value="document_retrieval">Document Retrieval - Contact for pricing</SelectItem>
                     </SelectContent>
                   </Select>
+                  {formErrors.some(e => e.field === 'service') && (
+                    <p id="service-error" className="text-sm text-destructive mt-1">
+                      {formErrors.find(e => e.field === 'service')?.message}
+                    </p>
+                  )}
                 </div>
 
                 <div>
@@ -907,6 +1063,8 @@ const BookingForm = ({ community }: BookingFormProps) => {
                       placeholder={community ? `123 Main St, ${community.name}, PA` : "123 Main St, Erie, PA 16501"}
                       required={formData.service === "mobile"}
                       autoComplete="off"
+                      aria-invalid={formErrors.some(e => e.field === 'location_address')}
+                      aria-describedby={formErrors.some(e => e.field === 'location_address') ? "location-error" : undefined}
                     />
                     {showSuggestions && activeSuggestionField === 'location' && suggestions.length > 0 && (
                       <div 
@@ -930,6 +1088,11 @@ const BookingForm = ({ community }: BookingFormProps) => {
                         ? `Mobile service available throughout ${community.name} and ${community.county}`
                         : "Mobile service is available within Erie County"}
                     </p>
+                    {formErrors.some(e => e.field === 'location_address') && (
+                      <p id="location-error" className="text-sm text-destructive mt-1">
+                        {formErrors.find(e => e.field === 'location_address')?.message}
+                      </p>
+                    )}
                   </div>
                 )}
 
@@ -1185,7 +1348,10 @@ const BookingForm = ({ community }: BookingFormProps) => {
                   <Button 
                     type="button"
                     variant="outline"
-                    onClick={() => setCurrentStep(2)}
+                    onClick={() => {
+                      setFormErrors([]);
+                      setCurrentStep(2);
+                    }}
                     className="w-full"
                   >
                     Back
