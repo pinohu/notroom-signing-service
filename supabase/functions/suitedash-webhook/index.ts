@@ -28,10 +28,10 @@ const verifyWebhookSignature = async (req: Request, body: string): Promise<boole
   const signature = req.headers.get('x-suitedash-signature') || req.headers.get('x-webhook-signature');
   const webhookSecret = Deno.env.get('SUITEDASH_WEBHOOK_SECRET');
   
-  // If no secret is configured, log warning but allow (backward compatibility during migration)
+  // SECURITY: Reject if secret is not configured
   if (!webhookSecret) {
-    console.warn('⚠️ SUITEDASH_WEBHOOK_SECRET not configured - webhook is NOT secure!');
-    return true;
+    console.error('🚨 CRITICAL: SUITEDASH_WEBHOOK_SECRET not configured - rejecting webhook');
+    return false;
   }
   
   if (!signature) {
