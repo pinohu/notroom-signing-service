@@ -98,7 +98,7 @@ const MercerCounty = () => {
     },
     "telephone": "814-480-0989",
     "email": "support@notroom.com",
-    "priceRange": "$45-$500",
+    "priceRange": "$60-$500",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Notary and Business Services",

@@ -54,7 +54,7 @@ const RemoteOnlineNotary = () => {
     description: "Remote online notarization service available 24/7 in Pennsylvania. Get documents notarized via secure video call from anywhere in Erie, Crawford, Warren, Mercer, or Venango counties.",
     provider: "Notroom - Erie PA Notary Services",
     areaServed: "Pennsylvania",
-    price: "50",
+    price: "60",
     url: "https://notroom.com/services/remote-online-notary"
   });
 
@@ -77,7 +77,7 @@ const RemoteOnlineNotary = () => {
     },
     {
       question: "How much does remote online notarization cost in PA?",
-      answer: "Standard RON service is $50 total ($5 PA notary fee + $45 technology/platform fee). Real estate documents are $95. We offer business subscriptions at $399/month for 10 sessions ($39.90 per act)."
+      answer: "Standard RON service is $60 total ($5 PA notary fee + $55 technology/platform fee). Real estate documents are $95. We offer business subscriptions at $399/month for 10 sessions ($39.90 per act)."
     }
   ]);
 
