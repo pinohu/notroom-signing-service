@@ -48,8 +48,9 @@ const bookingSchema = z.object({
   document_type: z.string().max(100).optional(),
   number_of_signers: z.number().min(1).max(20).default(1),
   location_address: z.string().max(300).optional(),
-  urgency: z.enum(["flexible", "within_week", "within_24hrs", "same_day"]).default("flexible"),
+    urgency: z.enum(["flexible", "within_week", "within_24hrs", "same_day"]).default("flexible"),
   message: z.string().max(1000, "Message must be less than 1000 characters").optional(),
+  sms_opt_in: z.boolean().default(false),
 });
 
 interface BookingFormProps {
@@ -74,6 +75,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
     location_address: string;
     urgency: string;
     message: string;
+    sms_opt_in: boolean;
   }>({
     name: "",
     email: "",
@@ -84,7 +86,8 @@ const BookingForm = ({ community }: BookingFormProps) => {
     number_of_signers: 1,
     location_address: "",
     urgency: "flexible",
-    message: ""
+    message: "",
+    sms_opt_in: false
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
@@ -99,7 +102,10 @@ const BookingForm = ({ community }: BookingFormProps) => {
   const [showEmailVerification, setShowEmailVerification] = useState(false);
   const [emailVerified, setEmailVerified] = useState(false);
   const [turnstileLoaded, setTurnstileLoaded] = useState(false);
+  const [turnstileWidgetId, setTurnstileWidgetId] = useState<string | null>(null);
   const turnstileRef = useRef<HTMLDivElement>(null);
+  const [smsOptIn, setSmsOptIn] = useState(false);
+  const [availableTimeSlots, setAvailableTimeSlots] = useState<string[]>([]);
 
   // Load Turnstile script and set up callback
   useEffect(() => {
@@ -134,12 +140,12 @@ const BookingForm = ({ community }: BookingFormProps) => {
 
   // Render Turnstile widget when on step 3 and script is loaded
   useEffect(() => {
-    if (currentStep === 3 && turnstileLoaded && turnstileRef.current && !turnstileToken) {
+    if (currentStep === 3 && turnstileLoaded && turnstileRef.current && !turnstileWidgetId) {
       // Check if widget already exists
       const existingWidget = turnstileRef.current.querySelector('iframe');
       if (!existingWidget && (window as any).turnstile) {
         console.log("Rendering Turnstile widget");
-        (window as any).turnstile.render(turnstileRef.current, {
+        const widgetId = (window as any).turnstile.render(turnstileRef.current, {
           sitekey: TURNSTILE_SITE_KEY,
           callback: (token: string) => {
             console.log("Turnstile verification successful");
@@ -147,9 +153,64 @@ const BookingForm = ({ community }: BookingFormProps) => {
           },
           theme: 'auto',
         });
+        setTurnstileWidgetId(widgetId);
       }
     }
-  }, [currentStep, turnstileLoaded, turnstileToken]);
+    
+    // Cleanup on unmount
+    return () => {
+      if (turnstileWidgetId && (window as any).turnstile) {
+        try {
+          (window as any).turnstile.remove(turnstileWidgetId);
+        } catch (e) {
+          console.log("Turnstile cleanup:", e);
+        }
+      }
+    };
+  }, [currentStep, turnstileLoaded, turnstileWidgetId]);
+
+  // Generate 15-minute time slots based on urgency
+  useEffect(() => {
+    const generateTimeSlots = () => {
+      const slots: string[] = [];
+      const now = new Date();
+      const currentHour = now.getHours();
+      const currentMinute = now.getMinutes();
+      
+      // Determine start time based on urgency
+      let startHour = 8;
+      let startMinute = 0;
+      
+      if (formData.urgency === 'same_day' || formData.urgency === 'within_24hrs') {
+        // For urgent requests, start from next available 15-min slot + 15min buffer
+        const nextSlot = Math.ceil((currentMinute + 15) / 15) * 15;
+        if (nextSlot >= 60) {
+          startHour = currentHour + 1;
+          startMinute = 0;
+        } else {
+          startHour = currentHour;
+          startMinute = nextSlot;
+        }
+      }
+      
+      // Generate slots from 8 AM to 8 PM
+      for (let hour = Math.max(8, startHour); hour < 20; hour++) {
+        const startMinuteForHour = hour === startHour ? startMinute : 0;
+        for (let minute = startMinuteForHour; minute < 60; minute += 15) {
+          const period = hour >= 12 ? 'PM' : 'AM';
+          const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
+          const displayMinute = minute.toString().padStart(2, '0');
+          slots.push(`${displayHour}:${displayMinute} ${period}`);
+        }
+      }
+      
+      setAvailableTimeSlots(slots);
+    };
+    
+    if (formData.urgency) {
+      generateTimeSlots();
+    }
+  }, [formData.urgency, formData.preferred_date]);
 
   const canProceedFromStep1 = formData.name && formData.email && formData.phone;
   const canProceedFromStep2 = formData.service && (formData.service !== "mobile" || formData.location_address);
@@ -301,7 +362,8 @@ const BookingForm = ({ community }: BookingFormProps) => {
           number_of_signers: validatedData.number_of_signers,
           location_address: validatedData.location_address || null,
           urgency: validatedData.urgency,
-          message: validatedData.message || null
+          message: validatedData.message || null,
+          sms_opt_in: formData.sms_opt_in
         }])
         .select()
         .single();
@@ -360,6 +422,48 @@ const BookingForm = ({ community }: BookingFormProps) => {
           console.error("Suitedash sync error:", suitedashError);
         }
         // Don't fail the booking if Suitedash sync fails
+      }
+
+      // Sync booking to calendars (Lunacal & Google Calendar)
+      try {
+        await supabase.functions.invoke('sync-calendar', {
+          body: {
+            bookingId: bookingData.id,
+            action: 'sync'
+          }
+        });
+        if (import.meta.env.DEV) {
+          console.log("Booking synced to calendars successfully");
+        }
+      } catch (calendarError) {
+        if (import.meta.env.DEV) {
+          console.error("Calendar sync error:", calendarError);
+        }
+        // Don't fail the booking if calendar sync fails
+      }
+
+      // Send SMS notification if user opted in
+      if (formData.sms_opt_in) {
+        try {
+          const smsMessage = `Hi ${validatedData.name}! Your ${validatedData.service.toUpperCase()} notary appointment has been received. Booking ID: ${bookingData.id.slice(0, 8)}. We'll contact you within 2 hours to confirm. - Notroom`;
+          
+          await supabase.functions.invoke('send-sms-notification', {
+            body: {
+              phone: validatedData.phone,
+              message: smsMessage,
+              bookingId: bookingData.id
+            }
+          });
+          
+          if (import.meta.env.DEV) {
+            console.log("SMS notification sent successfully");
+          }
+        } catch (smsError) {
+          if (import.meta.env.DEV) {
+            console.error("SMS sending error:", smsError);
+          }
+          // Don't fail the booking if SMS fails
+        }
       }
 
       // Calculate price and show payment prompt
@@ -473,7 +577,10 @@ const BookingForm = ({ community }: BookingFormProps) => {
     setCurrentBookingId(null);
     setHoneypot("");
     setTurnstileToken(null);
+    setTurnstileWidgetId(null);
     setEmailVerified(false);
+    setSmsOptIn(false);
+    setAvailableTimeSlots([]);
     setFormData({
       name: "",
       email: "",
@@ -485,13 +592,14 @@ const BookingForm = ({ community }: BookingFormProps) => {
       number_of_signers: 1,
       location_address: "",
       urgency: "flexible",
-      message: ""
+      message: "",
+      sms_opt_in: false
     });
 
     // Reset Turnstile widget
-    if ((window as any).turnstile && turnstileRef.current) {
+    if ((window as any).turnstile && turnstileWidgetId) {
       try {
-        (window as any).turnstile.remove(turnstileRef.current);
+        (window as any).turnstile.remove(turnstileWidgetId);
       } catch (e) {
         console.log("Turnstile widget removal failed:", e);
       }
@@ -805,12 +913,39 @@ const BookingForm = ({ community }: BookingFormProps) => {
                           {formData.preferred_date ? format(formData.preferred_date, "PPP") : "Pick a date"}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0 bg-popover z-50" align="start">
+                       <PopoverContent className="w-auto p-0 bg-popover z-50" align="start">
                         <Calendar
                           mode="single"
                           selected={formData.preferred_date}
                           onSelect={(date) => setFormData({ ...formData, preferred_date: date })}
-                          disabled={(date) => date < new Date()}
+                          disabled={(date) => {
+                            const today = new Date();
+                            today.setHours(0, 0, 0, 0);
+                            
+                            // Disable past dates
+                            if (date < today) return true;
+                            
+                            // For same_day urgency, only allow today
+                            if (formData.urgency === 'same_day') {
+                              return date.toDateString() !== today.toDateString();
+                            }
+                            
+                            // For within_24hrs, only allow today and tomorrow
+                            if (formData.urgency === 'within_24hrs') {
+                              const tomorrow = new Date(today);
+                              tomorrow.setDate(tomorrow.getDate() + 1);
+                              return date > tomorrow;
+                            }
+                            
+                            // For within_week, allow up to 7 days
+                            if (formData.urgency === 'within_week') {
+                              const weekFromNow = new Date(today);
+                              weekFromNow.setDate(weekFromNow.getDate() + 7);
+                              return date > weekFromNow;
+                            }
+                            
+                            return false;
+                          }}
                           initialFocus
                           className="pointer-events-auto"
                         />
@@ -818,21 +953,32 @@ const BookingForm = ({ community }: BookingFormProps) => {
                     </Popover>
                   </div>
 
-                  <div>
+                   <div>
                     <Label htmlFor="preferred_time">Preferred Time (Optional)</Label>
                     <Select 
                       value={formData.preferred_time}
                       onValueChange={(value) => setFormData({ ...formData, preferred_time: value })}
                     >
                       <SelectTrigger>
-                        <SelectValue placeholder="Select time" />
+                        <SelectValue placeholder="Select time slot" />
                       </SelectTrigger>
-                      <SelectContent className="bg-popover z-50">
-                        <SelectItem value="morning">Morning (8 AM - 12 PM)</SelectItem>
-                        <SelectItem value="afternoon">Afternoon (12 PM - 5 PM)</SelectItem>
-                        <SelectItem value="evening">Evening (5 PM - 8 PM)</SelectItem>
+                      <SelectContent className="bg-popover z-50 max-h-[300px]">
+                        {availableTimeSlots.length > 0 ? (
+                          availableTimeSlots.map((slot) => (
+                            <SelectItem key={slot} value={slot}>
+                              {slot}
+                            </SelectItem>
+                          ))
+                        ) : (
+                          <SelectItem value="flexible" disabled>
+                            Select a date first
+                          </SelectItem>
+                        )}
                       </SelectContent>
                     </Select>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      15-minute intervals with buffer between appointments
+                    </p>
                   </div>
                 </div>
 
@@ -846,6 +992,25 @@ const BookingForm = ({ community }: BookingFormProps) => {
                     rows={4}
                     className="resize-none"
                   />
+                </div>
+
+                {/* SMS Opt-in */}
+                <div className="bg-muted/20 p-4 rounded-lg border">
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="sms-opt-in"
+                      checked={smsOptIn}
+                      onChange={(e) => {
+                        setSmsOptIn(e.target.checked);
+                        setFormData({ ...formData, sms_opt_in: e.target.checked });
+                      }}
+                      className="mt-1 w-4 h-4"
+                    />
+                    <Label htmlFor="sms-opt-in" className="text-sm cursor-pointer">
+                      <span className="font-semibold">📱 SMS Updates (Optional):</span> I would like to receive text message updates about my appointment status and service journey. Standard message rates may apply.
+                    </Label>
+                  </div>
                 </div>
 
                 {/* Terms and Conditions Clickwrap */}

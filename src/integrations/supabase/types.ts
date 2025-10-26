@@ -58,6 +58,7 @@ export type Database = {
           preferred_date: string | null
           preferred_time: string | null
           service: string
+          sms_opt_in: boolean | null
           status: string
           suitedash_contact_id: string | null
           suitedash_project_id: string | null
@@ -78,6 +79,7 @@ export type Database = {
           preferred_date?: string | null
           preferred_time?: string | null
           service: string
+          sms_opt_in?: boolean | null
           status?: string
           suitedash_contact_id?: string | null
           suitedash_project_id?: string | null
@@ -98,6 +100,7 @@ export type Database = {
           preferred_date?: string | null
           preferred_time?: string | null
           service?: string
+          sms_opt_in?: boolean | null
           status?: string
           suitedash_contact_id?: string | null
           suitedash_project_id?: string | null
