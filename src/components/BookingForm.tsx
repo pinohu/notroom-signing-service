@@ -424,6 +424,35 @@ const BookingForm = ({ community }: BookingFormProps) => {
         // Don't fail the booking if Suitedash sync fails
       }
 
+      // Sync booking to SMS-iT CRM (Lead Generation & Automation)
+      try {
+        await supabase.functions.invoke('smsit-sync', {
+          body: {
+            booking: {
+              id: bookingData.id,
+              name: validatedData.name,
+              email: validatedData.email,
+              phone: validatedData.phone,
+              service: validatedData.service,
+              location_address: validatedData.location_address || undefined,
+              preferred_date: validatedData.preferred_date ? format(validatedData.preferred_date, "yyyy-MM-dd") : undefined,
+              preferred_time: validatedData.preferred_time || undefined,
+              message: validatedData.message || undefined,
+              urgency: validatedData.urgency,
+            },
+            action: 'full_sync'
+          }
+        });
+        if (import.meta.env.DEV) {
+          console.log("Booking synced to SMS-iT CRM - Lead automation started");
+        }
+      } catch (smsitError) {
+        if (import.meta.env.DEV) {
+          console.error("SMS-iT sync error:", smsitError);
+        }
+        // Don't fail the booking if SMS-iT sync fails
+      }
+
       // Sync booking to calendars (Lunacal & Google Calendar)
       try {
         await supabase.functions.invoke('sync-calendar', {
