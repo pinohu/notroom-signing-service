@@ -102,7 +102,7 @@ const MobileNotary = () => {
                 onClick={scrollToBooking}
                 variant="secondary"
               >
-                Schedule Mobile Visit - $50 + mileage
+                Schedule Mobile Visit - $125 + mileage
               </Button>
               <Button 
                 size="lg" 

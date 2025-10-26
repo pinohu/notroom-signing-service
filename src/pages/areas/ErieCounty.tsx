@@ -24,10 +24,11 @@ const ErieCounty = () => {
   ];
 
   const services = [
-    { title: "Remote Online Notary", price: "$60", desc: "Available by appointment from anywhere in Erie County ($15 notary + $45 platform fee)" },
-    { title: "Mobile Notary Service", price: "$125+", desc: "We come to your home or office (in-person service)" },
-    { title: "Loan Signing Agent", price: "$150", desc: "Professional mortgage closing services ($15 notary + $135 agent fee)" },
-    { title: "Apostille Assistance", price: "$175", desc: "Notarization + application assistance for international documents" }
+    { title: "Remote Online Notary", price: "$75-$125", desc: "Available by appointment from anywhere in Erie County" },
+    { title: "Mobile Notary Service", price: "$125+ mileage", desc: "We come to your home, office, or healthcare facility" },
+    { title: "Loan Signing Agent", price: "$225-$400", desc: "Professional mortgage closing services with $100K E&O insurance" },
+    { title: "Healthcare Facility", price: "$150-$240", desc: "Hospital, nursing home, and hospice notary visits" },
+    { title: "Apostille Services", price: "$245+", desc: "International document authentication (standard 7-10 days)" }
   ];
 
   const schema = {

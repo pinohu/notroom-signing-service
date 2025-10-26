@@ -106,10 +106,10 @@ const LoanSigningAgent = () => {
                 onClick={scrollToBooking}
                 variant="secondary"
               >
-                Schedule Signing - From $175
+                Schedule Signing - $200-$400
               </Button>
               <p className="text-sm opacity-80 mt-2">
-                Purchase/Refi $175 | Hybrid/e-Closing $225
+                Standard $225-275 | Complex $275-325 | Commercial $400+
               </p>
               <Button 
                 size="lg" 
@@ -269,16 +269,16 @@ const LoanSigningAgent = () => {
             <h2 className="text-3xl font-bold text-center mb-8">Transparent Pricing</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">Purchase/Refinance Closing</h3>
-                <div className="text-3xl font-bold mb-4">$175</div>
+                <h3 className="text-xl font-bold mb-4">Standard Refinance</h3>
+                <div className="text-3xl font-bold mb-4">$225-$275</div>
                 <div className="bg-muted/50 p-4 rounded text-sm space-y-2 mb-4">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">PA notary fee (per signature):</span>
-                    <span className="font-semibold">$5-15</span>
+                    <span className="text-muted-foreground">PA notary fees:</span>
+                    <span className="font-semibold">$10-50</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Signing agent service fee:</span>
-                    <span className="font-semibold">$160</span>
+                    <span className="text-muted-foreground">Agent + travel + printing:</span>
+                    <span className="font-semibold">$175-225</span>
                   </div>
                 </div>
                 <ul className="space-y-2 text-sm">
@@ -288,52 +288,55 @@ const LoanSigningAgent = () => {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                    <span>Travel to closing location</span>
+                    <span>Travel within service area</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                    <span>Same-day FedEx return shipping</span>
+                    <span>Scan-back service</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                    <span>$100K E&O insurance coverage</span>
+                    <span>$100K E&O insurance</span>
                   </li>
                 </ul>
               </Card>
 
               <Card className="p-6 border-primary border-2">
-                <h3 className="text-xl font-bold mb-4">Hybrid/e-Closing</h3>
-                <div className="text-3xl font-bold mb-4">$225</div>
+                <h3 className="text-xl font-bold mb-4">Purchase / Reverse Mortgage</h3>
+                <div className="text-3xl font-bold mb-4">$275-$325</div>
                 <div className="bg-muted/50 p-4 rounded text-sm space-y-2 mb-4">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">PA notary fee (per signature):</span>
-                    <span className="font-semibold">$5-15</span>
+                    <span className="text-muted-foreground">PA notary fees:</span>
+                    <span className="font-semibold">$15-75</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Digital closing service fee:</span>
-                    <span className="font-semibold">$210</span>
+                    <span className="text-muted-foreground">Agent + complexity premium:</span>
+                    <span className="font-semibold">$250-260</span>
                   </div>
                 </div>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                    <span>Electronic document handling</span>
+                    <span>Complex document handling</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                    <span>Hybrid wet/e-signing coordination</span>
+                    <span>Extended signing time</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                    <span>Digital scan-back service</span>
+                    <span>Multiple document packages</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                    <span>Platform integration support</span>
+                    <span>Priority handling & shipping</span>
                   </li>
                 </ul>
               </Card>
             </div>
+            <p className="text-center text-sm text-muted-foreground mt-6">
+              Commercial loans $400+. After-hours +$25-50. Weekend +$50-75. Same-day +$50-75.
+            </p>
           </div>
         </div>
       </section>

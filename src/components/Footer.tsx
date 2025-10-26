@@ -52,6 +52,11 @@ const Footer = () => {
                 </button>
               </li>
               <li>
+                <button onClick={() => navigateToPage("/services/healthcare-facility")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Healthcare Facilities
+                </button>
+              </li>
+              <li>
                 <button onClick={() => navigateToPage("/services/apostille")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
                   Apostille Services
                 </button>
