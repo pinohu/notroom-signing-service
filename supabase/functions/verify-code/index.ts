@@ -32,6 +32,30 @@ serve(async (req) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
       { auth: { persistSession: false } }
     );
+    
+    // SECURITY: Check for brute force attempts - count recent failed attempts
+    const tenMinutesAgo = new Date(Date.now() - 10 * 60 * 1000).toISOString();
+    const { data: recentAttempts, error: attemptsError } = await supabaseClient
+      .from("verification_codes")
+      .select("id")
+      .eq("email", email.toLowerCase().trim())
+      .eq("used", false)
+      .gte("created_at", tenMinutesAgo);
+    
+    // If more than 5 verification attempts in 10 minutes, rate limit
+    if (recentAttempts && recentAttempts.length > 5) {
+      logStep("Rate limit exceeded", { email, attempts: recentAttempts.length });
+      return new Response(
+        JSON.stringify({ 
+          valid: false, 
+          error: "Too many verification attempts. Please wait 10 minutes before trying again." 
+        }),
+        {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+          status: 429,
+        }
+      );
+    }
 
     // Find valid code
     const { data: verificationData, error: fetchError } = await supabaseClient

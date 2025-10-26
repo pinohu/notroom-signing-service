@@ -44,6 +44,41 @@ const handler = async (req: Request): Promise<Response> => {
 
     const bookingData: BookingData = await req.json();
     console.log('Received booking data:', bookingData);
+    
+    // SECURITY: Verify the booking exists and validate ownership
+    if (!bookingData.bookingId) {
+      console.error('Missing booking ID');
+      return new Response(
+        JSON.stringify({ success: false, error: 'Booking ID is required' }),
+        { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+      );
+    }
+    
+    // Verify booking exists in database
+    const { data: existingBooking, error: bookingError } = await supabase
+      .from('bookings')
+      .select('id, email, name')
+      .eq('id', bookingData.bookingId)
+      .single();
+    
+    if (bookingError || !existingBooking) {
+      console.error('Booking not found:', bookingError);
+      return new Response(
+        JSON.stringify({ success: false, error: 'Booking not found or access denied' }),
+        { status: 404, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+      );
+    }
+    
+    // Validate that the booking data matches
+    if (existingBooking.email.toLowerCase() !== bookingData.email.toLowerCase()) {
+      console.error('Email mismatch - possible unauthorized access attempt');
+      return new Response(
+        JSON.stringify({ success: false, error: 'Booking validation failed' }),
+        { status: 403, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+      );
+    }
+    
+    console.log('Booking validated successfully');
 
     // Map service to readable format
     const serviceMapping: Record<string, string> = {

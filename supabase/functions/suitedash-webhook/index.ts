@@ -23,6 +23,40 @@ interface SuitedashWebhookPayload {
   };
 }
 
+// Verify webhook signature to prevent unauthorized access
+const verifyWebhookSignature = async (req: Request, body: string): Promise<boolean> => {
+  const signature = req.headers.get('x-suitedash-signature') || req.headers.get('x-webhook-signature');
+  const webhookSecret = Deno.env.get('SUITEDASH_WEBHOOK_SECRET');
+  
+  // If no secret is configured, log warning but allow (backward compatibility during migration)
+  if (!webhookSecret) {
+    console.warn('⚠️ SUITEDASH_WEBHOOK_SECRET not configured - webhook is NOT secure!');
+    return true;
+  }
+  
+  if (!signature) {
+    console.error('Missing webhook signature header');
+    return false;
+  }
+  
+  // Create expected signature using HMAC-SHA256
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    'raw',
+    encoder.encode(webhookSecret),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  );
+  
+  const signatureBuffer = await crypto.subtle.sign('HMAC', key, encoder.encode(body));
+  const expectedSignature = Array.from(new Uint8Array(signatureBuffer))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+  
+  return signature === expectedSignature;
+};
+
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
@@ -30,11 +64,24 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Get raw body for signature verification
+    const bodyText = await req.text();
+    
+    // Verify webhook signature
+    const isValidSignature = await verifyWebhookSignature(req, bodyText);
+    if (!isValidSignature) {
+      console.error('Invalid webhook signature - possible unauthorized access attempt');
+      return new Response(
+        JSON.stringify({ success: false, error: 'Unauthorized - invalid signature' }),
+        { status: 401, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+      );
+    }
+    
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    const payload: SuitedashWebhookPayload = await req.json();
+    const payload: SuitedashWebhookPayload = JSON.parse(bodyText);
     console.log('Received Suitedash webhook:', payload);
 
     // Map Suitedash events to booking status updates

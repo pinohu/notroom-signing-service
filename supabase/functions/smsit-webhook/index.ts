@@ -11,13 +11,60 @@ const logStep = (step: string, details?: any) => {
   console.log(`[SMSIT-WEBHOOK] ${step}${detailsStr}`);
 };
 
+// Verify webhook signature to prevent unauthorized access
+const verifyWebhookSignature = async (req: Request, body: string): Promise<boolean> => {
+  const signature = req.headers.get('x-smsit-signature') || req.headers.get('x-webhook-signature');
+  const webhookSecret = Deno.env.get('SMSIT_WEBHOOK_SECRET');
+  
+  // If no secret is configured, log warning but allow (backward compatibility during migration)
+  if (!webhookSecret) {
+    console.warn('⚠️ SMSIT_WEBHOOK_SECRET not configured - webhook is NOT secure!');
+    return true;
+  }
+  
+  if (!signature) {
+    logStep('Missing webhook signature header');
+    return false;
+  }
+  
+  // Create expected signature using HMAC-SHA256
+  const encoder = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    'raw',
+    encoder.encode(webhookSecret),
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign']
+  );
+  
+  const signatureBuffer = await crypto.subtle.sign('HMAC', key, encoder.encode(body));
+  const expectedSignature = Array.from(new Uint8Array(signatureBuffer))
+    .map(b => b.toString(16).padStart(2, '0'))
+    .join('');
+  
+  return signature === expectedSignature;
+};
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    logStep("Webhook received");
+    // Get raw body for signature verification
+    const bodyText = await req.text();
+    
+    // Verify webhook signature
+    const isValidSignature = await verifyWebhookSignature(req, bodyText);
+    if (!isValidSignature) {
+      logStep('Invalid webhook signature - possible unauthorized access attempt');
+      return new Response(
+        JSON.stringify({ success: false, error: 'Unauthorized - invalid signature' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    logStep("Webhook received and verified");
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
@@ -27,7 +74,7 @@ serve(async (req) => {
     }
 
     const supabase = createClient(supabaseUrl, supabaseKey);
-    const webhookData = await req.json();
+    const webhookData = JSON.parse(bodyText);
 
     logStep("Webhook data", { type: webhookData.event_type });
 
