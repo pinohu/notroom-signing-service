@@ -38,3 +38,9 @@ verify_jwt = false
 
 [functions.smsit-post-service]
 verify_jwt = false
+
+[functions.smsit-retention]
+verify_jwt = false
+
+[functions.smsit-referral]
+verify_jwt = false

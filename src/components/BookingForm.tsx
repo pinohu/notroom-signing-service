@@ -106,6 +106,18 @@ const BookingForm = ({ community }: BookingFormProps) => {
   const turnstileRef = useRef<HTMLDivElement>(null);
   const [smsOptIn, setSmsOptIn] = useState(false);
   const [availableTimeSlots, setAvailableTimeSlots] = useState<string[]>([]);
+  const [referralCode, setReferralCode] = useState<string | null>(null);
+
+  // Detect referral code from URL on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const refCode = params.get('ref');
+    if (refCode) {
+      setReferralCode(refCode);
+      toast.success("🎁 Referral discount applied! You'll save $25 on this booking.");
+      console.log("Referral code detected:", refCode);
+    }
+  }, []);
 
   // Load Turnstile script and set up callback
   useEffect(() => {
@@ -492,6 +504,30 @@ const BookingForm = ({ community }: BookingFormProps) => {
             console.error("SMS sending error:", smsError);
           }
           // Don't fail the booking if SMS fails
+        }
+      }
+
+      // Process referral if referral code exists
+      if (referralCode) {
+        try {
+          await supabase.functions.invoke('smsit-referral', {
+            body: {
+              bookingId: bookingData.id,
+              referralCode: referralCode,
+              action: 'process_referral'
+            }
+          });
+          
+          if (import.meta.env.DEV) {
+            console.log("Referral processed successfully", { referralCode });
+          }
+          
+          toast.success("🎉 Referral rewards sent! You and your referrer both get $25 off!");
+        } catch (referralError) {
+          if (import.meta.env.DEV) {
+            console.error("Referral processing error:", referralError);
+          }
+          // Don't fail the booking if referral fails
         }
       }
 
