@@ -91,9 +91,6 @@ const Pricing = () => {
           {/* Loan Signing */}
           <Card className="hover:shadow-lg transition-shadow border-primary">
             <CardHeader>
-              <div className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full mb-2">
-                HIGHEST REVENUE
-              </div>
               <CardTitle className="flex items-center gap-2">
                 <Home className="h-6 w-6 text-primary" />
                 Loan Signing Agent
@@ -134,11 +131,8 @@ const Pricing = () => {
           </Card>
 
           {/* Healthcare Facility */}
-          <Card className="hover:shadow-lg transition-shadow border-amber-500">
+          <Card className="hover:shadow-lg transition-shadow">
             <CardHeader>
-              <div className="inline-block px-3 py-1 bg-amber-500 text-amber-950 text-xs font-semibold rounded-full mb-2">
-                PREMIUM SERVICE
-              </div>
               <CardTitle className="flex items-center gap-2">
                 <Heart className="h-6 w-6 text-primary" />
                 Healthcare Facilities
