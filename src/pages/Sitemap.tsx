@@ -78,12 +78,12 @@ const Sitemap = () => {
               <Card className="p-6">
                 <h2 className="text-2xl font-bold mb-4 text-primary">Service Areas - Counties</h2>
                 <ul className="space-y-2">
-                  <li><Link to="/areas/erie-county-pa" className="text-foreground hover:text-primary transition-colors">Erie County</Link></li>
-                  <li><Link to="/areas/crawford-county-pa" className="text-foreground hover:text-primary transition-colors">Crawford County</Link></li>
-                  <li><Link to="/areas/warren-county-pa" className="text-foreground hover:text-primary transition-colors">Warren County</Link></li>
-                  <li><Link to="/areas/mercer-county-pa" className="text-foreground hover:text-primary transition-colors">Mercer County</Link></li>
-                  <li><Link to="/areas/venango-county-pa" className="text-foreground hover:text-primary transition-colors">Venango County</Link></li>
-                  <li><Link to="/areas/statewide-online-pa" className="text-foreground hover:text-primary transition-colors">Statewide Online</Link></li>
+                  <li><Link to="/areas/erie-county" className="text-foreground hover:text-primary transition-colors">Erie County</Link></li>
+                  <li><Link to="/areas/crawford-county" className="text-foreground hover:text-primary transition-colors">Crawford County</Link></li>
+                  <li><Link to="/areas/warren-county" className="text-foreground hover:text-primary transition-colors">Warren County</Link></li>
+                  <li><Link to="/areas/mercer-county" className="text-foreground hover:text-primary transition-colors">Mercer County</Link></li>
+                  <li><Link to="/areas/venango-county" className="text-foreground hover:text-primary transition-colors">Venango County</Link></li>
+                  <li><Link to="/areas/statewide-online" className="text-foreground hover:text-primary transition-colors">Statewide Online</Link></li>
                 </ul>
               </Card>
 
@@ -125,7 +125,7 @@ const Sitemap = () => {
                   <li><Link to="/areas/guys-mills-pa" className="text-foreground hover:text-primary transition-colors">Guys Mills</Link></li>
                   <li><Link to="/areas/blooming-valley-pa" className="text-foreground hover:text-primary transition-colors">Blooming Valley</Link></li>
                   <li><Link to="/areas/harmonsburg-pa" className="text-foreground hover:text-primary transition-colors">Harmonsburg</Link></li>
-                  <li><Link to="/areas/venango-crawford-pa" className="text-foreground hover:text-primary transition-colors">Venango</Link></li>
+                  <li><Link to="/areas/venango-pa" className="text-foreground hover:text-primary transition-colors">Venango</Link></li>
                   <li><Link to="/areas/townville-pa" className="text-foreground hover:text-primary transition-colors">Townville</Link></li>
                   <li><Link to="/areas/conneautville-pa" className="text-foreground hover:text-primary transition-colors">Conneautville</Link></li>
                   <li><Link to="/areas/hydetown-pa" className="text-foreground hover:text-primary transition-colors">Hydetown</Link></li>
@@ -195,6 +195,15 @@ const Sitemap = () => {
                 <ul className="space-y-2">
                   <li><Link to="/privacy-policy" className="text-foreground hover:text-primary transition-colors">Privacy Policy</Link></li>
                   <li><Link to="/terms-of-service" className="text-foreground hover:text-primary transition-colors">Terms of Service</Link></li>
+                </ul>
+              </Card>
+
+              {/* Additional Pages */}
+              <Card className="p-6">
+                <h2 className="text-2xl font-bold mb-4 text-primary">Additional Pages</h2>
+                <ul className="space-y-2">
+                  <li><Link to="/payment-success" className="text-foreground hover:text-primary transition-colors">Payment Success</Link></li>
+                  <li><Link to="/payment-canceled" className="text-foreground hover:text-primary transition-colors">Payment Canceled</Link></li>
                 </ul>
               </Card>
             </div>
