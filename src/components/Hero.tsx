@@ -39,16 +39,16 @@ const Hero = () => {
             <strong className="block mt-2 text-primary-foreground">PA State Licensed • Background Checked • Fully Insured</strong>
           </p>
           
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Mobile optimized touch targets (min 44x44px) */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 px-4">
             <Button 
               size="lg" 
               variant="amber"
-              className="text-base sm:text-lg md:text-xl px-6 sm:px-8 py-6 sm:py-7 h-auto shadow-2xl font-bold w-full sm:w-auto"
+              className="text-base sm:text-lg md:text-xl px-6 sm:px-8 py-7 sm:py-8 min-h-[56px] h-auto shadow-2xl font-bold w-full sm:w-auto touch-manipulation"
               onClick={() => {
                 document.getElementById("service-quiz")?.scrollIntoView({ behavior: "smooth" });
               }}
-              aria-label="Take service quiz"
+              aria-label="Take service quiz to find the right service"
             >
               <div className="flex flex-col items-center gap-1">
                 <span>🎯 Find Your Service</span>
@@ -58,9 +58,9 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="amberOutline"
-              className="text-base sm:text-lg md:text-xl px-6 sm:px-8 py-6 sm:py-7 h-auto font-bold w-full sm:w-auto"
+              className="text-base sm:text-lg md:text-xl px-6 sm:px-8 py-7 sm:py-8 min-h-[56px] h-auto font-bold w-full sm:w-auto touch-manipulation"
               onClick={scrollToBooking}
-              aria-label="Book a service"
+              aria-label="Book a service starting from $60"
             >
               <div className="flex flex-col items-center gap-1">
                 <span>📅 Book Now</span>
@@ -96,23 +96,23 @@ const Hero = () => {
             <span>⚡ Same-Day Available</span>
           </div>
           
-          {/* Contact Info */}
+          {/* Contact Info - Enhanced touch targets for mobile */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center text-primary-foreground/80 mt-8">
             <a 
               href="mailto:support@notroom.com" 
-              className="flex items-center gap-2 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground rounded px-2 py-1"
+              className="flex items-center gap-2 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground rounded min-h-[44px] px-3 py-2 touch-manipulation"
               aria-label="Email us at support@notroom.com"
             >
-              <Mail className="w-5 h-5" />
+              <Mail className="w-5 h-5" aria-hidden="true" />
               <span className="text-sm sm:text-base">support@notroom.com</span>
             </a>
             <a 
               href="tel:814-480-0989" 
-              className="flex items-center gap-2 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground rounded px-2 py-1"
+              className="flex items-center gap-2 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary-foreground rounded min-h-[44px] px-3 py-2 touch-manipulation"
               aria-label="Call us at 814-480-0989"
             >
-              <Phone className="w-5 h-5" />
-              <span className="text-sm sm:text-base">(814) 480-0989</span>
+              <Phone className="w-5 h-5" aria-hidden="true" />
+              <span className="text-sm sm:text-base font-semibold">(814) 480-0989</span>
             </a>
           </div>
         </div>

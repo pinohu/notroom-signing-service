@@ -27,22 +27,25 @@ const FinalCTA = () => {
             Professional notary, business filing, and compliance services available now in Erie, PA. Remote, mobile, or concierge—we're here to help.
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Mobile optimized with urgency */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <Button 
               size="lg" 
               variant="amber"
-              className="text-lg px-8 py-7 h-auto shadow-2xl"
+              className="text-base sm:text-lg px-6 sm:px-8 py-7 sm:py-8 min-h-[56px] h-auto shadow-2xl font-bold w-full sm:w-auto touch-manipulation hover-lift"
               onClick={scrollToBooking}
               aria-label="Book any service now"
             >
-              📅 Book Any Service Now
+              <div className="flex flex-col sm:flex-row items-center gap-2">
+                <span>📅 Book Any Service Now</span>
+                <span className="text-xs sm:text-sm font-normal opacity-90 sm:hidden">Same-day available</span>
+              </div>
             </Button>
             
             <Button 
               size="lg" 
               variant="amberOutline"
-              className="text-lg px-8 py-7 h-auto"
+              className="text-base sm:text-lg px-6 sm:px-8 py-7 sm:py-8 min-h-[56px] h-auto font-bold w-full sm:w-auto touch-manipulation"
               onClick={handlePhoneClick}
               aria-label="Call us at 814-480-0989"
             >
@@ -50,32 +53,32 @@ const FinalCTA = () => {
             </Button>
           </div>
 
-          {/* Trust Line */}
-          <div className="flex flex-wrap justify-center gap-6 text-primary-foreground/90 mb-8" role="list" aria-label="Trust indicators">
-            <div className="flex items-center gap-2" role="listitem">
+          {/* Enhanced Trust Indicators with Urgency */}
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-primary-foreground/90 mb-8" role="list" aria-label="Trust indicators">
+            <div className="flex items-center gap-2 bg-background/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full" role="listitem">
               <span className="text-[hsl(var(--success-green))] text-xl" aria-hidden="true">✓</span>
-              <span className="font-medium">6 Services Available</span>
+              <span className="font-medium text-sm sm:text-base">15+ Services</span>
             </div>
-            <div className="flex items-center gap-2" role="listitem">
+            <div className="flex items-center gap-2 bg-background/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full" role="listitem">
               <span className="text-[hsl(var(--success-green))] text-xl" aria-hidden="true">✓</span>
-              <span className="font-medium">Fully Licensed</span>
+              <span className="font-medium text-sm sm:text-base">PA Licensed</span>
             </div>
-            <div className="flex items-center gap-2" role="listitem">
-              <span className="text-[hsl(var(--success-green))] text-xl" aria-hidden="true">✓</span>
-              <span className="font-medium">Transparent Pricing</span>
+            <div className="flex items-center gap-2 bg-background/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full" role="listitem">
+              <span className="text-[hsl(var(--success-green))] text-xl" aria-hidden="true">⚡</span>
+              <span className="font-medium text-sm sm:text-base">Same-Day Available</span>
             </div>
           </div>
 
-          {/* Contact Alternative */}
-          <div className="text-primary-foreground/80 text-lg">
+          {/* Contact Alternative - Enhanced mobile touch target */}
+          <div className="text-primary-foreground/80 text-base sm:text-lg text-center px-4">
             Questions about which service you need?{" "}
             <a 
               href="tel:814-480-0989" 
-              className="inline-flex items-center gap-2 text-primary-foreground font-semibold hover:text-amber transition-colors underline underline-offset-4"
+              className="inline-flex items-center gap-2 text-primary-foreground font-semibold hover:text-[hsl(var(--urgency-amber))] transition-colors underline underline-offset-4 min-h-[44px] py-2 touch-manipulation"
               aria-label="Call us at 814-480-0989 for questions"
             >
               <Phone className="w-5 h-5" aria-hidden="true" />
-              Call us at (814) 480-0989
+              <span>Call us at (814) 480-0989</span>
             </a>
           </div>
         </div>

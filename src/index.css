@@ -213,4 +213,16 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
   }
+  
+  /* Mobile UX: Touch manipulation for better mobile performance */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Mobile UX: Minimum touch target sizes (WCAG 2.1 AA) */
+  button, a[role="button"], input[type="submit"], input[type="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }

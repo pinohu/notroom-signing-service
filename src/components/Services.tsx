@@ -392,9 +392,9 @@ const Services = memo(() => {
               ))}
             </ul>
 
-            {/* CTA Button */}
+            {/* CTA Button - Mobile optimized touch target */}
             <Button 
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 shadow-md hover:shadow-lg transition-all"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 min-h-[56px] shadow-md hover:shadow-lg transition-all touch-manipulation"
               onClick={() => handleServiceClick(service.link)}
               aria-label={`Learn more about ${service.title}`}
             >
@@ -466,20 +466,33 @@ const Services = memo(() => {
           <p className="text-muted-foreground mb-4">
             Need help choosing? View our complete pricing guide or use our calculator.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
             <Button 
               variant="outline" 
               size="lg"
+              className="w-full sm:w-auto min-h-[48px] touch-manipulation"
               onClick={() => navigate("/pricing")}
+              aria-label="View complete pricing guide"
             >
               View All Pricing
             </Button>
             <Button 
               variant="outline" 
               size="lg"
+              className="w-full sm:w-auto min-h-[48px] touch-manipulation"
               onClick={() => navigate("/calculator")}
+              aria-label="Use interactive price calculator"
             >
               Calculate Your Price
+            </Button>
+            <Button 
+              variant="amber" 
+              size="lg"
+              className="w-full sm:w-auto min-h-[48px] font-bold touch-manipulation hover-lift"
+              onClick={scrollToBooking}
+              aria-label="Book a service now"
+            >
+              📅 Book a Service
             </Button>
           </div>
         </div>

@@ -61,20 +61,23 @@ const Layout = ({ children }: LayoutProps) => {
       <Footer />
       <BackToTop />
       
-      {/* Mobile Sticky CTA - WCAG Compliant */}
+      {/* Mobile Sticky CTA - Enhanced with urgency and optimal touch target */}
       <div 
-        className="fixed bottom-0 left-0 right-0 p-3 bg-background/98 backdrop-blur-md border-t border-border lg:hidden z-50 animate-slide-up shadow-2xl max-w-full"
+        className="fixed bottom-0 left-0 right-0 p-3 bg-background/95 backdrop-blur-sm border-t border-border lg:hidden z-50 shadow-2xl max-w-full"
         role="region"
         aria-label="Quick booking action"
       >
         <Button 
           variant="amber"
-          className="w-full shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          className="w-full shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2 font-bold py-6 min-h-[56px] touch-manipulation"
           size="lg"
           onClick={scrollToBooking}
-          aria-label="Book notary appointment starting from $60"
+          aria-label="Book a service now - starting from $60"
         >
-          📅 Book Now • From $60
+          <span className="flex items-center justify-center gap-2">
+            📅 Book Now - From $60
+            <span className="text-xs font-normal opacity-90">• Same-day available</span>
+          </span>
         </Button>
       </div>
     </div>
