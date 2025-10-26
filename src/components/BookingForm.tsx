@@ -93,11 +93,14 @@ const BookingForm = ({ community }: BookingFormProps) => {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [showEmailVerification, setShowEmailVerification] = useState(false);
   const [emailVerified, setEmailVerified] = useState(false);
+  const [turnstileLoaded, setTurnstileLoaded] = useState(false);
+  const turnstileRef = useRef<HTMLDivElement>(null);
 
   // Load Turnstile script and set up callback
   useEffect(() => {
     // Define global callback for Turnstile
     (window as any).onTurnstileSuccess = (token: string) => {
+      console.log("Turnstile token received");
       setTurnstileToken(token);
     };
 
@@ -107,13 +110,41 @@ const BookingForm = ({ community }: BookingFormProps) => {
       script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
       script.async = true;
       script.defer = true;
+      script.onload = () => {
+        console.log("Turnstile script loaded");
+        setTurnstileLoaded(true);
+      };
+      script.onerror = () => {
+        console.error("Failed to load Turnstile script");
+      };
       document.head.appendChild(script);
+    } else {
+      setTurnstileLoaded(true);
     }
 
     return () => {
       delete (window as any).onTurnstileSuccess;
     };
   }, []);
+
+  // Render Turnstile widget when on step 3 and script is loaded
+  useEffect(() => {
+    if (currentStep === 3 && turnstileLoaded && turnstileRef.current && !turnstileToken) {
+      // Check if widget already exists
+      const existingWidget = turnstileRef.current.querySelector('iframe');
+      if (!existingWidget && (window as any).turnstile) {
+        console.log("Rendering Turnstile widget");
+        (window as any).turnstile.render(turnstileRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          callback: (token: string) => {
+            console.log("Turnstile verification successful");
+            setTurnstileToken(token);
+          },
+          theme: 'auto',
+        });
+      }
+    }
+  }, [currentStep, turnstileLoaded, turnstileToken]);
 
   const canProceedFromStep1 = formData.name && formData.email && formData.phone;
   const canProceedFromStep2 = formData.service && (formData.service !== "mobile" || formData.location_address);
@@ -441,8 +472,12 @@ const BookingForm = ({ community }: BookingFormProps) => {
     });
 
     // Reset Turnstile widget
-    if ((window as any).turnstile) {
-      (window as any).turnstile.reset();
+    if ((window as any).turnstile && turnstileRef.current) {
+      try {
+        (window as any).turnstile.remove(turnstileRef.current);
+      } catch (e) {
+        console.log("Turnstile widget removal failed:", e);
+      }
     }
   };
 
@@ -853,13 +888,18 @@ const BookingForm = ({ community }: BookingFormProps) => {
                 />
 
                 {/* Cloudflare Turnstile CAPTCHA */}
-                <div className="flex justify-center">
-                  <div
-                    className="cf-turnstile"
-                    data-sitekey={TURNSTILE_SITE_KEY}
-                    data-callback="onTurnstileSuccess"
-                    data-theme="auto"
-                  ></div>
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium">Security Verification</Label>
+                  <div className="flex justify-center p-4 bg-muted/30 rounded-lg border">
+                    {!turnstileLoaded ? (
+                      <div className="text-sm text-muted-foreground">Loading security verification...</div>
+                    ) : (
+                      <div ref={turnstileRef} className="cf-turnstile"></div>
+                    )}
+                  </div>
+                  {turnstileToken && (
+                    <p className="text-xs text-success text-center">✓ Security verification completed</p>
+                  )}
                 </div>
 
                 <div className="flex gap-4">
