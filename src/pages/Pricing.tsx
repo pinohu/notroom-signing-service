@@ -1,8 +1,8 @@
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { CheckCircle } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle2, Laptop, Home, Car, Building, FileText, Heart, Shield, Clock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Pricing = () => {
@@ -11,450 +11,507 @@ const Pricing = () => {
   return (
     <Layout>
       <SEO
-        title="Pricing - Transparent Notary Service Costs"
-        description="Clear, upfront pricing for notary services in Erie, PA. Remote online notary $50, mobile notary $50 + mileage. No hidden fees. View all pricing."
-        keywords="notary prices erie pa, notary cost, mobile notary pricing, online notary fees"
+        title="Professional Notary Services Pricing - Premium & Accessible"
+        description="Comprehensive notary service pricing from $15 to $400+. Remote online notarization starting at $75, premium healthcare facility visits $150-240, loan signings $200-400. Transparent pricing for all services."
+        keywords="notary prices erie pa, mobile notary pricing, healthcare notary cost, loan signing fees, online notary pricing, pa notary rates"
         canonical="https://notroom.com/pricing"
       />
 
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 bg-gradient-to-b from-background to-muted/20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Simple, Transparent Pricing</h1>
-            <p className="text-xl opacity-90">No hidden fees. No surprises. Just honest pricing for quality notary services.</p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Professional Notary Services - Premium & Accessible
+            </h1>
+            <p className="text-xl text-muted-foreground mb-4">
+              From convenient online notarization to specialized facility visits, we serve all your needs with transparent pricing.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-primary" />
+                <span>24/7 Online Service</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-primary" />
+                <span>Mobile to Any Location</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-primary" />
+                <span>Healthcare & Facilities</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Main Services Grid */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Remote Online Notary</h3>
-              <div className="text-4xl font-bold mb-4">$50</div>
-              <p className="text-muted-foreground mb-2">Per document</p>
-              <p className="text-sm text-muted-foreground mb-6">$5 PA notary fee + $45 technology fee</p>
-              <ul className="space-y-3 mb-6">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+          {/* Remote Online Notary */}
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Laptop className="h-6 w-6 text-primary" />
+                Remote Online Notary (RON)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold mb-2">Starting at $75</div>
+              <p className="text-sm text-muted-foreground mb-4">Complex documents up to $125</p>
+              <ul className="space-y-2 mb-6">
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Available by appointment</span>
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Available 24/7 from anywhere</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Complete in 5 minutes</span>
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Estate planning, POAs, affidavits</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Legally valid in all 50 states</span>
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Business & financial documents</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Secure video recording included</span>
                 </li>
               </ul>
-              <Button className="w-full" onClick={() => navigate("/services/remote-online-notary")}>Learn More</Button>
+              <Button 
+                className="w-full" 
+                onClick={() => navigate('/services/remote-online-notary')}
+              >
+                Learn More
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Loan Signing */}
+          <Card className="hover:shadow-lg transition-shadow border-primary">
+            <CardHeader>
+              <div className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full mb-2">
+                HIGHEST REVENUE
+              </div>
+              <CardTitle className="flex items-center gap-2">
+                <Home className="h-6 w-6 text-primary" />
+                Loan Signing Agent
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold mb-2">$200-$400</div>
+              <p className="text-sm text-muted-foreground mb-4">Varies by closing type & complexity</p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Refinance: $225-275</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Purchase closing: $275</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Reverse mortgage: $325</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Commercial: $400+</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Printing, scan-back & travel included</span>
+                </li>
+              </ul>
+              <Button 
+                className="w-full" 
+                onClick={() => navigate('/services/loan-signing-agent')}
+              >
+                Learn More
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Healthcare Facility */}
+          <Card className="hover:shadow-lg transition-shadow border-amber-500">
+            <CardHeader>
+              <div className="inline-block px-3 py-1 bg-amber-500 text-amber-950 text-xs font-semibold rounded-full mb-2">
+                PREMIUM SERVICE
+              </div>
+              <CardTitle className="flex items-center gap-2">
+                <Heart className="h-6 w-6 text-primary" />
+                Healthcare Facilities
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold mb-2">$150-$240</div>
+              <p className="text-sm text-muted-foreground mb-4">Hospital, nursing home, hospice</p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Hospital bedside service</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Nursing home visits</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Hospice & assisted living</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>24/7 emergency available</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Compassionate, experienced</span>
+                </li>
+              </ul>
+              <Button 
+                className="w-full" 
+                onClick={() => navigate('/services/healthcare-facility')}
+              >
+                Learn More
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Mobile Notary */}
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Car className="h-6 w-6 text-primary" />
+                Mobile Notary
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold mb-4">$125 + mileage</div>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>We come to your location</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>$1.50 per mile from Erie</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Same-day available</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Evening & weekend service</span>
+                </li>
+              </ul>
+              <Button 
+                className="w-full" 
+                onClick={() => navigate('/services/mobile-notary')}
+              >
+                Learn More
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Vehicle Title */}
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Car className="h-6 w-6 text-primary" />
+                Vehicle Title Transfer
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold mb-2">$35-$105</div>
+              <p className="text-sm text-muted-foreground mb-4">Office $35 • Mobile $60-105</p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>PA title notarization required</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Mobile service available</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Bill of sale included</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Fast & convenient</span>
+                </li>
+              </ul>
+              <Button 
+                className="w-full" 
+                onClick={() => navigate('/services/vehicle-title-transfer')}
+              >
+                Learn More
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Apostille Services */}
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="h-6 w-6 text-primary" />
+                Apostille Services
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold mb-4">$245+</div>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Standard (7-10 days) $245</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Expedited (2-3 days) $395</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>Full-chain authentication $495</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
+                  <span>International document authentication</span>
+                </li>
+              </ul>
+              <Button 
+                className="w-full" 
+                onClick={() => navigate('/services/apostille')}
+              >
+                Learn More
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* More services can be added here */}
+          
+          </div>
+        </div>
+      </section>
+
+      {/* Premium Services Note */}
+      <section className="py-12 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <Card className="max-w-4xl mx-auto border-primary/20">
+            <CardContent className="pt-6">
+              <div className="flex items-start gap-4">
+                <Clock className="h-8 w-8 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-2xl font-semibold mb-3">Additional Premium Fees</h3>
+                  <div className="grid md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="font-semibold mb-2">After-Hours Service:</p>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>• Evening (6pm-9pm): +$40</li>
+                        <li>• Late night (9pm-12am): +$85</li>
+                        <li>• Overnight: +$150</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-2">Weekend & Holiday:</p>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>• Saturday: +$65</li>
+                        <li>• Sunday: +$90</li>
+                        <li>• Major holiday: +$125</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-2">Rush Service:</p>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>• Same-day: +$65</li>
+                        <li>• 2-hour rush: +$100</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-semibold mb-2">Travel Fees:</p>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>• 0-10 miles: $30</li>
+                        <li>• 11-20 miles: $50</li>
+                        <li>• 21-30 miles: $70</li>
+                        <li>• 30+ miles: $70 + $2/mile</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Additional Services Grid */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Additional Professional Services</h2>
+          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="text-lg">I-9 Verification</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold mb-2">$85+</div>
+                <p className="text-sm text-muted-foreground mb-4">In-person or remote</p>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  onClick={() => navigate('/services/i9-verification')}
+                >
+                  Learn More
+                </Button>
+              </CardContent>
             </Card>
 
-            <Card className="p-8 border-primary border-2">
-              <h3 className="text-2xl font-bold mb-2">Mobile Notary</h3>
-              <div className="text-4xl font-bold mb-4">$50 + mileage</div>
-              <p className="text-muted-foreground mb-2">Starting price</p>
-              <p className="text-sm text-muted-foreground mb-6">$5 PA notary + $45 service + $1.50/mile from Erie</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">We come to you</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Same-day available</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Erie County coverage</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/mobile-notary")}>Learn More</Button>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="text-lg">Registered Office</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold mb-2">$149/yr</div>
+                <p className="text-sm text-muted-foreground mb-4">PA business address</p>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  onClick={() => navigate('/services/registered-office')}
+                >
+                  Learn More
+                </Button>
+              </CardContent>
             </Card>
 
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Loan Signing</h3>
-              <div className="text-4xl font-bold mb-4">$175</div>
-              <p className="text-muted-foreground mb-2">Base price + travel</p>
-              <p className="text-sm text-muted-foreground mb-6">$5 PA notary + $170 signing agent service</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">NNA certified</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">$100K E&O insurance</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Print & scan included</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/loan-signing-agent")}>Learn More</Button>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="text-lg">Certified Copies</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold mb-2">$20+</div>
+                <p className="text-sm text-muted-foreground mb-4">Office, mail, or mobile</p>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  onClick={() => navigate('/services/certified-copies')}
+                >
+                  Learn More
+                </Button>
+              </CardContent>
             </Card>
 
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Apostille Services</h3>
-              <div className="text-4xl font-bold mb-4">$245+</div>
-              <p className="text-muted-foreground mb-2">Standard processing</p>
-              <p className="text-sm text-muted-foreground mb-6">$5 PA notary + $240+ processing & coordination</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Standard (7-10 days) $245</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Expedited (2-3 days) $395</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Full-chain authentication $495</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/apostille")}>Learn More</Button>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="text-lg">Document Preparation</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold mb-2">$100+</div>
+                <p className="text-sm text-muted-foreground mb-4">Professional prep services</p>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  onClick={() => navigate('/services/document-preparation')}
+                >
+                  Learn More
+                </Button>
+              </CardContent>
             </Card>
 
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">I-9 Verification</h3>
-              <div className="text-4xl font-bold mb-4">$85 + mileage</div>
-              <p className="text-muted-foreground mb-2">In-person verification</p>
-              <p className="text-sm text-muted-foreground mb-6">$85 base + $1.50/mile from Erie • Remote option $125</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">In-person: $85 + travel costs</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Remote verification: $125 flat</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Volume discounts available</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/i9-verification")}>Learn More</Button>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="text-lg">Fingerprinting</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold mb-2">$35+</div>
+                <p className="text-sm text-muted-foreground mb-4">FBI-approved service</p>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  onClick={() => navigate('/services/fingerprinting')}
+                >
+                  Learn More
+                </Button>
+              </CardContent>
             </Card>
 
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Registered Office</h3>
-              <div className="text-4xl font-bold mb-4">$149/yr</div>
-              <p className="text-muted-foreground mb-2">Annual registered agent</p>
-              <p className="text-sm text-muted-foreground mb-6">PA commercial registered office provider</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">PA street address provided</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Mail forwarding included</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">LLC formation packages available</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/registered-office")}>Learn More</Button>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle className="text-lg">Professional Witness</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold mb-2">$60+</div>
+                <p className="text-sm text-muted-foreground mb-4">Neutral third-party</p>
+                <Button 
+                  variant="outline" 
+                  className="w-full" 
+                  onClick={() => navigate('/services/witness-service')}
+                >
+                  Learn More
+                </Button>
+              </CardContent>
             </Card>
 
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Certified Copies</h3>
-              <div className="text-4xl font-bold mb-4">$20+</div>
-              <p className="text-muted-foreground mb-2">Per document</p>
-              <p className="text-sm text-muted-foreground mb-6">At office $20 • By mail $25 • Mobile $20 + travel</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">At office: $20/doc</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">By mail: $25/doc (includes shipping)</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Mobile: $20/doc + $1.50/mile</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/certified-copies")}>Learn More</Button>
-            </Card>
+          </div>
+        </div>
+      </section>
 
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Document Preparation</h3>
-              <div className="text-4xl font-bold mb-4">$100+</div>
-              <p className="text-muted-foreground mb-2">Varies by complexity</p>
-              <p className="text-sm text-muted-foreground mb-6">At office/remote $100 • Mobile $100 + travel</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">At office or remote: $100+</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Mobile service: $100 + $1.50/mile</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Quick turnaround (1-2 days)</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/document-preparation")}>Learn More</Button>
-            </Card>
-
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Fingerprinting</h3>
-              <div className="text-4xl font-bold mb-4">$35 + travel</div>
-              <p className="text-muted-foreground mb-2">Mobile service</p>
-              <p className="text-sm text-muted-foreground mb-6">$35 base + $1.50/mile from Erie</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">FBI-approved equipment</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Teaching licenses, adoptions</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Mobile service available</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/fingerprinting")}>Learn More</Button>
-            </Card>
-
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Professional Witness</h3>
-              <div className="text-4xl font-bold mb-4">$60 + travel</div>
-              <p className="text-muted-foreground mb-2">Mobile service</p>
-              <p className="text-sm text-muted-foreground mb-6">$60 base + $1.50/mile from Erie</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Neutral third-party witness</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Private agreements & contracts</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Alternative to notarization</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/witness-service")}>Learn More</Button>
-            </Card>
-
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Passport Photos</h3>
-              <div className="text-4xl font-bold mb-4">$15+</div>
-              <p className="text-muted-foreground mb-2">Per session</p>
-              <p className="text-sm text-muted-foreground mb-6">At office $15 • Mobile $15 + travel</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">At office: $15</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Mobile service: $15 + $1.50/mile</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Government-compliant photos</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/passport-photos")}>Learn More</Button>
-            </Card>
-
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Translation Certification</h3>
-              <div className="text-4xl font-bold mb-4">$35+</div>
-              <p className="text-muted-foreground mb-2">Per page • Remote service</p>
-              <p className="text-sm text-muted-foreground mb-6">Mail or email delivery</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Remote service: $35/page</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Immigration & legal documents</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Notarized certification included</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/translation-certification")}>Learn More</Button>
-            </Card>
-
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Vehicle Title Transfer</h3>
-              <div className="text-4xl font-bold mb-4">$40 + travel</div>
-              <p className="text-muted-foreground mb-2">Mobile service available</p>
-              <p className="text-sm text-muted-foreground mb-6">$40 base + $1.50/mile from Erie</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">PA title notarization</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Mobile service available</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Fast & convenient</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/vehicle-title-transfer")}>Learn More</Button>
-            </Card>
-
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Virtual Mailbox</h3>
-              <div className="text-4xl font-bold mb-4">$50/mo</div>
-              <p className="text-muted-foreground mb-2">Monthly service</p>
-              <p className="text-sm text-muted-foreground mb-6">Professional business address</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Mail scanning & forwarding</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">PA street address</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Package handling included</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/virtual-mailbox")}>Learn More</Button>
-            </Card>
-
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">UCC Filing</h3>
-              <div className="text-4xl font-bold mb-4">$125</div>
-              <p className="text-muted-foreground mb-2">Filing service</p>
-              <p className="text-sm text-muted-foreground mb-6">PA UCC-1 filing assistance</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">UCC-1 preparation</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">State filing included</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Filing confirmation</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/ucc-filing")}>Learn More</Button>
-            </Card>
-
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-2">Document Retrieval</h3>
-              <div className="text-4xl font-bold mb-4">$75+</div>
-              <p className="text-muted-foreground mb-2">Plus government fees</p>
-              <p className="text-sm text-muted-foreground mb-6">Professional retrieval services</p>
-              <ul className="space-y-3 mb-6">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Court documents & records</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Vital records retrieval</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                  <span className="text-sm">Fast turnaround</span>
-                </li>
-              </ul>
-              <Button className="w-full" onClick={() => navigate("/services/document-retrieval")}>Learn More</Button>
+      {/* Fee Disclosure */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Pennsylvania Law Fee Disclosure</h2>
+            <Card>
+              <CardContent className="pt-6">
+                <div className="prose prose-sm max-w-none space-y-4 text-muted-foreground">
+                  <p>
+                    <strong>Pennsylvania Notary Fee Law (57 Pa. Code § 307.1):</strong> The maximum notary fee in Pennsylvania is 
+                    <strong> $5 per notarial act</strong>. All prices listed above are structured to comply with this regulation:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li>$5 is the notarial act fee (signature acknowledgment, jurat, or oath)</li>
+                    <li>Additional charges are for legitimate non-notarial services including:
+                      <ul className="list-circle pl-6 mt-2 space-y-1">
+                        <li>Travel and mileage ($1.50/mile round trip)</li>
+                        <li>Technology platform fees (RON service)</li>
+                        <li>Professional service fees (signing agent expertise, document handling)</li>
+                        <li>Time-based premiums (after-hours, weekends, holidays)</li>
+                        <li>Facility access fees (hospitals, nursing homes, correctional facilities)</li>
+                        <li>Document printing, scanning, and coordination</li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p className="text-xs mt-4">
+                    All pricing is transparent and complies with Pennsylvania notary regulations. Services include both 
+                    the notarial act and valuable professional services that justify the total fee.
+                  </p>
+                </div>
+              </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
 
-          {/* Fee Disclosure */}
-          <div className="max-w-4xl mx-auto mt-12">
-            <Card className="p-8 bg-muted/30">
-              <h3 className="text-xl font-bold mb-4 text-center">Pennsylvania Notary Fee Regulations</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Pennsylvania law regulates notary fees to protect consumers. Here's how our pricing complies with state law:
-              </p>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>RON Services:</strong> $5 per signature (maximum allowed by PA law) + $45 technology platform fee for secure video infrastructure, scheduling system, document storage, and administrative services. Total: $50 per document.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Mobile Notary:</strong> $5 per signature (as allowed by PA law) + $45 service fee + $1.50 per mile round-trip travel from 6238 Cobblestone Dr, Erie, PA 16509. Minimum: $50 + mileage.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Loan Signing Agent:</strong> $5 notary fee per signature + $170 signing agent service fee (covering document review, printing, travel, scanning, and overnight return shipping). Base: $175 + $1.50/mile if mobile service requested.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>I-9 Verification:</strong> In-person verification $85 base + $1.50/mile round-trip travel from Erie. Remote verification $125 flat (no travel). E-Verify coordination and volume discounts available.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Apostille Services:</strong> $5 PA notary fee + $240+ processing & coordination (includes PA Dept of State fees). Standard (7-10 days) $245, Expedited (2-3 days) $395, Full-chain authentication $495.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Certified Copies:</strong> $20 per document for official notary certification. Same-day service available. Accepted for legal, immigration, and business purposes.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Document Preparation:</strong> Starting at $100, varies by complexity. Professional formatting of affidavits, contracts, agreements, and legal forms. Not legal advice.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Fingerprinting:</strong> $35 base + $1.50/mile round-trip travel. FBI-approved electronic fingerprinting for teaching licenses, adoptions, background checks.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Professional Witness:</strong> $60 base + $1.50/mile round-trip travel. Neutral third-party witness for private agreements and contracts not requiring notarization.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Passport Photos:</strong> $15 per session. Government-compliant passport and visa photos with digital and print copies.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Translation Certification:</strong> Starting at $35 per page. Notarized certification of translations for immigration and legal documents.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Vehicle Title Transfer:</strong> $40 base + $1.50/mile round-trip travel. PA title notarization with mobile service available.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Virtual Mailbox:</strong> $50 per month. Professional business address with mail scanning, forwarding, and package handling.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>UCC Filing:</strong> $125 flat fee including state filing. UCC-1 preparation and submission with filing confirmation.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle className="w-4 h-4 text-success flex-shrink-0 mt-0.5" />
-                  <span><strong>Document Retrieval:</strong> $75 base + government fees. Professional retrieval of court documents, vital records, and official documents from government offices.</span>
-                </li>
-              </ul>
-              <p className="text-xs text-muted-foreground mt-4 text-center">
-                All pricing complies with 57 Pa.C.S. Chapter 3 (Pennsylvania Revised Uniform Law on Notarial Acts)
-              </p>
-            </Card>
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              Ready to Get Started?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Book any service online or call us for a custom quote for your specific needs.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" onClick={() => navigate('/')}>
+                Book Online Now
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => window.location.href = 'tel:8144800989'}>
+                Call (814) 480-0989
+              </Button>
+            </div>
           </div>
         </div>
       </section>

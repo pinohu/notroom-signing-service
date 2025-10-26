@@ -99,7 +99,7 @@ const PricingCalculator = () => {
       } else {
         breakdown.baseNotaryFee = PRICING.LOAN_SIGNING.notaryFee;
         breakdown.agentFee = PRICING.LOAN_SIGNING.agentFee;
-        breakdown.total = PRICING.LOAN_SIGNING.total;
+        breakdown.total = PRICING.LOAN_SIGNING.baseTotal;
       }
     } else if (service === "i9") {
       if (urgency === "inPerson") {

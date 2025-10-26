@@ -1,11 +1,13 @@
-// Pennsylvania Law Compliant Pricing Structure
+// Pennsylvania Law Compliant Pricing Structure - Profit Optimized
 export const PRICING = {
   RON: {
-    display: "$60",
+    display: "$75",
     notaryFee: 5,
-    technologyFee: 55,
-    total: 60,
-    description: "$5 PA notary fee + $55 technology fee"
+    technologyFee: 70,
+    total: 75,
+    description: "$5 PA notary fee + $70 technology fee",
+    premium: 125,
+    premiumDescription: "Complex documents"
   },
   MOBILE: {
     display: "$125 + mileage",
@@ -17,20 +19,32 @@ export const PRICING = {
     description: "$5 PA notary + $120 service + $1.50/mile"
   },
   LOAN_SIGNING: {
-    display: "$175",
+    display: "$200-350",
     notaryFee: 5,
-    agentFee: 170,
-    total: 175,
-    description: "$5 PA notary + $170 signing agent service"
+    agentFee: 195,
+    baseTotal: 200,
+    description: "$5 PA notary + $195+ signing agent service",
+    refinanceStandard: 225,
+    refinanceComplex: 275,
+    purchaseClosing: 275,
+    sellerPackage: 225,
+    heloc: 250,
+    reverseMortgage: 325,
+    commercial: 400,
+    rush: 350
   },
   LOAN_SIGNING_MOBILE: {
-    display: "$175 + mileage",
+    display: "$200+ + mileage",
     notaryFee: 5,
-    agentFee: 170,
-    baseTotal: 175,
+    agentFee: 195,
+    baseTotal: 200,
     mileageRate: 1.50,
     originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
-    description: "$5 PA notary + $170 agent service + $1.50/mile"
+    description: "$5 PA notary + signing service + travel + printing",
+    afterHours: 50,
+    weekend: 75,
+    holiday: 150,
+    scanBack: 35
   },
   APOSTILLE: {
     display: "$245+",
@@ -176,6 +190,61 @@ export const PRICING = {
     display: "$75+",
     baseFee: 75,
     description: "Document retrieval from government offices"
+  },
+  HEALTHCARE_FACILITY: {
+    display: "$150-240",
+    notaryFee: 5,
+    facilityFee: 100,
+    baseTotal: 150,
+    hospital: 175,
+    nursingHome: 150,
+    assistedLiving: 150,
+    hospice: 190,
+    afterHours: 200,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "Premium healthcare facility notarization"
+  },
+  CORRECTIONAL_FACILITY: {
+    display: "$185-290",
+    notaryFee: 5,
+    facilityFee: 150,
+    countyJail: 185,
+    statePrison: 230,
+    federalFacility: 260,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "Correctional facility notarization services"
+  },
+  CORPORATE_BULK: {
+    display: "$205+",
+    perEmployee: 14,
+    visitFee: 100,
+    description: "Volume corporate notarization services"
+  },
+  ESTATE_PLANNING_MOBILE: {
+    display: "$140-285",
+    notaryFee: 15,
+    serviceFee: 100,
+    willSimple: 140,
+    willComplex: 175,
+    trustDocuments: 190,
+    poaPackage: 175,
+    completeEstate: 250,
+    mileageRate: 1.50,
+    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
+    description: "Complete mobile estate planning services"
+  },
+  PREMIUM_FEES: {
+    afterHours: 40,
+    lateNight: 85,
+    overnight: 150,
+    weekendSaturday: 65,
+    weekendSunday: 90,
+    majorHoliday: 125,
+    sameDayRush: 65,
+    twoHourRush: 100,
+    waitingTime: 35
   }
 };
 
