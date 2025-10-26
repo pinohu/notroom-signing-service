@@ -19,7 +19,7 @@ const Fingerprinting = () => {
   };
 
   const serviceSchema = generateServiceSchema({
-    name: "FBI-Approved Fingerprinting Services Erie PA",
+    name: "FBI-Approved Fingerprinting Services Erie, PA",
     description: "FBI-approved electronic fingerprinting in Erie, PA. For teaching licenses, adoptions, background checks. Mobile service available. $35 + $1.50/mile travel.",
     provider: "Notroom - FBI-Approved Fingerprinting",
     areaServed: "Erie County PA",
@@ -41,7 +41,7 @@ const Fingerprinting = () => {
   return (
     <Layout>
       <SEO
-        title="Fingerprinting Services Erie PA | $35 + Travel | FBI-Approved Electronic Fingerprinting"
+        title="Fingerprinting Services Erie, PA | $35 + Travel | FBI-Approved Electronic Fingerprinting"
         description="FBI-approved electronic fingerprinting Northwestern PA. Teaching licenses, adoptions, background checks. Mobile service Erie County. $35 + $1.50/mile travel."
         keywords="fingerprinting Erie PA, FBI fingerprinting Northwestern PA, electronic fingerprinting Erie County, background check fingerprints, teaching license fingerprints Erie, PA Act 34 fingerprinting"
         canonical="https://notroom.com/services/fingerprinting"

@@ -52,7 +52,7 @@ const RemoteOnlineNotary = () => {
   const serviceSchema = generateServiceSchema({
     name: "Remote Online Notary (RON) Service",
     description: "Remote online notarization service available 24/7 in Pennsylvania. Get documents notarized via secure video call from anywhere in Erie, Crawford, Warren, Mercer, or Venango counties.",
-    provider: "Notroom - Erie PA Notary Services",
+    provider: "Notroom - Erie, PA Notary Services",
     areaServed: "Pennsylvania",
     price: "60",
     url: "https://notroom.com/services/remote-online-notary"

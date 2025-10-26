@@ -67,7 +67,7 @@ const VehicleTitleTransfer = () => {
   ];
 
   const serviceSchema = generateServiceSchema({
-    name: "Vehicle Title Transfer Notary Erie PA",
+    name: "Vehicle Title Transfer Notary Erie, PA",
     description: "Mobile notary for PA vehicle title transfers. We come to you in Erie County. $60 base fee + $1.50/mile travel. PennDOT MV-4ST forms.",
     provider: "Notroom - Vehicle Title Transfer Notary",
     areaServed: "Erie County PA",
@@ -91,7 +91,7 @@ const VehicleTitleTransfer = () => {
   return (
     <Layout>
       <SEO
-        title="Vehicle Title Transfer Notary Erie PA | $60 + Travel | Mobile Service"
+        title="Vehicle Title Transfer Notary Erie, PA | $60 + Travel | Mobile Service"
         description="PA vehicle title transfer notarization - $60 + $1.50/mile travel. Mobile service Erie County. Required by law for private sales. PennDOT MV-4ST forms. Same-day appointments."
         keywords="vehicle title transfer Erie PA, car title notary Northwestern PA, auto title notarization Erie County, PA title transfer mobile notary, PennDOT MV-4ST notary"
         canonical="https://notroom.com/services/vehicle-title-transfer"

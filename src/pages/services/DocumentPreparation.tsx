@@ -15,7 +15,7 @@ const DocumentPreparation = () => {
 
   const serviceSchema = generateServiceSchema({
     name: "Document Preparation Services",
-    description: "Professional document preparation and formatting in Erie PA. Affidavits, contracts, legal forms prepared by experienced document preparers. Not legal advice. Starting at $100.",
+    description: "Professional document preparation and formatting in Erie, PA. Affidavits, contracts, legal forms prepared by experienced document preparers. Not legal advice. Starting at $100.",
     provider: "Notroom - Document Preparation",
     areaServed: "Pennsylvania",
     price: "100",
@@ -43,8 +43,8 @@ const DocumentPreparation = () => {
   return (
     <Layout>
       <SEO
-        title="Document Preparation Services Erie PA | Legal Forms, Affidavits, Contracts | $100+"
-        description="Professional document preparation in Erie PA - $100+. Affidavits, contracts, agreements, legal forms. Expert formatting & review. Not legal advice. Serving Erie, Crawford, Warren counties."
+        title="Document Preparation Services Erie, PA | Legal Forms, Affidavits, Contracts | $100+"
+        description="Professional document preparation in Erie, PA - $100+. Affidavits, contracts, agreements, legal forms. Expert formatting & review. Not legal advice. Serving Erie, Crawford, Warren counties."
         keywords="document preparation Erie PA, legal document preparation, affidavit preparation, contract drafting, form completion pennsylvania, document typing service"
         canonical="https://notroom.com/services/document-preparation"
         schema={combinedSchema}

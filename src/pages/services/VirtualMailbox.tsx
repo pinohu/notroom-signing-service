@@ -70,8 +70,8 @@ const VirtualMailbox = () => {
   ];
 
   const serviceSchema = generateServiceSchema({
-    name: "Virtual Mailbox Services Erie PA",
-    description: "Professional virtual mailbox and mail forwarding service in Erie PA. Digital mail scanning, forwarding, shredding. From $99/month.",
+    name: "Virtual Mailbox Services Erie, PA",
+    description: "Professional virtual mailbox and mail forwarding service in Erie, PA. Digital mail scanning, forwarding, shredding. From $99/month.",
     provider: "Notroom - Virtual Mailbox",
     areaServed: "United States",
     price: "99",
@@ -94,7 +94,7 @@ const VirtualMailbox = () => {
   return (
     <Layout>
       <SEO
-        title="Virtual Mailbox Service Erie PA | $99/month | Professional PA Business Address"
+        title="Virtual Mailbox Service Erie, PA | $99/month | Professional PA Business Address"
         description="Virtual mailbox Erie PA - $99/mo. Real PA street address, mail scanning, digital delivery, forwarding. For remote businesses, startups, digital nomads. No PO Box."
         keywords="virtual mailbox Erie PA, mail forwarding Pennsylvania, business mailbox, virtual address Erie, mail scanning service PA"
         canonical="https://notroom.com/services/virtual-mailbox"

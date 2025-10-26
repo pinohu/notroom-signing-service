@@ -20,8 +20,8 @@ const PassportPhotos = () => {
   };
 
   const serviceSchema = generateServiceSchema({
-    name: "Passport & Visa Photos Erie PA",
-    description: "Professional passport and visa photos in Erie PA. Guaranteed compliant with US State Department and embassy requirements. $15 for 2 photos.",
+    name: "Passport & Visa Photos Erie, PA",
+    description: "Professional passport and visa photos in Erie, PA. Guaranteed compliant with US State Department and embassy requirements. $15 for 2 photos.",
     provider: "Notroom - Passport Photo Services",
     areaServed: "Northwestern Pennsylvania",
     price: "15",
@@ -36,7 +36,7 @@ const PassportPhotos = () => {
 
   const faqSchema = generateFAQSchema([
     {
-      question: "How much do passport photos cost in Erie PA?",
+      question: "How much do passport photos cost in Erie, PA?",
       answer: "Passport photos are $15 per session, which includes 2 compliant photos. We also offer mobile service at your location for $15 + $1.50/mile travel from Erie. Additional prints are $5 per set of 2."
     },
     {
@@ -73,8 +73,8 @@ const PassportPhotos = () => {
   return (
     <Layout>
       <SEO
-        title="Passport Photo Services Erie PA | $15 | US State Dept Compliant | Same-Day"
-        description="Professional passport and visa photos Erie PA. US State Department compliant, guaranteed acceptance. $15 for 2 photos. Walk-ins welcome. Mobile service available Erie County."
+        title="Passport Photo Services Erie, PA | $15 | US State Dept Compliant | Same-Day"
+        description="Professional passport and visa photos Erie, PA. US State Department compliant, guaranteed acceptance. $15 for 2 photos. Walk-ins welcome. Mobile service available Erie County."
         keywords="passport photos Erie PA, visa photos Northwestern PA, passport picture Erie County, Global Entry photo, TSA PreCheck photo, passport photos Crawford County"
         canonical="https://notroom.com/services/passport-photos"
         schema={combinedSchema}

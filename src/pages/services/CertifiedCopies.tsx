@@ -20,7 +20,7 @@ const CertifiedCopies = () => {
   };
 
   const serviceSchema = generateServiceSchema({
-    name: "Certified Copy Services Erie PA",
+    name: "Certified Copy Services Erie, PA",
     description: "Official certified copy services in Erie, PA. Birth certificates, diplomas, passports, legal documents. $20 per document. Same-day service available.",
     provider: "Notroom - PA Licensed Notary",
     areaServed: "Northwestern Pennsylvania",
@@ -48,7 +48,7 @@ const CertifiedCopies = () => {
       answer: "PA notaries can certify copies of most documents EXCEPT vital records (birth/death certificates issued by government), public documents already recorded with the state, or documents that explicitly require original submission by law."
     },
     {
-      question: "How much does a certified copy cost in Erie PA?",
+      question: "How much does a certified copy cost in Erie, PA?",
       answer: "Certified copies are $20 per document at our office, or $20 + travel fees for mobile service. This includes the PA notary fee ($5-15 per signature) plus our service fee for comparison, certification, and professional handling."
     },
     {
@@ -73,7 +73,7 @@ const CertifiedCopies = () => {
   return (
     <Layout>
       <SEO
-        title="Certified Copy Services Erie PA | $20 per Document | Crawford, Warren, Mercer Counties"
+        title="Certified Copy Services Erie, PA | $20 per Document | Crawford, Warren, Mercer Counties"
         description="Official certified copy services Northwestern PA. Birth certificates, diplomas, passports, legal documents. $20 per document. Same-day service Erie, Meadville, Warren, Sharon."
         keywords="certified copies Erie PA, document certification Northwestern PA, notarized copies Crawford County, birth certificate copy Warren PA, diploma certification Erie, certified documents Mercer County"
         canonical="https://notroom.com/services/certified-copies"

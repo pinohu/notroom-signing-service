@@ -39,7 +39,7 @@ const LoanSigningAgent = () => {
   ];
 
   const serviceSchema = generateServiceSchema({
-    name: "Loan Signing Agent Service Erie PA",
+    name: "Loan Signing Agent Service Erie, PA",
     description: "NNA-certified loan signing agent for real estate closings in Erie, Crawford, Warren, Mercer, and Venango counties. $100K E&O insurance, MISMO compliant. Specializing in purchase mortgages, refinances, HELOCs, and reverse mortgages.",
     provider: "Notroom - NNA Certified Loan Signing Agent",
     areaServed: "Northwestern Pennsylvania",
@@ -49,7 +49,7 @@ const LoanSigningAgent = () => {
 
   const faqSchema = generateFAQSchema([
     {
-      question: "How much does a loan signing agent cost in Erie PA?",
+      question: "How much does a loan signing agent cost in Erie, PA?",
       answer: "Loan signing services start at $175 for standard purchase/refinance closings. Hybrid e-closings are $225. Prices include travel within Erie County, document printing, scanning/returning documents to title company, and comprehensive MISMO-compliant signing process."
     },
     {
@@ -80,8 +80,8 @@ const LoanSigningAgent = () => {
   return (
     <Layout>
       <SEO
-        title="Loan Signing Agent Erie PA | NNA Certified | Meadville, Warren, Sharon | Real Estate Closings"
-        description="NNA-certified loan signing agent in Erie PA - $175+. $100K E&O insurance, MISMO compliant. Purchase, refinance, HELOC, reverse mortgage closings. Serving Erie, Crawford, Warren, Mercer counties. Flexible scheduling. Book now!"
+        title="Loan Signing Agent Erie, PA | NNA Certified | Meadville, Warren, Sharon | Real Estate Closings"
+        description="NNA-certified loan signing agent in Erie, PA - $175+. $100K E&O insurance, MISMO compliant. Purchase, refinance, HELOC, reverse mortgage closings. Serving Erie, Crawford, Warren, Mercer counties. Flexible scheduling. Book now!"
         keywords="loan signing agent erie pa, notary signing agent pennsylvania, mortgage closing notary, real estate notary erie, certified signing agent meadville, loan signing warren pa, NNA certified notary"
         canonical="https://notroom.com/services/loan-signing-agent"
         schema={combinedSchema}

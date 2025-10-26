@@ -42,7 +42,7 @@ const BusinessRetainer = () => {
 
   const serviceSchema = generateServiceSchema({
     name: "Business Notary Retainer Plans",
-    description: "Business notary retainer services for Erie PA companies. Priority scheduling, volume discounts, dedicated support. Perfect for legal firms, real estate agencies, HR departments, financial services.",
+    description: "Business notary retainer services for Erie, PA companies. Priority scheduling, volume discounts, dedicated support. Perfect for legal firms, real estate agencies, HR departments, financial services.",
     provider: "Notroom - Business Notary Services",
     areaServed: "Pennsylvania",
     price: "500",
@@ -64,7 +64,7 @@ const BusinessRetainer = () => {
     <Layout>
       <SEO
         title="Business Notary Retainer PA | Volume Plans for Erie Companies | Law Firms, Real Estate, HR"
-        description="Business notary retainer plans for Erie PA companies - From $500/month. Priority scheduling, volume discounts, dedicated support. Perfect for legal firms, real estate, financial services, HR departments. Monthly/annual billing available."
+        description="Business notary retainer plans for Erie, PA companies - From $500/month. Priority scheduling, volume discounts, dedicated support. Perfect for legal firms, real estate, financial services, HR departments. Monthly/annual billing available."
         keywords="business notary retainer erie pa, corporate notary services, bulk notarization, law firm notary, company notary plan, HR notary services pennsylvania"
         canonical="https://notroom.com/services/business-retainer"
         schema={combinedSchema}
