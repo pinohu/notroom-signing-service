@@ -10,7 +10,46 @@ const logStep = (step: string, details?: any) => {
   console.log(`[SMS-NOTIFICATION] ${step}${detailsStr}`);
 };
 
-// Send SMS via Twilio
+// Send SMS via SMS-iT CRM
+async function sendViaSMSiT(to: string, message: string): Promise<boolean> {
+  const apiKey = Deno.env.get("SMSIT_API_KEY");
+
+  if (!apiKey) {
+    logStep("SMS-iT API key not configured");
+    return false;
+  }
+
+  try {
+    const response = await fetch(
+      "https://api.sms-it.ai/v1/sms/send",
+      {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${apiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: to,
+          message: message,
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      logStep("SMS-iT failed", { status: response.status, error: errorText });
+      return false;
+    }
+
+    logStep("SMS sent via SMS-iT CRM");
+    return true;
+  } catch (error) {
+    logStep("SMS-iT error", { error: String(error) });
+    return false;
+  }
+}
+
+// Send SMS via Twilio (fallback)
 async function sendViaTwilio(to: string, message: string): Promise<boolean> {
   const accountSid = Deno.env.get("TWILIO_ACCOUNT_SID");
   const authToken = Deno.env.get("TWILIO_AUTH_TOKEN");
@@ -73,11 +112,16 @@ serve(async (req) => {
 
     logStep("Sending SMS", { phone: normalizedPhone, bookingId });
 
-    // Send SMS via Twilio
-    const success = await sendViaTwilio(normalizedPhone, message);
+    // Try SMS-iT CRM first, then fallback to Twilio
+    let success = await sendViaSMSiT(normalizedPhone, message);
+    
+    if (!success) {
+      logStep("SMS-iT failed, trying Twilio fallback");
+      success = await sendViaTwilio(normalizedPhone, message);
+    }
 
     if (!success) {
-      throw new Error("Failed to send SMS");
+      throw new Error("Failed to send SMS via all providers");
     }
 
     return new Response(
