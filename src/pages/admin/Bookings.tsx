@@ -38,7 +38,29 @@ interface Booking {
   urgency: string;
   message?: string;
   status: string;
+  sms_opt_in?: boolean;
 }
+
+interface LeadScoreData {
+  score: number;
+  priority: 'critical' | 'high' | 'medium' | 'low';
+  churnRisk: number;
+}
+
+// Extract lead score from booking message field
+const extractLeadScore = (message?: string): LeadScoreData | null => {
+  if (!message) return null;
+  
+  const scoreMatch = message.match(/\[LEAD SCORE: (\d+)\/100 \| Priority: (\w+) \| Churn Risk: (\d+)%\]/);
+  if (scoreMatch) {
+    return {
+      score: parseInt(scoreMatch[1]),
+      priority: scoreMatch[2].toLowerCase() as 'critical' | 'high' | 'medium' | 'low',
+      churnRisk: parseInt(scoreMatch[3])
+    };
+  }
+  return null;
+};
 
 const AdminBookings = () => {
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -76,7 +98,24 @@ const AdminBookings = () => {
           booking.id === id ? { ...booking, status } : booking
         )
       );
+      
       toast.success("Status updated");
+
+      // Trigger master automation for status change
+      if (status === 'confirmed' || status === 'completed') {
+        try {
+          await supabase.functions.invoke('smsit-master-automation', {
+            body: {
+              eventType: status === 'completed' ? 'service_completed' : 'booking_updated',
+              bookingId: id
+            }
+          });
+          console.log('Master automation triggered for status change:', status);
+        } catch (automationError) {
+          console.error('Master automation error:', automationError);
+          // Don't fail status update if automation fails
+        }
+      }
     } catch (error: any) {
       toast.error("Failed to update status");
     }
@@ -174,6 +213,7 @@ const AdminBookings = () => {
                       <TableHead>Name</TableHead>
                       <TableHead>Contact</TableHead>
                       <TableHead>Service</TableHead>
+                      <TableHead>Lead Score</TableHead>
                       <TableHead>Preferred Date</TableHead>
                       <TableHead>Urgency</TableHead>
                       <TableHead>Status</TableHead>
@@ -181,63 +221,100 @@ const AdminBookings = () => {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {bookings.map((booking) => (
-                      <TableRow key={booking.id}>
-                        <TableCell className="whitespace-nowrap">
-                          {format(new Date(booking.created_at), "MMM dd, yyyy")}
-                        </TableCell>
-                        <TableCell className="font-medium">
-                          {booking.name}
-                        </TableCell>
-                        <TableCell>
-                          <div className="text-sm">
-                            <div>{booking.email}</div>
-                            <div className="text-muted-foreground">
-                              {booking.phone}
+                    {bookings.map((booking) => {
+                      const leadScore = extractLeadScore(booking.message);
+                      const getPriorityColor = (priority?: string) => {
+                        const colors = {
+                          critical: "bg-destructive text-destructive-foreground",
+                          high: "bg-amber text-amber-foreground",
+                          medium: "bg-primary text-primary-foreground",
+                          low: "bg-muted text-muted-foreground"
+                        };
+                        return colors[priority as keyof typeof colors] || "bg-muted";
+                      };
+
+                      return (
+                        <TableRow key={booking.id}>
+                          <TableCell className="whitespace-nowrap">
+                            {format(new Date(booking.created_at), "MMM dd, yyyy")}
+                          </TableCell>
+                          <TableCell className="font-medium">
+                            {booking.name}
+                            {booking.sms_opt_in && (
+                              <Badge variant="outline" className="ml-2 text-xs">
+                                SMS ✓
+                              </Badge>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <div className="text-sm">
+                              <div>{booking.email}</div>
+                              <div className="text-muted-foreground">
+                                {booking.phone}
+                              </div>
                             </div>
-                          </div>
-                        </TableCell>
-                        <TableCell className="whitespace-nowrap">
-                          {getServiceLabel(booking.service)}
-                        </TableCell>
-                        <TableCell className="whitespace-nowrap">
-                          {booking.preferred_date
-                            ? format(new Date(booking.preferred_date), "MMM dd, yyyy")
-                            : "Flexible"}
-                          {booking.preferred_time && (
-                            <div className="text-xs text-muted-foreground capitalize">
-                              {booking.preferred_time}
-                            </div>
-                          )}
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant="outline" className="whitespace-nowrap">
-                            {booking.urgency.replace("_", " ")}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Badge className={getStatusColor(booking.status)}>
-                            {booking.status}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Select
-                            value={booking.status}
-                            onValueChange={(value) => updateStatus(booking.id, value)}
-                          >
-                            <SelectTrigger className="w-32">
-                              <SelectValue />
-                            </SelectTrigger>
-                            <SelectContent className="bg-popover">
-                              <SelectItem value="pending">Pending</SelectItem>
-                              <SelectItem value="confirmed">Confirmed</SelectItem>
-                              <SelectItem value="completed">Completed</SelectItem>
-                              <SelectItem value="cancelled">Cancelled</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                          </TableCell>
+                          <TableCell className="whitespace-nowrap">
+                            {getServiceLabel(booking.service)}
+                          </TableCell>
+                          <TableCell>
+                            {leadScore ? (
+                              <div className="space-y-1">
+                                <Badge className={getPriorityColor(leadScore.priority)}>
+                                  {leadScore.score}/100
+                                </Badge>
+                                <div className="text-xs text-muted-foreground">
+                                  {leadScore.priority.toUpperCase()}
+                                </div>
+                                {leadScore.churnRisk >= 70 && (
+                                  <Badge variant="destructive" className="text-xs">
+                                    ⚠️ {leadScore.churnRisk}% churn
+                                  </Badge>
+                                )}
+                              </div>
+                            ) : (
+                              <span className="text-xs text-muted-foreground">N/A</span>
+                            )}
+                          </TableCell>
+                          <TableCell className="whitespace-nowrap">
+                            {booking.preferred_date
+                              ? format(new Date(booking.preferred_date), "MMM dd, yyyy")
+                              : "Flexible"}
+                            {booking.preferred_time && (
+                              <div className="text-xs text-muted-foreground capitalize">
+                                {booking.preferred_time}
+                              </div>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <Badge variant="outline" className="whitespace-nowrap">
+                              {booking.urgency.replace("_", " ")}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Badge className={getStatusColor(booking.status)}>
+                              {booking.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Select
+                              value={booking.status}
+                              onValueChange={(value) => updateStatus(booking.id, value)}
+                            >
+                              <SelectTrigger className="w-32">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent className="bg-popover">
+                                <SelectItem value="pending">Pending</SelectItem>
+                                <SelectItem value="confirmed">Confirmed</SelectItem>
+                                <SelectItem value="completed">Completed</SelectItem>
+                                <SelectItem value="cancelled">Cancelled</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
                   </TableBody>
                 </Table>
               </div>

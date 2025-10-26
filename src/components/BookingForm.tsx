@@ -388,55 +388,53 @@ const BookingForm = ({ community }: BookingFormProps) => {
         return;
       }
 
-      // Send confirmation email
+      // PHASE 12: Trigger Master Automation Orchestrator
+      // This replaces individual calls and handles all automation end-to-end:
+      // - SMS-iT sync (Phase 2)
+      // - SuiteDash sync (Phase 7)
+      // - AI Lead Scoring (Phase 10)
+      // - Confirmation SMS
+      // - Auto-followup sequence start (Phase 3-4)
       try {
-        await supabase.functions.invoke('send-booking-confirmation', {
+        const automationResult = await supabase.functions.invoke('smsit-master-automation', {
           body: {
-            name: validatedData.name,
-            email: validatedData.email,
-            service: validatedData.service,
-            preferredDate: validatedData.preferred_date ? format(validatedData.preferred_date, "PPP") : undefined,
-            preferredTime: validatedData.preferred_time || undefined,
+            eventType: 'new_booking',
             bookingId: bookingData.id
           }
         });
-      } catch (emailError) {
-        if (import.meta.env.DEV) {
-          console.error("Email sending error:", emailError);
-        }
-        // Don't fail the booking if email fails
-      }
 
-      // Sync booking to Suitedash
-      try {
-        await supabase.functions.invoke('sync-booking-to-suitedash', {
-          body: {
-            bookingId: bookingData.id,
-            name: validatedData.name,
-            email: validatedData.email,
-            phone: validatedData.phone,
-            service: validatedData.service,
-            preferredDate: validatedData.preferred_date ? format(validatedData.preferred_date, "yyyy-MM-dd") : undefined,
-            preferredTime: validatedData.preferred_time || undefined,
-            documentType: validatedData.document_type || undefined,
-            numberOfSigners: validatedData.number_of_signers,
-            locationAddress: validatedData.location_address || undefined,
-            urgency: validatedData.urgency,
-            message: validatedData.message || undefined,
-            status: 'pending'
+        if (import.meta.env.DEV) {
+          console.log("Master automation triggered:", automationResult);
+        }
+
+        if (!automationResult.error) {
+          toast.success("🎉 Booking confirmed! Our automation system is processing your request.");
+        }
+      } catch (automationError) {
+        if (import.meta.env.DEV) {
+          console.error("Master automation error:", automationError);
+        }
+        
+        // Fallback: If master automation fails, send confirmation email manually
+        try {
+          await supabase.functions.invoke('send-booking-confirmation', {
+            body: {
+              name: validatedData.name,
+              email: validatedData.email,
+              service: validatedData.service,
+              preferredDate: validatedData.preferred_date ? format(validatedData.preferred_date, "PPP") : undefined,
+              preferredTime: validatedData.preferred_time || undefined,
+              bookingId: bookingData.id
+            }
+          });
+        } catch (emailError) {
+          if (import.meta.env.DEV) {
+            console.error("Email fallback error:", emailError);
           }
-        });
-        if (import.meta.env.DEV) {
-          console.log("Booking synced to Suitedash successfully");
         }
-      } catch (suitedashError) {
-        if (import.meta.env.DEV) {
-          console.error("Suitedash sync error:", suitedashError);
-        }
-        // Don't fail the booking if Suitedash sync fails
       }
 
-      // Sync booking to SMS-iT CRM (Lead Generation & Automation)
+      // Legacy: Keep smsit-sync call as backup (will be removed once master automation is stable)
       try {
         await supabase.functions.invoke('smsit-sync', {
           body: {
