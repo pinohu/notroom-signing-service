@@ -31,28 +31,100 @@ serve(async (req) => {
 
     logStep("Webhook data", { type: webhookData.event_type });
 
-// Handle different webhook events
+    // PHASE 11: Comprehensive webhook handling
     switch (webhookData.event_type) {
+      // === MESSAGE EVENTS ===
       case "message.replied":
         await handleMessageReply(supabase, webhookData);
         break;
 
+      case "message.delivered":
+        await handleMessageDelivered(supabase, webhookData);
+        break;
+
+      case "message.failed":
+        await handleMessageFailed(supabase, webhookData);
+        break;
+
+      case "message.opened":
+        await handleMessageOpened(supabase, webhookData);
+        break;
+
+      // === ENGAGEMENT EVENTS ===
       case "link.clicked":
         await handleLinkClick(supabase, webhookData);
         break;
 
+      case "link.converted":
+        await handleLinkConverted(supabase, webhookData);
+        break;
+
+      // === CONTACT EVENTS ===
       case "contact.updated":
         await handleContactUpdate(supabase, webhookData);
         break;
 
+      case "contact.tagged":
+        await handleContactTagged(supabase, webhookData);
+        break;
+
+      case "contact.unsubscribed":
+        await handleContactUnsubscribed(supabase, webhookData);
+        break;
+
+      // === CAMPAIGN EVENTS ===
       case "campaign.delivered":
         await handleCampaignDelivery(supabase, webhookData);
         break;
 
+      case "campaign.completed":
+        await handleCampaignCompleted(supabase, webhookData);
+        break;
+
+      case "campaign.failed":
+        await handleCampaignFailed(supabase, webhookData);
+        break;
+
+      // === APPOINTMENT EVENTS ===
+      case "appointment.confirmed":
+        await handleAppointmentConfirmed(supabase, webhookData);
+        break;
+
+      case "appointment.cancelled":
+        await handleAppointmentCancelled(supabase, webhookData);
+        break;
+
+      case "appointment.reminder_sent":
+        await handleAppointmentReminderSent(supabase, webhookData);
+        break;
+
+      // === TASK EVENTS ===
       case "task.completed":
         await handleTaskCompletion(supabase, webhookData);
         break;
 
+      case "task.created":
+        await handleTaskCreated(supabase, webhookData);
+        break;
+
+      case "task.overdue":
+        await handleTaskOverdue(supabase, webhookData);
+        break;
+
+      // === OPPORTUNITY EVENTS ===
+      case "opportunity.stage_changed":
+        await handleOpportunityStageChanged(supabase, webhookData);
+        break;
+
+      case "opportunity.won":
+        await handleOpportunityWon(supabase, webhookData);
+        break;
+
+      case "opportunity.lost":
+        await handleOpportunityLost(supabase, webhookData);
+        break;
+
+      // === RATING/FEEDBACK EVENTS ===
       case "rating.received":
         await handleRatingReceived(supabase, webhookData);
         break;
@@ -203,5 +275,250 @@ async function handleRatingReceived(supabase: any, data: any) {
         }
       }
     }
+  }
+}
+
+// === PHASE 11: NEW WEBHOOK HANDLERS ===
+
+async function handleMessageDelivered(supabase: any, data: any) {
+  logStep("Message delivered", { contactId: data.contact_id, messageId: data.message_id });
+  
+  const bookingId = data.contact?.custom_fields?.booking_id;
+  if (bookingId) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        message: `[SMS Delivered ${new Date().toLocaleString()}]`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
+  }
+}
+
+async function handleMessageFailed(supabase: any, data: any) {
+  logStep("Message failed", { 
+    contactId: data.contact_id, 
+    reason: data.failure_reason 
+  });
+  
+  const bookingId = data.contact?.custom_fields?.booking_id;
+  if (bookingId) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        message: `[SMS FAILED: ${data.failure_reason}] - UPDATE PHONE NUMBER`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
+    
+    logStep("Booking flagged for phone update");
+  }
+}
+
+async function handleMessageOpened(supabase: any, data: any) {
+  logStep("Message opened", { contactId: data.contact_id });
+  
+  const bookingId = data.contact?.custom_fields?.booking_id;
+  if (bookingId) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        message: `[SMS Opened ${new Date().toLocaleString()}] - High engagement`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
+  }
+}
+
+async function handleLinkConverted(supabase: any, data: any) {
+  logStep("Link converted (booking made)", { 
+    contactId: data.contact_id,
+    link: data.link_url 
+  });
+  
+  const bookingId = data.contact?.custom_fields?.booking_id;
+  if (bookingId) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        status: 'confirmed',
+        message: `[CONVERTED via link click ${new Date().toLocaleString()}]`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
+    
+    logStep("Booking confirmed via conversion");
+  }
+}
+
+async function handleContactTagged(supabase: any, data: any) {
+  logStep("Contact tagged", { 
+    contactId: data.contact_id,
+    tag: data.tag_name 
+  });
+  
+  const bookingId = data.contact?.custom_fields?.booking_id;
+  if (bookingId && data.tag_name) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        message: `[Tagged: ${data.tag_name}]`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
+  }
+}
+
+async function handleContactUnsubscribed(supabase: any, data: any) {
+  logStep("Contact unsubscribed", { contactId: data.contact_id });
+  
+  const bookingId = data.contact?.custom_fields?.booking_id;
+  if (bookingId) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        sms_opt_in: false,
+        message: `[UNSUBSCRIBED ${new Date().toLocaleString()}] - No more SMS`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
+    
+    logStep("Contact unsubscribed - SMS disabled");
+  }
+}
+
+async function handleCampaignCompleted(supabase: any, data: any) {
+  logStep("Campaign completed", {
+    campaign: data.campaign_name,
+    totalSent: data.total_sent,
+    delivered: data.delivered_count
+  });
+}
+
+async function handleCampaignFailed(supabase: any, data: any) {
+  logStep("Campaign failed", {
+    campaign: data.campaign_name,
+    reason: data.failure_reason
+  });
+}
+
+async function handleAppointmentConfirmed(supabase: any, data: any) {
+  logStep("Appointment confirmed via SMS", { 
+    contactId: data.contact_id,
+    appointmentId: data.appointment_id 
+  });
+  
+  const bookingId = data.contact?.custom_fields?.booking_id;
+  if (bookingId) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        status: 'confirmed',
+        message: `[APPOINTMENT CONFIRMED ${new Date().toLocaleString()}]`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
+    
+    logStep("Booking status updated to confirmed");
+  }
+}
+
+async function handleAppointmentCancelled(supabase: any, data: any) {
+  logStep("Appointment cancelled", { 
+    contactId: data.contact_id,
+    appointmentId: data.appointment_id,
+    reason: data.cancellation_reason
+  });
+  
+  const bookingId = data.contact?.custom_fields?.booking_id;
+  if (bookingId) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        status: 'cancelled',
+        message: `[CANCELLED ${new Date().toLocaleString()}] Reason: ${data.cancellation_reason || 'Not provided'}`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
+    
+    logStep("Booking cancelled");
+  }
+}
+
+async function handleAppointmentReminderSent(supabase: any, data: any) {
+  logStep("Appointment reminder sent", { 
+    contactId: data.contact_id,
+    appointmentId: data.appointment_id 
+  });
+}
+
+async function handleTaskCreated(supabase: any, data: any) {
+  logStep("Task created", { 
+    taskId: data.task_id,
+    title: data.task_title 
+  });
+}
+
+async function handleTaskOverdue(supabase: any, data: any) {
+  logStep("Task overdue - needs attention", { 
+    taskId: data.task_id,
+    title: data.task_title 
+  });
+}
+
+async function handleOpportunityStageChanged(supabase: any, data: any) {
+  logStep("Opportunity stage changed", { 
+    opportunityId: data.opportunity_id,
+    oldStage: data.old_stage,
+    newStage: data.new_stage
+  });
+  
+  const bookingId = data.opportunity?.custom_fields?.booking_id;
+  if (bookingId) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        message: `[Pipeline: ${data.old_stage} → ${data.new_stage}]`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
+  }
+}
+
+async function handleOpportunityWon(supabase: any, data: any) {
+  logStep("Opportunity WON! 🎉", { 
+    opportunityId: data.opportunity_id,
+    value: data.value
+  });
+  
+  const bookingId = data.opportunity?.custom_fields?.booking_id;
+  if (bookingId) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        status: 'completed',
+        message: `[WON 🎉] Value: $${data.value || 'N/A'}`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
+  }
+}
+
+async function handleOpportunityLost(supabase: any, data: any) {
+  logStep("Opportunity lost", { 
+    opportunityId: data.opportunity_id,
+    reason: data.lost_reason
+  });
+  
+  const bookingId = data.opportunity?.custom_fields?.booking_id;
+  if (bookingId) {
+    await supabase
+      .from('bookings')
+      .update({ 
+        status: 'cancelled',
+        message: `[LOST] Reason: ${data.lost_reason || 'Not provided'}`,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', bookingId);
   }
 }

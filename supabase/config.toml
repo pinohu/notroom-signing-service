@@ -59,3 +59,9 @@ verify_jwt = false
 
 [functions.smsit-smart-segment]
 verify_jwt = false
+
+[functions.smsit-lead-scoring]
+verify_jwt = false
+
+[functions.smsit-master-automation]
+verify_jwt = false
