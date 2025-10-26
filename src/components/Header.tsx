@@ -276,13 +276,6 @@ const Header = () => {
             >
               Pricing
             </button>
-
-            <button
-              onClick={() => navigateToPage("/resources/how-ron-works")}
-              className="text-foreground hover:text-primary transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
-            >
-              Resources
-            </button>
             
             <button
               onClick={() => scrollToSection("faq")}
