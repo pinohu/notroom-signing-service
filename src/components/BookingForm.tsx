@@ -37,7 +37,12 @@ const bookingSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
   phone: z.string().trim().min(1, "Phone number is required").max(20, "Phone number must be less than 20 characters"),
-  service: z.enum(["ron", "mobile", "loan"], { required_error: "Please select a service" }),
+  service: z.enum([
+    "ron", "mobile", "loan", "apostille", "i9", "registered_office", 
+    "business_retainer", "certified_copies", "document_preparation", 
+    "fingerprinting", "witness", "passport_photos", "translation", 
+    "vehicle_title", "virtual_mailbox", "ucc_filing", "document_retrieval"
+  ], { required_error: "Please select a service" }),
   preferred_date: z.date().optional(),
   preferred_time: z.string().optional(),
   document_type: z.string().max(100).optional(),
@@ -155,8 +160,20 @@ const BookingForm = ({ community }: BookingFormProps) => {
       ron: `Book Your Remote Online Notary${communityName ? ` - ${communityName}` : ""}`,
       mobile: `Book Your Mobile Notary${communityName ? ` in ${communityName}` : " Service"}`,
       loan: `Book Your Loan Signing Agent${communityName ? ` - ${communityName}` : ""}`,
-      apostille: `Book Your Apostille Service${communityName ? ` - ${communityName}` : ""}`,
-      i9: `Book Your I-9 Verification${communityName ? ` - ${communityName}` : ""}`,
+      apostille: `Book Apostille Services${communityName ? ` - ${communityName}` : ""}`,
+      i9: `Book I-9 Verification${communityName ? ` - ${communityName}` : ""}`,
+      registered_office: `Book Registered Office Service${communityName ? ` - ${communityName}` : ""}`,
+      business_retainer: `Business Retainer Plans${communityName ? ` - ${communityName}` : ""}`,
+      certified_copies: `Book Certified Copies Service${communityName ? ` - ${communityName}` : ""}`,
+      document_preparation: `Book Document Preparation${communityName ? ` - ${communityName}` : ""}`,
+      fingerprinting: `Book Fingerprinting Service${communityName ? ` - ${communityName}` : ""}`,
+      witness: `Book Professional Witness Service${communityName ? ` - ${communityName}` : ""}`,
+      passport_photos: `Book Passport Photos${communityName ? ` - ${communityName}` : ""}`,
+      translation: `Book Translation Certification${communityName ? ` - ${communityName}` : ""}`,
+      vehicle_title: `Book Vehicle Title Transfer${communityName ? ` - ${communityName}` : ""}`,
+      virtual_mailbox: `Book Virtual Mailbox Service${communityName ? ` - ${communityName}` : ""}`,
+      ucc_filing: `Book UCC Filing Service${communityName ? ` - ${communityName}` : ""}`,
+      document_retrieval: `Book Document Retrieval${communityName ? ` - ${communityName}` : ""}`,
     };
     return formData.service ? titles[formData.service] || `Book Your Notary Service${communityName ? ` in ${communityName}` : ""}` : `Book Your Notary Service${communityName ? ` in ${communityName}` : ""}`;
   };
@@ -630,9 +647,23 @@ const BookingForm = ({ community }: BookingFormProps) => {
                       <SelectValue placeholder="Choose your service" />
                     </SelectTrigger>
                     <SelectContent className="bg-popover/98 backdrop-blur-md z-[100]">
-                      <SelectItem value="ron">Remote Online Notary ($60: $5 notary + $55 technology)</SelectItem>
-                      <SelectItem value="mobile">Mobile Notary Erie County ($125+: $5 notary + $120 service + travel)</SelectItem>
-                      <SelectItem value="loan">Loan Signing Agent ($175: $5 notary + $170 agent service)</SelectItem>
+                      <SelectItem value="ron">Remote Online Notary (RON) - $60</SelectItem>
+                      <SelectItem value="mobile">Mobile Notary Service - $125+</SelectItem>
+                      <SelectItem value="loan">Loan Signing Agent - $175</SelectItem>
+                      <SelectItem value="apostille">Apostille Services - Contact for pricing</SelectItem>
+                      <SelectItem value="i9">I-9 Verification - Contact for pricing</SelectItem>
+                      <SelectItem value="registered_office">Registered Office & Filings - Contact for pricing</SelectItem>
+                      <SelectItem value="business_retainer">Business Retainer Plans - Contact for pricing</SelectItem>
+                      <SelectItem value="certified_copies">Certified Copies - Contact for pricing</SelectItem>
+                      <SelectItem value="document_preparation">Document Preparation - Contact for pricing</SelectItem>
+                      <SelectItem value="fingerprinting">Fingerprinting - Contact for pricing</SelectItem>
+                      <SelectItem value="witness">Professional Witness Service - Contact for pricing</SelectItem>
+                      <SelectItem value="passport_photos">Passport Photos - Contact for pricing</SelectItem>
+                      <SelectItem value="translation">Translation Certification - Contact for pricing</SelectItem>
+                      <SelectItem value="vehicle_title">Vehicle Title Transfer - Contact for pricing</SelectItem>
+                      <SelectItem value="virtual_mailbox">Virtual Mailbox - Contact for pricing</SelectItem>
+                      <SelectItem value="ucc_filing">UCC Filing - Contact for pricing</SelectItem>
+                      <SelectItem value="document_retrieval">Document Retrieval - Contact for pricing</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
