@@ -12,7 +12,7 @@ const Pricing = () => {
     <Layout>
       <SEO
         title="Professional Notary Services Pricing - Premium & Accessible"
-        description="Comprehensive notary service pricing from $15 to $400+. Remote online notarization starting at $75, premium healthcare facility visits $150-240, loan signings $200-400. Transparent pricing for all services."
+        description="Comprehensive notary service pricing. Remote online notarization starting at $60 ($5 PA notary + $55 platform), mobile notary $125+ ($5 notary + $120 service + mileage), premium healthcare facility visits $150-240, loan signings $175-400. Transparent PA-compliant pricing."
         keywords="notary prices erie pa, mobile notary pricing, healthcare notary cost, loan signing fees, online notary pricing, pa notary rates"
         canonical="https://notroom.com/pricing"
       />
@@ -59,8 +59,8 @@ const Pricing = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold mb-2">Starting at $75</div>
-              <p className="text-sm text-muted-foreground mb-4">Complex documents up to $125</p>
+              <div className="text-3xl font-bold mb-2">$60</div>
+              <p className="text-sm text-muted-foreground mb-4">Single document, $5 PA notary + $55 platform fee</p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />
@@ -97,8 +97,8 @@ const Pricing = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-3xl font-bold mb-2">$200-$400</div>
-              <p className="text-sm text-muted-foreground mb-4">Varies by closing type & complexity</p>
+              <div className="text-3xl font-bold mb-2">$175-$400</div>
+              <p className="text-sm text-muted-foreground mb-4">Varies by closing type & complexity ($5 PA notary per signature + $170+ agent service)</p>
               <ul className="space-y-2 mb-6">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="h-5 w-5 text-primary mt-0.5" />

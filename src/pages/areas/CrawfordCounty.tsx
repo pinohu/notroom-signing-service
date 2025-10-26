@@ -24,10 +24,10 @@ const CrawfordCounty = () => {
   ];
 
   const services = [
-    { title: "Remote Online Notary", price: "$60", desc: "Perfect for Crawford County residents - no travel needed ($5 notary + $55 platform)" },
-    { title: "Mobile Notary Service", price: "$125 + mileage", desc: "We travel throughout Crawford County (in-person service)" },
-    { title: "Loan Signing Agent", price: "$150", desc: "Real estate closing services ($15 notary + $135 agent fee)" },
-    { title: "Apostille Assistance", price: "$175", desc: "Notarization + application help for international documents" }
+    { title: "Remote Online Notary", price: "$60", desc: "Perfect for Crawford County residents - no travel needed ($5 PA notary + $55 platform)" },
+    { title: "Mobile Notary Service", price: "$125 + mileage", desc: "We travel throughout Crawford County ($5 PA notary + $120 service + mileage)" },
+    { title: "Loan Signing Agent", price: "$175+", desc: "Real estate closing services ($5 PA notary per signature + $170 signing agent service)" },
+    { title: "Apostille Assistance", price: "$245+", desc: "Notarization + PA Dept of State processing for international documents" }
   ];
 
   const schema = {

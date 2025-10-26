@@ -121,7 +121,7 @@ const RemoteOnlineNotary = () => {
                 onClick={scrollToBooking}
                 variant="secondary"
               >
-                Book RON Session - Starting at $75
+                Book RON Session - $60
               </Button>
               <Button 
                 size="lg" 
@@ -303,16 +303,16 @@ const RemoteOnlineNotary = () => {
                           <h3 className="font-bold">Standard Documents</h3>
                           <p className="text-xs text-muted-foreground">Powers of attorney, affidavits, contracts</p>
                         </div>
-                        <span className="text-2xl font-bold">$75</span>
+                        <span className="text-2xl font-bold">$60</span>
                       </div>
                       <div className="text-xs bg-background/50 p-2 rounded space-y-1">
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">PA notary fee:</span>
+                          <span className="text-muted-foreground">PA notary fee (legal max):</span>
                           <span>$5</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">RON platform + technology fee:</span>
-                          <span>$70</span>
+                          <span className="text-muted-foreground">Technology platform fee:</span>
+                          <span>$55</span>
                         </div>
                       </div>
                     </div>

@@ -106,10 +106,10 @@ const LoanSigningAgent = () => {
                 onClick={scrollToBooking}
                 variant="secondary"
               >
-                Schedule Signing - $200-$400
+                Schedule Signing - $175-$400
               </Button>
               <p className="text-sm opacity-80 mt-2">
-                Standard $225-275 | Complex $275-325 | Commercial $400+
+                Standard $175-225 | Complex $250-325 | Commercial $400+
               </p>
               <Button 
                 size="lg" 
