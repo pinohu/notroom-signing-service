@@ -46,7 +46,7 @@ const MobileNotary = () => {
   const faqSchema = generateFAQSchema([
     {
       question: "How much does mobile notary service cost in Erie, PA?",
-      answer: "Mobile notary service starts at $125 base ($5 PA notary fee + $120 service fee) plus $1.50 per mile travel from our Erie office. Same-day service is typically available throughout Erie, Crawford, and Warren counties. We provide transparent quotes before every appointment."
+      answer: "Mobile notary service starts at $125 base ($5 PA notary fee per signature + $120 service fee for travel, coordination, and scheduling) plus $1.50 per mile travel from our Erie office. Same-day service is typically available throughout Erie, Crawford, and Warren counties. We provide transparent quotes before every appointment with clear fee breakdown."
     },
     {
       question: "Where do mobile notaries serve in Pennsylvania?",
@@ -251,7 +251,7 @@ const MobileNotary = () => {
               </div>
               <div className="mt-6 pt-6 border-t">
                 <p className="text-sm text-muted-foreground text-center">
-                  Pennsylvania law limits notary fees to $5-15 per signature. Additional fees shown are for travel, scheduling, and administrative services.
+                  Pennsylvania law (57 Pa. Code § 307.1) limits notary fees to $5 per signature. Additional fees shown are for mobile travel services, scheduling coordination, and administrative overhead—not notarial acts.
                 </p>
               </div>
             </Card>
@@ -286,7 +286,7 @@ const MobileNotary = () => {
           },
           {
             question: "How much does mobile notary service cost in Erie PA?",
-            answer: "Within Erie city limits: $125 base ($5 notary + $120 service) plus $1.50 per mile round-trip. After-hours (after 7 PM or weekends): add $50 surcharge. Example: 3 signatures in Millcreek = $125 + mileage."
+            answer: "Within Erie city limits: $125 base ($5 PA notary fee per signature + $120 service fee for travel coordination) plus $1.50 per mile round-trip. After-hours (after 7 PM or weekends): add $50 surcharge. Example: 3 signatures in Millcreek = $125 ($15 notary fees + $110 service) + mileage."
           },
           {
             question: "Can you come to a hospital or nursing home?",

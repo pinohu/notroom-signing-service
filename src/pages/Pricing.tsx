@@ -462,18 +462,17 @@ const Pricing = () => {
                 <div className="prose prose-sm max-w-none space-y-4 text-muted-foreground">
                   <p>
                     <strong>Pennsylvania Notary Fee Law (57 Pa. Code § 307.1):</strong> The maximum notary fee in Pennsylvania is 
-                    <strong> $5 per notarial act</strong>. All prices listed above are structured to comply with this regulation:
+                    <strong> $5 per notarial act</strong> (signature acknowledgment, jurat, or oath). All prices listed above comply with this regulation. Additional fees shown represent separate, non-notarial services:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li>$5 is the notarial act fee (signature acknowledgment, jurat, or oath)</li>
-                    <li>Additional charges are for legitimate non-notarial services including:
+                    <li><strong>$5 notary fee:</strong> The notarial act itself (signature acknowledgment, jurat, or oath administration) - Pennsylvania legal maximum per 57 Pa. Code § 307.1</li>
+                    <li><strong>Additional fees represent non-notarial services:</strong>
                       <ul className="list-circle pl-6 mt-2 space-y-1">
-                        <li>Travel and mileage ($1.50/mile round trip)</li>
-                        <li>Technology platform fees (RON service)</li>
-                        <li>Professional service fees (signing agent expertise, document handling)</li>
-                        <li>Time-based premiums (after-hours, weekends, holidays)</li>
-                        <li>Facility access fees (hospitals, nursing homes, correctional facilities)</li>
-                        <li>Document printing, scanning, and coordination</li>
+                        <li><strong>Technology platform fees (RON):</strong> Secure video infrastructure, identity verification (KBA) systems, tamper-evident digital certificates, 10-year recording storage (PA law requirement)</li>
+                        <li><strong>Mobile service fees:</strong> Travel coordination, scheduling systems, administrative overhead ($120 base + $1.50/mile round-trip)</li>
+                        <li><strong>Signing agent services (loan closings):</strong> Professional expertise, $100K E&O insurance, document printing/scanning, courier services</li>
+                        <li><strong>Premium surcharges:</strong> After-hours service ($40-85), weekends ($65-90), holidays ($125), same-day rush ($65-100)</li>
+                        <li><strong>Facility coordination fees:</strong> Healthcare facilities ($145+), correctional facilities ($180+) - special protocols and extended processing</li>
                       </ul>
                     </li>
                   </ul>

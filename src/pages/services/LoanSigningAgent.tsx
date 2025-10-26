@@ -50,7 +50,7 @@ const LoanSigningAgent = () => {
   const faqSchema = generateFAQSchema([
     {
       question: "How much does a loan signing agent cost in Erie, PA?",
-      answer: "Loan signing services start at $175 for standard purchase/refinance closings. Hybrid e-closings are $225. Prices include travel within Erie County, document printing, scanning/returning documents to title company, and comprehensive MISMO-compliant signing process."
+      answer: "Loan signing services start at $175 for standard purchase/refinance closings ($5 PA notary fee per signature + $170 signing agent service fee covering printing, travel, insurance, and scan-back). Complex closings range $250-400 depending on document volume and complexity."
     },
     {
       question: "Are you a certified loan signing agent in Pennsylvania?",
@@ -266,19 +266,25 @@ const LoanSigningAgent = () => {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">Transparent Pricing</h2>
+            <h2 className="text-3xl font-bold text-center mb-8">Transparent Pricing Structure</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="p-6">
-                <h3 className="text-xl font-bold mb-4">Standard Refinance</h3>
-                <div className="text-3xl font-bold mb-4">$225-$275</div>
+                <h3 className="text-xl font-bold mb-4">Standard Closings</h3>
+                <div className="text-3xl font-bold mb-4">$175-225</div>
                 <div className="bg-muted/50 p-4 rounded text-sm space-y-2 mb-4">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">PA notary fees:</span>
-                    <span className="font-semibold">$10-50</span>
+                    <span className="text-muted-foreground">PA notary fees (per signature):</span>
+                    <span className="font-semibold">$5 each</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Agent + travel + printing:</span>
-                    <span className="font-semibold">$175-225</span>
+                  <div className="flex justify-between border-t pt-2 mt-2">
+                    <span className="text-muted-foreground">Signing agent service:</span>
+                    <span className="font-semibold">$170+</span>
+                  </div>
+                  <div className="text-xs text-muted-foreground pl-2">
+                    • Document printing & preparation<br/>
+                    • Travel within service area<br/>
+                    • $100K E&O insurance coverage<br/>
+                    • Scan-back to title company
                   </div>
                 </div>
                 <ul className="space-y-2 text-sm">
@@ -303,15 +309,21 @@ const LoanSigningAgent = () => {
 
               <Card className="p-6 border-primary border-2">
                 <h3 className="text-xl font-bold mb-4">Purchase / Reverse Mortgage</h3>
-                <div className="text-3xl font-bold mb-4">$275-$325</div>
+                <div className="text-3xl font-bold mb-4">$250-$325</div>
                 <div className="bg-muted/50 p-4 rounded text-sm space-y-2 mb-4">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">PA notary fees:</span>
-                    <span className="font-semibold">$15-75</span>
+                    <span className="text-muted-foreground">PA notary fees (per signature):</span>
+                    <span className="font-semibold">$5 each</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Agent + complexity premium:</span>
-                    <span className="font-semibold">$250-260</span>
+                  <div className="flex justify-between border-t pt-2 mt-2">
+                    <span className="text-muted-foreground">Signing agent service:</span>
+                    <span className="font-semibold">$245-320+</span>
+                  </div>
+                  <div className="text-xs text-muted-foreground pl-2">
+                    • Higher document volume<br/>
+                    • Extended appointment time<br/>
+                    • Complex document review<br/>
+                    • All standard services included
                   </div>
                 </div>
                 <ul className="space-y-2 text-sm">

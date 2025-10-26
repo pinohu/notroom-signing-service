@@ -13,7 +13,7 @@ const FAQ = () => {
     },
     {
       question: "How much does notarization cost?",
-      answer: "Remote online notary: $60 per document ($5 PA notary fee + $55 technology fee). Mobile notary: $125+ ($5 notary + $120 service + travel). Loan signing: $175 total ($5 notary + $170 agent service). Additional documents in the same session have reduced pricing. All pricing is transparent with no hidden fees."
+      answer: "Remote online notary: $60 total ($5 PA notary fee per signature + $55 technology platform fee for video, KBA verification, and 10-year storage). Mobile notary: $125 base ($5 PA notary fee + $120 service fee for travel/coordination) + $1.50/mile. Loan signing: $175+ ($5 PA notary per signature + $170 agent service for printing, travel, insurance, scan-back). All pricing transparent with PA law-compliant fee structure."
     },
     {
       question: "How fast can you get to my location for mobile service?",

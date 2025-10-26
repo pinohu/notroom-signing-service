@@ -396,28 +396,28 @@ const PricingCalculator = () => {
           
           {breakdown.baseNotaryFee !== undefined && (
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">PA Notary Fee</span>
+              <span className="text-muted-foreground">PA Notary Fee (per signature, legal max)</span>
               <span className="font-medium">${breakdown.baseNotaryFee}</span>
             </div>
           )}
           
           {breakdown.technologyFee !== undefined && (
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Technology Platform Fee</span>
+              <span className="text-muted-foreground">Technology Platform Fee (video, KBA, storage)</span>
               <span className="font-medium">${breakdown.technologyFee}</span>
             </div>
           )}
           
           {breakdown.serviceFee !== undefined && (
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Service Fee</span>
+              <span className="text-muted-foreground">Mobile Service Fee (travel coordination)</span>
               <span className="font-medium">${breakdown.serviceFee}</span>
             </div>
           )}
           
           {breakdown.agentFee !== undefined && (
             <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Signing Agent Fee</span>
+              <span className="text-muted-foreground">Signing Agent Service (printing, insurance, scan-back)</span>
               <span className="font-medium">${breakdown.agentFee}</span>
             </div>
           )}
@@ -499,37 +499,36 @@ const PricingCalculator = () => {
         <ul className="text-xs text-muted-foreground space-y-1">
           {service === "ron" && (
             <>
-              <li>• PA state-mandated notary fee: ${PRICING.RON.notaryFee}</li>
-              <li>• Secure video platform & identity verification</li>
-              <li>• Digital certificate & audit trail</li>
-              <li>• Available 24/7 by appointment</li>
+              <li>• PA state-mandated notary fee: ${PRICING.RON.notaryFee} (per signature, legal maximum)</li>
+              <li>• Technology platform fee: ${PRICING.RON.technologyFee} (secure video, KBA verification, 10-year storage)</li>
+              <li>• Digital certificate & tamper-evident seal</li>
+              <li>• Available 24/7 by appointment with instant confirmation</li>
             </>
           )}
           {service === "mobile" && (
             <>
-              <li>• PA state-mandated notary fee: ${PRICING.MOBILE.notaryFee}</li>
-              <li>• Service fee: ${PRICING.MOBILE.serviceFee}</li>
-              <li>• Round-trip mileage: ${PRICING.MOBILE.mileageRate}/mile from Erie</li>
-              <li>• All notarial supplies included</li>
+              <li>• PA state-mandated notary fee: ${PRICING.MOBILE.notaryFee} (per signature, legal maximum)</li>
+              <li>• Mobile service fee: ${PRICING.MOBILE.serviceFee} (travel coordination, scheduling, admin)</li>
+              <li>• Round-trip mileage: ${PRICING.MOBILE.mileageRate}/mile from Erie office (6238 Cobblestone Dr)</li>
+              <li>• All notarial supplies & professional liability insurance included</li>
             </>
           )}
           {service === "apostille" && (
             <>
-              <li>• PA notarization: ${PRICING.APOSTILLE.notaryFee}</li>
-              <li>• PA state apostille fee (additional)</li>
-              <li>• Document coordination & expediting</li>
-              <li>• Service & return shipping included</li>
+              <li>• PA notary fee: ${PRICING.APOSTILLE.notaryFee} (if notarization required)</li>
+              <li>• Processing fee: ${PRICING.APOSTILLE.processingFee} (state filing, courier, coordination)</li>
+              <li>• PA Department of State apostille fee (additional)</li>
+              <li>• Document coordination, expediting, & return shipping included</li>
             </>
           )}
           {service === "loan" && (
             <>
-              <li>• PA notarization: ${PRICING.LOAN_SIGNING.notaryFee}</li>
-              <li>• Certified signing agent service</li>
+              <li>• PA notary fee: ${PRICING.LOAN_SIGNING.notaryFee} per signature (typically 3-10 signatures)</li>
+              <li>• Signing agent service: ${PRICING.LOAN_SIGNING.agentFee} (NNA certified, $100K E&O insurance)</li>
               {loanType === "mobile" && (
-                <li>• Round-trip mileage: ${PRICING.LOAN_SIGNING_MOBILE.mileageRate}/mile from Erie</li>
+                <li>• Round-trip mileage: ${PRICING.LOAN_SIGNING_MOBILE.mileageRate}/mile from Erie office</li>
               )}
-              <li>• Document printing if needed</li>
-              <li>• Scan back & FedEx return included</li>
+              <li>• Document printing, scan-back & overnight return shipping included</li>
             </>
           )}
           {service === "i9" && (

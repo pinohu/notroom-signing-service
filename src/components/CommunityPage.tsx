@@ -200,7 +200,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
     },
     {
       question: `What are your rates for ${community.name} residents?`,
-      answer: `Mobile notary service starts at $125 base ($5 PA notary fee + $120 service fee) plus $1.50/mile travel. Remote Online Notary (RON) is a flat $60 ($5 notary + $55 technology fee) with no travel charges.`
+      answer: `Mobile notary service starts at $125 base ($5 PA notary fee + $120 service fee for travel coordination and scheduling) plus $1.50/mile travel. Remote Online Notary (RON) is a flat $60 ($5 PA notary fee + $55 technology platform fee for video infrastructure, KBA verification, and storage) with no travel charges.`
     },
     {
       question: `Are you licensed to notarize in Pennsylvania?`,

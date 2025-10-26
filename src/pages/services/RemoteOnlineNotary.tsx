@@ -337,9 +337,9 @@ const RemoteOnlineNotary = () => {
                       </div>
                     </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-4">
-                    * All sessions include secure video platform, KBA verification, 10-year recording storage, and digital certificate delivery
-                  </p>
+                    <p className="text-xs text-muted-foreground mt-4">
+                      * Pennsylvania law limits notary fees to $5 per notarial act. All other fees are for technology platform (secure video infrastructure, KBA identity verification systems, tamper-evident digital certificates, 10-year session recording storage as required by PA law).
+                    </p>
                 </Card>
               </div>
             </div>
