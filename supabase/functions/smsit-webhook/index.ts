@@ -31,7 +31,7 @@ serve(async (req) => {
 
     logStep("Webhook data", { type: webhookData.event_type });
 
-    // Handle different webhook events
+// Handle different webhook events
     switch (webhookData.event_type) {
       case "message.replied":
         await handleMessageReply(supabase, webhookData);
@@ -51,6 +51,10 @@ serve(async (req) => {
 
       case "task.completed":
         await handleTaskCompletion(supabase, webhookData);
+        break;
+
+      case "rating.received":
+        await handleRatingReceived(supabase, webhookData);
         break;
 
       default:
@@ -157,4 +161,47 @@ async function handleCampaignDelivery(supabase: any, data: any) {
 
 async function handleTaskCompletion(supabase: any, data: any) {
   logStep("Task completed", { taskId: data.task_id });
+}
+
+async function handleRatingReceived(supabase: any, data: any) {
+  logStep("Rating received from SMS reply", { 
+    contactId: data.contact_id,
+    message: data.message 
+  });
+
+  // Extract rating from message (1-5)
+  const rating = parseInt(data.message.trim());
+  
+  if (rating >= 1 && rating <= 5) {
+    const bookingId = data.contact?.custom_fields?.booking_id;
+    const contactId = data.contact_id;
+
+    if (bookingId && contactId) {
+      // Trigger post-service processing
+      const supabaseUrl = Deno.env.get("SUPABASE_URL");
+      const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
+      if (supabaseUrl && supabaseKey) {
+        try {
+          await fetch(`${supabaseUrl}/functions/v1/smsit-post-service`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${supabaseKey}`
+            },
+            body: JSON.stringify({
+              bookingId: bookingId,
+              contactId: contactId,
+              rating: rating,
+              action: 'process_rating'
+            })
+          });
+
+          logStep("Rating processing triggered", { rating, bookingId });
+        } catch (error) {
+          logStep("Failed to trigger rating processing", { error: String(error) });
+        }
+      }
+    }
+  }
 }

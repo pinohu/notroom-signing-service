@@ -32,3 +32,9 @@ verify_jwt = false
 
 [functions.smsit-auto-followup]
 verify_jwt = false
+
+[functions.smsit-appointment-reminders]
+verify_jwt = false
+
+[functions.smsit-post-service]
+verify_jwt = false
