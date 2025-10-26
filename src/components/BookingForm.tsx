@@ -20,11 +20,14 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
 import { format } from "date-fns";
-import { CalendarIcon, MapPin, FileText, Users, Clock } from "lucide-react";
+import { CalendarIcon, MapPin, FileText, Users, Clock, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CommunityData } from "@/data/communityData";
 import { formatPhoneNumber } from "@/utils/validation";
 import BiometricConsent from "@/components/BiometricConsent";
+import { getPriceIdForService, getProductForService, STRIPE_PRODUCTS } from "@/constants/stripeProducts";
+import { calculateDistance, calculateRoundTripDistance } from "@/utils/distanceCalculation";
+import { PRICING } from "@/constants/pricing";
 
 const bookingSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -78,6 +81,10 @@ const BookingForm = ({ community }: BookingFormProps) => {
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [showBiometricConsent, setShowBiometricConsent] = useState(false);
   const [biometricConsent, setBiometricConsent] = useState(false);
+  const [showPaymentPrompt, setShowPaymentPrompt] = useState(false);
+  const [calculatedPrice, setCalculatedPrice] = useState<number | null>(null);
+  const [currentBookingId, setCurrentBookingId] = useState<string | null>(null);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   const canProceedFromStep1 = formData.name && formData.email && formData.phone;
   const canProceedFromStep2 = formData.service && (formData.service !== "mobile" || formData.location_address);
@@ -259,26 +266,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
         // Don't fail the booking if Suitedash sync fails
       }
 
-      toast.success("Thank you! We'll contact you within 2 hours to confirm your appointment.");
+      // Calculate price and show payment prompt
+      await handlePaymentPrompt(bookingData.id, validatedData);
       
-      // Reset form
-      setCurrentStep(1);
-      setAgreedToTerms(false);
-      setBiometricConsent(false);
-      setShowBiometricConsent(false);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        preferred_date: undefined,
-        preferred_time: "",
-        document_type: "",
-        number_of_signers: 1,
-        location_address: "",
-        urgency: "flexible",
-        message: ""
-      });
     } catch (error) {
       if (error instanceof z.ZodError) {
         // Show first validation error
@@ -289,6 +279,109 @@ const BookingForm = ({ community }: BookingFormProps) => {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handlePaymentPrompt = async (bookingId: string, validatedData: any) => {
+    setCurrentBookingId(bookingId);
+    
+    // Calculate price based on service
+    let totalPrice = 0;
+    
+    if (validatedData.service === "ron") {
+      totalPrice = STRIPE_PRODUCTS.RON.amount;
+    } else if (validatedData.service === "mobile") {
+      totalPrice = STRIPE_PRODUCTS.MOBILE_NOTARY.base_amount;
+      
+      // Add mileage if location provided
+      if (validatedData.location_address) {
+        try {
+          const distanceResult = await calculateDistance(validatedData.location_address);
+          if (distanceResult.distance) {
+            const roundTrip = calculateRoundTripDistance(distanceResult.distance);
+            const mileageFee = Math.round(roundTrip * PRICING.MOBILE.mileageRate * 100); // Convert to cents
+            totalPrice += mileageFee;
+          }
+        } catch (error) {
+          if (import.meta.env.DEV) {
+            console.error("Distance calculation error:", error);
+          }
+        }
+      }
+    } else if (validatedData.service === "loan") {
+      totalPrice = STRIPE_PRODUCTS.LOAN_SIGNING.amount;
+    }
+    
+    setCalculatedPrice(totalPrice);
+    setShowPaymentPrompt(true);
+  };
+
+  const handlePayNow = async () => {
+    if (!currentBookingId || !calculatedPrice) {
+      toast.error("Payment information missing. Please try again.");
+      return;
+    }
+
+    setIsProcessingPayment(true);
+
+    try {
+      const priceId = getPriceIdForService(formData.service);
+      const useCustomAmount = formData.service === "mobile" && calculatedPrice !== STRIPE_PRODUCTS.MOBILE_NOTARY.base_amount;
+
+      const { data, error } = await supabase.functions.invoke('create-payment', {
+        body: {
+          priceId: useCustomAmount ? null : priceId,
+          customAmount: useCustomAmount ? calculatedPrice : null,
+          bookingId: currentBookingId,
+          customerEmail: formData.email,
+          customerName: formData.name,
+        }
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (data?.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = data.url;
+      } else {
+        throw new Error("No checkout URL received");
+      }
+    } catch (error) {
+      if (import.meta.env.DEV) {
+        console.error("Payment error:", error);
+      }
+      toast.error("Failed to process payment. Please try again or contact us.");
+      setIsProcessingPayment(false);
+    }
+  };
+
+  const handlePayLater = () => {
+    toast.success("Thank you! We'll contact you within 2 hours to confirm your appointment and arrange payment.");
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setCurrentStep(1);
+    setAgreedToTerms(false);
+    setBiometricConsent(false);
+    setShowBiometricConsent(false);
+    setShowPaymentPrompt(false);
+    setCalculatedPrice(null);
+    setCurrentBookingId(null);
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      preferred_date: undefined,
+      preferred_time: "",
+      document_type: "",
+      number_of_signers: 1,
+      location_address: "",
+      urgency: "flexible",
+      message: ""
+    });
   };
 
   return (
@@ -709,6 +802,80 @@ const BookingForm = ({ community }: BookingFormProps) => {
               </div>
             )}
           </form>
+
+          {/* Payment Prompt Dialog */}
+          {showPaymentPrompt && calculatedPrice && (
+            <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+              <div className="bg-card rounded-lg shadow-xl max-w-md w-full p-6 animate-in fade-in slide-in-from-bottom-4">
+                <div className="mb-6 text-center">
+                  <div className="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <CreditCard className="w-8 h-8 text-success" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2">Booking Received!</h3>
+                  <p className="text-muted-foreground">
+                    Your appointment request has been saved.
+                  </p>
+                </div>
+
+                <div className="bg-accent/10 rounded-lg p-4 mb-6">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm text-muted-foreground">Service:</span>
+                    <span className="font-semibold capitalize">{formData.service}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-lg">
+                    <span className="font-semibold">Total:</span>
+                    <span className="text-2xl font-bold text-primary">
+                      ${(calculatedPrice / 100).toFixed(2)}
+                    </span>
+                  </div>
+                  {formData.service === "mobile" && formData.location_address && (
+                    <p className="text-xs text-muted-foreground mt-2">
+                      Includes base fee + round-trip mileage
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-start gap-2 text-sm">
+                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-xs text-primary font-semibold">1</span>
+                    </div>
+                    <p className="text-muted-foreground">Pay now to secure your appointment instantly</p>
+                  </div>
+                  <div className="flex items-start gap-2 text-sm">
+                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-xs text-primary font-semibold">2</span>
+                    </div>
+                    <p className="text-muted-foreground">Or pay later - we'll call you within 2 hours to arrange payment</p>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <Button
+                    onClick={handlePayNow}
+                    disabled={isProcessingPayment}
+                    className="w-full"
+                    size="lg"
+                  >
+                    {isProcessingPayment ? "Processing..." : `Pay Now - $${(calculatedPrice / 100).toFixed(2)}`}
+                  </Button>
+                  <Button
+                    onClick={handlePayLater}
+                    disabled={isProcessingPayment}
+                    variant="outline"
+                    className="w-full"
+                    size="lg"
+                  >
+                    Pay Later
+                  </Button>
+                </div>
+
+                <p className="text-xs text-center text-muted-foreground mt-4">
+                  Secure payment powered by Stripe
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
