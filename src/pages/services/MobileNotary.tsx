@@ -77,7 +77,7 @@ const MobileNotary = () => {
     <Layout>
       <SEO
         title="Mobile Notary Erie, PA | We Come to You | Crawford, Warren, Mercer Counties | Same-Day Service"
-        description="Professional mobile notary in Erie, PA - $125+ base. We travel to your home, office, hospital anywhere in Erie, Crawford, Warren, Mercer, Venango counties. Same-day available. Licensed & bonded PA notaries. Book now!"
+        description="Professional mobile notary in Erie, PA - $125+. We travel to your home, office, hospital anywhere in Erie, Crawford, Warren, Mercer, Venango counties. Same-day available. Licensed & bonded PA notaries. Book now!"
         keywords="mobile notary erie pa, traveling notary pennsylvania, notary service erie county, home notary visit, mobile notarization meadville, mobile notary warren pa, notary crawford county, hospital notary visits erie"
         canonical="https://notroom.com/services/mobile-notary"
         schema={combinedSchema}
