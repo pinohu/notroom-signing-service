@@ -13,6 +13,10 @@ interface SuitedashWebhookPayload {
     contact_id?: string;
     project_id?: string;
     status?: string;
+    milestone?: string;
+    invoice_id?: string;
+    delay_reason?: string;
+    notes?: string;
     custom_fields?: {
       booking_id?: string;
     };
@@ -41,6 +45,9 @@ const handler = async (req: Request): Promise<Response> => {
       'project.started': 'confirmed',
       'project.completed': 'completed',
       'project.cancelled': 'cancelled',
+      'project.milestone_reached': 'confirmed', // Keep as confirmed, send update SMS
+      'project.delayed': 'confirmed', // Keep as confirmed but flag
+      'project.invoice_sent': 'confirmed', // Status unchanged, trigger payment reminder
     };
 
     const newStatus = statusMapping[payload.event];
@@ -112,6 +119,83 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     console.log(`Successfully updated booking ${booking.id} to status: ${newStatus}`);
+
+    // ========================================
+    // PHASE 7: Enhanced Event Handling
+    // ========================================
+    
+    const SMSIT_BASE_URL = "https://aicpanel.smsit.ai/api/v2";
+    const smsitApiKey = Deno.env.get('SMSIT_API_KEY');
+    
+    // Send customer SMS notifications based on event type
+    if (smsitApiKey) {
+      try {
+        let smsMessage = '';
+        
+        switch (payload.event) {
+          case 'project.started':
+            smsMessage = `Great news ${booking.name.split(' ')[0]}! We've started your ${booking.service}. ${payload.data.notes ? 'Note: ' + payload.data.notes : 'We\'ll keep you updated on progress.'}`;
+            break;
+            
+          case 'project.milestone_reached':
+            smsMessage = `Hi ${booking.name.split(' ')[0]}! 🎉 Milestone reached on your ${booking.service}. ${payload.data.milestone || 'Making great progress!'} - Ron, Notroom`;
+            break;
+            
+          case 'project.delayed':
+            smsMessage = `Hi ${booking.name.split(' ')[0]}, quick update on your ${booking.service}: ${payload.data.delay_reason || 'Slight delay, but we\'re on it!'}. I\'ll call you shortly to discuss. - Ron`;
+            break;
+            
+          case 'project.invoice_sent':
+            smsMessage = `Hi ${booking.name.split(' ')[0]}! Your invoice for ${booking.service} is ready. Pay securely here: [Payment Link]. Thanks! - Ron, Notroom`;
+            break;
+            
+          case 'project.completed':
+            // Don't send here - handled by smsit-post-service
+            break;
+        }
+        
+        if (smsMessage) {
+          await fetch(`${SMSIT_BASE_URL}/messages`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${smsitApiKey}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              to: booking.phone,
+              message: smsMessage,
+              campaign_name: `suitedash_${payload.event}`
+            })
+          });
+          
+          console.log(`Sent ${payload.event} notification SMS to ${booking.phone}`);
+        }
+        
+        // Create urgent task for manager if project delayed
+        if (payload.event === 'project.delayed') {
+          await fetch(`${SMSIT_BASE_URL}/tasks`, {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${smsitApiKey}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              title: `URGENT: Project Delayed - ${booking.name}`,
+              description: `Project delayed for ${booking.service}. Reason: ${payload.data.delay_reason || 'Unknown'}. Call customer immediately: ${booking.phone}`,
+              priority: 'high',
+              due_date: new Date(Date.now() + 60 * 60 * 1000).toISOString(), // Due in 1 hour
+              status: 'pending'
+            })
+          });
+          
+          console.log('Created urgent task for project delay');
+        }
+        
+      } catch (smsError) {
+        console.error('Error sending SMS notification:', smsError);
+        // Don't fail the webhook if SMS fails
+      }
+    }
 
     return new Response(
       JSON.stringify({ 

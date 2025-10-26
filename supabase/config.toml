@@ -44,3 +44,6 @@ verify_jwt = false
 
 [functions.smsit-referral]
 verify_jwt = false
+
+[functions.suitedash-contact-sync]
+verify_jwt = false

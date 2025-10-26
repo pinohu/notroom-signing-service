@@ -20,6 +20,9 @@ interface BookingData {
   urgency?: string;
   message?: string;
   status?: string;
+  companyName?: string; // PHASE 7: B2B tracking
+  companySize?: string;
+  isBusinessClient?: boolean;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -53,13 +56,64 @@ const handler = async (req: Request): Promise<Response> => {
 
     const serviceLabel = serviceMapping[bookingData.service] || bookingData.service;
 
+    // ========================================
+    // PHASE 7: B2B Company Tracking
+    // ========================================
+    let suitedashCompanyId = null;
+    
+    if (bookingData.companyName && bookingData.isBusinessClient) {
+      console.log('Business client detected, creating/updating company:', bookingData.companyName);
+      
+      try {
+        const companyPayload = {
+          name: bookingData.companyName,
+          email: bookingData.email,
+          phone: bookingData.phone,
+          tags: ['B2B Client', serviceLabel],
+          custom_fields: {
+            booking_id: bookingData.bookingId,
+            company_size: bookingData.companySize || 'Not specified',
+            first_service: serviceLabel,
+            source: 'website_booking'
+          }
+        };
+        
+        const companyResponse = await fetch('https://app.suitedash.com/api/v1/companies', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${suitedashApiKey}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(companyPayload)
+        });
+        
+        if (companyResponse.ok) {
+          const companyData = await companyResponse.json();
+          suitedashCompanyId = companyData.id || companyData.data?.id;
+          console.log('Successfully created/updated company in SuiteDash:', suitedashCompanyId);
+        } else {
+          console.error('Failed to create company:', await companyResponse.text());
+        }
+      } catch (companyError) {
+        console.error('Error creating company:', companyError);
+        // Continue with contact creation even if company fails
+      }
+    }
+
     // Create contact in Suitedash
+    const contactTags = ['Notary Client', serviceLabel];
+    if (bookingData.isBusinessClient) {
+      contactTags.push('B2B', 'Business Account');
+    }
+    
     const contactPayload = {
       first_name: bookingData.name.split(' ')[0],
       last_name: bookingData.name.split(' ').slice(1).join(' ') || bookingData.name,
       email: bookingData.email,
       phone: bookingData.phone,
-      tags: ['Notary Client', serviceLabel],
+      company_id: suitedashCompanyId, // Link to company if B2B
+      tags: contactTags,
       custom_fields: {
         booking_id: bookingData.bookingId,
         service_type: serviceLabel,
