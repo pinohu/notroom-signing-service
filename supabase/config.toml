@@ -53,3 +53,9 @@ verify_jwt = false
 
 [functions.smsit-send-mms]
 verify_jwt = false
+
+[functions.smsit-campaign-manager]
+verify_jwt = false
+
+[functions.smsit-smart-segment]
+verify_jwt = false
