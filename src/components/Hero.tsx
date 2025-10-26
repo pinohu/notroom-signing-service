@@ -42,12 +42,14 @@ const Hero = () => {
               size="lg" 
               variant="amber"
               className="text-base sm:text-lg md:text-xl px-6 sm:px-8 py-6 sm:py-7 h-auto shadow-2xl font-bold w-full sm:w-auto"
-              onClick={scrollToServices}
-              aria-label="View all services"
+              onClick={() => {
+                document.getElementById("service-quiz")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              aria-label="Take service quiz"
             >
               <div className="flex flex-col items-center gap-1">
-                <span>View All Services</span>
-                <span className="text-xs sm:text-sm font-normal opacity-90">Notary • Business • Compliance</span>
+                <span>🎯 Find Your Service</span>
+                <span className="text-xs sm:text-sm font-normal opacity-90">60-second quiz</span>
               </div>
             </Button>
             <Button 

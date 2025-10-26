@@ -63,3 +63,33 @@ export const trackCTAClick = (ctaLocation: string, ctaText: string) => {
     timestamp: Date.now(),
   });
 };
+
+// Lead Generation Tracking
+export const trackLeadMagnet = (email: string, name: string) => {
+  trackEvent('lead_captured', {
+    source: 'lead_magnet',
+    email,
+    name,
+    timestamp: Date.now(),
+  });
+};
+
+export const trackQuizCompletion = (answers: Record<string, string>) => {
+  trackEvent('quiz_completed', {
+    answers: JSON.stringify(answers),
+    timestamp: Date.now(),
+  });
+};
+
+export const trackTripwireView = () => {
+  trackEvent('tripwire_viewed', {
+    timestamp: Date.now(),
+  });
+};
+
+export const trackValueLadderInteraction = (level: string) => {
+  trackEvent('value_ladder_interaction', {
+    level,
+    timestamp: Date.now(),
+  });
+};

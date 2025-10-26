@@ -1,9 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Phone } from "lucide-react";
+import { trackCTAClick } from "@/utils/analytics";
 
 const FinalCTA = () => {
   const scrollToBooking = () => {
+    trackCTAClick('final_cta', 'book_any_service');
     document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handlePhoneClick = () => {
+    trackCTAClick('final_cta', 'call_phone');
+    window.location.href = "tel:814-480-0989";
   };
 
   return (
@@ -35,7 +42,7 @@ const FinalCTA = () => {
               size="lg" 
               variant="amberOutline"
               className="text-lg px-8 py-7 h-auto"
-              onClick={() => window.location.href = "tel:814-480-0989"}
+              onClick={handlePhoneClick}
             >
               📞 Call (814) 480-0989
             </Button>

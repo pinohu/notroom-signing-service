@@ -17,6 +17,10 @@ import TrustBadges from "@/components/marketing/TrustBadges";
 import ComparisonTable from "@/components/marketing/ComparisonTable";
 import BeforeAfter from "@/components/marketing/BeforeAfter";
 import AuthorityBuilder from "@/components/marketing/AuthorityBuilder";
+import LeadMagnet from "@/components/lead-gen/LeadMagnet";
+import ServiceQuiz from "@/components/lead-gen/ServiceQuiz";
+import TripwireOffer from "@/components/lead-gen/TripwireOffer";
+import ValueLadder from "@/components/lead-gen/ValueLadder";
 
 const Index = () => {
   const schema = {
@@ -88,15 +92,57 @@ const Index = () => {
       />
       <Hero />
       <TrustBadges />
+      
+      {/* Lead Generation: Value Ladder */}
+      <ValueLadder />
+      
       <Services />
       <BeforeAfter />
+      
+      {/* Lead Generation: Service Quiz */}
+      <section className="py-16 bg-background" id="service-quiz">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Not Sure Which Service You Need?
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Take our 60-second quiz to get a personalized recommendation
+            </p>
+          </div>
+          <div className="max-w-2xl mx-auto">
+            <ServiceQuiz />
+          </div>
+        </div>
+      </section>
+      
       <ValueStack />
       <ComparisonTable />
+      
+      {/* Lead Generation: Tripwire Offer */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <TripwireOffer />
+          </div>
+        </div>
+      </section>
+      
       <ProcessTimeline />
       <AuthorityBuilder />
       <WhyNotroom />
       <RealTestimonials />
       <GuaranteeSection />
+      
+      {/* Lead Generation: Lead Magnet */}
+      <section className="py-16 bg-background" id="lead-magnet">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <LeadMagnet />
+          </div>
+        </div>
+      </section>
+      
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
