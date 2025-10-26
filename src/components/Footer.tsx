@@ -23,10 +23,22 @@ const Footer = () => {
               Erie's Most Trusted Notary Service
             </p>
             <div className="flex gap-4">
-              <a href="https://facebook.com/notroom" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+              <a 
+                href="https://facebook.com/notroom" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-primary-foreground/70 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
+                aria-label="Visit Notroom on Facebook (opens in new tab)"
+              >
                 Facebook
               </a>
-              <a href="https://linkedin.com/company/notroom" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+              <a 
+                href="https://linkedin.com/company/notroom" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-primary-foreground/70 hover:text-primary-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
+                aria-label="Visit Notroom on LinkedIn (opens in new tab)"
+              >
                 LinkedIn
               </a>
             </div>
@@ -37,7 +49,11 @@ const Footer = () => {
             <h4 className="font-bold mb-4 text-lg">Core Services</h4>
             <ul className="space-y-2">
               <li>
-                <button onClick={() => navigateToPage("/services/remote-online-notary")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                <button 
+                  onClick={() => navigateToPage("/services/remote-online-notary")} 
+                  className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
+                  aria-label="Learn about Remote Online Notary services"
+                >
                   Remote Online Notary
                 </button>
               </li>
@@ -279,25 +295,27 @@ const Footer = () => {
               <li>
                 <a 
                   href="tel:814-480-0989" 
-                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
+                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
+                  aria-label="Call Notroom at 814-480-0989"
                 >
-                  <Phone className="w-4 h-4" />
+                  <Phone className="w-4 h-4" aria-hidden="true" />
                   (814) 480-0989
                 </a>
               </li>
               <li>
                 <a 
                   href="mailto:support@notroom.com" 
-                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm"
+                  className="flex items-center gap-2 text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
+                  aria-label="Email Notroom at support@notroom.com"
                 >
-                  <Mail className="w-4 h-4" />
+                  <Mail className="w-4 h-4" aria-hidden="true" />
                   support@notroom.com
                 </a>
               </li>
               <li>
                 <div className="flex items-start gap-2 text-primary-foreground/70 text-sm">
-                  <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
-                  Serving Erie, PA & Surrounding Areas
+                  <MapPin className="w-4 h-4 mt-1 flex-shrink-0" aria-hidden="true" />
+                  <span>Serving Erie, PA & Surrounding Areas</span>
                 </div>
               </li>
             </ul>

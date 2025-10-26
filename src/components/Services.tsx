@@ -361,8 +361,8 @@ const Services = memo(() => {
           <CardContent className="p-8">
             {/* Icon */}
             <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
-                <Icon className="w-10 h-10 text-primary" />
+              <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center" aria-hidden="true">
+                <Icon className="w-10 h-10 text-primary" aria-hidden="true" />
               </div>
             </div>
 
@@ -383,10 +383,10 @@ const Services = memo(() => {
             </p>
 
             {/* Features */}
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8" aria-label="Service features">
               {service.features.map((feature, idx) => (
                 <li key={idx} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-[hsl(var(--success-green))] flex-shrink-0 mt-0.5" />
+                  <Check className="w-5 h-5 text-[hsl(var(--success-green))] flex-shrink-0 mt-0.5" aria-hidden="true" />
                   <span className="text-sm text-foreground">{feature}</span>
                 </li>
               ))}
@@ -396,6 +396,7 @@ const Services = memo(() => {
             <Button 
               className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 shadow-md hover:shadow-lg transition-all"
               onClick={() => handleServiceClick(service.link)}
+              aria-label={`Learn more about ${service.title}`}
             >
               {service.ctaText} →
             </Button>
@@ -406,14 +407,14 @@ const Services = memo(() => {
   };
 
   return (
-    <section id="services" className="py-20 bg-background">
+    <section id="services" className="py-20 bg-background" aria-labelledby="services-heading">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12">
           <div className="inline-block mb-4 px-4 py-2 bg-primary/10 rounded-full">
             <span className="text-primary font-semibold text-sm">Complete Notary & Business Services</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 id="services-heading" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Professional Services in Erie & Surrounding Counties
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -423,17 +424,17 @@ const Services = memo(() => {
 
         {/* Tabbed Service Categories */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-12 h-auto">
-            <TabsTrigger value="popular" className="text-sm md:text-base py-3">
-              <Monitor className="w-4 h-4 mr-2" />
+          <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3 mb-12 h-auto" aria-label="Service categories">
+            <TabsTrigger value="popular" className="text-sm md:text-base py-3" aria-label="View most popular services">
+              <Monitor className="w-4 h-4 mr-2" aria-hidden="true" />
               Most Popular
             </TabsTrigger>
-            <TabsTrigger value="business" className="text-sm md:text-base py-3">
-              <Building className="w-4 h-4 mr-2" />
+            <TabsTrigger value="business" className="text-sm md:text-base py-3" aria-label="View business services">
+              <Building className="w-4 h-4 mr-2" aria-hidden="true" />
               Business Services
             </TabsTrigger>
-            <TabsTrigger value="specialized" className="text-sm md:text-base py-3">
-              <Globe className="w-4 h-4 mr-2" />
+            <TabsTrigger value="specialized" className="text-sm md:text-base py-3" aria-label="View specialized services">
+              <Globe className="w-4 h-4 mr-2" aria-hidden="true" />
               Specialized
             </TabsTrigger>
           </TabsList>

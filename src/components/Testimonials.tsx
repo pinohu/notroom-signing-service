@@ -34,11 +34,11 @@ const Testimonials = memo(() => {
   ];
 
   return (
-    <section id="testimonials" className="py-20 bg-muted">
+    <section id="testimonials" className="py-20 bg-muted" aria-labelledby="testimonials-heading">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 id="testimonials-heading" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Why Choose Professional Notary Services
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -53,9 +53,9 @@ const Testimonials = memo(() => {
               <Card className="bg-background shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
                 <CardContent className="p-8">
                   {/* Stars */}
-                  <div className="flex gap-1 mb-4">
+                  <div className="flex gap-1 mb-4" role="img" aria-label="5 out of 5 stars">
                     {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="w-5 h-5 fill-[hsl(var(--urgency-amber))] text-[hsl(var(--urgency-amber))]" />
+                      <Star key={i} className="w-5 h-5 fill-[hsl(var(--urgency-amber))] text-[hsl(var(--urgency-amber))]" aria-hidden="true" />
                     ))}
                   </div>
 
@@ -66,7 +66,10 @@ const Testimonials = memo(() => {
 
                   {/* Author */}
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold shadow-md">
+                    <div 
+                      className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold shadow-md"
+                      aria-label={`Avatar for ${testimonial.author}`}
+                    >
                       {testimonial.avatar}
                     </div>
                     <div>

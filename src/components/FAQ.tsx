@@ -34,18 +34,18 @@ const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-background">
+    <section id="faq" className="py-20 bg-background" aria-labelledby="faq-heading">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 id="faq-heading" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Frequently Asked Questions
           </h2>
         </div>
 
         {/* FAQ Accordion */}
         <div className="max-w-4xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-4" aria-label="Frequently asked questions">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 

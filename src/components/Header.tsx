@@ -274,6 +274,8 @@ const Header = () => {
             <button
               onClick={() => navigateToPage("/pricing")}
               className="text-foreground hover:text-primary transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
+              aria-label="View pricing"
+              aria-current={location.pathname === "/pricing" ? "page" : undefined}
             >
               Pricing
             </button>
@@ -281,6 +283,7 @@ const Header = () => {
             <button
               onClick={() => scrollToSection("faq")}
               className="text-foreground hover:text-primary transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
+              aria-label="View frequently asked questions"
             >
               FAQ
             </button>
@@ -343,14 +346,15 @@ const Header = () => {
               <Button 
                 variant="ghost" 
                 size="icon"
-                aria-label="Open menu"
+                aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-navigation"
               >
-                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {mobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] overflow-y-auto">
-              <nav className="flex flex-col gap-6 mt-8" aria-label="Mobile navigation">
+              <nav id="mobile-navigation" className="flex flex-col gap-6 mt-8" aria-label="Mobile navigation">
                 <div className="mb-4">
                   <img src={notroomLogo} alt="Notroom Logo" className="h-10" />
                 </div>
