@@ -24,7 +24,7 @@ const CrawfordCounty = () => {
   ];
 
   const services = [
-    { title: "Remote Online Notary", price: "$60", desc: "Perfect for Crawford County residents - no travel needed ($15 notary + $45 platform)" },
+    { title: "Remote Online Notary", price: "$60", desc: "Perfect for Crawford County residents - no travel needed ($5 notary + $55 platform)" },
     { title: "Mobile Notary Service", price: "$125 + mileage", desc: "We travel throughout Crawford County (in-person service)" },
     { title: "Loan Signing Agent", price: "$150", desc: "Real estate closing services ($15 notary + $135 agent fee)" },
     { title: "Apostille Assistance", price: "$175", desc: "Notarization + application help for international documents" }

@@ -26,7 +26,7 @@ const VenangoCounty = () => {
     {
       icon: Video,
       title: "Remote Online Notary (RON)",
-      price: "$45",
+      price: "$60",
       description: "Get documents notarized online from anywhere in Venango County via secure video call",
       features: ["Available 24/7", "Complete in 5 minutes", "Legally valid in all 50 states"],
       link: "/services/remote-online-notary"

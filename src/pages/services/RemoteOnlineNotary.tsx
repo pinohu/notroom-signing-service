@@ -96,7 +96,7 @@ const RemoteOnlineNotary = () => {
     <Layout>
       <SEO
         title="Remote Online Notary PA | RON Service Erie, Meadville, Warren | 24/7 Online Notarization"
-        description="Pennsylvania Remote Online Notary (RON) - $50. Available 24/7 by appointment in Erie, Crawford, Warren, Mercer, Venango counties. PA Act 79 compliant. Licensed notaries. Secure video notarization in 5 minutes. Book now!"
+        description="Pennsylvania Remote Online Notary (RON) - $60. Available 24/7 by appointment in Erie, Crawford, Warren, Mercer, Venango counties. PA Act 79 compliant. Licensed notaries. Secure video notarization in 5 minutes. Book now!"
         keywords="remote online notary pennsylvania, RON service PA, online notarization erie pa, virtual notary meadville, RON warren pa, 24/7 notary pennsylvania, remote notarization crawford county, online notary venango county, PA RON service"
         canonical="https://notroom.com/services/remote-online-notary"
         schema={combinedSchema}

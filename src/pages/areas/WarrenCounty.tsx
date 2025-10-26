@@ -24,7 +24,7 @@ const WarrenCounty = () => {
   ];
 
   const services = [
-    { title: "Remote Online Notary (RON)", price: "$60", highlight: "Best for Warren County", desc: "No travel needed - available by appointment from your home ($15 notary + $45 platform)" },
+    { title: "Remote Online Notary (RON)", price: "$60", highlight: "Best for Warren County", desc: "No travel needed - available by appointment from your home ($5 notary + $55 platform)" },
     { title: "Mobile Notary Service", price: "$125+ ($5-15 notary + travel)", desc: "We travel to Warren County locations (in-person service)" },
     { title: "Loan Signing Agent", price: "$150", desc: "Mortgage and real estate closings ($15 notary + $135 agent fee)" },
     { title: "Apostille Assistance", price: "$175", desc: "Notarization + application help for international documents" }
@@ -122,7 +122,7 @@ const WarrenCounty = () => {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">Available evenings and weekends - $60 ($15 notary + $45 platform)</span>
+                      <span className="text-sm">Available evenings and weekends - $60 ($5 notary + $55 platform)</span>
                     </li>
                   </ul>
                 </div>

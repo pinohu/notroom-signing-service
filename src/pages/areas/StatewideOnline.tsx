@@ -310,7 +310,7 @@ const StatewideOnline = () => {
             <Card className="p-8">
               <div className="text-5xl font-bold text-primary mb-4">$60</div>
               <div className="text-xl text-muted-foreground mb-2">per notarization session</div>
-              <div className="text-sm text-muted-foreground mb-6">$15 notary fee + $45 platform/technology fee</div>
+              <div className="text-sm text-muted-foreground mb-6">$5 notary fee + $55 platform/technology fee</div>
               <ul className="space-y-3 text-left max-w-md mx-auto mb-8">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />

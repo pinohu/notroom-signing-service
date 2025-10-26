@@ -17,7 +17,7 @@ const Services = memo(() => {
       icon: Monitor,
       badge: "Most Popular",
       title: "Remote Online Notary (RON)",
-      price: "$45",
+      price: "$60",
       priceDetail: "Standard docs | Real estate $95",
       description: "Notarize from anywhere via secure video call. Perfect for powers of attorney, affidavits, contracts, and most legal documents.",
       features: [
