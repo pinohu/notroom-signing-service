@@ -28,6 +28,10 @@ import BiometricConsent from "@/components/BiometricConsent";
 import { getPriceIdForService, getProductForService, STRIPE_PRODUCTS } from "@/constants/stripeProducts";
 import { calculateDistance, calculateRoundTripDistance } from "@/utils/distanceCalculation";
 import { PRICING } from "@/constants/pricing";
+import EmailVerification from "@/components/EmailVerification";
+
+// Cloudflare Turnstile site key (get from Cloudflare dashboard)
+const TURNSTILE_SITE_KEY = "0x4AAAAAAAzoK8wF8vF_QDkK"; // Replace with your actual site key
 
 const bookingSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -85,6 +89,31 @@ const BookingForm = ({ community }: BookingFormProps) => {
   const [calculatedPrice, setCalculatedPrice] = useState<number | null>(null);
   const [currentBookingId, setCurrentBookingId] = useState<string | null>(null);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [showEmailVerification, setShowEmailVerification] = useState(false);
+  const [emailVerified, setEmailVerified] = useState(false);
+
+  // Load Turnstile script and set up callback
+  useEffect(() => {
+    // Define global callback for Turnstile
+    (window as any).onTurnstileSuccess = (token: string) => {
+      setTurnstileToken(token);
+    };
+
+    // Load Turnstile script if not already loaded
+    if (!document.querySelector('script[src*="challenges.cloudflare.com"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
+    return () => {
+      delete (window as any).onTurnstileSuccess;
+    };
+  }, []);
 
   const canProceedFromStep1 = formData.name && formData.email && formData.phone;
   const canProceedFromStep2 = formData.service && (formData.service !== "mobile" || formData.location_address);
@@ -165,6 +194,19 @@ const BookingForm = ({ community }: BookingFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Security Check 1: Honeypot field
+    if (honeypot) {
+      // Bot detected - silently fail
+      toast.error("Please try again.");
+      return;
+    }
+
+    // Security Check 2: Turnstile verification
+    if (!turnstileToken) {
+      toast.error("Please complete the security verification.");
+      return;
+    }
+
     // Validate terms agreement
     if (!agreedToTerms) {
       toast.error("You must agree to the Terms of Service and Privacy Policy to continue.");
@@ -175,6 +217,12 @@ const BookingForm = ({ community }: BookingFormProps) => {
     if (formData.service === "ron" && !biometricConsent) {
       setShowBiometricConsent(true);
       toast.error("Biometric data consent is required for Remote Online Notarization.");
+      return;
+    }
+
+    // Security Check 3: Email verification
+    if (!emailVerified) {
+      setShowEmailVerification(true);
       return;
     }
 
@@ -321,19 +369,25 @@ const BookingForm = ({ community }: BookingFormProps) => {
       return;
     }
 
+    if (!turnstileToken) {
+      toast.error("Security verification expired. Please refresh the page.");
+      return;
+    }
+
     setIsProcessingPayment(true);
 
     try {
       const priceId = getPriceIdForService(formData.service);
       const useCustomAmount = formData.service === "mobile" && calculatedPrice !== STRIPE_PRODUCTS.MOBILE_NOTARY.base_amount;
 
-      const { data, error } = await supabase.functions.invoke('create-payment', {
+      const { data, error } = await supabase.functions.invoke('create-payment-secure', {
         body: {
           priceId: useCustomAmount ? null : priceId,
           customAmount: useCustomAmount ? calculatedPrice : null,
           bookingId: currentBookingId,
           customerEmail: formData.email,
           customerName: formData.name,
+          turnstileToken,
         }
       });
 
@@ -369,6 +423,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
     setShowPaymentPrompt(false);
     setCalculatedPrice(null);
     setCurrentBookingId(null);
+    setHoneypot("");
+    setTurnstileToken(null);
+    setEmailVerified(false);
     setFormData({
       name: "",
       email: "",
@@ -382,6 +439,11 @@ const BookingForm = ({ community }: BookingFormProps) => {
       urgency: "flexible",
       message: ""
     });
+
+    // Reset Turnstile widget
+    if ((window as any).turnstile) {
+      (window as any).turnstile.reset();
+    }
   };
 
   return (
@@ -778,6 +840,28 @@ const BookingForm = ({ community }: BookingFormProps) => {
                   </div>
                 )}
 
+                {/* Honeypot field - hidden from users */}
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px' }}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+
+                {/* Cloudflare Turnstile CAPTCHA */}
+                <div className="flex justify-center">
+                  <div
+                    className="cf-turnstile"
+                    data-sitekey={TURNSTILE_SITE_KEY}
+                    data-callback="onTurnstileSuccess"
+                    data-theme="auto"
+                  ></div>
+                </div>
+
                 <div className="flex gap-4">
                   <Button 
                     type="button"
@@ -802,6 +886,23 @@ const BookingForm = ({ community }: BookingFormProps) => {
               </div>
             )}
           </form>
+
+          {/* Email Verification Dialog */}
+          {showEmailVerification && (
+            <EmailVerification
+              email={formData.email}
+              onVerified={() => {
+                setEmailVerified(true);
+                setShowEmailVerification(false);
+                // Auto-submit form after verification
+                document.querySelector<HTMLFormElement>('form')?.requestSubmit();
+              }}
+              onCancel={() => {
+                setShowEmailVerification(false);
+                setIsSubmitting(false);
+              }}
+            />
+          )}
 
           {/* Payment Prompt Dialog */}
           {showPaymentPrompt && calculatedPrice && (
