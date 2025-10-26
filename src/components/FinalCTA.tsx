@@ -14,11 +14,11 @@ const FinalCTA = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))]">
+    <section className="py-20 bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))]" aria-labelledby="final-cta-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           {/* Heading */}
-          <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
+          <h2 id="final-cta-heading" className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6">
             Ready to Get Started?
           </h2>
           
@@ -34,6 +34,7 @@ const FinalCTA = () => {
               variant="amber"
               className="text-lg px-8 py-7 h-auto shadow-2xl"
               onClick={scrollToBooking}
+              aria-label="Book any service now"
             >
               📅 Book Any Service Now
             </Button>
@@ -43,23 +44,24 @@ const FinalCTA = () => {
               variant="amberOutline"
               className="text-lg px-8 py-7 h-auto"
               onClick={handlePhoneClick}
+              aria-label="Call us at 814-480-0989"
             >
               📞 Call (814) 480-0989
             </Button>
           </div>
 
           {/* Trust Line */}
-          <div className="flex flex-wrap justify-center gap-6 text-primary-foreground/90 mb-8">
-            <div className="flex items-center gap-2">
-              <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
+          <div className="flex flex-wrap justify-center gap-6 text-primary-foreground/90 mb-8" role="list" aria-label="Trust indicators">
+            <div className="flex items-center gap-2" role="listitem">
+              <span className="text-[hsl(var(--success-green))] text-xl" aria-hidden="true">✓</span>
               <span className="font-medium">6 Services Available</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
+            <div className="flex items-center gap-2" role="listitem">
+              <span className="text-[hsl(var(--success-green))] text-xl" aria-hidden="true">✓</span>
               <span className="font-medium">Fully Licensed</span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-[hsl(var(--success-green))] text-xl">✓</span>
+            <div className="flex items-center gap-2" role="listitem">
+              <span className="text-[hsl(var(--success-green))] text-xl" aria-hidden="true">✓</span>
               <span className="font-medium">Transparent Pricing</span>
             </div>
           </div>
@@ -70,8 +72,9 @@ const FinalCTA = () => {
             <a 
               href="tel:814-480-0989" 
               className="inline-flex items-center gap-2 text-primary-foreground font-semibold hover:text-amber transition-colors underline underline-offset-4"
+              aria-label="Call us at 814-480-0989 for questions"
             >
-              <Phone className="w-5 h-5" />
+              <Phone className="w-5 h-5" aria-hidden="true" />
               Call us at (814) 480-0989
             </a>
           </div>

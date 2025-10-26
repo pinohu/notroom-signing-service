@@ -254,6 +254,57 @@ This document tracks all accessibility improvements made to achieve WCAG 2.1 AA 
 
 **Impact**: Screen readers announce star ratings and properly identify testimonial components
 
+### 10. WhyNotroom Component (src/components/WhyNotroom.tsx)
+
+#### 10.1 WhyNotroom Accessibility ✅
+**Date**: January 26, 2025  
+**WCAG Criteria**: 1.3.1 Info and Relationships (Level A), 1.1.1 Non-text Content (Level A)  
+**Fix Applied**:
+- Added `aria-labelledby="why-notroom-heading"` to section
+- Added `id="why-notroom-heading"` to h2 for proper labeling
+- Added `role="list"` and `role="listitem"` to advantages grid
+- Added `aria-label` to advantages grid
+- Added `aria-hidden="true"` to decorative icons
+- Added `role="region"` and `aria-label` to stats bar
+- Added descriptive `aria-label` to stat numbers including values
+- Added `aria-hidden="true"` to stat labels (read by stat number label)
+
+**Impact**: Screen readers properly announce company advantages and statistics
+
+### 11. ProcessTimeline Component (src/components/ProcessTimeline.tsx)
+
+#### 11.1 ProcessTimeline Accessibility ✅
+**Date**: January 26, 2025  
+**WCAG Criteria**: 1.3.1 Info and Relationships (Level A), 2.4.6 Headings and Labels (Level AA)  
+**Fix Applied**:
+- Added `aria-labelledby="process-heading"` to section
+- Added `id="process-heading"` to h2 for proper labeling
+- Changed `div` grid to semantic `<ol>` (ordered list) for steps
+- Changed step containers from `div` to `<li>` elements
+- Added `role="list"` and `aria-label="Process steps"` to list
+- Added `role="listitem"` to each step
+- Added `aria-label` to step number badges (e.g., "Step 1")
+- Added `aria-hidden="true"` to decorative elements (pulse animation, icons)
+- Enhanced Button `aria-label` for CTA
+
+**Impact**: Screen readers understand the sequential nature of the process steps
+
+### 12. FinalCTA Component (src/components/FinalCTA.tsx)
+
+#### 12.1 FinalCTA Accessibility ✅
+**Date**: January 26, 2025  
+**WCAG Criteria**: 1.3.1 Info and Relationships (Level A), 4.1.2 Name, Role, Value (Level A)  
+**Fix Applied**:
+- Added `aria-labelledby="final-cta-heading"` to section
+- Added `id="final-cta-heading"` to h2 for proper labeling
+- Added descriptive `aria-label` to both CTA buttons
+- Added `role="list"` and `aria-label="Trust indicators"` to trust badges
+- Added `role="listitem"` to each trust badge
+- Added `aria-hidden="true"` to decorative checkmarks and phone icon
+- Enhanced phone link `aria-label` with context
+
+**Impact**: Screen readers clearly announce CTA purposes and trust indicators
+
 ## 🔍 IN PROGRESS / PLANNED IMPROVEMENTS
 
 ### 7. Form Error Messaging
@@ -320,8 +371,13 @@ This document tracks all accessibility improvements made to achieve WCAG 2.1 AA 
 - [x] Services component accessibility
 - [x] FAQ component accessibility
 - [x] Testimonials component accessibility
+- [x] WhyNotroom component accessibility
+- [x] ProcessTimeline component accessibility
+- [x] FinalCTA component accessibility
 - [ ] Audit and fix color contrast issues
 - [ ] Implement error summary in forms
+- [ ] Test with screen readers (NVDA, JAWS, VoiceOver)
+- [ ] Run Lighthouse accessibility audit
 
 ### Medium-term (Next month)
 - [ ] Achieve Lighthouse accessibility score of 100

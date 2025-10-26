@@ -35,11 +35,11 @@ const WhyNotroom = memo(() => {
   ];
 
   return (
-    <section id="why-notroom" className="py-20 bg-background">
+    <section id="why-notroom" className="py-20 bg-background" aria-labelledby="why-notroom-heading">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 id="why-notroom-heading" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Why Choose Notroom?
           </h2>
           <p className="text-xl text-muted-foreground">
@@ -48,16 +48,16 @@ const WhyNotroom = memo(() => {
         </div>
 
         {/* Advantages Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-16" role="list" aria-label="Why choose Notroom advantages">
           {advantages.map((advantage, index) => {
             const Icon = advantage.icon;
             return (
               <ScrollReveal key={index} delay={index * 100}>
-                <div className="text-center">
+                <div className="text-center" role="listitem">
                   {/* Icon */}
                   <div className="flex justify-center mb-6">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300">
-                      <Icon className="w-10 h-10 text-primary-foreground" />
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                      <Icon className="w-10 h-10 text-primary-foreground" aria-hidden="true" />
                     </div>
                   </div>
 
@@ -78,11 +78,11 @@ const WhyNotroom = memo(() => {
 
         {/* Stats Bar */}
         <ScrollReveal>
-          <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-8 shadow-2xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="bg-gradient-to-br from-primary to-accent rounded-2xl p-8 shadow-2xl" role="region" aria-label="Company statistics">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8" role="list">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-primary-foreground mb-2">
+                <div key={index} className="text-center" role="listitem">
+                  <div className="text-4xl md:text-5xl font-bold text-primary-foreground mb-2" aria-label={`${stat.number} ${stat.label}`}>
                     {stat.number.includes('+') ? (
                       <>
                         <AnimatedCounter end={parseInt(stat.number)} />+
@@ -91,7 +91,7 @@ const WhyNotroom = memo(() => {
                       stat.number
                     )}
                   </div>
-                  <div className="text-primary-foreground/90 font-medium">
+                  <div className="text-primary-foreground/90 font-medium" aria-hidden="true">
                     {stat.label}
                   </div>
                 </div>

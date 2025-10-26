@@ -33,11 +33,11 @@ const ProcessTimeline = memo(() => {
   };
 
   return (
-    <section id="process" className="py-20 bg-muted">
+    <section id="process" className="py-20 bg-muted" aria-labelledby="process-heading">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 id="process-heading" className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             How It Works - 3 Simple Steps
           </h2>
           <p className="text-xl text-muted-foreground">
@@ -47,22 +47,22 @@ const ProcessTimeline = memo(() => {
 
         {/* Timeline */}
         <div className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 relative">
+          <ol className="grid md:grid-cols-3 gap-8 relative" role="list" aria-label="Process steps">
             {/* Connecting Line - Desktop Only */}
-            <div className="hidden md:block absolute top-20 left-0 right-0 h-0.5 bg-primary/20" style={{ width: 'calc(100% - 8rem)', left: '4rem' }} />
+            <div className="hidden md:block absolute top-20 left-0 right-0 h-0.5 bg-primary/20" style={{ width: 'calc(100% - 8rem)', left: '4rem' }} aria-hidden="true" />
             
             {steps.map((step, index) => {
               const Icon = step.icon;
               return (
                 <ScrollReveal key={index} delay={index * 200}>
-                  <div className="relative">
+                  <li className="relative" role="listitem">
                   {/* Step Number Badge */}
                   <div className="flex justify-center mb-6">
                     <div className="relative">
-                      <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-3xl font-bold shadow-lg z-10 relative">
+                      <div className="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-3xl font-bold shadow-lg z-10 relative" aria-label={`Step ${step.number}`}>
                         {step.number}
                       </div>
-                      <div className="absolute inset-0 rounded-full bg-primary/20 animate-pulse" />
+                      <div className="absolute inset-0 rounded-full bg-primary/20 animate-pulse" aria-hidden="true" />
                     </div>
                   </div>
 
@@ -70,8 +70,8 @@ const ProcessTimeline = memo(() => {
                   <div className="bg-background rounded-xl p-6 shadow-lg text-center">
                     {/* Icon */}
                     <div className="flex justify-center mb-4">
-                      <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center">
-                        <Icon className="w-8 h-8 text-accent" />
+                      <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center" aria-hidden="true">
+                        <Icon className="w-8 h-8 text-accent" aria-hidden="true" />
                       </div>
                     </div>
 
@@ -92,11 +92,11 @@ const ProcessTimeline = memo(() => {
                       </span>
                     </div>
                   </div>
-                </div>
+                </li>
                 </ScrollReveal>
               );
             })}
-          </div>
+          </ol>
         </div>
 
         {/* CTA */}
@@ -106,6 +106,7 @@ const ProcessTimeline = memo(() => {
             variant="amber"
             className="text-lg px-12 py-7 h-auto shadow-xl"
             onClick={scrollToBooking}
+            aria-label="Book your appointment now"
           >
             Book Your Appointment
           </Button>
