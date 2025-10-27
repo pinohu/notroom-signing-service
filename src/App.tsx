@@ -108,6 +108,7 @@ import Pleasantville from "./pages/areas/cities/Pleasantville";
 import TrackBooking from "./pages/TrackBooking";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
+import AdminCallScaler from "./pages/admin/CallScaler";
 import LogoProcessor from "./pages/LogoProcessor";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentCanceled from "./pages/PaymentCanceled";
@@ -260,6 +261,7 @@ const App = () => (
           {/* Admin Pages */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/bookings" element={<AdminBookings />} />
+          <Route path="/admin/callscaler" element={<AdminCallScaler />} />
           
           {/* Utility Pages */}
           <Route path="/sitemap" element={<Sitemap />} />

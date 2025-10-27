@@ -26,6 +26,13 @@ verify_jwt = false
 [functions.suitedash-webhook]
 verify_jwt = false
 
+[functions.callscaler-webhook]
+verify_jwt = false
+
+# DNI script - public delivery
+[functions.serve-dni-script]
+verify_jwt = false
+
 # ============================================
 # PROTECTED FUNCTIONS (JWT Required)
 # ============================================

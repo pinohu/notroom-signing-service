@@ -183,6 +183,12 @@ const AdminBookings = () => {
               <CardTitle className="text-3xl">Booking Management</CardTitle>
               <div className="flex gap-2">
                 <Button
+                  variant="secondary"
+                  onClick={() => navigate("/admin/callscaler")}
+                >
+                  CallScaler
+                </Button>
+                <Button
                   variant="outline"
                   size="icon"
                   onClick={fetchBookings}

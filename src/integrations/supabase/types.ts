@@ -46,11 +46,14 @@ export type Database = {
       }
       bookings: {
         Row: {
+          call_duration: number | null
+          call_recording_url: string | null
           created_at: string
           document_type: string | null
           email: string
           id: string
           location_address: string | null
+          marketing_source: string | null
           message: string | null
           name: string
           number_of_signers: number | null
@@ -63,15 +66,19 @@ export type Database = {
           suitedash_contact_id: string | null
           suitedash_project_id: string | null
           suitedash_synced_at: string | null
+          tracking_number: string | null
           updated_at: string
           urgency: string | null
         }
         Insert: {
+          call_duration?: number | null
+          call_recording_url?: string | null
           created_at?: string
           document_type?: string | null
           email: string
           id?: string
           location_address?: string | null
+          marketing_source?: string | null
           message?: string | null
           name: string
           number_of_signers?: number | null
@@ -84,15 +91,19 @@ export type Database = {
           suitedash_contact_id?: string | null
           suitedash_project_id?: string | null
           suitedash_synced_at?: string | null
+          tracking_number?: string | null
           updated_at?: string
           urgency?: string | null
         }
         Update: {
+          call_duration?: number | null
+          call_recording_url?: string | null
           created_at?: string
           document_type?: string | null
           email?: string
           id?: string
           location_address?: string | null
+          marketing_source?: string | null
           message?: string | null
           name?: string
           number_of_signers?: number | null
@@ -105,8 +116,86 @@ export type Database = {
           suitedash_contact_id?: string | null
           suitedash_project_id?: string | null
           suitedash_synced_at?: string | null
+          tracking_number?: string | null
           updated_at?: string
           urgency?: string | null
+        }
+        Relationships: []
+      }
+      call_events: {
+        Row: {
+          booking_id: string | null
+          caller_number: string | null
+          created_at: string | null
+          duration: number | null
+          event_type: string
+          id: string
+          metadata: Json | null
+          recording_url: string | null
+          tool: string
+          tracking_number: string | null
+          transcript: string | null
+        }
+        Insert: {
+          booking_id?: string | null
+          caller_number?: string | null
+          created_at?: string | null
+          duration?: number | null
+          event_type: string
+          id?: string
+          metadata?: Json | null
+          recording_url?: string | null
+          tool: string
+          tracking_number?: string | null
+          transcript?: string | null
+        }
+        Update: {
+          booking_id?: string | null
+          caller_number?: string | null
+          created_at?: string | null
+          duration?: number | null
+          event_type?: string
+          id?: string
+          metadata?: Json | null
+          recording_url?: string | null
+          tool?: string
+          tracking_number?: string | null
+          transcript?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "call_events_booking_id_fkey"
+            columns: ["booking_id"]
+            isOneToOne: false
+            referencedRelation: "bookings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      integration_config: {
+        Row: {
+          active: boolean | null
+          config: Json
+          created_at: string | null
+          id: string
+          tool: string
+          updated_at: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          config?: Json
+          created_at?: string | null
+          id?: string
+          tool: string
+          updated_at?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          config?: Json
+          created_at?: string | null
+          id?: string
+          tool?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
