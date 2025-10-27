@@ -46,11 +46,6 @@ const Layout = ({ children }: LayoutProps) => {
         </a>
       </div>
 
-      {/* Development Notice Banner */}
-      <div className="bg-amber-500 text-amber-950 py-2 px-4 text-center text-sm font-medium">
-        🚧 This site is currently in development and not yet launched
-      </div>
-
       <ScrollProgress aria-hidden="true" />
       <Header />
       
