@@ -146,9 +146,9 @@ export default function VoiceAgent() {
         <div>
           <h1 className="text-3xl font-bold flex items-center gap-2">
             <Bot className="h-8 w-8" />
-            Voice AI Agent
+            Voice AI System
           </h1>
-          <p className="text-muted-foreground">24/7 automated booking agent powered by {config?.provider || 'AI'}</p>
+          <p className="text-muted-foreground">Inbound call answering (Insighto) + Outbound calling (Thoughtly)</p>
         </div>
         <Button onClick={() => window.location.href = '/admin/bookings'} variant="outline">
           View All Bookings
@@ -209,39 +209,56 @@ export default function VoiceAgent() {
         </Card>
       </div>
 
-      <Tabs defaultValue="config" className="space-y-4">
+      <Tabs defaultValue="inbound" className="space-y-4">
         <TabsList>
-          <TabsTrigger value="config">Configuration</TabsTrigger>
+          <TabsTrigger value="inbound">📞 Inbound (Insighto)</TabsTrigger>
+          <TabsTrigger value="outbound">📤 Outbound (Thoughtly)</TabsTrigger>
           <TabsTrigger value="intents">Intents</TabsTrigger>
           <TabsTrigger value="bookings">Recent Bookings</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="config" className="space-y-4">
+        <TabsContent value="inbound" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Agent Settings</CardTitle>
-              <CardDescription>Configure voice AI behavior and routing</CardDescription>
+              <CardTitle>Inbound Call Answering - Insighto.AI</CardTitle>
+              <CardDescription>24/7 automated receptionist that answers calls and creates bookings</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label>Provider</Label>
-                  <Select
-                    value={config?.provider}
-                    onValueChange={(value) => setConfig(prev => prev ? { ...prev, provider: value as any } : null)}
+              <div className="bg-blue-50 dark:bg-blue-950 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold mb-2">Setup Instructions:</h4>
+                <ol className="list-decimal list-inside space-y-2 text-sm">
+                  <li>Create an Assistant in your Insighto dashboard</li>
+                  <li>Configure intents (NOTARY_NOW, APOSTILLE, FORMATION, etc.)</li>
+                  <li>Go to Settings → Webhooks → Add the URL below</li>
+                  <li>Edit Assistant → Advanced → Connect webhook</li>
+                  <li>Purchase a phone number and route to your assistant</li>
+                </ol>
+              </div>
+
+              <div className="space-y-2">
+                <Label>Webhook URL (Paste in Insighto)</Label>
+                <div className="flex gap-2">
+                  <Input
+                    readOnly
+                    value={`https://brzeuhnscuanypkoqcru.supabase.co/functions/v1/agent-booking-handler`}
+                    className="font-mono text-sm"
+                  />
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      navigator.clipboard.writeText(`https://brzeuhnscuanypkoqcru.supabase.co/functions/v1/agent-booking-handler`);
+                      toast({ title: 'Copied', description: 'Webhook URL copied to clipboard' });
+                    }}
                   >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="insighto">Insighto</SelectItem>
-                      <SelectItem value="thoughtly">Thoughtly</SelectItem>
-                    </SelectContent>
-                  </Select>
+                    Copy
+                  </Button>
                 </div>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
 
                 <div className="space-y-2">
-                  <Label>Voice</Label>
+                  <Label>Voice (Insighto Setting)</Label>
                   <Input
                     value={config?.config.voice || ''}
                     onChange={(e) => setConfig(prev => prev ? {
@@ -274,6 +291,7 @@ export default function VoiceAgent() {
                     } : null)}
                     placeholder="+18145550100"
                   />
+                  <p className="text-xs text-muted-foreground">Human fallback when AI isn't confident</p>
                 </div>
 
                 <div className="space-y-2">
@@ -295,36 +313,53 @@ export default function VoiceAgent() {
 
               <div className="flex gap-2 pt-4">
                 <Button onClick={saveConfig} disabled={saving}>
-                  {saving ? 'Saving...' : 'Save Configuration'}
-                </Button>
-                <Button onClick={testAgent} variant="outline">
-                  <Phone className="h-4 w-4 mr-2" />
-                  Test Agent
+                  {saving ? 'Saving...' : 'Save Settings'}
                 </Button>
               </div>
             </CardContent>
           </Card>
+        </TabsContent>
 
+        <TabsContent value="outbound" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Webhook URL</CardTitle>
-              <CardDescription>Configure this in your {config?.provider} dashboard</CardDescription>
+              <CardTitle>Outbound Calling - Thoughtly</CardTitle>
+              <CardDescription>Proactive calls for missed call recovery, follow-ups, and reminders</CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="flex gap-2">
-                <Input
-                  readOnly
-                  value={`${window.location.origin}/functions/v1/agent-booking-handler`}
-                  className="font-mono text-sm"
-                />
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    navigator.clipboard.writeText(`${window.location.origin}/functions/v1/agent-booking-handler`);
-                    toast({ title: 'Copied', description: 'Webhook URL copied to clipboard' });
-                  }}
-                >
-                  Copy
+            <CardContent className="space-y-4">
+              <div className="bg-purple-50 dark:bg-purple-950 p-4 rounded-lg mb-4">
+                <h4 className="font-semibold mb-2">Use Cases:</h4>
+                <ul className="list-disc list-inside space-y-1 text-sm">
+                  <li>Missed call recovery (automatic callback within minutes)</li>
+                  <li>Appointment reminders (24h and 2h before)</li>
+                  <li>Follow-up calls after service completion</li>
+                  <li>Renewal notifications for annual filings</li>
+                  <li>Upsell campaigns (LLC formation after notarization)</li>
+                </ul>
+              </div>
+
+              <div className="space-y-2">
+                <Label>Thoughtly API Configuration</Label>
+                <p className="text-sm text-muted-foreground">
+                  Thoughtly calls are triggered via API (not webhooks). Configure agents in your Thoughtly dashboard, then trigger calls from your automation workflows.
+                </p>
+              </div>
+
+              <div className="border rounded-lg p-4 space-y-3">
+                <h4 className="font-semibold">Example: Missed Call Recovery</h4>
+                <code className="block text-xs bg-muted p-3 rounded">
+                  POST /api/thoughtly/trigger-call
+                  <br />
+                  {`{ "contact_id": "...", "agent_id": "...", "metadata": {...} }`}
+                </code>
+                <p className="text-xs text-muted-foreground">
+                  Triggered automatically when CallScaler detects a missed call
+                </p>
+              </div>
+
+              <div className="flex gap-2 pt-4">
+                <Button onClick={() => window.open('https://docs.thoughtly.com/developers', '_blank')} variant="outline">
+                  View Thoughtly Docs
                 </Button>
               </div>
             </CardContent>
