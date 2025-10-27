@@ -182,6 +182,9 @@ const AdminCallScaler = () => {
           <p className="text-muted-foreground">Manage call tracking and attribution</p>
         </div>
         <div className="flex gap-2">
+          <Button onClick={() => navigate("/admin/voice-agent")} variant="secondary">
+            Voice Agent
+          </Button>
           <Button onClick={() => navigate("/admin/bookings")} variant="secondary">
             Bookings
           </Button>

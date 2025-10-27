@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      agent_configs: {
+        Row: {
+          config: Json
+          created_at: string | null
+          id: string
+          intents: Json
+          is_active: boolean | null
+          provider: string
+          updated_at: string | null
+        }
+        Insert: {
+          config?: Json
+          created_at?: string | null
+          id?: string
+          intents?: Json
+          is_active?: boolean | null
+          provider: string
+          updated_at?: string | null
+        }
+        Update: {
+          config?: Json
+          created_at?: string | null
+          id?: string
+          intents?: Json
+          is_active?: boolean | null
+          provider?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       booking_rate_limits: {
         Row: {
           attempts: number
@@ -46,8 +76,12 @@ export type Database = {
       }
       bookings: {
         Row: {
+          agent_provider: string | null
+          ai_booked: boolean | null
+          ai_confidence: number | null
           call_duration: number | null
           call_recording_url: string | null
+          call_transcript: string | null
           created_at: string
           document_type: string | null
           email: string
@@ -71,8 +105,12 @@ export type Database = {
           urgency: string | null
         }
         Insert: {
+          agent_provider?: string | null
+          ai_booked?: boolean | null
+          ai_confidence?: number | null
           call_duration?: number | null
           call_recording_url?: string | null
+          call_transcript?: string | null
           created_at?: string
           document_type?: string | null
           email: string
@@ -96,8 +134,12 @@ export type Database = {
           urgency?: string | null
         }
         Update: {
+          agent_provider?: string | null
+          ai_booked?: boolean | null
+          ai_confidence?: number | null
           call_duration?: number | null
           call_recording_url?: string | null
+          call_transcript?: string | null
           created_at?: string
           document_type?: string | null
           email?: string

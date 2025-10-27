@@ -96,6 +96,9 @@ verify_jwt = true
 [functions.smsit-master-automation]
 verify_jwt = true
 
+[functions.agent-booking-handler]
+verify_jwt = false  # Called by external voice AI providers
+
 # ============================================
 # DEPRECATED FUNCTIONS (Disabled)
 # ============================================
