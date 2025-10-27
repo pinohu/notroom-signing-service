@@ -54,7 +54,7 @@ const Layout = ({ children }: LayoutProps) => {
       <ScrollProgress aria-hidden="true" />
       <Header />
       
-      <main id="main-content" role="main" aria-label="Main content" className="pt-[50px]">
+      <main id="main-content" role="main" aria-label="Main content" className="pt-[30px]">
         {children}
       </main>
       
