@@ -51,6 +51,7 @@ const bookingSchema = z.object({
     urgency: z.enum(["flexible", "within_week", "within_24hrs", "same_day"]).default("flexible"),
   message: z.string().max(1000, "Message must be less than 1000 characters").optional(),
   sms_opt_in: z.boolean().default(false),
+  whatsapp_opt_in: z.boolean().default(false),
 });
 
 interface BookingFormProps {
@@ -76,6 +77,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
     urgency: string;
     message: string;
     sms_opt_in: boolean;
+    whatsapp_opt_in: boolean;
   }>({
     name: "",
     email: "",
@@ -87,7 +89,8 @@ const BookingForm = ({ community }: BookingFormProps) => {
     location_address: "",
     urgency: "flexible",
     message: "",
-    sms_opt_in: false
+    sms_opt_in: false,
+    whatsapp_opt_in: false
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
@@ -105,6 +108,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
   const [turnstileWidgetId, setTurnstileWidgetId] = useState<string | null>(null);
   const turnstileRef = useRef<HTMLDivElement>(null);
   const [smsOptIn, setSmsOptIn] = useState(false);
+  const [whatsappOptIn, setWhatsappOptIn] = useState(false);
   const [availableTimeSlots, setAvailableTimeSlots] = useState<string[]>([]);
   const [referralCode, setReferralCode] = useState<string | null>(null);
   const [formErrors, setFormErrors] = useState<{ field: string; message: string }[]>([]);
@@ -443,7 +447,8 @@ const BookingForm = ({ community }: BookingFormProps) => {
           location_address: validatedData.location_address || null,
           urgency: validatedData.urgency,
           message: validatedData.message || null,
-          sms_opt_in: formData.sms_opt_in
+          sms_opt_in: formData.sms_opt_in,
+          whatsapp_opt_in: formData.whatsapp_opt_in
         }])
         .select()
         .single();
@@ -549,27 +554,28 @@ const BookingForm = ({ community }: BookingFormProps) => {
         // Don't fail the booking if calendar sync fails
       }
 
-      // Send SMS notification if user opted in
-      if (formData.sms_opt_in) {
+      // Send notification if user opted in (WhatsApp preferred, SMS fallback)
+      if (formData.whatsapp_opt_in || formData.sms_opt_in) {
         try {
-          const smsMessage = `Hi ${validatedData.name}! Your ${validatedData.service.toUpperCase()} notary appointment has been received. Booking ID: ${bookingData.id.slice(0, 8)}. We'll contact you within 2 hours to confirm. - Notroom`;
+          const message = `Hi ${validatedData.name}! Your ${validatedData.service.toUpperCase()} notary appointment has been received. Booking ID: ${bookingData.id.slice(0, 8)}. We'll contact you within 2 hours to confirm. - Notroom`;
           
           await supabase.functions.invoke('send-sms-notification', {
             body: {
               phone: validatedData.phone,
-              message: smsMessage,
-              bookingId: bookingData.id
+              message: message,
+              bookingId: bookingData.id,
+              preferWhatsApp: formData.whatsapp_opt_in
             }
           });
           
           if (import.meta.env.DEV) {
-            console.log("SMS notification sent successfully");
+            console.log(`Notification sent via ${formData.whatsapp_opt_in ? 'WhatsApp (preferred)' : 'SMS'}`);
           }
-        } catch (smsError) {
+        } catch (notificationError) {
           if (import.meta.env.DEV) {
-            console.error("SMS sending error:", smsError);
+            console.error("Notification sending error:", notificationError);
           }
-          // Don't fail the booking if SMS fails
+          // Don't fail the booking if notification fails
         }
       }
 
@@ -724,7 +730,8 @@ const BookingForm = ({ community }: BookingFormProps) => {
       location_address: "",
       urgency: "flexible",
       message: "",
-      sms_opt_in: false
+      sms_opt_in: false,
+      whatsapp_opt_in: false
     });
 
     // Reset Turnstile widget
@@ -1255,6 +1262,25 @@ const BookingForm = ({ community }: BookingFormProps) => {
                     />
                     <Label htmlFor="sms-opt-in" className="text-sm cursor-pointer">
                       <span className="font-semibold">📱 SMS Updates (Optional):</span> I would like to receive text message updates about my appointment status and service journey. Standard message rates may apply.
+                    </Label>
+                  </div>
+                </div>
+
+                {/* WhatsApp Opt-in */}
+                <div className="bg-green-50 dark:bg-green-950/20 p-4 rounded-lg border border-green-200 dark:border-green-900">
+                  <div className="flex items-start gap-3">
+                    <input
+                      type="checkbox"
+                      id="whatsapp-opt-in"
+                      checked={whatsappOptIn}
+                      onChange={(e) => {
+                        setWhatsappOptIn(e.target.checked);
+                        setFormData({ ...formData, whatsapp_opt_in: e.target.checked });
+                      }}
+                      className="mt-1 w-4 h-4"
+                    />
+                    <Label htmlFor="whatsapp-opt-in" className="text-sm cursor-pointer">
+                      <span className="font-semibold">💬 WhatsApp Updates (Recommended):</span> Get instant updates via WhatsApp with rich media, appointment details, and easy 2-way communication. Free delivery (standard WhatsApp data rates apply).
                     </Label>
                   </div>
                 </div>

@@ -103,6 +103,8 @@ export type Database = {
           tracking_number: string | null
           updated_at: string
           urgency: string | null
+          whatsapp_number: string | null
+          whatsapp_opt_in: boolean | null
         }
         Insert: {
           agent_provider?: string | null
@@ -132,6 +134,8 @@ export type Database = {
           tracking_number?: string | null
           updated_at?: string
           urgency?: string | null
+          whatsapp_number?: string | null
+          whatsapp_opt_in?: boolean | null
         }
         Update: {
           agent_provider?: string | null
@@ -161,6 +165,8 @@ export type Database = {
           tracking_number?: string | null
           updated_at?: string
           urgency?: string | null
+          whatsapp_number?: string | null
+          whatsapp_opt_in?: boolean | null
         }
         Relationships: []
       }
