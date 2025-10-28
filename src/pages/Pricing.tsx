@@ -456,29 +456,42 @@ const Pricing = () => {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">Pennsylvania Law Fee Disclosure</h2>
+            <h2 className="text-3xl font-bold text-center mb-8">Official PA Department of State Fee Disclosure</h2>
             <Card>
               <CardContent className="pt-6">
                 <div className="prose prose-sm max-w-none space-y-4 text-muted-foreground">
                   <p>
-                    <strong>Pennsylvania Notary Fee Law (57 Pa. Code § 307.1):</strong> The maximum notary fee in Pennsylvania is 
-                    <strong> $5 per notarial act</strong> (signature acknowledgment, jurat, or oath). All prices listed above comply with this regulation. Additional fees shown represent separate, non-notarial services:
+                    <strong>Pennsylvania Notary Public Fee Schedule (PA Department of State):</strong> In accordance with 
+                    Pennsylvania law and the official PA Department of State Notary Fee Schedule, notaries may charge a maximum of 
+                    <strong> $5.00 per notarial act</strong> for acknowledgments, jurats, and oaths/affirmations. All pricing listed 
+                    above strictly complies with these official regulations.
                   </p>
+                  
+                  <div className="bg-background/50 p-4 rounded-lg border">
+                    <p className="font-semibold mb-2">How Our Pricing Works:</p>
+                    <p className="mb-3">
+                      Pennsylvania law permits notaries to charge the $5.00 notary fee <strong>plus reasonable additional fees</strong> for 
+                      non-notarial clerical and administrative services. All prices shown include:
+                    </p>
+                  </div>
+
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>$5 notary fee:</strong> The notarial act itself (signature acknowledgment, jurat, or oath administration) - Pennsylvania legal maximum per 57 Pa. Code § 307.1</li>
-                    <li><strong>Additional fees represent non-notarial services:</strong>
+                    <li><strong>$5 Notary Fee (per act):</strong> The official notarial act itself—signature acknowledgment, jurat, or oath/affirmation administration. This is the maximum fee set by the PA Department of State.</li>
+                    <li><strong>Additional Service Fees (non-notarial):</strong>
                       <ul className="list-circle pl-6 mt-2 space-y-1">
-                        <li><strong>Technology platform fees (RON):</strong> Secure video infrastructure, identity verification (KBA) systems, tamper-evident digital certificates, 10-year recording storage (PA law requirement)</li>
-                        <li><strong>Mobile service fees:</strong> Travel coordination, scheduling systems, administrative overhead ($120 base + $1.50/mile round-trip)</li>
-                        <li><strong>Signing agent services (loan closings):</strong> Professional expertise, $100K E&O insurance, document printing/scanning, courier services</li>
-                        <li><strong>Premium surcharges:</strong> After-hours service ($40-85), weekends ($65-90), holidays ($125), same-day rush ($65-100)</li>
-                        <li><strong>Facility coordination fees:</strong> Healthcare facilities ($145+), correctional facilities ($180+) - special protocols and extended processing</li>
+                        <li><strong>Technology platform (RON):</strong> Secure video conferencing infrastructure, knowledge-based authentication (KBA) identity verification, tamper-evident digital certificates, 10-year recording storage required by PA law</li>
+                        <li><strong>Mobile service:</strong> Professional travel to your location, trip coordination, scheduling systems, administrative overhead ($120 base service + $1.50/mile round-trip for mileage reimbursement)</li>
+                        <li><strong>Signing agent services:</strong> Specialized loan closing expertise, $100,000 E&O insurance coverage, document printing/scanning equipment, courier and scan-back services</li>
+                        <li><strong>Premium scheduling:</strong> After-hours availability ($40-150), weekend service ($65-90), holiday service ($125), expedited same-day or 2-hour rush appointments ($65-100)</li>
+                        <li><strong>Specialized facility coordination:</strong> Healthcare facility visits ($145+), correctional facility visits ($180+)—includes compliance with facility security protocols, extended processing times, and special accommodations</li>
                       </ul>
                     </li>
                   </ul>
-                  <p className="text-xs mt-4">
-                    All pricing is transparent and complies with Pennsylvania notary regulations. Services include both 
-                    the notarial act and valuable professional services that justify the total fee.
+                  
+                  <p className="text-sm mt-4 font-medium">
+                    <strong>Legal Compliance:</strong> All fees are transparent, itemized, and fully compliant with Pennsylvania notary regulations 
+                    and the official PA Department of State Notary Fee Schedule. The $5.00 notary fee is clearly separated from legitimate 
+                    non-notarial service charges as permitted by law.
                   </p>
                 </div>
               </CardContent>

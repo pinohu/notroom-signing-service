@@ -1,11 +1,15 @@
 // Pennsylvania Law Compliant Pricing Structure - Profit Optimized
+// Based on official PA Department of State Notary Fee Schedule
+// Reference: Pennsylvania Notary Public Fee Schedule (PA DOS)
+// Maximum notary fee: $5.00 per notarial act (acknowledgment, jurat, oath/affirmation)
+// Additional fees permitted for non-notarial clerical and administrative services
 export const PRICING = {
   RON: {
     display: "$60",
-    notaryFee: 5, // PA law maximum per notarial act (57 Pa. Code § 307.1)
+    notaryFee: 5, // PA Department of State official maximum per notarial act
     technologyFee: 55, // Secure video platform, KBA verification, 10-year storage
     total: 60,
-    description: "$5 PA notary fee (legal maximum) + $55 technology platform fee (video, KBA, storage)",
+    description: "$5 PA notary fee (PA DOS official maximum) + $55 technology platform fee (video, KBA, storage)",
     premium: 125,
     premiumDescription: "Complex documents requiring extended review"
   },
