@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Download, FileText, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { trackEvent } from "@/utils/analytics";
+import { captureLeadMagnetEmail } from "@/services/emailService";
 
 const LeadMagnet = () => {
   const [email, setEmail] = useState("");
@@ -32,8 +33,13 @@ const LeadMagnet = () => {
       timestamp: Date.now(),
     });
 
-    // TODO: Integrate with email service (Mailchimp, ConvertKit, etc.)
-    console.log("Lead captured:", { name, email });
+    // Capture lead in email service
+    await captureLeadMagnetEmail({
+      email,
+      name,
+      resource: 'PA_Notary_Guide',
+      timestamp: Date.now(),
+    });
 
     setIsSubmitted(true);
     

@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Mail, RefreshCw, CheckCircle } from "lucide-react";
+import { logger } from "@/utils/logger";
 
 interface EmailVerificationProps {
   email: string;
@@ -34,7 +35,7 @@ const EmailVerification = ({ email, onVerified, onCancel }: EmailVerificationPro
         throw new Error(data?.error || "Failed to send code");
       }
     } catch (error) {
-      console.error("Send code error:", error);
+      logger.error("Send code error:", error);
       toast.error(error instanceof Error ? error.message : "Failed to send verification code");
     } finally {
       setIsSendingCode(false);
@@ -62,7 +63,7 @@ const EmailVerification = ({ email, onVerified, onCancel }: EmailVerificationPro
         toast.error(data?.error || "Invalid verification code");
       }
     } catch (error) {
-      console.error("Verify code error:", error);
+      logger.error("Verify code error:", error);
       toast.error("Invalid or expired verification code");
     } finally {
       setIsVerifying(false);

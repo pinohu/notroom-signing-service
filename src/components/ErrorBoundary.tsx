@@ -2,6 +2,7 @@ import React, { Component, ErrorInfo, ReactNode } from "react";
 import { AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { logger } from "@/utils/logger";
 
 interface Props {
   children: ReactNode;
@@ -22,9 +23,7 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    if (import.meta.env.DEV) {
-      console.error("ErrorBoundary caught an error:", error, errorInfo);
-    }
+    logger.error("ErrorBoundary caught an error:", error, errorInfo);
     // In production, you could send to error tracking service
     // Example: Sentry.captureException(error);
   }

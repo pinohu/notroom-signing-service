@@ -15,6 +15,7 @@ import { EnhancedLocalFAQ } from "@/components/local-seo/EnhancedLocalFAQ";
 import { ServiceAreaMap } from "@/components/local-seo/ServiceAreaMap";
 import { getCaseStudiesForCity } from "@/data/localCaseStudies";
 import { generateFAQSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
+import { logger } from "@/utils/logger";
 
 interface CommunityPageProps {
   community: CommunityData;
@@ -45,9 +46,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
           setCommunityImage(data.imageUrl);
         }
       } catch (error) {
-        if (import.meta.env.DEV) {
-          console.error('Error generating community image:', error);
-        }
+        logger.error('Error generating community image:', error);
       } finally {
         setImageLoading(false);
       }

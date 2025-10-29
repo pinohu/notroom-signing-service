@@ -1,6 +1,7 @@
 import { FileText, Download, CheckCircle2, AlertCircle } from "lucide-react";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
+import { logger } from "@/utils/logger";
 
 const ServiceAgreementTemplates = () => {
   const agreements = [
@@ -133,7 +134,7 @@ const ServiceAgreementTemplates = () => {
                   className="w-full"
                   onClick={() => {
                     // In production, this would download the actual PDF
-                    console.log(`Download: ${agreement.downloadLink}`);
+                    logger.log(`Download: ${agreement.downloadLink}`);
                   }}
                   aria-label={`Download ${agreement.title}`}
                 >

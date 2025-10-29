@@ -29,6 +29,7 @@ import { getPriceIdForService, getProductForService, STRIPE_PRODUCTS } from "@/c
 import { calculateDistance, calculateRoundTripDistance } from "@/utils/distanceCalculation";
 import { PRICING } from "@/constants/pricing";
 import EmailVerification from "@/components/EmailVerification";
+import { logger } from "@/utils/logger";
 
 // Cloudflare Turnstile site key (get from Cloudflare dashboard)
 const TURNSTILE_SITE_KEY = "0x4AAAAAAB8ttRw5M8Z_vCdC";
@@ -121,7 +122,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
     if (refCode) {
       setReferralCode(refCode);
       toast.success("🎁 Referral discount applied! You'll save $25 on this booking.");
-      console.log("Referral code detected:", refCode);
+      logger.log("Referral code detected:", refCode);
     }
   }, []);
 
@@ -129,7 +130,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
   useEffect(() => {
     // Define global callback for Turnstile
     (window as any).onTurnstileSuccess = (token: string) => {
-      console.log("Turnstile token received");
+      logger.info("Turnstile token received");
       setTurnstileToken(token);
     };
 
@@ -140,11 +141,11 @@ const BookingForm = ({ community }: BookingFormProps) => {
       script.async = true;
       script.defer = true;
       script.onload = () => {
-        console.log("Turnstile script loaded");
+        logger.info("Turnstile script loaded");
         setTurnstileLoaded(true);
       };
       script.onerror = () => {
-        console.error("Failed to load Turnstile script");
+        logger.error("Failed to load Turnstile script");
       };
       document.head.appendChild(script);
     } else {
@@ -162,11 +163,11 @@ const BookingForm = ({ community }: BookingFormProps) => {
       // Check if widget already exists
       const existingWidget = turnstileRef.current.querySelector('iframe');
       if (!existingWidget && (window as any).turnstile) {
-        console.log("Rendering Turnstile widget");
+        logger.info("Rendering Turnstile widget");
         const widgetId = (window as any).turnstile.render(turnstileRef.current, {
           sitekey: TURNSTILE_SITE_KEY,
           callback: (token: string) => {
-            console.log("Turnstile verification successful");
+            logger.info("Turnstile verification successful");
             setTurnstileToken(token);
           },
           theme: 'auto',
@@ -181,7 +182,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
         try {
           (window as any).turnstile.remove(turnstileWidgetId);
         } catch (e) {
-          console.log("Turnstile cleanup:", e);
+          logger.debug("Turnstile cleanup:", e);
         }
       }
     };
@@ -454,9 +455,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
         .single();
 
       if (error) {
-        if (import.meta.env.DEV) {
-          console.error("Booking submission error:", error);
-        }
+        logger.error("Booking submission error:", error);
         toast.error("Failed to submit booking. Please try again.");
         return;
       }
@@ -476,17 +475,13 @@ const BookingForm = ({ community }: BookingFormProps) => {
           }
         });
 
-        if (import.meta.env.DEV) {
-          console.log("Master automation triggered:", automationResult);
-        }
+        logger.log("Master automation triggered:", automationResult);
 
         if (!automationResult.error) {
           toast.success("🎉 Booking confirmed! Our automation system is processing your request.");
         }
       } catch (automationError) {
-        if (import.meta.env.DEV) {
-          console.error("Master automation error:", automationError);
-        }
+        logger.error("Master automation error:", automationError);
         
         // Fallback: If master automation fails, send confirmation email manually
         try {
@@ -501,9 +496,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
             }
           });
         } catch (emailError) {
-          if (import.meta.env.DEV) {
-            console.error("Email fallback error:", emailError);
-          }
+          logger.error("Email fallback error:", emailError);
         }
       }
 
@@ -526,13 +519,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
             action: 'full_sync'
           }
         });
-        if (import.meta.env.DEV) {
-          console.log("Booking synced to SMS-iT CRM - Lead automation started");
-        }
+        logger.log("Booking synced to SMS-iT CRM - Lead automation started");
       } catch (smsitError) {
-        if (import.meta.env.DEV) {
-          console.error("SMS-iT sync error:", smsitError);
-        }
+        logger.error("SMS-iT sync error:", smsitError);
         // Don't fail the booking if SMS-iT sync fails
       }
 
@@ -544,13 +533,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
             action: 'sync'
           }
         });
-        if (import.meta.env.DEV) {
-          console.log("Booking synced to calendars successfully");
-        }
+        logger.log("Booking synced to calendars successfully");
       } catch (calendarError) {
-        if (import.meta.env.DEV) {
-          console.error("Calendar sync error:", calendarError);
-        }
+        logger.error("Calendar sync error:", calendarError);
         // Don't fail the booking if calendar sync fails
       }
 
@@ -568,13 +553,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
             }
           });
           
-          if (import.meta.env.DEV) {
-            console.log(`Notification sent via ${formData.whatsapp_opt_in ? 'WhatsApp (preferred)' : 'SMS'}`);
-          }
+          logger.log(`Notification sent via ${formData.whatsapp_opt_in ? 'WhatsApp (preferred)' : 'SMS'}`);
         } catch (notificationError) {
-          if (import.meta.env.DEV) {
-            console.error("Notification sending error:", notificationError);
-          }
+          logger.error("Notification sending error:", notificationError);
           // Don't fail the booking if notification fails
         }
       }
@@ -590,15 +571,11 @@ const BookingForm = ({ community }: BookingFormProps) => {
             }
           });
           
-          if (import.meta.env.DEV) {
-            console.log("Referral processed successfully", { referralCode });
-          }
+          logger.log("Referral processed successfully", { referralCode });
           
           toast.success("🎉 Referral rewards sent! You and your referrer both get $25 off!");
         } catch (referralError) {
-          if (import.meta.env.DEV) {
-            console.error("Referral processing error:", referralError);
-          }
+          logger.error("Referral processing error:", referralError);
           // Don't fail the booking if referral fails
         }
       }
@@ -639,9 +616,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
             totalPrice += mileageFee;
           }
         } catch (error) {
-          if (import.meta.env.DEV) {
-            console.error("Distance calculation error:", error);
-          }
+          logger.error("Distance calculation error:", error);
         }
       }
     } else if (validatedData.service === "loan") {
@@ -691,9 +666,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
         throw new Error("No checkout URL received");
       }
     } catch (error) {
-      if (import.meta.env.DEV) {
-        console.error("Payment error:", error);
-      }
+      logger.error("Payment error:", error);
       toast.error("Failed to process payment. Please try again or contact us.");
       setIsProcessingPayment(false);
     }
@@ -739,7 +712,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
       try {
         (window as any).turnstile.remove(turnstileWidgetId);
       } catch (e) {
-        console.log("Turnstile widget removal failed:", e);
+        logger.debug("Turnstile widget removal failed:", e);
       }
     }
   };
