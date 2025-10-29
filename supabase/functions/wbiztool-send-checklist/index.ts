@@ -1,5 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { verifyJWT } from "../_shared/webhookSecurity.ts";
+import { validateUUID, validatePhone } from "../_shared/validation.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -15,6 +17,18 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Verify JWT for internal function
+  const jwtCheck = verifyJWT(req);
+  if (!jwtCheck.valid) {
+    return new Response(
+      JSON.stringify({ error: jwtCheck.error }),
+      { 
+        status: 401,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      }
+    );
+  }
+
   const supabase = createClient(
     Deno.env.get('SUPABASE_URL') ?? '',
     Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
@@ -22,6 +36,32 @@ serve(async (req) => {
 
   try {
     const { bookingId, phone, service } = await req.json();
+    
+    // Validate inputs
+    if (bookingId) {
+      const uuidValidation = validateUUID(bookingId);
+      if (!uuidValidation.valid) {
+        return new Response(
+          JSON.stringify({ error: uuidValidation.error }),
+          { 
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          }
+        );
+      }
+    }
+
+    const phoneValidation = validatePhone(phone);
+    if (!phoneValidation.valid) {
+      return new Response(
+        JSON.stringify({ error: phoneValidation.error }),
+        { 
+          status: 400,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
     console.log('Sending WhatsApp checklist for booking:', bookingId);
 
     // Get booking details

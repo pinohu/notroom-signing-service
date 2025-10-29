@@ -1,9 +1,11 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { verifyWebhookSignature } from "../_shared/webhookSecurity.ts";
+import { validatePhone, validateEmail, validateName } from "../_shared/validation.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-insighto-signature',
 };
 
 interface InsightoWebhook {
@@ -37,8 +39,25 @@ serve(async (req) => {
   );
 
   try {
-    const payload: InsightoWebhook = await req.json();
-    console.log('Insighto webhook received:', payload);
+    // Verify webhook signature
+    const signature = req.headers.get('x-insighto-signature') || '';
+    const webhookSecret = Deno.env.get('INSIGHTO_WEBHOOK_SECRET') || '';
+    const rawBody = await req.text();
+    
+    const isValid = await verifyWebhookSignature(rawBody, signature, webhookSecret);
+    if (!isValid && webhookSecret) {
+      console.error('Invalid webhook signature from Insighto');
+      return new Response(
+        JSON.stringify({ error: 'Invalid signature' }),
+        { 
+          status: 401,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    const payload: InsightoWebhook = JSON.parse(rawBody);
+    console.log('Insighto webhook received:', payload.event);
 
     const eventType = payload.event.replace('.', '_');
     let leadId: string | null = null;
@@ -47,22 +66,51 @@ serve(async (req) => {
     if (payload.intent === 'NOTARY_NOW' || payload.intent === 'APOSTILLE' || payload.intent === 'FORMATION') {
       const data = payload.extracted_data || {};
       
+      // Validate inputs
+      const name = data.name || 'AI Caller';
+      const phone = payload.caller_number || 'unknown';
+      const email = data.email || `ai-${payload.conversation_id}@pending.notroom.com`;
+
+      if (name !== 'AI Caller') {
+        const nameValidation = validateName(name);
+        if (!nameValidation.valid) {
+          throw new Error(`Invalid name: ${nameValidation.error}`);
+        }
+      }
+
+      if (phone !== 'unknown') {
+        const phoneValidation = validatePhone(phone);
+        if (!phoneValidation.valid) {
+          throw new Error(`Invalid phone: ${phoneValidation.error}`);
+        }
+      }
+
+      if (!email.includes('@pending.notroom.com')) {
+        const emailValidation = validateEmail(email);
+        if (!emailValidation.valid) {
+          throw new Error(`Invalid email: ${emailValidation.error}`);
+        }
+      }
+
+      // Sanitize location address
+      const locationAddress = data.location?.substring(0, 300) || null;
+      
       // Create or update booking
       const bookingData = {
-        name: data.name || 'AI Caller',
-        phone: payload.caller_number || 'unknown',
-        email: data.email || `ai-${payload.conversation_id}@pending.notroom.com`,
-        service: data.service || payload.intent,
-        document_type: data.document_type,
-        location_address: data.location,
+        name: name.substring(0, 100),
+        phone,
+        email,
+        service: (data.service || payload.intent).substring(0, 100),
+        document_type: data.document_type?.substring(0, 100),
+        location_address: locationAddress,
         urgency: data.urgency || 'flexible',
-        preferred_time: data.preferred_time,
+        preferred_time: data.preferred_time?.substring(0, 50),
         status: 'pending',
         ai_booked: true,
         ai_confidence: payload.confidence,
         agent_provider: 'insighto',
-        call_transcript: payload.transcript,
-        call_recording_url: payload.recording_url,
+        call_transcript: payload.transcript?.substring(0, 5000),
+        call_recording_url: payload.recording_url?.substring(0, 500),
       };
 
       const { data: booking, error: bookingError } = await supabase

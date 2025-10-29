@@ -173,11 +173,47 @@ Message types: text, template
 
 ## 🔐 Security
 
-- All webhook endpoints are **publicly accessible** (no JWT)
-- Use signature verification in production (add WEBHOOK_SECRET)
-- All automation functions require JWT (called by webhooks with service role key)
-- SMS/WhatsApp functions check opt-in status
+✅ **PRODUCTION-READY SECURITY IMPLEMENTED:**
+
+### Webhook Authentication
+- **CallScaler**: HMAC-SHA256 signature verification via `x-callscaler-signature` header
+- **Insighto**: HMAC-SHA256 signature verification via `x-insighto-signature` header
+- Returns 401 Unauthorized for invalid signatures
+- Backward compatible (logs warning if secret not configured)
+
+### Internal Function Security
+- All automation functions require JWT authentication
+- `smsit-missed-call`, `smsit-booking-confirm`, `wbiztool-send-checklist` verify Bearer token
+- Returns 401 Unauthorized for missing/invalid tokens
+
+### Input Validation
+- Comprehensive validation library: `supabase/functions/_shared/validation.ts`
+- Phone numbers: US format, 10-15 digits
+- Emails: RFC-compliant, max 255 chars
+- Names: 2-100 chars, safe characters only
+- UUIDs: RFC 4122 v4 format
+- All string fields have max length enforcement
+- Returns 400 Bad Request for invalid inputs
+
+### Database Access Control
+- Cleanup functions restricted to service role only
+- `cleanup_old_verification_codes()` - service role only
+- `cleanup_old_rate_limits()` - service role only
+- Should be called via scheduled cron jobs
+
+### Required Secrets
+Add these in Lovable Cloud backend:
+- `CALLSCALER_WEBHOOK_SECRET` - Generate in CallScaler dashboard
+- `INSIGHTO_WEBHOOK_SECRET` - Generate in Insighto dashboard
+
+### Data Protection
+- SMS opt-in checked before sending messages
+- "Reply STOP to unsubscribe" in all SMS messages
 - All errors logged without exposing sensitive data
+- Transcripts truncated to 5000 chars
+- URLs limited to 500 chars
+
+**See SECURITY_FIXES_COMPLETE.md for full security documentation.**
 
 ## 📊 Testing
 

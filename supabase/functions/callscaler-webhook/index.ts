@@ -1,9 +1,11 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.75.1";
+import { verifyWebhookSignature } from "../_shared/webhookSecurity.ts";
+import { validatePhone } from "../_shared/validation.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-callscaler-signature',
 };
 
 interface CallScalerEvent {
@@ -31,8 +33,34 @@ serve(async (req) => {
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    const payload: CallScalerEvent = await req.json();
-    console.log('CallScaler webhook received:', payload);
+    // Verify webhook signature
+    const signature = req.headers.get('x-callscaler-signature') || '';
+    const webhookSecret = Deno.env.get('CALLSCALER_WEBHOOK_SECRET') || '';
+    const rawBody = await req.text();
+    
+    const isValid = await verifyWebhookSignature(rawBody, signature, webhookSecret);
+    if (!isValid && webhookSecret) {
+      console.error('Invalid webhook signature from CallScaler');
+      return new Response(
+        JSON.stringify({ error: 'Invalid signature' }),
+        { 
+          status: 401,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    const payload: CallScalerEvent = JSON.parse(rawBody);
+    
+    // Validate phone number
+    if (payload.caller_number) {
+      const phoneValidation = validatePhone(payload.caller_number);
+      if (!phoneValidation.valid) {
+        throw new Error(`Invalid caller number: ${phoneValidation.error}`);
+      }
+    }
+
+    console.log('CallScaler webhook received:', payload.event_type);
 
     // Store call event
     const { data: callEvent, error: eventError } = await supabase
