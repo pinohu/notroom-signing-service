@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -8,35 +8,46 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, MessageSquare, Check, AlertTriangle, Play, RefreshCw } from "lucide-react";
+import { useAdminAuth } from "@/hooks/useAdminAuth";
+import type { CallEvent } from "@/types/admin";
 
 export default function AutomationFlows() {
-  const [events, setEvents] = useState<any[]>([]);
+  useAdminAuth();
+  
+  const [events, setEvents] = useState<CallEvent[]>([]);
   const [loading, setLoading] = useState(true);
   const [testPhone, setTestPhone] = useState("");
   const [testBookingId, setTestBookingId] = useState("");
   const { toast } = useToast();
 
+  const loadRecentEvents = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('call_events')
+        .select('*, bookings(id, name, phone, service)')
+        .order('created_at', { ascending: false })
+        .limit(50);
+
+      if (error) throw error;
+      setEvents(data as CallEvent[] || []);
+    } catch (error) {
+      console.error('Error loading events:', error);
+      toast({
+        title: "Error loading events",
+        description: error instanceof Error ? error.message : "Unknown error",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  }, [toast]);
+
   useEffect(() => {
     loadRecentEvents();
-  }, []);
+  }, [loadRecentEvents]);
 
-  const loadRecentEvents = async () => {
-    setLoading(true);
-    const { data, error } = await supabase
-      .from('call_events')
-      .select('*, bookings(id, name, phone, service)')
-      .order('created_at', { ascending: false })
-      .limit(50);
-
-    if (error) {
-      console.error('Error loading events:', error);
-    } else {
-      setEvents(data || []);
-    }
-    setLoading(false);
-  };
-
-  const testMissedCallFlow = async () => {
+  const testMissedCallFlow = useCallback(async () => {
     if (!testPhone && !testBookingId) {
       toast({
         title: "Missing input",
@@ -69,9 +80,9 @@ export default function AutomationFlows() {
         variant: "destructive",
       });
     }
-  };
+  }, [testPhone, testBookingId, toast, loadRecentEvents]);
 
-  const testBookingConfirmation = async () => {
+  const testBookingConfirmation = useCallback(async () => {
     if (!testBookingId) {
       toast({
         title: "Missing booking ID",
@@ -101,9 +112,9 @@ export default function AutomationFlows() {
         variant: "destructive",
       });
     }
-  };
+  }, [testBookingId, toast, loadRecentEvents]);
 
-  const testWhatsAppChecklist = async () => {
+  const testWhatsAppChecklist = useCallback(async () => {
     if (!testBookingId) {
       toast({
         title: "Missing booking ID",
@@ -146,23 +157,23 @@ export default function AutomationFlows() {
         variant: "destructive",
       });
     }
-  };
+  }, [testBookingId, toast, loadRecentEvents]);
 
-  const getEventIcon = (eventType: string) => {
+  const getEventIcon = useMemo(() => (eventType: string) => {
     if (eventType.includes('call')) return <Phone className="h-4 w-4" />;
     if (eventType.includes('sms') || eventType.includes('whatsapp')) return <MessageSquare className="h-4 w-4" />;
     return <Check className="h-4 w-4" />;
-  };
+  }, []);
 
-  const getEventBadge = (tool: string) => {
-    const colors: Record<string, string> = {
-      callscaler: "bg-blue-500",
-      insighto: "bg-purple-500",
-      smsit: "bg-green-500",
-      wbiztool: "bg-teal-500",
+  const getEventBadge = useMemo(() => (tool: string) => {
+    const variants: Record<string, 'default' | 'secondary' | 'outline'> = {
+      callscaler: "default",
+      insighto: "secondary",
+      smsit: "default",
+      wbiztool: "secondary",
     };
-    return <Badge className={colors[tool] || "bg-gray-500"}>{tool}</Badge>;
-  };
+    return <Badge variant={variants[tool] || "outline"}>{tool}</Badge>;
+  }, []);
 
   return (
     <div className="container mx-auto p-6 max-w-6xl">

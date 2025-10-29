@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,8 +8,11 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { MessageSquare, Send, FileText } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useAdminAuth } from "@/hooks/useAdminAuth";
 
 const WhatsAppConfig = () => {
+  useAdminAuth();
+  
   const { toast } = useToast();
   const [testPhone, setTestPhone] = useState("");
   const [testMessage, setTestMessage] = useState("");
@@ -17,7 +20,7 @@ const WhatsAppConfig = () => {
   const [templateParams, setTemplateParams] = useState("");
   const [isSending, setIsSending] = useState(false);
 
-  const handleSendTestMessage = async () => {
+  const handleSendTestMessage = useCallback(async () => {
     if (!testPhone || !testMessage) {
       toast({
         title: "Missing Information",
@@ -54,9 +57,9 @@ const WhatsAppConfig = () => {
     } finally {
       setIsSending(false);
     }
-  };
+  }, [testPhone, testMessage, toast]);
 
-  const handleSendTemplate = async () => {
+  const handleSendTemplate = useCallback(async () => {
     if (!testPhone || !templateName) {
       toast({
         title: "Missing Information",
@@ -98,7 +101,7 @@ const WhatsAppConfig = () => {
     } finally {
       setIsSending(false);
     }
-  };
+  }, [testPhone, templateName, templateParams, toast]);
 
   return (
     <div className="container mx-auto py-8 space-y-6">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,61 +6,30 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
-import { Phone, Bot, Activity, Settings, CheckCircle, AlertCircle } from 'lucide-react';
-
-interface AgentConfig {
-  id: string;
-  provider: 'insighto' | 'thoughtly';
-  config: {
-    voice?: string;
-    language?: string;
-    transferNumber?: string;
-    confidenceThreshold?: number;
-  };
-  intents: Array<{
-    name: string;
-    description: string;
-    fields: string[];
-  }>;
-  is_active: boolean;
-}
-
-interface AgentBooking {
-  id: string;
-  name: string;
-  phone: string;
-  service: string;
-  ai_confidence: number;
-  agent_provider: string;
-  created_at: string;
-  status: string;
-}
+import { Phone, Bot, CheckCircle, AlertCircle } from 'lucide-react';
+import { useAdminAuth } from '@/hooks/useAdminAuth';
+import type { AgentConfig, Booking } from '@/types/admin';
 
 export default function VoiceAgent() {
+  useAdminAuth();
+  
   const [config, setConfig] = useState<AgentConfig | null>(null);
-  const [bookings, setBookings] = useState<AgentBooking[]>([]);
+  const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const { toast } = useToast();
 
-  useEffect(() => {
-    loadConfig();
-    loadBookings();
-  }, []);
-
-  const loadConfig = async () => {
+  const loadConfig = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('agent_configs')
         .select('*')
         .eq('is_active', true)
-        .single();
+        .maybeSingle();
 
       if (error) throw error;
-      setConfig(data as any);
+      setConfig(data as unknown as AgentConfig | null);
     } catch (error) {
       console.error('Error loading config:', error);
       toast({
@@ -71,9 +40,9 @@ export default function VoiceAgent() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [toast]);
 
-  const loadBookings = async () => {
+  const loadBookings = useCallback(async () => {
     try {
       const { data, error } = await supabase
         .from('bookings')
@@ -83,13 +52,18 @@ export default function VoiceAgent() {
         .limit(20);
 
       if (error) throw error;
-      setBookings(data as any || []);
+      setBookings(data as Booking[] || []);
     } catch (error) {
       console.error('Error loading bookings:', error);
     }
-  };
+  }, []);
 
-  const saveConfig = async () => {
+  useEffect(() => {
+    loadConfig();
+    loadBookings();
+  }, [loadConfig, loadBookings]);
+
+  const saveConfig = useCallback(async () => {
     if (!config) return;
 
     setSaving(true);
@@ -119,14 +93,7 @@ export default function VoiceAgent() {
     } finally {
       setSaving(false);
     }
-  };
-
-  const testAgent = async () => {
-    toast({
-      title: 'Test Call',
-      description: 'In production, this would initiate a test call to the agent'
-    });
-  };
+  }, [config, toast]);
 
   if (loading) {
     return (
@@ -136,9 +103,10 @@ export default function VoiceAgent() {
     );
   }
 
-  const avgConfidence = bookings.length > 0
-    ? (bookings.reduce((sum, b) => sum + (b.ai_confidence || 0), 0) / bookings.length).toFixed(2)
-    : '0.00';
+  const avgConfidence = useMemo(() => {
+    if (bookings.length === 0) return '0.00';
+    return (bookings.reduce((sum, b) => sum + (b.ai_confidence || 0), 0) / bookings.length).toFixed(2);
+  }, [bookings]);
 
   return (
     <div className="container mx-auto p-6 space-y-6">

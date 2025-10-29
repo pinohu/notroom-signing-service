@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -22,30 +22,8 @@ import {
 import { toast } from "sonner";
 import { LogOut, RefreshCw } from "lucide-react";
 import { format } from "date-fns";
-
-interface Booking {
-  id: string;
-  created_at: string;
-  name: string;
-  email: string;
-  phone: string;
-  service: string;
-  preferred_date?: string;
-  preferred_time?: string;
-  document_type?: string;
-  number_of_signers: number;
-  location_address?: string;
-  urgency: string;
-  message?: string;
-  status: string;
-  sms_opt_in?: boolean;
-}
-
-interface LeadScoreData {
-  score: number;
-  priority: 'critical' | 'high' | 'medium' | 'low';
-  churnRisk: number;
-}
+import { useAdminAuth } from "@/hooks/useAdminAuth";
+import type { Booking, LeadScoreData } from "@/types/admin";
 
 // Extract lead score from booking message field
 const extractLeadScore = (message?: string): LeadScoreData | null => {
@@ -63,11 +41,13 @@ const extractLeadScore = (message?: string): LeadScoreData | null => {
 };
 
 const AdminBookings = () => {
+  useAdminAuth();
+  
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
-  const fetchBookings = async () => {
+  const fetchBookings = useCallback(async () => {
     setIsLoading(true);
     try {
       const { data, error } = await supabase
@@ -82,9 +62,9 @@ const AdminBookings = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
-  const updateStatus = async (id: string, status: string) => {
+  const updateStatus = useCallback(async (id: string, status: string) => {
     try {
       const { error } = await supabase
         .from("bookings")
@@ -119,52 +99,27 @@ const AdminBookings = () => {
     } catch (error: any) {
       toast.error("Failed to update status");
     }
-  };
+  }, []);
 
-  const handleLogout = async () => {
+  const handleLogout = useCallback(async () => {
     await supabase.auth.signOut();
     navigate("/admin/login");
-  };
-
-  useEffect(() => {
-    // Check if user is authenticated and has admin role
-    const checkAuth = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
-        navigate("/admin/login");
-        return;
-      }
-
-      const { data: roleData } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", user.id)
-        .eq("role", "admin")
-        .single();
-
-      if (!roleData) {
-        toast.error("Unauthorized access");
-        navigate("/admin/login");
-        return;
-      }
-
-      fetchBookings();
-    };
-
-    checkAuth();
   }, [navigate]);
 
-  const getServiceLabel = (service: string) => {
+  useEffect(() => {
+    fetchBookings();
+  }, [fetchBookings]);
+
+  const getServiceLabel = useMemo(() => (service: string) => {
     const labels: Record<string, string> = {
       ron: "Remote Online Notary",
       mobile: "Mobile Notary",
       loan: "Loan Signing Agent",
     };
     return labels[service] || service;
-  };
+  }, []);
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = useMemo(() => (status: string) => {
     const colors: Record<string, string> = {
       pending: "bg-amber text-amber-foreground",
       confirmed: "bg-primary text-primary-foreground",
@@ -172,7 +127,17 @@ const AdminBookings = () => {
       cancelled: "bg-destructive text-destructive-foreground",
     };
     return colors[status] || "bg-muted";
-  };
+  }, []);
+
+  const getPriorityColor = useMemo(() => (priority?: string) => {
+    const colors = {
+      critical: "bg-destructive text-destructive-foreground",
+      high: "bg-amber text-amber-foreground",
+      medium: "bg-primary text-primary-foreground",
+      low: "bg-muted text-muted-foreground"
+    };
+    return colors[priority as keyof typeof colors] || "bg-muted";
+  }, []);
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
@@ -227,17 +192,8 @@ const AdminBookings = () => {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {bookings.map((booking) => {
+                     {bookings.map((booking) => {
                       const leadScore = extractLeadScore(booking.message);
-                      const getPriorityColor = (priority?: string) => {
-                        const colors = {
-                          critical: "bg-destructive text-destructive-foreground",
-                          high: "bg-amber text-amber-foreground",
-                          medium: "bg-primary text-primary-foreground",
-                          low: "bg-muted text-muted-foreground"
-                        };
-                        return colors[priority as keyof typeof colors] || "bg-muted";
-                      };
 
                       return (
                         <TableRow key={booking.id}>
