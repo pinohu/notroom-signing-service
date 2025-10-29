@@ -111,6 +111,7 @@ import AdminBookings from "./pages/admin/Bookings";
 import AdminCallScaler from "./pages/admin/CallScaler";
 import AdminVoiceAgent from "./pages/admin/VoiceAgent";
 import AdminWhatsAppConfig from "./pages/admin/WhatsAppConfig";
+import AdminAutomationFlows from "./pages/admin/AutomationFlows";
 import LogoProcessor from "./pages/LogoProcessor";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentCanceled from "./pages/PaymentCanceled";
@@ -266,6 +267,7 @@ const App = () => (
           <Route path="/admin/callscaler" element={<AdminCallScaler />} />
           <Route path="/admin/voice-agent" element={<AdminVoiceAgent />} />
           <Route path="/admin/whatsapp" element={<AdminWhatsAppConfig />} />
+          <Route path="/admin/automation" element={<AdminAutomationFlows />} />
           
           {/* Utility Pages */}
           <Route path="/sitemap" element={<Sitemap />} />

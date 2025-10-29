@@ -134,23 +134,53 @@ async function handleCallMissed(supabase: any, payload: CallScalerEvent) {
     .limit(1)
     .maybeSingle();
 
-  if (booking) {
-    // Trigger SMS-iT auto-followup for missed call recovery
+  let bookingId = booking?.id;
+
+  // Create a new lead if no booking exists
+  if (!booking) {
+    console.log('Creating new lead for missed call from:', payload.caller_number);
+    const { data: newBooking, error } = await supabase
+      .from('bookings')
+      .insert({
+        name: 'Missed Call',
+        phone: payload.caller_number,
+        email: `missed-${payload.caller_number.replace(/[^0-9]/g, '')}@pending.notroom.com`,
+        service: 'Unknown',
+        status: 'pending',
+        tracking_number: payload.tracking_number,
+        marketing_source: payload.metadata?.source || 'CallScaler',
+      })
+      .select('id')
+      .single();
+
+    if (!error && newBooking) {
+      bookingId = newBooking.id;
+    }
+  }
+
+  if (bookingId) {
+    // Trigger new SMS-iT missed call flow
     try {
-      await supabase.functions.invoke('smsit-auto-followup', {
-        body: {
-          bookingId: booking.id,
-          trigger: 'missed_call',
-          urgency: 'high',
+      const response = await fetch(`${Deno.env.get('SUPABASE_URL')}/functions/v1/smsit-missed-call`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')}`,
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ 
+          leadId: bookingId,
+          callerNumber: payload.caller_number,
+        }),
       });
-      console.log('Triggered SMS recovery for booking:', booking.id);
+
+      if (response.ok) {
+        console.log('Triggered SMS missed call recovery for:', bookingId);
+      } else {
+        console.error('Failed to trigger SMS recovery:', await response.text());
+      }
     } catch (error) {
       console.error('Failed to trigger SMS recovery:', error);
     }
-  } else {
-    console.log('No existing booking found for missed call from:', payload.caller_number);
-    // Could create a new lead record here if desired
   }
 }
 

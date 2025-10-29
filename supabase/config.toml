@@ -99,6 +99,18 @@ verify_jwt = true
 [functions.agent-booking-handler]
 verify_jwt = false  # Called by external voice AI providers
 
+[functions.insighto-webhook]
+verify_jwt = false  # Called by external voice AI providers
+
+[functions.smsit-missed-call]
+verify_jwt = true  # Internal automation - called by webhooks
+
+[functions.smsit-booking-confirm]
+verify_jwt = true  # Internal automation - called by webhooks
+
+[functions.wbiztool-send-checklist]
+verify_jwt = true  # Internal automation - called by webhooks
+
 # ============================================
 # DEPRECATED FUNCTIONS (Disabled)
 # ============================================
