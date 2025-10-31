@@ -184,13 +184,13 @@ const Header = () => {
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
-                    <ul className="grid w-[95vw] max-w-[500px] gap-2 p-4 bg-card/98" role="menu">
+                    <ul className="grid w-[95vw] max-w-[500px] max-h-[70vh] overflow-y-auto gap-2 p-4 bg-card/98" role="menu">
                       {services.map((service) => (
                         <li key={service.path} role="none">
                           <NavigationMenuLink asChild>
                             <button
                               onClick={() => navigateToPage(service.path)}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left bg-card"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left bg-card border border-border/50 hover:border-primary"
                               role="menuitem"
                             >
                               <div className="text-sm font-medium leading-none">{service.label}</div>
@@ -214,13 +214,13 @@ const Header = () => {
                     Service Areas
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
-                    <div className="w-[95vw] max-w-[700px] p-4 bg-card/98">
+                    <div className="w-[95vw] max-w-[700px] max-h-[70vh] overflow-y-auto p-4 bg-card/98">
                       <div className="grid md:grid-cols-3 gap-4">
                         {areas.map((area) => (
                           <div key={area.path} className="space-y-2">
                              <button
                               onClick={() => navigateToPage(area.path)}
-                              className="block w-full text-left font-semibold text-sm hover:text-primary transition-colors p-2 rounded-md hover:bg-accent/50 bg-card"
+                              className="block w-full text-left font-semibold text-sm hover:text-primary transition-colors p-2 rounded-md hover:bg-accent/50 bg-card border border-border/50 hover:border-primary"
                             >
                               {area.label} →
                             </button>
@@ -230,7 +230,7 @@ const Header = () => {
                                   <li key={city.path}>
                                     <button
                                       onClick={() => navigateToPage(city.path)}
-                                      className="block w-full text-left text-xs text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded hover:bg-accent/30 bg-card"
+                                      className="block w-full text-left text-xs text-muted-foreground hover:text-foreground transition-colors p-1.5 rounded hover:bg-accent/30 bg-card border border-transparent hover:border-border/30"
                                     >
                                       {city.label}
                                     </button>
@@ -254,13 +254,13 @@ const Header = () => {
                     Resources
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
-                    <ul className="grid w-[95vw] max-w-[400px] gap-2 p-4 bg-card/98" role="menu">
+                    <ul className="grid w-[95vw] max-w-[400px] max-h-[70vh] overflow-y-auto gap-2 p-4 bg-card/98" role="menu">
                       {resources.map((resource) => (
                         <li key={resource.path} role="none">
                           <NavigationMenuLink asChild>
                             <button
                               onClick={() => navigateToPage(resource.path)}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left bg-card"
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left bg-card border border-border/50 hover:border-primary"
                               role="menuitem"
                             >
                               <div className="text-sm font-medium leading-none">{resource.label}</div>
