@@ -19,9 +19,9 @@ const Fingerprinting = () => {
   };
 
   const serviceSchema = generateServiceSchema({
-    name: "FBI-Approved Fingerprinting Services Erie, PA",
-    description: "FBI-approved electronic fingerprinting in Erie, PA. For teaching licenses, adoptions, background checks. Mobile service available. $35 + $1.50/mile travel.",
-    provider: "Notroom - FBI-Approved Fingerprinting",
+    name: "Professional Fingerprinting Services Erie, PA",
+    description: "Professional electronic fingerprinting in Erie, PA. For teaching licenses, adoptions, background checks. Mobile service available. $35 + $1.50/mile travel.",
+    provider: "Notroom - Professional Fingerprinting Services",
     areaServed: "Erie County PA",
     price: "35",
     url: "https://notroom.com/services/fingerprinting"
@@ -41,8 +41,8 @@ const Fingerprinting = () => {
   return (
     <Layout>
       <SEO
-        title="Fingerprinting Services Erie, PA | $35 + Travel | FBI-Approved Electronic Fingerprinting"
-        description="FBI-approved electronic fingerprinting Northwestern PA. Teaching licenses, adoptions, background checks. Mobile service Erie County. $35 + $1.50/mile travel."
+        title="Fingerprinting Services Erie, PA | $35 + Travel | Professional Electronic Fingerprinting"
+        description="Professional electronic fingerprinting Northwestern PA. Teaching licenses, adoptions, background checks. Mobile service Erie County. $35 + $1.50/mile travel."
         keywords="fingerprinting Erie PA, FBI fingerprinting Northwestern PA, electronic fingerprinting Erie County, background check fingerprints, teaching license fingerprints Erie, PA Act 34 fingerprinting"
         canonical="https://notroom.com/services/fingerprinting"
         schema={combinedSchema}
@@ -55,9 +55,9 @@ const Fingerprinting = () => {
             <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-background/10 backdrop-blur-sm mb-6">
               <Fingerprint className="w-10 h-10" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">FBI-Approved Fingerprinting Services</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Professional Fingerprinting Services</h1>
             <p className="text-xl mb-8 opacity-90">
-              Professional electronic fingerprinting for background checks, licenses, and certifications. Mobile service available throughout Erie County.
+              Electronic fingerprinting for FBI background checks, licenses, and certifications. Mobile service available throughout Erie County.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="amber" onClick={scrollToBooking} className="text-lg px-8 py-6">
@@ -99,11 +99,11 @@ const Fingerprinting = () => {
                   <ul className="space-y-3">
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                      <span>FBI-approved electronic fingerprinting</span>
+                      <span>Professional electronic fingerprinting</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
-                      <span>Electronic submission to agencies</span>
+                      <span>Digital submission for FBI background checks</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
@@ -140,7 +140,7 @@ const Fingerprinting = () => {
                   Mobile Service Details:
                 </h4>
                 <p className="text-sm text-muted-foreground">
-                  We bring FBI-approved fingerprinting equipment to your location anywhere in Erie County. 
+                  We bring professional electronic fingerprinting equipment to your location anywhere in Erie County. 
                   Travel calculated at $1.50/mile round-trip from Erie. Example: 20 miles away = $35 + $60 travel = $95 total.
                 </p>
               </div>
@@ -163,7 +163,7 @@ const Fingerprinting = () => {
                 </div>
                 <div className="bg-muted/50 p-4 rounded-lg">
                   <h3 className="font-bold mb-2">PA Act 151 - FBI Criminal History (Fingerprint-Based)</h3>
-                  <p className="text-sm text-muted-foreground">Federal fingerprint background check. <strong>This is where we help!</strong> We provide FBI-approved electronic fingerprinting that gets submitted to the FBI for your federal clearance.</p>
+                  <p className="text-sm text-muted-foreground">Federal fingerprint background check. <strong>This is where we help!</strong> We provide professional electronic fingerprinting services that submit your prints to the FBI for your federal clearance.</p>
                 </div>
                 <div className="bg-muted/50 p-4 rounded-lg">
                   <h3 className="font-bold mb-2">PA Act 33/151 - Child Abuse History</h3>
@@ -204,7 +204,7 @@ const Fingerprinting = () => {
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">3</div>
                   <div>
                     <h3 className="text-xl font-bold mb-2">Electronic Capture</h3>
-                    <p className="text-muted-foreground">We use FBI-certified LiveScan equipment to capture your fingerprints electronically. Process takes about 5-10 minutes. No ink mess!</p>
+                    <p className="text-muted-foreground">We use professional LiveScan equipment to capture your fingerprints electronically. Process takes about 5-10 minutes. No ink mess!</p>
                   </div>
                 </div>
               </Card>
@@ -226,7 +226,7 @@ const Fingerprinting = () => {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Who Needs FBI Fingerprinting in PA?</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">Who Needs Fingerprinting for FBI Background Checks in PA?</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Card className="p-6">
                 <h3 className="font-bold mb-2">Education Professionals</h3>
@@ -278,7 +278,7 @@ const Fingerprinting = () => {
           },
           {
             question: "Can I get fingerprinted for USCIS immigration applications?",
-            answer: "Yes! We provide FBI-approved fingerprinting for all USCIS purposes including green card applications (I-485), citizenship (N-400), visa sponsorship, and other immigration forms requiring biometric collection."
+            answer: "Yes! We provide professional fingerprinting services for all USCIS purposes including green card applications (I-485), citizenship (N-400), visa sponsorship, and other immigration forms requiring biometric collection."
           },
           {
             question: "Do you travel outside Erie County for fingerprinting?",
@@ -296,7 +296,7 @@ const Fingerprinting = () => {
         serviceName="Fingerprinting Services"
         reviews={[
           { text: "Convenient mobile fingerprinting for my PA teaching license. They came to my school.", author: "Jennifer L.", city: "Erie", rating: 5 },
-          { text: "Fast FBI-approved fingerprinting for adoption clearances. Professional service.", author: "Michael S.", city: "Millcreek", rating: 5 },
+          { text: "Fast professional fingerprinting for adoption clearances. Excellent service.", author: "Michael S.", city: "Millcreek", rating: 5 },
           { text: "Electronic fingerprints submitted same day. Much better than ink cards.", author: "Rachel W.", city: "Harborcreek", rating: 5 },
           { text: "Mobile service saved me so much time. Great for background check fingerprints.", author: "David P.", city: "Fairview", rating: 5 }
         ]}
@@ -308,7 +308,7 @@ const Fingerprinting = () => {
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">Need Fingerprinting Services?</h2>
             <p className="text-xl text-muted-foreground mb-8">
-              Schedule mobile fingerprinting at your location. FBI-approved equipment and professional service.
+              Schedule mobile fingerprinting at your location. Professional electronic fingerprinting services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="amber" onClick={scrollToBooking} className="text-lg px-8">
