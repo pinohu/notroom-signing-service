@@ -41,7 +41,7 @@ const bookingSchema = z.object({
   service: z.enum([
     "ron", "mobile", "loan", "apostille", "i9", "registered_office", 
     "business_retainer", "certified_copies", "document_preparation", 
-    "fingerprinting", "witness", "passport_photos", "translation", 
+    "witness", "passport_photos", "translation", 
     "vehicle_title", "virtual_mailbox", "ucc_filing", "document_retrieval"
   ], { required_error: "Please select a service" }),
   preferred_date: z.date().optional(),
@@ -301,7 +301,6 @@ const BookingForm = ({ community }: BookingFormProps) => {
       business_retainer: `Business Retainer Plans${communityName ? ` - ${communityName}` : ""}`,
       certified_copies: `Book Certified Copies Service${communityName ? ` - ${communityName}` : ""}`,
       document_preparation: `Book Document Preparation${communityName ? ` - ${communityName}` : ""}`,
-      fingerprinting: `Book Fingerprinting Service${communityName ? ` - ${communityName}` : ""}`,
       witness: `Book Professional Witness Service${communityName ? ` - ${communityName}` : ""}`,
       passport_photos: `Book Passport Photos${communityName ? ` - ${communityName}` : ""}`,
       translation: `Book Translation Certification${communityName ? ` - ${communityName}` : ""}`,
@@ -978,7 +977,6 @@ const BookingForm = ({ community }: BookingFormProps) => {
                       <SelectItem value="business_retainer">Business Retainer Plans - Contact for pricing</SelectItem>
                       <SelectItem value="certified_copies">Certified Copies - Contact for pricing</SelectItem>
                       <SelectItem value="document_preparation">Document Preparation - Contact for pricing</SelectItem>
-                      <SelectItem value="fingerprinting">Fingerprinting - Contact for pricing</SelectItem>
                       <SelectItem value="witness">Professional Witness Service - Contact for pricing</SelectItem>
                       <SelectItem value="passport_photos">Passport Photos - Contact for pricing</SelectItem>
                       <SelectItem value="translation">Translation Certification - Contact for pricing</SelectItem>

@@ -108,18 +108,6 @@ export const PRICING = {
     originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
     description: "Mobile document preparation with travel"
   },
-  FINGERPRINTING: {
-    display: "$35",
-    inPerson: 35,
-    description: "FBI-approved fingerprinting services"
-  },
-  FINGERPRINTING_MOBILE: {
-    display: "$35 + mileage",
-    baseFee: 35,
-    mileageRate: 1.50,
-    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
-    description: "Mobile fingerprinting with travel"
-  },
   WITNESS_SERVICE: {
     display: "$60",
     baseFee: 60,
@@ -262,7 +250,7 @@ export const getServicePricing = (cityName: string) => ({
   RETAINER: { ...PRICING.BUSINESS_RETAINER, description: `Monthly plans for ${cityName} companies` },
   CERTIFIED_COPIES: { ...PRICING.CERTIFIED_COPIES, description: `Document certification in ${cityName}` },
   DOCUMENT_PREP: { ...PRICING.DOCUMENT_PREP, description: `Professional document services for ${cityName}` },
-  FINGERPRINTING: { ...PRICING.FINGERPRINTING_MOBILE, description: `Mobile fingerprinting in ${cityName}` },
+  
   WITNESS: { ...PRICING.WITNESS_SERVICE_MOBILE, description: `Professional witness service in ${cityName}` },
   PASSPORT_PHOTOS: { ...PRICING.PASSPORT_PHOTOS, description: `Passport photos in ${cityName}` },
   TRANSLATION_CERT: { ...PRICING.TRANSLATION_CERT, description: `Translation certification in ${cityName}` },

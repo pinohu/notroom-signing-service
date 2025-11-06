@@ -17,7 +17,7 @@ import RegisteredOffice from "./pages/services/RegisteredOffice";
 import HealthcareFacility from "./pages/services/HealthcareFacility";
 import CertifiedCopies from "./pages/services/CertifiedCopies";
 import DocumentPreparation from "./pages/services/DocumentPreparation";
-import Fingerprinting from "./pages/services/Fingerprinting";
+
 import WitnessService from "./pages/services/WitnessService";
 import PassportPhotos from "./pages/services/PassportPhotos";
 import TranslationCertification from "./pages/services/TranslationCertification";
@@ -147,7 +147,7 @@ const App = () => (
           <Route path="/services/healthcare-facility" element={<HealthcareFacility />} />
           <Route path="/services/certified-copies" element={<CertifiedCopies />} />
           <Route path="/services/document-preparation" element={<DocumentPreparation />} />
-          <Route path="/services/fingerprinting" element={<Fingerprinting />} />
+          
           <Route path="/services/witness-service" element={<WitnessService />} />
           <Route path="/services/passport-photos" element={<PassportPhotos />} />
           <Route path="/services/translation-certification" element={<TranslationCertification />} />

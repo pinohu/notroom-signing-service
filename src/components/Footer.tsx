@@ -117,9 +117,6 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button onClick={() => navigateToPage("/services/fingerprinting")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
-                  Fingerprinting
-                </button>
               </li>
               <li>
                 <button onClick={() => navigateToPage("/services/witness-service")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">

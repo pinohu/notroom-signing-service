@@ -416,23 +416,6 @@ const Pricing = () => {
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle className="text-lg">Fingerprinting</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold mb-2">$35+</div>
-                <p className="text-sm text-muted-foreground mb-4">FBI-approved service</p>
-                <Button 
-                  variant="outline" 
-                  className="w-full" 
-                  onClick={() => navigate('/services/fingerprinting')}
-                >
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
                 <CardTitle className="text-lg">Professional Witness</CardTitle>
               </CardHeader>
               <CardContent>
