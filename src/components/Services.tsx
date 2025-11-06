@@ -133,23 +133,6 @@ const Services = memo(() => {
       link: "/services/certified-copies"
     },
     {
-      icon: FileText,
-      badge: "Affordable",
-      title: "Document Preparation",
-      price: "$100+",
-      priceDetail: "Varies by complexity",
-      description: "Professional document preparation. Affidavits, contracts, agreements, legal forms. Save money vs attorney fees.",
-      features: [
-        "Professional formatting",
-        "Quick turnaround (1-2 days)",
-        "Review for completeness",
-        "Affordable alternative to lawyers"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/document-preparation"
-    },
-    {
       icon: Fingerprint,
       badge: "Mobile",
       title: "Fingerprinting",
@@ -203,23 +186,6 @@ const Services = memo(() => {
       ctaText: "Learn More",
       featured: false,
       link: "/services/registered-office"
-    },
-    {
-      icon: FileText,
-      badge: "Affordable",
-      title: "Document Preparation",
-      price: "$100+",
-      priceDetail: "Varies by complexity",
-      description: "Professional document preparation. Affidavits, contracts, agreements, legal forms. Save money vs attorney fees.",
-      features: [
-        "Professional formatting",
-        "Quick turnaround (1-2 days)",
-        "Review for completeness",
-        "Affordable alternative to lawyers"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/document-preparation"
     },
     {
       icon: FileInput,

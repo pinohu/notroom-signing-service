@@ -397,22 +397,6 @@ const Pricing = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="text-lg">Document Preparation</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold mb-2">$100+</div>
-                <p className="text-sm text-muted-foreground mb-4">Professional prep services</p>
-                <Button 
-                  variant="outline" 
-                  className="w-full" 
-                  onClick={() => navigate('/services/document-preparation')}
-                >
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>

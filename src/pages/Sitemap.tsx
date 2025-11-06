@@ -53,7 +53,7 @@ const Sitemap = () => {
                   <li><Link to="/services/registered-office" className="text-foreground hover:text-primary transition-colors">Registered Office Agent</Link></li>
                   <li><Link to="/services/healthcare-facility" className="text-foreground hover:text-primary transition-colors">Healthcare Facility Notary</Link></li>
                   <li><Link to="/services/certified-copies" className="text-foreground hover:text-primary transition-colors">Certified Copies</Link></li>
-                  <li><Link to="/services/document-preparation" className="text-foreground hover:text-primary transition-colors">Document Preparation</Link></li>
+                  
                   <li><Link to="/services/fingerprinting" className="text-foreground hover:text-primary transition-colors">Fingerprinting Services</Link></li>
                   <li><Link to="/services/witness-service" className="text-foreground hover:text-primary transition-colors">Witness Services</Link></li>
                   <li><Link to="/services/passport-photos" className="text-foreground hover:text-primary transition-colors">Passport Photos</Link></li>

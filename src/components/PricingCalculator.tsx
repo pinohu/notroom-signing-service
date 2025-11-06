@@ -135,17 +135,17 @@ const PricingCalculator = () => {
       }
     } else if (service === "documentPrep") {
       if (serviceLocation === "mobile") {
-        breakdown.serviceFee = PRICING.DOCUMENT_PREP_MOBILE.basePrice;
+        
         breakdown.total = breakdown.serviceFee;
         
         if (distance !== null) {
           const roundTripDistance = calculateRoundTripDistance(distance);
           breakdown.distance = roundTripDistance;
-          breakdown.mileageFee = roundTripDistance * PRICING.DOCUMENT_PREP_MOBILE.mileageRate;
+          
           breakdown.total += breakdown.mileageFee;
         }
       } else {
-        breakdown.serviceFee = PRICING.DOCUMENT_PREP.basePrice;
+        
         breakdown.total = breakdown.serviceFee;
       }
     } else if (service === "witness") {
@@ -221,7 +221,7 @@ const PricingCalculator = () => {
       loan: "/services/loan-signing-agent",
       i9: "/services/i9-verification",
       certifiedCopies: "/services/certified-copies",
-      documentPrep: "/services/document-preparation",
+      
       witness: "/services/witness-service",
       passportPhotos: "/services/passport-photos",
       translationCert: "/services/translation-certification",
@@ -266,7 +266,7 @@ const PricingCalculator = () => {
               <SelectItem value="loan">Loan Signing</SelectItem>
               <SelectItem value="i9">I-9 Verification</SelectItem>
               <SelectItem value="certifiedCopies">Certified Copies</SelectItem>
-              <SelectItem value="documentPrep">Document Preparation</SelectItem>
+              
               <SelectItem value="witness">Professional Witness</SelectItem>
               <SelectItem value="passportPhotos">Passport Photos</SelectItem>
               <SelectItem value="translationCert">Translation Certification</SelectItem>

@@ -60,7 +60,7 @@ const Header = () => {
     { label: "Registered Office & Filings", path: "/services/registered-office", desc: "PA business formation & compliance" },
     { label: "Business Retainer Plans", path: "/services/business-retainer", desc: "Volume discounts for companies" },
     { label: "Certified Copies", path: "/services/certified-copies", desc: "Official document certification" },
-    { label: "Document Preparation", path: "/services/document-preparation", desc: "Affidavits, contracts, agreements" },
+    
     
     { label: "Professional Witness", path: "/services/witness-service", desc: "Neutral third-party witness" },
     { label: "Passport Photos", path: "/services/passport-photos", desc: "Government-compliant photos" },

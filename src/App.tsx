@@ -16,7 +16,7 @@ import I9Verification from "./pages/services/I9Verification";
 import RegisteredOffice from "./pages/services/RegisteredOffice";
 import HealthcareFacility from "./pages/services/HealthcareFacility";
 import CertifiedCopies from "./pages/services/CertifiedCopies";
-import DocumentPreparation from "./pages/services/DocumentPreparation";
+
 
 import WitnessService from "./pages/services/WitnessService";
 import PassportPhotos from "./pages/services/PassportPhotos";
@@ -146,7 +146,7 @@ const App = () => (
           <Route path="/services/registered-office" element={<RegisteredOffice />} />
           <Route path="/services/healthcare-facility" element={<HealthcareFacility />} />
           <Route path="/services/certified-copies" element={<CertifiedCopies />} />
-          <Route path="/services/document-preparation" element={<DocumentPreparation />} />
+          
           
           <Route path="/services/witness-service" element={<WitnessService />} />
           <Route path="/services/passport-photos" element={<PassportPhotos />} />

@@ -94,20 +94,6 @@ export const PRICING = {
     originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
     description: "Mobile certified copy service with travel"
   },
-  DOCUMENT_PREP: {
-    display: "$100+",
-    basePrice: 100,
-    office: 100,
-    remote: 100,
-    description: "Professional document preparation services"
-  },
-  DOCUMENT_PREP_MOBILE: {
-    display: "$100 + mileage",
-    basePrice: 100,
-    mileageRate: 1.50,
-    originAddress: "6238 Cobblestone Dr, Erie, PA 16509",
-    description: "Mobile document preparation with travel"
-  },
   WITNESS_SERVICE: {
     display: "$60",
     baseFee: 60,
@@ -249,7 +235,7 @@ export const getServicePricing = (cityName: string) => ({
   LLC: { ...PRICING.LLC_FORMATION, description: `Start your ${cityName} business today` },
   RETAINER: { ...PRICING.BUSINESS_RETAINER, description: `Monthly plans for ${cityName} companies` },
   CERTIFIED_COPIES: { ...PRICING.CERTIFIED_COPIES, description: `Document certification in ${cityName}` },
-  DOCUMENT_PREP: { ...PRICING.DOCUMENT_PREP, description: `Professional document services for ${cityName}` },
+  
   
   WITNESS: { ...PRICING.WITNESS_SERVICE_MOBILE, description: `Professional witness service in ${cityName}` },
   PASSPORT_PHOTOS: { ...PRICING.PASSPORT_PHOTOS, description: `Passport photos in ${cityName}` },

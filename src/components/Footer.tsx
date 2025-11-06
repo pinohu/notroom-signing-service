@@ -112,9 +112,6 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button onClick={() => navigateToPage("/services/document-preparation")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
-                  Document Preparation
-                </button>
               </li>
               <li>
               </li>
