@@ -96,11 +96,6 @@ const Index = () => {
       {/* Critical above-the-fold content - loaded immediately */}
       <Hero />
       
-      {/* Development Notice Banner */}
-      <div className="bg-amber-500 text-amber-950 py-3 px-4 text-center text-base font-semibold sticky top-0 z-40 shadow-lg">
-        🚧 This site is currently in development and not yet launched
-      </div>
-      
       <TrustBadges />
       
       {/* Below-the-fold content - lazy loaded for performance */}
