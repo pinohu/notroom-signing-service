@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import ScrollReveal from "../ScrollReveal";
 import nsaBadge from "@/assets/nsa_member_badge.png";
 import nnaMemberBadge from "@/assets/nna_member_badge.jpeg";
+import panMemberBadge from "@/assets/pan_member_badge.png";
 
 const TrustBadges = () => {
   const badges = [
@@ -91,33 +92,50 @@ const TrustBadges = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={400}>
-          <div className="mt-8 flex justify-center gap-6">
+          <div className="mt-8 flex flex-wrap justify-center items-center gap-8 px-4">
             <a 
               href="https://www.nationalnotary.org/knowledge-center/signing-agent-resources"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-transform hover:scale-105"
+              className="transition-transform hover:scale-105 flex items-center justify-center"
             >
               <img 
                 src={nsaBadge}
                 alt="Certified NNA Notary Signing Agent 2025" 
-                width="150" 
-                height="150"
+                width="140" 
+                height="140"
                 title="Certified NNA Notary Signing Agent 2025"
+                className="object-contain"
               />
             </a>
             <a 
               href="https://www.nationalnotary.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-transform hover:scale-105"
+              className="transition-transform hover:scale-105 flex items-center justify-center"
             >
               <img 
                 src={nnaMemberBadge}
                 alt="National Notary Association Member" 
-                width="150" 
-                height="150"
+                width="140" 
+                height="140"
                 title="National Notary Association Member"
+                className="object-contain"
+              />
+            </a>
+            <a 
+              href="https://panotary.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105 flex items-center justify-center"
+            >
+              <img 
+                src={panMemberBadge}
+                alt="Pennsylvania Association of Notaries Member" 
+                width="140" 
+                height="140"
+                title="Pennsylvania Association of Notaries Member"
+                className="object-contain"
               />
             </a>
           </div>
