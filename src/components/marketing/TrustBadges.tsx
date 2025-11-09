@@ -87,6 +87,26 @@ const TrustBadges = () => {
             </Badge>
           </div>
         </ScrollReveal>
+
+        <ScrollReveal delay={400}>
+          <div className="mt-8 flex justify-center">
+            <a 
+              href="https://www.nationalnotary.org/knowledge-center/signing-agent-resources"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105"
+            >
+              <img 
+                src="https://www.nationalnotary.org/Image%20Library/NNA/membership%20images/nsa_member_badge.png" 
+                alt="Certified Notary Signing Agent" 
+                width="100" 
+                height="100"
+                title="Certified Notary Signing Agent"
+                className="rounded-lg"
+              />
+            </a>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
