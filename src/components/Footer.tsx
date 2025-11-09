@@ -1,6 +1,9 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import notroomLogo from "@/assets/notroom-logo.png";
 import { useNavigate } from "react-router-dom";
+import nsaBadge from "@/assets/nsa_member_badge.png";
+import nnaMemberBadge from "@/assets/nna_member_badge.jpeg";
+import panMemberBadge from "@/assets/pan_member_badge.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -339,6 +342,65 @@ const Footer = () => {
                 <p>• Operating under Pennsylvania law (57 Pa.C.S. § 321 et seq.)</p>
               </div>
             </details>
+          </div>
+        </div>
+      </div>
+
+      {/* Certification Badges */}
+      <div className="border-t border-border/10">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            <a 
+              href="https://www.nationalnotary.org/knowledge-center/signing-agent-resources"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105"
+              aria-label="Certified NNA Notary Signing Agent 2025"
+            >
+              <img 
+                src={nsaBadge}
+                alt="Certified NNA Notary Signing Agent 2025" 
+                width="120" 
+                height="120"
+                title="Certified NNA Notary Signing Agent 2025"
+                className="object-contain"
+                loading="lazy"
+              />
+            </a>
+            <a 
+              href="https://www.nationalnotary.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105"
+              aria-label="National Notary Association Member"
+            >
+              <img 
+                src={nnaMemberBadge}
+                alt="National Notary Association Member" 
+                width="120" 
+                height="120"
+                title="National Notary Association Member"
+                className="object-contain"
+                loading="lazy"
+              />
+            </a>
+            <a 
+              href="https://panotary.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105"
+              aria-label="Pennsylvania Association of Notaries Member"
+            >
+              <img 
+                src={panMemberBadge}
+                alt="Pennsylvania Association of Notaries Member" 
+                width="120" 
+                height="120"
+                title="Pennsylvania Association of Notaries Member"
+                className="object-contain"
+                loading="lazy"
+              />
+            </a>
           </div>
         </div>
       </div>
