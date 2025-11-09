@@ -1,6 +1,7 @@
 import { Shield, Award, CheckCircle, Star, Building, FileCheck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import ScrollReveal from "../ScrollReveal";
+import nsaBadge from "@/assets/nsa_member_badge.png";
 
 const TrustBadges = () => {
   const badges = [
@@ -97,12 +98,11 @@ const TrustBadges = () => {
               className="transition-transform hover:scale-105"
             >
               <img 
-                src="https://www.nationalnotary.org/Image%20Library/NNA/membership%20images/nsa_member_badge.png" 
-                alt="Certified Notary Signing Agent" 
-                width="100" 
-                height="100"
-                title="Certified Notary Signing Agent"
-                className="rounded-lg"
+                src={nsaBadge}
+                alt="Certified NNA Notary Signing Agent 2025" 
+                width="150" 
+                height="150"
+                title="Certified NNA Notary Signing Agent 2025"
               />
             </a>
           </div>
