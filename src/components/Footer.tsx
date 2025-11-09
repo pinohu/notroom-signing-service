@@ -323,9 +323,12 @@ const Footer = () => {
                 </div>
               </li>
             </ul>
-            
-            {/* Certification Badges */}
-            <div className="mt-6 flex flex-wrap gap-3">
+          </div>
+
+          {/* Certifications Column */}
+          <div>
+            <h4 className="font-bold mb-4 text-lg">Certifications</h4>
+            <div className="flex flex-wrap gap-3">
               <a 
                 href="https://www.nationalnotary.org/knowledge-center/signing-agent-resources"
                 target="_blank"
@@ -336,8 +339,8 @@ const Footer = () => {
                 <img 
                   src={nsaBadge}
                   alt="Certified NNA Notary Signing Agent 2025" 
-                  width="70" 
-                  height="70"
+                  width="60" 
+                  height="60"
                   title="Certified NNA Notary Signing Agent 2025"
                   className="object-contain"
                   loading="lazy"
@@ -353,8 +356,8 @@ const Footer = () => {
                 <img 
                   src={nnaMemberBadge}
                   alt="National Notary Association Member" 
-                  width="70" 
-                  height="70"
+                  width="60" 
+                  height="60"
                   title="National Notary Association Member"
                   className="object-contain"
                   loading="lazy"
@@ -370,8 +373,8 @@ const Footer = () => {
                 <img 
                   src={panMemberBadge}
                   alt="Pennsylvania Association of Notaries Member" 
-                  width="70" 
-                  height="70"
+                  width="60" 
+                  height="60"
                   title="Pennsylvania Association of Notaries Member"
                   className="object-contain"
                   loading="lazy"
