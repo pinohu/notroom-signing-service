@@ -2,6 +2,7 @@ import { Shield, Award, CheckCircle, Star, Building, FileCheck } from "lucide-re
 import { Badge } from "@/components/ui/badge";
 import ScrollReveal from "../ScrollReveal";
 import nsaBadge from "@/assets/nsa_member_badge.png";
+import nnaMemberBadge from "@/assets/nna_member_badge.jpeg";
 
 const TrustBadges = () => {
   const badges = [
@@ -90,7 +91,7 @@ const TrustBadges = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={400}>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-8 flex justify-center gap-6">
             <a 
               href="https://www.nationalnotary.org/knowledge-center/signing-agent-resources"
               target="_blank"
@@ -103,6 +104,20 @@ const TrustBadges = () => {
                 width="150" 
                 height="150"
                 title="Certified NNA Notary Signing Agent 2025"
+              />
+            </a>
+            <a 
+              href="https://www.nationalnotary.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105"
+            >
+              <img 
+                src={nnaMemberBadge}
+                alt="National Notary Association Member" 
+                width="150" 
+                height="150"
+                title="National Notary Association Member"
               />
             </a>
           </div>
