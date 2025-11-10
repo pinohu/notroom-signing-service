@@ -113,6 +113,7 @@ import AdminVoiceAgent from "./pages/admin/VoiceAgent";
 import AdminWhatsAppConfig from "./pages/admin/WhatsAppConfig";
 import AdminAutomationFlows from "./pages/admin/AutomationFlows";
 import LogoProcessor from "./pages/LogoProcessor";
+import AllBadgesProcessor from "./pages/AllBadgesProcessor";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentCanceled from "./pages/PaymentCanceled";
 import Sitemap from "./pages/Sitemap";
@@ -272,6 +273,7 @@ const App = () => (
           {/* Utility Pages */}
           <Route path="/sitemap" element={<Sitemap />} />
           <Route path="/logo-processor" element={<LogoProcessor />} />
+          <Route path="/process-badges" element={<AllBadgesProcessor />} />
           
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
