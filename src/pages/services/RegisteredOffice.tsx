@@ -25,7 +25,7 @@ const RegisteredOffice = () => {
   };
 
   const registeredOfficeFeatures = [
-    "Registered Commercial Registered Office Provider (CROP) with PA Department of State Bureau of Corporations",
+    "CROP-ready services for Pennsylvania businesses",
     "Professional business address for your LLC/Corporation",
     "Mail scanning & digital forwarding",
     "Service of process acceptance & forwarding",
@@ -52,12 +52,12 @@ const RegisteredOffice = () => {
   ];
 
   const serviceSchema = generateServiceSchema({
-    name: "Pennsylvania Registered Office & Business Filing Services",
-    description: "Pennsylvania Commercial Registered Office Provider (CROP) and business filing services. LLC formation, registered office address, annual reports, and compliance management.",
-    provider: "Notroom - PA CROP",
+    name: "Pennsylvania Registered Office & Business Filing Services (CROP-Ready)",
+    description: "CROP-ready registered office and business filing services for Pennsylvania. We support businesses that need a PA Commercial Registered Office Provider. LLC formation, registered office address, annual reports, and compliance management.",
+    provider: "Notroom - PA CROP-Ready Services",
     areaServed: "Pennsylvania",
     price: "99",
-    url: "https://notroom.com/services/registered-office"
+    url: "https://notroom.com/crop"
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -74,10 +74,10 @@ const RegisteredOffice = () => {
   return (
     <Layout>
       <SEO
-        title="PA Registered Office & Business Filing Services - CROP Erie, Meadville, Warren"
-        description="Pennsylvania Commercial Registered Office Provider (CROP) serving Northwestern PA. LLC formation Erie, registered office address, annual reports, DBA filing Crawford County. From $99/year."
-        keywords="Pennsylvania registered office, PA CROP Erie, LLC formation Pennsylvania, registered agent Erie PA, business filing service Northwestern PA, annual report PA, LLC formation Erie County, CROP Crawford County, registered office Warren County"
-        canonical="https://notroom.com/services/registered-office"
+        title="PA Registered Office & CROP-Ready Business Services - Erie, Meadville, Warren"
+        description="CROP-ready registered office services for Pennsylvania businesses. We support companies needing a PA Commercial Registered Office Provider. LLC formation Erie, registered office address, annual reports, DBA filing. From $99/year."
+        keywords="Pennsylvania registered office, PA CROP-ready Erie, LLC formation Pennsylvania, registered agent Erie PA, business filing service Northwestern PA, annual report PA, LLC formation Erie County, CROP services Crawford County, registered office Warren County"
+        canonical="https://notroom.com/crop"
         schema={combinedSchema}
       />
 
@@ -86,13 +86,13 @@ const RegisteredOffice = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-accent text-accent-foreground border-0">
-              PA Department of State Registered CROP
+              CROP-Ready Services for PA Businesses
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Pennsylvania Registered Office & Business Filing Services
             </h1>
             <p className="text-xl mb-8 opacity-90">
-              Professional registered office address and business filing concierge for Pennsylvania LLCs and corporations. Stay compliant without the hassle.
+              CROP-ready registered office address and business filing services for Pennsylvania LLCs and corporations. We support businesses that need a PA Commercial Registered Office Provider.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -134,15 +134,15 @@ const RegisteredOffice = () => {
                 In Pennsylvania, every business entity must maintain a registered office address—a physical location in Pennsylvania where legal documents, service of process, and official correspondence can be received. A Commercial Registered Office Provider (CROP) is a third-party service registered with the PA Department of State Bureau of Corporations that provides this address professionally.
               </p>
               <p className="text-muted-foreground mb-6">
-                Unlike other states that use "registered agents," Pennsylvania uses the CROP system under 15 Pa.C.S. § 109 and § 415. We are registered with the PA Department of State and maintain a physical Pennsylvania address to serve as your official registered office, handling mail, service of process, and state correspondence on your behalf per written agreement.
+                Unlike other states that use "registered agents," Pennsylvania uses the CROP system under 15 Pa.C.S. § 109 and § 415. We provide CROP-ready services and maintain a physical Pennsylvania address to serve as your official registered office, handling mail, service of process, and state correspondence on your behalf per written agreement.
               </p>
               <div className="bg-primary/10 p-6 rounded-lg">
                 <div className="flex items-start gap-3">
                   <Shield className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                   <div>
-                     <h3 className="font-bold mb-2">Why Use Our CROP Service?</h3>
+                     <h3 className="font-bold mb-2">Why Use Our CROP-Ready Service?</h3>
                      <p className="text-sm text-muted-foreground">
-                       Protect your privacy by keeping your home address off public Secretary of State records. Get professional mail handling, digital scanning, service of process acceptance, and compliance deadline reminders—all in one place. Required by Pennsylvania law: You must list a CROP on your filings only after we have agreed in writing to serve in that capacity (contract provided).
+                       Protect your privacy by keeping your home address off public Secretary of State records. Get professional mail handling, digital scanning, service of process acceptance, and compliance deadline reminders—all in one place. We support businesses that need a PA Commercial Registered Office Provider. Required by Pennsylvania law: You must list a CROP on your filings only after we have agreed in writing to serve in that capacity (contract provided).
                      </p>
                   </div>
                 </div>
@@ -240,7 +240,7 @@ const RegisteredOffice = () => {
                 <li>• <strong>Document Preparation Only:</strong> We fill out government forms with information you provide. We do NOT select entity types for you, advise on business structure, or draft custom legal documents.</li>
                 <li>• <strong>No Legal/Tax Advice:</strong> We cannot advise whether an LLC vs. Corporation is better for your situation, draft bylaws/operating agreement provisions, or provide tax guidance. Consult an attorney or CPA.</li>
                 <li>• <strong>State Fees Separate:</strong> All prices are our service fees. PA Department of State filing fees ($125 LLC/Corp, $70 name reservation, $250 foreign entity, etc.) are paid directly to the state and not included in our pricing.</li>
-                <li>• <strong>CROP Status:</strong> We are registered with the PA Department of State Bureau of Corporations as a Commercial Registered Office Provider under 15 Pa.C.S. § 109. A written service contract is required before listing us on any filing.</li>
+                <li>• <strong>CROP-Ready Status:</strong> We provide CROP-ready services to support businesses that need a PA Commercial Registered Office Provider under 15 Pa.C.S. § 109. A written service contract is required before listing us on any filing.</li>
               </ul>
             </div>
           </div>

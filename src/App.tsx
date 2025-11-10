@@ -145,6 +145,7 @@ const App = () => (
           <Route path="/services/apostille" element={<Apostille />} />
           <Route path="/services/i9-verification" element={<I9Verification />} />
           <Route path="/services/registered-office" element={<RegisteredOffice />} />
+          <Route path="/crop" element={<RegisteredOffice />} />
           <Route path="/services/healthcare-facility" element={<HealthcareFacility />} />
           <Route path="/services/certified-copies" element={<CertifiedCopies />} />
           

@@ -73,11 +73,7 @@ const Header = () => {
     { label: "Healthcare Facility Notary", path: "/services/healthcare-facility", desc: "Hospital, nursing home & hospice visits" },
     { label: "Apostille Services", path: "/services/apostille", desc: "International document authentication" },
     { label: "I-9 Verification", path: "/services/i9-verification", desc: "Employment verification for employers" },
-    { label: "Registered Office & Filings", path: "/services/registered-office", desc: "PA business formation & compliance" },
-    { label: "Business Retainer Plans", path: "/services/business-retainer", desc: "Volume discounts for companies" },
     { label: "Certified Copies", path: "/services/certified-copies", desc: "Official document certification" },
-    
-    
     { label: "Professional Witness", path: "/services/witness-service", desc: "Neutral third-party witness" },
     { label: "Passport Photos", path: "/services/passport-photos", desc: "Government-compliant photos" },
     { label: "Translation Certification", path: "/services/translation-certification", desc: "Certified translation services" },
@@ -85,6 +81,12 @@ const Header = () => {
     { label: "Virtual Mailbox", path: "/services/virtual-mailbox", desc: "Business address & mail handling" },
     { label: "UCC Filing", path: "/services/ucc-filing", desc: "UCC-1 filing assistance" },
     { label: "Document Retrieval", path: "/services/document-retrieval", desc: "Court & vital records retrieval" },
+  ];
+
+  const businessServices = [
+    { label: "Registered Office & CROP", path: "/crop", desc: "CROP-ready PA registered office services" },
+    { label: "LLC & Entity Setup Support", path: "/services/registered-office", desc: "Business formation & compliance assistance" },
+    { label: "Business Retainer Plans", path: "/services/business-retainer", desc: "Volume discounts for companies" },
   ];
 
   const areas = [
@@ -202,6 +204,36 @@ const Header = () => {
                   <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
                     <ul className="grid w-[95vw] max-w-[500px] max-h-[70vh] overflow-y-auto gap-2 p-4 bg-card/98" role="menu">
                       {services.map((service) => (
+                        <li key={service.path} role="none">
+                          <NavigationMenuLink asChild>
+                            <button
+                              onClick={() => navigateToPage(service.path)}
+                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground w-full text-left bg-card border border-border/50 hover:border-primary"
+                              role="menuitem"
+                            >
+                              <div className="text-sm font-medium leading-none">{service.label}</div>
+                              <p className="text-xs text-muted-foreground leading-snug mt-1">
+                                {service.desc}
+                              </p>
+                            </button>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                {/* Business Services Dropdown */}
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger 
+                    className="text-foreground hover:text-primary focus:text-primary font-medium bg-transparent hover:bg-accent/50"
+                    aria-label="Business services menu"
+                  >
+                    Business Services
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="bg-card/98 backdrop-blur-md border border-border shadow-xl z-[100]">
+                    <ul className="grid w-[95vw] max-w-[400px] gap-2 p-4 bg-card/98" role="menu">
+                      {businessServices.map((service) => (
                         <li key={service.path} role="none">
                           <NavigationMenuLink asChild>
                             <button

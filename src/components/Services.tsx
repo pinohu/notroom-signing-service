@@ -99,23 +99,6 @@ const Services = memo(() => {
       link: "/services/i9-verification"
     },
     {
-      icon: Building,
-      badge: "Business",
-      title: "Registered Office & Filings",
-      price: "$149",
-      priceDetail: "Annual office | LLC formation $249",
-      description: "PA Commercial Registered Office Provider (CROP). LLC formation, annual reports, and business compliance services.",
-      features: [
-        "Professional registered office address",
-        "LLC formation with EIN: $249",
-        "Annual renewals & mail: $99",
-        "Registered CROP with PA DOS"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/registered-office"
-    },
-    {
       icon: FileCheck,
       badge: "Quick",
       title: "Certified Copies",
@@ -131,23 +114,6 @@ const Services = memo(() => {
       ctaText: "Learn More",
       featured: false,
       link: "/services/certified-copies"
-    },
-    {
-      icon: Fingerprint,
-      badge: "Mobile",
-      title: "Fingerprinting",
-      price: "$35+",
-      priceDetail: "$35 + $1.50/mile travel",
-      description: "FBI-approved electronic fingerprinting. For teaching licenses, adoptions, background checks. We come to you.",
-      features: [
-        "FBI-approved equipment",
-        "Mobile service available",
-        "Teaching & professional licenses",
-        "Electronic submission"
-      ],
-      ctaText: "Learn More",
-      featured: false,
-      link: "/services/fingerprinting"
     },
     {
       icon: UserCheck,
@@ -172,20 +138,54 @@ const Services = memo(() => {
   const businessServices = [
     {
       icon: Building,
-      badge: "Business",
-      title: "Registered Office & Filings",
-      price: "$149",
-      priceDetail: "Annual office | LLC formation $249",
-      description: "PA Commercial Registered Office Provider (CROP). LLC formation, annual reports, and business compliance services.",
+      badge: "CROP-Ready",
+      title: "Registered Office & CROP (PA)",
+      price: "$149/yr",
+      priceDetail: "Professional PA address | CROP-ready services",
+      description: "Use Notroom as your official Pennsylvania registered office and CROP for LLCs, corporations, and foreign entities.",
       features: [
-        "Professional registered office address",
-        "LLC formation with EIN: $249",
-        "Annual renewals & mail: $99",
-        "Registered CROP with PA DOS"
+        "Physical PA address for state compliance",
+        "Annual compliance reminders & support",
+        "Bundle with RON, mobile notary & filings",
+        "Professional business presence"
+      ],
+      ctaText: "Learn More",
+      featured: true,
+      link: "/crop"
+    },
+    {
+      icon: FileCheck,
+      badge: "Formation",
+      title: "LLC & Entity Setup Support",
+      price: "$249",
+      priceDetail: "Full formation | Includes EIN",
+      description: "Complete business formation services. LLC creation, EIN registration, and ongoing compliance support.",
+      features: [
+        "LLC/Corporation formation",
+        "Federal EIN registration",
+        "Operating agreement templates",
+        "Ongoing compliance assistance"
       ],
       ctaText: "Learn More",
       featured: false,
       link: "/services/registered-office"
+    },
+    {
+      icon: Users,
+      badge: "Volume",
+      title: "Business Retainer Plans",
+      price: "$399/mo",
+      priceDetail: "10 acts | Additional $30-35 each",
+      description: "Volume discounts for companies requiring frequent notary services. Perfect for law firms, real estate agencies, and businesses.",
+      features: [
+        "Dedicated service priority",
+        "Volume discounts available",
+        "RON & mobile services included",
+        "Monthly billing & reporting"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/services/business-retainer"
     },
     {
       icon: FileInput,

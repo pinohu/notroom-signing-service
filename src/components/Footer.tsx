@@ -18,8 +18,8 @@ const Footer = () => {
   return (
     <footer className="bg-[hsl(var(--neutral-dark))] text-primary-foreground">
       {/* Footer Top */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
+    <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <img 
@@ -53,6 +53,32 @@ const Footer = () => {
                 LinkedIn
               </a>
             </div>
+          </div>
+
+          {/* Business Services Column */}
+          <div>
+            <h4 className="font-bold mb-4 text-lg">Business Services</h4>
+            <ul className="space-y-2">
+              <li>
+                <button 
+                  onClick={() => navigateToPage("/crop")} 
+                  className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
+                  aria-label="Learn about Registered Office & CROP services"
+                >
+                  Registered Office & CROP
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/registered-office")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  LLC & Entity Setup Support
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigateToPage("/services/business-retainer")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
+                  Business Retainer Plans
+                </button>
+              </li>
+            </ul>
           </div>
 
           {/* Services Column 1 */}
@@ -91,16 +117,6 @@ const Footer = () => {
               <li>
                 <button onClick={() => navigateToPage("/services/i9-verification")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
                   I-9 Verification
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateToPage("/services/registered-office")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
-                  Registered Office
-                </button>
-              </li>
-              <li>
-                <button onClick={() => navigateToPage("/services/business-retainer")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
-                  Business Retainer
                 </button>
               </li>
             </ul>
