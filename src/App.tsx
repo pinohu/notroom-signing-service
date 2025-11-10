@@ -115,6 +115,7 @@ import AdminCallScaler from "./pages/admin/CallScaler";
 import AdminVoiceAgent from "./pages/admin/VoiceAgent";
 import AdminWhatsAppConfig from "./pages/admin/WhatsAppConfig";
 import AdminAutomationFlows from "./pages/admin/AutomationFlows";
+import AdminCropApplications from "./pages/admin/CropApplications";
 import LogoProcessor from "./pages/LogoProcessor";
 import AllBadgesProcessor from "./pages/AllBadgesProcessor";
 import PaymentSuccess from "./pages/PaymentSuccess";
@@ -275,6 +276,7 @@ const App = () => (
           <Route path="/admin/voice-agent" element={<AdminVoiceAgent />} />
           <Route path="/admin/whatsapp" element={<AdminWhatsAppConfig />} />
           <Route path="/admin/automation" element={<AdminAutomationFlows />} />
+          <Route path="/admin/crop-applications" element={<AdminCropApplications />} />
           
           {/* Utility Pages */}
           <Route path="/sitemap" element={<Sitemap />} />
