@@ -14,6 +14,7 @@ import BusinessRetainer from "./pages/services/BusinessRetainer";
 import Apostille from "./pages/services/Apostille";
 import I9Verification from "./pages/services/I9Verification";
 import RegisteredOffice from "./pages/services/RegisteredOffice";
+import CropServices from "./pages/services/CropServices";
 import HealthcareFacility from "./pages/services/HealthcareFacility";
 import CertifiedCopies from "./pages/services/CertifiedCopies";
 
@@ -145,7 +146,7 @@ const App = () => (
           <Route path="/services/apostille" element={<Apostille />} />
           <Route path="/services/i9-verification" element={<I9Verification />} />
           <Route path="/services/registered-office" element={<RegisteredOffice />} />
-          <Route path="/crop" element={<RegisteredOffice />} />
+          <Route path="/crop" element={<CropServices />} />
           <Route path="/services/healthcare-facility" element={<HealthcareFacility />} />
           <Route path="/services/certified-copies" element={<CertifiedCopies />} />
           
