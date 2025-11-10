@@ -11,13 +11,13 @@ const TrustBadges = () => {
     {
       icon: Shield,
       title: "PA State Licensed",
-      subtitle: "Commission #123456",
+      subtitle: "Commission #1464221",
       color: "primary"
     },
     {
       icon: Award,
-      title: "NNA Certified",
-      subtitle: "Signing Agent",
+      title: "NNA Certified NSA",
+      subtitle: "Account #161977718",
       color: "success-green"
     },
     {
@@ -40,8 +40,8 @@ const TrustBadges = () => {
     },
     {
       icon: Star,
-      title: "NNA Certified",
-      subtitle: "Signing Agent",
+      title: "NNA Certified NSA",
+      subtitle: "Account #161977718",
       color: "urgency-amber"
     }
   ];

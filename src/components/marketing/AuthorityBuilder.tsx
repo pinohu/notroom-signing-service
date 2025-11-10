@@ -8,7 +8,7 @@ const AuthorityBuilder = () => {
       icon: Shield,
       title: "PA State Commission",
       description: "Commissioned notary public by the Pennsylvania Department of State with authority to notarize throughout Pennsylvania",
-      proof: "Active PA Notary Commission"
+      proof: "Commission #1464221"
     },
     {
       icon: DollarSign,
@@ -20,7 +20,7 @@ const AuthorityBuilder = () => {
       icon: Award,
       title: "NNA Certified Signing Agent",
       description: "National Notary Association certification for loan documents. Background-screened and tested on proper signing procedures",
-      proof: "NNA Certified Professional"
+      proof: "NNA Account #161977718"
     },
     {
       icon: Users,
