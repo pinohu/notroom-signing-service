@@ -3,7 +3,7 @@ import { loadImage, removeBackground } from '@/utils/removeBackground';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import nsaBadge from '@/assets/nsa_member_badge.png';
-import nnaMemberBadge from '@/assets/nna_member_badge.jpeg';
+import nnaMemberBadge from '@/assets/nna_member_badge.png';
 import panMemberBadge from '@/assets/pan_member_badge.png';
 import nngUxcBadge from '@/assets/nng_uxc_badge.png';
 

@@ -2,7 +2,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import notroomLogo from "@/assets/notroom-logo.png";
 import { useNavigate } from "react-router-dom";
 import nsaBadge from "@/assets/nsa_member_badge.png";
-import nnaMemberBadge from "@/assets/nna_member_badge.jpeg";
+import nnaMemberBadge from "@/assets/nna_member_badge.png";
 import panMemberBadge from "@/assets/pan_member_badge.png";
 import nngUxcBadge from "@/assets/nng_uxc_badge.png";
 

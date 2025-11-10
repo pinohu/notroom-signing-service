@@ -2,7 +2,7 @@ import { Shield, Award, CheckCircle, Star, Building, FileCheck } from "lucide-re
 import { Badge } from "@/components/ui/badge";
 import ScrollReveal from "../ScrollReveal";
 import nsaBadge from "@/assets/nsa_member_badge.png";
-import nnaMemberBadge from "@/assets/nna_member_badge.jpeg";
+import nnaMemberBadge from "@/assets/nna_member_badge.png";
 import panMemberBadge from "@/assets/pan_member_badge.png";
 import nngUxcBadge from "@/assets/nng_uxc_badge.png";
 
