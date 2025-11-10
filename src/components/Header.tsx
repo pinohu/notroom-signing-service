@@ -28,15 +28,31 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
+    setMobileMenuOpen(false);
+    
     if (location.pathname !== "/") {
       navigate("/");
       setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+        scrollToElement(id);
+      }, 150);
     } else {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      scrollToElement(id);
     }
-    setMobileMenuOpen(false);
+  };
+
+  const scrollToElement = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const headerHeight = 80; // h-20
+    const additionalOffset = 20;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight - additionalOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
   };
 
   const handleLogoClick = () => {

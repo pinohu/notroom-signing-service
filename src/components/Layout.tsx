@@ -16,7 +16,18 @@ const Layout = ({ children }: LayoutProps) => {
 
   const scrollToBooking = () => {
     if (isHomePage) {
-      document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
+      const element = document.getElementById("booking-form");
+      if (!element) return;
+
+      const headerHeight = 80;
+      const additionalOffset = 20;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight - additionalOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     } else {
       window.location.href = "/#booking-form";
     }
@@ -49,7 +60,7 @@ const Layout = ({ children }: LayoutProps) => {
       <ScrollProgress aria-hidden="true" />
       <Header />
       
-      <main id="main-content" role="main" aria-label="Main content" className="pt-[30px]">
+      <main id="main-content" role="main" aria-label="Main content" className="pt-20">
         {children}
       </main>
       

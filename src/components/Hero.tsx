@@ -2,12 +2,27 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone } from "lucide-react";
 
 const Hero = () => {
+  const scrollToElement = (id: string) => {
+    const element = document.getElementById(id);
+    if (!element) return;
+
+    const headerHeight = 80; // h-20
+    const additionalOffset = 20;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight - additionalOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  };
+
   const scrollToBooking = () => {
-    document.getElementById("booking-form")?.scrollIntoView({ behavior: "smooth" });
+    scrollToElement("booking-form");
   };
 
   const scrollToServices = () => {
-    document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+    scrollToElement("services");
   };
 
   return (
@@ -45,9 +60,7 @@ const Hero = () => {
               size="lg" 
               variant="amber"
               className="text-base sm:text-lg md:text-xl px-6 sm:px-8 py-7 sm:py-8 min-h-[56px] h-auto shadow-2xl font-bold w-full sm:w-auto touch-manipulation"
-              onClick={() => {
-                document.getElementById("service-quiz")?.scrollIntoView({ behavior: "smooth" });
-              }}
+              onClick={() => scrollToElement("service-quiz")}
               aria-label="Take service quiz to find the right service"
             >
               <div className="flex flex-col items-center gap-1">
