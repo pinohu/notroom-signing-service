@@ -220,6 +220,84 @@ export type Database = {
           },
         ]
       }
+      crop_applications: {
+        Row: {
+          activated_at: string | null
+          approved_at: string | null
+          contact_email: string
+          contact_person: string
+          contact_phone: string
+          created_at: string
+          current_address: string
+          entity_ein: string | null
+          entity_name: string
+          entity_type: string
+          formation_date: string | null
+          id: string
+          mail_forward_address: string | null
+          mail_handling_preference: string
+          plan_price_id: string
+          scan_preferences: Json | null
+          selected_plan: string
+          state_of_formation: string
+          status: string
+          stripe_customer_id: string | null
+          stripe_subscription_id: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          activated_at?: string | null
+          approved_at?: string | null
+          contact_email: string
+          contact_person: string
+          contact_phone: string
+          created_at?: string
+          current_address: string
+          entity_ein?: string | null
+          entity_name: string
+          entity_type: string
+          formation_date?: string | null
+          id?: string
+          mail_forward_address?: string | null
+          mail_handling_preference: string
+          plan_price_id: string
+          scan_preferences?: Json | null
+          selected_plan: string
+          state_of_formation: string
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          activated_at?: string | null
+          approved_at?: string | null
+          contact_email?: string
+          contact_person?: string
+          contact_phone?: string
+          created_at?: string
+          current_address?: string
+          entity_ein?: string | null
+          entity_name?: string
+          entity_type?: string
+          formation_date?: string | null
+          id?: string
+          mail_forward_address?: string | null
+          mail_handling_preference?: string
+          plan_price_id?: string
+          scan_preferences?: Json | null
+          selected_plan?: string
+          state_of_formation?: string
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       integration_config: {
         Row: {
           active: boolean | null

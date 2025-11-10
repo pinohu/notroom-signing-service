@@ -8,16 +8,14 @@ import { CheckCircle, Building, Mail, FileCheck, Bell, Shield, ArrowRight, Phone
 import { useNavigate } from "react-router-dom";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
 import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
+import { CROP_PLANS } from "@/constants/cropPlans";
 
 const CropServices = () => {
   const navigate = useNavigate();
 
   const scrollToBooking = () => {
-    navigate("/");
-    setTimeout(() => {
-      const element = document.getElementById("booking-form");
-      element?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+    navigate("/crop/application");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const serviceSchema = generateServiceSchema({
@@ -80,50 +78,29 @@ const CropServices = () => {
 
   const plans = [
     {
-      name: "Registered Office Only",
-      price: "$149",
-      period: "per year",
-      description: "Essential registered office service for Pennsylvania compliance",
-      features: [
-        "Professional PA registered office address",
-        "Service of process acceptance & immediate notification",
-        "Weekly physical mail forwarding to your address",
-        "Secure online portal access",
-        "Annual renewal reminders",
-        "Email & phone support"
-      ],
+      name: CROP_PLANS.standard.name,
+      price: CROP_PLANS.standard.price,
+      period: CROP_PLANS.standard.period,
+      description: CROP_PLANS.standard.description,
+      features: CROP_PLANS.standard.features,
       cta: "Get Started",
       highlighted: false
     },
     {
-      name: "Registered Office + Mail Scanning",
-      price: "$199",
-      period: "per year",
-      description: "Digital-first solution with faster mail visibility",
-      features: [
-        "Everything in Registered Office Only",
-        "Digital mail scanning within 24 hours",
-        "Scan exterior of all envelopes to portal",
-        "Request open-and-scan for specific items",
-        "Secure cloud storage of scanned documents",
-        "Shredding service for routine mail"
-      ],
+      name: CROP_PLANS.digital.name,
+      price: CROP_PLANS.digital.price,
+      period: CROP_PLANS.digital.period,
+      description: CROP_PLANS.digital.description,
+      features: CROP_PLANS.digital.features,
       cta: "Most Popular",
       highlighted: true
     },
     {
-      name: "Registered Office + Compliance Review",
-      price: "$249",
-      period: "per year",
-      description: "Complete peace of mind with annual compliance check-in",
-      features: [
-        "Everything in Mail Scanning Plan",
-        "Annual compliance review intro call (30 min)",
-        "Personalized deadline reminders (annual reports, BOI, renewals)",
-        "Entity status monitoring with PA DOS",
-        "Priority customer support",
-        "10% discount on all business filing services"
-      ],
+      name: CROP_PLANS.premium.name,
+      price: CROP_PLANS.premium.price,
+      period: CROP_PLANS.premium.period,
+      description: CROP_PLANS.premium.description,
+      features: CROP_PLANS.premium.features,
       cta: "Best Value",
       highlighted: false
     }
