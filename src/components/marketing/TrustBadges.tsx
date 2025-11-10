@@ -37,12 +37,6 @@ const TrustBadges = () => {
       title: "RULONA Compliant",
       subtitle: "Act 97 of 2020",
       color: "primary"
-    },
-    {
-      icon: Star,
-      title: "NNA Certified NSA",
-      subtitle: "Account #161977718",
-      color: "urgency-amber"
     }
   ];
 
@@ -58,7 +52,7 @@ const TrustBadges = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
           {badges.map((badge, index) => {
             const Icon = badge.icon;
             return (
