@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import nsaBadge from "@/assets/nsa_member_badge.png";
 import nnaMemberBadge from "@/assets/nna_member_badge.jpeg";
 import panMemberBadge from "@/assets/pan_member_badge.png";
+import nngUxcBadge from "@/assets/nng_uxc_badge.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -376,6 +377,23 @@ const Footer = () => {
                   width="60" 
                   height="60"
                   title="Pennsylvania Association of Notaries Member"
+                  className="object-contain"
+                  loading="lazy"
+                />
+              </a>
+              <a 
+                href="https://www.nngroup.com/ux-certification/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-transform hover:scale-105"
+                aria-label="Nielsen Norman Group UX Certified"
+              >
+                <img 
+                  src={nngUxcBadge}
+                  alt="Nielsen Norman Group UX Certified" 
+                  width="60" 
+                  height="60"
+                  title="Nielsen Norman Group UX Certified"
                   className="object-contain"
                   loading="lazy"
                 />

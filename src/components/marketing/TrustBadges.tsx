@@ -4,6 +4,7 @@ import ScrollReveal from "../ScrollReveal";
 import nsaBadge from "@/assets/nsa_member_badge.png";
 import nnaMemberBadge from "@/assets/nna_member_badge.jpeg";
 import panMemberBadge from "@/assets/pan_member_badge.png";
+import nngUxcBadge from "@/assets/nng_uxc_badge.png";
 
 const TrustBadges = () => {
   const badges = [
@@ -135,6 +136,21 @@ const TrustBadges = () => {
                 width="140" 
                 height="140"
                 title="Pennsylvania Association of Notaries Member"
+                className="object-contain"
+              />
+            </a>
+            <a 
+              href="https://www.nngroup.com/ux-certification/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-transform hover:scale-105 flex items-center justify-center"
+            >
+              <img 
+                src={nngUxcBadge}
+                alt="Nielsen Norman Group UX Certified" 
+                width="140" 
+                height="140"
+                title="Nielsen Norman Group UX Certified"
                 className="object-contain"
               />
             </a>

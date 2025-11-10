@@ -5,6 +5,7 @@ import { useToast } from '@/hooks/use-toast';
 import nsaBadge from '@/assets/nsa_member_badge.png';
 import nnaMemberBadge from '@/assets/nna_member_badge.jpeg';
 import panMemberBadge from '@/assets/pan_member_badge.png';
+import nngUxcBadge from '@/assets/nng_uxc_badge.png';
 
 interface BadgeState {
   original: string;
@@ -20,6 +21,7 @@ const AllBadgesProcessor = () => {
     { original: nsaBadge, processed: null, processing: false, name: 'NSA Badge', filename: 'nsa_member_badge_transparent.png' },
     { original: nnaMemberBadge, processed: null, processing: false, name: 'NNA Badge', filename: 'nna_member_badge_transparent.png' },
     { original: panMemberBadge, processed: null, processing: false, name: 'PAN Badge', filename: 'pan_member_badge_transparent.png' },
+    { original: nngUxcBadge, processed: null, processing: false, name: 'NNG UX Badge', filename: 'nng_uxc_badge_transparent.png' },
   ]);
 
   const processBadge = async (index: number) => {
@@ -95,7 +97,7 @@ const AllBadgesProcessor = () => {
           {badges.some(b => b.processing) ? 'Processing...' : 'Process All Badges'}
         </Button>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {badges.map((badge, index) => (
             <div key={index} className="space-y-4 border rounded-lg p-6">
               <h2 className="text-xl font-semibold">{badge.name}</h2>
@@ -144,7 +146,7 @@ const AllBadgesProcessor = () => {
         <div className="bg-muted/50 p-6 rounded-lg space-y-2">
           <h3 className="font-semibold">Instructions:</h3>
           <ol className="list-decimal list-inside space-y-1 text-sm text-muted-foreground">
-            <li>Click "Process All Badges" to remove backgrounds from all three badges</li>
+            <li>Click "Process All Badges" to remove backgrounds from all four badges</li>
             <li>Download each processed badge individually</li>
             <li>Replace the original files in src/assets/ with the downloaded transparent versions</li>
           </ol>
