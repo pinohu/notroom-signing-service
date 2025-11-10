@@ -296,7 +296,15 @@ export type Database = {
           updated_at?: string
           user_id?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "crop_applications_user_id_fkey_profiles"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       integration_config: {
         Row: {
@@ -321,6 +329,169 @@ export type Database = {
           created_at?: string | null
           id?: string
           tool?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      mail_forwarding_requests: {
+        Row: {
+          actual_cost: number | null
+          admin_notes: string | null
+          approved_at: string | null
+          delivered_at: string | null
+          estimated_cost: number | null
+          forwarding_address: string
+          id: string
+          mail_item_id: string | null
+          notes: string | null
+          requested_at: string | null
+          shipped_at: string | null
+          shipping_method: string
+          status: string
+          tracking_number: string | null
+          user_id: string
+        }
+        Insert: {
+          actual_cost?: number | null
+          admin_notes?: string | null
+          approved_at?: string | null
+          delivered_at?: string | null
+          estimated_cost?: number | null
+          forwarding_address: string
+          id?: string
+          mail_item_id?: string | null
+          notes?: string | null
+          requested_at?: string | null
+          shipped_at?: string | null
+          shipping_method: string
+          status?: string
+          tracking_number?: string | null
+          user_id: string
+        }
+        Update: {
+          actual_cost?: number | null
+          admin_notes?: string | null
+          approved_at?: string | null
+          delivered_at?: string | null
+          estimated_cost?: number | null
+          forwarding_address?: string
+          id?: string
+          mail_item_id?: string | null
+          notes?: string | null
+          requested_at?: string | null
+          shipped_at?: string | null
+          shipping_method?: string
+          status?: string
+          tracking_number?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mail_forwarding_requests_mail_item_id_fkey"
+            columns: ["mail_item_id"]
+            isOneToOne: false
+            referencedRelation: "mail_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mail_items: {
+        Row: {
+          created_at: string | null
+          crop_application_id: string | null
+          description: string | null
+          dimensions: string | null
+          forwarded_at: string | null
+          id: string
+          mail_type: string
+          notes: string | null
+          received_date: string
+          scan_url: string | null
+          scanned_at: string | null
+          sender_address: string | null
+          sender_name: string | null
+          status: string
+          tracking_number: string | null
+          updated_at: string | null
+          user_id: string
+          weight_oz: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          crop_application_id?: string | null
+          description?: string | null
+          dimensions?: string | null
+          forwarded_at?: string | null
+          id?: string
+          mail_type: string
+          notes?: string | null
+          received_date?: string
+          scan_url?: string | null
+          scanned_at?: string | null
+          sender_address?: string | null
+          sender_name?: string | null
+          status?: string
+          tracking_number?: string | null
+          updated_at?: string | null
+          user_id: string
+          weight_oz?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          crop_application_id?: string | null
+          description?: string | null
+          dimensions?: string | null
+          forwarded_at?: string | null
+          id?: string
+          mail_type?: string
+          notes?: string | null
+          received_date?: string
+          scan_url?: string | null
+          scanned_at?: string | null
+          sender_address?: string | null
+          sender_name?: string | null
+          status?: string
+          tracking_number?: string | null
+          updated_at?: string | null
+          user_id?: string
+          weight_oz?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mail_items_crop_application_id_fkey"
+            columns: ["crop_application_id"]
+            isOneToOne: false
+            referencedRelation: "crop_applications"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          company_name: string | null
+          created_at: string | null
+          display_name: string | null
+          id: string
+          notification_preferences: Json | null
+          phone: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string | null
+          display_name?: string | null
+          id: string
+          notification_preferences?: Json | null
+          phone?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string | null
+          display_name?: string | null
+          id?: string
+          notification_preferences?: Json | null
+          phone?: string | null
           updated_at?: string | null
         }
         Relationships: []

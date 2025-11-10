@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import CookieConsent from "@/components/CookieConsent";
+import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import RemoteOnlineNotary from "./pages/services/RemoteOnlineNotary";
@@ -109,6 +110,8 @@ import Cooperstown from "./pages/areas/cities/Cooperstown";
 import Utica from "./pages/areas/cities/Utica";
 import Pleasantville from "./pages/areas/cities/Pleasantville";
 import TrackBooking from "./pages/TrackBooking";
+import Auth from "./pages/Auth";
+import ClientPortal from "./pages/ClientPortal";
 import AdminLogin from "./pages/admin/Login";
 import AdminBookings from "./pages/admin/Bookings";
 import AdminCallScaler from "./pages/admin/CallScaler";
@@ -128,15 +131,16 @@ const queryClient = new QueryClient();
 const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter
-          future={{
-            v7_startTransition: true,
-            v7_relativeSplatPath: true,
-          }}
-        >
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter
+            future={{
+              v7_startTransition: true,
+              v7_relativeSplatPath: true,
+            }}
+          >
           <ScrollToTop />
           <Routes>
           <Route path="/" element={<Index />} />
@@ -269,6 +273,10 @@ const App = () => (
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/legal/agreements" element={<Agreements />} />
           
+          {/* Auth & Portal Pages */}
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/portal" element={<ClientPortal />} />
+          
           {/* Admin Pages */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/bookings" element={<AdminBookings />} />
@@ -291,6 +299,7 @@ const App = () => (
       <Toaster />
       <Sonner />
     </TooltipProvider>
+    </AuthProvider>
   </QueryClientProvider>
   </ErrorBoundary>
 );
