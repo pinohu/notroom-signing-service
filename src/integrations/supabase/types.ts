@@ -523,6 +523,84 @@ export type Database = {
         }
         Relationships: []
       }
+      tc_clients: {
+        Row: {
+          business_name: string | null
+          cancelled_at: string | null
+          client_email: string
+          client_name: string
+          client_phone: string
+          completed_at: string | null
+          coordinator_assigned: string | null
+          created_at: string
+          current_phase: string | null
+          id: string
+          key_documents: string[] | null
+          parties_involved: string[] | null
+          selected_plan: string
+          started_at: string | null
+          status: string
+          stripe_customer_id: string | null
+          stripe_payment_intent_id: string | null
+          target_completion_date: string | null
+          transaction_description: string
+          transaction_type: string
+          updated_at: string
+          urgency_level: string
+          user_id: string | null
+        }
+        Insert: {
+          business_name?: string | null
+          cancelled_at?: string | null
+          client_email: string
+          client_name: string
+          client_phone: string
+          completed_at?: string | null
+          coordinator_assigned?: string | null
+          created_at?: string
+          current_phase?: string | null
+          id?: string
+          key_documents?: string[] | null
+          parties_involved?: string[] | null
+          selected_plan: string
+          started_at?: string | null
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_payment_intent_id?: string | null
+          target_completion_date?: string | null
+          transaction_description: string
+          transaction_type: string
+          updated_at?: string
+          urgency_level?: string
+          user_id?: string | null
+        }
+        Update: {
+          business_name?: string | null
+          cancelled_at?: string | null
+          client_email?: string
+          client_name?: string
+          client_phone?: string
+          completed_at?: string | null
+          coordinator_assigned?: string | null
+          created_at?: string
+          current_phase?: string | null
+          id?: string
+          key_documents?: string[] | null
+          parties_involved?: string[] | null
+          selected_plan?: string
+          started_at?: string | null
+          status?: string
+          stripe_customer_id?: string | null
+          stripe_payment_intent_id?: string | null
+          target_completion_date?: string | null
+          transaction_description?: string
+          transaction_type?: string
+          updated_at?: string
+          urgency_level?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null

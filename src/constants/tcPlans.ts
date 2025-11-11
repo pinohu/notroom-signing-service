@@ -18,7 +18,8 @@ export const TC_PLANS = {
       "Email and phone support",
       "Transaction completion certificate"
     ],
-    idealFor: "Simple transactions with 2-3 parties, standard documentation, clear timelines"
+    idealFor: "Simple transactions with 2-3 parties, standard documentation, clear timelines",
+    recommended: false
   },
   standard: {
     priceId: "price_tc_standard_placeholder", // TODO: Replace with actual Stripe price ID
@@ -59,7 +60,8 @@ export const TC_PLANS = {
       "24/7 emergency support",
       "Post-transaction compliance review"
     ],
-    idealFor: "Complex transactions, 5+ parties, high-value deals, tight deadlines, regulatory compliance needs"
+    idealFor: "Complex transactions, 5+ parties, high-value deals, tight deadlines, regulatory compliance needs",
+    recommended: false
   }
 } as const;
 
