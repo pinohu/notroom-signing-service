@@ -60,6 +60,53 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## How to Sync Changes to GitHub
+
+This project is already connected to GitHub: **https://github.com/pinohu/erie-notroom**
+
+### Quick Sync (Recommended)
+
+Use the provided PowerShell script for easy syncing:
+
+```powershell
+# Sync with default message
+.\sync-to-github.ps1
+
+# Sync with custom commit message
+.\sync-to-github.ps1 "Add new feature X"
+```
+
+### Manual Sync
+
+If you prefer to sync manually:
+
+```powershell
+# Check what files have changed
+git status
+
+# Stage all changes
+git add .
+
+# Commit with a descriptive message
+git commit -m "Description of your changes"
+
+# Push to GitHub
+git push origin main
+```
+
+### Verify Connection
+
+```powershell
+# Check remote repository
+git remote -v
+
+# Should show:
+# origin  https://github.com/pinohu/erie-notroom.git (fetch)
+# origin  https://github.com/pinohu/erie-notroom.git (push)
+```
+
+**Note:** Changes made in Cursor (or any local editor) will sync to GitHub when you commit and push. Changes made via Lovable will automatically sync to this local repository when you pull.
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/4e5e19c0-a121-4703-b8f4-0f5b133d5c62) and click on Share -> Publish.
