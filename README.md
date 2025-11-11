@@ -64,10 +64,43 @@ This project is built with:
 
 This project is already connected to GitHub: **https://github.com/pinohu/erie-notroom**
 
-### Quick Sync (Recommended)
+### 🚀 Automatic Sync (Recommended)
 
-Use the provided PowerShell script for easy syncing:
+**Auto-sync watches for file changes and automatically commits/pushes to GitHub!**
 
+#### Start Auto-Sync (PowerShell - Windows)
+```powershell
+# Start the auto-sync watcher
+.\auto-sync.ps1
+```
+
+#### Start Auto-Sync (Node.js - Cross-platform)
+```bash
+# Start the auto-sync watcher
+npm run auto-sync
+# or
+node auto-sync.js
+```
+
+**How it works:**
+- Watches all files in the project directory
+- Waits 5 seconds after your last change (debounce)
+- Automatically commits and pushes to GitHub
+- Ignores `node_modules`, `.git`, `dist`, and other build files
+- Press `Ctrl+C` to stop
+
+**Example:**
+1. Start auto-sync: `.\auto-sync.ps1`
+2. Make changes in Cursor/your editor
+3. Save files
+4. Wait 5 seconds
+5. Changes are automatically synced to GitHub! ✨
+
+### Manual Sync
+
+If you prefer to sync manually:
+
+#### Quick Sync Script
 ```powershell
 # Sync with default message
 .\sync-to-github.ps1
@@ -76,10 +109,7 @@ Use the provided PowerShell script for easy syncing:
 .\sync-to-github.ps1 "Add new feature X"
 ```
 
-### Manual Sync
-
-If you prefer to sync manually:
-
+#### Manual Git Commands
 ```powershell
 # Check what files have changed
 git status
@@ -105,7 +135,10 @@ git remote -v
 # origin  https://github.com/pinohu/erie-notroom.git (push)
 ```
 
-**Note:** Changes made in Cursor (or any local editor) will sync to GitHub when you commit and push. Changes made via Lovable will automatically sync to this local repository when you pull.
+**Note:** 
+- **Auto-sync**: Changes made locally will automatically sync to GitHub when you save files (with 5-second debounce)
+- **Manual sync**: Use `.\sync-to-github.ps1` or Git commands for manual control
+- **Lovable sync**: Changes made via Lovable will automatically sync to this local repository when you pull
 
 ## How can I deploy this project?
 
