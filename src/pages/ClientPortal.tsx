@@ -271,9 +271,12 @@ export default function ClientPortal() {
                 </CardHeader>
                 <CardContent>
                   {mailItems.length === 0 ? (
-                    <div className="text-center py-8 text-muted-foreground">
-                      <Package className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                      <p>No mail items yet</p>
+                    <div className="text-center py-12 text-muted-foreground" role="status" aria-live="polite">
+                      <Package className="h-16 w-16 mx-auto mb-4 opacity-30" aria-hidden="true" />
+                      <p className="text-lg font-medium text-foreground mb-2">No mail items yet</p>
+                      <p className="text-sm max-w-md mx-auto">
+                        When mail arrives at your registered office address, it will appear here. You'll be notified when new mail is received.
+                      </p>
                     </div>
                   ) : (
                     <div className="space-y-4">

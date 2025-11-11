@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Check, X, Mail, Eye } from 'lucide-react';
+import { Check, X, Mail, Eye, FileQuestion } from 'lucide-react';
 import {
   Dialog,
   DialogContent,
@@ -258,10 +258,32 @@ export default function CropApplications() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filteredApps.length === 0 ? (
+            {loading ? (
               <TableRow>
-                <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
-                  No applications found
+                <TableCell colSpan={7} className="text-center py-12">
+                  <div className="flex flex-col items-center gap-2">
+                    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" aria-hidden="true" />
+                    <span className="text-sm text-muted-foreground">Loading applications...</span>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ) : filteredApps.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={7} className="text-center py-12" role="status" aria-live="polite">
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center">
+                      <FileQuestion className="w-8 h-8 text-muted-foreground" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <p className="text-lg font-medium text-foreground mb-1">
+                        {statusFilter === 'all' ? 'No applications found' : `No ${statusFilter} applications`}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {statusFilter !== 'all' && 'Try selecting a different status filter or check back later.'}
+                        {statusFilter === 'all' && 'CROP applications will appear here once submitted.'}
+                      </p>
+                    </div>
+                  </div>
                 </TableCell>
               </TableRow>
             ) : (
