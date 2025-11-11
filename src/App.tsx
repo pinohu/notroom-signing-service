@@ -125,6 +125,7 @@ import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentCanceled from "./pages/PaymentCanceled";
 import Sitemap from "./pages/Sitemap";
 import ScrollToTop from "./components/ScrollToTop";
+import FeedbackWidget from "./components/FeedbackWidget";
 
 const queryClient = new QueryClient();
 
@@ -271,6 +272,7 @@ const App = () => (
           <Route path="/payment-canceled" element={<PaymentCanceled />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/accessibility" element={<Accessibility />} />
           <Route path="/legal/agreements" element={<Agreements />} />
           
           {/* Auth & Portal Pages */}
@@ -295,6 +297,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <CookieConsent />
+        <FeedbackWidget />
       </BrowserRouter>
       <Toaster />
       <Sonner />

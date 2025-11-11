@@ -3,6 +3,7 @@ import { AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { logger } from "@/utils/logger";
+import { captureReactError } from "@/utils/errorTracking";
 
 interface Props {
   children: ReactNode;
@@ -24,8 +25,8 @@ class ErrorBoundary extends Component<Props, State> {
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     logger.error("ErrorBoundary caught an error:", error, errorInfo);
-    // In production, you could send to error tracking service
-    // Example: Sentry.captureException(error);
+    // Send to production error tracking
+    captureReactError(error, errorInfo);
   }
 
   private handleReset = () => {
