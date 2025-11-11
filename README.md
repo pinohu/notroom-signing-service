@@ -142,7 +142,30 @@ git remote -v
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/4e5e19c0-a121-4703-b8f4-0f5b133d5c62) and click on Share -> Publish.
+### Automatic Deployment to Vercel ✅
+
+**This project is configured for automatic Vercel deployment!**
+
+Every time you push changes to GitHub, the site automatically deploys to Vercel.
+
+**Setup Options:**
+1. **Easiest:** Use Vercel's GitHub integration (recommended)
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Import your GitHub repository
+   - Vercel handles everything automatically!
+
+2. **More Control:** Use GitHub Actions workflow
+   - Already configured in `.github/workflows/deploy-vercel.yml`
+   - Requires Vercel token in GitHub Secrets
+   - See `VERCEL_DEPLOYMENT_SETUP.md` for detailed instructions
+
+**Full setup guide:** See `VERCEL_DEPLOYMENT_SETUP.md` for complete instructions.
+
+### Alternative: Lovable Deployment
+
+You can also deploy via Lovable:
+- Open [Lovable Project](https://lovable.dev/projects/4e5e19c0-a121-4703-b8f4-0f5b133d5c62)
+- Click Share → Publish
 
 ## Can I connect a custom domain to my Lovable project?
 
