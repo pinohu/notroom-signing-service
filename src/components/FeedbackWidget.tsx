@@ -39,7 +39,7 @@ const FeedbackWidget = () => {
     setIsSubmitting(true);
 
     try {
-      // Save feedback to database
+      // Save feedback to database (gracefully handle if table doesn't exist)
       const { error } = await supabase
         .from("feedback")
         .insert({
@@ -49,7 +49,15 @@ const FeedbackWidget = () => {
           user_agent: navigator.userAgent,
         });
 
-      if (error) throw error;
+      if (error) {
+        // If table doesn't exist, log but don't fail
+        if (error.code === '42P01' || error.message.includes('does not exist')) {
+          console.warn('Feedback table does not exist. Run the migration to enable feedback collection.');
+          // Still show success to user
+        } else {
+          throw error;
+        }
+      }
 
       // Track event
       trackEvent("feedback_submitted", {

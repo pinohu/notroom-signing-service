@@ -57,55 +57,64 @@ export const initWebVitals = () => {
     return;
   }
 
-  // Dynamic import to avoid bundling in dev
-  import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB, onINP }) => {
-    onCLS((metric) => {
-      sendToAnalytics({
-        ...metric,
-        rating: getRating('CLS', metric.value),
-      });
-    });
+  // Use setTimeout to ensure this doesn't block app initialization
+  setTimeout(() => {
+    // Dynamic import to avoid bundling in dev
+    import('web-vitals')
+      .then(({ onCLS, onFID, onFCP, onLCP, onTTFB, onINP }) => {
+        try {
+          onCLS((metric) => {
+            sendToAnalytics({
+              ...metric,
+              rating: getRating('CLS', metric.value),
+            });
+          });
 
-    onFID((metric) => {
-      sendToAnalytics({
-        ...metric,
-        rating: getRating('FID', metric.value),
-      });
-    });
+          onFID((metric) => {
+            sendToAnalytics({
+              ...metric,
+              rating: getRating('FID', metric.value),
+            });
+          });
 
-    onFCP((metric) => {
-      sendToAnalytics({
-        ...metric,
-        rating: getRating('FCP', metric.value),
-      });
-    });
+          onFCP((metric) => {
+            sendToAnalytics({
+              ...metric,
+              rating: getRating('FCP', metric.value),
+            });
+          });
 
-    onLCP((metric) => {
-      sendToAnalytics({
-        ...metric,
-        rating: getRating('LCP', metric.value),
-      });
-    });
+          onLCP((metric) => {
+            sendToAnalytics({
+              ...metric,
+              rating: getRating('LCP', metric.value),
+            });
+          });
 
-    onTTFB((metric) => {
-      sendToAnalytics({
-        ...metric,
-        rating: getRating('TTFB', metric.value),
-      });
-    });
+          onTTFB((metric) => {
+            sendToAnalytics({
+              ...metric,
+              rating: getRating('TTFB', metric.value),
+            });
+          });
 
-    // INP (Interaction to Next Paint) - newer metric
-    if (onINP) {
-      onINP((metric) => {
-        sendToAnalytics({
-          ...metric,
-          rating: getRating('INP', metric.value),
-        });
+          // INP (Interaction to Next Paint) - newer metric
+          if (onINP) {
+            onINP((metric) => {
+              sendToAnalytics({
+                ...metric,
+                rating: getRating('INP', metric.value),
+              });
+            });
+          }
+        } catch (error) {
+          console.warn('Web Vitals initialization error:', error);
+        }
+      })
+      .catch((error) => {
+        // web-vitals not available - continue without tracking
+        console.warn('Web Vitals tracking not available:', error);
       });
-    }
-  }).catch(() => {
-    // web-vitals not available - continue without tracking
-    console.warn('Web Vitals tracking not available');
-  });
+  }, 0);
 };
 
