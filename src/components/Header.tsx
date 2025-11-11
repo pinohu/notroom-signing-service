@@ -12,6 +12,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import notroomLogo from "@/assets/notroom-logo.png";
+import { siteConfig } from "@/constants/siteConfig";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -84,7 +85,13 @@ const Header = () => {
   ];
 
   const businessServices = [
-    { label: "Registered Office & CROP", path: "/crop", desc: "CROP-ready PA registered office services" },
+    { 
+      label: "Registered Office & CROP", 
+      path: "/crop", 
+      desc: siteConfig.isOfficialCropApproved
+        ? "Approved PA CROP registered office services"
+        : "CROP-ready PA registered office services"
+    },
     { label: "LLC & Entity Setup Support", path: "/services/registered-office", desc: "Business formation & compliance assistance" },
     { label: "Business Retainer Plans", path: "/services/business-retainer", desc: "Volume discounts for companies" },
   ];

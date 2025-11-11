@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import TrustIndicators from "@/components/marketing/TrustIndicators";
 import { generateServiceSchema, generateBreadcrumbSchema } from "@/utils/schemaGenerator";
 import { CROP_PLANS } from "@/constants/cropPlans";
+import { siteConfig } from "@/constants/siteConfig";
 
 const CropServices = () => {
   const navigate = useNavigate();
@@ -20,8 +21,12 @@ const CropServices = () => {
 
   const serviceSchema = generateServiceSchema({
     name: "Pennsylvania Registered Office & CROP Services",
-    description: "CROP-ready registered office services for Pennsylvania LLCs, corporations, and foreign entities. Professional PA address, service of process, mail handling, and compliance support.",
-    provider: "Notroom - PA CROP-Ready Services",
+    description: siteConfig.isOfficialCropApproved
+      ? "Approved Commercial Registered Office Provider (CROP) services for Pennsylvania LLCs, corporations, and foreign entities. Professional PA address, service of process, mail handling, and compliance support."
+      : "CROP-ready registered office services for Pennsylvania LLCs, corporations, and foreign entities. Professional PA address, service of process, mail handling, and compliance support.",
+    provider: siteConfig.isOfficialCropApproved
+      ? "Notroom - Approved PA CROP"
+      : "Notroom - PA CROP-Ready Services",
     areaServed: "Pennsylvania",
     price: "149",
     url: "https://notroom.com/crop"
@@ -41,7 +46,9 @@ const CropServices = () => {
         "name": "Is this compliant with PA Department of State rules?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. We provide CROP-ready services that align with Pennsylvania's Commercial Registered Office Provider requirements under 15 Pa.C.S. § 109 and § 415. We maintain a physical Pennsylvania address and handle service of process acceptance and official mail forwarding per written service agreement. Before listing us on any state filing, we will execute the required CROP service contract with you to ensure full legal compliance."
+          "text": siteConfig.isOfficialCropApproved
+            ? "Yes. Notroom is an approved Commercial Registered Office Provider (CROP) registered with the PA Department of State Bureau of Corporations and Charitable Organizations under 15 Pa.C.S. § 109 and § 415. We maintain a physical Pennsylvania address and handle service of process acceptance and official mail forwarding per written service agreement. You can list us as your registered office on state filings once we execute the required CROP service contract."
+            : "Yes. We provide CROP-ready services that align with Pennsylvania's Commercial Registered Office Provider requirements under 15 Pa.C.S. § 109 and § 415. We maintain a physical Pennsylvania address and handle service of process acceptance and official mail forwarding per written service agreement. Before listing us on any state filing, we will execute the required CROP service contract with you to ensure full legal compliance."
         }
       },
       {
@@ -188,7 +195,9 @@ const CropServices = () => {
     <Layout>
       <SEO
         title="Registered Office & CROP Services for Pennsylvania Businesses | Notroom"
-        description="Professional registered office and CROP-ready services for PA LLCs, corporations, and foreign entities. Secure address, service of process, digital mail scanning, compliance support. From $149/year."
+        description={siteConfig.isOfficialCropApproved
+          ? "Approved Commercial Registered Office Provider (CROP) services for PA LLCs, corporations, and foreign entities. Secure address, service of process, digital mail scanning, compliance support. From $149/year."
+          : "Professional registered office and CROP-ready services for PA LLCs, corporations, and foreign entities. Secure address, service of process, digital mail scanning, compliance support. From $149/year."}
         keywords="Pennsylvania registered office, PA CROP service, registered agent PA, LLC registered office Pennsylvania, service of process PA, business address Pennsylvania, CROP provider Erie PA, registered office Northwestern PA"
         canonical="https://notroom.com/crop"
         schema={combinedSchema}
@@ -199,13 +208,19 @@ const CropServices = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-4 bg-accent text-accent-foreground border-0 text-sm px-4 py-1">
-              CROP-Ready Services • PA Compliant • Trusted by 150+ Businesses
+              {siteConfig.isOfficialCropApproved
+                ? "Approved PA CROP • PA Department of State Registered • Trusted by 150+ Businesses"
+                : "CROP-Ready Services • PA Compliant • Trusted by 150+ Businesses"}
             </Badge>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Registered Office & CROP Services for Pennsylvania Businesses
+              {siteConfig.isOfficialCropApproved
+                ? "Registered Office & CROP Services for Pennsylvania Businesses"
+                : "Registered Office & CROP Services for Pennsylvania Businesses"}
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-95 leading-relaxed">
-              Use Notroom as your trusted address and compliance partner for LLCs, corporations, and foreign registrations in Pennsylvania.
+              {siteConfig.isOfficialCropApproved
+                ? "Notroom is an approved Commercial Registered Office Provider (CROP) in Pennsylvania. Use our trusted address and compliance services for LLCs, corporations, and foreign registrations."
+                : "Use Notroom as your trusted address and compliance partner for LLCs, corporations, and foreign registrations in Pennsylvania. We support businesses that need a PA Commercial Registered Office Provider."}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
@@ -409,7 +424,9 @@ const CropServices = () => {
                   Is this compliant with PA Department of State rules?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground leading-relaxed pt-4">
-                  Yes. We provide CROP-ready services that align with Pennsylvania's Commercial Registered Office Provider requirements under 15 Pa.C.S. § 109 and § 415. We maintain a physical Pennsylvania address and handle service of process acceptance and official mail forwarding per written service agreement. Before listing us on any state filing, we will execute the required CROP service contract with you to ensure full legal compliance.
+                  {siteConfig.isOfficialCropApproved
+                    ? "Yes. Notroom is an approved Commercial Registered Office Provider (CROP) registered with the PA Department of State Bureau of Corporations and Charitable Organizations under 15 Pa.C.S. § 109 and § 415. We maintain a physical Pennsylvania address and handle service of process acceptance and official mail forwarding per written service agreement. You can list us as your registered office on state filings once we execute the required CROP service contract."
+                    : "Yes. We provide CROP-ready services that align with Pennsylvania's Commercial Registered Office Provider requirements under 15 Pa.C.S. § 109 and § 415. We maintain a physical Pennsylvania address and handle service of process acceptance and official mail forwarding per written service agreement. Before listing us on any state filing, we will execute the required CROP service contract with you to ensure full legal compliance."}
                 </AccordionContent>
               </AccordionItem>
 

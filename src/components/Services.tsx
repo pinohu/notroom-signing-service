@@ -6,6 +6,7 @@ import { Monitor, Car, Home, Check, Users, Building, Globe, FileCheck, FileText,
 import ScrollReveal from "./ScrollReveal";
 import { useNavigate } from "react-router-dom";
 import { memo, useState } from "react";
+import { siteConfig } from "@/constants/siteConfig";
 
 const Services = memo(() => {
   const navigate = useNavigate();
@@ -138,11 +139,15 @@ const Services = memo(() => {
   const businessServices = [
     {
       icon: Building,
-      badge: "CROP-Ready",
+      badge: siteConfig.isOfficialCropApproved ? "Approved CROP" : "CROP-Ready",
       title: "Registered Office & CROP (PA)",
       price: "$149/yr",
-      priceDetail: "Professional PA address | CROP-ready services",
-      description: "Use Notroom as your official Pennsylvania registered office and CROP for LLCs, corporations, and foreign entities.",
+      priceDetail: siteConfig.isOfficialCropApproved
+        ? "Professional PA address | Approved PA CROP"
+        : "Professional PA address | CROP-ready services",
+      description: siteConfig.isOfficialCropApproved
+        ? "Notroom is an approved Commercial Registered Office Provider (CROP) in Pennsylvania. Use our official registered office address for LLCs, corporations, and foreign entities."
+        : "Use Notroom as your official Pennsylvania registered office and CROP for LLCs, corporations, and foreign entities. We support businesses that need a PA Commercial Registered Office Provider.",
       features: [
         "Physical PA address for state compliance",
         "Annual compliance reminders & support",

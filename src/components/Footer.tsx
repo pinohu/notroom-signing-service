@@ -5,6 +5,7 @@ import nsaBadge from "@/assets/nsa_member_badge.png";
 import nnaMemberBadge from "@/assets/nna_member_badge.png";
 import panMemberBadge from "@/assets/pan_member_badge.png";
 import nngUxcBadge from "@/assets/nng_uxc_badge.png";
+import { siteConfig } from "@/constants/siteConfig";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
