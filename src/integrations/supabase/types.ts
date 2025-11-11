@@ -306,6 +306,33 @@ export type Database = {
           },
         ]
       }
+      feedback: {
+        Row: {
+          created_at: string
+          email: string | null
+          feedback: string
+          id: string
+          page_url: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          feedback: string
+          id?: string
+          page_url?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          feedback?: string
+          id?: string
+          page_url?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
       integration_config: {
         Row: {
           active: boolean | null

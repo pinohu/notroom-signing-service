@@ -77,7 +77,7 @@ class ErrorTracker {
     if (this.sentryEnabled) {
       import('@sentry/react').then((Sentry) => {
         Sentry.captureMessage(message, {
-          level: level as Sentry.SeverityLevel,
+          level: level as 'info' | 'warning' | 'error',
           contexts: {
             custom: context || {},
           },

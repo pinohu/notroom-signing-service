@@ -35,6 +35,7 @@ import Calculator from "./pages/Calculator";
 import Subscriptions from "./pages/Subscriptions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import Accessibility from "./pages/Accessibility";
 import Agreements from "./pages/legal/Agreements";
 import ErieCounty from "./pages/areas/ErieCounty";
 import CrawfordCounty from "./pages/areas/CrawfordCounty";
