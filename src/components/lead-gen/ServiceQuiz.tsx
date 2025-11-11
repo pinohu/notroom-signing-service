@@ -19,6 +19,7 @@ const questions: QuizQuestion[] = [
     options: [
       { value: "personal", label: "Personal documents (affidavits, power of attorney, etc.)" },
       { value: "real_estate", label: "Real estate or loan documents" },
+      { value: "transaction_coordination", label: "Complex transaction coordination (multi-party deals)" },
       { value: "business", label: "Business formation or filing" },
       { value: "international", label: "International documents (apostille)" },
       { value: "employment", label: "Employment verification (I-9)" },
@@ -75,6 +76,15 @@ const ServiceQuiz = () => {
   const getRecommendation = () => {
     const docType = answers.document_type;
     const preference = answers.preference;
+
+    if (docType === "transaction_coordination") {
+      return {
+        service: "Transaction Coordination",
+        price: "$299+",
+        description: "Professional coordination for complex multi-party transactions. We manage documents, deadlines, and communication.",
+        link: "/transaction-coordination",
+      };
+    }
 
     if (docType === "real_estate") {
       return {

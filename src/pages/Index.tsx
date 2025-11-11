@@ -33,7 +33,7 @@ const Index = () => {
         "@type": "ProfessionalService",
         "name": "Notroom - Notary, Business Filing & Compliance Services",
         "image": "https://notroom.com/logo.png",
-        "description": "Complete business services in Erie, PA: notary (remote & mobile), loan signing, apostille, I-9 verification, LLC formation, and registered office services.",
+        "description": "Complete business services in Erie, PA: notary (remote & mobile), loan signing, transaction coordination, apostille, I-9 verification, LLC formation, and registered office services.",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Erie",
@@ -62,6 +62,7 @@ const Index = () => {
           "Remote Online Notarization",
           "Mobile Notary Service",
           "Loan Signing Agent",
+          "Transaction Coordination",
           "Apostille Services",
           "I-9 Employment Verification",
           "Business Formation",
@@ -88,7 +89,7 @@ const Index = () => {
     <Layout>
       <SEO
         title="Notroom | Notary, Business Filing & Compliance Services | Erie, PA"
-        description="Complete business services in Erie, PA: Remote & mobile notary (from $60), loan signing ($175), apostille services ($245+), I-9 verification ($85+), LLC formation ($149), and registered office ($149/yr). Licensed, bonded, PA-compliant."
+        description="Complete business services in Erie, PA: Remote & mobile notary (from $60), loan signing ($175), transaction coordination ($299+), apostille services ($245+), I-9 verification ($85+), LLC formation ($149), and registered office ($149/yr). Licensed, bonded, PA-compliant."
         keywords="notary Erie PA, online notary, mobile notary, loan signing agent, apostille service, I-9 verification, LLC formation Pennsylvania, registered office PA, business filing Erie"
         canonical="https://notroom.com"
         schema={schema}

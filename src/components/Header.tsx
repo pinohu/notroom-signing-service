@@ -71,6 +71,7 @@ const Header = () => {
     { label: "Remote Online Notary (RON)", path: "/services/remote-online-notary", desc: "Notarize from anywhere via video" },
     { label: "Mobile Notary Service", path: "/services/mobile-notary", desc: "We come to your location" },
     { label: "Loan Signing Agent", path: "/services/loan-signing-agent", desc: "Certified for real estate closings" },
+    { label: "Transaction Coordination", path: "/transaction-coordination", desc: "Professional multi-party transaction coordination" },
     { label: "Healthcare Facility Notary", path: "/services/healthcare-facility", desc: "Hospital, nursing home & hospice visits" },
     { label: "Apostille Services", path: "/services/apostille", desc: "International document authentication" },
     { label: "I-9 Verification", path: "/services/i9-verification", desc: "Employment verification for employers" },
