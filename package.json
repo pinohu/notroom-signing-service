@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:sync": "powershell -File ./start-dev-with-sync.ps1",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "auto-sync": "node auto-sync.js"
+    "auto-sync": "node auto-sync.js",
+    "auto-sync:ps": "powershell -File ./auto-sync.ps1"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
