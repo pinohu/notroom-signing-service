@@ -18,6 +18,9 @@ import RegisteredOffice from "./pages/services/RegisteredOffice";
 import CropServices from "./pages/services/CropServices";
 import CropApplication from "./pages/CropApplication";
 import CropApplicationSuccess from "./pages/CropApplicationSuccess";
+import TransactionCoordination from "./pages/services/TransactionCoordination";
+import TcApplication from "./pages/TcApplication";
+import TcApplicationSuccess from "./pages/TcApplicationSuccess";
 import HealthcareFacility from "./pages/services/HealthcareFacility";
 import CertifiedCopies from "./pages/services/CertifiedCopies";
 
@@ -158,6 +161,9 @@ const App = () => (
           <Route path="/crop" element={<CropServices />} />
           <Route path="/crop/application" element={<CropApplication />} />
           <Route path="/crop/application/success" element={<CropApplicationSuccess />} />
+          <Route path="/transaction-coordination" element={<TransactionCoordination />} />
+          <Route path="/transaction-coordination/application" element={<TcApplication />} />
+          <Route path="/transaction-coordination/application/success" element={<TcApplicationSuccess />} />
           <Route path="/services/healthcare-facility" element={<HealthcareFacility />} />
           <Route path="/services/certified-copies" element={<CertifiedCopies />} />
           
@@ -288,6 +294,7 @@ const App = () => (
           <Route path="/admin/whatsapp" element={<AdminWhatsAppConfig />} />
           <Route path="/admin/automation" element={<AdminAutomationFlows />} />
           <Route path="/admin/crop-applications" element={<AdminCropApplications />} />
+          <Route path="/admin/tc" element={<AdminTcClients />} />
           
           {/* Utility Pages */}
           <Route path="/sitemap" element={<Sitemap />} />

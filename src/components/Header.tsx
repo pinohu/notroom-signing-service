@@ -92,6 +92,7 @@ const Header = () => {
         ? "Approved PA CROP registered office services"
         : "CROP-ready PA registered office services"
     },
+    { label: "Transaction Coordination", path: "/transaction-coordination", desc: "Professional multi-party transaction coordination" },
     { label: "LLC & Entity Setup Support", path: "/services/registered-office", desc: "Business formation & compliance assistance" },
     { label: "Business Retainer Plans", path: "/services/business-retainer", desc: "Volume discounts for companies" },
   ];

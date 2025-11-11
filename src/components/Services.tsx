@@ -159,6 +159,23 @@ const Services = memo(() => {
       link: "/crop"
     },
     {
+      icon: Users,
+      badge: "Coordination",
+      title: "Transaction Coordination",
+      price: "$299+",
+      priceDetail: "Per transaction",
+      description: "Expert coordination for complex transactions. We manage documents, deadlines, and communication so you can focus on closing your deal successfully.",
+      features: [
+        "Multi-party coordination & communication",
+        "Document collection & organization",
+        "Timeline management & deadline tracking",
+        "Progress reporting & status updates"
+      ],
+      ctaText: "Learn More",
+      featured: false,
+      link: "/transaction-coordination"
+    },
+    {
       icon: FileCheck,
       badge: "Formation",
       title: "LLC & Entity Setup Support",

@@ -70,6 +70,15 @@ const Footer = () => {
                 </button>
               </li>
               <li>
+                <button 
+                  onClick={() => navigateToPage("/transaction-coordination")} 
+                  className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-primary rounded px-1"
+                  aria-label="Learn about Transaction Coordination services"
+                >
+                  Transaction Coordination
+                </button>
+              </li>
+              <li>
                 <button onClick={() => navigateToPage("/services/registered-office")} className="text-primary-foreground/70 hover:text-primary-foreground transition-colors text-sm">
                   LLC & Entity Setup Support
                 </button>
