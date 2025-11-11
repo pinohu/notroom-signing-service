@@ -68,15 +68,31 @@ This project is already connected to GitHub: **https://github.com/pinohu/erie-no
 
 **Auto-sync watches for file changes and automatically commits/pushes to GitHub!**
 
-#### Start Auto-Sync (PowerShell - Windows)
+#### Quick Start - Easiest Way ⭐
+
+**Double-click:** `start-dev-with-sync.bat`
+
+This starts both:
+- ✅ Auto-sync watcher (background)
+- ✅ Vite dev server
+
+**Or use npm:**
 ```powershell
-# Start the auto-sync watcher
-.\auto-sync.ps1
+npm run dev:sync
 ```
 
-#### Start Auto-Sync (Node.js - Cross-platform)
-```bash
-# Start the auto-sync watcher
+#### Start Auto-Sync Only
+
+**Double-click:** `start-auto-sync.bat`
+
+**Or use command line:**
+```powershell
+# PowerShell (Windows)
+.\auto-sync.ps1
+# or
+npm run auto-sync:ps
+
+# Node.js (Cross-platform)
 npm run auto-sync
 # or
 node auto-sync.js
@@ -87,14 +103,16 @@ node auto-sync.js
 - Waits 5 seconds after your last change (debounce)
 - Automatically commits and pushes to GitHub
 - Ignores `node_modules`, `.git`, `dist`, and other build files
-- Press `Ctrl+C` to stop
+- Press `Ctrl+C` or close window to stop
 
 **Example:**
-1. Start auto-sync: `.\auto-sync.ps1`
+1. Double-click `start-dev-with-sync.bat` (or run `npm run dev:sync`)
 2. Make changes in Cursor/your editor
-3. Save files
+3. Save files (`Ctrl+S`)
 4. Wait 5 seconds
 5. Changes are automatically synced to GitHub! ✨
+
+**💡 Pro Tip:** Add `start-auto-sync.bat` to Windows Startup folder to auto-start on login!
 
 ### Manual Sync
 
