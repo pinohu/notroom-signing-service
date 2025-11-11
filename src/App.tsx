@@ -123,6 +123,7 @@ import AdminVoiceAgent from "./pages/admin/VoiceAgent";
 import AdminWhatsAppConfig from "./pages/admin/WhatsAppConfig";
 import AdminAutomationFlows from "./pages/admin/AutomationFlows";
 import AdminCropApplications from "./pages/admin/CropApplications";
+import AdminTcClients from "./pages/admin/TcClients";
 import LogoProcessor from "./pages/LogoProcessor";
 import AllBadgesProcessor from "./pages/AllBadgesProcessor";
 import PaymentSuccess from "./pages/PaymentSuccess";
