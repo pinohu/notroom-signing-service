@@ -27,10 +27,17 @@ export default defineConfig(({ mode }) => ({
         },
       },
     },
-    // Increase chunk size warning limit for better splitting
-    chunkSizeWarningLimit: 1000,
+    // Performance budgets:
+    // - Initial load: < 500KB (gzipped)
+    // - Individual chunks: < 300KB (gzipped)
+    // - Total bundle: < 1MB (gzipped)
+    chunkSizeWarningLimit: 1000, // Warn if chunk > 1MB (uncompressed)
     // Enable source maps for production debugging
     sourcemap: mode === 'production' ? 'hidden' : true,
+    // Report compressed sizes for better performance tracking
+    reportCompressedSize: true,
+    // Minify for production
+    minify: mode === 'production' ? 'esbuild' : false,
   },
   // Optimize dependencies
   optimizeDeps: {

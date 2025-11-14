@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { Phone, Bot, CheckCircle, AlertCircle } from 'lucide-react';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
+import { logger } from '@/utils/logger';
 import type { AgentConfig, Booking } from '@/types/admin';
 
 export default function VoiceAgent() {
@@ -31,7 +32,7 @@ export default function VoiceAgent() {
       if (error) throw error;
       setConfig(data as unknown as AgentConfig | null);
     } catch (error) {
-      console.error('Error loading config:', error);
+      logger.error('Error loading config:', error);
       toast({
         title: 'Error',
         description: 'Failed to load agent configuration',
@@ -54,7 +55,7 @@ export default function VoiceAgent() {
       if (error) throw error;
       setBookings(data as Booking[] || []);
     } catch (error) {
-      console.error('Error loading bookings:', error);
+      logger.error('Error loading bookings:', error);
     }
   }, []);
 
@@ -84,7 +85,7 @@ export default function VoiceAgent() {
         description: 'Agent configuration updated successfully'
       });
     } catch (error) {
-      console.error('Error saving config:', error);
+      logger.error('Error saving config:', error);
       toast({
         title: 'Error',
         description: 'Failed to save configuration',

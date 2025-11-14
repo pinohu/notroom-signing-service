@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
+import { validateApiKeyEnv } from "../_shared/envValidation.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -286,16 +287,16 @@ serve(async (req) => {
   try {
     logStep("Function started");
 
+    // Validate environment
+    const env = validateApiKeyEnv('smsit');
+
     const { booking, action = 'full_sync' } = await req.json();
 
     if (!booking) {
       throw new Error("Booking data is required");
     }
 
-    const apiKey = Deno.env.get("SMSIT_API_KEY");
-    if (!apiKey) {
-      throw new Error("SMSIT_API_KEY not configured");
-    }
+    const apiKey = env.SMSIT_API_KEY!;
 
     logStep("Starting SMS-iT sync", { bookingId: booking.id, action });
 
@@ -332,6 +333,21 @@ serve(async (req) => {
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     logStep("ERROR", { message: errorMessage });
+    
+    // Handle configuration errors specifically
+    if (errorMessage.includes('Missing required environment variables')) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Configuration error',
+          message: errorMessage 
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      );
+    }
+    
     return new Response(
       JSON.stringify({ error: errorMessage }),
       {

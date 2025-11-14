@@ -3,6 +3,8 @@
  * Integrates with Sentry for production error monitoring
  */
 
+import { logger } from './logger';
+
 interface ErrorContext {
   userId?: string;
   userEmail?: string;
@@ -51,7 +53,7 @@ class ErrorTracker {
       });
     }).catch(() => {
       // Sentry failed to load - continue without it
-      console.warn('Sentry failed to initialize');
+      logger.warn('Sentry failed to initialize');
     });
   }
 
@@ -64,12 +66,12 @@ class ErrorTracker {
           },
         });
       }).catch(() => {
-        // Fallback to console in case Sentry fails
-        console.error('Error tracking failed:', error, context);
+        // Fallback to logger in case Sentry fails
+        logger.error('Error tracking failed:', error, context);
       });
     } else {
       // Development mode - just log
-      console.error('Error captured:', error, context);
+      logger.error('Error captured:', error, context);
     }
   }
 
@@ -83,10 +85,10 @@ class ErrorTracker {
           },
         });
       }).catch(() => {
-        console.warn('Error tracking failed:', message, context);
+        logger.warn('Error tracking failed:', message, context);
       });
     } else {
-      console.log(`[${level.toUpperCase()}]`, message, context);
+      logger.log(`[${level.toUpperCase()}]`, message, context);
     }
   }
 

@@ -5,19 +5,20 @@ import nsaBadge from "@/assets/nsa_member_badge.png";
 import nnaMemberBadge from "@/assets/nna_member_badge.png";
 import panMemberBadge from "@/assets/pan_member_badge.png";
 import nngUxcBadge from "@/assets/nng_uxc_badge.png";
+import { COMMISSION_INFO } from "@/constants/commission";
 
 const TrustBadges = () => {
   const badges = [
     {
       icon: Shield,
       title: "PA State Licensed",
-      subtitle: "Commission #1464221",
+      subtitle: `Commission #${COMMISSION_INFO.commissionNumber}`,
       color: "primary"
     },
     {
       icon: Award,
       title: "NNA Certified NSA",
-      subtitle: "Account #161977718",
+      subtitle: `Account #${COMMISSION_INFO.nnaAccountNumber}`,
       color: "success-green"
     },
     {

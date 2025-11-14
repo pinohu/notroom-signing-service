@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emailit.com Email Service Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2563eb;
+            margin-top: 0;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9fafb;
+            border-radius: 6px;
+            border-left: 4px solid #2563eb;
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #1d4ed8;
+        }
+        button:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #10b981;
+        }
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+        .info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Emailit.com Email Service Test</h1>
+        
+        <div class="test-section">
+            <h3>Configuration</h3>
+            <div id="config-info" class="result info">
+                Checking configuration...
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test Lead Magnet Email</h3>
+            <label>Test Email Address:</label>
+            <input type="email" id="test-email" placeholder="your-email@example.com" value="">
+            <br>
+            <button onclick="testLeadMagnet()">Send Lead Magnet Email</button>
+            <div id="lead-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test Transactional Email</h3>
+            <button onclick="testTransactional()">Send Transactional Email</button>
+            <div id="transactional-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test Booking Confirmation</h3>
+            <button onclick="testBookingConfirmation()">Send Booking Confirmation</button>
+            <div id="booking-result"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import email service functions
+        const API_KEY = import.meta.env.VITE_EMAILIT_API_KEY;
+        const API_URL = import.meta.env.VITE_EMAILIT_API_URL || 'https://api.emailit.com/v1';
+
+        // Display configuration
+        const configDiv = document.getElementById('config-info');
+        if (API_KEY) {
+            configDiv.innerHTML = `
+                ✅ API Key: Configured<br>
+                ✅ API URL: ${API_URL}<br>
+                <small>Note: Check browser console for detailed logs</small>
+            `;
+            configDiv.className = 'result success';
+        } else {
+            configDiv.innerHTML = `
+                ❌ API Key: Not configured<br>
+                Please add VITE_EMAILIT_API_KEY to your .env file and restart the dev server.
+            `;
+            configDiv.className = 'result error';
+        }
+
+        // Test functions
+        window.testLeadMagnet = async function() {
+            const email = document.getElementById('test-email').value || 'test@example.com';
+            const resultDiv = document.getElementById('lead-result');
+            resultDiv.innerHTML = '<div class="result info">Sending...</div>';
+            
+            try {
+                const response = await fetch(`${API_URL}/send`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`,
+                    },
+                    body: JSON.stringify({
+                        from: 'noreply@notroom.com',
+                        to: email,
+                        subject: 'Welcome to Notroom - Your Notary Resource',
+                        html: '<h1>Welcome!</h1><p>This is a test email from Emailit.com integration.</p>'
+                    }),
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    resultDiv.innerHTML = `<div class="result success">✅ Success! Email sent to ${email}<br>Response: ${JSON.stringify(result, null, 2)}</div>`;
+                } else {
+                    const error = await response.json().catch(() => ({ message: response.statusText }));
+                    resultDiv.innerHTML = `<div class="result error">❌ Failed: ${error.message || response.statusText}<br>Status: ${response.status}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Error: ${error.message}</div>`;
+                console.error('Email test error:', error);
+            }
+        };
+
+        window.testTransactional = async function() {
+            const email = document.getElementById('test-email').value || 'test@example.com';
+            const resultDiv = document.getElementById('transactional-result');
+            resultDiv.innerHTML = '<div class="result info">Sending...</div>';
+            
+            try {
+                const response = await fetch(`${API_URL}/send`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`,
+                    },
+                    body: JSON.stringify({
+                        from: 'noreply@notroom.com',
+                        to: email,
+                        subject: 'Test Transactional Email - Notroom',
+                        html: '<h1>Test Transactional Email</h1><p>This is a test transactional email.</p>'
+                    }),
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    resultDiv.innerHTML = `<div class="result success">✅ Success! Email sent to ${email}</div>`;
+                } else {
+                    const error = await response.json().catch(() => ({ message: response.statusText }));
+                    resultDiv.innerHTML = `<div class="result error">❌ Failed: ${error.message || response.statusText}<br>Status: ${response.status}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Error: ${error.message}</div>`;
+                console.error('Email test error:', error);
+            }
+        };
+
+        window.testBookingConfirmation = async function() {
+            const email = document.getElementById('test-email').value || 'test@example.com';
+            const resultDiv = document.getElementById('booking-result');
+            resultDiv.innerHTML = '<div class="result info">Sending...</div>';
+            
+            try {
+                const response = await fetch(`${API_URL}/send`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_KEY}`,
+                    },
+                    body: JSON.stringify({
+                        from: 'noreply@notroom.com',
+                        to: email,
+                        subject: 'Booking Confirmed - Notroom',
+                        html: `
+                            <h1>Booking Confirmed!</h1>
+                            <div style="background: #f3f4f6; padding: 15px; border-radius: 5px;">
+                                <p><strong>Booking ID:</strong> TEST-12345</p>
+                                <p><strong>Service:</strong> Mobile Notary</p>
+                                <p><strong>Date:</strong> Test Date</p>
+                                <p><strong>Time:</strong> Test Time</p>
+                            </div>
+                        `
+                    }),
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    resultDiv.innerHTML = `<div class="result success">✅ Success! Booking confirmation sent to ${email}</div>`;
+                } else {
+                    const error = await response.json().catch(() => ({ message: response.statusText }));
+                    resultDiv.innerHTML = `<div class="result error">❌ Failed: ${error.message || response.statusText}<br>Status: ${response.status}<br><br>Note: The API format may need adjustment. Check Emailit.com documentation.</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result error">❌ Error: ${error.message}<br><br>This might indicate:<br>1. API endpoint format is incorrect<br>2. Authentication format needs adjustment<br>3. Network/CORS issue</div>`;
+                console.error('Email test error:', error);
+            }
+        };
+    </script>
+</body>
+</html>
+

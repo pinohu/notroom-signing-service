@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { verifyWebhookSignature } from "../_shared/webhookSecurity.ts";
 import { validatePhone, validateEmail, validateName } from "../_shared/validation.ts";
+import { validateWebhookEnv } from "../_shared/envValidation.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -33,15 +34,14 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  const supabase = createClient(
-    Deno.env.get('SUPABASE_URL') ?? '',
-    Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
-  );
-
   try {
+    // Validate environment
+    const env = validateWebhookEnv('insighto');
+    const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
+
     // Verify webhook signature
     const signature = req.headers.get('x-insighto-signature') || '';
-    const webhookSecret = Deno.env.get('INSIGHTO_WEBHOOK_SECRET') || '';
+    const webhookSecret = env.INSIGHTO_WEBHOOK_SECRET || '';
     const rawBody = await req.text();
     
     const isValid = await verifyWebhookSignature(rawBody, signature, webhookSecret);
@@ -128,10 +128,10 @@ serve(async (req) => {
       console.log('Created AI booking:', leadId);
 
       // Trigger confirmation flow
-      await fetch(`${Deno.env.get('SUPABASE_URL')}/functions/v1/smsit-booking-confirm`, {
+      await fetch(`${env.SUPABASE_URL}/functions/v1/smsit-booking-confirm`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')}`,
+          'Authorization': `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ bookingId: leadId }),
@@ -139,10 +139,10 @@ serve(async (req) => {
 
       // Send WhatsApp checklist if opted in
       if (bookingData.phone !== 'unknown') {
-        await fetch(`${Deno.env.get('SUPABASE_URL')}/functions/v1/wbiztool-send-checklist`, {
+        await fetch(`${env.SUPABASE_URL}/functions/v1/wbiztool-send-checklist`, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')}`,
+            'Authorization': `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ 
@@ -187,8 +187,24 @@ serve(async (req) => {
 
   } catch (error) {
     console.error('Insighto webhook error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    
+    // Handle configuration errors specifically
+    if (errorMessage.includes('Missing required environment variables')) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Configuration error',
+          message: errorMessage 
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      );
+    }
+    
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }),
+      JSON.stringify({ error: errorMessage }),
       { 
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }

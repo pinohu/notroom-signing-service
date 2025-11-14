@@ -2,17 +2,17 @@
  * Performance monitoring and optimization utilities
  */
 
+import { logger } from './logger';
+
 /**
  * Measure component render time
  */
 export const measureRenderTime = (componentName: string, startTime: number) => {
-  if (import.meta.env.DEV) {
-    const endTime = performance.now();
-    const renderTime = endTime - startTime;
-    
-    if (renderTime > 16) { // Flag renders slower than 60fps
-      console.warn(`[Performance] ${componentName} took ${renderTime.toFixed(2)}ms to render`);
-    }
+  const endTime = performance.now();
+  const renderTime = endTime - startTime;
+  
+  if (renderTime > 16) { // Flag renders slower than 60fps
+    logger.warn(`[Performance] ${componentName} took ${renderTime.toFixed(2)}ms to render`);
   }
 };
 
@@ -26,7 +26,7 @@ export const logPerformanceMetrics = () => {
         const perfData = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
         
         if (perfData) {
-          console.log('[Performance Metrics]', {
+          logger.log('[Performance Metrics]', {
             'DNS Lookup': `${(perfData.domainLookupEnd - perfData.domainLookupStart).toFixed(2)}ms`,
             'TCP Connection': `${(perfData.connectEnd - perfData.connectStart).toFixed(2)}ms`,
             'Request Time': `${(perfData.responseStart - perfData.requestStart).toFixed(2)}ms`,

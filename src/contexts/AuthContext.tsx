@@ -1,16 +1,29 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { User, Session } from '@supabase/supabase-js';
+import { User, Session, AuthError } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { logger } from '@/utils/logger';
+
+interface UserMetadata {
+  [key: string]: string | number | boolean | null | undefined;
+}
+
+interface ProfileUpdateData {
+  [key: string]: string | number | boolean | null | undefined;
+}
+
+interface AuthErrorResponse {
+  error: AuthError | null;
+}
 
 interface AuthContextType {
   user: User | null;
   session: Session | null;
   loading: boolean;
-  signUp: (email: string, password: string, metadata?: any) => Promise<{ error: any }>;
-  signIn: (email: string, password: string) => Promise<{ error: any }>;
+  signUp: (email: string, password: string, metadata?: UserMetadata) => Promise<AuthErrorResponse>;
+  signIn: (email: string, password: string) => Promise<AuthErrorResponse>;
   signOut: () => Promise<void>;
-  updateProfile: (data: any) => Promise<{ error: any }>;
+  updateProfile: (data: ProfileUpdateData) => Promise<AuthErrorResponse>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -40,7 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signUp = async (email: string, password: string, metadata?: any) => {
+  const signUp = async (email: string, password: string, metadata?: UserMetadata): Promise<AuthErrorResponse> => {
     try {
       const redirectUrl = `${window.location.origin}/portal`;
       
@@ -57,13 +70,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       
       toast.success('Account created! Please check your email to verify your account.');
       return { error: null };
-    } catch (error: any) {
-      console.error('Sign up error:', error);
-      return { error };
+    } catch (error: unknown) {
+      const authError = error instanceof Error && 'code' in error ? error as AuthError : null;
+      logger.error('Sign up error:', error instanceof Error ? error.message : 'Unknown error');
+      return { error: authError };
     }
   };
 
-  const signIn = async (email: string, password: string) => {
+  const signIn = async (email: string, password: string): Promise<AuthErrorResponse> => {
     try {
       const { error } = await supabase.auth.signInWithPassword({
         email,
@@ -74,13 +88,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       
       toast.success('Welcome back!');
       return { error: null };
-    } catch (error: any) {
-      console.error('Sign in error:', error);
-      return { error };
+    } catch (error: unknown) {
+      const authError = error instanceof Error && 'code' in error ? error as AuthError : null;
+      logger.error('Sign in error:', error instanceof Error ? error.message : 'Unknown error');
+      return { error: authError };
     }
   };
 
-  const signOut = async () => {
+  const signOut = async (): Promise<void> => {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
@@ -88,13 +103,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(null);
       setSession(null);
       toast.success('Signed out successfully');
-    } catch (error) {
-      console.error('Sign out error:', error);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Sign out error:', errorMessage);
       toast.error('Error signing out');
     }
   };
 
-  const updateProfile = async (data: any) => {
+  const updateProfile = async (data: ProfileUpdateData): Promise<AuthErrorResponse> => {
     try {
       if (!user) throw new Error('No user logged in');
 
@@ -107,9 +123,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       toast.success('Profile updated successfully');
       return { error: null };
-    } catch (error: any) {
-      console.error('Update profile error:', error);
-      return { error };
+    } catch (error: unknown) {
+      const authError = error instanceof Error && 'code' in error ? error as AuthError : null;
+      logger.error('Update profile error:', error instanceof Error ? error.message : 'Unknown error');
+      return { error: authError };
     }
   };
 

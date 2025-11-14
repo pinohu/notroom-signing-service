@@ -16,9 +16,11 @@ import { CheckCircle, ArrowRight, ArrowLeft, Building, User, Mail, CreditCard, S
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 // Stripe price IDs for the three tiers
 import { CROP_PLANS } from "@/constants/cropPlans";
+import { validatePriceIdForCheckout, getStripeConfigError } from "@/utils/stripeValidation";
 
 // Validation schemas
 const entitySchema = z.object({
@@ -43,7 +45,7 @@ const CropApplication = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [applicationId, setApplicationId] = useState<string | null>(null);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
 
   // Form state
   const [formData, setFormData] = useState({
@@ -198,9 +200,29 @@ const CropApplication = () => {
       const { data: { session }, error: sessionError } = await supabase.auth.getSession();
       if (sessionError || !session) throw new Error("No active session");
 
+      // Validate Stripe price ID before checkout
+      const selectedPlan = CROP_PLANS[formData.selectedPlan as keyof typeof CROP_PLANS];
+      const priceId = selectedPlan.priceId;
+      
+      try {
+        validatePriceIdForCheckout(priceId, 'CROP Services');
+      } catch (validationError) {
+        const errorMessage = validationError instanceof Error 
+          ? validationError.message 
+          : getStripeConfigError('CROP Services');
+        
+        toast({
+          title: "Payment Configuration Error",
+          description: errorMessage,
+          variant: "destructive",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       const response = await supabase.functions.invoke('crop-checkout', {
         body: {
-          priceId: CROP_PLANS[formData.selectedPlan as keyof typeof CROP_PLANS].priceId,
+          priceId: priceId,
           applicationId: appId,
         },
       });
@@ -216,11 +238,12 @@ const CropApplication = () => {
         throw new Error("No checkout URL returned");
       }
 
-    } catch (error: any) {
-      console.error("Error creating checkout:", error);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error("Error creating checkout:", errorMessage);
       toast({
         title: "Application Error",
-        description: error.message || "Failed to create checkout session. Please try again.",
+        description: errorMessage || "Failed to create checkout session. Please try again.",
         variant: "destructive",
       });
     } finally {

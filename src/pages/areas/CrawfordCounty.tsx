@@ -197,7 +197,7 @@ const CrawfordCounty = () => {
                 <Shield className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-xl font-bold mb-2">Licensed & Insured</h3>
                 <p className="text-muted-foreground">
-                  $25,000 E&O insurance and Pennsylvania state licensed notary public.
+                  $100,000 E&O insurance and Pennsylvania state licensed notary public.
                 </p>
               </Card>
             </div>

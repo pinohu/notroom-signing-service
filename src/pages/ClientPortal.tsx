@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { logger } from '@/utils/logger';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -104,7 +105,7 @@ export default function ClientPortal() {
       if (mailError) throw mailError;
       setMailItems(mailData || []);
     } catch (error) {
-      console.error('Error fetching portal data:', error);
+      logger.error('Error fetching portal data:', error);
       toast.error('Failed to load portal data');
     } finally {
       setLoadingData(false);
@@ -125,7 +126,7 @@ export default function ClientPortal() {
         window.open(data.url, '_blank');
       }
     } catch (error) {
-      console.error('Error opening customer portal:', error);
+      logger.error('Error opening customer portal:', error);
       toast.error('Failed to open subscription management');
     }
   };
@@ -149,7 +150,7 @@ export default function ClientPortal() {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('Error downloading scan:', error);
+      logger.error('Error downloading scan:', error);
       toast.error('Failed to download scan');
     }
   };

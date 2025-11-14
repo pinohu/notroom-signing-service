@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
 import { Download, Upload } from "lucide-react";
 import { removeBackground, loadImage } from "@/utils/removeBackground";
+import { logger } from "@/utils/logger";
 
 const BadgeProcessor = () => {
   const [processing, setProcessing] = useState(false);
@@ -32,7 +33,7 @@ const BadgeProcessor = () => {
       setProcessedImage(url);
       toast.success("Background removed successfully!");
     } catch (error) {
-      console.error("Error processing badge:", error);
+      logger.error("Error processing badge:", error);
       toast.error("Failed to remove background. Please try again.");
     } finally {
       setProcessing(false);

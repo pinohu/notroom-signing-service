@@ -3,6 +3,8 @@
  * Handles service worker registration and PWA install prompts
  */
 
+import { logger } from './logger';
+
 // Register service worker
 export const registerServiceWorker = () => {
   if ('serviceWorker' in navigator && import.meta.env.PROD) {
@@ -10,7 +12,7 @@ export const registerServiceWorker = () => {
       navigator.serviceWorker
         .register('/sw.js')
         .then((registration) => {
-          console.log('Service Worker registered:', registration.scope);
+          logger.log('Service Worker registered:', registration.scope);
           
           // Check for updates
           registration.addEventListener('updatefound', () => {
@@ -19,14 +21,14 @@ export const registerServiceWorker = () => {
               newWorker.addEventListener('statechange', () => {
                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
                   // New service worker available - prompt user to refresh
-                  console.log('New service worker available');
+                  logger.log('New service worker available');
                 }
               });
             }
           });
         })
         .catch((error) => {
-          console.error('Service Worker registration failed:', error);
+          logger.error('Service Worker registration failed:', error);
         });
     });
   }
@@ -43,7 +45,7 @@ export const handleInstallPrompt = () => {
 
     // Show custom install button/prompt
     // You can trigger this from a component
-    console.log('PWA install prompt available');
+    logger.log('PWA install prompt available');
   });
 
   return {

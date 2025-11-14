@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { removeBackground, loadImage } from "@/utils/removeBackground";
 import notroomLogo from "@/assets/notroom-logo.png";
+import { logger } from "@/utils/logger";
 
 const LogoProcessor = () => {
   const [processing, setProcessing] = useState(false);
@@ -34,9 +35,7 @@ const LogoProcessor = () => {
       link.click();
       
     } catch (err) {
-      if (import.meta.env.DEV) {
-        console.error('Error processing logo:', err);
-      }
+      logger.error('Error processing logo:', err);
       setError(err instanceof Error ? err.message : 'Failed to process logo');
     } finally {
       setProcessing(false);

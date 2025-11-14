@@ -99,6 +99,10 @@ verify_jwt = true
 [functions.agent-booking-handler]
 verify_jwt = false  # Called by external voice AI providers
 
+# One-time setup function - requires JWT for security
+[functions.create-tc-stripe-products]
+verify_jwt = true  # Requires authentication to prevent unauthorized product creation
+
 [functions.insighto-webhook]
 verify_jwt = false  # Called by external voice AI providers
 

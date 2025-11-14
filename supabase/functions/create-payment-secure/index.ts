@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@18.5.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
+import { validateApiKeyEnv } from "../_shared/envValidation.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -143,6 +144,9 @@ serve(async (req) => {
   try {
     logStep("Function started");
 
+    // Validate environment
+    const env = validateApiKeyEnv('stripe');
+
     const clientIP = getClientIP(req);
     logStep("Client IP extracted", { ip: clientIP });
 
@@ -164,8 +168,8 @@ serve(async (req) => {
 
     // Initialize Supabase
     const supabaseClient = createClient(
-      Deno.env.get("SUPABASE_URL") ?? "",
-      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "",
+      env.SUPABASE_URL,
+      env.SUPABASE_SERVICE_ROLE_KEY,
       { auth: { persistSession: false } }
     );
 
@@ -178,9 +182,7 @@ serve(async (req) => {
     logStep("Rate limit check passed");
 
     // Initialize Stripe
-    const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
-    if (!stripeKey) throw new Error("STRIPE_SECRET_KEY is not set");
-    
+    const stripeKey = env.STRIPE_SECRET_KEY!;
     const stripe = new Stripe(stripeKey, { apiVersion: "2025-08-27.basil" });
     logStep("Stripe initialized");
 
@@ -259,6 +261,21 @@ serve(async (req) => {
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     logStep("ERROR", { message: errorMessage });
+    
+    // Handle configuration errors specifically
+    if (errorMessage.includes('Missing required environment variables')) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Configuration error',
+          message: errorMessage 
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      );
+    }
+    
     return new Response(JSON.stringify({ error: errorMessage }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,

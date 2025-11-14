@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { logger } from "@/utils/logger";
 import { supabase } from "@/integrations/supabase/client";
 import { MessageSquare, Send, FileText } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -47,11 +48,12 @@ const WhatsAppConfig = () => {
       });
 
       setTestMessage("");
-    } catch (error: any) {
-      console.error('WhatsApp send error:', error);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('WhatsApp send error:', errorMessage);
       toast({
         title: "Failed to Send",
-        description: error.message || "Failed to send WhatsApp message",
+        description: errorMessage || "Failed to send WhatsApp message",
         variant: "destructive",
       });
     } finally {
@@ -91,11 +93,12 @@ const WhatsAppConfig = () => {
 
       setTemplateName("");
       setTemplateParams("");
-    } catch (error: any) {
-      console.error('Template send error:', error);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Template send error:', errorMessage);
       toast({
         title: "Failed to Send Template",
-        description: error.message || "Failed to send WhatsApp template",
+        description: errorMessage || "Failed to send WhatsApp template",
         variant: "destructive",
       });
     } finally {

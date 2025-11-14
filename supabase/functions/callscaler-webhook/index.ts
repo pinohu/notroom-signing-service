@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.75.1";
 import { verifyWebhookSignature } from "../_shared/webhookSecurity.ts";
 import { validatePhone } from "../_shared/validation.ts";
+import { validateWebhookEnv } from "../_shared/envValidation.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -29,13 +30,13 @@ serve(async (req) => {
   }
 
   try {
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    // Validate environment
+    const env = validateWebhookEnv('callscaler');
+    const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 
     // Verify webhook signature
     const signature = req.headers.get('x-callscaler-signature') || '';
-    const webhookSecret = Deno.env.get('CALLSCALER_WEBHOOK_SECRET') || '';
+    const webhookSecret = env.CALLSCALER_WEBHOOK_SECRET || '';
     const rawBody = await req.text();
     
     const isValid = await verifyWebhookSignature(rawBody, signature, webhookSecret);
@@ -90,7 +91,7 @@ serve(async (req) => {
         await handleCallAnswered(supabase, payload);
         break;
       case 'call.missed':
-        await handleCallMissed(supabase, payload);
+        await handleCallMissed(supabase, payload, env);
         break;
       case 'call.completed':
         await handleCallCompleted(supabase, payload);
@@ -104,6 +105,21 @@ serve(async (req) => {
   } catch (error) {
     console.error('CallScaler webhook error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    
+    // Handle configuration errors specifically
+    if (errorMessage.includes('Missing required environment variables')) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Configuration error',
+          message: errorMessage 
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      );
+    }
+    
     return new Response(
       JSON.stringify({ error: errorMessage }),
       { 
@@ -150,7 +166,7 @@ async function handleCallAnswered(supabase: any, payload: CallScalerEvent) {
     .eq('tracking_number', payload.tracking_number);
 }
 
-async function handleCallMissed(supabase: any, payload: CallScalerEvent) {
+async function handleCallMissed(supabase: any, payload: CallScalerEvent, env: { SUPABASE_URL: string; SUPABASE_SERVICE_ROLE_KEY: string }) {
   console.log('Call missed:', payload.call_id, '- triggering SMS recovery');
 
   // Find or create lead/booking for this missed call
@@ -189,10 +205,10 @@ async function handleCallMissed(supabase: any, payload: CallScalerEvent) {
   if (bookingId) {
     // Trigger new SMS-iT missed call flow
     try {
-      const response = await fetch(`${Deno.env.get('SUPABASE_URL')}/functions/v1/smsit-missed-call`, {
+      const response = await fetch(`${env.SUPABASE_URL}/functions/v1/smsit-missed-call`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')}`,
+          'Authorization': `Bearer ${env.SUPABASE_SERVICE_ROLE_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 

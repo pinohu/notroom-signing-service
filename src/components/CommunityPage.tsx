@@ -592,7 +592,7 @@ const CommunityPage = ({ community }: CommunityPageProps) => {
                 </div>
                 <h3 className="font-bold mb-2">Licensed & Protected</h3>
                 <p className="text-muted-foreground text-sm">
-                  PA-licensed notaries with $25,000 E&O insurance protecting every transaction
+                  PA-licensed notaries with $100,000 E&O insurance protecting every transaction
                 </p>
               </Card>
               

@@ -106,6 +106,8 @@ Customer sees updated status on tracking page
 - `location_address`: Service location (for mobile services)
 - `urgency`: Urgency level
 - `status`: Current booking status
+- `last_sms_interaction`: Timestamp of last SMS engagement
+- `booking_count`: Total number of bookings for this contact (counted by matching email or phone)
 
 ### Project Information
 - **Name**: `[Service Type] - [Customer Name]`
@@ -121,6 +123,27 @@ Customer sees updated status on tracking page
   - `service_type`
   - `document_type`
   - `location`
+
+## Booking Count Logic
+
+The `booking_count` custom field in SuiteDash is automatically populated by counting actual bookings from the `bookings` table that match the contact's email or phone number.
+
+### Matching Logic
+- **Primary**: Match by email address
+- **Fallback**: Match by phone number
+- Uses Supabase `.or()` query to match either field
+- Counts all bookings regardless of status (pending, confirmed, completed, cancelled)
+
+### Implementation Details
+- Uses efficient count query (`count: 'exact', head: true`) - only counts, doesn't fetch data
+- Handles errors gracefully with fallback value of 1
+- Ensures minimum value of 1 (since contact exists, they have at least one booking)
+- Updates automatically during bi-directional sync (every 6 hours)
+
+### Performance Considerations
+- Query is optimized for performance using Supabase count queries
+- Consider adding database indexes on `email` and `phone` columns if performance becomes an issue
+- Count is calculated on-demand during sync, not cached
 
 ## Troubleshooting
 

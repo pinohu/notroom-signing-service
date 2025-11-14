@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
+import { validateApiKeyEnv } from "../_shared/envValidation.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -28,10 +29,15 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const suitedashApiKey = Deno.env.get('SUITEDASH_API_KEY')!;
-    const smsitApiKey = Deno.env.get('SMSIT_API_KEY')!;
+    // Validate environment - need both API keys
+    const env = validateApiKeyEnv('smsit');
+    const envSuitedash = validateApiKeyEnv('suitedash');
+    
+    // Combine env vars
+    const supabaseUrl = env.SUPABASE_URL;
+    const supabaseServiceKey = env.SUPABASE_SERVICE_ROLE_KEY;
+    const suitedashApiKey = envSuitedash.SUITEDASH_API_KEY!;
+    const smsitApiKey = env.SMSIT_API_KEY!;
     
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
     
@@ -203,6 +209,37 @@ Last Updated: ${booking.updated_at}
               'recent_activity'
             ];
 
+            // Count actual bookings for this contact (match by email or phone)
+            let bookingCount = 1; // Default fallback value
+            try {
+              // Build query conditions for matching by email or phone
+              const conditions: string[] = [];
+              if (booking.email) {
+                conditions.push(`email.eq.${booking.email}`);
+              }
+              if (booking.phone) {
+                conditions.push(`phone.eq.${booking.phone}`);
+              }
+
+              if (conditions.length > 0) {
+                const { count, error: countError } = await supabase
+                  .from('bookings')
+                  .select('*', { count: 'exact', head: true })
+                  .or(conditions.join(','));
+
+                if (countError) {
+                  console.error(`Error counting bookings for contact ${booking.suitedash_contact_id}:`, countError);
+                  // Use fallback value on error
+                } else {
+                  // Ensure at least 1 (SuiteDash may expect a positive number)
+                  bookingCount = count && count > 0 ? count : 1;
+                }
+              }
+            } catch (error) {
+              console.error(`Exception counting bookings for contact ${booking.suitedash_contact_id}:`, error);
+              // Use fallback value on exception
+            }
+
             const contactUpdateResponse = await fetch(
               `https://app.suitedash.com/api/v1/contacts/${booking.suitedash_contact_id}`,
               {
@@ -216,7 +253,7 @@ Last Updated: ${booking.updated_at}
                   tags: engagementTags,
                   custom_fields: {
                     last_sms_interaction: new Date().toISOString(),
-                    booking_count: 1 // TODO: Count actual bookings
+                    booking_count: bookingCount
                   }
                 })
               }
@@ -257,13 +294,29 @@ Last Updated: ${booking.updated_at}
       }
     );
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error in suitedash-contact-sync function:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    
+    // Handle configuration errors specifically
+    if (errorMessage.includes('Missing required environment variables')) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Configuration error',
+          message: errorMessage 
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      );
+    }
+    
     return new Response(
       JSON.stringify({
         success: false,
-        error: error.message,
-        details: error.toString()
+        error: errorMessage,
+        details: error instanceof Error ? error.toString() : String(error)
       }),
       {
         status: 500,

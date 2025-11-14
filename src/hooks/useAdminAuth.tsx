@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { logger } from '@/utils/logger';
 
 /**
  * Reusable hook for admin authentication
@@ -32,7 +33,7 @@ export function useAdminAuth() {
           navigate('/admin/login');
         }
       } catch (error) {
-        console.error('Auth check error:', error);
+        logger.error('Auth check error:', error);
         navigate('/admin/login');
       }
     };

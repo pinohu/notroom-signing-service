@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, MessageSquare, Check, AlertTriangle, Play, RefreshCw } from "lucide-react";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
+import { logger } from "@/utils/logger";
 import type { CallEvent } from "@/types/admin";
 
 export default function AutomationFlows() {
@@ -32,7 +33,7 @@ export default function AutomationFlows() {
       if (error) throw error;
       setEvents(data as CallEvent[] || []);
     } catch (error) {
-      console.error('Error loading events:', error);
+      logger.error('Error loading events:', error);
       toast({
         title: "Error loading events",
         description: error instanceof Error ? error.message : "Unknown error",
@@ -73,10 +74,12 @@ export default function AutomationFlows() {
       });
 
       loadRecentEvents();
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Error triggering missed call flow:', errorMessage);
       toast({
         title: "Failed to trigger flow",
-        description: error.message,
+        description: errorMessage,
         variant: "destructive",
       });
     }
@@ -105,10 +108,12 @@ export default function AutomationFlows() {
       });
 
       loadRecentEvents();
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Error sending booking confirmation:', errorMessage);
       toast({
         title: "Failed to send confirmation",
-        description: error.message,
+        description: errorMessage,
         variant: "destructive",
       });
     }
@@ -150,10 +155,12 @@ export default function AutomationFlows() {
       });
 
       loadRecentEvents();
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Error sending WhatsApp checklist:', errorMessage);
       toast({
         title: "Failed to send WhatsApp",
-        description: error.message,
+        description: errorMessage,
         variant: "destructive",
       });
     }

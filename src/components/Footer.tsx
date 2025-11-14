@@ -6,6 +6,7 @@ import nnaMemberBadge from "@/assets/nna_member_badge.png";
 import panMemberBadge from "@/assets/pan_member_badge.png";
 import nngUxcBadge from "@/assets/nng_uxc_badge.png";
 import { siteConfig } from "@/constants/siteConfig";
+import { COMMISSION_INFO } from "@/constants/commission";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -438,9 +439,15 @@ const Footer = () => {
                 📋 Legal Credentials & Compliance Information
               </summary>
               <div className="mt-4 space-y-2 text-xs bg-muted/10 p-4 rounded">
-                <p>• Pennsylvania Notary Public Commission | PA State Licensed & Bonded</p>
-                <p>• E&O Insurance Coverage | Background Checked</p>
-                <p>• RON Authorization | RULONA Compliant</p>
+                <p><strong>Pennsylvania Notary Public</strong></p>
+                <p>Commission #{COMMISSION_INFO.commissionNumber}</p>
+                <p>Commission Expires: {COMMISSION_INFO.commissionExpires}</p>
+                <p>Commissioned in {COMMISSION_INFO.county}</p>
+                <p>Bonded: {COMMISSION_INFO.bondAmount}</p>
+                <p>E&O Insurance: {COMMISSION_INFO.eoInsurance}</p>
+                <p>RON Authorized: {COMMISSION_INFO.ronAuthorized}</p>
+                <p>RON Platforms: {COMMISSION_INFO.ronPlatforms.join(", ")}</p>
+                <p className="mt-2 pt-2 border-t border-border/20">• Background Checked | NNA Certified</p>
                 <p>• Operating under Pennsylvania law (57 Pa.C.S. § 321 et seq.)</p>
               </div>
             </details>

@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { Card } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
+import { COMMISSION_INFO } from "@/constants/commission";
 
 const TermsOfService = () => {
   return (
@@ -429,7 +430,7 @@ const TermsOfService = () => {
                   <li>All applicable federal and state privacy, data security, and consumer protection laws</li>
                 </ul>
                 <p className="mt-4">
-                  <strong className="text-foreground">Notary Commission Information:</strong> All notarial acts are performed by commissioned Pennsylvania notaries public. Commission information is available upon request and appears on all notarial certificates.
+                  <strong className="text-foreground">Notary Commission Information:</strong> All notarial acts are performed by commissioned Pennsylvania notaries public. Pennsylvania Notary Public Commission #{COMMISSION_INFO.commissionNumber}, expires {COMMISSION_INFO.commissionExpires}, commissioned in {COMMISSION_INFO.county}. Bonded: {COMMISSION_INFO.bondAmount}. E&O Insurance: {COMMISSION_INFO.eoInsurance}. RON Authorized: {COMMISSION_INFO.ronAuthorized} (Platforms: {COMMISSION_INFO.ronPlatforms.join(", ")}). Commission information appears on all notarial certificates.
                 </p>
                 <p>
                   <strong className="text-foreground">Errors and Omissions Insurance:</strong> As required by Pennsylvania law, our notaries maintain errors and omissions insurance coverage. Insurance information is available upon written request.

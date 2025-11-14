@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
+import { logger } from "@/utils/logger";
 import { supabase } from "@/integrations/supabase/client";
 import { Lock } from "lucide-react";
 
@@ -42,8 +43,10 @@ const AdminLogin = () => {
 
       toast.success("Welcome back!");
       navigate("/admin/bookings");
-    } catch (error: any) {
-      toast.error(error.message || "Login failed");
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Admin login error:', errorMessage);
+      toast.error(errorMessage || "Login failed");
     } finally {
       setIsLoading(false);
     }

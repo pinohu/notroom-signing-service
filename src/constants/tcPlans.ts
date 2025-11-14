@@ -1,9 +1,22 @@
 // Stripe price IDs and plan configuration for Transaction Coordination services
-// Note: Replace with actual Stripe price IDs when created in Stripe dashboard
+// 
+// ⚠️ IMPORTANT: Replace placeholder price IDs with actual Stripe price IDs before accepting payments
+// 
+// To set up Stripe products:
+// 1. Go to Stripe Dashboard → Products → Add Product
+// 2. Create 3 products:
+//    - "Transaction Coordination - Basic" ($299)
+//    - "Transaction Coordination - Standard" ($599)
+//    - "Transaction Coordination - Premium" ($1,299)
+// 3. Copy the Price IDs (starts with "price_")
+// 4. Replace the placeholder values below
+// 5. Test checkout flow in test mode first
+//
+// See: STRIPE_SETUP_GUIDE.md for detailed instructions
 
 export const TC_PLANS = {
   basic: {
-    priceId: "price_tc_basic_placeholder", // TODO: Replace with actual Stripe price ID
+    priceId: "price_tc_basic_placeholder", // ⚠️ REPLACE: Create product in Stripe Dashboard and paste price ID here
     name: "Transaction Coordination - Basic",
     shortName: "Basic",
     price: "$299",
@@ -22,7 +35,7 @@ export const TC_PLANS = {
     recommended: false
   },
   standard: {
-    priceId: "price_tc_standard_placeholder", // TODO: Replace with actual Stripe price ID
+    priceId: "price_tc_standard_placeholder", // ⚠️ REPLACE: Create product in Stripe Dashboard and paste price ID here
     name: "Transaction Coordination - Standard",
     shortName: "Standard",
     price: "$599",
@@ -42,7 +55,7 @@ export const TC_PLANS = {
     recommended: true
   },
   premium: {
-    priceId: "price_tc_premium_placeholder", // TODO: Replace with actual Stripe price ID
+    priceId: "price_tc_premium_placeholder", // ⚠️ REPLACE: Create product in Stripe Dashboard and paste price ID here
     name: "Transaction Coordination - Premium",
     shortName: "Premium",
     price: "$1,299",

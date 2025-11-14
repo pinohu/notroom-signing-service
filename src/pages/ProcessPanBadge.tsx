@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { loadImage, removeBackground } from '@/utils/removeBackground';
 import { Button } from '@/components/ui/button';
 import panBadgeOriginal from '@/assets/pan_member_badge_original.png';
+import { logger } from '@/utils/logger';
 
 const ProcessPanBadge = () => {
   const [processing, setProcessing] = useState(false);
@@ -35,7 +36,7 @@ const ProcessPanBadge = () => {
 
       setProcessing(false);
     } catch (err) {
-      console.error('Error processing badge:', err);
+      logger.error('Error processing badge:', err);
       setError(err instanceof Error ? err.message : 'Failed to process badge');
       setProcessing(false);
     }

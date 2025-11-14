@@ -3,29 +3,27 @@
  * Replace with actual analytics service in production (Google Analytics, Mixpanel, etc.)
  */
 
+import { logger } from './logger';
+
 interface EventProperties {
   [key: string]: string | number | boolean | undefined;
 }
 
 export const trackEvent = (eventName: string, properties?: EventProperties) => {
-  if (import.meta.env.DEV) {
-    console.log('[Analytics]', eventName, properties);
-  }
+  logger.log('[Analytics]', eventName, properties);
 
   // Send to Google Analytics 4
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('event', eventName, properties);
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', eventName, properties);
   }
 };
 
 export const trackPageView = (path: string, title: string) => {
-  if (import.meta.env.DEV) {
-    console.log('[Analytics] Page view:', path, title);
-  }
+  logger.log('[Analytics] Page view:', path, title);
 
   // Send to Google Analytics 4
-  if (typeof window !== 'undefined' && (window as any).gtag) {
-    (window as any).gtag('config', 'G-HZ29KE41TZ', {
+  if (typeof window !== 'undefined' && window.gtag) {
+    window.gtag('config', 'G-HZ29KE41TZ', {
       page_path: path,
       page_title: title,
     });

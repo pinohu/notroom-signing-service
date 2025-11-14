@@ -14,6 +14,7 @@ import { Search, Calendar, Clock, FileText, MapPin, User, Mail, Phone, Shield, C
 import { format } from "date-fns";
 import { emailSchema } from "@/utils/validation";
 import type { Tables } from "@/integrations/supabase/types";
+import { logger } from "@/utils/logger";
 
 const TrackBooking = () => {
   const [bookingId, setBookingId] = useState("");
@@ -71,9 +72,7 @@ const TrackBooking = () => {
         .maybeSingle();
 
       if (error) {
-        if (import.meta.env.DEV) {
-          console.error("Error fetching booking:", error);
-        }
+        logger.error("Error fetching booking:", error);
         toast.error("An error occurred. Please try again.");
         setBooking(null);
         return;
@@ -88,9 +87,7 @@ const TrackBooking = () => {
       setBooking(data);
       toast.success("Booking found!");
     } catch (error) {
-      if (import.meta.env.DEV) {
-        console.error("Unexpected error:", error);
-      }
+      logger.error("Unexpected error:", error);
       toast.error("An error occurred. Please try again.");
       setBooking(null);
     } finally {

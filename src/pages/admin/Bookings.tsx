@@ -20,6 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
+import { logger } from "@/utils/logger";
 import { LogOut, RefreshCw } from "lucide-react";
 import { format } from "date-fns";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
@@ -57,7 +58,9 @@ const AdminBookings = () => {
 
       if (error) throw error;
       setBookings(data || []);
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Error fetching bookings:', errorMessage);
       toast.error("Failed to fetch bookings");
     } finally {
       setIsLoading(false);
@@ -90,13 +93,15 @@ const AdminBookings = () => {
               bookingId: id
             }
           });
-          console.log('Master automation triggered for status change:', status);
+          logger.log('Master automation triggered for status change:', status);
         } catch (automationError) {
-          console.error('Master automation error:', automationError);
+          logger.error('Master automation error:', automationError);
           // Don't fail status update if automation fails
         }
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Error updating booking status:', errorMessage);
       toast.error("Failed to update status");
     }
   }, []);

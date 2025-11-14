@@ -16,6 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { toast } from "sonner";
+import { logger } from "@/utils/logger";
 import { 
   Phone, 
   Copy, 
@@ -28,6 +29,12 @@ import {
 } from "lucide-react";
 import { format } from "date-fns";
 
+interface CallEventMetadata {
+  source?: string;
+  channel?: string;
+  [key: string]: string | number | boolean | undefined;
+}
+
 interface CallEvent {
   id: string;
   event_type: string;
@@ -35,7 +42,7 @@ interface CallEvent {
   caller_number: string;
   duration?: number;
   created_at: string;
-  metadata?: any;
+  metadata?: CallEventMetadata;
 }
 
 interface TrackingNumber {
@@ -44,9 +51,14 @@ interface TrackingNumber {
   active: boolean;
 }
 
+interface CallScalerConfig {
+  number_pool: TrackingNumber[];
+  default_number: string;
+}
+
 const AdminCallScaler = () => {
   const [callEvents, setCallEvents] = useState<CallEvent[]>([]);
-  const [config, setConfig] = useState<any>(null);
+  const [config, setConfig] = useState<CallScalerConfig | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [newNumber, setNewNumber] = useState({ number: "", label: "" });
   const navigate = useNavigate();
@@ -70,8 +82,10 @@ const AdminCallScaler = () => {
         .eq("tool", "callscaler")
         .maybeSingle();
 
-      setConfig(configData?.config || { number_pool: [], default_number: "" });
-    } catch (error: any) {
+      setConfig((configData?.config as CallScalerConfig) || { number_pool: [], default_number: "" });
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Error fetching CallScaler data:', errorMessage);
       toast.error("Failed to fetch CallScaler data");
     } finally {
       setIsLoading(false);
@@ -118,7 +132,9 @@ const AdminCallScaler = () => {
 
       if (error) throw error;
       toast.success("Configuration saved");
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Error saving CallScaler configuration:', errorMessage);
       toast.error("Failed to save configuration");
     }
   };
@@ -140,7 +156,8 @@ const AdminCallScaler = () => {
   };
 
   const removeTrackingNumber = (index: number) => {
-    const updatedPool = config.number_pool.filter((_: any, i: number) => i !== index);
+    if (!config) return;
+    const updatedPool = config.number_pool.filter((_, i: number) => i !== index);
     setConfig({ ...config, number_pool: updatedPool });
     toast.success("Number removed - don't forget to save!");
   };

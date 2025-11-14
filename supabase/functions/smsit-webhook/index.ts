@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { validateWebhookEnv } from "../_shared/envValidation.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -12,9 +13,8 @@ const logStep = (step: string, details?: any) => {
 };
 
 // Verify webhook signature to prevent unauthorized access
-const verifyWebhookSignature = async (req: Request, body: string): Promise<boolean> => {
+const verifyWebhookSignature = async (req: Request, body: string, webhookSecret: string): Promise<boolean> => {
   const signature = req.headers.get('x-smsit-signature') || req.headers.get('x-webhook-signature');
-  const webhookSecret = Deno.env.get('SMSIT_WEBHOOK_SECRET');
   
   // SECURITY: Reject if secret is not configured
   if (!webhookSecret) {
@@ -51,11 +51,14 @@ serve(async (req) => {
   }
 
   try {
+    // Validate environment
+    const env = validateWebhookEnv('smsit');
+    
     // Get raw body for signature verification
     const bodyText = await req.text();
     
     // Verify webhook signature
-    const isValidSignature = await verifyWebhookSignature(req, bodyText);
+    const isValidSignature = await verifyWebhookSignature(req, bodyText, env.SMSIT_WEBHOOK_SECRET || '');
     if (!isValidSignature) {
       logStep('Invalid webhook signature - possible unauthorized access attempt');
       return new Response(
@@ -66,14 +69,7 @@ serve(async (req) => {
 
     logStep("Webhook received and verified");
 
-    const supabaseUrl = Deno.env.get("SUPABASE_URL");
-    const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-
-    if (!supabaseUrl || !supabaseKey) {
-      throw new Error("Supabase configuration missing");
-    }
-
-    const supabase = createClient(supabaseUrl, supabaseKey);
+    const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
     const webhookData = JSON.parse(bodyText);
 
     logStep("Webhook data", { type: webhookData.event_type });
@@ -190,6 +186,21 @@ serve(async (req) => {
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     logStep("ERROR", { message: errorMessage });
+    
+    // Handle configuration errors specifically
+    if (errorMessage.includes('Missing required environment variables')) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Configuration error',
+          message: errorMessage 
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      );
+    }
+    
     return new Response(
       JSON.stringify({ error: errorMessage }),
       {

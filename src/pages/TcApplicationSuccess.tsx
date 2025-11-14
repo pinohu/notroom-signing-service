@@ -6,6 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight, Mail, Phone, FileText, Users, Clock } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
+import { logger } from "@/utils/logger";
+import { sendTcApplicationConfirmationEmail } from "@/services/emailService";
 
 const TcApplicationSuccess = () => {
   const [searchParams] = useSearchParams();
@@ -28,6 +30,20 @@ const TcApplicationSuccess = () => {
     }
 
     try {
+      // Fetch application data first
+      const { data: applicationData, error: fetchError } = await supabase
+        .from('tc_clients')
+        .select('client_name, client_email, transaction_type, selected_plan')
+        .eq('id', applicationId)
+        .single();
+
+      if (fetchError) {
+        logger.error("Error fetching application:", fetchError);
+        setError(true);
+        setIsUpdating(false);
+        return;
+      }
+
       // Update application status to active
       const { error: updateError } = await supabase
         .from('tc_clients')
@@ -38,11 +54,27 @@ const TcApplicationSuccess = () => {
         .eq('id', applicationId);
 
       if (updateError) {
-        console.error("Error updating application:", updateError);
+        logger.error("Error updating application:", updateError);
         setError(true);
+      } else {
+        // Send confirmation email (don't block on failure)
+        try {
+          await sendTcApplicationConfirmationEmail(
+            applicationData.client_email,
+            {
+              applicationId,
+              clientName: applicationData.client_name,
+              transactionType: applicationData.transaction_type,
+              selectedPlan: applicationData.selected_plan
+            }
+          );
+        } catch (emailError) {
+          // Log error but don't fail the flow
+          logger.error("Failed to send confirmation email:", emailError);
+        }
       }
     } catch (err) {
-      console.error("Error:", err);
+      logger.error("Error:", err);
       setError(true);
     } finally {
       setIsUpdating(false);

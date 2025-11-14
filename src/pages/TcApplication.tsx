@@ -16,6 +16,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import { TC_PLANS } from "@/constants/tcPlans";
+import { logger } from "@/utils/logger";
+import { validatePriceIdForCheckout, getStripeConfigError } from "@/utils/stripeValidation";
+import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 // Validation schemas
 const clientInfoSchema = z.object({
@@ -41,7 +44,7 @@ const TcApplication = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [applicationId, setApplicationId] = useState<string | null>(null);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<SupabaseUser | null>(null);
 
   // Form state
   const [formData, setFormData] = useState({
@@ -223,13 +226,30 @@ const TcApplication = () => {
       const appId = data.id;
       setApplicationId(appId);
 
+      // Validate Stripe price ID before checkout
+      const selectedPlan = TC_PLANS[formData.selectedPlan as keyof typeof TC_PLANS];
+      const priceId = selectedPlan.priceId;
+      
+      try {
+        validatePriceIdForCheckout(priceId, 'Transaction Coordination');
+      } catch (validationError) {
+        // Show user-friendly error
+        const errorMessage = validationError instanceof Error 
+          ? validationError.message 
+          : getStripeConfigError('Transaction Coordination');
+        
+        toast.error(errorMessage);
+        setIsSubmitting(false);
+        return;
+      }
+
       // Create Stripe checkout session
       const { data: { session }, error: sessionError } = await supabase.auth.getSession();
       if (sessionError || !session) throw new Error("No active session");
 
       const { data: checkoutData, error: checkoutError } = await supabase.functions.invoke('tc-checkout', {
         body: {
-          priceId: TC_PLANS[formData.selectedPlan as keyof typeof TC_PLANS].priceId,
+          priceId: priceId,
           applicationId: appId,
         },
         headers: {
@@ -244,11 +264,12 @@ const TcApplication = () => {
       } else {
         throw new Error("No checkout URL received");
       }
-    } catch (error: any) {
-      console.error("Application submission error:", error);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error("Application submission error:", errorMessage);
       toast({
         title: "Error",
-        description: error.message || "Failed to submit application. Please try again.",
+        description: errorMessage || "Failed to submit application. Please try again.",
         variant: "destructive",
       });
       setIsSubmitting(false);

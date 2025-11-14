@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.3';
+import { validateWebhookEnv } from "../_shared/envValidation.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -24,9 +25,8 @@ interface SuitedashWebhookPayload {
 }
 
 // Verify webhook signature to prevent unauthorized access
-const verifyWebhookSignature = async (req: Request, body: string): Promise<boolean> => {
+const verifyWebhookSignature = async (req: Request, body: string, webhookSecret: string): Promise<boolean> => {
   const signature = req.headers.get('x-suitedash-signature') || req.headers.get('x-webhook-signature');
-  const webhookSecret = Deno.env.get('SUITEDASH_WEBHOOK_SECRET');
   
   // SECURITY: Reject if secret is not configured
   if (!webhookSecret) {
@@ -64,11 +64,14 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Validate environment
+    const env = validateWebhookEnv('suitedash');
+    
     // Get raw body for signature verification
     const bodyText = await req.text();
     
     // Verify webhook signature
-    const isValidSignature = await verifyWebhookSignature(req, bodyText);
+    const isValidSignature = await verifyWebhookSignature(req, bodyText, env.SUITEDASH_WEBHOOK_SECRET || '');
     if (!isValidSignature) {
       console.error('Invalid webhook signature - possible unauthorized access attempt');
       return new Response(
@@ -77,9 +80,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
     
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 
     const payload: SuitedashWebhookPayload = JSON.parse(bodyText);
     console.log('Received Suitedash webhook:', payload);
@@ -260,13 +261,29 @@ const handler = async (req: Request): Promise<Response> => {
         },
       }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error in suitedash-webhook function:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    
+    // Handle configuration errors specifically
+    if (errorMessage.includes('Missing required environment variables')) {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Configuration error',
+          message: errorMessage 
+        }),
+        { 
+          status: 500, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        }
+      );
+    }
+    
     return new Response(
       JSON.stringify({ 
         success: false,
-        error: error.message,
-        details: error.toString()
+        error: errorMessage,
+        details: error instanceof Error ? error.toString() : String(error)
       }),
       {
         status: 500,

@@ -1,32 +1,33 @@
-import { Award, Shield, Users, TrendingUp, Star, DollarSign } from "lucide-react";
+import { Award, Shield, Users, TrendingUp, Star, DollarSign, Calendar, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import ScrollReveal from "../ScrollReveal";
+import { COMMISSION_INFO, getRonPlatformsDisplay } from "@/constants/commission";
 
 const AuthorityBuilder = () => {
   const credentials = [
     {
       icon: Shield,
       title: "PA State Commission",
-      description: "Commissioned notary public by the Pennsylvania Department of State with authority to notarize throughout Pennsylvania",
-      proof: "Commission #1464221"
+      description: `Commissioned notary public by the Pennsylvania Department of State with authority to notarize throughout Pennsylvania. Commissioned in ${COMMISSION_INFO.county}.`,
+      proof: `Commission #${COMMISSION_INFO.commissionNumber} | Expires: ${COMMISSION_INFO.commissionExpires}`
     },
     {
       icon: DollarSign,
-      title: "$1,000,000 Bond & Insurance",
-      description: "Exceeds Pennsylvania's statutory requirements. Full E&O insurance protects every transaction",
-      proof: "Bonded through Merchants Bonding Company"
+      title: "Bonded & Insured",
+      description: `${COMMISSION_INFO.bondAmount} surety bond and ${COMMISSION_INFO.eoInsurance} E&O insurance. Exceeds Pennsylvania's statutory requirements and protects every transaction.`,
+      proof: `Bonded: ${COMMISSION_INFO.bondAmount} | E&O: ${COMMISSION_INFO.eoInsurance}`
     },
     {
       icon: Award,
       title: "NNA Certified Signing Agent",
       description: "National Notary Association certification for loan documents. Background-screened and tested on proper signing procedures",
-      proof: "NNA Account #161977718"
+      proof: `NNA Account #${COMMISSION_INFO.nnaAccountNumber}`
     },
     {
       icon: Users,
-      title: "RULONA Compliant",
-      description: "Fully compliant with PA's Revised Uniform Law on Notarial Acts (57 Pa.C.S. § 321 et seq.)",
-      proof: "Registered with PA Department of State"
+      title: "RON Authorized",
+      description: `Authorized for Remote Online Notarization (RON) effective ${COMMISSION_INFO.ronAuthorized}. Fully compliant with PA's Revised Uniform Law on Notarial Acts (57 Pa.C.S. § 321 et seq.).`,
+      proof: `RON Authorized: ${COMMISSION_INFO.ronAuthorized} | Platforms: ${getRonPlatformsDisplay()}`
     }
   ];
 

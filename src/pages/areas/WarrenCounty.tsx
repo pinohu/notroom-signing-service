@@ -233,7 +233,7 @@ const WarrenCounty = () => {
                 <Shield className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-xl font-bold mb-2">Fully Licensed</h3>
                 <p className="text-muted-foreground">
-                  Pennsylvania-licensed notary public with $25,000 E&O insurance for your protection.
+                  Pennsylvania-licensed notary public with $100,000 E&O insurance for your protection.
                 </p>
               </Card>
             </div>

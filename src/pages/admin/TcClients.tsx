@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { logger } from '@/utils/logger';
+import { TcClientStatusUpdate } from '@/types/admin';
 import {
   Table,
   TableBody,
@@ -86,8 +88,9 @@ export default function TcClients() {
       if (error) throw error;
       setClients(data || []);
       setFilteredClients(data || []);
-    } catch (error) {
-      console.error('Error fetching TC clients:', error);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Error fetching TC clients:', errorMessage);
       toast.error('Failed to load transaction coordination clients');
     } finally {
       setLoading(false);
@@ -96,7 +99,7 @@ export default function TcClients() {
 
   const updateClientStatus = async (id: string, status: string, notify = true) => {
     try {
-      const updates: any = { status, updated_at: new Date().toISOString() };
+      const updates: TcClientStatusUpdate = { status: status as TcClientStatusUpdate['status'], updated_at: new Date().toISOString() };
       
       if (status === 'active') {
         updates.started_at = new Date().toISOString();
@@ -120,8 +123,9 @@ export default function TcClients() {
       }
       
       await fetchClients();
-    } catch (error) {
-      console.error('Error updating client:', error);
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Error updating client:', errorMessage);
       toast.error('Failed to update client status');
     }
   };
@@ -139,7 +143,9 @@ export default function TcClients() {
       await Promise.all(promises);
       toast.success(`${selectedIds.size} clients updated to ${status}`);
       setSelectedIds(new Set());
-    } catch (error) {
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logger.error('Error bulk updating clients:', errorMessage);
       toast.error('Failed to bulk update');
     }
   };

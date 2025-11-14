@@ -56,6 +56,21 @@ serve(async (req) => {
       throw new Error("Missing priceId or applicationId");
     }
 
+    // Validate price ID is not a placeholder
+    if (priceId.includes('placeholder') || priceId.includes('PLACEHOLDER')) {
+      logStep("ERROR: Placeholder price ID detected", { priceId });
+      throw new Error(
+        "Payment processing is not yet configured. " +
+        "Stripe price IDs are still placeholders. Please contact support."
+      );
+    }
+
+    // Validate Stripe price ID format (should start with "price_" and be 24+ chars)
+    if (!priceId.startsWith('price_') || priceId.length < 30) {
+      logStep("ERROR: Invalid price ID format", { priceId });
+      throw new Error("Invalid Stripe price ID format. Please contact support.");
+    }
+
     logStep("Request data received", { priceId, applicationId });
 
     // Initialize Stripe

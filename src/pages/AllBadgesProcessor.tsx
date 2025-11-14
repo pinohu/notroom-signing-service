@@ -6,6 +6,7 @@ import nsaBadge from '@/assets/nsa_member_badge.png';
 import nnaMemberBadge from '@/assets/nna_member_badge.png';
 import panMemberBadge from '@/assets/pan_member_badge.png';
 import nngUxcBadge from '@/assets/nng_uxc_badge.png';
+import { logger } from '@/utils/logger';
 
 interface BadgeState {
   original: string;
@@ -41,7 +42,7 @@ const AllBadgesProcessor = () => {
         description: `${badges[index].name} is ready to download`,
       });
     } catch (err) {
-      console.error('Error processing badge:', err);
+      logger.error('Error processing badge:', err);
       setBadges(prev => prev.map((b, i) => i === index ? { ...b, processing: false } : b));
       toast({
         title: "Error",

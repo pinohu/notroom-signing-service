@@ -7,6 +7,7 @@ import { MessageSquare, X, Send, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { trackEvent } from "@/utils/analytics";
+import { logger } from "@/utils/logger";
 
 const FeedbackWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +53,7 @@ const FeedbackWidget = () => {
       if (error) {
         // If table doesn't exist, log but don't fail
         if (error.code === '42P01' || error.message.includes('does not exist')) {
-          console.warn('Feedback table does not exist. Run the migration to enable feedback collection.');
+          logger.warn('Feedback table does not exist. Run the migration to enable feedback collection.');
           // Still show success to user
         } else {
           throw error;
@@ -81,7 +82,7 @@ const FeedbackWidget = () => {
         setIsSubmitted(false);
       }, 2000);
     } catch (error) {
-      console.error("Error submitting feedback:", error);
+      logger.error("Error submitting feedback:", error);
       toast({
         title: "Error",
         description: "Failed to submit feedback. Please try again or contact us directly.",

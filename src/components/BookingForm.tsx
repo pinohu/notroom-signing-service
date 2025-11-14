@@ -129,7 +129,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
   // Load Turnstile script and set up callback
   useEffect(() => {
     // Define global callback for Turnstile
-    (window as any).onTurnstileSuccess = (token: string) => {
+    window.onTurnstileSuccess = (token: string) => {
       logger.info("Turnstile token received");
       setTurnstileToken(token);
     };
@@ -153,7 +153,7 @@ const BookingForm = ({ community }: BookingFormProps) => {
     }
 
     return () => {
-      delete (window as any).onTurnstileSuccess;
+      delete window.onTurnstileSuccess;
     };
   }, []);
 
@@ -162,9 +162,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
     if (currentStep === 3 && turnstileLoaded && turnstileRef.current && !turnstileWidgetId) {
       // Check if widget already exists
       const existingWidget = turnstileRef.current.querySelector('iframe');
-      if (!existingWidget && (window as any).turnstile) {
+      if (!existingWidget && window.turnstile) {
         logger.info("Rendering Turnstile widget");
-        const widgetId = (window as any).turnstile.render(turnstileRef.current, {
+        const widgetId = window.turnstile.render(turnstileRef.current, {
           sitekey: TURNSTILE_SITE_KEY,
           callback: (token: string) => {
             logger.info("Turnstile verification successful");
@@ -178,9 +178,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
     
     // Cleanup on unmount
     return () => {
-      if (turnstileWidgetId && (window as any).turnstile) {
+      if (turnstileWidgetId && window.turnstile) {
         try {
-          (window as any).turnstile.remove(turnstileWidgetId);
+          window.turnstile.remove(turnstileWidgetId);
         } catch (e) {
           logger.debug("Turnstile cleanup:", e);
         }
@@ -594,7 +594,23 @@ const BookingForm = ({ community }: BookingFormProps) => {
     }
   };
 
-  const handlePaymentPrompt = async (bookingId: string, validatedData: any) => {
+  type BookingFormData = {
+    name: string;
+    email: string;
+    phone: string;
+    service: string;
+    preferred_date?: Date;
+    preferred_time: string;
+    document_type: string;
+    number_of_signers: number;
+    location_address: string;
+    urgency: string;
+    message: string;
+    sms_opt_in: boolean;
+    whatsapp_opt_in: boolean;
+  };
+
+  const handlePaymentPrompt = async (bookingId: string, validatedData: BookingFormData) => {
     setCurrentBookingId(bookingId);
     
     // Calculate price based on service
@@ -707,9 +723,9 @@ const BookingForm = ({ community }: BookingFormProps) => {
     });
 
     // Reset Turnstile widget
-    if ((window as any).turnstile && turnstileWidgetId) {
+    if (window.turnstile && turnstileWidgetId) {
       try {
-        (window as any).turnstile.remove(turnstileWidgetId);
+        window.turnstile.remove(turnstileWidgetId);
       } catch (e) {
         logger.debug("Turnstile widget removal failed:", e);
       }

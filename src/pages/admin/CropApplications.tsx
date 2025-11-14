@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
+import { logger } from '@/utils/logger';
+import { CropApplicationStatusUpdate } from '@/types/admin';
 import {
   Table,
   TableBody,
@@ -85,7 +87,7 @@ export default function CropApplications() {
       setApplications(data || []);
       setFilteredApps(data || []);
     } catch (error) {
-      console.error('Error fetching applications:', error);
+      logger.error('Error fetching applications:', error);
       toast.error('Failed to load applications');
     } finally {
       setLoading(false);
@@ -94,7 +96,7 @@ export default function CropApplications() {
 
   const updateApplicationStatus = async (id: string, status: string, notify = true) => {
     try {
-      const updates: any = { status, updated_at: new Date().toISOString() };
+      const updates: CropApplicationStatusUpdate = { status: status as CropApplicationStatusUpdate['status'], updated_at: new Date().toISOString() };
       
       if (status === 'approved') {
         updates.approved_at = new Date().toISOString();
@@ -116,7 +118,7 @@ export default function CropApplications() {
       
       await fetchApplications();
     } catch (error) {
-      console.error('Error updating application:', error);
+      logger.error('Error updating application:', error);
       toast.error('Failed to update application');
     }
   };
