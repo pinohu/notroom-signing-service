@@ -124,6 +124,7 @@ import AdminWhatsAppConfig from "./pages/admin/WhatsAppConfig";
 import AdminAutomationFlows from "./pages/admin/AutomationFlows";
 import AdminCropApplications from "./pages/admin/CropApplications";
 import AdminTcClients from "./pages/admin/TcClients";
+import AdminMailUploads from "./pages/admin/MailUploads";
 import PerformanceDashboard from "./pages/admin/PerformanceDashboard";
 import LogoProcessor from "./pages/LogoProcessor";
 import AllBadgesProcessor from "./pages/AllBadgesProcessor";
@@ -297,6 +298,7 @@ const App = () => (
           <Route path="/admin/automation" element={<AdminAutomationFlows />} />
           <Route path="/admin/crop-applications" element={<AdminCropApplications />} />
           <Route path="/admin/tc" element={<AdminTcClients />} />
+          <Route path="/admin/mail-uploads" element={<AdminMailUploads />} />
           <Route path="/admin/performance" element={<PerformanceDashboard />} />
           
           {/* Utility Pages */}
