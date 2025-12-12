@@ -73,7 +73,7 @@ const AdminCallScaler = () => {
         .order("created_at", { ascending: false })
         .limit(50);
 
-      setCallEvents(events || []);
+      setCallEvents((events as CallEvent[]) || []);
 
       // Fetch CallScaler config
       const { data: configData } = await supabase
@@ -82,7 +82,7 @@ const AdminCallScaler = () => {
         .eq("tool", "callscaler")
         .maybeSingle();
 
-      setConfig((configData?.config as CallScalerConfig) || { number_pool: [], default_number: "" });
+      setConfig((configData?.config as unknown as CallScalerConfig) || { number_pool: [], default_number: "" });
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       logger.error('Error fetching CallScaler data:', errorMessage);
@@ -124,11 +124,11 @@ const AdminCallScaler = () => {
     try {
       const { error } = await supabase
         .from("integration_config")
-        .upsert({
+        .upsert([{
           tool: "callscaler",
-          config,
+          config: JSON.parse(JSON.stringify(config)),
           active: true,
-        });
+        }]);
 
       if (error) throw error;
       toast.success("Configuration saved");

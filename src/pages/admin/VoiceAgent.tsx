@@ -10,13 +10,47 @@ import { useToast } from '@/hooks/use-toast';
 import { Phone, Bot, CheckCircle, AlertCircle } from 'lucide-react';
 import { useAdminAuth } from '@/hooks/useAdminAuth';
 import { logger } from '@/utils/logger';
-import type { AgentConfig, Booking } from '@/types/admin';
+
+interface VoiceAgentConfig {
+  voice?: string;
+  language?: string;
+  transferNumber?: string;
+  confidenceThreshold?: number;
+  [key: string]: unknown;
+}
+
+interface VoiceAgentIntent {
+  name: string;
+  description?: string;
+  fields?: { name: string; type: string }[];
+}
+
+interface AgentConfig {
+  id: string;
+  provider: string;
+  config: VoiceAgentConfig;
+  intents: VoiceAgentIntent[];
+  is_active: boolean | null;
+  created_at: string | null;
+  updated_at: string | null;
+}
+
+interface VoiceAgentBooking {
+  id: string;
+  name: string;
+  phone: string;
+  service: string;
+  status: string;
+  created_at: string;
+  ai_confidence: number | null;
+  agent_provider: string | null;
+}
 
 export default function VoiceAgent() {
   useAdminAuth();
   
   const [config, setConfig] = useState<AgentConfig | null>(null);
-  const [bookings, setBookings] = useState<Booking[]>([]);
+  const [bookings, setBookings] = useState<VoiceAgentBooking[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const { toast } = useToast();
@@ -53,7 +87,7 @@ export default function VoiceAgent() {
         .limit(20);
 
       if (error) throw error;
-      setBookings(data as Booking[] || []);
+      setBookings((data as VoiceAgentBooking[]) || []);
     } catch (error) {
       logger.error('Error loading bookings:', error);
     }
@@ -72,8 +106,8 @@ export default function VoiceAgent() {
       const { error } = await supabase
         .from('agent_configs')
         .update({
-          config: config.config,
-          intents: config.intents,
+          config: JSON.parse(JSON.stringify(config.config)),
+          intents: JSON.parse(JSON.stringify(config.intents)),
           updated_at: new Date().toISOString()
         })
         .eq('id', config.id);
@@ -350,8 +384,8 @@ export default function VoiceAgent() {
                   </div>
                   <p className="text-sm text-muted-foreground">{intent.description}</p>
                   <div className="flex flex-wrap gap-1">
-                    {intent.fields.map((field, fieldIdx) => (
-                      <Badge key={fieldIdx} variant="secondary">{field}</Badge>
+                    {intent.fields?.map((field, fieldIdx) => (
+                      <Badge key={fieldIdx} variant="secondary">{field.name}: {field.type}</Badge>
                     ))}
                   </div>
                 </div>

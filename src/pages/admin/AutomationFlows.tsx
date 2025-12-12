@@ -10,7 +10,25 @@ import { useToast } from "@/hooks/use-toast";
 import { Phone, MessageSquare, Check, AlertTriangle, Play, RefreshCw } from "lucide-react";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
 import { logger } from "@/utils/logger";
-import type { CallEvent } from "@/types/admin";
+interface CallEvent {
+  id: string;
+  booking_id: string | null;
+  caller_number: string | null;
+  created_at: string | null;
+  duration: number | null;
+  event_type: string;
+  metadata: Record<string, unknown> | null;
+  recording_url: string | null;
+  tool: string;
+  tracking_number: string | null;
+  transcript: string | null;
+  bookings?: {
+    id: string;
+    name: string;
+    phone: string;
+    service: string;
+  };
+}
 
 export default function AutomationFlows() {
   useAdminAuth();

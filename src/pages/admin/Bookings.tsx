@@ -24,7 +24,43 @@ import { logger } from "@/utils/logger";
 import { LogOut, RefreshCw } from "lucide-react";
 import { format } from "date-fns";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
-import type { Booking, LeadScoreData } from "@/types/admin";
+interface Booking {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string | null;
+  status: string;
+  preferred_date: string | null;
+  preferred_time: string | null;
+  document_type: string | null;
+  location_address: string | null;
+  urgency: string;
+  number_of_signers: number | null;
+  sms_opt_in: boolean | null;
+  whatsapp_opt_in: boolean | null;
+  whatsapp_number: string | null;
+  marketing_source: string | null;
+  suitedash_contact_id: string | null;
+  suitedash_project_id: string | null;
+  suitedash_synced_at: string | null;
+  ai_booked: boolean | null;
+  ai_confidence: number | null;
+  call_recording_url: string | null;
+  call_transcript: string | null;
+  call_duration: number | null;
+  tracking_number: string | null;
+  agent_provider: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+interface LeadScoreData {
+  score: number;
+  priority: 'critical' | 'high' | 'medium' | 'low';
+  churnRisk: number;
+}
 
 // Extract lead score from booking message field
 const extractLeadScore = (message?: string): LeadScoreData | null => {

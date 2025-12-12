@@ -2,16 +2,6 @@
  * Global type definitions for window extensions and third-party libraries
  */
 
-// Google Analytics gtag
-interface Window {
-  gtag?: (
-    command: 'event' | 'config',
-    targetId: string,
-    config?: Record<string, unknown>
-  ) => void;
-  dataLayer?: unknown[];
-}
-
 // Cloudflare Turnstile
 interface Turnstile {
   render: (
@@ -29,10 +19,15 @@ interface Turnstile {
 
 declare global {
   interface Window {
+    gtag?: (
+      command: 'event' | 'config' | 'set',
+      targetId: string,
+      config?: Record<string, unknown>
+    ) => void;
+    dataLayer?: unknown[];
     turnstile?: Turnstile;
     onTurnstileSuccess?: (token: string) => void;
   }
 }
 
 export {};
-
