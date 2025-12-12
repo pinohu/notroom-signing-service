@@ -75,8 +75,9 @@ export const getLatestMetrics = (): Record<string, Metric> => {
 // Send metrics to analytics
 const sendToAnalytics = (metric: Metric) => {
   // Send to Google Analytics
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', metric.name, {
+  const win = window as Window & { gtag?: (command: string, targetId: string, config?: Record<string, unknown>) => void };
+  if (typeof window !== 'undefined' && win.gtag) {
+    win.gtag('event', metric.name, {
       event_category: 'Web Vitals',
       value: Math.round(metric.value),
       event_label: metric.id,

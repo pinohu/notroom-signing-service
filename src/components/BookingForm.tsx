@@ -55,6 +55,8 @@ const bookingSchema = z.object({
   whatsapp_opt_in: z.boolean().default(false),
 });
 
+type BookingFormData = z.infer<typeof bookingSchema>;
+
 interface BookingFormProps {
   community?: CommunityData;
 }
@@ -592,22 +594,6 @@ const BookingForm = ({ community }: BookingFormProps) => {
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  type BookingFormData = {
-    name: string;
-    email: string;
-    phone: string;
-    service: string;
-    preferred_date?: Date;
-    preferred_time: string;
-    document_type: string;
-    number_of_signers: number;
-    location_address: string;
-    urgency: string;
-    message: string;
-    sms_opt_in: boolean;
-    whatsapp_opt_in: boolean;
   };
 
   const handlePaymentPrompt = async (bookingId: string, validatedData: BookingFormData) => {

@@ -16,6 +16,7 @@ import { CheckCircle, ArrowRight, ArrowLeft, Building, User, Mail, CreditCard, S
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { logger } from "@/utils/logger";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
 
 // Stripe price IDs for the three tiers

@@ -13,7 +13,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, ArrowRight, ArrowLeft, FileText, User, Phone, Target, Calendar, Users } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { z } from "zod";
 import { TC_PLANS } from "@/constants/tcPlans";
 import { logger } from "@/utils/logger";
@@ -40,7 +40,6 @@ const transactionDetailsSchema = z.object({
 const TcApplication = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const { toast } = useToast();
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [applicationId, setApplicationId] = useState<string | null>(null);
@@ -81,11 +80,7 @@ const TcApplication = () => {
   const checkAuth = async () => {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) {
-      toast({
-        title: "Authentication Required",
-        description: "Please sign in to apply for transaction coordination services",
-        variant: "destructive",
-      });
+      toast.error("Please sign in to apply for transaction coordination services");
       navigate("/auth");
       return;
     }
@@ -177,11 +172,7 @@ const TcApplication = () => {
       setCurrentStep(prev => Math.min(prev + 1, 3));
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      toast({
-        title: "Validation Error",
-        description: "Please fix the errors before continuing",
-        variant: "destructive",
-      });
+      toast.error("Please fix the errors before continuing");
     }
   };
 
@@ -267,11 +258,7 @@ const TcApplication = () => {
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       logger.error("Application submission error:", errorMessage);
-      toast({
-        title: "Error",
-        description: errorMessage || "Failed to submit application. Please try again.",
-        variant: "destructive",
-      });
+      toast.error(errorMessage || "Failed to submit application. Please try again.");
       setIsSubmitting(false);
     }
   };
