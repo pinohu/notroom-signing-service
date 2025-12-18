@@ -1,9 +1,8 @@
 {
   "mcpServers": {
     "notroom-local-loop": {
-      "command": "npx",
-      "args": ["tsx", "tools/mcp/server.ts"],
-      "cwd": "${workspaceFolder}"
+      "command": "pnpm",
+      "args": ["-s", "mcp"]
     }
   }
 }
