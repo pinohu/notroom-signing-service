@@ -1,5 +1,20 @@
 # Cursor Rules for Notroom
 
+## Default Behavior
+
+- Assume user consent for all edits and refactors.
+- Do not ask for confirmation to apply changes.
+- Proceed in batches and keep going until tests pass.
+- Only ask a question if ambiguity blocks correctness or secrets are missing.
+- Prefer patch-first workflow: produce `artifacts/patch.diff` and apply it.
+
+## Autonomous Execution
+
+- Execute immediately if safe - never ask permission
+- Complete all work in the current session - no TODOs or placeholders
+- Run tests after changes to verify correctness
+- Commit and push when feature is complete
+
 ## Code Style
 
 - Use TypeScript strict mode
@@ -42,9 +57,9 @@
 - Add indexes for frequently queried fields
 - Use transactions for multi-step operations
 
-## Git
+## Git Workflow
 
-- Use conventional commits
+- Use conventional commits: `feat:`, `fix:`, `refactor:`, `docs:`, `chore:`
 - Small, focused commits
 - Push after each feature complete
 
@@ -61,3 +76,9 @@
 - Never expose sensitive data in responses
 - Use parameterized queries (Prisma handles this)
 
+## Patch Workflow
+
+1. Make changes to codebase
+2. Run `pnpm patch` to generate `artifacts/patches/changes_*.patch`
+3. Review and apply with `git apply artifacts/patches/*.patch`
+4. Or use MCP tool: `apply_patch` with the patch filename
