@@ -70,3 +70,6 @@ If emails aren't sending:
 - Emailit.com Support: support@emailit.com
 - Check Emailit.com API documentation for exact endpoint and format details
 
+
+
+

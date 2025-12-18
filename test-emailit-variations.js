@@ -118,3 +118,6 @@ async function testFormat(name, body) {
   console.log('4. Check Emailit.com dashboard for domain verification status');
 })();
 
+
+
+

@@ -99,5 +99,18 @@
     "vite": "^5.4.19",
     "vitest": "^1.0.0",
     "web-vitals": "^3.5.0"
-  }
+  },
+  "description": "**URL**: https://lovable.dev/projects/4e5e19c0-a121-4703-b8f4-0f5b133d5c62",
+  "main": "auto-sync.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pinohu/erie-notroom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pinohu/erie-notroom/issues"
+  },
+  "homepage": "https://github.com/pinohu/erie-notroom#readme"
 }

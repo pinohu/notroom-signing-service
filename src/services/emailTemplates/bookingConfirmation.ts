@@ -77,3 +77,6 @@ export function bookingConfirmationTemplate(details: BookingConfirmationTemplate
 }
 
 
+
+
+

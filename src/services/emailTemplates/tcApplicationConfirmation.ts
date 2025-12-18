@@ -98,3 +98,6 @@ export function tcApplicationConfirmationTemplate(details: TcApplicationConfirma
 }
 
 
+
+
+

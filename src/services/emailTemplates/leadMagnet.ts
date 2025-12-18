@@ -53,3 +53,6 @@ export function leadMagnetTemplate({ name, resource }: LeadMagnetTemplateProps):
 }
 
 
+
+
+
