@@ -71,10 +71,23 @@
 
 ## Security
 
+**MUST follow `src/lib/security-guardrails.md`**
+
 - Validate all inputs with Zod
 - Check authentication on protected routes
 - Never expose sensitive data in responses
 - Use parameterized queries (Prisma handles this)
+
+### Auth Safety (NextAuth v5)
+- Never downgrade session security
+- Never log tokens
+- Never relax callbacks without tests
+
+### Payments Safety (Stripe Connect)
+- Stripe Connect flows must be idempotent
+- Webhook handlers must verify signature
+- Never store raw card data
+- Prefer event-driven reconciliation
 
 ## Patch Workflow
 

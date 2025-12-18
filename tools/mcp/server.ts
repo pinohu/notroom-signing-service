@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 /**
- * MCP Server for Notroom Signing Service
- * Exposes: run_workflow, status, apply_patch
+ * Notroom MCP Server - Local Loop
+ * 
+ * Exposes exactly 3 tools to Cursor:
+ * 1. run_workflow({ task, acceptance, branch? }) -> { ok, artifacts }
+ * 2. get_status({ runId }) -> { state, lastLogLines }
+ * 3. apply_patch({ patchPath }) -> { ok }
  */
 
 import { Server } from "@modelcontextprotocol/sdk/server/index.js"
@@ -17,299 +21,214 @@ import path from "path"
 
 const execAsync = promisify(exec)
 
-// Workflow state
-interface WorkflowState {
-  id: string
-  status: "idle" | "running" | "completed" | "failed"
-  currentStep: string
-  steps: string[]
-  output: string[]
-  startedAt?: Date
+// Run state storage
+interface RunState {
+  runId: string
+  state: "pending" | "running" | "completed" | "failed"
+  task: string
+  acceptance: string
+  branch: string
+  startedAt: Date
   completedAt?: Date
+  lastLogLines: string[]
   error?: string
 }
 
-let currentWorkflow: WorkflowState = {
-  id: "",
-  status: "idle",
-  currentStep: "",
-  steps: [],
-  output: [],
-}
+const runs: Map<string, RunState> = new Map()
+let currentRunId: string | null = null
 
-// Tool definitions
+// Tool definitions - exactly 3 tools
 const tools = [
   {
     name: "run_workflow",
-    description: `Execute a development task autonomously. Returns patch.diff + test logs.
-    
-For simple workflows (lint/build), just pass the workflow name.
-For full task automation, pass task + acceptance criteria.
+    description: `Execute a development task autonomously. Returns artifacts (patch.diff, test.log, summary.md).
 
-Examples:
-- run_workflow({ workflow: "lint" }) - just lint
-- run_workflow({ workflow: "full" }) - lint + typecheck + test + build
-- run_workflow({ task: "Add dark mode", acceptance: "Toggle persists to localStorage" }) - full automation`,
+Call this with task + acceptance criteria. The loop runs until tests pass or it fails.
+Returns structured output - never asks questions.
+
+Example:
+  run_workflow({
+    task: "Add dark mode toggle",
+    acceptance: "Toggle in settings, persists to localStorage"
+  })`,
     inputSchema: {
       type: "object" as const,
       properties: {
-        workflow: {
-          type: "string",
-          enum: ["lint", "typecheck", "test", "build", "full", "doctor"],
-          description: "Simple workflow to run (optional if task is provided)",
-        },
         task: {
           type: "string",
-          description: "Task description for full automation mode",
+          description: "Task description",
         },
         acceptance: {
           type: "string",
-          description: "Acceptance criteria for the task",
+          description: "Acceptance criteria",
         },
-        fix: {
-          type: "boolean",
-          description: "Auto-fix issues where possible",
-          default: true,
+        branch: {
+          type: "string",
+          description: "Branch name (auto-generated if not provided)",
         },
       },
+      required: ["task", "acceptance"],
     },
   },
   {
-    name: "status",
-    description: "Get current workflow status and output",
+    name: "get_status",
+    description: "Get status of a running or completed workflow",
     inputSchema: {
       type: "object" as const,
-      properties: {},
+      properties: {
+        runId: {
+          type: "string",
+          description: "Run ID (omit for current/latest run)",
+        },
+      },
     },
   },
   {
     name: "apply_patch",
-    description: "Apply a git patch file to the codebase",
+    description: "Apply a patch file to the codebase",
     inputSchema: {
       type: "object" as const,
       properties: {
-        patchFile: {
+        patchPath: {
           type: "string",
-          description: "Path to patch file (relative to artifacts/)",
-        },
-        dryRun: {
-          type: "boolean",
-          description: "Check if patch applies without applying",
-          default: false,
+          description: "Path to patch file (default: artifacts/patch.diff)",
+          default: "artifacts/patch.diff",
         },
       },
-      required: ["patchFile"],
     },
   },
 ]
 
-interface WorkflowResult {
-  success: boolean
-  summary: string
-  patch?: string
-  testLog?: string
-  filesChanged?: string[]
-  error?: string
+interface WorkflowArtifacts {
+  patch: string | null
+  testLog: string | null
+  summary: string | null
+  status: string | null
+  filesChanged: string[]
 }
 
-async function runTaskWorkflow(task: string, acceptance: string): Promise<WorkflowResult> {
-  const branch = `feature/${task.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 30)}`
+async function readArtifacts(): Promise<WorkflowArtifacts> {
+  const artifactsDir = path.join(process.cwd(), "artifacts")
   
-  currentWorkflow = {
-    id: `task-${Date.now()}`,
-    status: "running",
-    currentStep: "Starting task automation",
-    steps: ["setup", "lint", "typecheck", "test", "build", "artifacts"],
-    output: [],
-    startedAt: new Date(),
+  const readFile = async (name: string): Promise<string | null> => {
+    try {
+      return await fs.readFile(path.join(artifactsDir, name), "utf-8")
+    } catch {
+      return null
+    }
   }
 
+  const patch = await readFile("patch.diff")
+  const testLog = await readFile("test.log")
+  const summary = await readFile("summary.md")
+  const status = await readFile("status.txt")
+
+  const filesChanged = status
+    ? status.split("\n").filter(Boolean).map(line => line.slice(3).trim())
+    : []
+
+  return { patch, testLog, summary, status, filesChanged }
+}
+
+async function runWorkflow(
+  task: string,
+  acceptance: string,
+  branch?: string
+): Promise<{ ok: boolean; runId: string; artifacts: WorkflowArtifacts; error?: string }> {
+  
+  const runId = `run-${Date.now()}`
+  const branchName = branch || `feature/${task.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 30)}`
+
+  const state: RunState = {
+    runId,
+    state: "running",
+    task,
+    acceptance,
+    branch: branchName,
+    startedAt: new Date(),
+    lastLogLines: [],
+  }
+
+  runs.set(runId, state)
+  currentRunId = runId
+
   try {
-    // Run the workflow runner with task mode
-    const cmd = `npx tsx tools/runner/run-workflow.ts --task "${task.replace(/"/g, '\\"')}" --acceptance "${acceptance.replace(/"/g, '\\"')}" --branch "${branch}"`
-    
-    currentWorkflow.output.push(`>>> Running: ${cmd}`)
-    
+    // Call the runner directly (fastest path - no n8n)
+    const cmd = `npx tsx tools/runner/run-workflow.ts --task "${task.replace(/"/g, '\\"')}" --acceptance "${acceptance.replace(/"/g, '\\"')}" --branch "${branchName}"`
+
+    state.lastLogLines.push(`>>> ${cmd}`)
+
     const { stdout, stderr } = await execAsync(cmd, {
       cwd: process.cwd(),
       maxBuffer: 10 * 1024 * 1024,
+      timeout: 300000, // 5 minute timeout
     })
 
-    currentWorkflow.output.push(stdout)
-    if (stderr) currentWorkflow.output.push(stderr)
+    // Capture last 50 log lines
+    const allOutput = (stdout + "\n" + stderr).split("\n")
+    state.lastLogLines = allOutput.slice(-50)
 
-    // Read artifacts
-    let patch = ""
-    let summary = ""
-    let testLog = ""
-    let filesChanged: string[] = []
+    state.state = "completed"
+    state.completedAt = new Date()
 
-    try {
-      patch = await fs.readFile(path.join(process.cwd(), "artifacts/patch.diff"), "utf-8")
-    } catch { /* no patch */ }
+    const artifacts = await readArtifacts()
 
-    try {
-      summary = await fs.readFile(path.join(process.cwd(), "artifacts/summary.md"), "utf-8")
-    } catch { /* no summary */ }
+    return { ok: true, runId, artifacts }
 
-    try {
-      testLog = await fs.readFile(path.join(process.cwd(), "artifacts/test.log"), "utf-8")
-    } catch { /* no test log */ }
-
-    try {
-      const status = await fs.readFile(path.join(process.cwd(), "artifacts/status.txt"), "utf-8")
-      filesChanged = status.split("\n").filter(Boolean).map(line => line.slice(3)) // Remove git status prefix
-    } catch { /* no status */ }
-
-    currentWorkflow.status = "completed"
-    currentWorkflow.completedAt = new Date()
-
-    return {
-      success: true,
-      summary,
-      patch: patch || undefined,
-      testLog: testLog || undefined,
-      filesChanged,
-    }
   } catch (err: unknown) {
     const error = err as { stdout?: string; stderr?: string; message: string }
-    
-    currentWorkflow.status = "failed"
-    currentWorkflow.error = error.message
-    currentWorkflow.completedAt = new Date()
 
-    // Still try to read artifacts on failure
-    let testLog = ""
-    try {
-      testLog = await fs.readFile(path.join(process.cwd(), "artifacts/test.log"), "utf-8")
-    } catch { /* no test log */ }
+    state.state = "failed"
+    state.error = error.message
+    state.completedAt = new Date()
 
-    return {
-      success: false,
-      summary: `Task failed: ${error.message}`,
-      testLog: testLog || error.stdout || error.stderr,
-      error: error.message,
+    if (error.stdout || error.stderr) {
+      const allOutput = ((error.stdout || "") + "\n" + (error.stderr || "")).split("\n")
+      state.lastLogLines = allOutput.slice(-50)
     }
+
+    const artifacts = await readArtifacts()
+
+    return { ok: false, runId, artifacts, error: error.message }
   }
 }
 
-async function runSimpleWorkflow(workflow: string, fix: boolean = true): Promise<WorkflowResult> {
-  const WORKFLOWS: Record<string, string[]> = {
-    lint: ["pnpm -s lint"],
-    typecheck: ["pnpm -s typecheck"],
-    test: ["pnpm -s test"],
-    build: ["pnpm -s build"],
-    full: ["pnpm -s lint", "pnpm -s typecheck", "pnpm -s test", "pnpm -s build"],
-    doctor: ["bash tools/scripts/doctor.sh"],
-  }
+async function getStatus(runId?: string): Promise<RunState | null> {
+  const id = runId || currentRunId
+  if (!id) return null
+  return runs.get(id) || null
+}
 
-  const steps = WORKFLOWS[workflow]
-  if (!steps) {
-    return { success: false, summary: `Unknown workflow: ${workflow}`, error: `Unknown workflow: ${workflow}` }
-  }
-
-  currentWorkflow = {
-    id: `${workflow}-${Date.now()}`,
-    status: "running",
-    currentStep: "",
-    steps: [...steps],
-    output: [],
-    startedAt: new Date(),
-  }
-
-  const results: string[] = []
+async function applyPatch(patchPath: string = "artifacts/patch.diff"): Promise<{ ok: boolean; message: string }> {
+  const fullPath = path.isAbsolute(patchPath)
+    ? patchPath
+    : path.join(process.cwd(), patchPath)
 
   try {
-    for (const step of steps) {
-      currentWorkflow.currentStep = step
-      currentWorkflow.output.push(`\n>>> Running: ${step}`)
-
-      const command = fix && step.includes("lint") ? `${step} --fix` : step
-
-      try {
-        const { stdout, stderr } = await execAsync(command, {
-          cwd: process.cwd(),
-          maxBuffer: 10 * 1024 * 1024,
-        })
-
-        if (stdout) {
-          currentWorkflow.output.push(stdout)
-          results.push(`✓ ${step}`)
-        }
-        if (stderr) currentWorkflow.output.push(stderr)
-      } catch (err: unknown) {
-        const error = err as { stdout?: string; stderr?: string; message: string }
-        results.push(`✗ ${step}: ${error.message}`)
-        throw error
-      }
-    }
-
-    currentWorkflow.status = "completed"
-    currentWorkflow.completedAt = new Date()
-
-    // Generate patch after workflow
-    try {
-      await execAsync("bash tools/scripts/patch.sh", { cwd: process.cwd() })
-    } catch { /* patch generation optional */ }
-
-    let patch = ""
-    try {
-      patch = await fs.readFile(path.join(process.cwd(), "artifacts/patch.diff"), "utf-8")
-    } catch { /* no patch */ }
-
-    return {
-      success: true,
-      summary: `Workflow '${workflow}' completed successfully.\n\n${results.join("\n")}`,
-      patch: patch || undefined,
-      testLog: currentWorkflow.output.join("\n"),
-    }
-  } catch (err: unknown) {
-    const error = err as Error
-    currentWorkflow.status = "failed"
-    currentWorkflow.error = error.message
-    currentWorkflow.completedAt = new Date()
-
-    return {
-      success: false,
-      summary: `Workflow '${workflow}' failed.\n\n${results.join("\n")}`,
-      testLog: currentWorkflow.output.join("\n"),
-      error: error.message,
-    }
-  }
-}
-
-async function getStatus(): Promise<WorkflowState> {
-  return { ...currentWorkflow }
-}
-
-async function applyPatch(patchFile: string, dryRun: boolean = false): Promise<string> {
-  const patchPath = path.join(process.cwd(), "artifacts", patchFile)
-
-  try {
-    await fs.access(patchPath)
+    await fs.access(fullPath)
   } catch {
-    throw new Error(`Patch file not found: ${patchPath}`)
+    return { ok: false, message: `Patch file not found: ${fullPath}` }
   }
 
-  const command = dryRun
-    ? `git apply --check ${patchPath}`
-    : `git apply ${patchPath}`
-
   try {
-    const { stdout, stderr } = await execAsync(command, { cwd: process.cwd() })
-    return dryRun
-      ? `Patch can be applied cleanly: ${patchFile}`
-      : `Patch applied successfully: ${patchFile}\n${stdout}${stderr}`
+    // Check if patch applies cleanly
+    await execAsync(`git apply --check "${fullPath}"`, { cwd: process.cwd() })
+
+    // Apply the patch
+    const { stdout } = await execAsync(`git apply "${fullPath}"`, { cwd: process.cwd() })
+
+    return { ok: true, message: `Patch applied successfully: ${patchPath}\n${stdout}` }
+
   } catch (err: unknown) {
     const error = err as Error
-    throw new Error(`Failed to apply patch: ${error.message}`)
+    return { ok: false, message: `Failed to apply patch: ${error.message}` }
   }
 }
 
 // Create MCP server
 const server = new Server(
   {
-    name: "notroom-mcp",
+    name: "notroom-local-loop",
     version: "1.0.0",
   },
   {
@@ -331,58 +250,85 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
   try {
     switch (name) {
       case "run_workflow": {
-        let result: WorkflowResult
+        const task = args?.task as string
+        const acceptance = args?.acceptance as string
+        const branch = args?.branch as string | undefined
 
-        // Task mode: full automation with artifacts
-        if (args?.task && args?.acceptance) {
-          result = await runTaskWorkflow(args.task as string, args.acceptance as string)
-        }
-        // Simple workflow mode
-        else if (args?.workflow) {
-          result = await runSimpleWorkflow(args.workflow as string, args?.fix !== false)
-        }
-        // Default to full workflow
-        else {
-          result = await runSimpleWorkflow("full", args?.fix !== false)
+        if (!task || !acceptance) {
+          return {
+            content: [{ type: "text" as const, text: "Error: task and acceptance are required" }],
+            isError: true,
+          }
         }
 
-        // Format response with patch and logs
-        let response = `## ${result.success ? "✅ Success" : "❌ Failed"}\n\n`
-        response += `### Summary\n${result.summary}\n\n`
+        const result = await runWorkflow(task, acceptance, branch)
 
-        if (result.filesChanged?.length) {
-          response += `### Files Changed\n${result.filesChanged.map(f => `- ${f}`).join("\n")}\n\n`
+        // Format response
+        let response = `## ${result.ok ? "✅ Workflow Completed" : "❌ Workflow Failed"}\n\n`
+        response += `**Run ID:** ${result.runId}\n\n`
+
+        if (result.error) {
+          response += `**Error:** ${result.error}\n\n`
         }
 
-        if (result.patch) {
-          response += `### Patch (artifacts/patch.diff)\n\`\`\`diff\n${result.patch.slice(0, 5000)}${result.patch.length > 5000 ? "\n... (truncated)" : ""}\n\`\`\`\n\n`
+        if (result.artifacts.summary) {
+          response += `### Summary\n${result.artifacts.summary}\n\n`
         }
 
-        if (result.testLog) {
-          const truncatedLog = result.testLog.slice(-3000)
-          response += `### Test Log (last 3000 chars)\n\`\`\`\n${truncatedLog}\n\`\`\`\n`
+        if (result.artifacts.filesChanged.length > 0) {
+          response += `### Files Changed (${result.artifacts.filesChanged.length})\n`
+          response += result.artifacts.filesChanged.map(f => `- \`${f}\``).join("\n")
+          response += "\n\n"
+        }
+
+        if (result.artifacts.patch) {
+          const patchPreview = result.artifacts.patch.slice(0, 4000)
+          const truncated = result.artifacts.patch.length > 4000
+          response += `### Patch (\`artifacts/patch.diff\`)\n\`\`\`diff\n${patchPreview}${truncated ? "\n... (truncated, see full file)" : ""}\n\`\`\`\n\n`
+        }
+
+        if (result.artifacts.testLog) {
+          const logPreview = result.artifacts.testLog.slice(-2000)
+          response += `### Test Log (last 2000 chars)\n\`\`\`\n${logPreview}\n\`\`\`\n`
         }
 
         return {
           content: [{ type: "text" as const, text: response }],
-          isError: !result.success,
+          isError: !result.ok,
         }
       }
 
-      case "status": {
-        const status = await getStatus()
+      case "get_status": {
+        const state = await getStatus(args?.runId as string | undefined)
+
+        if (!state) {
+          return {
+            content: [{ type: "text" as const, text: "No workflow runs found" }],
+          }
+        }
+
+        const response = {
+          runId: state.runId,
+          state: state.state,
+          task: state.task,
+          branch: state.branch,
+          startedAt: state.startedAt.toISOString(),
+          completedAt: state.completedAt?.toISOString(),
+          error: state.error,
+          lastLogLines: state.lastLogLines.slice(-20),
+        }
+
         return {
-          content: [{ type: "text" as const, text: JSON.stringify(status, null, 2) }],
+          content: [{ type: "text" as const, text: JSON.stringify(response, null, 2) }],
         }
       }
 
       case "apply_patch": {
-        const result = await applyPatch(
-          args?.patchFile as string,
-          args?.dryRun as boolean
-        )
+        const result = await applyPatch(args?.patchPath as string)
+
         return {
-          content: [{ type: "text" as const, text: result }],
+          content: [{ type: "text" as const, text: result.ok ? `✅ ${result.message}` : `❌ ${result.message}` }],
+          isError: !result.ok,
         }
       }
 
@@ -402,7 +348,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport()
   await server.connect(transport)
-  console.error("Notroom MCP server running on stdio")
+  console.error("Notroom MCP server (local-loop) running on stdio")
 }
 
 main().catch(console.error)

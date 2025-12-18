@@ -49,7 +49,7 @@ Work in iterations:
 - Maintain type-safety end-to-end.
 - Update Prisma schema + migrations safely.
 - Add tests for critical logic changes.
-- Never introduce insecure auth/payment behavior.
+- **MUST follow `src/lib/security-guardrails.md`** - auth & payment rules are non-negotiable.
 
 ## OUTPUT FORMAT EACH ITERATION
 
