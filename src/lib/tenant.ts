@@ -62,3 +62,4 @@ export function canAccessTenant(userRole: string, tenant: Tenant): boolean {
   return allowedRoles.includes(userRole as (typeof allowedRoles)[number])
 }
 
+

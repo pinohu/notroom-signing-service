@@ -723,3 +723,4 @@ export async function compareNotaryScores(notaryIds: string[]): Promise<{
   return sorted
 }
 
+

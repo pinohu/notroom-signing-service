@@ -373,3 +373,4 @@ export function mapProviderStatus(
   return (providerMap[rawStatus] as CheckResult["status"]) || "pending"
 }
 
+

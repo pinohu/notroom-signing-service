@@ -159,6 +159,19 @@ enum BackgroundCheckStatus {
   ERROR
 }
 
+enum NotaryPaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum TaxDocumentStatus {
+  PENDING
+  GENERATED
+  SENT
+}
+
 // ============================================================================
 // USER & AUTHENTICATION
 // ============================================================================
@@ -312,6 +325,10 @@ model Notary {
   bankRoutingLast4     String?
   preferredPayment     PaymentMethod @default(ACH)
   
+  // Stripe Connect
+  stripeConnectId      String?       @unique  // Stripe Connect account ID
+  stripeAccountStatus  String?       @default("PENDING")  // PENDING, ACTIVE, SUSPENDED
+  
   // Timestamps
   approvedAt           DateTime?
   lastActiveAt         DateTime?
@@ -324,8 +341,11 @@ model Notary {
   performance          NotaryPerformance?
   stateCommissions     NotaryStateCommission[]
   availability         NotaryAvailability[]
+  payments             NotaryPayment[]
+  taxDocuments         TaxDocument[]
 
   @@index([commissionState])
+  @@index([stripeConnectId])
   @@index([status])
   @@index([tier])
   @@index([eliteScore])
@@ -624,6 +644,9 @@ model Order {
   documentCount       Int          @default(0)
   pageCount           Int          @default(0)
   
+  // Distance (for payment calculations)
+  distanceMiles       Float?       // Distance to notary in miles
+  
   // Completion
   completionDatetime  DateTime?
   scanbackReceivedAt  DateTime?
@@ -740,6 +763,7 @@ model Assignment {
   order            Order            @relation(fields: [orderId], references: [id])
   notary           Notary           @relation(fields: [notaryId], references: [id])
   payment          Payment?
+  notaryPayments   NotaryPayment[]
 
   @@index([orderId])
   @@index([notaryId])
@@ -939,6 +963,83 @@ model InvoiceItem {
 
   @@index([invoiceId])
   @@map("invoice_items")
+}
+
+// ============================================================================
+// NOTARY PAYMENTS (Stripe Connect)
+// ============================================================================
+
+model NotaryPayment {
+  id               String              @id @default(cuid())
+  assignmentId     String
+  notaryId         String
+  
+  // Amount breakdown (all in cents)
+  amount           Int                 // Total amount
+  baseAmount       Int                 // Base signing fee
+  distanceFee      Int                 @default(0)
+  rushFee          Int                 @default(0)
+  timeModifier     Int                 @default(0)
+  documentFee      Int                 @default(0)
+  
+  // Payment details
+  status           NotaryPaymentStatus @default(PENDING)
+  stripeTransferId String?             // Stripe transfer ID
+  failureReason    String?
+  retryCount       Int                 @default(0)
+  
+  // Scheduling
+  scheduledFor     DateTime            // When payment should be executed
+  completedAt      DateTime?
+  
+  // Additional data
+  breakdown        Json?               // Full breakdown details
+  
+  // Timestamps
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+  
+  // Relations
+  assignment       Assignment          @relation(fields: [assignmentId], references: [id])
+  notary           Notary              @relation(fields: [notaryId], references: [id])
+  
+  @@index([assignmentId])
+  @@index([notaryId])
+  @@index([status])
+  @@index([scheduledFor])
+  @@map("notary_payments")
+}
+
+model TaxDocument {
+  id               String            @id @default(cuid())
+  notaryId         String
+  
+  // Document details
+  year             Int
+  type             String            @default("1099-NEC")
+  totalAmount      Int               // Total earnings for the year in cents
+  
+  // Status
+  status           TaxDocumentStatus @default(PENDING)
+  
+  // Stripe integration
+  stripeReportId   String?
+  documentUrl      String?
+  
+  // Timestamps
+  generatedAt      DateTime?
+  sentAt           DateTime?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  
+  // Relations
+  notary           Notary            @relation(fields: [notaryId], references: [id])
+  
+  @@unique([notaryId, year])
+  @@index([notaryId])
+  @@index([year])
+  @@index([status])
+  @@map("tax_documents")
 }
 
 // ============================================================================

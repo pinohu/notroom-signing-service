@@ -65,3 +65,4 @@ BEGIN
     RAISE NOTICE 'Notroom database initialized successfully at %', CURRENT_TIMESTAMP;
 END $$;
 
+
