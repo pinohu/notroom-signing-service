@@ -172,7 +172,15 @@ const SigningServicesHome = () => {
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.95] tracking-tight"
             >
               Closings That
-              <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span 
+                className="block text-cyan-400"
+                style={{
+                  background: 'linear-gradient(90deg, #22d3ee, #60a5fa, #22d3ee)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
                 Never Miss
               </span>
             </motion.h1>
