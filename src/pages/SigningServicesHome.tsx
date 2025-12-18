@@ -156,10 +156,10 @@ const SigningServicesHome = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-sm rounded-full border border-cyan-500/30"
+              className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 backdrop-blur-sm rounded-full border border-cyan-400/50"
             >
               <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-              <span className="text-cyan-300 font-medium tracking-wide text-sm">
+              <span className="text-white font-semibold tracking-wide text-sm">
                 NATIONAL SIGNING SERVICE OPERATIONS
               </span>
             </motion.div>

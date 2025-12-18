@@ -81,8 +81,8 @@ const SigningHeader = () => {
               height="40"
               fetchPriority="high"
             />
-            <span className="hidden sm:inline text-xs font-semibold text-cyan-400 uppercase tracking-wider">
-              Signing Services
+            <span className="hidden sm:inline text-xs font-bold text-white uppercase tracking-wider">
+              Signing<br />Services
             </span>
           </button>
 
