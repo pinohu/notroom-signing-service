@@ -2,56 +2,23 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { 
   CheckCircle2, 
-  Clock, 
   MapPin, 
-  Shield, 
   Zap, 
   Users,
-  ArrowRight,
-  Building2,
-  FileText
+  ArrowRight
 } from "lucide-react"
+import { PublicHeader } from "@/components/nav/public-header"
+import { PublicFooter } from "@/components/nav/public-footer"
+
+export const metadata = {
+  title: "Notroom | National Signing Service",
+  description: "50-state signing coverage with 3-minute confirmation and 98%+ first-pass funding. The signing service title companies and lenders trust.",
+}
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">N</span>
-              </div>
-              <span className="font-bold text-white">Notroom</span>
-            </Link>
-
-            <nav className="hidden md:flex items-center gap-6">
-              <Link href="/services" className="text-slate-300 hover:text-white text-sm">
-                Services
-              </Link>
-              <Link href="/coverage" className="text-slate-300 hover:text-white text-sm">
-                Coverage
-              </Link>
-              <Link href="/for-notaries" className="text-slate-300 hover:text-white text-sm">
-                For Notaries
-              </Link>
-              <Link href="/about" className="text-slate-300 hover:text-white text-sm">
-                About
-              </Link>
-            </nav>
-
-            <div className="flex items-center gap-3">
-              <Button variant="ghost" asChild className="text-slate-300 hover:text-white">
-                <Link href="/auth/signin">Sign In</Link>
-              </Button>
-              <Button asChild className="bg-cyan-500 hover:bg-cyan-400">
-                <Link href="/contact">Get Started</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <PublicHeader />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
@@ -270,59 +237,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-950 text-slate-400 py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">N</span>
-                </div>
-                <span className="font-bold text-white">Notroom</span>
-              </div>
-              <p className="text-sm">
-                National signing service operations. 50-state coverage with unmatched reliability.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">For Title Companies</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/services" className="hover:text-white">Service Tiers</Link></li>
-                <li><Link href="/coverage" className="hover:text-white">Coverage Map</Link></li>
-                <li><Link href="/contact" className="hover:text-white">Start Pilot</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">For Notaries</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/for-notaries" className="hover:text-white">Why Join</Link></li>
-                <li><Link href="/apply" className="hover:text-white">Apply Now</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-semibold text-white mb-4">Company</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/about" className="hover:text-white">About</Link></li>
-                <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
-                <li><Link href="/privacy" className="hover:text-white">Privacy</Link></li>
-                <li><Link href="/terms" className="hover:text-white">Terms</Link></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm">© 2024 Notroom LLC. All rights reserved.</p>
-            <div className="flex items-center gap-4 text-sm">
-              <span>📞 (814) 480-0989</span>
-              <span>✉️ closings@notroom.com</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <PublicFooter />
     </div>
   )
 }
