@@ -1,5 +1,5 @@
-// Notroom National Signing Service - Prisma Schema
-// Multi-tenant architecture for vendors, title companies, and admin
+// Prisma Schema for Notroom National Signing Service
+// Database: PostgreSQL
 
 generator client {
   provider = "prisma-client-js"
@@ -9,9 +9,128 @@ datasource db {
   provider = "postgresql"
 }
 
-// ============================================
-// AUTHENTICATION & USER MANAGEMENT
-// ============================================
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum UserRole {
+  ADMIN
+  TITLE_COMPANY
+  NOTARY
+  BORROWER
+}
+
+enum NotaryTier {
+  BRONZE
+  SILVER
+  GOLD
+  ELITE
+}
+
+enum NotaryStatus {
+  PENDING
+  ACTIVE
+  SUSPENDED
+  INACTIVE
+}
+
+enum OrderStatus {
+  DRAFT
+  PENDING_ASSIGNMENT
+  ASSIGNED
+  ACCEPTED
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  ON_HOLD
+  FAILED
+}
+
+enum OrderType {
+  PURCHASE
+  REFINANCE
+  HELOC
+  REVERSE_MORTGAGE
+  SELLER_FINANCE
+  COMMERCIAL
+  EQUITY_LINE
+  CONSTRUCTION
+  VA
+  FHA
+  USDA
+  CONVENTIONAL
+}
+
+enum SigningType {
+  IN_PERSON
+  RON
+  HYBRID
+}
+
+enum ServiceTier {
+  STANDARD
+  PRIORITY
+  RESCUE
+}
+
+enum AssignmentStatus {
+  OFFERED
+  ACCEPTED
+  DECLINED
+  EXPIRED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  ACH
+  CHECK
+  WIRE
+  PAYPAL
+  VENMO
+  ZELLE
+}
+
+enum DocumentType {
+  LOAN_PACKAGE
+  DEED
+  MORTGAGE
+  NOTE
+  DISCLOSURE
+  POWER_OF_ATTORNEY
+  TRUST
+  AFFIDAVIT
+  OTHER
+}
+
+enum DocumentQAStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  NEEDS_REVIEW
+}
+
+enum IntegrationType {
+  API
+  EMAIL
+  PORTAL
+  SNAPDOCS
+  SIGNING_ORDER
+}
+
+// ============================================================================
+// USER & AUTHENTICATION
+// ============================================================================
 
 model User {
   id            String    @id @default(cuid())
@@ -20,17 +139,22 @@ model User {
   name          String?
   image         String?
   passwordHash  String?
-  role          UserRole  @default(USER)
+  role          UserRole  @default(BORROWER)
+  phone         String?
+  isActive      Boolean   @default(true)
+  lastLoginAt   DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
   // Relations
   accounts      Account[]
   sessions      Session[]
-  vendor        Vendor?
-  titleClient   TitleClient?
-  adminProfile  AdminProfile?
+  notary        Notary?
+  titleCompany  TitleCompanyUser?
+  notifications Notification[]
 
+  @@index([email])
+  @@index([role])
   @@map("users")
 }
 
@@ -51,6 +175,7 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
   @@map("accounts")
 }
 
@@ -62,6 +187,7 @@ model Session {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  @@index([userId])
   @@map("sessions")
 }
 
@@ -74,516 +200,679 @@ model VerificationToken {
   @@map("verification_tokens")
 }
 
-enum UserRole {
-  USER
-  VENDOR
-  TITLE_CLIENT
-  ADMIN
-  SUPER_ADMIN
-}
+// ============================================================================
+// NOTARY
+// ============================================================================
 
-// ============================================
-// VENDOR (NOTARY) MANAGEMENT
-// ============================================
-
-model Vendor {
-  id                  String       @id @default(cuid())
-  userId              String       @unique
-  user                User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  // Basic Information
-  firstName           String
-  lastName            String
-  phone               String
-  email               String
-  businessName        String?
-  address             String
-  city                String
-  state               String
-  zipCode             String
-  profileImageUrl     String?
-
-  // Commission & Credentials
-  tier                VendorTier   @default(BRONZE)
-  status              VendorStatus @default(PENDING)
-  nnaNumber           String?
-  eoInsuranceAmount   Int?
-  eoExpirationDate    DateTime?
-  backgroundCheckDate DateTime?
-  signingExperience   Int          @default(0)
-
+model Notary {
+  id                   String       @id @default(cuid())
+  userId               String       @unique
+  
+  // Personal Info
+  firstName            String
+  lastName             String
+  phone                String
+  alternatePhone       String?
+  address              String
+  city                 String
+  state                String
+  zipCode              String
+  latitude             Float?
+  longitude            Float?
+  serviceRadius        Int          @default(25) // miles
+  
+  // Commission Details
+  commissionState      String
+  commissionNumber     String
+  commissionExpiry     DateTime
+  additionalStates     String[]     @default([])
+  
+  // RON Authorization
+  ronAuthorized        Boolean      @default(false)
+  ronProvider          String?      // e.g., "Proof", "NotaryCam"
+  ronCertificationDate DateTime?
+  
+  // Insurance & Background
+  eAndOAmount          Decimal      @db.Decimal(10, 2)
+  eAndOExpiry          DateTime
+  eAndOCarrier         String?
+  backgroundCheckDate  DateTime?
+  backgroundCheckClear Boolean      @default(false)
+  
   // Equipment
-  hasDualTrayPrinter  Boolean      @default(false)
-  hasScanner          Boolean      @default(false)
-  hasLaptop           Boolean      @default(false)
-  hasReliableVehicle  Boolean      @default(false)
-  hasBackupPrinter    Boolean      @default(false)
-
-  // Performance Metrics
-  eliteScore          Int          @default(50)
-  totalSignings       Int          @default(0)
-  successfulSignings  Int          @default(0)
-  fundingRate         Float        @default(0)
-  averageResponseTime Int?         // in minutes
-  lastActiveAt        DateTime?
-
+  equipmentVerified    Boolean      @default(false)
+  hasDualTrayPrinter   Boolean      @default(false)
+  hasScanner           Boolean      @default(false)
+  hasReliableVehicle   Boolean      @default(false)
+  
+  // Certifications
+  nnaCertified         Boolean      @default(false)
+  nnaNumber            String?
+  lssCertified         Boolean      @default(false)
+  
+  // Status & Tier
+  status               NotaryStatus @default(PENDING)
+  tier                 NotaryTier   @default(BRONZE)
+  eliteScore           Int          @default(0) // 0-100
+  
+  // Preferences
+  acceptsWeekends      Boolean      @default(true)
+  acceptsEvenings      Boolean      @default(true)
+  acceptsHospital      Boolean      @default(false)
+  acceptsJail          Boolean      @default(false)
+  languages            String[]     @default(["English"])
+  
+  // Specializations
+  specializations      String[]     @default([])
+  
+  // Banking for Payments
+  bankAccountLast4     String?
+  bankRoutingLast4     String?
+  preferredPayment     PaymentMethod @default(ACH)
+  
   // Timestamps
-  createdAt           DateTime     @default(now())
-  updatedAt           DateTime     @updatedAt
-  approvedAt          DateTime?
+  approvedAt           DateTime?
+  lastActiveAt         DateTime?
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
 
   // Relations
-  stateCommissions    VendorStateCommission[]
-  specializations     VendorSpecialization[]
-  signingOrders       SigningOrder[]
-  performanceLogs     VendorPerformanceLog[]
-  availabilities      VendorAvailability[]
+  user                 User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assignments          Assignment[]
+  performance          NotaryPerformance?
+  stateCommissions     NotaryStateCommission[]
+  availability         NotaryAvailability[]
 
-  @@index([state, tier, status])
-  @@index([eliteScore(sort: Desc)])
-  @@map("vendors")
+  @@index([commissionState])
+  @@index([status])
+  @@index([tier])
+  @@index([eliteScore])
+  @@index([zipCode])
+  @@index([ronAuthorized])
+  @@map("notaries")
 }
 
-model VendorStateCommission {
-  id                  String   @id @default(cuid())
-  vendorId            String
-  vendor              Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
-  
-  state               String
-  commissionNumber    String
-  commissionExpiry    DateTime
-  ronEnabled          Boolean  @default(false)
-  ronPlatform         String?  // "proof", "notarize", etc.
-  ronCertificationId  String?
-  
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+model NotaryStateCommission {
+  id               String   @id @default(cuid())
+  notaryId         String
+  stateCode        String
+  commissionNumber String
+  commissionExpiry DateTime
+  ronAuthorized    Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
-  @@unique([vendorId, state])
-  @@index([state, ronEnabled])
-  @@map("vendor_state_commissions")
+  notary Notary @relation(fields: [notaryId], references: [id], onDelete: Cascade)
+
+  @@unique([notaryId, stateCode])
+  @@index([stateCode])
+  @@map("notary_state_commissions")
 }
 
-model VendorSpecialization {
-  id        String              @id @default(cuid())
-  vendorId  String
-  vendor    Vendor              @relation(fields: [vendorId], references: [id], onDelete: Cascade)
-  type      SpecializationType
-
-  @@unique([vendorId, type])
-  @@map("vendor_specializations")
-}
-
-model VendorAvailability {
+model NotaryAvailability {
   id        String   @id @default(cuid())
-  vendorId  String
-  vendor    Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
-  
-  dayOfWeek Int      // 0 = Sunday, 6 = Saturday
+  notaryId  String
+  dayOfWeek Int      // 0=Sunday, 6=Saturday
   startTime String   // "09:00"
   endTime   String   // "17:00"
   isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  @@unique([vendorId, dayOfWeek])
-  @@map("vendor_availabilities")
+  notary Notary @relation(fields: [notaryId], references: [id], onDelete: Cascade)
+
+  @@unique([notaryId, dayOfWeek])
+  @@map("notary_availability")
 }
 
-model VendorPerformanceLog {
-  id              String   @id @default(cuid())
-  vendorId        String
-  vendor          Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+model NotaryPerformance {
+  id                String     @id @default(cuid())
+  notaryId          String     @unique
   
-  metricType      String   // "response_time", "completion_rate", "funding_rate"
-  metricValue     Float
-  period          String   // "daily", "weekly", "monthly"
-  periodStart     DateTime
-  periodEnd       DateTime
+  // Rates (stored as percentages 0-100)
+  acceptanceRate    Float      @default(0)
+  onTimeRate        Float      @default(0)
+  errorRate         Float      @default(0)
+  firstPassRate     Float      @default(0)
+  clientSatisfaction Float     @default(0)
   
-  createdAt       DateTime @default(now())
+  // Counts
+  totalSignings     Int        @default(0)
+  completedSignings Int        @default(0)
+  cancelledSignings Int        @default(0)
+  noShowCount       Int        @default(0)
+  errorCount        Int        @default(0)
+  
+  // Averages
+  avgConfirmTime    Int?       // minutes
+  avgResponseTime   Int?       // minutes
+  avgScanbackTime   Int?       // minutes
+  
+  // Tier
+  tier              NotaryTier @default(BRONZE)
+  tierUpdatedAt     DateTime?
+  
+  // Timestamps
+  lastCalculatedAt  DateTime   @default(now())
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
 
-  @@index([vendorId, metricType, periodStart])
-  @@map("vendor_performance_logs")
+  notary Notary @relation(fields: [notaryId], references: [id], onDelete: Cascade)
+
+  @@map("notary_performance")
 }
 
-enum VendorTier {
-  BRONZE
-  SILVER
-  GOLD
-  ELITE
-}
+// ============================================================================
+// TITLE COMPANY
+// ============================================================================
 
-enum VendorStatus {
-  PENDING
-  ACTIVE
-  INACTIVE
-  SUSPENDED
-  REJECTED
-}
-
-enum SpecializationType {
-  PURCHASE
-  REFINANCE
-  HELOC
-  REVERSE_MORTGAGE
-  COMMERCIAL
-  SELLER_FINANCE
-  VA_LOANS
-  FHA_LOANS
-  HOSPITAL_SIGNINGS
-  JAIL_SIGNINGS
-}
-
-// ============================================
-// TITLE COMPANY / CLIENT MANAGEMENT
-// ============================================
-
-model TitleClient {
-  id                  String        @id @default(cuid())
-  userId              String        @unique
-  user                User          @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  // Company Information
-  companyName         String
-  contactName         String
-  email               String
-  phone               String
-  address             String?
-  city                String?
-  state               String?
-  zipCode             String?
-
-  // Preferences
-  preferredSigningType SigningType  @default(IN_PERSON)
-  defaultServiceTier  ServiceTier   @default(STANDARD)
-  requireScanback     Boolean       @default(true)
-  scanbackTimeLimit   Int           @default(60) // minutes
-  autoAssignEnabled   Boolean       @default(true)
-
-  // SLA Configuration
-  confirmationSlaMinutes  Int       @default(15)
-  completionSlaHours      Int       @default(24)
-  escalationEmail         String?
-
+model TitleCompany {
+  id                String          @id @default(cuid())
+  
+  // Company Info
+  name              String
+  dba               String?
+  phone             String
+  fax               String?
+  email             String
+  website           String?
+  
+  // Address
+  address           String
+  city              String
+  state             String
+  zipCode           String
+  
+  // Primary Contact
+  primaryContactName  String
+  primaryContactEmail String
+  primaryContactPhone String
+  
   // Billing
-  billingEmail        String?
-  paymentTerms        Int           @default(30) // days
-  invoiceFrequency    String        @default("weekly")
-
-  // Status
-  status              ClientStatus  @default(PILOT)
-  pilotSigningsLeft   Int           @default(10)
+  billingAddress    String?
+  billingCity       String?
+  billingState      String?
+  billingZipCode    String?
+  paymentTerms      Int             @default(30) // Net days
+  creditLimit       Decimal?        @db.Decimal(10, 2)
   
-  createdAt           DateTime      @default(now())
-  updatedAt           DateTime      @updatedAt
+  // Integration
+  integrationType   IntegrationType @default(PORTAL)
+  apiKey            String?         @unique
+  webhookUrl        String?
+  
+  // Preferences
+  defaultServiceTier ServiceTier    @default(STANDARD)
+  requiresScanback  Boolean         @default(true)
+  scanbackDeadline  Int             @default(24) // hours
+  
+  // Status
+  isPilot           Boolean         @default(true)
+  pilotEndDate      DateTime?
+  isActive          Boolean         @default(true)
+  
+  // Timestamps
+  onboardedAt       DateTime?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
 
   // Relations
-  signingOrders       SigningOrder[]
-  invoices            Invoice[]
+  users             TitleCompanyUser[]
+  orders            Order[]
+  invoices          Invoice[]
+  preferences       TitleCompanyPreference[]
 
-  @@index([status])
-  @@map("title_clients")
+  @@index([name])
+  @@index([state])
+  @@index([isActive])
+  @@map("title_companies")
 }
 
-enum ClientStatus {
-  PILOT
-  ACTIVE
-  INACTIVE
-  SUSPENDED
+model TitleCompanyUser {
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  titleCompanyId String
+  role           String   @default("user") // admin, user, viewer
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  titleCompany TitleCompany @relation(fields: [titleCompanyId], references: [id], onDelete: Cascade)
+
+  @@index([titleCompanyId])
+  @@map("title_company_users")
 }
 
-// ============================================
-// SIGNING ORDER MANAGEMENT
-// ============================================
+model TitleCompanyPreference {
+  id             String   @id @default(cuid())
+  titleCompanyId String
+  stateCode      String
+  preferredTier  ServiceTier @default(STANDARD)
+  customFee      Decimal?    @db.Decimal(10, 2)
+  notes          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
-model SigningOrder {
-  id                  String              @id @default(cuid())
-  orderNumber         String              @unique
+  titleCompany TitleCompany @relation(fields: [titleCompanyId], references: [id], onDelete: Cascade)
+
+  @@unique([titleCompanyId, stateCode])
+  @@map("title_company_preferences")
+}
+
+// ============================================================================
+// ORDER
+// ============================================================================
+
+model Order {
+  id                  String       @id @default(cuid())
+  orderNumber         String       @unique @default(cuid())
   
-  // Client Info
-  titleClientId       String
-  titleClient         TitleClient         @relation(fields: [titleClientId], references: [id])
+  // Title Company
+  titleCompanyId      String
+  clientReferenceId   String?      // Client's internal reference
   
-  // Assigned Vendor
-  vendorId            String?
-  vendor              Vendor?             @relation(fields: [vendorId], references: [id])
+  // Status
+  status              OrderStatus  @default(DRAFT)
+  signingType         SigningType  @default(IN_PERSON)
+  serviceTier         ServiceTier  @default(STANDARD)
+  orderType           OrderType    @default(PURCHASE)
   
-  // Borrower Information
-  borrowerFirstName   String
-  borrowerLastName    String
-  borrowerEmail       String?
-  borrowerPhone       String
+  // Loan Details
+  loanAmount          Decimal?     @db.Decimal(12, 2)
+  loanNumber          String?
+  lenderName          String?
   
-  // Property Information
+  // Property
   propertyAddress     String
   propertyCity        String
   propertyState       String
-  propertyZip         String
-  propertyCounty      String?
+  propertyZipCode     String
+  propertyType        String?      // SFR, Condo, Multi-family
   
-  // Signing Details
-  signingType         SigningType
-  serviceTier         ServiceTier         @default(STANDARD)
-  loanType            LoanType?
-  loanAmount          Float?
-  documentCount       Int?
+  // Signing Location (can differ from property)
+  signingAddress      String?
+  signingCity         String?
+  signingState        String?
+  signingZipCode      String?
+  signingLocationType String?      // Home, Office, Hospital, etc.
+  
+  // Borrower Info
+  borrowerName        String
+  borrowerEmail       String?
+  borrowerPhone       String?
+  coBorrowerName      String?
+  coBorrowerEmail     String?
+  coBorrowerPhone     String?
   
   // Scheduling
-  requestedDate       DateTime
-  requestedTimeStart  String?             // "14:00"
-  requestedTimeEnd    String?             // "16:00"
-  confirmedDate       DateTime?
-  confirmedTime       String?
+  scheduledDatetime   DateTime?
+  scheduledEndTime    DateTime?
+  timeZone            String       @default("America/New_York")
+  isFlexibleTime      Boolean      @default(false)
   
-  // Status & Tracking
-  status              SigningOrderStatus  @default(PENDING_ASSIGNMENT)
-  statusUpdatedAt     DateTime            @default(now())
-  
-  // SLA Tracking
-  slaDeadline         DateTime?
-  isEscalated         Boolean             @default(false)
-  escalatedAt         DateTime?
+  // Documents
+  documentCount       Int          @default(0)
+  pageCount           Int          @default(0)
   
   // Completion
-  completedAt         DateTime?
+  completionDatetime  DateTime?
   scanbackReceivedAt  DateTime?
-  documentsShippedAt  DateTime?
+  shippedAt           DateTime?
   trackingNumber      String?
+  carrier             String?
   
-  // Financials
-  vendorFee           Float?
-  clientFee           Float?
-  rushFee             Float?
+  // QA
+  qaStatus            DocumentQAStatus @default(PENDING)
+  qaReviewedAt        DateTime?
+  qaReviewedBy        String?
+  qaNotes             String?
+  
+  // Pricing
+  baseFee             Decimal      @db.Decimal(10, 2)
+  rushFee             Decimal?     @db.Decimal(10, 2)
+  travelFee           Decimal?     @db.Decimal(10, 2)
+  additionalFees      Decimal?     @db.Decimal(10, 2)
+  totalFee            Decimal      @db.Decimal(10, 2)
+  
+  // SLA
+  confirmationDeadline DateTime?
+  scanbackDeadline     DateTime?
+  slaBreached          Boolean     @default(false)
   
   // Notes
-  internalNotes       String?             @db.Text
-  borrowerNotes       String?             @db.Text
+  specialInstructions String?
+  internalNotes       String?
+  cancellationReason  String?
   
-  createdAt           DateTime            @default(now())
-  updatedAt           DateTime            @updatedAt
+  // Timestamps
+  submittedAt         DateTime?
+  assignedAt          DateTime?
+  acceptedAt          DateTime?
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
 
   // Relations
-  statusHistory       SigningOrderStatusHistory[]
-  documents           SigningDocument[]
-  invoiceItem         InvoiceItem?
+  titleCompany        TitleCompany @relation(fields: [titleCompanyId], references: [id])
+  assignments         Assignment[]
+  documents           Document[]
+  statusHistory       OrderStatusHistory[]
+  invoiceItems        InvoiceItem[]
 
-  @@index([status, titleClientId])
-  @@index([vendorId, status])
+  @@index([orderNumber])
+  @@index([titleCompanyId])
+  @@index([status])
   @@index([propertyState])
-  @@index([requestedDate])
-  @@map("signing_orders")
+  @@index([scheduledDatetime])
+  @@index([createdAt])
+  @@map("orders")
 }
 
-model SigningOrderStatusHistory {
-  id              String             @id @default(cuid())
-  orderId         String
-  order           SigningOrder       @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  
-  fromStatus      SigningOrderStatus?
-  toStatus        SigningOrderStatus
-  changedBy       String?            // User ID or "system"
-  reason          String?
-  
-  createdAt       DateTime           @default(now())
+model OrderStatusHistory {
+  id        String      @id @default(cuid())
+  orderId   String
+  status    OrderStatus
+  notes     String?
+  changedBy String?
+  createdAt DateTime    @default(now())
 
-  @@index([orderId, createdAt])
-  @@map("signing_order_status_history")
-}
-
-model SigningDocument {
-  id          String       @id @default(cuid())
-  orderId     String
-  order       SigningOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
-  
-  fileName    String
-  fileUrl     String
-  fileSize    Int?
-  mimeType    String?
-  docType     DocumentType @default(OTHER)
-  
-  uploadedAt  DateTime     @default(now())
-  uploadedBy  String?
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
 
   @@index([orderId])
-  @@map("signing_documents")
+  @@index([createdAt])
+  @@map("order_status_history")
 }
 
-enum SigningType {
-  IN_PERSON
-  RON
-  HYBRID
+// ============================================================================
+// ASSIGNMENT
+// ============================================================================
+
+model Assignment {
+  id               String           @id @default(cuid())
+  orderId          String
+  notaryId         String
+  
+  // Status
+  status           AssignmentStatus @default(OFFERED)
+  
+  // Timestamps
+  offeredAt        DateTime         @default(now())
+  offerExpiresAt   DateTime?
+  acceptedAt       DateTime?
+  declinedAt       DateTime?
+  completedAt      DateTime?
+  cancelledAt      DateTime?
+  
+  // Decline/Cancel Reason
+  declineReason    String?
+  cancelReason     String?
+  
+  // Payment
+  paymentAmount    Decimal          @db.Decimal(10, 2)
+  travelAllowance  Decimal?         @db.Decimal(10, 2)
+  bonusAmount      Decimal?         @db.Decimal(10, 2)
+  totalPayment     Decimal          @db.Decimal(10, 2)
+  paymentStatus    PaymentStatus    @default(PENDING)
+  
+  // Performance Tracking
+  confirmationTime Int?             // minutes from offer to accept
+  arrivalTime      DateTime?
+  departureTime    DateTime?
+  
+  // Notes
+  notaryNotes      String?
+  adminNotes       String?
+  
+  // Timestamps
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  // Relations
+  order            Order            @relation(fields: [orderId], references: [id])
+  notary           Notary           @relation(fields: [notaryId], references: [id])
+  payment          Payment?
+
+  @@index([orderId])
+  @@index([notaryId])
+  @@index([status])
+  @@index([offeredAt])
+  @@map("assignments")
 }
 
-enum ServiceTier {
-  STANDARD      // 60-min confirmation, next-day scanback
-  PRIORITY      // 15-min confirmation, same-day scanback
-  RESCUE        // Immediate dispatch, failed signing recovery
+// ============================================================================
+// DOCUMENT
+// ============================================================================
+
+model Document {
+  id           String           @id @default(cuid())
+  orderId      String
+  
+  // Document Info
+  name         String
+  type         DocumentType     @default(OTHER)
+  description  String?
+  
+  // File URLs
+  originalUrl  String?          // Original uploaded document
+  signedUrl    String?          // Signed document
+  scanbackUrl  String?          // Scanned back document
+  
+  // Metadata
+  pageCount    Int?
+  fileSize     Int?             // bytes
+  mimeType     String?
+  
+  // QA
+  qaStatus     DocumentQAStatus @default(PENDING)
+  qaReviewedAt DateTime?
+  qaReviewedBy String?
+  qaNotes      String?
+  
+  // Tracking
+  printedAt    DateTime?
+  signedAt     DateTime?
+  scannedAt    DateTime?
+  
+  // Timestamps
+  uploadedAt   DateTime         @default(now())
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([type])
+  @@index([qaStatus])
+  @@map("documents")
 }
 
-enum LoanType {
-  PURCHASE
-  REFINANCE
-  HELOC
-  REVERSE_MORTGAGE
-  COMMERCIAL
-  CONSTRUCTION
-  VA
-  FHA
-  USDA
-  JUMBO
-  SELLER_FINANCE
+// ============================================================================
+// STATE REQUIREMENTS
+// ============================================================================
+
+model StateRequirement {
+  id              String   @id @default(cuid())
+  stateCode       String   @unique
+  stateName       String
+  
+  // RON Rules
+  allowsRon       Boolean  @default(false)
+  ronEffectiveDate DateTime?
+  ronProviders    String[] @default([])
+  
+  // Witness Requirements
+  witnessRequired Boolean  @default(false)
+  witnessCount    Int      @default(0)
+  
+  // Journal Requirements
+  journalRequired Boolean  @default(true)
+  eJournalAllowed Boolean  @default(true)
+  
+  // ID Requirements
+  acceptedIds     String[] @default(["drivers_license", "passport", "state_id"])
+  idExpiredAllowed Boolean @default(false)
+  
+  // Document-Specific Rules
+  deedRonAllowed  Boolean  @default(true)
+  powerOfAttorneyRonAllowed Boolean @default(false)
+  
+  // Fees & Limits
+  maxNotaryFee    Decimal? @db.Decimal(10, 2)
+  travelFeeAllowed Boolean @default(true)
+  
+  // Special Rules (JSON for flexibility)
+  specificRules   Json?
+  
+  // Notes
+  notes           String?
+  lastVerified    DateTime?
+  
+  // Timestamps
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([stateCode])
+  @@index([allowsRon])
+  @@map("state_requirements")
 }
 
-enum SigningOrderStatus {
-  PENDING_ASSIGNMENT
-  ASSIGNED
-  ACCEPTED
-  DECLINED
-  SCHEDULED
-  EN_ROUTE
-  IN_PROGRESS
-  COMPLETED
-  SCANBACK_PENDING
-  SCANBACK_RECEIVED
-  SHIPPED
-  FUNDED
-  CANCELLED
-  FAILED
-  ON_HOLD
+// ============================================================================
+// PAYMENT
+// ============================================================================
+
+model Payment {
+  id            String        @id @default(cuid())
+  assignmentId  String        @unique
+  
+  // Amount
+  amount        Decimal       @db.Decimal(10, 2)
+  
+  // Status
+  status        PaymentStatus @default(PENDING)
+  
+  // Processing
+  method        PaymentMethod @default(ACH)
+  processedAt   DateTime?
+  transactionId String?
+  
+  // External References
+  externalId    String?       // Payment processor ID
+  batchId       String?       // For batch payments
+  
+  // Failure Info
+  failureReason String?
+  retryCount    Int           @default(0)
+  lastRetryAt   DateTime?
+  
+  // Timestamps
+  scheduledFor  DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  assignment Assignment @relation(fields: [assignmentId], references: [id])
+
+  @@index([status])
+  @@index([processedAt])
+  @@index([batchId])
+  @@map("payments")
 }
 
-enum DocumentType {
-  LOAN_PACKAGE
-  SCANBACK
-  ID_VERIFICATION
-  NOTARY_JOURNAL
-  SHIPPING_LABEL
-  OTHER
-}
-
-// ============================================
-// BILLING & INVOICING
-// ============================================
+// ============================================================================
+// INVOICE (For Title Companies)
+// ============================================================================
 
 model Invoice {
-  id              String        @id @default(cuid())
-  invoiceNumber   String        @unique
-  titleClientId   String
-  titleClient     TitleClient   @relation(fields: [titleClientId], references: [id])
+  id             String        @id @default(cuid())
+  invoiceNumber  String        @unique
+  titleCompanyId String
   
-  periodStart     DateTime
-  periodEnd       DateTime
-  dueDate         DateTime
+  // Amounts
+  subtotal       Decimal       @db.Decimal(10, 2)
+  tax            Decimal       @default(0) @db.Decimal(10, 2)
+  total          Decimal       @db.Decimal(10, 2)
   
-  subtotal        Float
-  tax             Float         @default(0)
-  total           Float
+  // Status
+  status         PaymentStatus @default(PENDING)
   
-  status          InvoiceStatus @default(DRAFT)
-  paidAt          DateTime?
-  paymentMethod   String?
+  // Dates
+  issuedAt       DateTime      @default(now())
+  dueAt          DateTime
+  paidAt         DateTime?
   
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
+  // Payment
+  paymentMethod  String?
+  paymentRef     String?
+  
+  // Timestamps
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
 
-  items           InvoiceItem[]
+  titleCompany TitleCompany  @relation(fields: [titleCompanyId], references: [id])
+  items        InvoiceItem[]
 
-  @@index([titleClientId, status])
+  @@index([titleCompanyId])
+  @@index([status])
+  @@index([dueAt])
   @@map("invoices")
 }
 
 model InvoiceItem {
-  id          String       @id @default(cuid())
+  id          String  @id @default(cuid())
   invoiceId   String
-  invoice     Invoice      @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
-  
-  orderId     String?      @unique
-  order       SigningOrder? @relation(fields: [orderId], references: [id])
-  
+  orderId     String?
   description String
-  quantity    Int          @default(1)
-  unitPrice   Float
-  total       Float
+  quantity    Int     @default(1)
+  unitPrice   Decimal @db.Decimal(10, 2)
+  total       Decimal @db.Decimal(10, 2)
 
+  invoice Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  order   Order?  @relation(fields: [orderId], references: [id])
+
+  @@index([invoiceId])
   @@map("invoice_items")
 }
 
-enum InvoiceStatus {
-  DRAFT
-  SENT
-  PAID
-  OVERDUE
-  CANCELLED
+// ============================================================================
+// NOTIFICATION
+// ============================================================================
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String   // order_assigned, payment_received, etc.
+  title     String
+  message   String
+  data      Json?
+  read      Boolean  @default(false)
+  readAt    DateTime?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([read])
+  @@index([createdAt])
+  @@map("notifications")
 }
 
-// ============================================
-// STATE ELIGIBILITY & ROUTING RULES
-// ============================================
-
-model StateEligibilityRule {
-  id                  String   @id @default(cuid())
-  state               String   @unique
-  
-  // Signing Type Eligibility
-  inPersonAllowed     Boolean  @default(true)
-  ronAllowed          Boolean  @default(false)
-  ipenAllowed         Boolean  @default(false)
-  
-  // RON Configuration
-  ronDocRestrictions  String[] // ["deeds", "wills", etc.]
-  approvedRonPlatforms String[]
-  
-  // Requirements
-  attorneyState       Boolean  @default(false)
-  witnessRequired     Boolean  @default(false)
-  witnessCount        Int      @default(0)
-  
-  // Status
-  isActive            Boolean  @default(true)
-  launchPhase         Int      @default(1) // 1 = initial launch, 2 = expansion, etc.
-  
-  notes               String?  @db.Text
-  
-  updatedAt           DateTime @updatedAt
-
-  @@map("state_eligibility_rules")
-}
-
-// ============================================
-// ADMIN PROFILES
-// ============================================
-
-model AdminProfile {
-  id          String   @id @default(cuid())
-  userId      String   @unique
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  department  String?
-  permissions String[] // ["manage_vendors", "manage_clients", "view_reports"]
-  
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@map("admin_profiles")
-}
-
-// ============================================
+// ============================================================================
 // AUDIT LOG
-// ============================================
+// ============================================================================
 
 model AuditLog {
-  id          String   @id @default(cuid())
-  userId      String?
-  action      String
-  entity      String
-  entityId    String?
-  oldValues   Json?
-  newValues   Json?
-  ipAddress   String?
-  userAgent   String?
-  
-  createdAt   DateTime @default(now())
+  id         String   @id @default(cuid())
+  userId     String?
+  action     String   // CREATE, UPDATE, DELETE
+  entityType String   // Order, Assignment, etc.
+  entityId   String
+  oldData    Json?
+  newData    Json?
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
 
-  @@index([entity, entityId])
-  @@index([userId, createdAt])
+  @@index([userId])
+  @@index([entityType, entityId])
+  @@index([createdAt])
   @@map("audit_logs")
 }
