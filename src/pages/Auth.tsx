@@ -12,6 +12,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import SEO from '@/components/SEO';
+import SigningLayout from '@/components/SigningLayout';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address').max(255),
@@ -94,14 +95,14 @@ export default function Auth() {
   };
 
   return (
-    <>
+    <SigningLayout>
       <SEO 
         title="Client Portal Login | Notroom"
-        description="Access your CROP client portal to manage mail, view documents, and update your account."
+        description="Access your client portal to track signing orders and manage your account."
         canonical="/auth"
       />
       
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background/95 to-primary/5 px-4 py-12">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-white px-4 py-12 pt-32">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <Building className="h-12 w-12 mx-auto mb-4 text-primary" />
@@ -278,11 +279,11 @@ export default function Auth() {
             </Tabs>
 
             <div className="mt-6 text-center text-sm text-muted-foreground">
-              <p>Need help? <a href="/track-booking" className="text-primary hover:underline">Contact Support</a></p>
+              <p>Need help? <a href="/contact" className="text-primary hover:underline">Contact Support</a></p>
             </div>
           </CardContent>
         </Card>
       </div>
-    </>
+    </SigningLayout>
   );
 }
