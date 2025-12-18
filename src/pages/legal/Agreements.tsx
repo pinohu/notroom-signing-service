@@ -1,4 +1,4 @@
-import Layout from "@/components/Layout";
+import SigningLayout from "@/components/SigningLayout";
 import SEO from "@/components/SEO";
 import ServiceAgreementTemplates from "@/components/ServiceAgreementTemplates";
 import DataRetentionPolicy from "@/components/DataRetentionPolicy";
@@ -8,7 +8,7 @@ import { FileText, Shield } from "lucide-react";
 
 const Agreements = () => {
   return (
-    <Layout>
+    <SigningLayout>
       <SEO
         title="Service Agreements & Legal Documents | Notroom"
         description="Review our professional service agreements, data retention policies, and legal documentation for notary services in Pennsylvania. Transparent terms and conditions."
@@ -153,7 +153,7 @@ const Agreements = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </SigningLayout>
   );
 };
 

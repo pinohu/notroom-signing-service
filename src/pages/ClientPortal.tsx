@@ -23,6 +23,7 @@ import {
   XCircle,
 } from 'lucide-react';
 import SEO from '@/components/SEO';
+import SigningLayout from '@/components/SigningLayout';
 import { formatDistanceToNow } from 'date-fns';
 
 interface CropApplication {
@@ -184,14 +185,14 @@ export default function ClientPortal() {
   }
 
   return (
-    <>
+    <SigningLayout>
       <SEO 
         title="Client Portal Dashboard | Notroom"
-        description="Manage your CROP services, view mail, and update your account information."
+        description="Manage your signing orders, view status, and update your account information."
         canonical="/portal"
       />
       
-      <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white pt-24">
         <div className="container mx-auto px-4 py-8">
           {/* Header */}
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
@@ -334,6 +335,6 @@ export default function ClientPortal() {
           </Tabs>
         </div>
       </div>
-    </>
+    </SigningLayout>
   );
 }

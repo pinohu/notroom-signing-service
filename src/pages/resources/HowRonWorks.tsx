@@ -1,309 +1,286 @@
-import Layout from "@/components/Layout";
-import SEO from "@/components/SEO";
+import SigningLayout from "@/components/SigningLayout";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Video, FileCheck, Shield, Clock, CheckCircle, AlertCircle } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { 
+  Video, 
+  FileCheck, 
+  Shield, 
+  Clock, 
+  CheckCircle, 
+  AlertCircle,
+  Monitor,
+  UserCheck,
+  Upload,
+  ArrowRight,
+  Globe2
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const HowRonWorks = () => {
   const navigate = useNavigate();
 
-  const requirements = [
-    "Must be physically located in Pennsylvania during the video session",
-    "Valid government-issued photo ID (driver's license or passport)",
-    "Device with camera and microphone (computer, tablet, or smartphone)",
-    "Stable internet connection",
-    "Document in PDF or common digital format",
-    "Email address to receive notarized document",
-    "Ability to complete Knowledge-Based Authentication (KBA) verification"
+  const steps = [
+    {
+      number: 1,
+      title: "Order Submitted",
+      description: "Title company submits the signing order with borrower details and document package.",
+      icon: Upload
+    },
+    {
+      number: 2,
+      title: "RON Session Scheduled",
+      description: "Borrower receives a secure link to schedule their video notarization session at their convenience.",
+      icon: Clock
+    },
+    {
+      number: 3,
+      title: "Identity Verification",
+      description: "Borrower verifies identity via government ID scan and Knowledge-Based Authentication (KBA) questions.",
+      icon: UserCheck
+    },
+    {
+      number: 4,
+      title: "Live Video Session",
+      description: "Licensed notary guides borrower through document review and electronic signature on secure video call.",
+      icon: Video
+    },
+    {
+      number: 5,
+      title: "Digital Notarization",
+      description: "Notary applies digital seal and signature. Tamper-evident certificate attached to document.",
+      icon: Shield
+    },
+    {
+      number: 6,
+      title: "Instant Delivery",
+      description: "Notarized documents delivered immediately. Recording stored securely for compliance.",
+      icon: FileCheck
+    }
   ];
 
   const benefits = [
-    { title: "Legally Binding", desc: "RON notarizations are legally recognized in all 50 states" },
-    { title: "Secure", desc: "Bank-level 256-bit encryption protects your information" },
-    { title: "Convenient", desc: "No travel required - complete from home or office" },
-    { title: "Fast", desc: "Most sessions completed in 5-10 minutes" }
+    { 
+      title: "Legally Binding in All 50 States", 
+      desc: "RON notarizations are recognized nationwide and accepted by courts, lenders, and government agencies.",
+      icon: Globe2
+    },
+    { 
+      title: "Bank-Level Security", 
+      desc: "256-bit encryption, identity verification, and tamper-evident audit trails exceed paper security.",
+      icon: Shield
+    },
+    { 
+      title: "Borrower Convenience", 
+      desc: "No travel, no scheduling hassles. Borrowers complete from home or office on any device.",
+      icon: Monitor
+    },
+    { 
+      title: "Faster Closings", 
+      desc: "Eliminate scheduling delays. RON sessions typically complete in 15-30 minutes.",
+      icon: Clock
+    }
   ];
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How Remote Online Notarization (RON) Works",
-    "description": "Step-by-step guide to getting documents notarized online via Remote Online Notarization (RON) in Pennsylvania",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "name": "Schedule Appointment",
-        "text": "Book your online notary session at a convenient time"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Upload Document",
-        "text": "Securely upload your document to the notarization platform"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Join Video Call",
-        "text": "Connect with a licensed Pennsylvania notary via secure video"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Verify Identity",
-        "text": "Present your government ID and complete identity verification"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Review and Sign",
-        "text": "Review the document with the notary and electronically sign"
-      },
-      {
-        "@type": "HowToStep",
-        "name": "Receive Notarized Document",
-        "text": "Get your notarized document with digital certificate via email"
-      }
-    ]
-  };
+  const ronStates = [
+    "AZ", "CO", "FL", "ID", "IN", "KY", "LA", "MD", "MI", "MN",
+    "MT", "NE", "NV", "NJ", "NM", "NY", "ND", "OH", "OK", "PA",
+    "SD", "TN", "TX", "UT", "VA", "WA", "WI", "WV", "WY"
+  ];
 
   return (
-    <Layout>
-      <SEO
-        title="How Remote Online Notarization (RON) Works"
-        description="Learn how RON works. Step-by-step guide to getting documents notarized online in Pennsylvania. Secure, fast, and legally binding video notarization explained."
-        keywords="how ron works, remote online notarization explained, online notary process, ron pennsylvania, video notarization guide"
-        canonical="https://notroom.com/resources/how-ron-works"
-        schema={schema}
-      />
-
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[hsl(var(--hero-gradient-from))] to-[hsl(var(--hero-gradient-to))] text-primary-foreground py-20">
+    <SigningLayout>
+      {/* Hero */}
+      <section className="pt-32 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              How Remote Online Notarization Works
+          <div className="max-w-3xl mx-auto text-center">
+            <Badge className="mb-4 bg-cyan-500/20 text-cyan-300 border-cyan-500/30">
+              RON Explained
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              How Remote Online
+              <span className="block text-cyan-400">Notarization Works</span>
             </h1>
-            <p className="text-xl mb-8 opacity-90">
-              Get your documents notarized from anywhere via secure video call. Here's everything you need to know about the RON process.
+            <p className="text-xl text-slate-300">
+              Secure video notarization for mortgage closings. Faster, more convenient, 
+              and accepted nationwide.
             </p>
           </div>
         </div>
       </section>
 
       {/* Step-by-Step Process */}
-      <section className="py-16 bg-background">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">The RON Process: Step by Step</h2>
-            
-            <div className="space-y-8">
-              <Card className="p-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                    1
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">Schedule Your Session</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Book an appointment online at your convenience. We offer flexible scheduling, including evenings and weekends. Sessions typically last 10-15 minutes.
-                    </p>
-                    <div className="bg-muted/30 p-4 rounded-lg">
-                      <p className="text-sm font-semibold mb-2">Pro Tip:</p>
-                      <p className="text-sm text-muted-foreground">
-                        Schedule for a time when you're in a quiet, well-lit location with good internet connectivity.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                The RON Process: Step by Step
+              </h2>
+              <p className="text-lg text-slate-600">
+                How a typical RON closing flows through Notroom
+              </p>
+            </div>
 
-              <Card className="p-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                    2
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">Upload Your Document</h3>
-                    <p className="text-muted-foreground mb-4">
-                      After booking, you'll receive a secure link to upload your document. We accept PDF, Word, and most common file formats. Your document is encrypted immediately upon upload.
-                    </p>
-                    <div className="flex items-start gap-2 text-sm">
-                      <Shield className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-muted-foreground">256-bit bank-level encryption protects your documents</span>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                    3
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">Join the Video Call</h3>
-                    <p className="text-muted-foreground mb-4">
-                      At your scheduled time, click the link to join a secure video call with a licensed Pennsylvania notary. No special software required - works in your web browser.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="w-4 h-4 text-success" />
-                        <span>Works on desktop, tablet, or smartphone</span>
-                      </li>
-                      <li className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="w-4 h-4 text-success" />
-                        <span>Session is recorded and stored for 10 years (PA law requirement)</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                    4
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">Verify Your Identity</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Present your valid government-issued photo ID to the camera. The notary will verify your identity using advanced credential analysis technology, which checks for security features and authenticity.
-                    </p>
-                    <div className="bg-muted/30 p-4 rounded-lg mb-4">
-                      <p className="text-sm font-semibold mb-2">Knowledge-Based Authentication (KBA) - Required by PA Law:</p>
-                      <p className="text-sm text-muted-foreground">
-                        You will be asked to answer questions based on your public records (like previous addresses, loan amounts, or vehicle information). This is a mandatory security measure required by Pennsylvania law for RON services.
-                      </p>
-                    </div>
-                    <div className="bg-primary/10 p-4 rounded-lg border-l-4 border-primary">
-                      <p className="text-sm font-semibold mb-2 text-primary">Important Location Requirement:</p>
-                      <p className="text-sm">
-                        You must be physically located in Pennsylvania during the entire video session. This is a legal requirement under Pennsylvania RON law.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                    5
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">Review and Sign Your Document</h3>
-                    <p className="text-muted-foreground mb-4">
-                      The notary will review the document with you to ensure you understand what you're signing. You'll then electronically sign the document using our secure platform. The notary applies their official digital seal and signature.
-                    </p>
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="w-4 h-4 text-success" />
-                        <span>Notary witnesses your signature in real-time</span>
-                      </li>
-                      <li className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="w-4 h-4 text-success" />
-                        <span>Digital signature is tamper-evident</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xl font-bold">
-                    6
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-3">Receive Your Notarized Document</h3>
-                    <p className="text-muted-foreground mb-4">
-                      Immediately after the session, you'll receive your notarized document via email with a tamper-evident digital certificate. The original is stored securely for 10 years as required by Pennsylvania law.
-                    </p>
-                    <div className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <FileCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                      <span>Your notarized document is legally valid and can be submitted to any institution</span>
-                    </div>
-                  </div>
-                </div>
-              </Card>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {steps.map((step) => {
+                const Icon = step.icon;
+                return (
+                  <Card key={step.number} className="border shadow-sm hover:shadow-md transition-shadow">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                          {step.number}
+                        </div>
+                        <Icon className="w-6 h-6 text-slate-400" />
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h3>
+                      <p className="text-slate-600 text-sm">{step.description}</p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Requirements Section */}
-      <section className="py-16 bg-muted/30">
+      {/* Benefits */}
+      <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">What You'll Need</h2>
-            <Card className="p-8">
-              <ul className="space-y-4">
-                {requirements.map((req, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle className="w-6 h-6 text-success flex-shrink-0 mt-0.5" />
-                    <span className="text-lg">{req}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                Why Title Companies Choose RON
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
+                return (
+                  <div key={index} className="flex gap-4">
+                    <div className="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-6 h-6 text-cyan-600" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900 mb-1">{benefit.title}</h3>
+                      <p className="text-slate-600">{benefit.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 bg-background">
+      {/* RON States Coverage */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Why Choose RON?</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {benefits.map((benefit, index) => (
-                <Card key={index} className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
-                  <p className="text-muted-foreground">{benefit.desc}</p>
-                </Card>
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                RON-Enabled States
+              </h2>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                RON is legally authorized in the majority of states. We route orders to 
+                properly commissioned notaries in each jurisdiction.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              {ronStates.map(state => (
+                <span 
+                  key={state}
+                  className="px-3 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium"
+                >
+                  {state}
+                </span>
               ))}
             </div>
+
+            <p className="text-center text-slate-500 text-sm">
+              States without permanent RON laws can often use in-person notary or IPEN (In-Person Electronic Notarization).
+            </p>
           </div>
         </div>
       </section>
 
       {/* Legal Info */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Card className="p-8">
-              <div className="flex items-start gap-4">
-                <AlertCircle className="w-8 h-8 text-primary flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-2xl font-bold mb-4">Is RON Legally Valid?</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Yes! Pennsylvania enacted the Revised Uniform Law on Notarial Acts (RULONA) in 2020, making Remote Online Notarization fully legal and binding. RON notarizations are recognized in all 50 states and accepted by courts, financial institutions, and government agencies nationwide.
-                  </p>
-                  <p className="text-muted-foreground">
-                    All Notroom notaries are commissioned by the Pennsylvania Department of State and maintain comprehensive errors and omissions insurance. Each notarization creates a permanent, tamper-evident audit trail that provides even greater security than traditional paper notarizations.
-                  </p>
+            <Card className="border-0 shadow-lg">
+              <CardContent className="p-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <AlertCircle className="w-6 h-6 text-amber-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-3">Is RON Legally Valid for Mortgage Closings?</h3>
+                    <p className="text-slate-600 mb-4">
+                      Yes. The SECURE Notarization Act and state-level RON laws have made remote online 
+                      notarization fully legal and binding. RON notarizations are accepted by:
+                    </p>
+                    <ul className="grid sm:grid-cols-2 gap-3">
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5 text-emerald-500" />
+                        <span className="text-slate-700">Fannie Mae & Freddie Mac</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5 text-emerald-500" />
+                        <span className="text-slate-700">FHA & VA loans</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5 text-emerald-500" />
+                        <span className="text-slate-700">Major title underwriters</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5 text-emerald-500" />
+                        <span className="text-slate-700">County recorders nationwide</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Try Remote Online Notarization?</h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Book your RON session now. Fast, secure, and convenient document notarization from anywhere.
-          </p>
-          <Button 
-            size="lg" 
-            onClick={() => navigate("/services/remote-online-notary")}
-            variant="secondary"
-          >
-            Book RON Session - $60
-          </Button>
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Ready to Offer RON Closings?
+            </h2>
+            <p className="text-xl text-slate-300 mb-8">
+              We handle the complexity. You get faster closings and happier borrowers.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg"
+                onClick={() => navigate("/contact")}
+                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-lg px-8 py-6"
+              >
+                Start Free Pilot
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+              <Button 
+                size="lg"
+                variant="outline"
+                onClick={() => navigate("/coverage")}
+                className="border-slate-600 text-white hover:bg-white/10 text-lg px-8 py-6"
+              >
+                View Coverage Map
+              </Button>
+            </div>
+          </div>
         </div>
       </section>
-    </Layout>
+    </SigningLayout>
   );
 };
 

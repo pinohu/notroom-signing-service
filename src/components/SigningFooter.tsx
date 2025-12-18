@@ -76,10 +76,10 @@ const SigningFooter = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => navigateToPage("/pricing")} 
+                  onClick={() => navigateToPage("/services")} 
                   className="text-slate-400 hover:text-white transition-colors text-sm"
                 >
-                  Pricing
+                  Pricing & Tiers
                 </button>
               </li>
               <li>
@@ -169,10 +169,10 @@ const SigningFooter = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => navigateToPage("/track-booking")} 
+                  onClick={() => navigateToPage("/portal")} 
                   className="text-slate-400 hover:text-white transition-colors text-sm"
                 >
-                  Track Booking
+                  Client Portal
                 </button>
               </li>
             </ul>

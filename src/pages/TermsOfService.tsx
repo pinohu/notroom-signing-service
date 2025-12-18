@@ -1,4 +1,4 @@
-import Layout from "@/components/Layout";
+import SigningLayout from "@/components/SigningLayout";
 import SEO from "@/components/SEO";
 import { Card } from "@/components/ui/card";
 import { AlertCircle } from "lucide-react";
@@ -6,7 +6,7 @@ import { COMMISSION_INFO } from "@/constants/commission";
 
 const TermsOfService = () => {
   return (
-    <Layout>
+    <SigningLayout>
       <SEO
         title="Terms of Service - Notroom Notary Services"
         description="Comprehensive Terms of Service for Notroom notary services in Pennsylvania. Service limitations, fee structure, legal compliance, and customer responsibilities."
@@ -535,7 +535,7 @@ const TermsOfService = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </SigningLayout>
   );
 };
 

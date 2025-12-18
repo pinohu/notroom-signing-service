@@ -1,11 +1,11 @@
-import Layout from "@/components/Layout";
+import SigningLayout from "@/components/SigningLayout";
 import SEO from "@/components/SEO";
 import { Card } from "@/components/ui/card";
 import { Shield, AlertCircle } from "lucide-react";
 
 const PrivacyPolicy = () => {
   return (
-    <Layout>
+    <SigningLayout>
       <SEO
         title="Privacy Policy - Notroom Notary Services"
         description="Comprehensive Privacy Policy for Notroom. Learn how we collect, use, protect, and manage your personal information and notarization records in compliance with all applicable laws."
@@ -672,7 +672,7 @@ const PrivacyPolicy = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </SigningLayout>
   );
 };
 
