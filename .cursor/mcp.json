@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "notroom": {
+      "command": "npx",
+      "args": ["tsx", "tools/mcp/server.ts"],
+      "cwd": "${workspaceFolder}",
+      "env": {}
+    }
+  }
+}
+
