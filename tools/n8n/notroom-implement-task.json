@@ -1,0 +1,213 @@
+{
+  "name": "Notroom Implement Task",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "notroom/run",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "task",
+              "value": "={{ $json.body.task }}"
+            },
+            {
+              "name": "acceptance",
+              "value": "={{ $json.body.acceptance }}"
+            },
+            {
+              "name": "branch",
+              "value": "={{ $json.body.branch || 'feature/' + $json.body.task.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 30) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-variables",
+      "name": "Set Variables",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /workspace && node tools/runner/run-workflow.ts --task \"{{ $json.task }}\" --acceptance \"{{ $json.acceptance }}\" --branch \"{{ $json.branch }}\""
+      },
+      "id": "execute-workflow",
+      "name": "Execute Workflow",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "filePath": "/workspace/artifacts/patch.diff",
+        "options": {}
+      },
+      "id": "read-patch",
+      "name": "Read Patch",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "typeVersion": 1,
+      "position": [850, 200]
+    },
+    {
+      "parameters": {
+        "filePath": "/workspace/artifacts/summary.md",
+        "options": {}
+      },
+      "id": "read-summary",
+      "name": "Read Summary",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "filePath": "/workspace/artifacts/test.log",
+        "options": {}
+      },
+      "id": "read-testlog",
+      "name": "Read Test Log",
+      "type": "n8n-nodes-base.readBinaryFile",
+      "typeVersion": 1,
+      "position": [850, 400]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "status",
+              "value": "={{ $node['Execute Workflow'].json.exitCode === 0 ? 'success' : 'failed' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "merge-results",
+      "name": "Merge Results",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: $json.status, task: $node['Set Variables'].json.task, branch: $node['Set Variables'].json.branch, artifacts: { patch: $node['Read Patch'].binary ? 'available' : 'missing', summary: $node['Read Summary'].binary ? 'available' : 'missing', testLog: $node['Read Test Log'].binary ? 'available' : 'missing' } }) }}",
+        "options": {}
+      },
+      "id": "respond-webhook",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1250, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Set Variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Variables": {
+      "main": [
+        [
+          {
+            "node": "Execute Workflow",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Workflow": {
+      "main": [
+        [
+          {
+            "node": "Read Patch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Read Summary",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Read Test Log",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Patch": {
+      "main": [
+        [
+          {
+            "node": "Merge Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Summary": {
+      "main": [
+        [
+          {
+            "node": "Merge Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Test Log": {
+      "main": [
+        [
+          {
+            "node": "Merge Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Results": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "instanceId": "notroom-local"
+  }
+}
+

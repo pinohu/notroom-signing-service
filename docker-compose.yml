@@ -70,12 +70,39 @@ services:
     profiles:
       - debug
 
+  # n8n workflow automation (orchestration that never asks)
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: notroom-n8n
+    restart: unless-stopped
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - NODE_ENV=production
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=America/New_York
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=notroom_n8n
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./:/workspace:ro
+      - ./artifacts:/workspace/artifacts
+    working_dir: /workspace
+    profiles:
+      - automation
+
 volumes:
   postgres_data:
     driver: local
   redis_data:
     driver: local
   pgadmin_data:
+    driver: local
+  n8n_data:
     driver: local
 
 networks:
