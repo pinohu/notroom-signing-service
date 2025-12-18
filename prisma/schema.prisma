@@ -137,6 +137,28 @@ enum OnboardingStatus {
   REJECTED
 }
 
+enum BackgroundCheckProvider {
+  NNA_UPLOAD
+  EXISTING_SIGNING_SERVICE
+  INTELLICORP
+  GOODHIRE_BASIC
+  GOODHIRE_ENHANCED
+  CHECKR_BASIC
+  VERIFIED_CREDENTIALS
+}
+
+enum BackgroundCheckStatus {
+  NOT_STARTED
+  PENDING_PAYMENT
+  PAYMENT_FAILED
+  PENDING
+  IN_PROGRESS
+  CLEAR
+  CONSIDER
+  FAILED
+  ERROR
+}
+
 // ============================================================================
 // USER & AUTHENTICATION
 // ============================================================================
@@ -338,6 +360,45 @@ model NotaryOnboarding {
   @@index([status])
   @@index([submittedAt])
   @@map("notary_onboardings")
+}
+
+model BackgroundCheckPayment {
+  id                  String                  @id @default(cuid())
+  onboardingId        String
+  userId              String
+  
+  // Provider details
+  provider            BackgroundCheckProvider
+  providerCheckId     String?
+  
+  // Payment details
+  stripeSessionId     String                  @unique
+  stripePaymentIntent String?
+  amount              Int                     // Amount in cents
+  currency            String                  @default("usd")
+  
+  // Status tracking
+  status              BackgroundCheckStatus   @default(PENDING_PAYMENT)
+  invitationUrl       String?
+  reportUrl           String?
+  adjudication        String?                 // CLEAR, CONSIDER, etc.
+  
+  // Timestamps
+  createdAt           DateTime                @default(now())
+  paidAt              DateTime?
+  initiatedAt         DateTime?
+  completedAt         DateTime?
+  updatedAt           DateTime                @updatedAt
+  
+  // Webhook tracking
+  lastWebhookAt       DateTime?
+  webhookData         Json?
+  
+  @@index([onboardingId])
+  @@index([userId])
+  @@index([stripeSessionId])
+  @@index([status])
+  @@map("background_check_payments")
 }
 
 model NotaryStateCommission {
