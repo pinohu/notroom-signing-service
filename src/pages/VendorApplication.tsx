@@ -24,6 +24,7 @@ import {
   Zap,
 } from "lucide-react";
 import { getActiveStates, VENDOR_TIER_THRESHOLDS } from "@/constants/stateEligibility";
+import SigningLayout from "@/components/SigningLayout";
 import type { VendorSpecialization } from "@/types/vendor";
 
 const SPECIALIZATION_OPTIONS: { id: VendorSpecialization; label: string }[] = [
@@ -122,40 +123,43 @@ export default function VendorApplication() {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-4">
-        <Card className="w-full max-w-lg text-center">
-          <CardContent className="pt-12 pb-8">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="h-10 w-10 text-green-600" />
-            </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">
-              Application Received!
-            </h1>
-            <p className="text-gray-600 mb-6">
-              Thank you for applying to join the Notroom National Vendor Network. 
-              We'll review your application within 24-48 hours and contact you with next steps.
-            </p>
-            <div className="bg-slate-50 rounded-lg p-4 text-left mb-6">
-              <h3 className="font-medium text-gray-900 mb-2">What Happens Next:</h3>
-              <ul className="text-sm text-gray-600 space-y-2">
-                <li>✓ Commission verification</li>
-                <li>✓ Background check confirmation</li>
-                <li>✓ E&O insurance validation</li>
-                <li>✓ Equipment verification call (optional)</li>
-                <li>✓ Welcome to the network!</li>
-              </ul>
-            </div>
-            <Link to="/">
-              <Button>Return to Home</Button>
-            </Link>
-          </CardContent>
-        </Card>
-      </div>
+      <SigningLayout>
+        <div className="min-h-screen flex items-center justify-center p-4 pt-24">
+          <Card className="w-full max-w-lg text-center">
+            <CardContent className="pt-12 pb-8">
+              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="h-10 w-10 text-green-600" />
+              </div>
+              <h1 className="text-2xl font-bold text-gray-900 mb-4">
+                Application Received!
+              </h1>
+              <p className="text-gray-600 mb-6">
+                Thank you for applying to join the Notroom National Vendor Network. 
+                We'll review your application within 24-48 hours and contact you with next steps.
+              </p>
+              <div className="bg-slate-50 rounded-lg p-4 text-left mb-6">
+                <h3 className="font-medium text-gray-900 mb-2">What Happens Next:</h3>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>✓ Commission verification</li>
+                  <li>✓ Background check confirmation</li>
+                  <li>✓ E&O insurance validation</li>
+                  <li>✓ Equipment verification call (optional)</li>
+                  <li>✓ Welcome to the network!</li>
+                </ul>
+              </div>
+              <Link to="/">
+                <Button>Return to Home</Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </div>
+      </SigningLayout>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <SigningLayout>
+      <div className="min-h-screen">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-primary/90 to-primary text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
@@ -591,7 +595,8 @@ export default function VendorApplication() {
           </p>
         </div>
       </div>
-    </div>
+      </div>
+    </SigningLayout>
   );
 }
 

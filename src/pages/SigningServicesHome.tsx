@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import Layout from "@/components/Layout";
+import SigningLayout from "@/components/SigningLayout";
 import { 
   Clock, 
   Shield, 
@@ -129,7 +129,7 @@ const SigningServicesHome = () => {
   ];
 
   return (
-    <Layout>
+    <SigningLayout>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-[#0a0f1a]">
         {/* Animated gradient background */}
@@ -521,7 +521,7 @@ const SigningServicesHome = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </SigningLayout>
   );
 };
 
