@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Globe2 } from "lucide-react";
+import { Mail, Phone, Globe2 } from "lucide-react";
 import notroomLogo from "@/assets/notroom-logo.png";
 import { useNavigate } from "react-router-dom";
 
@@ -60,14 +60,6 @@ const SigningFooter = () => {
             <ul className="space-y-3">
               <li>
                 <button 
-                  onClick={() => navigateToPage("/title-companies")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  How It Works
-                </button>
-              </li>
-              <li>
-                <button 
                   onClick={() => navigateToPage("/services")} 
                   className="text-slate-400 hover:text-white transition-colors text-sm"
                 >
@@ -84,10 +76,10 @@ const SigningFooter = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => navigateToPage("/portal")} 
+                  onClick={() => navigateToPage("/pricing")} 
                   className="text-slate-400 hover:text-white transition-colors text-sm"
                 >
-                  Client Portal
+                  Pricing
                 </button>
               </li>
               <li>
@@ -96,14 +88,6 @@ const SigningFooter = () => {
                   className="text-slate-400 hover:text-white transition-colors text-sm"
                 >
                   Start a Pilot
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/pricing")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Pricing
                 </button>
               </li>
             </ul>
@@ -115,97 +99,18 @@ const SigningFooter = () => {
             <ul className="space-y-3">
               <li>
                 <button 
+                  onClick={() => navigateToPage("/for-notaries")} 
+                  className="text-slate-400 hover:text-white transition-colors text-sm"
+                >
+                  Why Join Notroom
+                </button>
+              </li>
+              <li>
+                <button 
                   onClick={() => navigateToPage("/apply")} 
                   className="text-slate-400 hover:text-white transition-colors text-sm"
                 >
-                  Join Our Network
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/vendor-benefits")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Elite Tier Benefits
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/scoring")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Performance Scoring
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/training")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Training & Resources
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/vendor-portal")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Vendor Portal
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Solutions */}
-          <div>
-            <h4 className="font-bold mb-4 text-lg text-white">Solutions</h4>
-            <ul className="space-y-3">
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/solutions/purchase")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Purchase Closings
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/solutions/refinance")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Refinance Closings
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/solutions/seller")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Seller Packages
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/solutions/hybrid")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Hybrid eClose
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/solutions/rescue")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Rescue Signings
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/solutions/after-hours")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  After-Hours
+                  Apply Now
                 </button>
               </li>
             </ul>
@@ -225,22 +130,6 @@ const SigningFooter = () => {
               </li>
               <li>
                 <button 
-                  onClick={() => navigateToPage("/why-notroom")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Why Notroom
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => navigateToPage("/case-studies")} 
-                  className="text-slate-400 hover:text-white transition-colors text-sm"
-                >
-                  Case Studies
-                </button>
-              </li>
-              <li>
-                <button 
                   onClick={() => navigateToPage("/contact")} 
                   className="text-slate-400 hover:text-white transition-colors text-sm"
                 >
@@ -253,6 +142,37 @@ const SigningFooter = () => {
                   className="text-slate-400 hover:text-white transition-colors text-sm"
                 >
                   Erie Local Services
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h4 className="font-bold mb-4 text-lg text-white">Resources</h4>
+            <ul className="space-y-3">
+              <li>
+                <button 
+                  onClick={() => navigateToPage("/resources/how-ron-works")} 
+                  className="text-slate-400 hover:text-white transition-colors text-sm"
+                >
+                  How RON Works
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => navigateToPage("/calculator")} 
+                  className="text-slate-400 hover:text-white transition-colors text-sm"
+                >
+                  Price Calculator
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => navigateToPage("/track-booking")} 
+                  className="text-slate-400 hover:text-white transition-colors text-sm"
+                >
+                  Track Booking
                 </button>
               </li>
             </ul>
@@ -336,4 +256,3 @@ const SigningFooter = () => {
 };
 
 export default SigningFooter;
-

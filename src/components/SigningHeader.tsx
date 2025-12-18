@@ -39,35 +39,21 @@ const SigningHeader = () => {
   };
 
   const forTitleCompanies = [
-    { label: "How It Works", path: "/title-companies", desc: "Learn how Notroom handles your signings" },
     { label: "Service Tiers", path: "/services", desc: "Standard, Priority & Rescue options" },
     { label: "Coverage Map", path: "/coverage", desc: "50-state in-person & RON coverage" },
-    { label: "Client Portal", path: "/portal", desc: "Submit orders & track status" },
+    { label: "Pricing", path: "/pricing", desc: "Transparent fee schedules" },
     { label: "Start a Pilot", path: "/contact", desc: "First 10 signings free" },
   ];
 
   const forNotaries = [
-    { label: "Join Our Network", path: "/apply", desc: "Apply to become a Notroom vendor" },
-    { label: "Elite Tier Benefits", path: "/vendor-benefits", desc: "Fast pay, priority routing & more" },
-    { label: "Performance Scoring", path: "/scoring", desc: "How we reward top performers" },
-    { label: "Training & Resources", path: "/training", desc: "Standards & best practices" },
-    { label: "Vendor Portal", path: "/vendor-portal", desc: "Manage assignments & payments" },
-  ];
-
-  const solutions = [
-    { label: "Purchase Closings", path: "/solutions/purchase", desc: "Residential purchase transactions" },
-    { label: "Refinance Closings", path: "/solutions/refinance", desc: "Refi & HELOC signings" },
-    { label: "Seller Packages", path: "/solutions/seller", desc: "Seller-side document signings" },
-    { label: "Hybrid eClose", path: "/solutions/hybrid", desc: "Combined RON + in-person" },
-    { label: "Rescue Signings", path: "/solutions/rescue", desc: "Emergency & failed signing recovery" },
-    { label: "After-Hours", path: "/solutions/after-hours", desc: "Evening & weekend availability" },
+    { label: "Why Join Notroom", path: "/for-notaries", desc: "Benefits, tiers & requirements" },
+    { label: "Apply Now", path: "/apply", desc: "Join the elite notary network" },
   ];
 
   const company = [
     { label: "About Notroom", path: "/about", desc: "Our mission & story" },
-    { label: "Why Notroom", path: "/why-notroom", desc: "What sets us apart" },
-    { label: "Case Studies", path: "/case-studies", desc: "Client success stories" },
     { label: "Contact Us", path: "/contact", desc: "Get in touch" },
+    { label: "Erie Local Services", path: "/local", desc: "PA local notary services" },
   ];
 
   return (
@@ -145,36 +131,6 @@ const SigningHeader = () => {
                   <NavigationMenuContent className="bg-slate-800/98 backdrop-blur-md border border-slate-700 shadow-xl z-[100]">
                     <ul className="grid w-[400px] gap-2 p-4" role="menu">
                       {forNotaries.map((item) => (
-                        <li key={item.path} role="none">
-                          <NavigationMenuLink asChild>
-                            <button
-                              onClick={() => navigateToPage(item.path)}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-slate-700 focus:bg-slate-700 w-full text-left"
-                              role="menuitem"
-                            >
-                              <div className="text-sm font-medium text-white leading-none">{item.label}</div>
-                              <p className="text-xs text-slate-400 leading-snug mt-1">
-                                {item.desc}
-                              </p>
-                            </button>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                {/* Solutions Dropdown */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger 
-                    className="text-slate-200 hover:text-white focus:text-white font-medium bg-transparent hover:bg-white/10"
-                    aria-label="Solutions menu"
-                  >
-                    Solutions
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent className="bg-slate-800/98 backdrop-blur-md border border-slate-700 shadow-xl z-[100]">
-                    <ul className="grid w-[400px] gap-2 p-4" role="menu">
-                      {solutions.map((item) => (
                         <li key={item.path} role="none">
                           <NavigationMenuLink asChild>
                             <button
@@ -358,10 +314,10 @@ const SigningHeader = () => {
 
                 <div className="border-t border-slate-700 pt-4">
                   <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
-                    Solutions
+                    Company
                   </h3>
                   <div className="flex flex-col gap-2 pl-2">
-                    {solutions.map((item) => (
+                    {company.map((item) => (
                       <button
                         key={item.path}
                         onClick={() => navigateToPage(item.path)}
@@ -371,15 +327,6 @@ const SigningHeader = () => {
                       </button>
                     ))}
                   </div>
-                </div>
-
-                <div className="border-t border-slate-700 pt-4">
-                  <button
-                    onClick={() => navigateToPage("/portal")}
-                    className="text-left text-base font-medium text-slate-300 hover:text-white transition-colors"
-                  >
-                    Client Login
-                  </button>
                 </div>
               </nav>
             </SheetContent>

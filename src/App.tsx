@@ -8,6 +8,11 @@ import CookieConsent from "@/components/CookieConsent";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import SigningServicesHome from "./pages/SigningServicesHome";
+import SigningContact from "./pages/signing/Contact";
+import SigningAbout from "./pages/signing/About";
+import SigningServices from "./pages/signing/Services";
+import SigningCoverage from "./pages/signing/Coverage";
+import ForNotaries from "./pages/signing/ForNotaries";
 import NotFound from "./pages/NotFound";
 import RemoteOnlineNotary from "./pages/services/RemoteOnlineNotary";
 import MobileNotary from "./pages/services/MobileNotary";
@@ -159,6 +164,13 @@ const App = () => (
           <Routes>
           <Route path="/" element={<SigningServicesHome />} />
           <Route path="/local" element={<Index />} />
+          
+          {/* National Signing Service Pages */}
+          <Route path="/contact" element={<SigningContact />} />
+          <Route path="/about" element={<SigningAbout />} />
+          <Route path="/services" element={<SigningServices />} />
+          <Route path="/coverage" element={<SigningCoverage />} />
+          <Route path="/for-notaries" element={<ForNotaries />} />
           
           {/* Service Pages */}
           <Route path="/services/remote-online-notary" element={<RemoteOnlineNotary />} />
