@@ -1,392 +1,280 @@
-#!/usr/bin/env npx tsx
-/**
- * Workflow Runner - Orchestrates development steps locally
- * Windows-safe version that produces artifacts/test.log
- * 
- * Usage:
- *   npx tsx tools/runner/run-workflow.ts [workflow] [--fix]
- *   npx tsx tools/runner/run-workflow.ts --task "..." --acceptance "..." --branch "feature/x"
- */
+// tools/runner/run-workflow.ts
+/* eslint-disable no-console */
+import { spawn } from "node:child_process";
+import * as fs from "node:fs";
+import * as path from "node:path";
 
-import { spawn, exec } from "node:child_process"
-import { promisify } from "node:util"
-import * as fs from "node:fs"
-import * as path from "node:path"
+type Step = {
+  name: string;
+  cmd: string;
+  canFix?: boolean;
+};
 
-const execAsync = promisify(exec)
+const repoRoot = process.cwd();
+const artifactsDir = path.join(repoRoot, "artifacts");
+const testLogPath = path.join(artifactsDir, "test.log");
 
-// Simple color functions (no chalk dependency needed)
-const colors = {
-  cyan: (s: string) => `\x1b[36m${s}\x1b[0m`,
-  green: (s: string) => `\x1b[32m${s}\x1b[0m`,
-  red: (s: string) => `\x1b[31m${s}\x1b[0m`,
-  blue: (s: string) => `\x1b[34m${s}\x1b[0m`,
-  gray: (s: string) => `\x1b[90m${s}\x1b[0m`,
-  yellow: (s: string) => `\x1b[33m${s}\x1b[0m`,
-}
-
-interface WorkflowStep {
-  name: string
-  cmd: string
-  canFix?: boolean
-}
-
-const WORKFLOWS: Record<string, WorkflowStep[]> = {
+const WORKFLOWS: Record<string, Step[]> = {
   lint: [{ name: "ESLint", cmd: "pnpm -s lint", canFix: true }],
   typecheck: [{ name: "TypeScript", cmd: "pnpm -s typecheck" }],
   test: [{ name: "Tests", cmd: "pnpm -s test" }],
   build: [{ name: "Build", cmd: "pnpm -s build" }],
-  full: [
-    { name: "ESLint", cmd: "pnpm -s lint", canFix: true },
-    { name: "TypeScript", cmd: "pnpm -s typecheck" },
-    { name: "Tests", cmd: "pnpm -s test" },
-    { name: "Build", cmd: "pnpm -s build" },
-  ],
   doctor: [{ name: "Environment Check", cmd: "pnpm -s doctor" }],
-  "test-all": [{ name: "Full Test Suite", cmd: "pnpm -s test-all" }],
+};
+
+// full = lint + typecheck + test + build
+WORKFLOWS.full = [
+  ...WORKFLOWS.lint,
+  ...WORKFLOWS.typecheck,
+  ...WORKFLOWS.test,
+  ...WORKFLOWS.build,
+];
+
+function ensureArtifactsDir() {
+  fs.mkdirSync(artifactsDir, { recursive: true });
 }
 
-interface RunResult {
-  step: string
-  success: boolean
-  duration: number
-  output: string
+function nowIso() {
+  return new Date().toISOString();
 }
 
-interface TaskConfig {
-  task: string
-  acceptance: string
-  branch: string
+function appendLog(lines: string[], chunk: string) {
+  // keep CRLF friendly in Windows
+  lines.push(chunk.replace(/\r?\n/g, "\n"));
 }
 
-// Collected log for artifacts/test.log
-let fullLog: string[] = []
-
-function log(msg: string) {
-  console.log(msg)
-  fullLog.push(msg)
+function writeTestLog(lines: string[]) {
+  ensureArtifactsDir();
+  fs.writeFileSync(testLogPath, lines.join(""), "utf8");
 }
 
-function logError(msg: string) {
-  console.error(msg)
-  fullLog.push(msg)
-}
-
-async function runCommand(cmd: string): Promise<{ success: boolean; output: string }> {
-  return new Promise((resolve) => {
-    const proc = spawn(cmd, [], {
-      shell: true, // Important for Windows
-      stdio: ["inherit", "pipe", "pipe"],
-      cwd: process.cwd(),
-    })
-
-    let output = ""
-    proc.stdout?.on("data", (data) => {
-      const str = data.toString()
-      output += str
-      process.stdout.write(data)
-      fullLog.push(str)
-    })
-    proc.stderr?.on("data", (data) => {
-      const str = data.toString()
-      output += str
-      process.stderr.write(data)
-      fullLog.push(str)
-    })
-
-    proc.on("close", (code) => {
-      resolve({ success: code === 0, output })
-    })
-  })
-}
-
-async function runWorkflow(workflowName: string, fix: boolean = false): Promise<RunResult[]> {
-  const workflow = WORKFLOWS[workflowName]
-  if (!workflow) {
-    logError(colors.red(`Unknown workflow: ${workflowName}`))
-    log(colors.gray(`Available: ${Object.keys(WORKFLOWS).join(", ")}`))
-    process.exit(1)
-  }
-
-  log(colors.cyan(`\n🚀 Running workflow: ${workflowName}\n`))
-
-  const results: RunResult[] = []
-  const startTime = Date.now()
-
-  for (const step of workflow) {
-    log(colors.blue(`\n>>> ${step.name}`))
-    log(colors.gray(`    ${step.cmd}${fix && step.canFix ? " --fix" : ""}\n`))
-
-    const stepStart = Date.now()
-    const cmd = fix && step.canFix ? `${step.cmd} --fix` : step.cmd
-    const { success, output } = await runCommand(cmd)
-
-    results.push({
-      step: step.name,
-      success,
-      duration: Date.now() - stepStart,
-      output,
-    })
-
-    if (!success) {
-      log(colors.red(`\n❌ ${step.name} failed\n`))
-      break
+function safeJsonDecodeMaybe(value?: string): string | undefined {
+  if (!value) return value;
+  const trimmed = value.trim();
+  // MCP call passes JSON.stringify("...") sometimes -> "\"text\""
+  if ((trimmed.startsWith('"') && trimmed.endsWith('"')) || trimmed.startsWith("{") || trimmed.startsWith("[")) {
+    try {
+      const parsed = JSON.parse(trimmed);
+      return typeof parsed === "string" ? parsed : JSON.stringify(parsed);
+    } catch {
+      return value;
     }
-
-    log(
-      colors.green(`✓ ${step.name} passed (${((Date.now() - stepStart) / 1000).toFixed(1)}s)`)
-    )
   }
-
-  // Summary
-  const totalDuration = ((Date.now() - startTime) / 1000).toFixed(1)
-  const allPassed = results.every((r) => r.success)
-
-  log(colors.cyan("\n" + "=".repeat(50)))
-  log(colors.cyan("Summary"))
-  log(colors.cyan("=".repeat(50)))
-
-  for (const result of results) {
-    const icon = result.success ? colors.green("✓") : colors.red("✗")
-    const duration = colors.gray(`(${(result.duration / 1000).toFixed(1)}s)`)
-    log(`  ${icon} ${result.step} ${duration}`)
-  }
-
-  log(colors.cyan("=".repeat(50)))
-  log(
-    allPassed
-      ? colors.green(`\n✓ All steps passed in ${totalDuration}s\n`)
-      : colors.red(`\n✗ Workflow failed after ${totalDuration}s\n`)
-  )
-
-  return results
+  return value;
 }
 
-async function ensureArtifactsDir() {
-  const artifactsDir = path.join(process.cwd(), "artifacts")
-  fs.mkdirSync(artifactsDir, { recursive: true })
-  return artifactsDir
-}
+function parseArgs(argv: string[]) {
+  // Supports:
+  // pnpm workflow full --fix
+  // pnpm workflow lint
+  // pnpm workflow -- --task "..." --acceptance "..." --branch "..."
+  //
+  // pnpm adds its own args; we only look at process.argv.slice(2)
+  const out: {
+    workflow?: string;
+    fix?: boolean;
+    task?: string;
+    acceptance?: string;
+    branch?: string;
+  } = {};
 
-async function saveTestLog(artifactsDir: string) {
-  const testLogPath = path.join(artifactsDir, "test.log")
-  fs.writeFileSync(testLogPath, fullLog.join("\n"), "utf8")
-  log(colors.gray(`  - artifacts/test.log`))
-}
+  // If args include "--", treat everything after as "task mode args"
+  const dd = argv.indexOf("--");
+  const left = dd >= 0 ? argv.slice(0, dd) : argv.slice();
+  const right = dd >= 0 ? argv.slice(dd + 1) : [];
 
-async function runPatch() {
-  log(colors.cyan("\n📦 Generating artifacts...\n"))
-  
-  const artifactsDir = await ensureArtifactsDir()
-  
-  // Generate patch.diff
-  try {
-    const { stdout: patchContent } = await execAsync("git diff --patch", { cwd: process.cwd() })
-    fs.writeFileSync(path.join(artifactsDir, "patch.diff"), patchContent, "utf8")
-    log(colors.gray(`  - artifacts/patch.diff`))
-  } catch {
-    fs.writeFileSync(path.join(artifactsDir, "patch.diff"), "", "utf8")
-  }
+  // left side: workflow name + flags
+  // Example: ["full", "--fix"]
+  if (left.length > 0 && !left[0].startsWith("-")) out.workflow = left[0];
+  out.fix = left.includes("--fix") || left.includes("-f");
 
-  // Generate status.txt
-  try {
-    const { stdout: statusContent } = await execAsync("git status --porcelain", { cwd: process.cwd() })
-    fs.writeFileSync(path.join(artifactsDir, "status.txt"), statusContent, "utf8")
-    log(colors.gray(`  - artifacts/status.txt`))
-  } catch {
-    fs.writeFileSync(path.join(artifactsDir, "status.txt"), "", "utf8")
-  }
-
-  // Generate summary.md
-  try {
-    const { stdout: filesChanged } = await execAsync("git diff --name-only", { cwd: process.cwd() })
-    const summary = `# Notroom Autopilot Summary
-
-## Files changed
-${filesChanged || "No changes detected"}
-`
-    fs.writeFileSync(path.join(artifactsDir, "summary.md"), summary, "utf8")
-    log(colors.gray(`  - artifacts/summary.md`))
-  } catch {
-    fs.writeFileSync(path.join(artifactsDir, "summary.md"), "# Notroom Autopilot Summary\n\nNo changes detected", "utf8")
-  }
-
-  return artifactsDir
-}
-
-async function runTaskMode(config: TaskConfig): Promise<void> {
-  log(colors.cyan("\n🤖 Notroom Autopilot - Task Mode\n"))
-  log(colors.yellow(`Task: ${config.task}`))
-  log(colors.yellow(`Acceptance: ${config.acceptance}`))
-  log(colors.yellow(`Branch: ${config.branch}\n`))
-
-  const artifactsDir = await ensureArtifactsDir()
-
-  // Write task context to artifacts
-  const context = {
-    task: config.task,
-    acceptance: config.acceptance,
-    branch: config.branch,
-    startedAt: new Date().toISOString(),
-  }
-  fs.writeFileSync(path.join(artifactsDir, "task-context.json"), JSON.stringify(context, null, 2), "utf8")
-
-  // Create or checkout branch
-  try {
-    await execAsync(`git checkout -b ${config.branch} 2>nul || git checkout ${config.branch}`, { cwd: process.cwd() })
-    log(colors.green(`✓ On branch: ${config.branch}`))
-  } catch {
-    log(colors.yellow(`⚠ Could not switch to branch ${config.branch}, continuing on current branch`))
-  }
-
-  // Run full workflow
-  const results = await runWorkflow("full", true)
-  const allPassed = results.every((r) => r.success)
-
-  // Generate patch and summary
-  await runPatch()
-
-  // Save test log
-  await saveTestLog(artifactsDir)
-
-  // Update summary with task info
-  const summaryPath = path.join(artifactsDir, "summary.md")
-  let existingSummary = ""
-  try {
-    existingSummary = fs.readFileSync(summaryPath, "utf8")
-  } catch { /* ignore */ }
-
-  const filesSection = existingSummary.split("## Files changed")[1] || "No changes detected"
-
-  const updatedSummary = `# Notroom Autopilot Summary
-
-## Task
-${config.task}
-
-## Acceptance Criteria
-${config.acceptance}
-
-## Branch
-${config.branch}
-
-## Status
-${allPassed ? "✅ All checks passed" : "❌ Some checks failed"}
-
-## Test Results
-${results.map((r) => `- ${r.success ? "✅" : "❌"} ${r.step}`).join("\n")}
-
-## Files Changed
-${filesSection}
-`
-
-  fs.writeFileSync(summaryPath, updatedSummary, "utf8")
-
-  log(colors.cyan("\n📦 Artifacts generated:"))
-  log(colors.gray("  - artifacts/patch.diff"))
-  log(colors.gray("  - artifacts/summary.md"))
-  log(colors.gray("  - artifacts/test.log"))
-  log(colors.gray("  - artifacts/status.txt"))
-  log(colors.gray("  - artifacts/task-context.json"))
-
-  process.exit(allPassed ? 0 : 1)
-}
-
-function parseArgs(args: string[]): { workflow?: string; fix: boolean; taskConfig?: TaskConfig } {
-  const result: { workflow?: string; fix: boolean; taskConfig?: TaskConfig } = { fix: false }
-
-  let task: string | undefined
-  let acceptance: string | undefined
-  let branch: string | undefined
-
-  for (let i = 0; i < args.length; i++) {
-    const arg = args[i]
-
-    if (arg === "--fix") {
-      result.fix = true
-    } else if (arg === "--task" && args[i + 1]) {
-      // Handle JSON-encoded strings from MCP
-      let val = args[++i]
-      try {
-        val = JSON.parse(val)
-      } catch { /* use as-is */ }
-      task = val
-    } else if (arg === "--acceptance" && args[i + 1]) {
-      let val = args[++i]
-      try {
-        val = JSON.parse(val)
-      } catch { /* use as-is */ }
-      acceptance = val
-    } else if (arg === "--branch" && args[i + 1]) {
-      let val = args[++i]
-      try {
-        val = JSON.parse(val)
-      } catch { /* use as-is */ }
-      branch = val
-    } else if (!arg.startsWith("--")) {
-      result.workflow = arg
+  // right side: --task, --acceptance, --branch
+  for (let i = 0; i < right.length; i++) {
+    const a = right[i];
+    const next = right[i + 1];
+    if (a === "--task" && next) {
+      out.task = safeJsonDecodeMaybe(next);
+      i++;
+    } else if (a === "--acceptance" && next) {
+      out.acceptance = safeJsonDecodeMaybe(next);
+      i++;
+    } else if (a === "--branch" && next) {
+      out.branch = safeJsonDecodeMaybe(next);
+      i++;
     }
   }
 
-  if (task) {
-    result.taskConfig = {
-      task,
-      acceptance: acceptance || "No acceptance criteria provided",
-      branch: branch || `feature/${task.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 30)}`,
-    }
+  return out;
+}
+
+function runCommand(cmd: string, log: string[], opts?: { cwd?: string }) {
+  return new Promise<{ code: number; stdout: string; stderr: string }>((resolve) => {
+    const child = spawn(cmd, {
+      cwd: opts?.cwd ?? repoRoot,
+      shell: true, // Windows-safe
+      env: process.env,
+    });
+
+    let stdout = "";
+    let stderr = "";
+
+    child.stdout.on("data", (d) => {
+      const s = d.toString();
+      stdout += s;
+      appendLog(log, s);
+    });
+
+    child.stderr.on("data", (d) => {
+      const s = d.toString();
+      stderr += s;
+      appendLog(log, s);
+    });
+
+    child.on("close", (code) => resolve({ code: code ?? 0, stdout, stderr }));
+  });
+}
+
+async function gitCheckoutBranch(branch: string, log: string[]) {
+  // Create if not exists, otherwise checkout
+  appendLog(log, `\n[${nowIso()}] Git: checkout branch ${branch}\n`);
+  const r1 = await runCommand(`git checkout ${branch}`, log);
+  if (r1.code === 0) return;
+  await runCommand(`git checkout -b ${branch}`, log);
+}
+
+function slugify(s: string) {
+  return s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 60);
+}
+
+function defaultBranchFromTask(task: string) {
+  return `feature/${slugify(task) || "task"}`;
+}
+
+async function maybeFixLint(step: Step, log: string[]) {
+  // Try to run ESLint with --fix using pnpm script passthrough
+  // Your lint script is "eslint", so: pnpm -s lint -- --fix
+  appendLog(log, `\n[${nowIso()}] Attempting auto-fix: ${step.name}\n`);
+  return runCommand(`pnpm -s lint -- --fix`, log);
+}
+
+async function runWorkflow(workflowName: string, fix: boolean, log: string[]) {
+  const steps = WORKFLOWS[workflowName];
+  if (!steps) {
+    throw new Error(
+      `Unknown workflow "${workflowName}". Available: ${Object.keys(WORKFLOWS).sort().join(", ")}`
+    );
   }
 
-  return result
+  for (const step of steps) {
+    appendLog(log, `\n============================================================\n`);
+    appendLog(log, `[${nowIso()}] STEP: ${step.name}\n`);
+    appendLog(log, `CMD: ${step.cmd}\n`);
+    appendLog(log, `============================================================\n`);
+
+    const r = await runCommand(step.cmd, log);
+
+    if (r.code === 0) {
+      appendLog(log, `\n[${nowIso()}] OK: ${step.name}\n`);
+      continue;
+    }
+
+    appendLog(log, `\n[${nowIso()}] FAIL (${r.code}): ${step.name}\n`);
+
+    if (fix && step.canFix) {
+      const fixRes = await maybeFixLint(step, log);
+      if (fixRes.code === 0) {
+        appendLog(log, `\n[${nowIso()}] Auto-fix succeeded. Re-running: ${step.name}\n`);
+        const rerun = await runCommand(step.cmd, log);
+        if (rerun.code === 0) {
+          appendLog(log, `\n[${nowIso()}] OK after fix: ${step.name}\n`);
+          continue;
+        }
+        appendLog(log, `\n[${nowIso()}] Still failing after fix: ${step.name}\n`);
+        throw new Error(`Step failed after fix: ${step.name}`);
+      } else {
+        appendLog(log, `\n[${nowIso()}] Auto-fix failed (${fixRes.code}): ${step.name}\n`);
+        throw new Error(`Auto-fix failed: ${step.name}`);
+      }
+    }
+
+    throw new Error(`Step failed: ${step.name}`);
+  }
 }
 
-// Parse args
-const args = process.argv.slice(2)
-
-if (args.includes("--help") || args.includes("-h")) {
-  console.log(`
-Usage: npx tsx tools/runner/run-workflow.ts [workflow] [options]
-
-Workflows:
-  lint       - Run ESLint
-  typecheck  - Run TypeScript type checking
-  test       - Run tests
-  build      - Build the application
-  full       - Run all steps (default)
-  doctor     - Check environment setup
-  test-all   - Run full test suite with all checks
-
-Options:
-  --fix              - Auto-fix issues where possible
-  --task "..."       - Task description (enables task mode)
-  --acceptance "..." - Acceptance criteria (optional with --task)
-  --branch "..."     - Branch name (optional, auto-generated)
-  --help             - Show this help
-
-Task Mode (for MCP integration):
-  npx tsx tools/runner/run-workflow.ts \\
-    --task "Add user authentication" \\
-    --acceptance "Users can login with email/password" \\
-    --branch "feature/auth"
-
-  This will:
-  1. Create/checkout the branch
-  2. Run full workflow (lint, typecheck, test, build)
-  3. Generate artifacts: patch.diff, summary.md, test.log
-`)
-  process.exit(0)
+async function generateArtifacts(log: string[]) {
+  appendLog(log, `\n[${nowIso()}] Generating artifacts via pnpm patch\n`);
+  const r = await runCommand(`pnpm -s patch`, log);
+  if (r.code !== 0) {
+    throw new Error("Artifact generation failed: pnpm patch");
+  }
 }
 
-const parsed = parseArgs(args)
+async function main() {
+  ensureArtifactsDir();
 
-if (parsed.taskConfig) {
-  runTaskMode(parsed.taskConfig)
-} else {
-  runWorkflow(parsed.workflow || "full", parsed.fix).then(async (results) => {
-    const allPassed = results.every((r) => r.success)
-    
-    // Always generate artifacts
-    const artifactsDir = await runPatch()
-    await saveTestLog(artifactsDir)
-    
-    process.exit(allPassed ? 0 : 1)
-  })
+  const log: string[] = [];
+  appendLog(log, `\n[${nowIso()}] Notroom workflow runner starting...\n`);
+
+  const args = parseArgs(process.argv.slice(2));
+
+  // Decide mode:
+  // - Task mode: if --task provided, default workflow = full
+  // - Manual mode: workflow name is first arg
+  const isTaskMode = !!args.task;
+
+  const workflowName = args.workflow ?? (isTaskMode ? "full" : "full");
+  const fix = !!args.fix;
+
+  if (isTaskMode) {
+    appendLog(log, `\n[${nowIso()}] MODE: task\n`);
+    appendLog(log, `Task: ${args.task}\n`);
+    if (args.acceptance) appendLog(log, `Acceptance: ${args.acceptance}\n`);
+
+    const branch = args.branch || defaultBranchFromTask(args.task!);
+    await gitCheckoutBranch(branch, log);
+
+    // In task mode, we DO NOT implement code changes here
+    // because Cursor Agent performs edits. This runner is the verifier + artifact producer.
+    // If you later add an "agent CLI" step, it would go here.
+  } else {
+    appendLog(log, `\n[${nowIso()}] MODE: manual\n`);
+  }
+
+  try {
+    await runWorkflow(workflowName, fix, log);
+    await generateArtifacts(log);
+
+    appendLog(log, `\n[${nowIso()}] DONE: workflow=${workflowName}\n`);
+    writeTestLog(log);
+    process.exit(0);
+  } catch (err: any) {
+    appendLog(log, `\n[${nowIso()}] ERROR: ${err?.message || String(err)}\n`);
+    // still try to generate patch artifacts so Cursor can inspect partial changes
+    try {
+      await generateArtifacts(log);
+    } catch (e: any) {
+      appendLog(log, `\n[${nowIso()}] (artifact generation also failed): ${e?.message || String(e)}\n`);
+    }
+    writeTestLog(log);
+    process.exit(1);
+  }
 }
+
+main().catch((e) => {
+  try {
+    ensureArtifactsDir();
+    fs.writeFileSync(
+      testLogPath,
+      `\n[${nowIso()}] FATAL: ${e?.message || String(e)}\n`,
+      "utf8"
+    );
+  } catch {
+    // ignore
+  }
+  console.error(e);
+  process.exit(1);
+});
