@@ -8,6 +8,7 @@ import {
 } from "@/lib/api/utils"
 import type { CompleteAssignmentInput } from "@/types/api"
 import { AssignmentStatus, OrderStatus, PaymentStatus } from "@prisma/client"
+import { updateNotaryTier } from "@/lib/scoring"
 
 // ============================================================================
 // POST /api/assignments/[id]/complete - Mark assignment complete
@@ -107,8 +108,8 @@ export async function POST(
       },
     })
 
-    // Update notary performance metrics
-    await updateNotaryPerformance(assignment.notaryId)
+    // Update notary score and tier using the scoring system
+    const tierUpdate = await updateNotaryTier(assignment.notaryId)
 
     // TODO: Send completion notification to title company
     // TODO: Trigger scanback reminder
@@ -120,97 +121,15 @@ export async function POST(
         amount: payment.amount,
         status: payment.status,
       },
+      tierUpdate: {
+        previousTier: tierUpdate.previousTier,
+        newTier: tierUpdate.newTier,
+        newScore: tierUpdate.newScore,
+        tierChanged: tierUpdate.tierChanged,
+      },
       message: "Assignment completed successfully. Payment is pending.",
     })
   })
 }
 
-// ============================================================================
-// Helper: Update Notary Performance
-// ============================================================================
-
-async function updateNotaryPerformance(notaryId: string) {
-  // Get all completed assignments for this notary
-  const assignments = await prisma.assignment.findMany({
-    where: { notaryId },
-    include: { order: true },
-  })
-
-  const total = assignments.length
-  const completed = assignments.filter(a => a.status === AssignmentStatus.COMPLETED).length
-  const cancelled = assignments.filter(a => a.status === AssignmentStatus.CANCELLED).length
-  const noShow = assignments.filter(a => a.status === AssignmentStatus.NO_SHOW).length
-  
-  // Calculate rates
-  const acceptedAssignments = assignments.filter(a => 
-    [AssignmentStatus.ACCEPTED, AssignmentStatus.COMPLETED].includes(a.status)
-  )
-  const acceptanceRate = total > 0 ? (acceptedAssignments.length / total) * 100 : 0
-  
-  // Calculate on-time rate (simplified - checking if completed before SLA)
-  const onTimeCount = assignments.filter(a => {
-    if (a.status !== AssignmentStatus.COMPLETED || !a.completedAt) return false
-    const order = a.order
-    if (!order.scanbackDeadline) return true
-    return a.completedAt <= order.scanbackDeadline
-  }).length
-  const onTimeRate = completed > 0 ? (onTimeCount / completed) * 100 : 0
-
-  // Calculate average confirmation time
-  const confirmTimes = assignments
-    .filter(a => a.confirmationTime !== null)
-    .map(a => a.confirmationTime as number)
-  const avgConfirmTime = confirmTimes.length > 0
-    ? Math.round(confirmTimes.reduce((a, b) => a + b, 0) / confirmTimes.length)
-    : null
-
-  // Determine tier based on metrics
-  let tier: "BRONZE" | "SILVER" | "GOLD" | "ELITE" = "BRONZE"
-  if (completed >= 50 && acceptanceRate >= 90 && onTimeRate >= 95) {
-    tier = "ELITE"
-  } else if (completed >= 25 && acceptanceRate >= 75 && onTimeRate >= 90) {
-    tier = "GOLD"
-  } else if (completed >= 10 && acceptanceRate >= 60 && onTimeRate >= 80) {
-    tier = "SILVER"
-  }
-
-  // Update performance record
-  await prisma.notaryPerformance.upsert({
-    where: { notaryId },
-    update: {
-      totalSignings: total,
-      completedSignings: completed,
-      cancelledSignings: cancelled,
-      noShowCount: noShow,
-      acceptanceRate,
-      onTimeRate,
-      avgConfirmTime,
-      tier,
-      lastCalculatedAt: new Date(),
-    },
-    create: {
-      notaryId,
-      totalSignings: total,
-      completedSignings: completed,
-      cancelledSignings: cancelled,
-      noShowCount: noShow,
-      acceptanceRate,
-      onTimeRate,
-      avgConfirmTime,
-      tier,
-    },
-  })
-
-  // Update notary's tier and elite score
-  const eliteScore = Math.round(
-    (acceptanceRate * 0.3) + 
-    (onTimeRate * 0.4) + 
-    (Math.min(100, completed) * 0.3)
-  )
-
-  await prisma.notary.update({
-    where: { id: notaryId },
-    data: { tier, eliteScore },
-  })
-}
 
