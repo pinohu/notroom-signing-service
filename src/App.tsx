@@ -7,6 +7,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import CookieConsent from "@/components/CookieConsent";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
+import SigningServicesHome from "./pages/SigningServicesHome";
 import NotFound from "./pages/NotFound";
 import RemoteOnlineNotary from "./pages/services/RemoteOnlineNotary";
 import MobileNotary from "./pages/services/MobileNotary";
@@ -156,7 +157,8 @@ const App = () => (
           >
           <ScrollToTop />
           <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<SigningServicesHome />} />
+          <Route path="/local" element={<Index />} />
           
           {/* Service Pages */}
           <Route path="/services/remote-online-notary" element={<RemoteOnlineNotary />} />
