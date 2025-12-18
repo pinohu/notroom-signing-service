@@ -128,6 +128,15 @@ enum IntegrationType {
   SIGNING_ORDER
 }
 
+enum OnboardingStatus {
+  IN_PROGRESS
+  PENDING_REVIEW
+  PENDING_BACKGROUND_CHECK
+  PENDING_VERIFICATION
+  APPROVED
+  REJECTED
+}
+
 // ============================================================================
 // USER & AUTHENTICATION
 // ============================================================================
@@ -152,6 +161,7 @@ model User {
   notary        Notary?
   titleCompany  TitleCompanyUser?
   notifications Notification[]
+  onboarding    NotaryOnboarding?
 
   @@index([email])
   @@index([role])
@@ -211,12 +221,14 @@ model Notary {
   // Personal Info
   firstName            String
   lastName             String
+  email                String
   phone                String
   alternatePhone       String?
-  address              String
-  city                 String
-  state                String
-  zipCode              String
+  address              Json?        // Full address object
+  streetAddress        String?
+  city                 String?
+  state                String?
+  zipCode              String?
   latitude             Float?
   longitude            Float?
   serviceRadius        Int          @default(25) // miles
@@ -233,8 +245,11 @@ model Notary {
   ronCertificationDate DateTime?
   
   // Insurance & Background
-  eAndOAmount          Decimal      @db.Decimal(10, 2)
-  eAndOExpiry          DateTime
+  eoAmount             Int          @default(0)
+  eoCarrier            String?
+  eoExpiry             DateTime?
+  eAndOAmount          Decimal?     @db.Decimal(10, 2)
+  eAndOExpiry          DateTime?
   eAndOCarrier         String?
   backgroundCheckDate  DateTime?
   backgroundCheckClear Boolean      @default(false)
@@ -264,6 +279,11 @@ model Notary {
   
   // Specializations
   specializations      String[]     @default([])
+  loanTypes            String[]     @default([])
+  
+  // Service Areas
+  serviceAreas         String[]     @default([])
+  maxTravelDistance    Int          @default(25)
   
   // Banking for Payments
   bankAccountLast4     String?
@@ -290,6 +310,34 @@ model Notary {
   @@index([zipCode])
   @@index([ronAuthorized])
   @@map("notaries")
+}
+
+model NotaryOnboarding {
+  id               String            @id @default(cuid())
+  userId           String            @unique
+  
+  // Progress tracking
+  currentStep      Int               @default(1)
+  completedSteps   Int[]             @default([])
+  status           OnboardingStatus  @default(IN_PROGRESS)
+  
+  // Data storage (JSON for flexibility)
+  data             Json              @default("{}")
+  
+  // Timestamps
+  startedAt        DateTime          @default(now())
+  lastUpdatedAt    DateTime          @default(now())
+  submittedAt      DateTime?
+  approvedAt       DateTime?
+  rejectedAt       DateTime?
+  rejectionReason  String?
+  
+  // Relations
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([status])
+  @@index([submittedAt])
+  @@map("notary_onboardings")
 }
 
 model NotaryStateCommission {
