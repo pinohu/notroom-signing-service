@@ -1,0 +1,589 @@
+// Notroom National Signing Service - Prisma Schema
+// Multi-tenant architecture for vendors, title companies, and admin
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================
+// AUTHENTICATION & USER MANAGEMENT
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  image         String?
+  passwordHash  String?
+  role          UserRole  @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  accounts      Account[]
+  sessions      Session[]
+  vendor        Vendor?
+  titleClient   TitleClient?
+  adminProfile  AdminProfile?
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+enum UserRole {
+  USER
+  VENDOR
+  TITLE_CLIENT
+  ADMIN
+  SUPER_ADMIN
+}
+
+// ============================================
+// VENDOR (NOTARY) MANAGEMENT
+// ============================================
+
+model Vendor {
+  id                  String       @id @default(cuid())
+  userId              String       @unique
+  user                User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Basic Information
+  firstName           String
+  lastName            String
+  phone               String
+  email               String
+  businessName        String?
+  address             String
+  city                String
+  state               String
+  zipCode             String
+  profileImageUrl     String?
+
+  // Commission & Credentials
+  tier                VendorTier   @default(BRONZE)
+  status              VendorStatus @default(PENDING)
+  nnaNumber           String?
+  eoInsuranceAmount   Int?
+  eoExpirationDate    DateTime?
+  backgroundCheckDate DateTime?
+  signingExperience   Int          @default(0)
+
+  // Equipment
+  hasDualTrayPrinter  Boolean      @default(false)
+  hasScanner          Boolean      @default(false)
+  hasLaptop           Boolean      @default(false)
+  hasReliableVehicle  Boolean      @default(false)
+  hasBackupPrinter    Boolean      @default(false)
+
+  // Performance Metrics
+  eliteScore          Int          @default(50)
+  totalSignings       Int          @default(0)
+  successfulSignings  Int          @default(0)
+  fundingRate         Float        @default(0)
+  averageResponseTime Int?         // in minutes
+  lastActiveAt        DateTime?
+
+  // Timestamps
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  approvedAt          DateTime?
+
+  // Relations
+  stateCommissions    VendorStateCommission[]
+  specializations     VendorSpecialization[]
+  signingOrders       SigningOrder[]
+  performanceLogs     VendorPerformanceLog[]
+  availabilities      VendorAvailability[]
+
+  @@index([state, tier, status])
+  @@index([eliteScore(sort: Desc)])
+  @@map("vendors")
+}
+
+model VendorStateCommission {
+  id                  String   @id @default(cuid())
+  vendorId            String
+  vendor              Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  
+  state               String
+  commissionNumber    String
+  commissionExpiry    DateTime
+  ronEnabled          Boolean  @default(false)
+  ronPlatform         String?  // "proof", "notarize", etc.
+  ronCertificationId  String?
+  
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@unique([vendorId, state])
+  @@index([state, ronEnabled])
+  @@map("vendor_state_commissions")
+}
+
+model VendorSpecialization {
+  id        String              @id @default(cuid())
+  vendorId  String
+  vendor    Vendor              @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  type      SpecializationType
+
+  @@unique([vendorId, type])
+  @@map("vendor_specializations")
+}
+
+model VendorAvailability {
+  id        String   @id @default(cuid())
+  vendorId  String
+  vendor    Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  
+  dayOfWeek Int      // 0 = Sunday, 6 = Saturday
+  startTime String   // "09:00"
+  endTime   String   // "17:00"
+  isActive  Boolean  @default(true)
+
+  @@unique([vendorId, dayOfWeek])
+  @@map("vendor_availabilities")
+}
+
+model VendorPerformanceLog {
+  id              String   @id @default(cuid())
+  vendorId        String
+  vendor          Vendor   @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  
+  metricType      String   // "response_time", "completion_rate", "funding_rate"
+  metricValue     Float
+  period          String   // "daily", "weekly", "monthly"
+  periodStart     DateTime
+  periodEnd       DateTime
+  
+  createdAt       DateTime @default(now())
+
+  @@index([vendorId, metricType, periodStart])
+  @@map("vendor_performance_logs")
+}
+
+enum VendorTier {
+  BRONZE
+  SILVER
+  GOLD
+  ELITE
+}
+
+enum VendorStatus {
+  PENDING
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  REJECTED
+}
+
+enum SpecializationType {
+  PURCHASE
+  REFINANCE
+  HELOC
+  REVERSE_MORTGAGE
+  COMMERCIAL
+  SELLER_FINANCE
+  VA_LOANS
+  FHA_LOANS
+  HOSPITAL_SIGNINGS
+  JAIL_SIGNINGS
+}
+
+// ============================================
+// TITLE COMPANY / CLIENT MANAGEMENT
+// ============================================
+
+model TitleClient {
+  id                  String        @id @default(cuid())
+  userId              String        @unique
+  user                User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Company Information
+  companyName         String
+  contactName         String
+  email               String
+  phone               String
+  address             String?
+  city                String?
+  state               String?
+  zipCode             String?
+
+  // Preferences
+  preferredSigningType SigningType  @default(IN_PERSON)
+  defaultServiceTier  ServiceTier   @default(STANDARD)
+  requireScanback     Boolean       @default(true)
+  scanbackTimeLimit   Int           @default(60) // minutes
+  autoAssignEnabled   Boolean       @default(true)
+
+  // SLA Configuration
+  confirmationSlaMinutes  Int       @default(15)
+  completionSlaHours      Int       @default(24)
+  escalationEmail         String?
+
+  // Billing
+  billingEmail        String?
+  paymentTerms        Int           @default(30) // days
+  invoiceFrequency    String        @default("weekly")
+
+  // Status
+  status              ClientStatus  @default(PILOT)
+  pilotSigningsLeft   Int           @default(10)
+  
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  // Relations
+  signingOrders       SigningOrder[]
+  invoices            Invoice[]
+
+  @@index([status])
+  @@map("title_clients")
+}
+
+enum ClientStatus {
+  PILOT
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+// ============================================
+// SIGNING ORDER MANAGEMENT
+// ============================================
+
+model SigningOrder {
+  id                  String              @id @default(cuid())
+  orderNumber         String              @unique
+  
+  // Client Info
+  titleClientId       String
+  titleClient         TitleClient         @relation(fields: [titleClientId], references: [id])
+  
+  // Assigned Vendor
+  vendorId            String?
+  vendor              Vendor?             @relation(fields: [vendorId], references: [id])
+  
+  // Borrower Information
+  borrowerFirstName   String
+  borrowerLastName    String
+  borrowerEmail       String?
+  borrowerPhone       String
+  
+  // Property Information
+  propertyAddress     String
+  propertyCity        String
+  propertyState       String
+  propertyZip         String
+  propertyCounty      String?
+  
+  // Signing Details
+  signingType         SigningType
+  serviceTier         ServiceTier         @default(STANDARD)
+  loanType            LoanType?
+  loanAmount          Float?
+  documentCount       Int?
+  
+  // Scheduling
+  requestedDate       DateTime
+  requestedTimeStart  String?             // "14:00"
+  requestedTimeEnd    String?             // "16:00"
+  confirmedDate       DateTime?
+  confirmedTime       String?
+  
+  // Status & Tracking
+  status              SigningOrderStatus  @default(PENDING_ASSIGNMENT)
+  statusUpdatedAt     DateTime            @default(now())
+  
+  // SLA Tracking
+  slaDeadline         DateTime?
+  isEscalated         Boolean             @default(false)
+  escalatedAt         DateTime?
+  
+  // Completion
+  completedAt         DateTime?
+  scanbackReceivedAt  DateTime?
+  documentsShippedAt  DateTime?
+  trackingNumber      String?
+  
+  // Financials
+  vendorFee           Float?
+  clientFee           Float?
+  rushFee             Float?
+  
+  // Notes
+  internalNotes       String?             @db.Text
+  borrowerNotes       String?             @db.Text
+  
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+
+  // Relations
+  statusHistory       SigningOrderStatusHistory[]
+  documents           SigningDocument[]
+  invoiceItem         InvoiceItem?
+
+  @@index([status, titleClientId])
+  @@index([vendorId, status])
+  @@index([propertyState])
+  @@index([requestedDate])
+  @@map("signing_orders")
+}
+
+model SigningOrderStatusHistory {
+  id              String             @id @default(cuid())
+  orderId         String
+  order           SigningOrder       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  fromStatus      SigningOrderStatus?
+  toStatus        SigningOrderStatus
+  changedBy       String?            // User ID or "system"
+  reason          String?
+  
+  createdAt       DateTime           @default(now())
+
+  @@index([orderId, createdAt])
+  @@map("signing_order_status_history")
+}
+
+model SigningDocument {
+  id          String       @id @default(cuid())
+  orderId     String
+  order       SigningOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  fileName    String
+  fileUrl     String
+  fileSize    Int?
+  mimeType    String?
+  docType     DocumentType @default(OTHER)
+  
+  uploadedAt  DateTime     @default(now())
+  uploadedBy  String?
+
+  @@index([orderId])
+  @@map("signing_documents")
+}
+
+enum SigningType {
+  IN_PERSON
+  RON
+  HYBRID
+}
+
+enum ServiceTier {
+  STANDARD      // 60-min confirmation, next-day scanback
+  PRIORITY      // 15-min confirmation, same-day scanback
+  RESCUE        // Immediate dispatch, failed signing recovery
+}
+
+enum LoanType {
+  PURCHASE
+  REFINANCE
+  HELOC
+  REVERSE_MORTGAGE
+  COMMERCIAL
+  CONSTRUCTION
+  VA
+  FHA
+  USDA
+  JUMBO
+  SELLER_FINANCE
+}
+
+enum SigningOrderStatus {
+  PENDING_ASSIGNMENT
+  ASSIGNED
+  ACCEPTED
+  DECLINED
+  SCHEDULED
+  EN_ROUTE
+  IN_PROGRESS
+  COMPLETED
+  SCANBACK_PENDING
+  SCANBACK_RECEIVED
+  SHIPPED
+  FUNDED
+  CANCELLED
+  FAILED
+  ON_HOLD
+}
+
+enum DocumentType {
+  LOAN_PACKAGE
+  SCANBACK
+  ID_VERIFICATION
+  NOTARY_JOURNAL
+  SHIPPING_LABEL
+  OTHER
+}
+
+// ============================================
+// BILLING & INVOICING
+// ============================================
+
+model Invoice {
+  id              String        @id @default(cuid())
+  invoiceNumber   String        @unique
+  titleClientId   String
+  titleClient     TitleClient   @relation(fields: [titleClientId], references: [id])
+  
+  periodStart     DateTime
+  periodEnd       DateTime
+  dueDate         DateTime
+  
+  subtotal        Float
+  tax             Float         @default(0)
+  total           Float
+  
+  status          InvoiceStatus @default(DRAFT)
+  paidAt          DateTime?
+  paymentMethod   String?
+  
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  items           InvoiceItem[]
+
+  @@index([titleClientId, status])
+  @@map("invoices")
+}
+
+model InvoiceItem {
+  id          String       @id @default(cuid())
+  invoiceId   String
+  invoice     Invoice      @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  
+  orderId     String?      @unique
+  order       SigningOrder? @relation(fields: [orderId], references: [id])
+  
+  description String
+  quantity    Int          @default(1)
+  unitPrice   Float
+  total       Float
+
+  @@map("invoice_items")
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+// ============================================
+// STATE ELIGIBILITY & ROUTING RULES
+// ============================================
+
+model StateEligibilityRule {
+  id                  String   @id @default(cuid())
+  state               String   @unique
+  
+  // Signing Type Eligibility
+  inPersonAllowed     Boolean  @default(true)
+  ronAllowed          Boolean  @default(false)
+  ipenAllowed         Boolean  @default(false)
+  
+  // RON Configuration
+  ronDocRestrictions  String[] // ["deeds", "wills", etc.]
+  approvedRonPlatforms String[]
+  
+  // Requirements
+  attorneyState       Boolean  @default(false)
+  witnessRequired     Boolean  @default(false)
+  witnessCount        Int      @default(0)
+  
+  // Status
+  isActive            Boolean  @default(true)
+  launchPhase         Int      @default(1) // 1 = initial launch, 2 = expansion, etc.
+  
+  notes               String?  @db.Text
+  
+  updatedAt           DateTime @updatedAt
+
+  @@map("state_eligibility_rules")
+}
+
+// ============================================
+// ADMIN PROFILES
+// ============================================
+
+model AdminProfile {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  department  String?
+  permissions String[] // ["manage_vendors", "manage_clients", "view_reports"]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("admin_profiles")
+}
+
+// ============================================
+// AUDIT LOG
+// ============================================
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String?
+  action      String
+  entity      String
+  entityId    String?
+  oldValues   Json?
+  newValues   Json?
+  ipAddress   String?
+  userAgent   String?
+  
+  createdAt   DateTime @default(now())
+
+  @@index([entity, entityId])
+  @@index([userId, createdAt])
+  @@map("audit_logs")
+}
